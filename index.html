@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Meta base -->
+	<meta charset="utf-8">
+	<title>Home | Change Crypto Coin</title>
+	<meta name="description" content="Exchange your cryptocurrency with Change crypto coin">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#6E40F2">
+	<meta name="msapplication-navbutton-color" content="#6E40F2" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#6E40F2" />
+
+	<!-- Open Graph meta -->
+	<meta property="og:site_name" content="Change Crypto Coin">
+	<meta property="og:title" content="Change Crypto Coin">
+	<meta property="og:description" content="Exchange your cryptocurrency with Change crypto coin">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://works.nik-korz.com/change-crypto-coin">
+	<meta property="og:image" content="img/favicons/card.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+
+	<!-- Twitter meta -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Change Crypto Coin">
+	<meta name="twitter:description" content="Exchange your cryptocurrency with Change crypto coin">
+	<meta name="twitter:image" content="img/favicons/card.png">
+
+	<!-- Manifest site -->
+	<link rel="manifest" href="img/favicons/manifest.json">
+
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon-152.png" sizes="152x152">
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon-167.png" sizes="167x167">
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon-180.png" sizes="180x180">
+	<link rel="shortcut icon" href="img/favicons/favicon.png">
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Roboto:wght@700&family=Ubuntu:wght@300&display=swap&_v=20221215154309">
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20221215154309">
+
+	<script>
+		window.onload = () => {
+			const preloader = document.querySelector('.preloader');
+
+			document.body.classList.remove('lock-scroll');
+			preloader.classList.remove('show');
+		}
+	</script>
+</head>
+
+<body data-page="Home">
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<a href="index.html" class="header__logo"><img src="img/logo.svg" alt="Change crypto coin"></a>
+				<div class="header__menu menu">
+					<nav class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="./exchanger.html" class="menu__link">Exchanger</a>
+							</li>
+							<li class="menu__item">
+								<a href="./index.html#section-currencies" class="menu__link">Popular currencies</a>
+							</li>
+							<li class="menu__item">
+								<a href="#contact-info" class="menu__link">Contact information</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="menu__icons">
+						<a href="https://t.me/cryptoservice_support" class="support__button button__icon">
+							<img src="img/support.svg" alt="Support">
+						</a>
+						<button class="icon-menu" onclick="toggleMenu()"><span></span></button>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Preloader -->
+		<div class="preloader show">
+			<div class="preloader__row">
+				<div class="preloader__item"></div>
+				<div class="preloader__item"></div>
+			</div>
+		</div>
+		<main class="page">
+			<section class="page__main main-block" data-aos="fade-left">
+				<div class="main-block__container">
+					<div class="main-block__image">
+						<img src="img/main/planet-back.svg" alt="planet">
+					</div>
+					<div class="main-block__content">
+						<h1 class="main-block__title title">
+							Exchange your cryptocurrency with <span>Change crypto coin</span>
+						</h1>
+						<div class="main-block__text text">
+							You will not find better prices than ours anywhere, so we suggest you start earning on
+							cryptocurrency with us
+						</div>
+						<a href="exchanger.html" class="main-block__button button">Change crypto</a>
+						<div class="support-block">
+							<a href="https://t.me/cryptoservice_support" class="support__button"><img src="img/support.svg" alt="Support"></a>
+						</div>
+					</div>
+					<div id="orbits">
+						<!-- Animated planet orbits will appear here -->
+					</div>
+				</div>
+			</section>
+			<section class="page__popular-currencies popular-currencies" id="section-currencies">
+				<div class="popular-currencies__container">
+					<div class="popular-currencies__top">
+						<h2 class="popular-currencies__title title">Popular currencies</h2>
+						<span class="search-icon">
+							<input class="popular-currencies__search" type="text" placeholder="Search cryptocurrency" onkeyup="findCurrency(event)">
+							<button class="button__search button" onclick="enableSearch()"><img src="img/currencies/glass.svg" alt="Support"></button>
+						</span>
+					</div>
+					<div class="popular-currencies__colum-header colum">
+						<div class="colum__cryptocurrency-header cryptocurrency">Cryptocurrency</div>
+						<div class="colum__price-header">Price | USDT</div>
+						<div class="colum__actions-header">Actions</div>
+					</div>
+					<div class="popular-currencies__colum colum">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/bitcoin.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/bitcoin.png" alt="Bitcoin"></picture>
+							<div class="cryptocurrency__name">Bitcoin</div>
+							<div class="cryptocurrency__short">BTC</div>
+						</div>
+						<div class="colum__price" id="bitcoin"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/etherium.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/etherium.png" alt="Etherium"></picture>
+							<div class="cryptocurrency__name">Etherium</div>
+							<div class="cryptocurrency__short">ETH</div>
+						</div>
+						<div class="colum__price" id="ethereum"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/binance-coin.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/binance-coin.png" alt="Binance coin"></picture>
+							<div class="cryptocurrency__name">Binance coin</div>
+							<div class="cryptocurrency__short">BNB</div>
+						</div>
+						<div class="colum__price" id="binancecoin"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/solana.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/solana.png" alt="Solana"></picture>
+							<div class="cryptocurrency__name">Solana</div>
+							<div class="cryptocurrency__short">SOL</div>
+						</div>
+						<div class="colum__price" id="solana"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/atomic-token.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/atomic-token.png" alt="Atom"></picture>
+							<div class="cryptocurrency__name">Atom</div>
+							<div class="cryptocurrency__short">ATOM</div>
+						</div>
+						<div class="colum__price" id="atomic-token"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/terra-luna.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/terra-luna.png" alt="Terra luna"></picture>
+							<div class="cryptocurrency__name">Terrra luna</div>
+							<div class="cryptocurrency__short">LUNC</div>
+						</div>
+						<div class="colum__price" id="terra-luna"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/pocladot.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/pocladot.png" alt="Polkadot"></picture>
+							<div class="cryptocurrency__name">Polkadot</div>
+							<div class="cryptocurrency__short">DOT</div>
+						</div>
+						<div class="colum__price" id="polkadot"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<img class="cryptocurrency__icon" src="img/currencies/matic-token.svg" alt="Matic">
+							<div class="cryptocurrency__name">Matic</div>
+							<div class="cryptocurrency__short">MATIC</div>
+						</div>
+						<div class="colum__price" id="matic-network"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/near.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/near.png" alt="Near"></picture>
+							<div class="cryptocurrency__name">Near</div>
+							<div class="cryptocurrency__short">NEAR</div>
+						</div>
+						<div class="colum__price" id="near"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<img class="cryptocurrency__icon" src="img/currencies/cardano.svg" alt="Cardano">
+							<div class="cryptocurrency__name">Cardano</div>
+							<div class="cryptocurrency__short">ADA</div>
+						</div>
+						<div class="colum__price" id="cardano"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<img class="cryptocurrency__icon" src="img/currencies/etherium-classic.svg" alt="Ethereum Classic">
+							<div class="cryptocurrency__name">Ethereum Classic</div>
+							<div class="cryptocurrency__short">ETC</div>
+						</div>
+						<div class="colum__price" id="ethereum-classic"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<img class="cryptocurrency__icon" src="img/currencies/tronix.svg" alt="Tronix">
+							<div class="cryptocurrency__name">Tronix</div>
+							<div class="cryptocurrency__short">TRX</div>
+						</div>
+						<div class="colum__price" id="1tronic"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<img class="cryptocurrency__icon" src="img/currencies/doge-token.svg" alt="Doge Token">
+							<div class="cryptocurrency__name">Doge Token</div>
+							<div class="cryptocurrency__short">DOGE</div>
+						</div>
+						<div class="colum__price" id="doge-token"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/litentry.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/litentry.png" alt="Litentry"></picture>
+							<div class="cryptocurrency__name">Litentry</div>
+							<div class="cryptocurrency__short">LIT</div>
+						</div>
+						<div class="colum__price" id="litentry"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/trust.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/trust.png" alt="Trust Wallet Token"></picture>
+							<div class="cryptocurrency__name">Trust Wallet Token</div>
+							<div class="cryptocurrency__short">TWT</div>
+						</div>
+						<div class="colum__price" id="trust-wallet-token"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/shiba.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/shiba.png" alt="Shiba Inu"></picture>
+							<div class="cryptocurrency__name">Shiba Inu</div>
+							<div class="cryptocurrency__short">SHIB</div>
+						</div>
+						<div class="colum__price" id="shiba-inu"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<img class="cryptocurrency__icon" src="img/currencies/avalance.svg" alt="Avalanche">
+							<div class="cryptocurrency__name">Avalanche</div>
+							<div class="cryptocurrency__short">AVAX</div>
+						</div>
+						<div class="colum__price" id="avalanche-2"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__colum colum colum__hidden">
+						<div class="cryptocurrency__item">
+							<picture><source srcset="img/currencies/pancake-swap.webp" type="image/webp"><img class="cryptocurrency__icon" src="img/currencies/pancake-swap.png" alt="Pancake Swap"></picture>
+							<div class="cryptocurrency__name">Pancake Swap</div>
+							<div class="cryptocurrency__short">CAKE</div>
+						</div>
+						<div class="colum__price" id="pancakeswap-token"></div>
+						<div class="colum__actions">
+							<a href="" class="button__change"></a>
+							<a href="" class="button__sell">Sell</a>
+							<a href="" class="button__buy">Buy</a>
+						</div>
+					</div>
+					<div class="popular-currencies__action">
+						<button class="popular-currencies__button button" onclick="toggleCurrencies()">See all cryptocurrencies</button>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__main main-footer">
+					<div class="main-footer__info">
+						<a href="" class="main-footer__logo">
+							<img src="img/logo.svg" alt="Logo">
+						</a>
+						<nav class="footer__menu menu-footer">
+							<ul class="menu-footer__list">
+								<li class="menu-footer__item">
+									<a href="./exchanger.html" class="menu-footer__link">Exchanger</a>
+								</li>
+								<li class="menu-footer__item">
+									<a href="./index.html#section-currencies" class="menu-footer__link">Popular currencies</a>
+								</li>
+								<li class="menu-footer__item">
+									<a href="#contact-info" class="menu-footer__link">Contact information</a>
+								</li>
+							</ul>
+							<div class="menu-footer__contacts" id="contact-info">
+								<div class="main-footer__social">
+									<div class="social">
+										<a href="https://t.me/cryptoservice_support" class="social__item">
+											<img src="img/footer/01.svg" alt="Telegram">
+										</a>
+										<a href="https://wa.me/420721833360" class="social__item">
+											<img src="img/footer/02.svg" alt="WhatsApp">
+										</a>
+									</div>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="footer__bottom">
+					<div class="footer__copy">© 2022 Change crypto coin. All rights reserved</div>
+					<a href="https://instagram.com/kapch0niy" target="_blank" class="footer__sigtature">Developed by Kapch0niy Team</a>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20221215154309"></script>
+</body>
+
+</html>

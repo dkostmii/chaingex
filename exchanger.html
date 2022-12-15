@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Meta base -->
+	<meta charset="utf-8">
+	<title>Exchange | Change Crypto Coin</title>
+	<meta name="description" content="Exchange your cryptocurrency with Change crypto coin">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#6E40F2">
+	<meta name="msapplication-navbutton-color" content="#6E40F2" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#6E40F2" />
+
+	<!-- Open Graph meta -->
+	<meta property="og:site_name" content="Change Crypto Coin">
+	<meta property="og:title" content="Change Crypto Coin">
+	<meta property="og:description" content="Exchange your cryptocurrency with Change crypto coin">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://works.nik-korz.com/change-crypto-coin">
+	<meta property="og:image" content="img/favicons/card.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+
+	<!-- Twitter meta -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Change Crypto Coin">
+	<meta name="twitter:description" content="Exchange your cryptocurrency with Change crypto coin">
+	<meta name="twitter:image" content="img/favicons/card.png">
+
+	<!-- Manifest site -->
+	<link rel="manifest" href="img/favicons/manifest.json">
+
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon-152.png" sizes="152x152">
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon-167.png" sizes="167x167">
+	<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon-180.png" sizes="180x180">
+	<link rel="shortcut icon" href="img/favicons/favicon.png">
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Roboto:wght@700&family=Ubuntu:wght@300&display=swap&_v=20221215154309">
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20221215154309">
+
+	<script>
+		window.onload = () => {
+			const preloader = document.querySelector('.preloader');
+
+			document.body.classList.remove('lock-scroll');
+			preloader.classList.remove('show');
+		}
+	</script>
+</head>
+
+<body data-page="Exchanger">
+	<header class="header">
+		<div class="header__container">
+			<a href="index.html" class="header__logo"><img src="img/logo.svg" alt="Change crypto coin"></a>
+			<div class="header__menu menu">
+				<nav class="menu__body">
+					<ul class="menu__list">
+						<li class="menu__item">
+							<a href="./exchanger.html" class="menu__link">Exchanger</a>
+						</li>
+						<li class="menu__item">
+							<a href="./index.html#section-currencies" class="menu__link">Popular currencies</a>
+						</li>
+						<li class="menu__item">
+							<a href="#contact-info" class="menu__link">Contact information</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="menu__icons">
+					<a href="https://t.me/cryptoservice_support" class="support__button button__icon">
+						<img src="img/support.svg" alt="Support">
+					</a>
+					<button class="icon-menu" onclick="toggleMenu()"><span></span></button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Preloader -->
+	<div class="preloader show">
+		<div class="preloader__row">
+			<div class="preloader__item"></div>
+			<div class="preloader__item"></div>
+		</div>
+	</div>
+	<main class="section-exchanger" id="section-exchanger">
+		<div class="exchanger__container">
+			<form class="ex-form" id="ex-form">
+				<div class="field-wrapper currency">
+					<p class="field-label">Choose cryptocurrency</p>
+					<div class="field-select">
+						<p class="field-select__value">Cardano | USDT</p>
+						<ul class="field-select__list">
+							<li class="field-select__item">Cardano | USDT</li>
+							<li class="field-select__item">Binance | USDT</li>
+						</ul>
+						<input type="hidden" class="field-select__input" value="Cardano | USDT" name="ex-currency" data-text="Cryptocurrency" data-smile="💲">
+					</div>
+					<p class="field-attention">Minimum 150 USDT</p>
+				</div>
+
+				<div class="field-wrapper send">
+					<p class="field-label">You send</p>
+					<div class="field-row select">
+						<input type="number" class="field-input" name="number-input">
+						<div class="field-select">
+							<p class="field-select__value">USDT</p>
+							<ul class="field-select__list">
+								<li class="field-select__item">USDT</li>
+								<li class="field-select__item">ADA</li>
+							</ul>
+							<input type="hidden" class="field-select__input" name="select-input">
+						</div>
+					</div>
+					<p class="field-error-msg"></p>
+					<input type="hidden" class="result-value" name="ex-send" data-text="Send" data-smile="➡️" value="150 | USDT">
+				</div>
+
+				<div class="field-wrapper reverse">
+					<button type="button" class="reverse-btn"></button>
+				</div>
+
+				<div class="field-wrapper receive">
+					<p class="field-label">You receive</p>
+					<div class="field-row select">
+						<input type="number" class="field-input" name="number-input">
+						<div class="field-select">
+							<p class="field-select__value">ADA</p>
+							<ul class="field-select__list">
+								<li class="field-select__item">USDT</li>
+								<li class="field-select__item">ADA</li>
+							</ul>
+							<input type="hidden" class="field-select__input" name="select-input">
+						</div>
+					</div>
+					<p class="field-error-msg"></p>
+					<input type="hidden" class="result-value" name="ex-receive" data-text="Receive" data-smile="⬅️" value="300 | ADA">
+				</div>
+
+				<div class="field-wrapper address">
+					<p class="field-label">Type your address</p>
+					<input type="text" placeholder="Address" class="field-input" name="ex-address" data-text="Address" data-smile="📃" data-length="34" data-empty="true">
+					<p class="field-msg">#</p>
+				</div>
+
+				<div class="field-wrapper card">
+					<p class="field-label">Type your card number</p>
+					<input type="text" placeholder="Card Number" class="field-input" name="ex-card" data-text="Card Number" data-smile="💳" data-length="19" data-empty="true">
+					<p class="field-msg">#</p>
+				</div>
+
+				<div class="field-wrapper copy-address">
+					<p class="field-label">Copy address</p>
+					<div class="field-row copy">
+						<input type="text" class="field-input" value="TKPkeFykLkJL3NdaW3b7yAPkeznWquh9fX" readonly>
+						<button type="button" class="field-copy-btn"></button>
+					</div>
+				</div>
+
+				<div class="field-wrapper copy-ua-card">
+					<p class="field-label">Copy UA card</p>
+					<div class="field-row copy">
+						<input type="text" class="field-input" value="5355 0860 2202 3757" readonly>
+						<button type="button" class="field-copy-btn"></button>
+					</div>
+				</div>
+
+				<div class="field-wrapper copy-usd-card">
+					<p class="field-label">Copy USD card</p>
+					<div class="field-row copy">
+						<input type="text" class="field-input" value="4569 3334 0359 8501" readonly>
+						<button type="button" class="field-copy-btn"></button>
+					</div>
+				</div>
+
+				<p class="field-text">
+					Send <span>860 USDT</span> to this address/card and we will send you <span>2000 ADA.</span> Then click the button <span>“I send”</span>
+				</p>
+
+				<div class="buttons">
+					<a href="index.html" class="btn gray-btn buttons__back">Back</a>
+					<button type="submit" class="btn purple-btn buttons__send">I send</button>
+				</div>
+			</form>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__main main-footer">
+				<div class="main-footer__info">
+					<a href="" class="main-footer__logo">
+						<img src="img/logo.svg" alt="Logo">
+					</a>
+					<nav class="footer__menu menu-footer">
+						<ul class="menu-footer__list">
+							<li class="menu-footer__item">
+								<a href="./exchanger.html" class="menu-footer__link">Exchanger</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="./index.html#section-currencies" class="menu-footer__link">Popular currencies</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#contact-info" class="menu-footer__link">Contact information</a>
+							</li>
+						</ul>
+						<div class="menu-footer__contacts" id="contact-info">
+							<div class="main-footer__social">
+								<div class="social">
+									<a href="https://t.me/cryptoservice_support" class="social__item">
+										<img src="img/footer/01.svg" alt="Telegram">
+									</a>
+									<a href="https://wa.me/420721833360" class="social__item">
+										<img src="img/footer/02.svg" alt="WhatsApp">
+									</a>
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<div class="footer__copy">© 2022 Change crypto coin. All rights reserved</div>
+				<a href="https://instagram.com/kapch0niy" target="_blank" class="footer__sigtature">Developed by Kapch0niy Team</a>
+			</div>
+		</div>
+	</footer>
+
+	<!-- <div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+				Text
+			</div>
+		</div>
+	</div>
+</div> -->
+	<script src="js/app.min.js?_v=20221215154309"></script>
+</body>
+
+</html>

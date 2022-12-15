@@ -1,0 +1,40 @@
+{
+  "short_name": "Change Crypto Coin",
+  "name": "Change Crypto Coin",
+  "lang": "en",
+  "description": "Exchange your cryptocurrency with Change crypto coin",
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#020015",
+  "theme_color": "#6E40F2",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "app-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "app-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "app-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "app-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    }
+  ],
+  "prefer_related_applications": false
+}
