@@ -1,0 +1,36 @@
+/* ---- Field [Input] ----- */
+.field {
+    &-input {
+        @include font-size(18px);
+        @include transition();
+        font-weight: 400;
+        color: #676673;
+        background: #0F0D21;
+        padding: 16px 0 16px 16px;
+        border: 1px solid rgba(0, 0, 0, 0);
+        width: 100%;
+
+        &.error {
+            @include transition();
+            color: $redColor;
+            border-color: $redColor;
+
+            &:focus {
+                border-color: $redColor;
+            }
+
+            &::placeholder {
+                color: $redColor;
+            }
+        }
+
+        &:focus {
+            border-color: $purpleColor;
+            @include transition();
+        }
+
+        &::placeholder {
+            opacity: 0.4;
+        }
+    }
+}

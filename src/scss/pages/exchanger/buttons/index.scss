@@ -1,0 +1,25 @@
+/* ---- Buttons ---- */
+@import 'reverse-btn';
+@import 'gray-btn';
+@import 'purple-btn';
+
+.buttons {
+    @include flexible();
+    justify-content: flex-end;
+    column-gap: 30px;
+    grid-column: 7 / 13;
+
+    @include mq($phablet) {
+        grid-column: 1 / 13;
+    }
+}
+
+.btn {
+    @include font-size(20px);
+    font-weight: 400;
+    text-align: center;
+    padding: 16px 0;
+    width: 194px;
+    line-height: normal;
+    @include transition();
+}

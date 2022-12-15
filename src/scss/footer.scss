@@ -1,0 +1,216 @@
+//====================================================================================================
+.footer {
+   margin-top: rem(150);
+   background-color: #0F0D21;
+   &__container {
+      padding: rem(60) rem(105);
+   }
+
+   &__main {
+      @include adaptiveValue("padding-bottom", 35, 40);
+      border-bottom: 2px solid #676673;
+   }
+
+   &__menu {
+      flex: 1 1 100%;
+   }
+
+   @media screen and (min-width: $mobile) {
+      &__menu {
+         width: 100%;
+      }
+   }
+
+   &__bottom {
+      color: $greyColor;
+      padding-top: rem(35);
+      font-size: rem(18);
+      display: flex;
+		align-items: center;
+		justify-content: space-between;
+   }
+
+   @media screen and (max-width: $tablet) {
+      &__bottom {
+         font-size: rem(16);
+      }
+
+      &__container {
+         padding: rem(60) rem(32);
+      }
+   }
+
+   @media screen and (max-width: $mobile) {
+      &__container {
+         padding: rem(60) rem(25);
+      }
+      &__bottom {
+         flex-direction: column-reverse;
+         gap: rem(24);
+         text-align: center;
+         line-height: rem(24);
+         padding-top: rem(40);
+      }
+   }
+
+   &__copy {
+      transition: all 0.2s ease;
+      &:hover {
+         opacity: 0.7;
+         transition: all 0.2s ease;
+      }
+   }
+
+   &__sigtature {
+      transition: all 0.2s ease;
+      &:hover {
+         opacity: 0.7;
+         transition: all 0.2s ease;
+      }
+   }
+}
+.main-footer {
+
+   &__info {
+      display: flex;
+   }
+
+   &__logo {
+      display: inline-block;
+      transition: all 0.2s ease;
+
+      &:hover {
+         opacity: 0.7;
+         transition: all 0.2s ease;
+      }
+   }
+
+   @media screen and (max-width: $mobile) {
+      &__info {
+         flex-direction: column;
+         align-items: center;
+      }
+
+      &__logo {
+         margin-bottom: rem(40);
+      }
+   }
+
+   @media screen and (min-width: $mobile) {
+      &__info {
+         flex-direction: column;
+         gap: rem(15);
+         align-items: flex-start;
+      }
+
+      &__logo {
+         margin-bottom: rem(15);
+      }
+   }
+
+   &__social {
+   }
+}
+.menu-footer {
+   justify-content: space-between;
+   &__list {
+      display: flex;
+		flex-wrap: wrap;
+		@include adaptiveValue("gap", 30, 24);
+      color: $greyColor;
+   }
+
+   @media screen and (max-width: $mobile) {
+      &__list {
+         justify-content: center;
+         margin-bottom: rem(24);
+         font-size: rem(16);
+         line-height: rem(24);
+      }
+
+      &__contacts {
+         justify-content: center;
+      }
+   }
+
+   @media screen and (min-width: $mobile) and (max-width: $tablet) {
+      &__list {
+         font-size: rem(14);
+         line-height: rem(21);
+      }
+   }
+
+   @media screen and (min-width: $mobile) {
+      &__contacts {
+         justify-content: flex-end;
+         margin-top: rem(-32);
+      }
+   }
+
+   &__item {
+   }
+
+   &__link {
+      font-size: rem(16);
+      line-height: math.div(16, 14);
+      transition: all 0.2s ease;
+
+      &:hover {
+         background: linear-gradient(0deg, #676673, #676673), linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+         -webkit-text-fill-color: transparent;
+         -webkit-background-clip: text;
+         background-clip: text;
+         opacity: 0.7;
+         transition: all 0.2s ease;
+      }
+      &:active {
+         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #676673, #676673);
+         -webkit-text-fill-color: transparent;
+         -webkit-background-clip: text;
+         background-clip: text;
+         opacity: 0.7;
+         transition: all 0.2s ease;
+      }
+
+      @media (any-hover: target) {
+         &:target {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+   linear-gradient(0deg, #676673, #676673);
+         }
+		}
+   }
+
+   &__contacts{
+      display: flex;
+   }
+}
+.social {
+   display: flex;
+   gap: rem(14);
+
+   &__item {
+      transition: all 0.2s ease;
+
+      &:hover {
+         background: linear-gradient(0deg, #676673, #676673), linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+         -webkit-text-fill-color: transparent;
+         -webkit-background-clip: text;
+         background-clip: text;
+         opacity: 0.7;
+         transition: all 0.2s ease;
+      }
+      &:active {
+         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+linear-gradient(0deg, #676673, #676673);
+      }
+
+      @media (any-hover: target) {
+			&:target {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+   linear-gradient(0deg, #676673, #676673);
+         }
+		}
+   }
+}
+
+//====================================================================================================

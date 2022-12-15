@@ -1,0 +1,98 @@
+//<BUTTONS (a.btn+tab)>
+// Снипет (HTML): btn
+.main-block__button{
+	margin: 0 0 rem(17.5) 0;
+}
+
+.support__button{
+	display: inline-flex;
+	padding: rem(19);
+	background-color: $purpleColor;
+	border-radius: 50%;
+	position: fixed;
+
+	@media (any-hover: hover) {
+		&:hover {
+			background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;;
+		}
+
+		&:active {
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
+		}
+	}
+	@media (any-hover: target) {
+		&:target {
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
+		}
+	}
+}
+
+.button {
+	&__change {
+		padding: rem(16) rem(20);
+		background: #0F0D21;
+		@media (any-hover: hover) {
+			&:hover {
+				background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
+				color: #fff;
+			}
+		}
+	}
+
+	&__sell {
+		font-weight: 400;
+		color: #676673;
+		padding: rem(16) rem(20);
+		background: #0F0D21;
+		@media (any-hover: hover) {
+			&:hover {
+				background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
+				color: #fff;
+			}
+		}
+	}
+
+	&__buy {
+		font-weight: 400;
+		color: #676673;
+		padding: rem(16) rem(20);
+		background: #0F0D21;
+		@media (any-hover: hover) {
+			&:hover {
+				background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
+				color: #fff;
+			}
+		}
+	}
+}
+
+
+.button {
+	display: inline-flex;
+	padding: rem(16) rem(67);
+	background-color: $purpleColor;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+
+
+	@media (any-hover: hover) {
+		&:hover {
+			background: #643ad7;
+		}
+
+		&:active {
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
+		}
+	}
+	@media (any-hover: target) {
+		&:target {
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
+		}
+	}
+
+	&._fw {
+		width: 100%;
+	}
+}

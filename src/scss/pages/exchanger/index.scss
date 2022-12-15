@@ -1,0 +1,34 @@
+/* ---- Page [Exchanger] ---- */
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/specification';
+@import 'base/animations';
+
+@import 'loader';
+
+@import 'form';
+@import 'fields';
+@import 'buttons';
+
+
+.exchanger {
+  &__container {
+    padding-top: rem(100);
+  }
+
+  @media screen and (max-width: tablet) {
+    &__container {
+      padding-top: rem(91);
+    }
+  }
+}
+
+.ex-form {
+  margin-top: rem(10);
+}
+
+@media screen and (max-width: tablet) {
+  .ex-form {
+    margin-top: rem(16);
+  }
+}

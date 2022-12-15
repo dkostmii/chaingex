@@ -1,0 +1,44 @@
+/* ---- Field [Row] ---- */
+.field {
+    &-row {
+        @include flexible();
+        @include transition();
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0);
+
+        &.select {
+            & .field-input {
+                width: calc(100% - 125px);
+                border-right: none;
+            }
+            
+            & .field-select {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 125px;
+                border-left: 1px solid $purpleColor;
+
+                &__value {
+                    border-left: none !important;
+                }
+
+                &__list {
+                    width: calc(100% + 1px);
+                    margin-left: -1px;
+                }
+            }
+        }
+
+        &.copy {
+            & .field-input {
+                width: calc(100% - 58px);
+                border-right: none;
+            }
+            
+            & .field-copy-btn {
+                width: 58px;
+            }
+        }
+    }
+}

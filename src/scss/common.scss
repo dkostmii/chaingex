@@ -1,0 +1,15 @@
+// Заголовки, общие БЄМ блоки и проче...
+
+.title{
+   font-size: rem(39);
+   font-weight: 600;
+   line-height: math.div(55, 39);
+   color: $mainColor;
+   span{
+      color: $purpleColor;
+   }
+}
+
+.text{
+   opacity: 0.5;
+}

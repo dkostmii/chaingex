@@ -1,0 +1,25 @@
+/* ---- Field [Copy-Btn] ---- */
+.field {
+    &-copy-btn {
+        @include transition();
+        position: relative;
+        width: 58px;
+        height: 61px;
+        border-left: 1px solid $purpleColor;
+        background: $darkBlueColor;
+
+        &:after {
+            content: '';
+            @include background('@img/exchanger/copy-icon.svg');
+            @include center-element();
+            @include transition();
+            display: block;
+            width: 32px;
+            height: 32px;
+        }
+
+        &:hover {
+            @include link-hover();
+        }
+    }
+}

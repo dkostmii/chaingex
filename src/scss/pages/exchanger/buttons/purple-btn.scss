@@ -1,0 +1,9 @@
+/* ---- Buttons [Purple Btn] ---- */
+.purple-btn {
+    background: #6E40F2;
+
+    &:hover {
+        @include transition();
+        @include link-hover();
+    }
+}

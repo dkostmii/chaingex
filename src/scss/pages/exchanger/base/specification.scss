@@ -1,0 +1,89 @@
+/* ---- Specification ---- */
+* {
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+p {
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, li {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+input:auto-fill {
+  color: $greyColor;
+  box-shadow: inset 0 0 0 9999px $someColor;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: $greyColor;
+  -webkit-box-shadow: inset 0 0 0 9999px $someColor;
+  box-shadow: inset 0 0 0 9999px $someColor;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+  @include transition();
+  border: 1px solid rgba(0, 0, 0, 0);
+
+  &:focus {
+    @include transition();
+    border: 1px solid $purpleColor;
+  }
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.theme-border {
+  border: 1px solid $purpleColor !important;
+  border-right: none !important;
+}
+
+.current-page {
+  display: none;
+}
+
+/* ---- Scroll ---- */
+::-webkit-scrollbar-track {
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+	background-color: $purpleColor;
+}
+
+.lock-scroll {
+    overflow: hidden;
+}
+
+/* ---- Selection ---- */
+::selection {
+	@include selection();
+}
+
+::-moz-selection {
+	@include selection();
+}
