@@ -1,7 +1,7 @@
 import cleanCss from 'gulp-clean-css';
 import webpcss from 'gulp-webpcss';
 import autoprefixer from 'gulp-autoprefixer';
-import groupCssMediaQueries from 'gulp-group-css-media-queries';
+import gcmq from 'gulp-group-css-media-queries';
 
 export const css = () => {
 	return app.gulp.src(`${app.path.build.css}style.css`, {})
@@ -13,7 +13,7 @@ export const css = () => {
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
-				groupCssMediaQueries()
+				gcmq()
 			)
 		)
 		.pipe(
@@ -44,7 +44,9 @@ export const css = () => {
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
-				cleanCss()
+				cleanCss({ debug: true }, details => {
+					console.log(`[CSS]: ${details.name} ${(details.stats.originalSize / 1000).toFixed(1)} KB -> ${(details.stats.minifiedSize / 1000).toFixed(1)} KB`)
+				})
 			)
 		)
 		.pipe(app.plugins.rename({ suffix: ".min" }))

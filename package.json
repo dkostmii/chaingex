@@ -18,7 +18,7 @@
 		"tmp": "gulp -f gulpfile.tmp.js",
 		"bem": "fls-bemtree-from-html",
 		"serve-static": "browser-sync dist -w",
-		"test": "jest"
+		"test": "jest -c config/jest.config.js"
 	},
 	"devDependencies": {
 		"browser-sync": "^2.27.10",
@@ -31,7 +31,7 @@
 		"gulp-autoprefixer": "latest",
 		"gulp-clean-css": "latest",
 		"gulp-fonter-fix": "latest",
-		"gulp-group-css-media-queries": "latest",
+		"gulp-group-css-media-queries": "^1.2.2",
 		"gulp-if": "latest",
 		"gulp-imagemin": "latest",
 		"gulp-newer": "latest",
