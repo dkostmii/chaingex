@@ -44,7 +44,7 @@ export const css = () => {
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
-				cleanCss({ debug: true }, details => {
+				cleanCss({ debug: true,  inline: ['all', '!fonts.googleapis.com'] }, details => {
 					console.log(`[CSS]: ${details.name} ${(details.stats.originalSize / 1000).toFixed(1)} KB -> ${(details.stats.minifiedSize / 1000).toFixed(1)} KB`)
 				})
 			)
