@@ -1,0 +1,179 @@
+@import 'keyframes'
+
+$animationFunction: cubic-bezier(1, 0, 0.65, 1)
+
+$btcWidthMobile: 150px
+$btcHeightMobile: 170px
+
+$altcoinWidthMobile: 79px
+$altcoinHeightMobile: 90px
+
+$btcWidthTablet: 222.88px
+$btcHeightTablet: 257.96px
+
+$altcoinWidthTablet: 115.9px
+$altcoinHeightTablet: 133.73px
+
+$btcWidthDesktop: 200.05px
+$btcHeightDesktop: 229.14px
+
+$altcoinWidthDesktop: 103.92px
+$altcoinHeightDesktop: 118.14px
+
+
+// Common styles (are not affected when adapting)
+.btc__wrapper, .altcoin__wrapper, .crypto-icons__wrapper
+  display: grid
+  justify-content: center
+  align-items: center
+
+.crypto-icons
+  position: relative
+  
+  animation-name: crypto-icons-animation-mobile
+  animation-duration: 2500ms
+  animation-delay: 1000ms
+  animation-iteration-count: infinite
+  animation-direction: alternate
+  animation-timing-function: $animationFunction
+
+  &__wrapper
+    flex-shrink: 0
+
+  & > *
+    position: absolute
+
+  & > .eth
+    left: 0
+
+  & > .uni
+    right: 0
+
+  & > .usdc, & > .xrp
+    top: 0
+
+  & > .usdt, & > .doge
+    bottom: 0
+
+
+// Styles that are affected by adaptation
+
+// Mobile
+.btc
+  width: 175px
+  height: 188px
+
+  &__wrapper
+    width: $btcWidthMobile
+    height: $btcHeightMobile
+
+.altcoin
+  width: 99px
+  height: 107px
+
+  &__wrapper
+    width: $altcoinWidthMobile
+    height: $altcoinHeightMobile
+
+.crypto-icons
+  width: $blockWidthMobile
+  height: $blockHeightMobile
+
+  & > .bitcoin
+    top: calc((100% - $btcHeightMobile) / 2)
+    left: calc((100% - $btcWidthMobile) / 2)
+
+  & > .eth, & > .uni
+    top: calc((100% - $altcoinHeightMobile) / 2)
+
+  & > .usdc, & > .usdt
+    left: calc(100% / 4 + 0.0315 * $blockWidthMobile - $altcoinWidthMobile / 2)
+
+  & > .xrp, & > .doge
+    right: calc(100% / 4 + 0.0315 * $blockWidthMobile - $altcoinWidthMobile / 2)
+
+  &__wrapper
+    width: $blockWidthMobile
+    height: $blockHeightMobile
+
+// Tablet
+@media screen and (min-width: $tablet)
+  .btc
+    width: 259px
+    height: 284px
+
+    &__wrapper
+      width: $btcWidthTablet
+      height: $btcHeightTablet
+
+  .altcoin
+    width: 144px
+    height: 160px
+
+    &__wrapper
+      width: $altcoinWidthTablet
+      height: $altcoinHeightTablet
+
+  .crypto-icons
+    width: $blockWidthTablet
+    height: $blockHeightTablet
+
+    & > .bitcoin
+      top: calc((100% - $btcHeightTablet) / 2)
+      left: calc((100% - $btcWidthTablet) / 2)
+
+    & > .eth, & > .uni
+      top: calc((100% - $altcoinHeightTablet) / 2)
+
+    & > .usdc, & > .usdt
+      left: calc(100% / 4 + 0.0315 * $blockWidthTablet - $altcoinWidthTablet / 2)
+
+    & > .xrp, & > .doge
+      right: calc(100% / 4 + 0.0315 * $blockWidthTablet - $altcoinWidthTablet / 2)
+
+    animation-name: crypto-icons-animation-tablet
+
+    &__wrapper
+      width: $blockWidthTablet
+      height: $blockHeightTablet
+
+// Desktop
+@media screen and (min-width: $pc)
+  .btc
+    width: 232px
+    height: 255px
+
+    &__wrapper
+      width: $btcWidthDesktop
+      height: $btcHeightDesktop
+
+  .altcoin
+    width: 130px
+    height: 144px
+
+    &__wrapper
+      width: $altcoinWidthDesktop
+      height: $altcoinHeightDesktop
+
+  .crypto-icons
+    width: $blockWidthDesktop
+    height: $blockHeightDesktop
+
+    & > .bitcoin
+      top: calc((100% - $btcHeightDesktop) / 2)
+      left: calc((100% - $btcWidthDesktop) / 2)
+
+    & > .eth, & > .uni
+      top: calc((100% - $altcoinHeightDesktop) / 2)
+
+    & > .usdc, & > .usdt
+      left: calc(100% / 4 + 0.0315 * $blockWidthDesktop - $altcoinWidthDesktop / 2)
+
+    & > .xrp, & > .doge
+      right: calc(100% / 4 + 0.0315 * $blockWidthDesktop - $altcoinWidthDesktop / 2)
+
+    animation-name: crypto-icons-animation-desktop
+
+    &__wrapper
+      width: $blockWidthDesktop
+      height: $blockHeightDesktop

@@ -74,7 +74,7 @@ const config = {
 	module: {
 		rules: [
 			{
-				test: /\.(scss|css)$/,
+				test: /\.(c|sa|sc)ss$/,
 				exclude: `${paths.src}/fonts`,
 				use: [
 					'style-loader',

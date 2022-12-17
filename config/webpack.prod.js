@@ -52,7 +52,7 @@ const config = {
 	module: {
 		rules: [
 			{
-				test: /\.(scss|css)$/,
+				test: /\.(c|sa|sc)ss$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
