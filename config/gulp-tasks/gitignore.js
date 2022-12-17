@@ -1,21 +1,30 @@
+import fsp from 'fs/promises';
 
-import fs from 'fs';
-export const gitignore = () => {
-	if (!fs.existsSync('.gitignore')) {
-		fs.writeFile('./.gitignore', '', cb);
-		fs.appendFile('./.gitignore', 'phpmailer/\r\n', cb);
-		fs.appendFile('./.gitignore', 'package-lock.json\r\n', cb);
-		fs.appendFile('./.gitignore', 'flsStartTemplate/\r\n', cb);
-		fs.appendFile('./.gitignore', 'node_modules/\r\n', cb);
-		fs.appendFile('./.gitignore', '.gitignore\r\n', cb);
-		fs.appendFile('./.gitignore', 'dist/\r\n', cb);
-		fs.appendFile('./.gitignore', 'Source/\r\n', cb);
-		fs.appendFile('./.gitignore', 'version.json\r\n', cb);
-		fs.appendFile('./.gitignore', app.buildFolder + '\r\n', cb);
-		fs.appendFile('./.gitignore', '**/*.zip\r\n', cb);
-		fs.appendFile('./.gitignore', '**/*.rar\r\n', cb);
+export const gitignore = async () => {
+	let exists = true;
+
+	try {
+		await fsp.readFile('./.gitignore');
+	} catch (e) {
+		exists = false;
+	}
+
+	if (!exists) {
+		await fsp.writeFile('./.gitignore', '');
+		await fsp.appendFile('./.gitignore', 'phpmailer/\r\n');
+		await fsp.appendFile('./.gitignore', 'package-lock.json\r\n');
+		await fsp.appendFile('./.gitignore', 'flsStartTemplate/\r\n');
+		await fsp.appendFile('./.gitignore', 'node_modules/\r\n');
+		await fsp.appendFile('./.gitignore', '.gitignore\r\n');
+		await fsp.appendFile('./.gitignore', 'dist/\r\n');
+		await fsp.appendFile('./.gitignore', 'Source/\r\n');
+		await fsp.appendFile('./.gitignore', 'version.json\r\n');
+		await fsp.appendFile('./.gitignore', app.path.buildFolder + '\r\n');
+		await fsp.appendFile('./.gitignore', '**/*.zip\r\n');
+		await fsp.appendFile('./.gitignore', '**/*.rar\r\n');
+		await fsp.appendFile('./.gitignore', '*keyframes.s[a|c]ss');
 		//if (projectName !== 'flsStart') del('./.git/');
 	}
+
 	return app.gulp.src(`${app.path.srcFolder}`);
 }
-function cb() { }
