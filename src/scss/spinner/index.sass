@@ -1,0 +1,107 @@
+@import '../keyframes/spinner'
+  
+$animationFunction: cubic-bezier(.77,0,.18,1)
+
+$cryptoWidth: 30px
+$cryptoHeight: 34.72px
+
+$spinnerWidth: 100px
+$spinnerHeight: 108.62px
+
+.spinner
+  position: relative
+  flex-shrink: 0
+
+  animation-name: spinner-animation
+  animation-duration: 5s
+  animation-delay: 1000ms
+  animation-iteration-count: infinite
+  animation-direction: normal
+  animation-timing-function: $animationFunction
+
+  &__wrapper
+    display: grid
+    align-items: center
+    justify-content: center
+
+    width: 100vw
+    height: 100vh
+
+    background: rgb(0, 0.2, 0.4, 1.0)
+
+  & > *
+    position: absolute
+    display: grid
+    justify-content: center
+    align-items: center
+
+    // Make icons preserve their orientation
+    animation-name: spinner-animation-compensate
+    animation-duration: inherit
+    animation-delay: inherit
+    animation-iteration-count: inherit
+    animation-direction: inherit
+    animation-timing-function: inherit
+    animation-play-state: inherit
+
+
+.spinner
+  width: $spinnerWidth
+  height: $spinnerHeight
+
+  transform-origin: calc($spinnerWidth / 2) calc($spinnerHeight / 2)  
+
+  & > *
+    width: $cryptoWidth
+    height: $cryptoHeight
+
+    transform-origin: calc($cryptoWidth / 2) calc($cryptoHeight / 2)  
+
+  & > * > *
+    width: 56px
+    height: 59px
+
+  & > .btc
+    top: 0
+    left: calc($spinnerWidth / 2 - $cryptoWidth / 2)
+
+  & > .xrp
+    top: calc($spinnerHeight / 4 - $cryptoHeight / 3.25)
+    right: 0
+
+  & > .doge
+    bottom: calc($spinnerHeight / 4 - $cryptoHeight / 3.25)
+    right: 0
+
+  & > .usdt
+    bottom: 0
+    left: calc($spinnerWidth / 2 - $cryptoWidth / 2)
+
+  & > .eth
+    bottom: calc($spinnerHeight / 4 - $cryptoHeight / 3.25)
+    left: 0
+
+  & > .usdc
+    top: calc($spinnerHeight / 4 - $cryptoHeight / 3.25)
+    left: 0
+
+
+.preloader
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  opacity: 0
+  transition: all 200ms ease
+
+  & > .spinner
+    animation-play-state: paused
+
+  &.show
+    opacity: 1
+    z-index: 1000
+
+    & > .spinner
+      animation-play-state: unset
+

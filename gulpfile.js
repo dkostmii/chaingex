@@ -29,7 +29,11 @@ import { sprite } from "./config/gulp-tasks/sprite.js";
 import { gitignore } from "./config/gulp-tasks/gitignore.js";
 import { otfToTtf, ttfToWoff, fonstStyle } from "./config/gulp-tasks/fonts.js";
 import { manifest } from "./config/gulp-tasks/manifest.js";
-import { keyframes } from './config/gulp-tasks/keyframes.js';
+import keyframesBlockAnimation from './config/gulp-tasks/keyframes/block-animation.js';
+import keyframesSpinner from './config/gulp-tasks/keyframes/spinner.js';
+
+// Tasks for generating SASS files with keyframes for animations
+const keyframes = gulp.parallel(keyframesBlockAnimation, keyframesSpinner);
 
 // Последовательная обработака шрифтов
 const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);

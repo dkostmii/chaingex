@@ -22,7 +22,7 @@ export const gitignore = async () => {
 		await fsp.appendFile('./.gitignore', app.path.buildFolder + '\r\n');
 		await fsp.appendFile('./.gitignore', '**/*.zip\r\n');
 		await fsp.appendFile('./.gitignore', '**/*.rar\r\n');
-		await fsp.appendFile('./.gitignore', '*keyframes.s[a|c]ss');
+		await fsp.appendFile('./.gitignore', 'src/scss/keyframes/**/*.s[a|c]ss');
 		//if (projectName !== 'flsStart') del('./.git/');
 	}
 
