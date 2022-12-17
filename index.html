@@ -40,10 +40,10 @@
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap&_v=20221216112347" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap&_v=20221217112838" rel="stylesheet">
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20221216112347">
+	<link rel="stylesheet" href="css/style.min.css?_v=20221217112838">
 
 	<script>
 		window.onload = () => {
@@ -51,6 +51,8 @@
 
 			document.body.classList.remove('lock-scroll');
 			preloader.classList.remove('show');
+
+			preloader.remove();
 		}
 	</script>
 </head>
@@ -85,33 +87,42 @@
 		</header>
 
 		<!-- Preloader -->
-		<div class="preloader show">
-			<div class="preloader__row">
-				<div class="preloader__item"></div>
-				<div class="preloader__item"></div>
+		<div class="spinner__wrapper preloader show">
+			<div class="spinner">
+				<div class="btc"><img src="img/spinner/BTC.svg" title="BTC" /></div>
+				<div class="xrp"><img src="img/spinner/XRP.svg" title="XRP" /></div>
+				<div class="doge"><img src="img/spinner/DOGE.svg" title="DOGE" /></div>
+				<div class="usdt"><img src="img/spinner/USDT.svg" title="USDT" /></div>
+				<div class="eth"><img src="img/spinner/ETH.svg" title="ETH" /></div>
+				<div class="usdc"><img src="img/spinner/USDC.svg" title="USDC" /></div>
 			</div>
 		</div>
+
 		<main class="page">
-			<section class="page__main main-block" data-aos="fade-left">
-				<div class="main-block__container">
-					<div class="main-block__image">
-						<img src="img/main/planet-back.svg" alt="planet">
-					</div>
-					<div class="main-block__content">
-						<h1 class="main-block__title title">
-							Exchange your cryptocurrency with <span>Change crypto coin</span>
-						</h1>
-						<div class="main-block__text text">
-							You will not find better prices than ours anywhere, so we suggest you start earning on
-							cryptocurrency with us
+			<section class="page__main" data-aos="fade-left">
+				<div class="block-1">
+					<div class="crypto-icons__wrapper">
+						<div class="crypto-icons">
+							<div class="bitcoin btc__wrapper">
+								<img class="btc" src="img/crypto-icons/BTC.svg" title="BTC" />
+							</div>
+							<div class="eth altcoin__wrapper"><img class="altcoin" src="img/crypto-icons/ETH.svg" title="ETH" /></div>
+							<div class="usdc altcoin__wrapper"><img class="altcoin" src="img/crypto-icons/USDC.svg" title="USDC" /></div>
+							<div class="xrp altcoin__wrapper"><img class="altcoin" src="img/crypto-icons/XRP.svg" title="XRP" /></div>
+							<div class="uni altcoin__wrapper"><img class="altcoin" src="img/crypto-icons/UNI.svg" title="UNI" /></div>
+							<div class="doge altcoin__wrapper"><img class="altcoin" src="img/crypto-icons/DOGE.svg" title="DOGE" /></div>
+							<div class="usdt altcoin__wrapper"><img class="altcoin" src="img/crypto-icons/USDT.svg" title="USDT" /></div>
 						</div>
-						<a href="exchanger.html" class="main-block__button button">Change crypto</a>
+					</div>
+					<div class="block-1__content">
+						<div class="block-1__title">
+							<h1>Buy bitcoins and cryptocurrencies instantly and securely!</h1>
+							<h2>Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.</h2>
+						</div>
+						<button class="btn">Change crypto</button>
 						<div class="support-block">
 							<a href="https://t.me/cryptoservice_support" class="support__button"><img src="img/support.svg" alt="Support"></a>
 						</div>
-					</div>
-					<div id="orbits">
-						<!-- Animated planet orbits will appear here -->
 					</div>
 				</div>
 			</section>
@@ -421,7 +432,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20221216112347"></script>
+	<script src="js/app.min.js?_v=20221217112838"></script>
 </body>
 
 </html>

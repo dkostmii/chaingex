@@ -40,10 +40,10 @@
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap&_v=20221216112347" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap&_v=20221217112838" rel="stylesheet">
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20221216112347">
+	<link rel="stylesheet" href="css/style.min.css?_v=20221217112838">
 
 	<script>
 		window.onload = () => {
@@ -51,6 +51,8 @@
 
 			document.body.classList.remove('lock-scroll');
 			preloader.classList.remove('show');
+
+			preloader.remove();
 		}
 	</script>
 </head>
@@ -84,12 +86,17 @@
 	</header>
 
 	<!-- Preloader -->
-	<div class="preloader show">
-		<div class="preloader__row">
-			<div class="preloader__item"></div>
-			<div class="preloader__item"></div>
+	<div class="spinner__wrapper preloader show">
+		<div class="spinner">
+			<div class="btc"><img src="img/spinner/BTC.svg" title="BTC" /></div>
+			<div class="xrp"><img src="img/spinner/XRP.svg" title="XRP" /></div>
+			<div class="doge"><img src="img/spinner/DOGE.svg" title="DOGE" /></div>
+			<div class="usdt"><img src="img/spinner/USDT.svg" title="USDT" /></div>
+			<div class="eth"><img src="img/spinner/ETH.svg" title="ETH" /></div>
+			<div class="usdc"><img src="img/spinner/USDC.svg" title="USDC" /></div>
 		</div>
 	</div>
+
 	<main class="section-exchanger" id="section-exchanger">
 		<div class="exchanger__container">
 			<form class="ex-form" id="ex-form">
@@ -242,7 +249,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20221216112347"></script>
+	<script src="js/app.min.js?_v=20221217112838"></script>
 </body>
 
 </html>
