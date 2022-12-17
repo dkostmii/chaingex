@@ -28,7 +28,7 @@ export const path = {
 		files: `${srcFolder}/files/**/*.*`,
 		svgicons: `${srcFolder}/svgicons/*.svg`,
 		manifest: `${srcFolder}/img/favicons/manifest.json`,
-		keyframes: `${srcFolder}/scss/block-1/keyframes.sass`
+		keyframesFolder: `${srcFolder}/scss/keyframes/`
 	},
 	clean: buildFolder,
 	buildFolder: buildFolder,

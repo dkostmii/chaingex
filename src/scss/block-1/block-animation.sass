@@ -1,4 +1,4 @@
-@import 'keyframes'
+@import '../keyframes/block-animation'
 
 $animationFunction: cubic-bezier(1, 0, 0.65, 1)
 
@@ -59,7 +59,7 @@ $altcoinHeightDesktop: 118.14px
 // Styles that are affected by adaptation
 
 // Mobile
-.btc
+.crypto-icons .btc
   width: 175px
   height: 188px
 
@@ -67,7 +67,7 @@ $altcoinHeightDesktop: 118.14px
     width: $btcWidthMobile
     height: $btcHeightMobile
 
-.altcoin
+.crypto-icons .altcoin
   width: 99px
   height: 107px
 
@@ -98,7 +98,7 @@ $altcoinHeightDesktop: 118.14px
 
 // Tablet
 @media screen and (min-width: $tablet)
-  .btc
+  .crypto-icons .btc
     width: 259px
     height: 284px
 
@@ -106,7 +106,7 @@ $altcoinHeightDesktop: 118.14px
       width: $btcWidthTablet
       height: $btcHeightTablet
 
-  .altcoin
+  .crypto-icons .altcoin
     width: 144px
     height: 160px
 
@@ -139,7 +139,7 @@ $altcoinHeightDesktop: 118.14px
 
 // Desktop
 @media screen and (min-width: $pc)
-  .btc
+  .crypto-icons .btc
     width: 232px
     height: 255px
 
@@ -147,7 +147,7 @@ $altcoinHeightDesktop: 118.14px
       width: $btcWidthDesktop
       height: $btcHeightDesktop
 
-  .altcoin
+  .crypto-icons .altcoin
     width: 130px
     height: 144px
 

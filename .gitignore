@@ -9,4 +9,4 @@ version.json
 ./dist
 **/*.zip
 **/*.rar
-*keyframes.s[a|c]ss
+src/scss/keyframes/**/*.s[a|c]ss
