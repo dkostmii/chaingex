@@ -17,13 +17,14 @@
 		"devbuild": "gulp build --build --nowebp",
 		"tmp": "gulp -f gulpfile.tmp.js",
 		"bem": "fls-bemtree-from-html",
-		"serve-static": "browser-sync dist -w",
+		"serve-static": "npm run build && npm run test && browser-sync dist -w",
 		"test": "jest -c config/jest.config.js"
 	},
 	"devDependencies": {
 		"browser-sync": "^2.27.10",
 		"copy-webpack-plugin": "latest",
 		"css-loader": "latest",
+		"css-spring": "^4.1.0",
 		"del": "latest",
 		"file-include-webpack-plugin-replace": "latest",
 		"fls-bemtree-from-html": "^1.0.0",
