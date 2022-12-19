@@ -1,15 +1,119 @@
 // Заголовки, общие БЄМ блоки и проче...
 
-.title{
-   font-size: rem(39);
-   font-weight: 600;
-   line-height: math.div(55, 39);
-   color: $mainColor;
-   span{
-      color: $purpleColor;
+.title {
+   font-weight: 500;
+   font-size: rem(32);
+   line-height: math.div(48, 32);
+   @media screen and (max-width: $laptop) {
+      & {
+         text-align: center;
+      }
+   }
+   @media screen and (max-width: $mobile) {
+      & {
+         font-size: rem(20);
+         line-height: math.div(30, 20);
+      }
    }
 }
 
-.text{
+.text {
+   font-weight: 400;
+   line-height: rem(30);
+   line-height: math.div($fontSize, 30);
    opacity: 0.5;
+
+   @media screen and (max-width: $tablet) {
+      .text {
+         text-align: center;
+         font-size: rem(20);
+         line-height: math.div(25, 20);
+      }
+   }
+   
+   @media screen and (max-width: $mobile) {
+      .text {
+         font-size: rem(16);
+         line-height: math.div(20, 16);
+      }
+   }
+}
+
+.block-text {
+   &__body {}
+
+   &__title {
+      margin-bottom: rem(20);
+   }
+
+   &__text {
+      margin-bottom: rem(40);
+   }
+
+   &__image {
+      display: none;
+      margin-bottom: rem(35);
+      img {
+         align-items: center;
+         max-width: 100%;
+      }
+   }
+
+   &__button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      max-width: rem(315);
+      background-color: $purpleColor;
+      padding: rem(15) rem(30);
+      color: #FFFFFF;
+   }
+
+   @media screen and (max-width: 1136px) {
+      &__body {
+         margin: 0 auto;
+         max-width: rem(565);
+      }
+
+      &__title {
+         margin-bottom: rem(8);
+      }
+
+      &__image {
+         display: flex;
+      }
+
+      &__image img {
+         max-width: none;
+      }
+
+      &__button {
+         max-width: rem(236);
+         padding: rem(12) rem(30);
+         margin: 0 auto;
+      }
+   }
+
+   @media screen and (max-width: 767.98px) {
+      &__body {
+         max-width: rem(380);
+      }
+
+      &__image img {
+         max-width: rem(236);
+      }
+
+      &__button {
+         max-width: rem(178);
+      }
+
+   }
+
+   @media screen and (max-width: 428px) {
+      &__image img {
+         max-width: rem(328);
+      }
+   }
+
 }
