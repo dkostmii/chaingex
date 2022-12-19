@@ -3,7 +3,7 @@
 .title {
    font-weight: 500;
    font-size: rem(32);
-   line-height: math.div(48, 32);
+   line-height: rem(math.div(48, 32));
    @media screen and (max-width: $laptop) {
       & {
          text-align: center;
@@ -12,7 +12,7 @@
    @media screen and (max-width: $mobile) {
       & {
          font-size: rem(20);
-         line-height: math.div(30, 20);
+         line-height: rem(math.div(30, 20));
       }
    }
 }
@@ -20,21 +20,21 @@
 .text {
    font-weight: 400;
    line-height: rem(30);
-   line-height: math.div($fontSize, 30);
+   line-height: calc($fontSize / 30);
    opacity: 0.5;
 
    @media screen and (max-width: $tablet) {
       .text {
          text-align: center;
          font-size: rem(20);
-         line-height: math.div(25, 20);
+         line-height: rem(math.div(25, 20));
       }
    }
    
    @media screen and (max-width: $mobile) {
       .text {
          font-size: rem(16);
-         line-height: math.div(20, 16);
+         line-height: rem(math.div(20, 16));
       }
    }
 }
