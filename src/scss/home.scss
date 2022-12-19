@@ -511,7 +511,7 @@ picture > .cryptocurrency__icon {
       color: $purpleColor;
       font-weight: 500;
       font-size: rem(36);
-      line-height: math.dev(54, 36);
+      line-height: math.div(54, 36);
       margin-bottom: rem(5);
    }
 
@@ -531,7 +531,7 @@ picture > .cryptocurrency__icon {
    @media screen and (max-width: $mobile) {
       &__numbers {
          font-size: rem(24);
-         line-height: math.dev(36, 24);
+         line-height: math.div(36, 24);
          text-align: center;
       }
    
