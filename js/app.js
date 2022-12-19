@@ -444,7 +444,7 @@
         755: function(module, exports) {
             var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
             /*!
- * jQuery JavaScript Library v3.6.1
+ * jQuery JavaScript Library v3.6.2
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -454,7 +454,7 @@
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2022-08-26T17:52Z
+ * Date: 2022-12-13T14:56Z
  */            (function(global, factory) {
                 "use strict";
                 if (true && "object" === typeof module.exports) module.exports = global.document ? factory(global, true) : function(w) {
@@ -506,7 +506,7 @@
                     if (null == obj) return obj + "";
                     return "object" === typeof obj || "function" === typeof obj ? class2type[toString.call(obj)] || "object" : typeof obj;
                 }
-                var version = "3.6.1", jQuery = function(selector, context) {
+                var version = "3.6.2", jQuery = function(selector, context) {
                     return new jQuery.fn.init(selector, context);
                 };
                 jQuery.fn = jQuery.prototype = {
@@ -670,14 +670,14 @@
                 }
                 var Sizzle = 
                 /*!
- * Sizzle CSS Selector Engine v2.3.6
+ * Sizzle CSS Selector Engine v2.3.8
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2021-02-16
+ * Date: 2022-11-16
  */
                 function(window) {
                     var i, support, Expr, getText, isXML, tokenize, compile, select, outermostContext, sortInput, hasDuplicate, setDocument, document, docElem, documentIsHTML, rbuggyQSA, rbuggyMatches, matches, contains, expando = "sizzle" + 1 * new Date, preferredDoc = window.document, dirruns = 0, done = 0, classCache = createCache(), tokenCache = createCache(), compilerCache = createCache(), nonnativeSelectorCache = createCache(), sortOrder = function(a, b) {
@@ -764,6 +764,7 @@
                                         newSelector = groups.join(",");
                                     }
                                     try {
+                                        if (support.cssSupportsSelector && !CSS.supports("selector(" + newSelector + ")")) throw new Error;
                                         push.apply(results, newContext.querySelectorAll(newSelector));
                                         return results;
                                     } catch (qsaError) {
@@ -860,6 +861,9 @@
                         support.scope = assert((function(el) {
                             docElem.appendChild(el).appendChild(document.createElement("div"));
                             return "undefined" !== typeof el.querySelectorAll && !el.querySelectorAll(":scope fieldset div").length;
+                        }));
+                        support.cssSupportsSelector = assert((function() {
+                            return CSS.supports("selector(*)") && document.querySelectorAll(":is(:jqfake)") && !CSS.supports("selector(:is(*,:jqfake))");
                         }));
                         support.attributes = assert((function(el) {
                             el.className = "i";
@@ -961,11 +965,12 @@
                             matches.call(el, "[s!='']:x");
                             rbuggyMatches.push("!=", pseudos);
                         }));
+                        if (!support.cssSupportsSelector) rbuggyQSA.push(":has");
                         rbuggyQSA = rbuggyQSA.length && new RegExp(rbuggyQSA.join("|"));
                         rbuggyMatches = rbuggyMatches.length && new RegExp(rbuggyMatches.join("|"));
                         hasCompare = rnative.test(docElem.compareDocumentPosition);
                         contains = hasCompare || rnative.test(docElem.contains) ? function(a, b) {
-                            var adown = 9 === a.nodeType ? a.documentElement : a, bup = b && b.parentNode;
+                            var adown = 9 === a.nodeType && a.documentElement || a, bup = b && b.parentNode;
                             return a === bup || !!(bup && 1 === bup.nodeType && (adown.contains ? adown.contains(bup) : a.compareDocumentPosition && 16 & a.compareDocumentPosition(bup)));
                         } : function(a, b) {
                             if (b) while (b = b.parentNode) if (b === a) return true;
@@ -3100,7 +3105,7 @@
                     computed = computed || getStyles(elem);
                     if (computed) {
                         ret = computed.getPropertyValue(name) || computed[name];
-                        if (isCustomProp) ret = ret.replace(rtrimCSS, "$1");
+                        if (isCustomProp && ret) ret = ret.replace(rtrimCSS, "$1") || void 0;
                         if ("" === ret && !isAttached(elem)) ret = jQuery.style(elem, name);
                         if (!support.pixelBoxStyles() && rnumnonpx.test(ret) && rboxStyle.test(name)) {
                             width = style.width;
@@ -4941,6 +4946,18 @@
     }
     (() => {
         "use strict";
+        let valueDisplays = document.querySelectorAll(".num");
+        let interval = 2e3;
+        valueDisplays.forEach((valueDisplay => {
+            let startValue = 0;
+            let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+            let duration = Math.floor(interval / endValue);
+            let counter = setInterval((function() {
+                startValue += 1;
+                valueDisplay.textContent = startValue;
+                if (startValue == endValue) clearInterval(counter);
+            }), duration);
+        }));
         function isWebp() {
             function testWebP(callback) {
                 let webP = new Image;
