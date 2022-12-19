@@ -179,13 +179,13 @@ body {
 .title {
   font-weight: 500;
   font-size: 2rem;
-  line-height: 0.09375rem;
+  line-height: 1.5;
 }
 
 .text {
   font-weight: 400;
   line-height: 1.875rem;
-  line-height: calc(1.5rem / 30);
+  line-height: 0.8;
   opacity: 0.5;
 }
 
@@ -426,7 +426,7 @@ body {
 }
 .menu-footer__link {
   font-size: 1rem;
-  line-height: 0.0714285714rem;
+  line-height: 1.1428571429;
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -736,7 +736,7 @@ picture > .cryptocurrency__icon {
   color: #7B46E8;
   font-weight: 500;
   font-size: 2.25rem;
-  line-height: 0.09375rem;
+  line-height: 1.5;
   margin-bottom: 0.3125rem;
 }
 
@@ -3145,11 +3145,11 @@ input[type=number] {
 @media screen and (max-width: 47.99875em) {
   .title {
     font-size: 1.25rem;
-    line-height: 0.09375rem;
+    line-height: 1.5;
   }
   .text .text {
     font-size: 1rem;
-    line-height: 0.078125rem;
+    line-height: 1.25;
   }
   .header__logo {
     width: 11.25rem;
@@ -3303,7 +3303,7 @@ input[type=number] {
   }
   .item-features__numbers {
     font-size: 1.5rem;
-    line-height: 0.09375rem;
+    line-height: 1.5;
     text-align: center;
   }
   .item-features__text {
@@ -3315,7 +3315,7 @@ input[type=number] {
   .text .text {
     text-align: center;
     font-size: 1.25rem;
-    line-height: 0.078125rem;
+    line-height: 1.25;
   }
   .footer__bottom {
     font-size: 1rem;
