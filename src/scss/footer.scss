@@ -152,7 +152,7 @@
 
    &__link {
       font-size: rem(16);
-      line-height: rem(math.div(16, 14));
+      line-height: math.div(16, 14);
       transition: all 0.2s ease;
 
       &:hover {
