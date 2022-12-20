@@ -540,3 +540,62 @@ picture > .cryptocurrency__icon {
       }
    }
 }
+
+.guarantees {
+   background-color: #121B33;
+
+   &__container {
+      padding-top: rem(50);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+   }
+
+   &__image {
+      flex: 0 1 30%;
+   }
+
+   &__content {
+      padding-left: rem(91);
+      flex: 0 1 70%;
+   }
+
+   &__block-text {}
+
+   @media screen and (max-width: $laptop) {
+      &__container {
+         padding-top: rem(47);
+         flex-direction: column;
+      }
+
+      &__content {
+         padding: 0;
+         margin: 0 auto;
+      }
+
+      &__image {
+         margin-bottom: rem(16);
+      }
+
+      &__block-text {
+         max-width: rem(566);
+         margin: 0 auto;
+      }
+   }
+   @media screen and (max-width: $mobile) {
+      &__container {
+            padding-top: rem(40);
+      }
+
+      &__image img {
+         max-width: rem(236);
+      }
+   }
+   
+   @media screen and (max-width: $mobileSmall) {
+      &__image img {
+         max-width: rem(178);
+      }
+   }
+}
