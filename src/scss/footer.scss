@@ -1,9 +1,9 @@
 //====================================================================================================
 .footer {
    margin-top: rem(150);
-   background-color: #0F0D21;
+   background-color: #121B33;
    &__container {
-      padding: rem(60) rem(105);
+      padding: rem(50) rem(105);
    }
 
    &__main {
@@ -92,7 +92,7 @@
       }
 
       &__logo {
-         margin-bottom: rem(40);
+         margin-bottom: rem(32);
       }
    }
 
@@ -108,24 +108,56 @@
       }
    }
 
+   @media screen and (min-width: $laptop) {
+      &__info {
+         flex-direction: row;
+         gap: rem(159);
+         align-items: flex-start;
+      }
+   }
+
    &__social {
    }
 }
 .menu-footer {
+   display: flex;
    justify-content: space-between;
+
    &__list {
       display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 		flex-wrap: wrap;
-		@include adaptiveValue("gap", 30, 24);
+		gap: rem(30);
       color: $greyColor;
+      width: rem(266);
+   }
+
+   &__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: rem(30);
+
+      &__item {
+         font-size: rem(18);
+         font-weight: 400;
+         line-height: rem(27);
+         opacity: 0.8;
+      }
    }
 
    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      align-items: center;
+      gap: rem(32);
+
       &__list {
-         justify-content: center;
+         align-items: center;
          margin-bottom: rem(24);
          font-size: rem(16);
          line-height: rem(24);
+
+         gap: rem(24);
       }
 
       &__contacts {
@@ -141,19 +173,32 @@
    }
 
    @media screen and (min-width: $mobile) {
-      &__contacts {
-         justify-content: flex-end;
-         margin-top: rem(-32);
+      height: rem(126);
+
+      &__list {
+         height: inherit;
+         gap: rem(20);
       }
+
+      &__contacts {
+         gap: rem(20);
+      }
+   }
+
+   @media screen and (min-width: $laptop) {
+      height: rem(146);
    }
 
    &__item {
    }
 
    &__link {
-      font-size: rem(16);
+      font-size: rem(18);
       line-height: math.div(16, 14);
       transition: all 0.2s ease;
+      color: $mainColor;
+      font-weight: 400;
+      opacity: 0.8;
 
       &:hover {
          background: linear-gradient(0deg, #676673, #676673), linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
@@ -179,14 +224,14 @@
          }
 		}
    }
-
-   &__contacts{
-      display: flex;
-   }
 }
 .social {
    display: flex;
-   gap: rem(14);
+   gap: rem(20);
+
+   @media screen and (max-width: $mobile) {
+      justify-content: center;
+   }
 
    &__item {
       transition: all 0.2s ease;
