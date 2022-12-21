@@ -3,13 +3,6 @@
    padding-top: rem(140);
 }
 
-.support-block{
-   position: relative;
-   display: flex;
-   justify-content: end;
-}
-
-
 //====================================================================================================
 
 .page {
@@ -20,56 +13,14 @@
 
 @media screen and (min-width: $mobile) {
    .button {
-      &__change {
-         &::after {
-            content: "Change";
-            font-weight: 400;
-            color: #676673;
-         }
-
-         &:hover {
-            &::after {
-               color: #fff;
-            }
-         }
-      }
-
       &__search {
          display: none;
       }
    }
 }
 
-@media screen and (max-width: $mobileSmall) {
-   .popular-currencies__button {
-      padding: rem(16) rem(19);
-   }
-}
-
 @media screen and (max-width: $mobile) {
-   .colum__actions > a[class^="button"] {
-      padding: rem(12);
-      font-size: rem(14);
-      line-height: rem(19.6);
-   }
-
    .button {
-      &__change {
-         position: relative;
-         width: rem(44);
-         height: rem(44);
-
-         &::after {
-            content: "";
-            position: absolute;
-            width: rem(24);
-            height: rem(24);
-            left: rem(10);
-            top: rem(10);
-            background-image: url('@img/change.svg');
-         }
-      }
-
       &__search {
          display: inline-flex;
          padding: rem(17);
@@ -221,20 +172,6 @@
       display: flex;
       justify-content: center;
    }
-
-   &__button {
-      @media (any-hover: hover) {
-         &:hover {
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0.2),
-            rgba(255, 255, 255, 0.2)), linear-gradient(0deg, #6E40F2, #6E40F2);
-         }
-
-         &:active {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #6E40F2, #6E40F2);
-         }
-      }
-   }
 }
 
 .colum {
@@ -285,71 +222,6 @@ linear-gradient(0deg, #6E40F2, #6E40F2);
 
       &__actions {
          gap: 16px;
-      }
-   }
-}
-
-.button {
-   &__change {
-      &:hover {
-         background: rgba(110, 64, 242, 1);
-         color: #fff;
-      }
-
-      &:active {
-         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #6E40F2, #6E40F2);
-         color: #fff;
-      }
-
-      @media (any-hover: target) {
-         &:target {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #6E40F2, #6E40F2);
-            color: #fff;
-         }
-      }
-   }
-
-   &__sell {
-      &:hover {
-         background: rgba(246, 70, 93, 1);
-         color: #fff;
-      }
-
-      &:active {
-         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #F6465D, #F6465D);
-         color: #fff;
-      }
-
-      @media (any-hover: target) {
-         &:target {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #F6465D, #F6465D);
-            color: #fff;
-         }
-      }
-   }
-
-   &__buy {
-      &:hover {
-         background: rgba(32, 188, 35, 1);
-         color: #fff;
-      }
-
-      &:active {
-         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #20BC23, #20BC23);
-         color: #fff;
-      }
-
-      @media (any-hover: target) {
-         &:target {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #20BC23, #20BC23);
-            color: #fff;
-         }
       }
    }
 }
@@ -419,11 +291,6 @@ picture > .cryptocurrency__icon {
 }
 
 @media screen and (max-width: $mobile) {
-   /* Display support button in header instead */
-   .support-block {
-      display: none;
-   }
-
    .popular-currencies {
       &__search {
          width: 100%;

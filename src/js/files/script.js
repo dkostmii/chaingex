@@ -188,8 +188,7 @@ window.addEventListener('load', () => {
 // Mobile menu
 
 let menuState = true;
-let desktop = false;
-const menuBodyNav = document.getElementsByClassName('menu__body')[0];
+const menuBodyNavElements = document.querySelectorAll('.menu__body, .nav-plus-button');
 const iconMenu = document.querySelectorAll('.menu__icons > .icon-menu')[0];
 const header = document.getElementsByClassName('header')[0];
 
@@ -199,12 +198,8 @@ const header = document.getElementsByClassName('header')[0];
 function enableMenu() {
   menuState = true;
 
-  if (!desktop) {
-    header.style.position = 'fixed';
-    header.style.background = 'rgba(2, 0, 21, 1)';
-  }
-
-  menuBodyNav.style.removeProperty('display');
+  header.classList.add('header__menu-active');
+  [...menuBodyNavElements].forEach(el => el.classList.remove('hidden'));
   iconMenu.classList.add('icon-menu__active');
 }
 
@@ -214,13 +209,9 @@ function enableMenu() {
 function disableMenu() {
   menuState = false;
 
-  header.style.removeProperty('position');
-  header.style.removeProperty('background');
-  menuBodyNav.style.display = 'none';
-
-  if (iconMenu.classList.contains('icon-menu__active')) {
-    iconMenu.classList.remove('icon-menu__active');
-  }
+  header.classList.remove('header__menu-active');
+  [...menuBodyNavElements].forEach(el => el.classList.add('hidden'));
+  iconMenu.classList.remove('icon-menu__active');
 }
 
 /**
@@ -293,57 +284,9 @@ export function enableSearch() {
   });
 }
 
-window.addEventListener('load', () => {
-  if (window.matchMedia('(max-width: 767.98px)').matches) {
-    desktop = false;
-    disableMenu();
-  } else if (window.matchMedia('(min-width: 767.98px)').matches) {
-    desktop = true;
-    enableMenu();
-  }
-});
-
 window.addEventListener('resize', () => {
   remCheck();
-
-  if (window.matchMedia('(max-width: 767.98px)').matches) {
-    desktop = false;
-    disableMenu();
-  } else if (window.matchMedia('(min-width: 767.98px)').matches) {
-    desktop = true;
-    enableMenu();
-  }
 });
-
-// support button stopper at footer
-const supportBlock = document.querySelector(".support-block");
-
-if (supportBlock instanceof HTMLElement) {
-  const supportButton = supportBlock.querySelectorAll(".support-block > .support__button")[0]
-
-  if (supportButton instanceof HTMLElement) {
-    const popularCurrenciesAction = document.querySelector('.popular-currencies__action');
-
-    window.addEventListener('scroll', () => {
-      const { scrollTop } = document.documentElement;
-
-      let { top: supportBlockTop } = supportBlock.getBoundingClientRect();
-      supportBlockTop += scrollTop;
-
-      let { top: maxPos } = popularCurrenciesAction.getBoundingClientRect();
-      maxPos += scrollTop - supportBlockTop;
-
-      if (scrollTop > maxPos) {
-        supportButton.style.position = 'absolute';
-        supportButton.style.top = `${maxPos}px`;
-      }
-      else {
-        supportButton.style.removeProperty('position');
-        supportButton.style.removeProperty('top');
-      }
-    });
-  }
-}
 
 /**
  * Injects the redirection link (./exchanger.html) into all Change, Sell and Buy buttons.

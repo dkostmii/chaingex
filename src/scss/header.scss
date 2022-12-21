@@ -8,14 +8,19 @@
 
 	&__container {
 		display: flex;
-		min-height: rem(75);
+		height: rem(96);
 		align-items: center;
+		justify-content: space-between;
+		padding: 0 rem(24);
 	}
 
 	&__logo {
 		position: relative;
 		z-index: 5;
 		transition: all 0.2s ease;
+		width: rem(145);
+		height: rem(45);
+		flex-shrink: 0;
 
 		&:hover {
 			opacity: 0.7;
@@ -27,29 +32,46 @@
 		}
 	}
 
-	/* Use @media to adapt logo width */
-	@media screen and (max-width: $mobile) {
+	&__cta-desktop {
+		display: none;
+	}
+
+	@media screen and (min-width: $tablet) {
 		&__logo {
-			width: rem(180);
+			width: rem(140);
+			height: rem(45);
 		}
 
 		&__container {
-			height: rem(75);
+			height: rem(125);
+			padding: 0 rem(32);
 		}
 	}
 
-	@media screen and (min-width: $mobile) {
-		&__logo {
-			width: rem(238);
+	@media screen and (max-width: $pc) {
+		&__menu-active {
+			position: fixed;
+			background-color: rgba(2, 0, 21, 1);
 		}
+	}
 
+	@media screen and (min-width: $pc) {
 		&__container {
-			height: rem(90);
+			padding: 0 rem(105);
+			height: rem(117);
 		}
-	}
 
-	&__menu {
-		flex: 1 1 auto;
+		&__menu {
+			flex: 1 1 auto;
+		}
+
+		&__cta {
+			display: none;
+		}
+
+		&__cta-desktop {
+			display: unset;
+		}
 	}
 }
 
@@ -57,15 +79,16 @@
 	padding: 0 rem(10);
 
 	&__body {
-		@media (max-width: $mobile) {
-			position: fixed;
+		@media (max-width: $pc) {
 			width: 100%;
 			display: flex;
 			flex-direction: column;
-			top: rem(74);
-			left: 0;
 			overflow: auto;
 			background-color: #0F0D21;
+
+			&.hidden {
+				display: none;
+			}
 		}
 	}
 
@@ -75,17 +98,16 @@
 		justify-content: flex-end;
 		align-items: center;
 
-		@media (max-width: $mobile) {
+		@media (max-width: $pc) {
 			align-items: stretch;
 			flex-direction: column;
-
 		}
 	}
 
 	&__item {
 		display: flex;
 		align-items: center;
-		@media (max-width: $mobile) {
+		@media (max-width: $pc) {
 			border: 1px solid rgba(255, 255, 255, 0.3);
 			padding: rem(16) rem(16);
 			.icon {
@@ -95,10 +117,37 @@
 		}
 	}
 
+	&__lang-select {
+		font-size: rem(18);
+		line-height: rem(27);
+		font-weight: 400;
+		cursor: pointer;
+
+		& > .lang-select__current {
+			display: flex;
+			align-items: center;
+			gap: rem(5);
+
+			&::after {
+				content: "";
+				background-image: url(@img/caret-down.svg);
+				background-size: rem(24) rem(24);
+				width: rem(24);
+				height: rem(24);
+				transition: all 300ms ease;
+			}
+		}
+
+		&:hover > .lang-select__current::after {
+			transform: rotate(-180deg);
+		}
+	}
+
 	&__link {
-		font-size: rem(16);
-		line-height: rem(24);
-		opacity: 0.4;
+		font-size: rem(18);
+		line-height: rem(27);
+		font-weight: 400;
+		opacity: 0.8;
 
 		&:hover {
 			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #FFFFFF, #FFFFFF);
@@ -116,7 +165,7 @@
 			transition: all 0.2s ease;
 		}
 
-		@media (max-width: $mobile) {
+		@media (max-width: $pc) {
 			position: relative;
 			display: flex;
 			width: 100%;
@@ -134,7 +183,7 @@
 	}
 
 	&__icons {
-		@media screen and (min-width: $mobile) {
+		@media screen and (min-width: $pc) {
 			display: none;
 		}
 
@@ -181,59 +230,92 @@
 //Burger
 
 .icon-menu {
-	display: none;
+	position: relative;
+	width: rem(30);
+	height: rem(18);
+	z-index: 5;
 
-	@media (max-width: $mobile) {
-		display: block;
-		position: relative;
-		width: rem(30);
-		height: rem(18);
-		z-index: 5;
+	@media (any-hover: none) {
+		cursor: default;
+	}
 
-		@media (any-hover: none) {
-			cursor: default;
-		}
+	span,
+	&::before,
+	&::after {
+		content: "";
+		transition: all 0.3s ease 0s;
+		right: 0;
+		position: absolute;
+		width: 100%;
+		height: rem(2);
+		background-color: $purpleColor;
+	}
 
-		span,
-		&::before,
-		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
-			right: 0;
-			position: absolute;
-			width: 100%;
-			height: rem(2);
-			background-color: #FFFFFF;
-			opacity: 0.5;
+	&::before {
+		top: 0;
+	}
+
+	&::after {
+		bottom: 0;
+	}
+
+	span {
+		top: calc(50% - rem(1));
+	}
+
+	&__active {
+		span {
+			width: 0;
 		}
 
 		&::before {
-			top: 0;
+			top: calc(50% - rem(1));
+			transform: rotate(-45deg);
 		}
 
 		&::after {
-			bottom: 0;
-		}
-
-		span {
-			top: calc(50% - rem(1));
-		}
-
-		&__active {
-			span {
-				width: 0;
-			}
-
-			&::before {
-				top: calc(50% - rem(1));
-				transform: rotate(-45deg);
-			}
-
-			&::after {
-				bottom: calc(50% - rem(1));
-				transform: rotate(45deg);
-			}
+			bottom: calc(50% - rem(1));
+			transform: rotate(45deg);
 		}
 	}
 }
 
+.button-plus-burger {
+	display: flex;
+	align-items: center;
+	gap: rem(32);
+
+	@media screen and (min-width: $tablet) {
+		gap: rem(37);		
+	}
+
+	@media screen and (min-width: $pc) {
+		display: none;
+	}
+}
+
+.nav-plus-button {
+	display: flex;
+	gap: rem(50);
+	align-items: center;
+	top: rem(96);
+
+	@media screen and (min-width: $tablet) {
+		top: rem(125);
+	}
+
+	@media screen and (min-width: $pc) {
+		top: rem(117);
+	}
+
+	@media screen and (max-width: $pc) {
+		position: fixed;
+		left: 0;
+		width: 100%;
+
+		&.hidden {
+			display: none;
+		}
+	}
+
+}

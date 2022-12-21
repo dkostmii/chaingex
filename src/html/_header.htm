@@ -1,26 +1,39 @@
 <header class="header">
 	<div class="header__container">
 		<a href="index.html" class="header__logo"><img src="@img/logo.svg" alt="Change crypto coin"></a>
-      <div class="header__menu menu">
-         <nav class="menu__body">
+      <div class="button-plus-burger">
+         <button class="button header__cta">Change</button>
+         <div class="menu__icons">
+            <button class="icon-menu" onclick="toggleMenu()"><span></span></button>
+         </div>
+      </div>
+      <div class="nav-plus-button hidden">
+         <nav class="menu__body hidden">
             <ul class="menu__list">
                <li class="menu__item">
-                  <a href="./exchanger.html" class="menu__link">Exchanger</a>
+                  <a class="menu__link">Home</a>
                </li>
                <li class="menu__item">
-                  <a href="./index.html#section-currencies" class="menu__link">Popular currencies</a>
+                  <a class="menu__link">Exchange rate</a>
                </li>
                <li class="menu__item">
-                  <a href="#contact-info" class="menu__link">Contact information</a>
+                  <a class="menu__link">Features</a>
+               </li>
+               <li class="menu__item">
+                  <a class="menu__link">Guarantees</a>
+               </li>
+               <li class="menu__item">
+                  <a class="menu__link">FAQ</a>
+               </li>
+               <li class="menu__item">
+                  <div class="lang-select menu__lang-select">
+                     <div class="lang-select__current">Eng</div>
+                     <div class="lang-select__options"></div>
+                  </div>
                </li>
             </ul>
          </nav>
-         <div class="menu__icons">
-            <a href="https://t.me/cryptoservice_support" class="support__button button__icon">
-               <img src="img/support.svg" alt="Support">
-            </a>
-            <button class="icon-menu" onclick="toggleMenu()"><span></span></button>
-         </div>
+         <button class="button header__cta-desktop">Change crypto</button>
       </div>
    </div>
 </header>
