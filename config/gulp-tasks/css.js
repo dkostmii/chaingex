@@ -1,7 +1,7 @@
 import cleanCss from 'gulp-clean-css';
 import webpcss from 'gulp-webpcss';
 import autoprefixer from 'gulp-autoprefixer';
-import gcmq from 'gulp-group-css-media-queries';
+import mqpack from './mqpack.js';
 
 export const css = () => {
 	return app.gulp.src(`${app.path.build.css}style.css`, {})
@@ -13,7 +13,7 @@ export const css = () => {
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
-				gcmq()
+				mqpack()
 			)
 		)
 		.pipe(

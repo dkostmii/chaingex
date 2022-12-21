@@ -11,6 +11,7 @@
    }
    @media screen and (max-width: $mobile) {
       & {
+         font-size: rem(20);
          line-height: math.div(30, 20);
       }
    }
@@ -18,7 +19,8 @@
 
 .text {
    font-weight: 400;
-   line-height: math.div($fontSize, 30);
+   line-height: rem(30);
+   line-height: math.div($fontSizeValue, 30);
    opacity: 0.5;
 
    @media screen and (max-width: $tablet) {

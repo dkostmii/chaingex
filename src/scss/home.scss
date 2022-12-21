@@ -511,7 +511,7 @@ picture > .cryptocurrency__icon {
       color: $purpleColor;
       font-weight: 500;
       font-size: rem(36);
-      line-height: math.dev(54, 36);
+      line-height: math.div(54, 36);
       margin-bottom: rem(5);
    }
 
@@ -531,7 +531,7 @@ picture > .cryptocurrency__icon {
    @media screen and (max-width: $mobile) {
       &__numbers {
          font-size: rem(24);
-         line-height: math.dev(36, 24);
+         line-height: math.div(36, 24);
          text-align: center;
       }
    
@@ -596,6 +596,102 @@ picture > .cryptocurrency__icon {
    @media screen and (max-width: $mobileSmall) {
       &__image img {
          max-width: rem(178);
+      }
+   }
+}
+
+
+.features {
+
+   &__container {
+      padding-top: rem(100);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+   }
+
+   &__content {
+      display: flex;
+      flex: 0 1 52%;
+      padding: 0 rem(52);
+   }
+
+   &__block-text {}
+
+   &__items {
+      display: flex;
+      gap: rem(30);
+   }
+
+   &__item {}
+
+   &__image {
+      display: flex;
+      flex: 0 1 48%;
+      position: relative;
+
+      img {
+         max-width: 100%;
+      }
+   }
+
+   @media screen and (max-width: $laptop) {
+      &__container {
+         padding-top: rem(80);
+      }
+   
+      &__content {
+         padding: 0;
+         margin: 0 auto;
+      }
+   
+      &__items {
+         gap: rem(10);
+      }
+      &__image {
+         display: none;
+      }
+   }
+   @media screen and (max-width: $mobile) {
+      &__container {
+         padding-top: rem(56);
+      }
+   }
+}
+
+.item-features {
+
+   &__numbers {
+      color: $purpleColor;
+      font-weight: 500;
+      font-size: rem(36);
+      line-height: math.div(54, 36);
+      margin-bottom: rem(5);
+   }
+
+   &__text {}
+
+   @media screen and (max-width: $laptop) {
+      &__numbers {
+         font-size: rem(32);
+         text-align: center;
+         margin-bottom: rem(4);
+      }
+   
+      &__text {
+         padding: 0 rem(60);
+      }
+   }
+   @media screen and (max-width: $mobile) {
+      &__numbers {
+         font-size: rem(24);
+         line-height: math.div(36, 24);
+         text-align: center;
+      }
+   
+      &__text {
+         padding: 0;
       }
    }
 }
