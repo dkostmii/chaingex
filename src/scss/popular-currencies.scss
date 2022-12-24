@@ -1,0 +1,258 @@
+.popular-currencies {
+  &__container {
+     padding-top: rem(100);
+  }
+
+  @media screen and (min-width: $mobileSmall) and (max-width: $mobile) {
+     &__container {
+        padding-top: rem(120);
+     }
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: 1300px) {
+     &__container {
+        padding-top: rem(240);
+     }
+  }
+
+  @media screen and (max-width: 360px) {
+     &__container {
+        padding-top: rem(32)
+     }      
+  }
+
+  &__top {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: rem(31);
+  }
+
+  &__title {
+  }
+
+  @media screen and (max-width: $mobile) {
+     &__title {
+        font-size: rem(24);
+     }
+  }
+
+  &__colum {
+     display: grid;
+     align-items: center;
+     padding: rem(11) 0;
+     gap: 24px;
+     grid-template-columns: 0.65fr rem(160) 0.25fr rem(385);
+  }
+
+  &__colum-header {
+     display: grid;
+     padding: rem(27) 0;
+     color: $greyColor;
+     gap: 24px;
+
+     grid-template-columns: 0.65fr rem(160) 0.25fr rem(385);
+  }
+
+  @media screen and (max-width: $laptop) {
+     &__colum {
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+     }
+
+     &__colum-header {
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+     }
+  }
+
+  &__action{
+     margin-top: rem(50);
+     display: flex;
+     justify-content: center;
+  }
+}
+
+.colum {
+  position: relative;
+
+  &__actions-header {
+     text-align: right;
+  }
+
+  /* desktop price label */
+  &__price {
+    font-weight: 500;
+    font-size: rem(24);
+    line-height: rem(36);
+
+    &::before {
+      font-weight: 500;
+      content: "$";
+    }
+  }
+
+  &__change {
+    font-weight: 500;
+    color: $mainColor;
+    opacity: 0.5;
+
+    font-size: rem(24);
+    line-height: rem(36);
+
+    &.change__positive {
+      color: $green;
+      opacity: 1;
+    }
+
+    &.change__negative {
+      color: $red;
+      opacity: 1;
+    }
+  }
+
+  &__actions {
+     display: flex;
+     justify-content: flex-end;
+     gap: rem(24);
+  }
+
+  &__hidden {
+     display: none;
+  }
+
+  @media screen and (max-width: $laptop) {
+    /* desktop price label */
+    &__price, &__price-header {
+      display: none;
+    }
+    &__change, &__change-header {
+      display: none;
+    }
+
+    &__actions {
+      gap: rem(32);
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    &__actions {
+      gap: rem(24);
+    }
+  }
+}
+
+.cryptocurrency {
+  $iconSize: 46;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__left {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    & > picture {
+      position: absolute;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    width: rem($iconSize);
+    height: rem($iconSize);
+  }
+
+  &__name {
+    font-size: rem(24);
+    line-height: rem(36);
+    font-weight: 500;
+  }
+
+  // holds __name and __price in column flexbox for mobile + tablet
+  &__nameprice {
+    display: flex;
+    flex-direction: column;
+    gap: rem(2);
+
+    // gap between __icon and __nameprice
+    margin-left: rem($iconSize + 17.15)
+  }
+
+  &__price {
+    /* mobile price label */
+    display: none;
+    color: $mainColor;
+    opacity: 0.8;
+
+    &::before {
+      content: '$';
+    }
+  }
+
+  &__short {
+    color: $mainColor;
+    opacity: 0.5;
+    font-weight: 500;
+    font-size: rem(24);
+    line-height: rem(36);
+
+    width: rem(80);
+  }
+
+  @media screen and (max-width: $laptop) {
+    &__name {
+      font-size: rem(22);
+      line-height: rem(33);
+    }
+    
+    /* mobile price label */
+    &__price {
+      font-size: rem(18);
+      line-height: rem(27);
+      display: block;
+    }
+
+    &__short {
+      display: none;
+    }
+
+    &__nameprice {
+      // gap between __icon and __nameprice
+      margin-left: rem($iconSize + 13.15)
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    &__name {
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+
+    &__price {
+      font-size: rem(14);
+      line-height: rem(21);
+    }
+
+    &__nameprice {
+      // gap between __icon and __nameprice
+      margin-left: rem($iconSize + 5.15)
+    }
+  }
+}
+
+picture > .cryptocurrency__icon {
+  position: static;
+}
+
+@media screen and (max-width: $mobile) {
+  .popular-currencies {
+     &__search {
+        width: 100%;
+     }
+  }
+}
