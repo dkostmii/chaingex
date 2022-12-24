@@ -490,8 +490,13 @@ picture > .cryptocurrency__icon {
          margin: 0 auto;
       }
    
+      &__block-text {
+         display: grid;
+         grid-template-rows: auto;
+      }
+   
       &__items {
-         gap: rem(24);
+         gap: rem(90);
       }
       &__image {
          display: none;
@@ -500,6 +505,14 @@ picture > .cryptocurrency__icon {
    @media screen and (max-width: $mobile) {
       &__container {
          padding: rem(56) rem(15);
+      }
+      &__items {
+         gap: rem(24);
+      }
+   }
+   @media screen and (max-width: $mobileSmall) {
+      &__items {
+         gap: rem(10);
       }
    }
 }
@@ -524,7 +537,8 @@ picture > .cryptocurrency__icon {
       }
    
       &__text {
-         padding: 0 rem(55);
+         text-align: center;
+         line-height: math.div(30, $fontSizeValue);
       }
    }
    @media screen and (max-width: $mobile) {
@@ -535,7 +549,8 @@ picture > .cryptocurrency__icon {
       }
    
       &__text {
-         padding: 0;
+         font-size: rem(16);
+         line-height: math.div(20, 16);
       }
    }
 }
@@ -564,7 +579,7 @@ picture > .cryptocurrency__icon {
 
    @media screen and (max-width: $laptop) {
       &__container {
-         padding-top: rem(47);
+         padding: rem(47) rem(15);
          flex-direction: column;
       }
 
@@ -584,7 +599,7 @@ picture > .cryptocurrency__icon {
    }
    @media screen and (max-width: $mobile) {
       &__container {
-            padding-top: rem(40);
+         padding: rem(40) rem(15);
       }
 
       &__image img {
@@ -596,5 +611,29 @@ picture > .cryptocurrency__icon {
       &__image img {
          max-width: rem(178);
       }
+   }
+}
+
+.faq {
+   padding-top: rem(100);
+   &__container {
+      display: flex;
+   }
+   &__content {
+      flex: 1 0 50%;
+   }
+   &__block-text {
+   }
+   &__spollers {
+   }
+}
+
+.spollers-faq {
+   flex: 1 0 50%;
+   &__item {
+   }
+   &__title {
+   }
+   &__body {
    }
 }
