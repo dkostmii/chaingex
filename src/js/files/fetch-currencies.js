@@ -253,20 +253,54 @@ async function fetchChange(cryptos) {
 }
 
 /**
+ * 
+ * @param  {...currencyPartial[]} cryptosArrays An array containing multiple {@link currencyPartial} arrays.
+ * Must have at least 2 such arrays. All arrays must have same length.
+ */
+function combineCurrencies(...cryptosArrays) {
+  if (!(
+    Array.isArray(cryptosArrays) && cryptosArrays.length >= 2)) {
+      throw new Error("Expcted cryptosArrays to be array with at least 2 arrays of currencyPartial.");
+    }
+
+  const [firstCryptos, ...restCryptosArrays] = cryptosArrays;
+
+  if (restCryptosArrays.some(restCryptos => restCryptos.length !== firstCryptos.length)) {
+    throw new Error('Expected all cryptosArrays to have same length.');
+  }
+
+  let result = firstCryptos;
+
+  restCryptosArrays.forEach(restCryptos => {
+    restCryptos.forEach(crypto => {
+      const resultCryptoIndex = result.findIndex(c => c.id === crypto.id);
+
+      if (resultCryptoIndex === -1) {
+        throw new Error(`Crypto with id: ${crypto.id} is missing in one of arrays.`);
+      }
+
+      result[resultCryptoIndex] = { ...result[resultCryptoIndex], ...crypto };
+    });
+  });
+
+  return result;
+}
+
+/**
  * Loads the cryptocurrency data from API. See {@link https://binance-docs.github.io/apidocs/spot/en Binance API V3 (Spot) documentation}.
  * @returns {Promise<currency[]>} A {@link Promise} containing either an **Array** of {@link currency} data or **string** with error.
  */
 export async function loadCryptos() {
-  return new Promise((res, rej) => {
-    fetchPrices()
-    .then(cryptos => {
-      return fetchChange(cryptos);
+  return new Promise(async (res, rej) => {
+    Promise.all([ fetchChange(), fetchPrices() ])
+    .then(cryptosArrays => {
+      const currencies = combineCurrencies(...cryptosArrays);
+
+      throwIfNotArrayOfCurrencies(currencies);
+
+      res(currencies);
     })
-    .then(cryptos => {
-      throwIfNotArrayOfCurrencies(cryptos);
-      res(cryptos);
-    })
-    .catch(err => rej(err))
+    .catch(err => rej(err));
   });
 }
 
