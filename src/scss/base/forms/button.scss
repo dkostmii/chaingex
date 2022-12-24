@@ -1,38 +1,3 @@
-//<BUTTONS (a.btn+tab)>
-// Снипет (HTML): btn
-.main-block__button{
-	margin: 0 0 rem(17.5) 0;
-}
-
-.button {
-	display: inline-flex;
-	padding: rem(16) rem(67);
-	background-color: $purpleColor;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-
-
-	@media (any-hover: hover) {
-		&:hover {
-			background: #643ad7;
-		}
-
-		&:active {
-			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-		}
-	}
-
-	&:target {
-		background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-	}
-
-	&._fw {
-		width: 100%;
-	}
-}
-
 .button {
 	&__sell, &__change, &__buy {
 		height: rem(40);
@@ -67,12 +32,12 @@
 					color: $mainColor;
 				}
 			}
-			&:hover, &:active {
+			&:hover {
 				background-color: $purpleColor;
 			}
 		}
 
-		&:target {
+		&:target, &:active {
 			background-color: $purpleColor;
 		}
   }
@@ -112,15 +77,9 @@
 				background: rgba(246, 70, 93, 1);
 				color: #fff;
 			}
-	
-			&:active {
-				background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-	linear-gradient(0deg, #F6465D, #F6465D);
-				color: #fff;
-			}
 		}
 
-		&:target {
+		&:target, &:active {
 				background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
 linear-gradient(0deg, #F6465D, #F6465D);
 				color: #fff;
@@ -133,15 +92,9 @@ linear-gradient(0deg, #F6465D, #F6465D);
 				background: rgba(32, 188, 35, 1);
 				color: #fff;
 			}
-	
-			&:active {
-				background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-	linear-gradient(0deg, #20BC23, #20BC23);
-				color: #fff;
-			}
 		}
 
-		&:target {
+		&:target, &:active {
 				background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
 linear-gradient(0deg, #20BC23, #20BC23);
 				color: #fff;
@@ -174,36 +127,92 @@ linear-gradient(0deg, #20BC23, #20BC23);
 		width: rem(197);
 		height: rem(47);
 	}
-}
 
-.popular-currencies__button {
-	background-color: transparent;
+	&.block-1__cta {
+		/* Auto layout */
 
-	border: 1px solid $purpleColor;
-	padding: rem(12) rem(32);
-	font-size: rem(16);
-	line-height: rem(24);
-	font-weight: 500;
-	opacity: 0.7;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: rem(12) rem(30);
 
-	@media screen and (min-width: $tablet) {
-		font-size: rem(20);
-		line-height: rem(30);
+    width: rem(185);
+    height: rem(48);
+
+    background: $purpleColor;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: rem(16);
+    line-height: rem(24);
+
+
+    color: $mainColor;
+
+		@media screen and (min-width: $tablet) {
+			padding: rem(15) rem(30);
+			width: rem(285);
+			height: rem(60);
+			font-size: rem(20);
+			line-height: rem(30);
+		}
 	}
 
-	@media screen and (min-width: $laptop) {
-		padding: rem(15) rem(30);
-	}
-
-	@media (any-hover: hover) {
-		&:hover, &:active {
+	&.popular-currencies__button {
+		background-color: transparent;
+	
+		border: 1px solid $purpleColor;
+		padding: rem(12) rem(32);
+		font-size: rem(16);
+		line-height: rem(24);
+		font-weight: 500;
+		opacity: 0.7;
+	
+		@media screen and (min-width: $tablet) {
+			font-size: rem(20);
+			line-height: rem(30);
+		}
+	
+		@media screen and (min-width: $laptop) {
+			padding: rem(15) rem(30);
+		}
+	
+		@media (any-hover: hover) {
+			&:hover {
+				background: $purpleColor;
+				opacity: 1;
+			}
+		}
+	
+		&:target, &:active {
 			background: $purpleColor;
 			opacity: 1;
 		}
 	}
+}
 
-	&:target {
-		background: $purpleColor;
-		opacity: 1;
+.button {
+	display: inline-flex;
+	padding: rem(16) rem(67);
+	background-color: $purpleColor;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+
+
+	@media (any-hover: hover) {
+		&:hover {
+			background: #643ad7;
+		}
+	}
+
+	&:active, &:target {
+		background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
+	}
+
+	&._fw {
+		width: 100%;
 	}
 }
