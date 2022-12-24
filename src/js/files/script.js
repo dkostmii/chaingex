@@ -17,43 +17,113 @@ import { throwIfNotACurrency, isArrayOfCurrencies } from "./exchanger/model/util
 import { loadCryptos, cryptocurrencies as cryptos, preCheck } from './fetch-currencies.js';
 import storageConfig from "../config/storage.js";
 
-const cryptocurrencies = document.getElementsByClassName("colum__price");
+const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
 
 const cIds = cryptos.map(c => c.id);
 
 // Integrity check
 [...cryptocurrencies].forEach(cryptoEl => {
-  if (!cIds.includes(cryptoEl.id)) {
-    throw new Error(`Unknown cryptocurrency: ${cryptoEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
+  const priceEl = cryptoEl.querySelector('.colum__price');
+  const changeEl = cryptoEl.querySelector('.colum__change');
+
+  if (!(priceEl instanceof Element)) {
+    throw new ElementNotFoundError('.colum__price');
+  }
+
+  if (!(changeEl instanceof Element)) {
+    throw new ElementNotFoundError('.colum__change');
+  }
+
+  if (!priceEl.hasAttribute('id')) {
+    throw new Error('Missing \'id\' attribute in .colum__price element.\nElement contents: ' + priceEl.innerHTML);
+  }
+
+  if (!cIds.includes(priceEl.id)) {
+    throw new Error(`Unknown cryptocurrency: ${priceEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
   }
 });
 
-// Fill cryptocurrency prices at Home page
-(async () => {
-  const cryptos = await loadCryptos();
+function preCheckChange(num) {
+  return num.toFixed(2);
+}
 
-  if (!isArrayOfCurrencies(cryptos)) {
-    throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${cryptos}`);
+function getSign(num) {
+  return num === 0 ? num : parseInt((num / Math.abs(num)).toFixed(0));
+}
+
+function mapSign(num) {
+  switch (getSign(num)) {
+    case 1:
+      return '+';
+    case -1:
+      return '-';
+
+    default:
+      return '';
   }
+}
 
-  [...cryptocurrencies].forEach(cryptocurrency => {
-    const crypto = cryptos.filter(c => c.id === cryptocurrency.id)[0];
+function mapSignStyleClass(num) {
+  switch (getSign(num)) {
+    case 1:
+      return 'change__positive';
+    case -1:
+      return 'change__negative';
+    default:
+      return '';
+  }
+}
 
-    throwIfNotACurrency(crypto);
+function prependSignLiteral(num) {
+  return `${mapSign(num)}${preCheckChange(num).replace(/-/g, '')}`
+}
 
-    const priceStr = preCheck(crypto.price);
+// Fill cryptocurrency prices at Home page
+loadCryptos()
+  .then(cryptos => {
+    [...cryptocurrencies].forEach(cryptoEl => {
+      const priceEl = cryptoEl.querySelector('.colum__price');
+      const changeEl = cryptoEl.querySelector('.colum__change');
 
-    // Mobile price label .cryptocurrency__price
-    const cryptocurrencyMobileEl = document.createElement('div');
-    cryptocurrencyMobileEl.className = 'cryptocurrency__price';
-    cryptocurrencyMobileEl.innerHTML = priceStr;
+      const crypto = cryptos.find(c => c.id === priceEl.id);
 
-    cryptocurrency.previousElementSibling.appendChild(cryptocurrencyMobileEl);
+      throwIfNotACurrency(crypto);
 
-    // Tablet and desktop price label
-    cryptocurrency.innerHTML = priceStr;
+      const priceStr = preCheck(crypto.price);
+      const changeValue = parseFloat(preCheckChange(crypto.change));
+      const changeStr = prependSignLiteral(changeValue);
+
+      // Mobile price label .cryptocurrency__price
+      const cryptocurrencyMobileEl = document.createElement('div');
+      cryptocurrencyMobileEl.className = 'cryptocurrency__price';
+      cryptocurrencyMobileEl.innerHTML = priceStr;
+
+      const cryptoNameEl = cryptoEl.querySelector('.cryptocurrency__name');
+      cryptoNameEl.parentElement.removeChild(cryptoNameEl);
+
+      const cryptoNamePrice = document.createElement('div');
+      cryptoNamePrice.classList.add('cryptocurrency__nameprice');
+
+      cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
+      
+      const cryptoLeftEl = cryptoEl.querySelector('.cryptocurrency__left');
+      cryptoLeftEl.appendChild(cryptoNamePrice);
+
+      // Tablet and desktop price label
+      priceEl.innerHTML = priceStr;
+
+      changeEl.innerHTML = changeStr;
+      
+      const changeElSignClass = mapSignStyleClass(changeValue);
+
+      if (changeElSignClass) {
+        changeEl.classList.add(changeElSignClass);
+      }
+    });
+  })
+  .catch(e => {
+    throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
   });
-})();
 
 /**
  * Indicates if all cryptocurrencies at *Home page* are displayed.
