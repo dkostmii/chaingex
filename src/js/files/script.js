@@ -78,6 +78,15 @@ function prependSignLiteral(num) {
   return `${mapSign(num)}${preCheckChange(num).replace(/-/g, '')}`
 }
 
+export function hideSpinner() {
+  const preloader = document.querySelector('.preloader');
+
+  document.body.classList.remove('lock-scroll');
+  preloader.classList.remove('show');
+
+  preloader.remove();
+}
+
 // Fill cryptocurrency prices at Home page
 loadCryptos()
   .then(cryptos => {
@@ -120,6 +129,8 @@ loadCryptos()
         changeEl.classList.add(changeElSignClass);
       }
     });
+
+    hideSpinner();
   })
   .catch(e => {
     throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
