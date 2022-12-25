@@ -42,23 +42,34 @@
 		}
   }
 
-	@media screen and (max-width: $laptop)  {
-		&__change {
+	&__change {
+		@media screen and (max-width: $laptop)  {
 			&::after {
-				 content: "";
-				 width: rem(24);
-				 height: rem(24);
-				 background-image: url('@img/change.svg');
+				content: "";
+				width: rem(32);
+				height: rem(32);
+				background-image: url('@img/change.svg');
+				background-size: rem(32) rem(32);
 			}
-	  }
+		}
+
+		@media screen and (max-width: $mobile)  {
+			&::after {
+				content: "";
+				width: rem(24);
+				height: rem(24);
+				background-image: url('@img/change.svg');
+				background-size: rem(24) rem(24);
+			}
+		}
 	}
 
-	@media screen and (min-width: $tablet) {
+	@media screen and (min-width: $mobile) {
 		&__sell, &__change, &__buy {
 			height: rem(48);
 			font-size: rem(22);
 			line-height: rem(33);
-			padding: rem(8) rem(24);
+			padding: rem(8) rem(32);
 		}
 	}
 
@@ -67,7 +78,7 @@
 			height: rem(60);
 			font-size: rem(20);
 			line-height: rem(30);
-			padding: rem(15) rem(30);
+			padding: rem(15) rem(38);
 		}
 	}
 
