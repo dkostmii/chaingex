@@ -677,6 +677,7 @@ picture > .cryptocurrency__icon {
       @include adaptiveValue("font-size", 20, 18);
       align-items: center;
       justify-content: space-between;
+      gap: rem(60);
       &::after{
          content:'';
          background: url("@img/icons/arrow.svg") center / 100% no-repeat;
