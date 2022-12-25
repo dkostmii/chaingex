@@ -33,12 +33,12 @@
 				}
 			}
 			&:hover {
-				background-color: $purpleColor;
+				background-color: #8AC44B;
 			}
 		}
 
 		&:target, &:active {
-			background-color: $purpleColor;
+			background-color: #8AC44B;
 		}
   }
 
@@ -74,30 +74,28 @@
 	&__sell {
 		@media (any-hover: hover) {
 			&:hover {
-				background: rgba(246, 70, 93, 1);
-				color: #fff;
+				background: #F04438;
+				color: $mainColor;
 			}
 		}
 
 		&:target, &:active {
-				background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #F6465D, #F6465D);
-				color: #fff;
+				background: #F04438;
+				color: $mainColor;
 		}
 	}
 
 	&__buy {
 		@media (any-hover: hover) {
 			&:hover {
-				background: rgba(32, 188, 35, 1);
-				color: #fff;
+				background: #8AC44B;
+				color: $mainColor;
 			}
 		}
 
 		&:target, &:active {
-				background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #20BC23, #20BC23);
-				color: #fff;
+				background: #8AC44B;
+				color: $mainColor;
 		}
 	}
 
@@ -180,7 +178,7 @@ linear-gradient(0deg, #20BC23, #20BC23);
 	
 		@media (any-hover: hover) {
 			&:hover {
-				background: $purpleColor;
+				background-color: transparent;
 				opacity: 1;
 			}
 		}
