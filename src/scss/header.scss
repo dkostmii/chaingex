@@ -108,11 +108,18 @@
 		display: flex;
 		align-items: center;
 		@media (max-width: $pc) {
-			border: 1px solid rgba(255, 255, 255, 0.3);
-			padding: rem(16) rem(16);
+			background: rgba(13, 20, 37, 0.5);
+			border-bottom: 1px solid $purpleColor;
+			padding: rem(16) rem(24);
 			.icon {
 				display: flex;
 				opacity: 0.4;
+			}
+
+			&:not(.menu__item__noactive):target, &:not(.menu__item__noactive):active {
+				background: #202E51;
+				border: 1px solid $purpleColor;
+				padding: rem(15) rem(23);
 			}
 		}
 	}
@@ -122,6 +129,8 @@
 		line-height: rem(27);
 		font-weight: 400;
 		cursor: pointer;
+		height: rem(27);
+		overflow: hidden;
 
 		& > .lang-select__current {
 			display: flex;
@@ -138,17 +147,18 @@
 			}
 		}
 
+		&:hover {
+			overflow: visible;
+		}
+
 		&:hover > .lang-select__current::after {
 			transform: rotate(-180deg);
 		}
 	}
 
-	&__link {
-		font-size: rem(18);
-		line-height: rem(27);
-		font-weight: 400;
-		opacity: 0.8;
+	
 
+	&__link {
 		&:hover {
 			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #FFFFFF, #FFFFFF);
 			-webkit-background-clip: text;
@@ -163,22 +173,6 @@
 			background-clip: text;
 			-webkit-text-fill-color: transparent;
 			transition: all 0.2s ease;
-		}
-
-		@media (max-width: $pc) {
-			position: relative;
-			display: flex;
-			width: 100%;
-			font-size: rem(22);
-			justify-content: space-between;
-			&::after {
-				height: 22px;
-				width: 12px;
-				position: absolute;
-				content: "";
-				background-image: url('@img/chevron-right.svg');
-				right: 0;
-			}
 		}
 	}
 
@@ -196,31 +190,29 @@
 	}
 }
 
-.button {
-	&__icon {
-		background: #0000;
-		opacity: 0.5;
-		padding: 0;
-		position: static;
+.button__icon {
+	background: #0000;
+	opacity: 0.5;
+	padding: 0;
+	position: static;
 
-		@media screen and (max-width: $mobile) {
-			display: block;			
+	@media screen and (max-width: $mobile) {
+		display: block;			
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			background: #0000;
 		}
 
-		@media (any-hover: hover) {
-			&:hover {
-				background: #0000;
-			}
-
-			&:active {
-				background: #0000;
-			}
+		&:active {
+			background: #0000;
 		}
+	}
 
-		@media (any-hover: target) {
-			&:target {
-				background: #0000;
-			}
+	@media (any-hover: target) {
+		&:target {
+			background: #0000;
 		}
 	}
 }
@@ -317,5 +309,51 @@
 			display: none;
 		}
 	}
+}
 
+.hidden {
+	&__mobile {
+		@media screen and (max-width: $pc) {
+			display: none;
+		}
+	}
+
+	&__desktop {
+		@media screen and (min-width: $pc) {
+			display: none;
+		}
+	}
+}
+
+.lang-select__mobile__wrapper, .menu__link {
+	font-size: rem(18);
+	line-height: rem(27);
+	font-weight: 400;
+
+	@media screen and (max-width: $pc) {
+		font-size: rem(22);
+		position: relative;
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+	}
+}
+
+.lang-select {
+	&__options {
+		padding-top: rem(5);
+	}
+	&__option:not(:last-child) {
+		padding-bottom: rem(5);
+	}
+
+	&__mobile {
+		display: flex;
+		gap: rem(24);
+
+		&__option {
+			color: $mainColor;
+			text-decoration-line: underline;
+		}
+	}
 }
