@@ -473,6 +473,7 @@ picture > .cryptocurrency__icon {
    &__image {
       display: flex;
       flex: 0 1 48%;
+      justify-content: end;
       position: relative;
 
       img {
@@ -615,25 +616,88 @@ picture > .cryptocurrency__icon {
 }
 
 .faq {
-   padding-top: rem(100);
    &__container {
+      padding-top: rem(100);
       display: flex;
+      flex-wrap: wrap;
    }
    &__content {
-      flex: 1 0 50%;
+      display: flex;
+      flex: 0 1 42%;
+      padding-right: rem(60);
    }
    &__block-text {
    }
    &__spollers {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 58%;
    }
+   @media screen and (max-width: $laptop) {
+      &__container {
+         padding-top: rem(80);
+         flex-direction: column;
+      }
+   
+      &__content {
+         padding: 0;
+         margin: 0 auto;
+      }
+   
+      &__block-text {
+      }
+      &__spollers {}
+
+   }
+   @media screen and (max-width: $mobile) {
+      &__container {
+         padding: rem(56) rem(15);
+      }
+   }
+   @media screen and (max-width: $mobileSmall) {
+   }
+
 }
 
 .spollers-faq {
-   flex: 1 0 50%;
    &__item {
+      border-bottom: 1px solid #7B46E8;
+      overflow: hidden;
    }
    &__title {
+      width: 100%;
+      background-color: transparent;
+      display: block;
+      text-align: left;
+      padding: rem(20) 0;
+      @include adaptiveValue("padding-top", 20, 15);
+      @include adaptiveValue("padding-right", 20, 15);
+      display: flex;
+      line-height: math.div(30, 20);
+      @include adaptiveValue("font-size", 20, 18);
+      align-items: center;
+      justify-content: space-between;
+      &::after{
+         content:'';
+         background: url("@img/icons/arrow.svg") center / 100% no-repeat;
+         flex: 0 0 rem(20);
+         height: rem(20);
+         transition: all 0.3s ease 0s;
+      }
+      &._spoller-active {
+         &__title {
+            padding: rem(21) 0;
+         }
+			&::after {
+            background: url("@img/icons/arrow-top.svg") center / 100% no-repeat;
+			}
+		}
    }
    &__body {
+      @include adaptiveValue("padding-top", 20, 16);
+      @include adaptiveValue("padding-bottom", 30, 24);
+      @include adaptiveValue("font-size", 18, 16);
+      line-height: math.div(20, 16);
+      opacity: 0.5;
    }
 }
