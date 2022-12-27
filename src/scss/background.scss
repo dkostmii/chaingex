@@ -1,126 +1,19 @@
 body {
   background-color: #0D1425;
+  background-image: url(@img/background/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
 
   @media screen and (min-width: $mobileSmall) and (max-width: $pc) {
+    background-image: url(@img/background/bg-tablet.jpg);
     background-color: #020015;
-  }
-}
-
-.bg {
-  flex-shrink: 0;
-  &__wrapper {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 10000vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    overflow: hidden;
-  }
-
-  > .blob__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  > .blob__wrapper > .blob {
-    background: none;
-    flex-shrink: 0;
-  }
-
-  > #bg-1 {
-    > .blob {
-      background: url(@img/background/mobile/bg-1.svg) no-repeat;
-      width: 1209px;
-      height: 1360px;
-      background-size: 1209px 1360px;
-    }
-
-    position: absolute;
-    width: 539.19px;
-    height: 723px;
-    left: -65px;
-    top: 118px;
-  }
-
-  @media screen and (min-width: $mobileSmall) {
-    > #bg-1 {
-      > .blob {
-        background: url(@img/background/tablet/bg-1.svg) no-repeat;
-        width: 1543px;
-        height: 1534px;
-        background-size: 1543px 1534px;
-      }
-
-      position: absolute;
-      width: 542.51px;
-      height: 533.24px;
-      left: -247px;
-      top: 779px;
-    }
-
-    > #bg-2 {
-      > .blob {
-        background: url(@img/background/tablet/bg-2.svg) no-repeat;
-        width: 1543px;
-        height: 1534px;
-        background-size: 1543px 1534px;
-      }
-
-      position: absolute;
-      width: 542.51px;
-      height: 533.24px;
-      left: 585px;
-      top: 270px;
-    }
   }
 
   @media screen and (min-width: $pc) {
-    > #bg-1 {
-      .blob {
-        background: url(@img/background/desktop/bg-1.svg) no-repeat;
-        width: 1234px;
-        height: 1330px;
-        background-size: 1234px 1330px;
-      }
+    background-image: url(@img/background/bg-desktop.jpg);
+  }
 
-      position: absolute;
-      left: -54px;
-      top: 172px;
-      width: 233.51px;
-      height: 329.24px;
-    }
-
-    > #bg-2 {
-      > .blob {
-        background: url(@img/background/desktop/bg-2.svg) no-repeat;
-        width: 1543px;
-        height: 1534px;
-        background-size: 1543px 1534px;
-      }
-
-      position: absolute;
-      width: 542.51px;
-      height: 533.24px;
-      left: -136px;
-      top: 975px;
-    }
-
-    > #bg-3 {
-      .blob {
-        background: url(@img/background/desktop/bg-3.svg) no-repeat;
-        width: 1543px;
-        height: 1534px;
-        background-size: 1543px 1534px;
-      }
-
-      position: absolute;
-      width: 542.51px;
-      height: 533.24px;
-      left: 1006px;
-      top: 186px;
-    }
+  @media screen and (min-width: 1920px) {
+    background-image: url(@img/background/bg-desktop-xl.jpg);
   }
 }
