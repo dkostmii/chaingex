@@ -1,24 +1,10 @@
 .popular-currencies {
   &__container {
-     padding-top: rem(100);
-  }
+    padding-top: rem(8);
 
-  @media screen and (min-width: $mobileSmall) and (max-width: $mobile) {
-     &__container {
-        padding-top: rem(120);
-     }
-  }
-
-  @media screen and (min-width: $mobile) and (max-width: 1300px) {
-     &__container {
-        padding-top: rem(240);
-     }
-  }
-
-  @media screen and (max-width: 360px) {
-     &__container {
-        padding-top: rem(32)
-     }      
+    @media screen and (min-width: $mobile) {
+      padding-top: rem(30);
+    }
   }
 
   &__top {

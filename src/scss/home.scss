@@ -3,6 +3,143 @@
    padding-top: rem(140);
 }
 
+.block-2 {
+   @media screen and (min-width: $pc) {
+      display: none;
+   }
+   
+   margin: rem(50) auto;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 0;
+   gap: rem(32);
+
+   &__line {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+      gap: rem(79);
+      width: rem(741);
+
+      
+   }
+
+   &__item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+      gap: rem(15);
+
+      > img {
+         width: rem(70);
+         height: rem(70);
+      }
+
+      > label {
+         font-style: normal;
+         font-weight: 400;
+         font-size: rem(24);
+         line-height: rem(30);
+         color: $mainColor;
+         opacity: 0.5;
+
+         @media screen and (max-width: $pc) {
+            font-size: rem(22);
+            line-height: rem(28);
+         }
+      }
+   }
+
+   &__separator {
+      width: rem(100);
+      height: rem(1);
+      background-image: linear-gradient(90.17deg, #7B46E8 -1.15%, rgba(123, 70, 232, 0) 87.83%);
+   }
+
+   & > #step-1 > label, &__line > #step-1 > label {
+      width: rem(162);
+   }
+
+   & > #step-2 > label, &__line > #step-2 > label {
+      width: rem(151);
+   }
+
+   & > #step-3 > label, &__line > #step-3 > label {
+      width: rem(190);
+   }
+
+   @media screen and (max-width: $mobile) {
+      gap: rem(16);
+      margin: rem(48) auto;
+
+      &__line {
+         width: rem(367);
+         gap: rem(16);
+      }
+
+      &__item {
+         > img {
+            width: rem(45);
+            height: rem(45);
+         }
+
+         > label {
+            font-size: rem(14);
+            line-height: rem(18);
+         }
+      }
+
+      &__separator {
+         width: rem(30);
+      }
+
+      & > #step-1 > label, &__line > #step-1 > label {
+         width: rem(103);
+      }
+
+      & > #step-2 > label, &__line > #step-2 > label {
+         width: rem(96);
+      }
+
+      & > #step-3 > label, &__line > #step-3 > label {
+         width: rem(121);
+      }
+   }
+}
+
+.block-2__desktop {
+   @media screen and (max-width: $pc) {
+      display: none;
+   }
+
+   margin: rem(70) auto;
+   width: rem(1231);
+
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding: 0;
+   gap: rem(57);
+
+   flex-wrap: wrap;
+
+   > #step-1 > label {
+      width: rem(176);
+   }
+
+   > #step-2 > label {
+      width: rem(165);
+   }
+
+   > #step-3 > label {
+      width: rem(207);
+   }
+}
+
 //====================================================================================================
 
 .features {

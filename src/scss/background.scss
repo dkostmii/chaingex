@@ -9,10 +9,14 @@ body {
 .bg {
   flex-shrink: 0;
   &__wrapper {
-    width: 100vw;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 10000vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    overflow: hidden;
   }
 
   > .blob__wrapper {

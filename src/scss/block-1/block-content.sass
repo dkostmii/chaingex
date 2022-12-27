@@ -7,7 +7,6 @@
   gap: rem(33)
 
   &__content
-
     display: flex
     flex-direction: column
     justify-content: center
@@ -30,6 +29,8 @@
     flex: none
     order: 0
     flex-grow: 0
+
+    width: rem(380)
 
     & > h1, & > h2
       margin: 0
@@ -69,7 +70,7 @@
   
 
 // Tablet
-@media screen and (min-width: $tablet)
+@media screen and (min-width: $mobile)
   .block-1
     display: flex
     flex-direction: column
@@ -85,7 +86,6 @@
 
       flex: none
       order: 1
-      align-self: stretch
       flex-grow: 0
     
     &__title
@@ -99,6 +99,8 @@
       order: 0
       align-self: stretch
       flex-grow: 0
+
+      width: rem(642)
 
       & > h1, & > h2
         margin: 0
@@ -167,6 +169,8 @@
       align-self: stretch
       flex-grow: 0
 
+      width: rem(705)
+
       & > h1, & > h2
         margin: 0
         text-align: left
@@ -196,3 +200,5 @@
         flex: none
         order: 1
         flex-grow: 0
+
+        width: rem(612)
