@@ -20,7 +20,11 @@ function animate(onAnimationStarted) {
 
       const incrementValue = () => {
          value += 1;
-         el.textContent = value;
+         const prevValue = parseInt(el.textContent | "0");
+
+         if (value > prevValue) {
+            el.textContent = value;
+         }
       }
 
       const interval = setInterval(() => {
@@ -52,4 +56,5 @@ function scrollHandler() {
    }
 }
 
-window.addEventListener('scroll', scrollHandler)
+window.addEventListener('scroll', scrollHandler);
+scrollHandler();
