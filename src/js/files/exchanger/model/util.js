@@ -26,7 +26,8 @@ export function isCurrency(currency) {
     'id' in currency && typeof currency.id === 'string' &&
     'name' in currency && typeof currency.name === 'string' &&
     'short' in currency && typeof currency.short === 'string' &&
-    'price' in currency && typeof currency.price === 'number' 
+    'price' in currency && typeof currency.price === 'number' &&
+    'change' in currency && typeof currency.change === 'number'
   );
 }
 
@@ -171,6 +172,8 @@ export function throwIfNotArrayOfCurrencyPairs(currencyPairs) {
 
 /**
  * Throws an error if {@link number} is not a number.
+ * 
+ * **Also throws if {@link number} has value `NaN`**
  * @param {any} number An object to test.
  */
 export function throwIfNotANumber(number) {

@@ -17,43 +17,124 @@ import { throwIfNotACurrency, isArrayOfCurrencies } from "./exchanger/model/util
 import { loadCryptos, cryptocurrencies as cryptos, preCheck } from './fetch-currencies.js';
 import storageConfig from "../config/storage.js";
 
-const cryptocurrencies = document.getElementsByClassName("colum__price");
+const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
 
 const cIds = cryptos.map(c => c.id);
 
 // Integrity check
 [...cryptocurrencies].forEach(cryptoEl => {
-  if (!cIds.includes(cryptoEl.id)) {
-    throw new Error(`Unknown cryptocurrency: ${cryptoEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
+  const priceEl = cryptoEl.querySelector('.colum__price');
+  const changeEl = cryptoEl.querySelector('.colum__change');
+
+  if (!(priceEl instanceof Element)) {
+    throw new ElementNotFoundError('.colum__price');
+  }
+
+  if (!(changeEl instanceof Element)) {
+    throw new ElementNotFoundError('.colum__change');
+  }
+
+  if (!priceEl.hasAttribute('id')) {
+    throw new Error('Missing \'id\' attribute in .colum__price element.\nElement contents: ' + priceEl.innerHTML);
+  }
+
+  if (!cIds.includes(priceEl.id)) {
+    throw new Error(`Unknown cryptocurrency: ${priceEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
   }
 });
 
-// Fill cryptocurrency prices at Home page
-(async () => {
-  const cryptos = await loadCryptos();
+function preCheckChange(num) {
+  return num.toFixed(2);
+}
 
-  if (!isArrayOfCurrencies(cryptos)) {
-    throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${cryptos}`);
+function getSign(num) {
+  return num === 0 ? num : parseInt((num / Math.abs(num)).toFixed(0));
+}
+
+function mapSign(num) {
+  switch (getSign(num)) {
+    case 1:
+      return '+';
+    case -1:
+      return '-';
+
+    default:
+      return '';
   }
+}
 
-  [...cryptocurrencies].forEach(cryptocurrency => {
-    const crypto = cryptos.filter(c => c.id === cryptocurrency.id)[0];
+function mapSignStyleClass(num) {
+  switch (getSign(num)) {
+    case 1:
+      return 'change__positive';
+    case -1:
+      return 'change__negative';
+    default:
+      return '';
+  }
+}
 
-    throwIfNotACurrency(crypto);
+function prependSignLiteral(num) {
+  return `${mapSign(num)}${preCheckChange(num).replace(/-/g, '')}`
+}
 
-    const priceStr = preCheck(crypto.price);
+export function hideSpinner() {
+  const preloader = document.querySelector('.preloader');
 
-    // Mobile price label .cryptocurrency__price
-    const cryptocurrencyMobileEl = document.createElement('div');
-    cryptocurrencyMobileEl.className = 'cryptocurrency__price';
-    cryptocurrencyMobileEl.innerHTML = priceStr;
+  document.body.classList.remove('lock-scroll');
+  preloader.classList.remove('show');
 
-    cryptocurrency.previousElementSibling.appendChild(cryptocurrencyMobileEl);
+  preloader.remove();
+}
 
-    // Tablet and desktop price label
-    cryptocurrency.innerHTML = priceStr;
+// Fill cryptocurrency prices at Home page
+loadCryptos()
+  .then(cryptos => {
+    [...cryptocurrencies].forEach(cryptoEl => {
+      const priceEl = cryptoEl.querySelector('.colum__price');
+      const changeEl = cryptoEl.querySelector('.colum__change');
+
+      const crypto = cryptos.find(c => c.id === priceEl.id);
+
+      throwIfNotACurrency(crypto);
+
+      const priceStr = preCheck(crypto.price);
+      const changeValue = parseFloat(preCheckChange(crypto.change));
+      const changeStr = prependSignLiteral(changeValue);
+
+      // Mobile price label .cryptocurrency__price
+      const cryptocurrencyMobileEl = document.createElement('div');
+      cryptocurrencyMobileEl.className = 'cryptocurrency__price';
+      cryptocurrencyMobileEl.innerHTML = priceStr;
+
+      const cryptoNameEl = cryptoEl.querySelector('.cryptocurrency__name');
+      cryptoNameEl.parentElement.removeChild(cryptoNameEl);
+
+      const cryptoNamePrice = document.createElement('div');
+      cryptoNamePrice.classList.add('cryptocurrency__nameprice');
+
+      cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
+      
+      const cryptoLeftEl = cryptoEl.querySelector('.cryptocurrency__left');
+      cryptoLeftEl.appendChild(cryptoNamePrice);
+
+      // Tablet and desktop price label
+      priceEl.innerHTML = priceStr;
+
+      changeEl.innerHTML = changeStr;
+      
+      const changeElSignClass = mapSignStyleClass(changeValue);
+
+      if (changeElSignClass) {
+        changeEl.classList.add(changeElSignClass);
+      }
+    });
+
+    hideSpinner();
+  })
+  .catch(e => {
+    throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
   });
-})();
 
 /**
  * Indicates if all cryptocurrencies at *Home page* are displayed.
@@ -71,11 +152,6 @@ const currencyElements = Array.from(document.getElementsByClassName(hiddenClass)
  * Is called after clicking `See all cryptocurrencies` button.
  */
 export function toggleCurrencies() {
-  const input = document.getElementsByClassName("popular-currencies__search")[0];
-
-  input.value = "";
-  findCurrency();
-
   const button = document.getElementsByClassName("popular-currencies__button")[0];
 
   if (isShown) {
@@ -109,41 +185,6 @@ export function toggleCurrencies() {
  */
 
 /**
- * Search cache to be used in findCurrency().
- * 
- * It is an Array of {@link currencyElSearchMap}.
- *
- * @constant searchCache
- * @type {currencyElSearchMap[]}
- */
-const searchCache = [];
-
-/**
- * Finds the currency in **Popular currencies** section at **Home** page.
- * 
- * Is called after `.popular-currencies__search` input value changed.
- */
-export function findCurrency() {
-  const input = document.getElementsByClassName("popular-currencies__search")[0];
-   
-  [...searchCache].forEach(({ currencyEl }) => {
-    currencyEl.style.removeProperty("display");
-  });
-
-  if (input.value.replace(" ", "") === "") {
-    return;
-  }
-
-  [...searchCache].forEach(({ keywords, currencyEl }) => {
-    if (!keywords.includes(input.value.toLowerCase())) {
-      currencyEl.style.display = "none";
-    } else {
-      currencyEl.style.removeProperty('display');
-    }
-  });
-}
-
-/**
  * Prints console.warn() message if `1 rem` (a computed `font-size` CSS property of `<html>` element) is not precisely `16px`.
  */
 function remCheck() {
@@ -158,38 +199,12 @@ function remCheck() {
 
 window.addEventListener('load', () => {
   remCheck();
-
-  // Create the search cache here
-  const cryptocurrencyNames = Array.from(document.getElementsByClassName("cryptocurrency__name"));
-  const cryptocurrencyShots = Array.from(document.getElementsByClassName("cryptocurrency__short"));
-
-  if (cryptocurrencyNames.length !== cryptocurrencyShots.length) {
-    throw new Error(`Expected cryptocurrencyNames.length and cryptocurrencyShots.length to be equal. Got cryptocurrencyNames.length = ${cryptocurrenciesNames.length} and cryptocurrencyShots.length = ${cryptocurrencyShots.length}.`)
-  }
-
-  for (let i = 0; i < cryptocurrencyNames.length; i += 1) {
-    let keywords = cryptocurrencyNames[i].innerHTML.toLowerCase();
-    keywords += " ";
-    keywords += cryptocurrencyShots[i].innerHTML.toLowerCase();
-
-    if (cryptocurrencyNames[i].parentElement.parentElement !== cryptocurrencyShots[i].parentElement.parentElement) {
-      throw new Error('Expected cryptocurrencyNames[i] and cryptocurrencyShots[i] to be on same level.')
-    }
-
-    const currencyEl = cryptocurrencyNames[i].parentElement.parentElement;
-
-    searchCache.push({
-      keywords,
-      currencyEl,
-    });
-  }
 });
 
 // Mobile menu
 
 let menuState = true;
-let desktop = false;
-const menuBodyNav = document.getElementsByClassName('menu__body')[0];
+const menuBodyNavElements = document.querySelectorAll('.menu__body, .nav-plus-button');
 const iconMenu = document.querySelectorAll('.menu__icons > .icon-menu')[0];
 const header = document.getElementsByClassName('header')[0];
 
@@ -199,12 +214,8 @@ const header = document.getElementsByClassName('header')[0];
 function enableMenu() {
   menuState = true;
 
-  if (!desktop) {
-    header.style.position = 'fixed';
-    header.style.background = 'rgba(2, 0, 21, 1)';
-  }
-
-  menuBodyNav.style.removeProperty('display');
+  header.classList.add('header__menu-active');
+  [...menuBodyNavElements].forEach(el => el.classList.remove('hidden'));
   iconMenu.classList.add('icon-menu__active');
 }
 
@@ -214,13 +225,9 @@ function enableMenu() {
 function disableMenu() {
   menuState = false;
 
-  header.style.removeProperty('position');
-  header.style.removeProperty('background');
-  menuBodyNav.style.display = 'none';
-
-  if (iconMenu.classList.contains('icon-menu__active')) {
-    iconMenu.classList.remove('icon-menu__active');
-  }
+  header.classList.remove('header__menu-active');
+  [...menuBodyNavElements].forEach(el => el.classList.add('hidden'));
+  iconMenu.classList.remove('icon-menu__active');
 }
 
 /**
@@ -239,111 +246,9 @@ export function toggleMenu() {
   }
 }
 
-/** Indicates if the search field is displayed on mobile version.
- * 
- * See {@link enableSearch()} function.
- */
-let searchEnabled = false;
-
-/**
- * Enables the search field on mobile devices.
- * 
- * There is search button on mobile version, clicking which call {@link enableSearch()}, so
- * the search field is displayed.
- * 
- * **It's not possible to hide the search in current implementation.**
- */
-export function enableSearch() {
-  const searchInput = document.getElementsByClassName("popular-currencies__search")[0];
-  const searchButton = document.getElementsByClassName("button__search")[0];
-  const searchIconGroup = document.getElementsByClassName("search-icon")[0];
-
-  const popularCurrenciesTop = document.getElementsByClassName("popular-currencies__top")[0];
-
-  searchButton.style.display = "none";
-  searchInput.style.display = "block";
-
-  Object.assign(popularCurrenciesTop.style, {
-    flexDirection: "column",
-    gap: '2rem',
-    alignItems: 'flex-start',
-  });
-
-  if (!searchIconGroup.classList.contains("search-icon__mobile-active")) {
-    searchIconGroup.classList.add("search-icon__mobile-active");
-  }
-  searchEnabled = true;
-
-  window.addEventListener('resize', () => {
-    if (searchEnabled) {
-      if (window.matchMedia('(min-width: 769px)')) {
-        searchButton.style.removeProperty('display');
-        searchInput.style.removeProperty('display');
-        popularCurrenciesTop.style.removeProperty('flex-direction');
-        popularCurrenciesTop.style.removeProperty('gap');
-        popularCurrenciesTop.style.removeProperty('align-items');
-
-        if (searchIconGroup.classList.contains("search-icon__mobile-active")) {
-          searchIconGroup.classList.remove("search-icon__mobile-active");
-        }
-
-        searchEnabled = false;
-      }
-    }
-  });
-}
-
-window.addEventListener('load', () => {
-  if (window.matchMedia('(max-width: 767.98px)').matches) {
-    desktop = false;
-    disableMenu();
-  } else if (window.matchMedia('(min-width: 767.98px)').matches) {
-    desktop = true;
-    enableMenu();
-  }
-});
-
 window.addEventListener('resize', () => {
   remCheck();
-
-  if (window.matchMedia('(max-width: 767.98px)').matches) {
-    desktop = false;
-    disableMenu();
-  } else if (window.matchMedia('(min-width: 767.98px)').matches) {
-    desktop = true;
-    enableMenu();
-  }
 });
-
-// support button stopper at footer
-const supportBlock = document.querySelector(".support-block");
-
-if (supportBlock instanceof HTMLElement) {
-  const supportButton = supportBlock.querySelectorAll(".support-block > .support__button")[0]
-
-  if (supportButton instanceof HTMLElement) {
-    const popularCurrenciesAction = document.querySelector('.popular-currencies__action');
-
-    window.addEventListener('scroll', () => {
-      const { scrollTop } = document.documentElement;
-
-      let { top: supportBlockTop } = supportBlock.getBoundingClientRect();
-      supportBlockTop += scrollTop;
-
-      let { top: maxPos } = popularCurrenciesAction.getBoundingClientRect();
-      maxPos += scrollTop - supportBlockTop;
-
-      if (scrollTop > maxPos) {
-        supportButton.style.position = 'absolute';
-        supportButton.style.top = `${maxPos}px`;
-      }
-      else {
-        supportButton.style.removeProperty('position');
-        supportButton.style.removeProperty('top');
-      }
-    });
-  }
-}
 
 /**
  * Injects the redirection link (./exchanger.html) into all Change, Sell and Buy buttons.
@@ -395,7 +300,7 @@ export function changeSellBuyToExchangeRedirect() {
  */
 export function autoCloseMenu() {
   $('header a, footer a').on('click', () => {
-    if (!desktop && menuState) {
+    if (menuState) {
       disableMenu();
     }
   });

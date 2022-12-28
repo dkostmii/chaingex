@@ -1,77 +1,64 @@
 // Mobile
 .block-1
-  /* Auto layout */
   display: flex
   flex-direction: column
   align-items: center
-  padding: 0px
-  gap: 33px
+  padding: 0
+  gap: rem(33)
 
   &__content
-    /* Auto layout */
-
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    padding: 0px
-    gap: 32px
+    padding: 0
+    gap: rem(32)
 
-    /* Inside auto layout */
     flex: none
     order: 1
     flex-grow: 0
 
   &__title
-    /* Auto layout */
-
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    padding: 0px
-    gap: 8px
+    padding: 0
+    gap: rem(8)
 
-    /* Inside auto layout */
     flex: none
     order: 0
     flex-grow: 0
+
+    width: rem(380)
 
     & > h1, & > h2
       margin: 0
 
     & > h1
-      font-family: 'Poppins'
       font-style: normal
       font-weight: 600
-      font-size: 20px
-      line-height: 125%
-      /* or 25px */
+      font-size: rem(20)
+      line-height: rem(25)
 
       text-align: center
 
-      /* white */
-      color: #FFFFFF
+      color: $mainColor
 
-
-      /* Inside auto layout */
       flex: none
       order: 0
       align-self: stretch
       flex-grow: 0
 
     & > h2
-      font-family: 'Poppins'
       font-style: normal
       font-weight: 400
-      font-size: 16px
-      line-height: 125%
-      /* or 20px */
+      font-size: rem(16)
+      line-height: rem(20)
 
       text-align: center
 
-      /* white */
-      color: #FFFFFF
+      color: $mainColor
 
       opacity: 0.5
 
@@ -81,246 +68,137 @@
       align-self: stretch
       flex-grow: 0
   
-  & .btn
-    /* Auto layout */
-
-    display: flex
-    flex-direction: row
-    justify-content: center
-    align-items: center
-    padding: 12px 30px
-    gap: 10px
-
-    width: 185px
-    height: 48px
-
-    /* 1 */
-
-    background: #7B46E8
-
-    font-family: 'Poppins'
-    font-style: normal
-    font-weight: 500
-    font-size: 16px
-    line-height: 24px
-    /* identical to box height */
-
-
-    /* white */
-    color: #FFFFFF
 
 // Tablet
-@media screen and (min-width: $tablet)
+@media screen and (min-width: $mobile)
   .block-1
     display: flex
     flex-direction: column
-    gap: 49.73px
+    gap: rem(49.73)
     align-items: center
 
     &__content
-      /* Auto layout */
       display: flex
       flex-direction: column
       align-items: center
-      padding: 0px
-      gap: 50px
-
-      /* Inside auto layout */
+      padding: 0
+      gap: rem(50)
 
       flex: none
       order: 1
-      align-self: stretch
       flex-grow: 0
     
     &__title
-      /* Auto layout */
       display: flex
       flex-direction: column
       align-items: center
-      padding: 0px
-      gap: 20px
+      padding: 0
+      gap: rem(20)
 
-
-      /* Inside auto layout */
       flex: none
       order: 0
       align-self: stretch
       flex-grow: 0
 
+      width: rem(642)
+
       & > h1, & > h2
         margin: 0
 
       & > h1
-        font-family: 'Poppins'
         font-style: normal
         font-weight: 600
-        font-size: 36px
-        line-height: 54px
+        font-size: rem(36)
+        line-height: rem(54)
         text-align: center
 
-        /* white */
-        color: #FFFFFF
+        color: $mainColor
 
-        /* Inside auto layout */
         flex: none
         order: 0
         align-self: stretch
         flex-grow: 0
 
       & > h2
-        font-family: 'Poppins'
         font-style: normal
         font-weight: 400
-        font-size: 20px
-        line-height: 125%
-        /* or 25px */
+        font-size: rem(20)
+        line-height: rem(25)
 
         text-align: center
 
-        /* white */
-        color: #FFFFFF
+        color: $mainColor
 
         opacity: 0.5
 
-        /* Inside auto layout */
         flex: none
         order: 1
         align-self: stretch
         flex-grow: 0
 
-    & .btn
-      /* Auto layout */
-
-      display: flex
-      flex-direction: row
-      justify-content: center
-      align-items: center
-      padding: 15px 30px
-      gap: 10px
-
-      width: 285px
-      height: 60px
-
-      /* 1 */
-
-      background: #7B46E8
-
-      font-family: 'Poppins'
-      font-style: normal
-      font-weight: 500
-      font-size: 20px
-      line-height: 30px
-      /* identical to box height */
-
-
-      /* white */
-
-      color: #FFFFFF
 
 // Desktop
 @media screen and (min-width: $pc)
   .block-1
-    /* Auto layout */
     display: flex
     flex-direction: row-reverse
     align-items: center
     justify-content: center
-    padding: 0px
-    gap: 16px
+    padding: 0
+    gap: rem(16)
 
     &__content
-      /* Auto layout */
       display: flex
       flex-direction: column
       justify-content: center
       align-items: flex-start
-      padding: 0px
-      gap: 50px
+      padding: 0
+      gap: rem(50)
 
-      width: 704px
+      width: rem(704)
 
     &__title
-      /* Auto layout */
       display: flex
       flex-direction: column
       align-items: flex-start
-      padding: 0px
-      gap: 20px
-      /* Inside auto layout */
+      padding: 0
+      gap: rem(20)
 
       flex: none
       order: 0
       align-self: stretch
       flex-grow: 0
+
+      width: rem(705)
 
       & > h1, & > h2
         margin: 0
         text-align: left
 
       & > h1
-        font-family: 'Poppins'
         font-style: normal
         font-weight: 600
-        font-size: 36px
-        line-height: 54px
+        font-size: rem(36)
+        line-height: rem(54)
 
-        /* white */
-
-        color: #FFFFFF
-
-
-        /* Inside auto layout */
+        color: $mainColor
 
         flex: none
         order: 0
         flex-grow: 0
 
       & > h2
-        font-family: 'Poppins'
         font-style: normal
         font-weight: 400
-        font-size: 22px
-        line-height: 125%
-        /* or 28px */
+        font-size: rem(22)
+        line-height: rem(28)
 
-
-        /* white */
-
-        color: #FFFFFF
+        color: $mainColor
 
         opacity: 0.5
-
-        /* Inside auto layout */
 
         flex: none
         order: 1
         flex-grow: 0
-    
-    & .btn
-      /* Auto layout */
 
-      display: flex
-      flex-direction: row
-      justify-content: center
-      align-items: center
-      padding: 15px 30px
-      gap: 10px
-
-      width: 285px
-      height: 60px
-
-      /* 1 */
-
-      background: #7B46E8
-
-      font-family: 'Poppins'
-      font-style: normal
-      font-weight: 500
-      font-size: 20px
-      line-height: 30px
-      /* identical to box height */
-
-
-      /* white */
-
-      color: #FFFFFF
+        width: rem(612)

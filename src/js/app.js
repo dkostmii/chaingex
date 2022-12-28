@@ -218,10 +218,8 @@ import * as flsScroll from "./files/scroll/scroll.js";
 // ========================================================================================================================================================================================================================================================
 /* Подключаем файлы со своим кодом */
 import { 
-	findCurrency,
 	toggleCurrencies,
 	toggleMenu,
-	enableSearch,
 	changeSellBuyToExchangeRedirect,
 	autoCloseMenu,
 } from "./files/script.js";
@@ -239,10 +237,8 @@ import { exchangerPageLoad } from './files/exchanger/page-load.js';
 import AOS from 'aos';
 
 Object.assign(window, {
-	findCurrency,
 	toggleCurrencies,
 	toggleMenu,
-	enableSearch,
 });
 
 const currentPage = document.body.dataset.page;

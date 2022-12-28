@@ -16,12 +16,12 @@
 							<div class="bitcoin btc__wrapper">
 								<img class="btc" src="@img/crypto-icons/BTC.svg" title="BTC" />
 							</div>
-							<div class="eth altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/ETH.svg" title="ETH" /></div>
-							<div class="usdc altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/USDC.svg" title="USDC" /></div>
-							<div class="xrp altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/XRP.svg" title="XRP" /></div>
-							<div class="uni altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/UNI.svg" title="UNI" /></div>
-							<div class="doge altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/DOGE.svg" title="DOGE" /></div>
-							<div class="usdt altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/USDT.svg" title="USDT" /></div>
+							<div class="eth altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/ETH.svg" alt="Ethereum (ETH)" /></div>
+							<div class="usdc altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/USDC.svg" alt="USD Coin (USDC)" /></div>
+							<div class="xrp altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/XRP.svg" alt="Ripple (XRP)" /></div>
+							<div class="uni altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/UNI.svg" alt="Uniswap (UNI)" /></div>
+							<div class="doge altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/DOGE.svg" alt="Dogecoin (DOGE)" /></div>
+							<div class="usdt altcoin__wrapper"><img class="altcoin" src="@img/crypto-icons/USDT.svg" alt="Tether (USDT)" /></div>
 						</div>
 					</div>
 					<div class="block-1__content">
@@ -29,269 +29,45 @@
 							<h1>Buy bitcoins and cryptocurrencies instantly and securely!</h1>
 							<h2>Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.</h2>
 						</div>
-						<button class="btn">Change crypto</button>
-						<div class="support-block">
-							<a href="https://t.me/cryptoservice_support" class="support__button"><img src="img/support.svg" alt="Support"></a>
-						</div>
+						<button class="button block-1__cta">Change crypto</button>
 					</div>
 				</div>
+            <div class="block-2__desktop">
+               <div class="block-2__item" id="step-1">
+                  <img src="@img/block-2/bitcoin.png" />
+                  <label>Choose crypto for change</label>
+               </div>
+               <span class="block-2__separator"></span>
+               <div class="block-2__item" id="step-2">
+                  <img src="@img/block-2/fingerprint.png" />
+                  <label>entering data exchange</label>
+               </div>
+               <span class="block-2__separator"></span>
+               <div class="block-2__item" id="step-3">
+                  <img src="@img/block-2/shield.png" />
+                  <label>secure exchange cryptocurrencies</label>
+               </div>
+            </div>
+            <div class="block-2">
+               <div class="block-2__line">
+                  <div class="block-2__item" id="step-1">
+                     <img src="@img/block-2/bitcoin.png" />
+                     <label>Choose crypto for change</label>
+                  </div>
+                  <span class="block-2__separator"></span>
+                  <div class="block-2__item" id="step-2">
+                     <img src="@img/block-2/fingerprint.png" />
+                     <label>entering data exchange</label>
+                  </div>
+               </div>
+               <div class="block-2__item" id="step-3">
+                  <img src="@img/block-2/shield.png" />
+                  <label>secure exchange cryptocurrencies</label>
+               </div>
+            </div>    
 			</section>
-			<section class="page__popular-currencies popular-currencies" id="section-currencies">
-				<div class="popular-currencies__container">
-					<div class="popular-currencies__top">
-						<h2 class="popular-currencies__title title">Popular currencies</h2>
-						<span class="search-icon">
-							<input class="popular-currencies__search" type="text" placeholder="Search cryptocurrency"
-							onkeyup="findCurrency(event)">
-							<button class="button__search button" onclick="enableSearch()"><img src="img/currencies/glass.svg" alt="Support"></button>
-						</span>
-					</div>
-					<div class="popular-currencies__colum-header colum">
-						<div class="colum__cryptocurrency-header cryptocurrency">Cryptocurrency</div>
-						<div class="colum__price-header">Price | USDT</div>
-						<div class="colum__actions-header">Actions</div>
-					</div>
-					<div class="popular-currencies__colum colum">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/bitcoin.png" alt="Bitcoin">
-							<div class="cryptocurrency__name">Bitcoin</div>
-							<div class="cryptocurrency__short">BTC</div>
-						</div>
-						<div class="colum__price" id="bitcoin"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/etherium.png" alt="Etherium">
-							<div class="cryptocurrency__name">Etherium</div>
-							<div class="cryptocurrency__short">ETH</div>
-						</div>
-						<div class="colum__price" id="ethereum"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/binance-coin.png" alt="Binance coin">
-							<div class="cryptocurrency__name">Binance coin</div>
-							<div class="cryptocurrency__short">BNB</div>
-						</div>
-						<div class="colum__price" id="binancecoin"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/solana.png" alt="Solana">
-							<div class="cryptocurrency__name">Solana</div>
-							<div class="cryptocurrency__short">SOL</div>
-						</div>
-						<div class="colum__price" id="solana"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/atomic-token.png" alt="Atom">
-							<div class="cryptocurrency__name">Atom</div>
-							<div class="cryptocurrency__short">ATOM</div>
-						</div>
-						<div class="colum__price" id="atomic-token"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/terra-luna.png" alt="Terra luna">
-							<div class="cryptocurrency__name">Terrra luna</div>
-							<div class="cryptocurrency__short">LUNC</div>
-						</div>
-						<div class="colum__price" id="terra-luna"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/pocladot.png" alt="Polkadot">
-							<div class="cryptocurrency__name">Polkadot</div>
-							<div class="cryptocurrency__short">DOT</div>
-						</div>
-						<div class="colum__price" id="polkadot"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/matic-token.svg" alt="Matic">
-							<div class="cryptocurrency__name">Matic</div>
-							<div class="cryptocurrency__short">MATIC</div>
-						</div>
-						<div class="colum__price" id="matic-network"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/near.png" alt="Near">
-							<div class="cryptocurrency__name">Near</div>
-							<div class="cryptocurrency__short">NEAR</div>
-						</div>
-						<div class="colum__price" id="near"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/cardano.svg" alt="Cardano">
-							<div class="cryptocurrency__name">Cardano</div>
-							<div class="cryptocurrency__short">ADA</div>
-						</div>
-						<div class="colum__price" id="cardano"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/etherium-classic.svg" alt="Ethereum Classic">
-							<div class="cryptocurrency__name">Ethereum Classic</div>
-							<div class="cryptocurrency__short">ETC</div>
-						</div>
-						<div class="colum__price" id="ethereum-classic"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/tronix.svg" alt="Tronix">
-							<div class="cryptocurrency__name">Tronix</div>
-							<div class="cryptocurrency__short">TRX</div>
-						</div>
-						<div class="colum__price" id="1tronic"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/doge-token.svg" alt="Doge Token">
-							<div class="cryptocurrency__name">Doge Token</div>
-							<div class="cryptocurrency__short">DOGE</div>
-						</div>
-						<div class="colum__price" id="doge-token"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/litentry.png" alt="Litentry">
-							<div class="cryptocurrency__name">Litentry</div>
-							<div class="cryptocurrency__short">LIT</div>
-						</div>
-						<div class="colum__price" id="litentry"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/trust.png"
-								alt="Trust Wallet Token">
-							<div class="cryptocurrency__name">Trust Wallet Token</div>
-							<div class="cryptocurrency__short">TWT</div>
-						</div>
-						<div class="colum__price" id="trust-wallet-token"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/shiba.png" alt="Shiba Inu">
-							<div class="cryptocurrency__name">Shiba Inu</div>
-							<div class="cryptocurrency__short">SHIB</div>
-						</div>
-						<div class="colum__price" id="shiba-inu"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/avalance.svg" alt="Avalanche">
-							<div class="cryptocurrency__name">Avalanche</div>
-							<div class="cryptocurrency__short">AVAX</div>
-						</div>
-						<div class="colum__price" id="avalanche-2"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__colum colum colum__hidden">
-						<div class="cryptocurrency__item">
-							<img class="cryptocurrency__icon" src="../img/currencies/pancake-swap.png" alt="Pancake Swap">
-							<div class="cryptocurrency__name">Pancake Swap</div>
-							<div class="cryptocurrency__short">CAKE</div>
-						</div>
-						<div class="colum__price" id="pancakeswap-token"></div>
-						<div class="colum__actions">
-							<a href="" class="button__change"></a>
-							<a href="" class="button__sell">Sell</a>
-							<a href="" class="button__buy">Buy</a>
-						</div>
-					</div>
-					<div class="popular-currencies__action">
-						<button class="popular-currencies__button button" onclick="toggleCurrencies()">See all cryptocurrencies</button>
-					</div>
-				</div>
-			</section>
-			<section class="features">
+			@@include('html/_popular-currencies.html', {})
+			<section class="features" id="section-features">
             <div class="features__container">
                <div class="features__content">
                   <div class="features__block-text block-text">
@@ -327,7 +103,7 @@
                </div>
             </div>
          </section>
-         <section class="guarantees">
+         <section class="guarantees" id="section-guarantees">
             <div class="guarantees__container">
                <div class="guarantees__image">
                   <img src="@img/guarantees/guarantees.svg" alt="lock">
@@ -345,7 +121,7 @@
                </div>
             </div>
          </section>
-         <section class="faq">
+         <section class="faq" id="section-faq">
             <div class="faq__container">
                <div class="faq__content">
                   <div class="faq__block-text block-text">

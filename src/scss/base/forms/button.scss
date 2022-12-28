@@ -1,71 +1,205 @@
-//<BUTTONS (a.btn+tab)>
-// Снипет (HTML): btn
-.main-block__button{
-	margin: 0 0 rem(17.5) 0;
-}
-
-.support__button{
-	display: inline-flex;
-	padding: rem(19);
-	background-color: $purpleColor;
-	border-radius: 50%;
-	position: fixed;
-
-	@media (any-hover: hover) {
-		&:hover {
-			background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;;
-		}
-
-		&:active {
-			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-		}
-	}
-	@media (any-hover: target) {
-		&:target {
-			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-		}
-	}
-}
-
 .button {
+	&__sell, &__change, &__buy {
+		height: rem(40);
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		background-color: transparent;
+		border: 1px solid #202E51;
+		font-weight: 300;
+		font-size: rem(16);
+		line-height: rem(24);
+
+		color: $mainColor;
+		padding: rem(8) rem(16);
+
+		&:hover, &:active, &:target {
+			border-color: transparent;
+		}
+	}
+
 	&__change {
-		padding: rem(16) rem(20);
-		background: #0F0D21;
+		&::after {
+			 content: "Change";
+			 font-weight: 300;
+		}
+
 		@media (any-hover: hover) {
 			&:hover {
-				background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-				color: #fff;
+				&::after {
+					color: $mainColor;
+				}
 			}
+			&:hover {
+				background-color: #8AC44B;
+			}
+		}
+
+		&:target, &:active {
+			background-color: #8AC44B;
+		}
+  }
+
+	&__change {
+		@media screen and (max-width: $laptop)  {
+			&::after {
+				content: "";
+				width: rem(32);
+				height: rem(32);
+				background-image: url('@img/change.svg');
+				background-size: rem(32) rem(32);
+			}
+		}
+
+		@media screen and (max-width: $mobile)  {
+			&::after {
+				content: "";
+				width: rem(24);
+				height: rem(24);
+				background-image: url('@img/change.svg');
+				background-size: rem(24) rem(24);
+			}
+		}
+	}
+
+	@media screen and (min-width: $mobile) {
+		&__sell, &__change, &__buy {
+			height: rem(48);
+			font-size: rem(22);
+			line-height: rem(33);
+			padding: rem(8) rem(32);
+		}
+	}
+
+	@media screen and (min-width: $laptop) {
+		&__sell, &__change, &__buy {
+			height: rem(60);
+			font-size: rem(20);
+			line-height: rem(30);
+			padding: rem(15) rem(38);
 		}
 	}
 
 	&__sell {
-		font-weight: 400;
-		color: #676673;
-		padding: rem(16) rem(20);
-		background: #0F0D21;
 		@media (any-hover: hover) {
 			&:hover {
-				background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-				color: #fff;
+				background: #F04438;
+				color: $mainColor;
 			}
+		}
+
+		&:target, &:active {
+				background: #F04438;
+				color: $mainColor;
 		}
 	}
 
 	&__buy {
-		font-weight: 400;
-		color: #676673;
-		padding: rem(16) rem(20);
-		background: #0F0D21;
 		@media (any-hover: hover) {
 			&:hover {
-				background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-				color: #fff;
+				background: #8AC44B;
+				color: $mainColor;
 			}
+		}
+
+		&:target, &:active {
+				background: #8AC44B;
+				color: $mainColor;
+		}
+	}
+
+	&.header__cta, &.header__cta-desktop {
+		padding: 0;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		font-weight: 500;
+	}
+
+	&.header__cta {
+		font-size: rem(16);
+		line-height: rem(24);
+		width: rem(125);
+		height: rem(48);
+
+		@media screen and (min-width: 834px) {
+			width: rem(185);
+			height: rem(44);
+		}
+	}
+
+	&.header__cta-desktop {
+		font-size: rem(18);
+		line-height: rem(27);
+		width: rem(197);
+		height: rem(47);
+	}
+
+	&.block-1__cta {
+		/* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: rem(12) rem(30);
+
+    width: rem(185);
+    height: rem(48);
+
+    background: $purpleColor;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: rem(16);
+    line-height: rem(24);
+
+
+    color: $mainColor;
+
+		@media screen and (min-width: $tablet) {
+			padding: rem(15) rem(30);
+			width: rem(285);
+			height: rem(60);
+			font-size: rem(20);
+			line-height: rem(30);
+		}
+	}
+
+	&.popular-currencies__button {
+		background-color: transparent;
+	
+		border: 1px solid $purpleColor;
+		padding: rem(12) rem(32);
+		font-size: rem(16);
+		line-height: rem(24);
+		font-weight: 500;
+		opacity: 0.7;
+	
+		@media screen and (min-width: $tablet) {
+			font-size: rem(20);
+			line-height: rem(30);
+		}
+	
+		@media screen and (min-width: $laptop) {
+			padding: rem(15) rem(30);
+		}
+	
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: transparent;
+				opacity: 1;
+			}
+		}
+	
+		&:target, &:active {
+			background: $purpleColor;
+			opacity: 1;
 		}
 	}
 }
-
 
 .button {
 	display: inline-flex;
@@ -81,15 +215,10 @@
 		&:hover {
 			background: #643ad7;
 		}
-
-		&:active {
-			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-		}
 	}
-	@media (any-hover: target) {
-		&:target {
-			background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-		}
+
+	&:active, &:target {
+		background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
 	}
 
 	&._fw {

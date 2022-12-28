@@ -3,450 +3,146 @@
    padding-top: rem(140);
 }
 
-.support-block{
-   position: relative;
+.block-2 {
+   @media screen and (min-width: $pc) {
+      display: none;
+   }
+   
+   margin: rem(50) auto;
+
    display: flex;
-   justify-content: end;
-}
+   flex-direction: column;
+   align-items: center;
+   padding: 0;
+   gap: rem(32);
 
-
-//====================================================================================================
-
-.page {
-   &__popular-currencies {
-   }
-}
-
-@media screen and (min-width: $mobile) {
-   .button {
-      &__change {
-         &::after {
-            content: "Change";
-            font-weight: 400;
-            color: #676673;
-         }
-
-         &:hover {
-            &::after {
-               color: #fff;
-            }
-         }
-      }
-
-      &__search {
-         display: none;
-      }
-   }
-}
-
-@media screen and (max-width: $mobileSmall) {
-   .popular-currencies__button {
-      padding: rem(16) rem(19);
-   }
-}
-
-@media screen and (max-width: $mobile) {
-   .colum__actions > a[class^="button"] {
-      padding: rem(12);
-      font-size: rem(14);
-      line-height: rem(19.6);
-   }
-
-   .button {
-      &__change {
-         position: relative;
-         width: rem(44);
-         height: rem(44);
-
-         &::after {
-            content: "";
-            position: absolute;
-            width: rem(24);
-            height: rem(24);
-            left: rem(10);
-            top: rem(10);
-            background-image: url('@img/change.svg');
-         }
-      }
-
-      &__search {
-         display: inline-flex;
-         padding: rem(17);
-         border-radius: 50%;
-         background: rgba(15, 13, 33, 1);
-
-         &:not(:hover):not(:active) * {
-            opacity: 0.4;
-         }
-
-         @media (any-hover: target) and (any-hover: hover) {
-            &:target {
-               background: rgba(110, 64, 242, 1);
-            }
-            &:active {
-               background: rgba(110, 64, 242, 1);
-            }
-         }
-      }
-   }
-}
-
-
-.search-icon {
-   position: relative;
-
-   &::after {
-      position: absolute;
-      content: "";
-      width: rem(57);
-      height: rem(57);
-      background-image: url('@img/currencies/glass-border.svg');
-      right: 0;
-      top: 0;
-      border-left: 1px solid $purpleColor;
-      cursor: pointer;
-      transition: all 0.2s ease;
-   }
-
-   &:hover {
-      &::after {
-         opacity: 0.7;
-         transition: all 0.2s ease;
-      }
-   }
-}
-
-
-
-.popular-currencies {
-   &__container {
-      padding-top: rem(100);
-   }
-
-   @media screen and (min-width: $mobileSmall) and (max-width: $mobile) {
-      &__container {
-         padding-top: rem(120);
-      }
-   }
-
-   @media screen and (min-width: $mobile) and (max-width: 1300px) {
-      &__container {
-         padding-top: rem(240);
-      }
-   }
-
-   @media screen and (max-width: 360px) {
-      &__container {
-         padding-top: rem(32)
-      }      
-   }
-
-   &__top {
+   &__line {
       display: flex;
-      justify-content: space-between;
+      flex-direction: row;
       align-items: center;
-      margin-bottom: rem(31);
-   }
+      padding: 0;
+      gap: rem(79);
+      width: rem(741);
 
-   &__title {
-   }
-
-   &__search {
-      display: flex;
-      justify-content: space-between;
-      padding-top: rem(16);
-      padding-bottom: rem(16);
-      padding-left: rem(20);
-      width: 390px;
-      height: rem(57);
-      background: #0F0D21;
-      color: #FFF;
-      font-size: rem(18);
-   }
-
-   @media screen and (max-width: $mobile) {
-      .search-icon {
-         &::after {
-            display: none;
-         }
-
-         &__mobile-active {
-            &::after {
-               display: block;
-            }
-         }
-      }
-      &__search {
-         display: none;
-      }
-
-      &__title {
-         font-size: rem(24);
-      }
-   }
-
-   &__colum {
-      display: grid;
-      align-items: center;
-      padding: rem(11) 0;
-      gap: 24px;
-
-      grid-template-columns: 1fr 12rem 22rem;
-   }
-
-   &__colum-header {
-      display: grid;
-      padding: rem(27) 0;
-      color: $greyColor;
-      gap: 24px;
-
-      grid-template-columns: 1fr 12rem 22rem;
-   }
-
-   @media screen and (max-width: $mobile) {
-      &__colum {
-         gap: 10px;
-         grid-template-columns: 1fr 1fr;
-      }
-
-      &__colum-header {
-         gap: 10px;
-         grid-template-columns: 1fr 1fr;
-      }
-   }
-
-   &__action{
-      margin-top: rem(50);
-      display: flex;
-      justify-content: center;
-   }
-
-   &__button {
-      @media (any-hover: hover) {
-         &:hover {
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0.2),
-            rgba(255, 255, 255, 0.2)), linear-gradient(0deg, #6E40F2, #6E40F2);
-         }
-
-         &:active {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #6E40F2, #6E40F2);
-         }
-      }
-   }
-}
-
-.colum {
-   position: relative;
-
-   &__cryptocurrency__item {
-      display: flex;
-      align-items: center;
-   }
-
-   &__price-header {
-      text-align: right;
-   }
-
-   &__actions-header {
-      text-align: right;
-   }
-
-   /* desktop price label */
-   &__price {
-      text-align: right;
-
-      &::after {
-         content: " USDT";
-         color: $greyColor;
-      }
-   }
-
-   &__actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: rem(24);
-   }
-
-   &__hidden {
-      display: none;
-   }
-
-   @media screen and (max-width: $mobile) {
-      /* desktop price label */
-      &__price {
-         display: none;
-      }
-
-      &__price-header {
-         display: none;
-      }
-
-      &__actions {
-         gap: 16px;
-      }
-   }
-}
-
-.button {
-   &__change {
-      &:hover {
-         background: rgba(110, 64, 242, 1);
-         color: #fff;
-      }
-
-      &:active {
-         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #6E40F2, #6E40F2);
-         color: #fff;
-      }
-
-      @media (any-hover: target) {
-         &:target {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #6E40F2, #6E40F2);
-            color: #fff;
-         }
-      }
-   }
-
-   &__sell {
-      &:hover {
-         background: rgba(246, 70, 93, 1);
-         color: #fff;
-      }
-
-      &:active {
-         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #F6465D, #F6465D);
-         color: #fff;
-      }
-
-      @media (any-hover: target) {
-         &:target {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #F6465D, #F6465D);
-            color: #fff;
-         }
-      }
-   }
-
-   &__buy {
-      &:hover {
-         background: rgba(32, 188, 35, 1);
-         color: #fff;
-      }
-
-      &:active {
-         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #20BC23, #20BC23);
-         color: #fff;
-      }
-
-      @media (any-hover: target) {
-         &:target {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #20BC23, #20BC23);
-            color: #fff;
-         }
-      }
-   }
-}
-
-.cryptocurrency {
-   &__item {
-      position: relative;
-      display: flex;
-      align-items: center;
-
-      & > picture {
-         position: absolute;
-      }
-   }
-
-   &__icon {
-      position: absolute;
-   }
-
-   &__name {
-      margin: 0 15px 0 60px;
-   }
-
-   &__price {
-      /* mobile price label */
-      display: none;
-      color: $greyColor;
-
-      font-size: rem(14);
-
-      &::after {
-         content: ' USDT';
-         color: $greyColor;
-      }
-   }
-
-   &__short {
-      color: $greyColor;
-   }
-
-   @media screen and (max-width: $mobile) {
-      &__name {
-         font-size: rem(16);
-      }
-
-      &__short {
-         display: none;
-      }
       
-      /* mobile price label */
-      &__price {
-         display: block;
-         margin: 0 15px 0 60px;
+   }
+
+   &__item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+      gap: rem(15);
+
+      > img {
+         width: rem(70);
+         height: rem(70);
+      }
+
+      > label {
+         font-style: normal;
+         font-weight: 400;
+         font-size: rem(24);
+         line-height: rem(30);
+         color: $mainColor;
+         opacity: 0.5;
+
+         @media screen and (max-width: $pc) {
+            font-size: rem(22);
+            line-height: rem(28);
+         }
+      }
+   }
+
+   &__separator {
+      width: rem(100);
+      height: rem(1);
+      background-image: linear-gradient(90.17deg, #7B46E8 -1.15%, rgba(123, 70, 232, 0) 87.83%);
+   }
+
+   & > #step-1 > label, &__line > #step-1 > label {
+      width: rem(162);
+   }
+
+   & > #step-2 > label, &__line > #step-2 > label {
+      width: rem(151);
+   }
+
+   & > #step-3 > label, &__line > #step-3 > label {
+      width: rem(190);
+   }
+
+   @media screen and (max-width: $mobile) {
+      gap: rem(16);
+      margin: rem(48) auto;
+
+      &__line {
+         width: rem(367);
+         gap: rem(16);
       }
 
       &__item {
-         flex-direction: column;
-         align-items: flex-start;
-         justify-content: center;
-         gap: rem(2);
+         > img {
+            width: rem(45);
+            height: rem(45);
+         }
+
+         > label {
+            font-size: rem(14);
+            line-height: rem(18);
+         }
+      }
+
+      &__separator {
+         width: rem(30);
+      }
+
+      & > #step-1 > label, &__line > #step-1 > label {
+         width: rem(103);
+      }
+
+      & > #step-2 > label, &__line > #step-2 > label {
+         width: rem(96);
+      }
+
+      & > #step-3 > label, &__line > #step-3 > label {
+         width: rem(121);
       }
    }
 }
 
-picture > .cryptocurrency__icon {
-   position: static;
-}
-
-@media screen and (max-width: $mobile) {
-   /* Display support button in header instead */
-   .support-block {
+.block-2__desktop {
+   @media screen and (max-width: $pc) {
       display: none;
    }
 
-   .popular-currencies {
-      &__search {
-         width: 100%;
-      }
+   margin: rem(70) auto;
+   width: rem(1231);
+
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding: 0;
+   gap: rem(57);
+
+   flex-wrap: wrap;
+
+   > #step-1 > label {
+      width: rem(176);
    }
-   
-   .search-icon {
-      &__mobile-active {
-         width: 100%;
-      }
+
+   > #step-2 > label {
+      width: rem(165);
+   }
+
+   > #step-3 > label {
+      width: rem(207);
    }
 }
 
-@media screen and (min-width: $mobileSmall) and (max-width: $mobile) {
-   .search-icon {
-      &__mobile-active {
-         max-width: $mobileSmall;
-         margin: auto;
-      }
-   }
-}
+//====================================================================================================
 
 .features {
-
    &__container {
       padding: rem(100) rem(15);
       display: flex;
@@ -702,3 +398,5 @@ picture > .cryptocurrency__icon {
       opacity: 0.5;
    }
 }
+
+@import 'popular-currencies';
