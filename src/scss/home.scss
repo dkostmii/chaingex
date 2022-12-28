@@ -144,7 +144,7 @@
 
 .features {
    &__container {
-      padding-top: rem(100);
+      padding: rem(100) rem(15);
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -154,7 +154,7 @@
    &__content {
       display: flex;
       flex: 0 1 52%;
-      padding: 0 rem(52);
+      padding-right: rem(52);
    }
 
    &__block-text {}
@@ -169,6 +169,7 @@
    &__image {
       display: flex;
       flex: 0 1 48%;
+      justify-content: end;
       position: relative;
 
       img {
@@ -178,7 +179,7 @@
 
    @media screen and (max-width: $laptop) {
       &__container {
-         padding-top: rem(80);
+         padding: rem(80) rem(15);
       }
    
       &__content {
@@ -186,8 +187,13 @@
          margin: 0 auto;
       }
    
+      &__block-text {
+         display: grid;
+         grid-template-rows: auto;
+      }
+   
       &__items {
-         gap: rem(10);
+         gap: rem(90);
       }
       &__image {
          display: none;
@@ -195,7 +201,15 @@
    }
    @media screen and (max-width: $mobile) {
       &__container {
-         padding-top: rem(56);
+         padding: rem(56) rem(15);
+      }
+      &__items {
+         gap: rem(24);
+      }
+   }
+   @media screen and (max-width: $mobileSmall) {
+      &__items {
+         gap: rem(10);
       }
    }
 }
@@ -220,7 +234,8 @@
       }
    
       &__text {
-         padding: 0 rem(60);
+         text-align: center;
+         line-height: math.div(30, $fontSizeValue);
       }
    }
    @media screen and (max-width: $mobile) {
@@ -231,7 +246,8 @@
       }
    
       &__text {
-         padding: 0;
+         font-size: rem(16);
+         line-height: math.div(20, 16);
       }
    }
 }
@@ -240,7 +256,7 @@
    background-color: #121B33;
 
    &__container {
-      padding-top: rem(50);
+      padding: rem(50) rem(15);
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -260,7 +276,7 @@
 
    @media screen and (max-width: $laptop) {
       &__container {
-         padding-top: rem(47);
+         padding: rem(47) rem(15);
          flex-direction: column;
       }
 
@@ -280,7 +296,7 @@
    }
    @media screen and (max-width: $mobile) {
       &__container {
-            padding-top: rem(40);
+         padding: rem(40) rem(15);
       }
 
       &__image img {
@@ -292,6 +308,94 @@
       &__image img {
          max-width: rem(178);
       }
+   }
+}
+
+.faq {
+   &__container {
+      padding-top: rem(100);
+      display: flex;
+      flex-wrap: wrap;
+   }
+   &__content {
+      display: flex;
+      flex: 0 1 42%;
+      padding-right: rem(60);
+   }
+   &__block-text {
+   }
+   &__spollers {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 58%;
+   }
+   @media screen and (max-width: $laptop) {
+      &__container {
+         padding-top: rem(80);
+         flex-direction: column;
+      }
+   
+      &__content {
+         padding: 0;
+         margin: 0 auto;
+      }
+   
+      &__block-text {
+      }
+      &__spollers {}
+
+   }
+   @media screen and (max-width: $mobile) {
+      &__container {
+         padding: rem(56) rem(15);
+      }
+   }
+   @media screen and (max-width: $mobileSmall) {
+   }
+
+}
+
+.spollers-faq {
+   &__item {
+      border-bottom: 1px solid #7B46E8;
+      overflow: hidden;
+   }
+   &__title {
+      width: 100%;
+      background-color: transparent;
+      display: block;
+      text-align: left;
+      padding: rem(20) 0;
+      @include adaptiveValue("padding-top", 20, 15);
+      @include adaptiveValue("padding-right", 20, 15);
+      display: flex;
+      line-height: math.div(30, 20);
+      @include adaptiveValue("font-size", 20, 18);
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(60);
+      &::after{
+         content:'';
+         background: url("@img/icons/arrow.svg") center / 100% no-repeat;
+         flex: 0 0 rem(20);
+         height: rem(20);
+         transition: all 0.3s ease 0s;
+      }
+      &._spoller-active {
+         &__title {
+            padding: rem(21) 0;
+         }
+			&::after {
+            background: url("@img/icons/arrow-top.svg") center / 100% no-repeat;
+			}
+		}
+   }
+   &__body {
+      @include adaptiveValue("padding-top", 20, 16);
+      @include adaptiveValue("padding-bottom", 30, 24);
+      @include adaptiveValue("font-size", 18, 16);
+      line-height: math.div(20, 16);
+      opacity: 0.5;
    }
 }
 

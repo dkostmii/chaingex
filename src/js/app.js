@@ -14,7 +14,8 @@
 // Включить/выключить FLS (Full Logging System) (в работе)
 window['FLS'] = true;
 
-import './num/num.js';
+// Enable animation on scroll for .animation-on-scroll elementsS
+import './files/animation-on-scroll.js';
 
 
 // Подключение основного файла стилей

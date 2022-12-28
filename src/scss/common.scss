@@ -19,12 +19,11 @@
 
 .text {
    font-weight: 400;
-   line-height: rem(30);
-   line-height: math.div($fontSizeValue, 30);
+   line-height: math.div(30, $fontSizeValue);
    opacity: 0.5;
 
-   @media screen and (max-width: $tablet) {
-      .text {
+   @media screen and (max-width: $laptop) {
+      & {
          text-align: center;
          font-size: rem(20);
          line-height: math.div(25, 20);
@@ -32,7 +31,7 @@
    }
    
    @media screen and (max-width: $mobile) {
-      .text {
+      & {
          font-size: rem(16);
          line-height: math.div(20, 16);
       }
@@ -52,9 +51,9 @@
 
    &__image {
       display: none;
+      align-items: center;
       margin-bottom: rem(35);
       img {
-         align-items: center;
          max-width: 100%;
       }
    }
@@ -70,7 +69,7 @@
       color: #FFFFFF;
    }
 
-   @media screen and (max-width: 1136px) {
+   @media screen and (max-width: $laptop) {
       &__body {
          margin: 0 auto;
          max-width: rem(565);
@@ -82,10 +81,10 @@
 
       &__image {
          display: flex;
-      }
-
-      &__image img {
-         max-width: none;
+         @include adaptiveValue("width", 769.63, 328);
+         @include adaptiveValue("height", 543, 231.3);
+         img {
+         }
       }
 
       &__button {
@@ -95,24 +94,25 @@
       }
    }
 
-   @media screen and (max-width: 767.98px) {
+   @media screen and (max-width: $mobile) {
       &__body {
          max-width: rem(380);
       }
 
-      &__image img {
-         max-width: rem(236);
+      &__image {
+         img {
+         }
       }
 
       &__button {
          max-width: rem(178);
       }
-
    }
 
-   @media screen and (max-width: 428px) {
-      &__image img {
-         max-width: rem(328);
+   @media screen and (max-width: $mobileSmall) {
+      &__image {
+         img {
+         }
       }
    }
 
