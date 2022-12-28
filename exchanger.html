@@ -41,48 +41,65 @@
 	<!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap&_v=20221227185907" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap&_v=20221228204010" rel="stylesheet">
     -->
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20221227185907">
-
-	<script>
-		window.onload = () => {
-			const preloader = document.querySelector('.preloader');
-
-			document.body.classList.remove('lock-scroll');
-			preloader.classList.remove('show');
-
-			preloader.remove();
-		}
-	</script>
+	<link rel="stylesheet" href="css/style.min.css?_v=20221228204010">
 </head>
 
 <body data-page="Exchanger">
 	<header class="header">
 		<div class="header__container">
 			<a href="index.html" class="header__logo"><img src="img/logo.svg" alt="Change crypto coin"></a>
-			<div class="header__menu menu">
-				<nav class="menu__body">
+			<div class="button-plus-burger">
+				<button class="button header__cta">Change</button>
+				<div class="menu__icons">
+					<button class="icon-menu" onclick="toggleMenu()"><span></span></button>
+				</div>
+			</div>
+			<div class="nav-plus-button hidden">
+				<nav class="menu__body hidden">
 					<ul class="menu__list">
-						<li class="menu__item">
-							<a href="./exchanger.html" class="menu__link">Exchanger</a>
+						<li class="menu__item menu__item__noactive hidden__desktop">
+							<div class="lang-select__mobile__wrapper">
+								<label>Language</label>
+								<div class="lang-select__mobile">
+									<div class="lang-select__mobile__option">US</div>
+									<div class="lang-select__mobile__option">RU</div>
+									<div class="lang-select__mobile__option">NU</div>
+									<div class="lang-select__mobile__option">PL</div>
+								</div>
+							</div>
 						</li>
 						<li class="menu__item">
-							<a href="./index.html#section-currencies" class="menu__link">Popular currencies</a>
+							<a class="menu__link" href="index.html">Home</a>
 						</li>
 						<li class="menu__item">
-							<a href="#contact-info" class="menu__link">Contact information</a>
+							<a class="menu__link" href="index.html#section-currencies">Exchange rate</a>
+						</li>
+						<li class="menu__item">
+							<a class="menu__link" href="index.html#section-features">Features</a>
+						</li>
+						<li class="menu__item">
+							<a class="menu__link" href="index.html#section-guarantees">Guarantees</a>
+						</li>
+						<li class="menu__item">
+							<a class="menu__link" href="index.html#section-faq">FAQ</a>
+						</li>
+						<li class="menu__item hidden__mobile">
+							<div class="lang-select menu__lang-select">
+								<div class="lang-select__current">Eng</div>
+								<div class="lang-select__options">
+									<div class="lang-select__option">Rus</div>
+									<div class="lang-select__option">Nu</div>
+									<div class="lang-select__option">Pl</div>
+								</div>
+							</div>
 						</li>
 					</ul>
 				</nav>
-				<div class="menu__icons">
-					<a href="https://t.me/cryptoservice_support" class="support__button button__icon">
-						<img src="img/support.svg" alt="Support">
-					</a>
-					<button class="icon-menu" onclick="toggleMenu()"><span></span></button>
-				</div>
+				<button class="button header__cta-desktop">Change crypto</button>
 			</div>
 		</div>
 	</header>
@@ -90,12 +107,12 @@
 	<!-- Preloader -->
 	<div class="spinner__wrapper preloader show">
 		<div class="spinner">
-			<div class="btc"><img src="img/spinner/BTC.svg" title="BTC" /></div>
-			<div class="xrp"><img src="img/spinner/XRP.svg" title="XRP" /></div>
-			<div class="doge"><img src="img/spinner/DOGE.svg" title="DOGE" /></div>
-			<div class="usdt"><img src="img/spinner/USDT.svg" title="USDT" /></div>
-			<div class="eth"><img src="img/spinner/ETH.svg" title="ETH" /></div>
-			<div class="usdc"><img src="img/spinner/USDC.svg" title="USDC" /></div>
+			<div class="btc"><img src="img/spinner/BTC.svg" /></div>
+			<div class="xrp"><img src="img/spinner/XRP.svg" /></div>
+			<div class="doge"><img src="img/spinner/DOGE.svg" /></div>
+			<div class="usdt"><img src="img/spinner/USDT.svg" /></div>
+			<div class="eth"><img src="img/spinner/ETH.svg" /></div>
+			<div class="usdc"><img src="img/spinner/USDC.svg" /></div>
 		</div>
 	</div>
 
@@ -204,29 +221,40 @@
 		<div class="footer__container">
 			<div class="footer__main main-footer">
 				<div class="main-footer__info">
-					<a href="" class="main-footer__logo">
+					<a href="index.html" class="main-footer__logo">
 						<img src="img/logo.svg" alt="Logo">
 					</a>
 					<nav class="footer__menu menu-footer">
 						<ul class="menu-footer__list">
 							<li class="menu-footer__item">
-								<a href="./exchanger.html" class="menu-footer__link">Exchanger</a>
+								<a class="menu-footer__link" href="index.html">Home</a>
 							</li>
 							<li class="menu-footer__item">
-								<a href="./index.html#section-currencies" class="menu-footer__link">Popular currencies</a>
+								<a class="menu-footer__link" href="index.html#section-currencies">Exchange rate</a>
 							</li>
 							<li class="menu-footer__item">
-								<a href="#contact-info" class="menu-footer__link">Contact information</a>
+								<a class="menu-footer__link" href="index.html#section-features">Features</a>
+							</li>
+							<li class="menu-footer__item">
+								<a class="menu-footer__link" href="index.html#section-guarantees">Guarantees</a>
+							</li>
+							<li class="menu-footer__item">
+								<a class="menu-footer__link" href="index.html#section-faq">FAQ</a>
 							</li>
 						</ul>
 						<div class="menu-footer__contacts" id="contact-info">
+							<p class="menu-footer__contacts__item">(462) - 539 - 3833</p>
+							<p class="menu-footer__contacts__item">(892) - 459 - 9533</p>
 							<div class="main-footer__social">
 								<div class="social">
-									<a href="https://t.me/cryptoservice_support" class="social__item">
-										<img src="img/footer/01.svg" alt="Telegram">
+									<a class="social__item">
+										<img src="img/footer/instagram.svg" alt="Instagram">
 									</a>
-									<a href="https://wa.me/420721833360" class="social__item">
-										<img src="img/footer/02.svg" alt="WhatsApp">
+									<a class="social__item">
+										<img src="img/footer/facebook.svg" alt="Facebook">
+									</a>
+									<a class="social__item">
+										<img src="img/footer/at.svg" alt="E-mail">
 									</a>
 								</div>
 							</div>
@@ -251,7 +279,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20221227185907"></script>
+	<script src="js/app.min.js?_v=20221228204010"></script>
 </body>
 
 </html>

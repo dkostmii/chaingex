@@ -5891,7 +5891,7 @@
         const model_currency = Currency;
         const requireNonEmptyArray = true;
         function isCurrency(currency) {
-            return "object" === typeof currency && "id" in currency && "string" === typeof currency.id && "name" in currency && "string" === typeof currency.name && "short" in currency && "string" === typeof currency.short && "price" in currency && "number" === typeof currency.price;
+            return "object" === typeof currency && "id" in currency && "string" === typeof currency.id && "name" in currency && "string" === typeof currency.name && "short" in currency && "string" === typeof currency.short && "price" in currency && "number" === typeof currency.price && "change" in currency && "number" === typeof currency.change;
         }
         function isPartialCurrency(currencyPartial) {
             return "object" === typeof currencyPartial && "id" in currencyPartial && "string" === typeof currencyPartial.id && "name" in currencyPartial && "string" === typeof currencyPartial.name && "short" in currencyPartial && "string" === typeof currencyPartial.short;
@@ -6115,11 +6115,11 @@
         }
         const symbolsArr = cryptocurrencies.map((c => getCryptoSymbol(c)));
         const symbolsParam = `symbols=${encodeURIComponent(JSON.stringify(symbolsArr))}`;
-        const url = `https://api.binance.com/api/v3/ticker/price?${symbolsParam}`;
+        const tickerUrl = `https://api.binance.com/api/v3/ticker/price?${symbolsParam}`;
+        const changeUrl = `https://api.binance.com/api/v3/ticker/24hr?${symbolsParam}`;
         const settings = {
             async: true,
             scrossDomain: true,
-            url,
             method: "GET",
             headers: {}
         };
@@ -6127,7 +6127,7 @@
             if ("object" !== typeof crypto) throw new TypeError(`Expected crypto to be an object. Got ${typeof crypto}`);
             if (!("id" in crypto)) throw new TypeError("Expected crypto.id to be defined");
             util_throwIfNotAString(crypto.id);
-            const factorObj = currencyFactors.filter((c => c.id === crypto.id))[0];
+            const factorObj = currencyFactors.find((c => c.id === crypto.id));
             if ("object" === typeof factorObj && "factor" in factorObj && "number" === typeof factorObj.factor) {
                 const {factor} = factorObj;
                 if (factor < 0) throw new Error(`Expected factor to be non-negative. Got factor ${factor} for cryptoId ${crypto.id}`);
@@ -6135,28 +6135,102 @@
             }
             return 1;
         }
-        async function loadCryptos() {
+        function isCurrencyPartialArray(cryptos) {
+            return Array.isArray(cryptos) && cryptos.every((c => isPartialCurrency(c)));
+        }
+        function validateCryptosParam(cryptos) {
+            const isDefined = isCurrencyPartialArray(cryptos);
+            const isValid = "undefined" === typeof cryptos || null === cryptos || isCurrencyPartialArray(cryptos);
+            return {
+                isValid,
+                isDefined
+            };
+        }
+        const cryptoPriceValidator = {
+            isValid: response => Array.isArray(response) && response.every((responseDataItem => "object" === typeof responseDataItem && "symbol" in responseDataItem && "price" in responseDataItem && "string" === typeof responseDataItem.symbol && "string" === typeof responseDataItem.price)),
+            notValidMessage: "Expected array of { symbol: string, price: string } objects."
+        };
+        const cryptoPriceChangeValidator = {
+            isValid: response => Array.isArray(response) && response.every((responseDataItem => "object" === typeof responseDataItem && "symbol" in responseDataItem && "priceChange" in responseDataItem && "string" === typeof responseDataItem.symbol && "string" === typeof responseDataItem.priceChange)),
+            notValidMessage: "Expected array of { symbol: string, priceChange: string } objects."
+        };
+        async function fetchPrices(cryptos) {
             return new Promise(((res, rej) => {
-                jquery.ajax(settings).done((response => {
-                    if (!Array.isArray(response) && response.every((data => "symbol" in data && "price" in data && "string" === typeof data.symbol && "string" === typeof data.price))) rej("Expected array of { symbol: string, price: string } objects.");
-                    res(cryptocurrencies.map((crypto => {
-                        const symbolData = response.filter((sd => sd.symbol === getCryptoSymbol(crypto))).map((sd => ({
-                            ...sd,
-                            price: parseFloat(sd.price)
-                        })))[0];
-                        if (!("object" === typeof symbolData && "price" in symbolData && "number" === typeof symbolData.price)) throw new TypeError(`Expected symbolData to be an object and have { price: number } field. Got ${JSON.stringify(symbolData)}`);
+                const {isValid, isDefined} = validateCryptosParam(cryptos);
+                if (!isValid) rej("Expected cryptos to be either null or array of partial currencies.");
+                jquery.ajax({
+                    ...settings,
+                    url: tickerUrl
+                }).done((response => {
+                    if (!cryptoPriceValidator.isValid(response)) rej(cryptoPriceValidator.notValidMessage);
+                    const result = (isDefined ? cryptos : cryptocurrencies).map((crypto => {
+                        const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
                         let {price} = symbolData;
+                        price = parseFloat(price);
                         throwIfNotANumber(price);
-                        price *= findCurrencyFactor(crypto);
-                        throwIfNotANumber(price);
+                        const currencyFactor = findCurrencyFactor(crypto);
+                        throwIfNotANumber(currencyFactor);
+                        price *= currencyFactor;
                         return {
                             ...crypto,
                             price
                         };
-                    })));
+                    }));
+                    res(result);
                 })).fail((xhr => {
-                    rej(`Failed to load cryptocurrencies. Status: ${xhr.status} - ${xhr.statusText}`);
+                    rej(`Failed to fetch cryptocurrency ticker prices. Status: ${xhr.status} - ${xhr.statusText}`);
                 }));
+            }));
+        }
+        async function fetchChange(cryptos) {
+            return new Promise(((res, rej) => {
+                const {isValid, isDefined} = validateCryptosParam(cryptos);
+                if (!isValid) rej("Expected cryptos to be either null or array of partial currencies.");
+                jquery.ajax({
+                    ...settings,
+                    url: changeUrl
+                }).done((response => {
+                    if (!cryptoPriceChangeValidator.isValid(response)) rej(cryptoPriceChangeValidator.notValidMessage);
+                    const result = (isDefined ? cryptos : cryptocurrencies).map((crypto => {
+                        const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
+                        let {priceChange} = symbolData;
+                        priceChange = parseFloat(priceChange);
+                        throwIfNotANumber(priceChange);
+                        return {
+                            ...crypto,
+                            change: priceChange
+                        };
+                    }));
+                    res(result);
+                })).fail((xhr => {
+                    rej(`Failed to fetch change in cryptocurrency prices. Status: ${xhr.status} - ${xhr.statusText}`);
+                }));
+            }));
+        }
+        function combineCurrencies(...cryptosArrays) {
+            if (!(Array.isArray(cryptosArrays) && cryptosArrays.length >= 2)) throw new Error("Expcted cryptosArrays to be array with at least 2 arrays of currencyPartial.");
+            const [firstCryptos, ...restCryptosArrays] = cryptosArrays;
+            if (restCryptosArrays.some((restCryptos => restCryptos.length !== firstCryptos.length))) throw new Error("Expected all cryptosArrays to have same length.");
+            let result = firstCryptos;
+            restCryptosArrays.forEach((restCryptos => {
+                restCryptos.forEach((crypto => {
+                    const resultCryptoIndex = result.findIndex((c => c.id === crypto.id));
+                    if (-1 === resultCryptoIndex) throw new Error(`Crypto with id: ${crypto.id} is missing in one of arrays.`);
+                    result[resultCryptoIndex] = {
+                        ...result[resultCryptoIndex],
+                        ...crypto
+                    };
+                }));
+            }));
+            return result;
+        }
+        async function loadCryptos() {
+            return new Promise((async (res, rej) => {
+                Promise.all([ fetchChange(), fetchPrices() ]).then((cryptosArrays => {
+                    const currencies = combineCurrencies(...cryptosArrays);
+                    throwIfNotArrayOfCurrencies(currencies);
+                    res(currencies);
+                })).catch((err => rej(err)));
             }));
         }
         function preCheck(x) {
@@ -6171,32 +6245,87 @@
             }
         };
         const storage = storageConfig;
-        const script_cryptocurrencies = document.getElementsByClassName("colum__price");
+        const script_cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
         const cIds = cryptocurrencies.map((c => c.id));
         [ ...script_cryptocurrencies ].forEach((cryptoEl => {
-            if (!cIds.includes(cryptoEl.id)) throw new Error(`Unknown cryptocurrency: ${cryptoEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
+            const priceEl = cryptoEl.querySelector(".colum__price");
+            const changeEl = cryptoEl.querySelector(".colum__change");
+            if (!(priceEl instanceof Element)) throw new ElementNotFoundError(".colum__price");
+            if (!(changeEl instanceof Element)) throw new ElementNotFoundError(".colum__change");
+            if (!priceEl.hasAttribute("id")) throw new Error("Missing 'id' attribute in .colum__price element.\nElement contents: " + priceEl.innerHTML);
+            if (!cIds.includes(priceEl.id)) throw new Error(`Unknown cryptocurrency: ${priceEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
         }));
-        (async () => {
-            const cryptos = await loadCryptos();
-            if (!isArrayOfCurrencies(cryptos)) throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${cryptos}`);
-            [ ...script_cryptocurrencies ].forEach((cryptocurrency => {
-                const crypto = cryptos.filter((c => c.id === cryptocurrency.id))[0];
+        function preCheckChange(num) {
+            return num.toFixed(2);
+        }
+        function getSign(num) {
+            return 0 === num ? num : parseInt((num / Math.abs(num)).toFixed(0));
+        }
+        function mapSign(num) {
+            switch (getSign(num)) {
+              case 1:
+                return "+";
+
+              case -1:
+                return "-";
+
+              default:
+                return "";
+            }
+        }
+        function mapSignStyleClass(num) {
+            switch (getSign(num)) {
+              case 1:
+                return "change__positive";
+
+              case -1:
+                return "change__negative";
+
+              default:
+                return "";
+            }
+        }
+        function prependSignLiteral(num) {
+            return `${mapSign(num)}${preCheckChange(num).replace(/-/g, "")}`;
+        }
+        function hideSpinner() {
+            const preloader = document.querySelector(".preloader");
+            document.body.classList.remove("lock-scroll");
+            preloader.classList.remove("show");
+            preloader.remove();
+        }
+        loadCryptos().then((cryptos => {
+            [ ...script_cryptocurrencies ].forEach((cryptoEl => {
+                const priceEl = cryptoEl.querySelector(".colum__price");
+                const changeEl = cryptoEl.querySelector(".colum__change");
+                const crypto = cryptos.find((c => c.id === priceEl.id));
                 util_throwIfNotACurrency(crypto);
                 const priceStr = preCheck(crypto.price);
+                const changeValue = parseFloat(preCheckChange(crypto.change));
+                const changeStr = prependSignLiteral(changeValue);
                 const cryptocurrencyMobileEl = document.createElement("div");
                 cryptocurrencyMobileEl.className = "cryptocurrency__price";
                 cryptocurrencyMobileEl.innerHTML = priceStr;
-                cryptocurrency.previousElementSibling.appendChild(cryptocurrencyMobileEl);
-                cryptocurrency.innerHTML = priceStr;
+                const cryptoNameEl = cryptoEl.querySelector(".cryptocurrency__name");
+                cryptoNameEl.parentElement.removeChild(cryptoNameEl);
+                const cryptoNamePrice = document.createElement("div");
+                cryptoNamePrice.classList.add("cryptocurrency__nameprice");
+                cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
+                const cryptoLeftEl = cryptoEl.querySelector(".cryptocurrency__left");
+                cryptoLeftEl.appendChild(cryptoNamePrice);
+                priceEl.innerHTML = priceStr;
+                changeEl.innerHTML = changeStr;
+                const changeElSignClass = mapSignStyleClass(changeValue);
+                if (changeElSignClass) changeEl.classList.add(changeElSignClass);
             }));
-        })();
+            hideSpinner();
+        })).catch((e => {
+            throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
+        }));
         let isShown = false;
         const hiddenClass = "colum__hidden";
         const currencyElements = Array.from(document.getElementsByClassName(hiddenClass));
         function toggleCurrencies() {
-            const input = document.getElementsByClassName("popular-currencies__search")[0];
-            input.value = "";
-            findCurrency();
             const button = document.getElementsByClassName("popular-currencies__button")[0];
             if (isShown) {
                 currencyElements.forEach((currencyEl => {
@@ -6212,17 +6341,6 @@
                 button.textContent = "Hide all currencies";
             }
         }
-        const searchCache = [];
-        function findCurrency() {
-            const input = document.getElementsByClassName("popular-currencies__search")[0];
-            [ ...searchCache ].forEach((({currencyEl}) => {
-                currencyEl.style.removeProperty("display");
-            }));
-            if ("" === input.value.replace(" ", "")) return;
-            [ ...searchCache ].forEach((({keywords, currencyEl}) => {
-                if (!keywords.includes(input.value.toLowerCase())) currencyEl.style.display = "none"; else currencyEl.style.removeProperty("display");
-            }));
-        }
         function remCheck() {
             const html = document.documentElement;
             const {fontSize} = window.getComputedStyle(html);
@@ -6230,112 +6348,29 @@
         }
         window.addEventListener("load", (() => {
             remCheck();
-            const cryptocurrencyNames = Array.from(document.getElementsByClassName("cryptocurrency__name"));
-            const cryptocurrencyShots = Array.from(document.getElementsByClassName("cryptocurrency__short"));
-            if (cryptocurrencyNames.length !== cryptocurrencyShots.length) throw new Error(`Expected cryptocurrencyNames.length and cryptocurrencyShots.length to be equal. Got cryptocurrencyNames.length = ${cryptocurrenciesNames.length} and cryptocurrencyShots.length = ${cryptocurrencyShots.length}.`);
-            for (let i = 0; i < cryptocurrencyNames.length; i += 1) {
-                let keywords = cryptocurrencyNames[i].innerHTML.toLowerCase();
-                keywords += " ";
-                keywords += cryptocurrencyShots[i].innerHTML.toLowerCase();
-                if (cryptocurrencyNames[i].parentElement.parentElement !== cryptocurrencyShots[i].parentElement.parentElement) throw new Error("Expected cryptocurrencyNames[i] and cryptocurrencyShots[i] to be on same level.");
-                const currencyEl = cryptocurrencyNames[i].parentElement.parentElement;
-                searchCache.push({
-                    keywords,
-                    currencyEl
-                });
-            }
         }));
         let menuState = true;
-        let desktop = false;
-        const menuBodyNav = document.getElementsByClassName("menu__body")[0];
+        const menuBodyNavElements = document.querySelectorAll(".menu__body, .nav-plus-button");
         const iconMenu = document.querySelectorAll(".menu__icons > .icon-menu")[0];
         const header = document.getElementsByClassName("header")[0];
         function enableMenu() {
             menuState = true;
-            if (!desktop) {
-                header.style.position = "fixed";
-                header.style.background = "rgba(2, 0, 21, 1)";
-            }
-            menuBodyNav.style.removeProperty("display");
+            header.classList.add("header__menu-active");
+            [ ...menuBodyNavElements ].forEach((el => el.classList.remove("hidden")));
             iconMenu.classList.add("icon-menu__active");
         }
         function disableMenu() {
             menuState = false;
-            header.style.removeProperty("position");
-            header.style.removeProperty("background");
-            menuBodyNav.style.display = "none";
-            if (iconMenu.classList.contains("icon-menu__active")) iconMenu.classList.remove("icon-menu__active");
+            header.classList.remove("header__menu-active");
+            [ ...menuBodyNavElements ].forEach((el => el.classList.add("hidden")));
+            iconMenu.classList.remove("icon-menu__active");
         }
         function toggleMenu() {
             if (menuState) disableMenu(); else enableMenu();
         }
-        let searchEnabled = false;
-        function enableSearch() {
-            const searchInput = document.getElementsByClassName("popular-currencies__search")[0];
-            const searchButton = document.getElementsByClassName("button__search")[0];
-            const searchIconGroup = document.getElementsByClassName("search-icon")[0];
-            const popularCurrenciesTop = document.getElementsByClassName("popular-currencies__top")[0];
-            searchButton.style.display = "none";
-            searchInput.style.display = "block";
-            Object.assign(popularCurrenciesTop.style, {
-                flexDirection: "column",
-                gap: "2rem",
-                alignItems: "flex-start"
-            });
-            if (!searchIconGroup.classList.contains("search-icon__mobile-active")) searchIconGroup.classList.add("search-icon__mobile-active");
-            searchEnabled = true;
-            window.addEventListener("resize", (() => {
-                if (searchEnabled) if (window.matchMedia("(min-width: 769px)")) {
-                    searchButton.style.removeProperty("display");
-                    searchInput.style.removeProperty("display");
-                    popularCurrenciesTop.style.removeProperty("flex-direction");
-                    popularCurrenciesTop.style.removeProperty("gap");
-                    popularCurrenciesTop.style.removeProperty("align-items");
-                    if (searchIconGroup.classList.contains("search-icon__mobile-active")) searchIconGroup.classList.remove("search-icon__mobile-active");
-                    searchEnabled = false;
-                }
-            }));
-        }
-        window.addEventListener("load", (() => {
-            if (window.matchMedia("(max-width: 767.98px)").matches) {
-                desktop = false;
-                disableMenu();
-            } else if (window.matchMedia("(min-width: 767.98px)").matches) {
-                desktop = true;
-                enableMenu();
-            }
-        }));
         window.addEventListener("resize", (() => {
             remCheck();
-            if (window.matchMedia("(max-width: 767.98px)").matches) {
-                desktop = false;
-                disableMenu();
-            } else if (window.matchMedia("(min-width: 767.98px)").matches) {
-                desktop = true;
-                enableMenu();
-            }
         }));
-        const supportBlock = document.querySelector(".support-block");
-        if (supportBlock instanceof HTMLElement) {
-            const supportButton = supportBlock.querySelectorAll(".support-block > .support__button")[0];
-            if (supportButton instanceof HTMLElement) {
-                const popularCurrenciesAction = document.querySelector(".popular-currencies__action");
-                window.addEventListener("scroll", (() => {
-                    const {scrollTop} = document.documentElement;
-                    let {top: supportBlockTop} = supportBlock.getBoundingClientRect();
-                    supportBlockTop += scrollTop;
-                    let {top: maxPos} = popularCurrenciesAction.getBoundingClientRect();
-                    maxPos += scrollTop - supportBlockTop;
-                    if (scrollTop > maxPos) {
-                        supportButton.style.position = "absolute";
-                        supportButton.style.top = `${maxPos}px`;
-                    } else {
-                        supportButton.style.removeProperty("position");
-                        supportButton.style.removeProperty("top");
-                    }
-                }));
-            }
-        }
         function changeSellBuyToExchangeRedirect() {
             const {localStorage} = window;
             const {sendCrypto, receiveCrypto} = storage.tokenNames;
@@ -6360,7 +6395,7 @@
         }
         function autoCloseMenu() {
             jquery("header a, footer a").on("click", (() => {
-                if (!desktop && menuState) disableMenu();
+                if (menuState) disableMenu();
             }));
         }
         const scriptConfig = {
@@ -6581,10 +6616,8 @@
         isWebp();
         spollers();
         Object.assign(window, {
-            findCurrency,
             toggleCurrencies,
-            toggleMenu,
-            enableSearch
+            toggleMenu
         });
         const currentPage = document.body.dataset.page;
         if ("Exchanger" == currentPage) {

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap);
 @charset "UTF-8";
 * {
   padding: 0px;
@@ -111,35 +111,106 @@ body {
   padding: 0 0.9375rem;
 }
 
-.main-block__button {
-  margin: 0 0 1.09375rem 0;
+.button__sell, .button__change, .button__buy {
+  height: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: transparent;
+  border: 1px solid #202E51;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #FFFFFF;
+  padding: 0.5rem 1rem;
 }
-
-.support__button {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  padding: 1.1875rem;
-  background-color: #7B46E8;
-  border-radius: 50%;
-  position: fixed;
+.button__sell:hover, .button__sell:active, .button__sell:target, .button__change:hover, .button__change:active, .button__change:target, .button__buy:hover, .button__buy:active, .button__buy:target {
+  border-color: transparent;
 }
-
-.button__change {
-  padding: 1rem 1.25rem;
-  background: #0F0D21;
+.button__change::after {
+  content: "Change";
+  font-weight: 300;
 }
-.button__sell {
-  font-weight: 400;
-  color: #676673;
-  padding: 1rem 1.25rem;
-  background: #0F0D21;
+.button__change:target, .button__change:active {
+  background-color: #8AC44B;
 }
-.button__buy {
-  font-weight: 400;
-  color: #676673;
-  padding: 1rem 1.25rem;
-  background: #0F0D21;
+.button__sell:target, .button__sell:active {
+  background: #F04438;
+  color: #FFFFFF;
+}
+.button__buy:target, .button__buy:active {
+  background: #8AC44B;
+  color: #FFFFFF;
+}
+.button.header__cta, .button.header__cta-desktop {
+  padding: 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+}
+.button.header__cta {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  width: 7.8125rem;
+  height: 3rem;
+}
+.button.header__cta-desktop {
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  width: 12.3125rem;
+  height: 2.9375rem;
+}
+.button.block-1__cta {
+  /* Auto layout */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.75rem 1.875rem;
+  width: 11.5625rem;
+  height: 3rem;
+  background: #7B46E8;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #FFFFFF;
+}
+.button.popular-currencies__button {
+  background-color: transparent;
+  border: 1px solid #7B46E8;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+.button.popular-currencies__button:target, .button.popular-currencies__button:active {
+  background: #7B46E8;
+  opacity: 1;
 }
 
 .button {
@@ -153,6 +224,11 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
       user-select: none;
+}
+.button:active, .button:target {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), #6E40F2;
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
 }
 .button._fw {
   width: 100%;
@@ -229,16 +305,19 @@ body {
   top: 0;
   left: 0;
   z-index: 50;
-  /* Use @media to adapt logo width */
 }
 .header__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 4.6875rem;
+  height: 6rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1.5rem;
 }
 .header__logo {
   position: relative;
@@ -246,6 +325,10 @@ body {
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  width: 9.0625rem;
+  height: 2.8125rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 .header__logo:hover {
   opacity: 0.7;
@@ -256,10 +339,8 @@ body {
 .header__logo img {
   max-width: 100%;
 }
-.header__menu {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+.header__cta-desktop {
+  display: none;
 }
 
 .menu {
@@ -287,10 +368,40 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
-.menu__link {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  opacity: 0.4;
+.menu__lang-select {
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+  cursor: pointer;
+  height: 1.6875rem;
+  overflow: hidden;
+}
+.menu__lang-select > .lang-select__current {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.3125rem;
+}
+.menu__lang-select > .lang-select__current::after {
+  content: "";
+  background-image: url(../img/caret-down.svg);
+  background-size: 1.5rem 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  -webkit-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+.menu__lang-select:hover {
+  overflow: visible;
+}
+.menu__lang-select:hover > .lang-select__current::after {
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 .menu__link:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#FFFFFF), to(#FFFFFF));
@@ -337,15 +448,97 @@ body {
 }
 
 .icon-menu {
-  display: none;
+  position: relative;
+  width: 1.875rem;
+  height: 1.125rem;
+  z-index: 5;
+}
+.icon-menu span, .icon-menu::before, .icon-menu::after {
+  content: "";
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  right: 0;
+  position: absolute;
+  width: 100%;
+  height: 0.125rem;
+  background-color: #7B46E8;
+}
+.icon-menu::before {
+  top: 0;
+}
+.icon-menu::after {
+  bottom: 0;
+}
+.icon-menu span {
+  top: calc(50% - 0.0625rem);
+}
+.icon-menu__active span {
+  width: 0;
+}
+.icon-menu__active::before {
+  top: calc(50% - 0.0625rem);
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.icon-menu__active::after {
+  bottom: calc(50% - 0.0625rem);
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.button-plus-burger {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+}
+
+.nav-plus-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3.125rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 6rem;
+}
+
+.lang-select__mobile__wrapper, .menu__link {
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+}
+
+.lang-select__options {
+  padding-top: 0.3125rem;
+}
+.lang-select__option:not(:last-child) {
+  padding-bottom: 0.3125rem;
+}
+.lang-select__mobile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5rem;
+}
+.lang-select__mobile__option {
+  color: #FFFFFF;
+  text-decoration-line: underline;
 }
 
 .footer {
   margin-top: 9.375rem;
-  background-color: #0F0D21;
+  background-color: #121B33;
 }
 .footer__container {
-  padding: 3.75rem 6.5625rem;
+  padding: 3.125rem 6.5625rem;
 }
 .footer__main {
   border-bottom: 2px solid #676673;
@@ -410,6 +603,9 @@ body {
   transition: all 0.2s ease;
 }
 .menu-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -418,16 +614,44 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 1.875rem;
   color: #676673;
+  width: 16.625rem;
+}
+.menu-footer__contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.875rem;
+}
+.menu-footer__contacts__item {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6875rem;
+  opacity: 0.8;
 }
 .menu-footer__link {
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.1428571429;
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  color: #FFFFFF;
+  font-weight: 400;
+  opacity: 0.8;
 }
 .menu-footer__link:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#676673), to(#676673)), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2)));
@@ -453,17 +677,12 @@ body {
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-.menu-footer__contacts {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
 
 .social {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 0.875rem;
+  gap: 1.25rem;
 }
 .social__item {
   -webkit-transition: all 0.2s ease;
@@ -492,204 +711,106 @@ body {
   padding-top: 8.75rem;
 }
 
-.support-block {
-  position: relative;
+.block-2 {
+  margin: 3.125rem auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-}
-.search-icon {
-  position: relative;
-}
-.search-icon::after {
-  position: absolute;
-  content: "";
-  width: 3.5625rem;
-  height: 3.5625rem;
-  background-image: url("../img/currencies/glass-border.svg");
-  right: 0;
-  top: 0;
-  border-left: 1px solid #7B46E8;
-  cursor: pointer;
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-.search-icon:hover::after {
-  opacity: 0.7;
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.popular-currencies__container {
-  padding-top: 6.25rem;
-}
-.popular-currencies__top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 1.9375rem;
+  padding: 0;
+  gap: 2rem;
 }
-.popular-currencies__search {
+.block-2__line {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 1.25rem;
-  width: 390px;
-  height: 3.5625rem;
-  background: #0F0D21;
-  color: #FFF;
-  font-size: 1.125rem;
-}
-.popular-currencies__colum {
-  display: -ms-grid;
-  display: grid;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0.6875rem 0;
-  gap: 24px;
-  -ms-grid-columns: 1fr 12rem 22rem;
-  grid-template-columns: 1fr 12rem 22rem;
+  padding: 0;
+  gap: 4.9375rem;
+  width: 46.3125rem;
 }
-.popular-currencies__colum-header {
-  display: -ms-grid;
-  display: grid;
-  padding: 1.6875rem 0;
-  color: #676673;
-  gap: 24px;
-  -ms-grid-columns: 1fr 12rem 22rem;
-  grid-template-columns: 1fr 12rem 22rem;
-}
-.popular-currencies__action {
-  margin-top: 3.125rem;
+.block-2__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.colum {
-  position: relative;
-  /* desktop price label */
-}
-.colum__cryptocurrency__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0;
+  gap: 0.9375rem;
 }
-.colum__price-header {
-  text-align: right;
+.block-2__item > img {
+  width: 4.375rem;
+  height: 4.375rem;
 }
-.colum__actions-header {
-  text-align: right;
+.block-2__item > label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  color: #FFFFFF;
+  opacity: 0.5;
 }
-.colum__price {
-  text-align: right;
+.block-2__separator {
+  width: 6.25rem;
+  height: 0.0625rem;
+  background-image: -o-linear-gradient(359.83deg, #7B46E8 -1.15%, rgba(123, 70, 232, 0) 87.83%);
+  background-image: linear-gradient(90.17deg, #7B46E8 -1.15%, rgba(123, 70, 232, 0) 87.83%);
 }
-.colum__price::after {
-  content: " USDT";
-  color: #676673;
+.block-2 > #step-1 > label, .block-2__line > #step-1 > label {
+  width: 10.125rem;
 }
-.colum__actions {
+.block-2 > #step-2 > label, .block-2__line > #step-2 > label {
+  width: 9.4375rem;
+}
+.block-2 > #step-3 > label, .block-2__line > #step-3 > label {
+  width: 11.875rem;
+}
+
+.block-2__desktop {
+  margin: 4.375rem auto;
+  width: 76.9375rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  gap: 1.5rem;
-}
-.colum__hidden {
-  display: none;
-}
-
-.button__change:hover {
-  background: rgb(110, 64, 242);
-  color: #fff;
-}
-.button__change:active {
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#6E40F2), to(#6E40F2));
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #6E40F2, #6E40F2);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #6E40F2, #6E40F2);
-  color: #fff;
-}
-.button__sell:hover {
-  background: rgb(246, 70, 93);
-  color: #fff;
-}
-.button__sell:active {
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#F6465D), to(#F6465D));
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #F6465D, #F6465D);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #F6465D, #F6465D);
-  color: #fff;
-}
-.button__buy:hover {
-  background: rgb(32, 188, 35);
-  color: #fff;
-}
-.button__buy:active {
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#20BC23), to(#20BC23));
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #20BC23, #20BC23);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #20BC23, #20BC23);
-  color: #fff;
-}
-
-.cryptocurrency__item {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0;
+  gap: 3.5625rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-.cryptocurrency__item > picture {
-  position: absolute;
+.block-2__desktop > #step-1 > label {
+  width: 11rem;
 }
-.cryptocurrency__icon {
-  position: absolute;
+.block-2__desktop > #step-2 > label {
+  width: 10.3125rem;
 }
-.cryptocurrency__name {
-  margin: 0 15px 0 60px;
-}
-.cryptocurrency__price {
-  /* mobile price label */
-  display: none;
-  color: #676673;
-  font-size: 0.875rem;
-}
-.cryptocurrency__price::after {
-  content: " USDT";
-  color: #676673;
-}
-.cryptocurrency__short {
-  color: #676673;
+.block-2__desktop > #step-3 > label {
+  width: 12.9375rem;
 }
 
-picture > .cryptocurrency__icon {
-  position: static;
-}
 .features__container {
   padding: 6.25rem 0.9375rem;
   display: -webkit-box;
@@ -841,6 +962,160 @@ picture > .cryptocurrency__icon {
   opacity: 0.5;
 }
 
+.popular-currencies__container {
+  padding-top: 0.5rem;
+}
+.popular-currencies__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.popular-currencies__title {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+.popular-currencies__colum {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.6875rem 0;
+  gap: 24px;
+  -ms-grid-columns: 0.65fr 10rem 0.25fr 24.0625rem;
+  grid-template-columns: 0.65fr 10rem 0.25fr 24.0625rem;
+}
+.popular-currencies__colum-header {
+  display: -ms-grid;
+  display: grid;
+  padding: 3.125rem 0;
+  color: #676673;
+  gap: 24px;
+  -ms-grid-columns: 0.65fr 10rem 0.25fr 24.0625rem;
+  grid-template-columns: 0.65fr 10rem 0.25fr 24.0625rem;
+}
+.popular-currencies__action {
+  margin-top: 3.125rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.colum {
+  position: relative;
+  /* desktop price label */
+}
+.colum__actions-header {
+  text-align: right;
+}
+.colum__price {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+}
+.colum__price::before {
+  font-weight: 500;
+  content: "$";
+}
+.colum__change {
+  font-weight: 500;
+  color: #FFFFFF;
+  opacity: 0.5;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+}
+.colum__change.change__positive {
+  color: #69A042;
+  opacity: 1;
+}
+.colum__change.change__negative {
+  color: #D62D30;
+  opacity: 1;
+}
+.colum__actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 1.5rem;
+}
+.colum__hidden {
+  display: none;
+}
+
+.cryptocurrency__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.cryptocurrency__left {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.cryptocurrency__left > picture {
+  position: absolute;
+}
+.cryptocurrency__icon {
+  position: absolute;
+  width: 2.875rem;
+  height: 2.875rem;
+}
+.cryptocurrency__name {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  font-weight: 500;
+}
+.cryptocurrency__nameprice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.125rem;
+  margin-left: 3.946875rem;
+}
+.cryptocurrency__price {
+  /* mobile price label */
+  display: none;
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+.cryptocurrency__price::before {
+  content: "$";
+}
+.cryptocurrency__short {
+  color: #FFFFFF;
+  opacity: 0.5;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  width: 5rem;
+}
+
+picture > .cryptocurrency__icon {
+  position: static;
+}
 @-webkit-keyframes spinner-animation {
   0.00% {
     -webkit-transform: rotate(0turn);
@@ -863,7 +1138,6 @@ picture > .cryptocurrency__icon {
             transform: rotate(1turn);
   }
 }
-
 @keyframes spinner-animation {
   0.00% {
     -webkit-transform: rotate(0turn);
@@ -2338,7 +2612,6 @@ picture > .cryptocurrency__icon {
   height: 351.75px;
 }
 .block-1 {
-  /* Auto layout */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2349,11 +2622,10 @@ picture > .cryptocurrency__icon {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0px;
-  gap: 33px;
+  padding: 0;
+  gap: 2.0625rem;
 }
 .block-1__content {
-  /* Auto layout */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2367,9 +2639,8 @@ picture > .cryptocurrency__icon {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0px;
-  gap: 32px;
-  /* Inside auto layout */
+  padding: 0;
+  gap: 2rem;
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -2380,7 +2651,6 @@ picture > .cryptocurrency__icon {
       flex-grow: 0;
 }
 .block-1__title {
-  /* Auto layout */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2394,9 +2664,8 @@ picture > .cryptocurrency__icon {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0px;
-  gap: 8px;
-  /* Inside auto layout */
+  padding: 0;
+  gap: 0.5rem;
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -2405,21 +2674,18 @@ picture > .cryptocurrency__icon {
           order: 0;
   -ms-flex-positive: 0;
       flex-grow: 0;
+  width: 23.75rem;
 }
 .block-1__title > h1, .block-1__title > h2 {
   margin: 0;
 }
 .block-1__title > h1 {
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 125%;
-  /* or 25px */
+  font-size: 1.25rem;
+  line-height: 1.5625rem;
   text-align: center;
-  /* white */
   color: #FFFFFF;
-  /* Inside auto layout */
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -2433,14 +2699,11 @@ picture > .cryptocurrency__icon {
       flex-grow: 0;
 }
 .block-1__title > h2 {
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 125%;
-  /* or 20px */
+  font-size: 1rem;
+  line-height: 1.25rem;
   text-align: center;
-  /* white */
   color: #FFFFFF;
   opacity: 0.5;
   /* Inside auto layout */
@@ -2455,36 +2718,6 @@ picture > .cryptocurrency__icon {
       align-self: stretch;
   -ms-flex-positive: 0;
       flex-grow: 0;
-}
-.block-1 .btn {
-  /* Auto layout */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 12px 30px;
-  gap: 10px;
-  width: 185px;
-  height: 48px;
-  /* 1 */
-  background: #7B46E8;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height */
-  /* white */
-  color: #FFFFFF;
 }
 /* ---- Page [Exchanger] ---- */ /* ---- Variables ---- */
 /* ---- Media Query Breakpoints ---- */
@@ -3116,43 +3349,34 @@ input[type=number] {
 .ex-form {
   margin-top: 0.625rem;
 }
-
+.no-webp body{
+  background-image: url(../img/background/bg-mobile.jpg); }
+body {
+  background-color: #0D1425;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
 @media (any-hover: hover) {
-  .support__button:hover {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-  }
-  .support__button:active {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
+  .button__change:hover::after {
+    color: #FFFFFF;
   }
   .button__change:hover {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-    color: #fff;
+    background-color: #8AC44B;
   }
   .button__sell:hover {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-    color: #fff;
+    background: #F04438;
+    color: #FFFFFF;
   }
   .button__buy:hover {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #6E40F2;
-    color: #fff;
+    background: #8AC44B;
+    color: #FFFFFF;
+  }
+  .button.popular-currencies__button:hover {
+    background-color: transparent;
+    opacity: 1;
   }
   .button:hover {
     background: #643ad7;
-  }
-  .button:active {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
   }
   .button__icon:hover {
     background: rgba(0, 0, 0, 0);
@@ -3160,63 +3384,15 @@ input[type=number] {
   .button__icon:active {
     background: rgba(0, 0, 0, 0);
   }
-  .popular-currencies__button:hover {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#6E40F2), to(#6E40F2));
-    background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), -o-linear-gradient(bottom, #6E40F2, #6E40F2);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(0deg, #6E40F2, #6E40F2);
-  }
-  .popular-currencies__button:active {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#6E40F2), to(#6E40F2));
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #6E40F2, #6E40F2);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #6E40F2, #6E40F2);
-  }
 }
-
-@media (any-hover: target) {
-  .support__button:target {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-  }
-  .button:target {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), #6E40F2;
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #6E40F2;
-  }
-  .button__icon:target {
-    background: rgba(0, 0, 0, 0);
-  }
-  .menu-footer__link:target {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#676673), to(#676673));
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #676673, #676673);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #676673, #676673);
-  }
-  .social__item:target {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#676673), to(#676673));
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #676673, #676673);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #676673, #676673);
-  }
-  .button__change:target {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#6E40F2), to(#6E40F2));
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #6E40F2, #6E40F2);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #6E40F2, #6E40F2);
-    color: #fff;
-  }
-  .button__sell:target {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#F6465D), to(#F6465D));
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #F6465D, #F6465D);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #F6465D, #F6465D);
-    color: #fff;
-  }
-  .button__buy:target {
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#20BC23), to(#20BC23));
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #20BC23, #20BC23);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #20BC23, #20BC23);
-    color: #fff;
-  }
-}
-
 @media screen and (max-width: 71em) {
+  .button__change::after {
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    background-image: url("../img/change.svg");
+    background-size: 2rem 2rem;
+  }
   .title {
     text-align: center;
   }
@@ -3299,9 +3475,55 @@ input[type=number] {
     padding: 0;
     margin: 0 auto;
   }
+  .popular-currencies__colum {
+    gap: 10px;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .popular-currencies__colum-header {
+    gap: 10px;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .colum {
+    /* desktop price label */
+  }
+  .colum__price, .colum__price-header {
+    display: none;
+  }
+  .colum__change, .colum__change-header {
+    display: none;
+  }
+  .colum__actions {
+    gap: 2rem;
+  }
+  .cryptocurrency {
+    /* mobile price label */
+  }
+  .cryptocurrency__name {
+    font-size: 1.375rem;
+    line-height: 2.0625rem;
+  }
+  .cryptocurrency__price {
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
+    display: block;
+  }
+  .cryptocurrency__short {
+    display: none;
+  }
+  .cryptocurrency__nameprice {
+    margin-left: 3.696875rem;
+  }
 }
-
 @media screen and (max-width: 47.99875em) {
+  .button__change::after {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("../img/change.svg");
+    background-size: 1.5rem 1.5rem;
+  }
   .title {
     font-size: 1.25rem;
     line-height: 1.5;
@@ -3315,12 +3537,6 @@ input[type=number] {
   }
   .block-text__button {
     max-width: 11.125rem;
-  }
-  .header__logo {
-    width: 11.25rem;
-  }
-  .header__container {
-    height: 4.6875rem;
   }
   .button__icon {
     display: block;
@@ -3348,120 +3564,64 @@ input[type=number] {
             align-items: center;
   }
   .main-footer__logo {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .menu-footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 2rem;
   }
   .menu-footer__list {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 1.5rem;
     font-size: 1rem;
     line-height: 1.5rem;
+    gap: 1.5rem;
   }
   .menu-footer__contacts {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
-  .colum__actions > a[class^=button] {
-    padding: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.225rem;
-  }
-  .button__change {
-    position: relative;
-    width: 2.75rem;
-    height: 2.75rem;
-  }
-  .button__change::after {
-    content: "";
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    left: 0.625rem;
-    top: 0.625rem;
-    background-image: url("../img/change.svg");
-  }
-  .button__search {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    padding: 1.0625rem;
-    border-radius: 50%;
-    background: rgb(15, 13, 33);
-  }
-  .button__search:not(:hover):not(:active) * {
-    opacity: 0.4;
-  }
-  .popular-currencies .search-icon::after {
-    display: none;
-  }
-  .popular-currencies .search-icon__mobile-active::after {
-    display: block;
-  }
-  .popular-currencies__search {
-    display: none;
-  }
-  .popular-currencies__title {
-    font-size: 1.5rem;
-  }
-  .popular-currencies__colum {
-    gap: 10px;
-    -ms-grid-columns: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-  }
-  .popular-currencies__colum-header {
-    gap: 10px;
-    -ms-grid-columns: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-  }
-  .colum {
-    /* desktop price label */
-  }
-  .colum__price {
-    display: none;
-  }
-  .colum__price-header {
-    display: none;
-  }
-  .colum__actions {
-    gap: 16px;
-  }
-  .cryptocurrency {
-    /* mobile price label */
-  }
-  .cryptocurrency__name {
-    font-size: 1rem;
-  }
-  .cryptocurrency__short {
-    display: none;
-  }
-  .cryptocurrency__price {
-    display: block;
-    margin: 0 15px 0 60px;
-  }
-  .cryptocurrency__item {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+  .social {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    gap: 0.125rem;
   }
-  /* Display support button in header instead */
-  .support-block {
-    display: none;
+  .block-2 {
+    gap: 1rem;
+    margin: 3rem auto;
   }
-  .popular-currencies__search {
-    width: 100%;
+  .block-2__line {
+    width: 22.9375rem;
+    gap: 1rem;
   }
-  .search-icon__mobile-active {
-    width: 100%;
+  .block-2__item > img {
+    width: 2.8125rem;
+    height: 2.8125rem;
+  }
+  .block-2__item > label {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+  }
+  .block-2__separator {
+    width: 1.875rem;
+  }
+  .block-2 > #step-1 > label, .block-2__line > #step-1 > label {
+    width: 6.4375rem;
+  }
+  .block-2 > #step-2 > label, .block-2__line > #step-2 > label {
+    width: 6rem;
+  }
+  .block-2 > #step-3 > label, .block-2__line > #step-3 > label {
+    width: 7.5625rem;
   }
   .features__container {
     padding: 3.5rem 0.9375rem;
@@ -3487,8 +3647,264 @@ input[type=number] {
   .faq__container {
     padding: 3.5rem 0.9375rem;
   }
+  .popular-currencies__title {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+  .popular-currencies__title {
+    font-size: 1.5rem;
+  }
+  .cryptocurrency__name {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .cryptocurrency__price {
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+  }
+  .cryptocurrency__nameprice {
+    margin-left: 3.196875rem;
+  }
+  .popular-currencies__search {
+    width: 100%;
+  }
 }
-
+@media screen and (min-width: 47.99875em) {
+  .button__sell, .button__change, .button__buy {
+    height: 3rem;
+    font-size: 1.375rem;
+    line-height: 2.0625rem;
+    padding: 0.5rem 2rem;
+  }
+  .footer__menu {
+    width: 100%;
+  }
+  .main-footer__info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 0.9375rem;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .main-footer__logo {
+    margin-bottom: 0.9375rem;
+  }
+  .menu-footer {
+    height: 7.875rem;
+  }
+  .menu-footer__list {
+    height: inherit;
+    gap: 1.25rem;
+  }
+  .menu-footer__contacts {
+    gap: 1.25rem;
+  }
+  .popular-currencies__container {
+    padding-top: 1.875rem;
+  }
+  .crypto-icons .btc {
+    width: 259px;
+    height: 284px;
+  }
+  .crypto-icons .btc__wrapper {
+    width: 222.88px;
+    height: 257.96px;
+  }
+  .crypto-icons .altcoin {
+    width: 144px;
+    height: 160px;
+  }
+  .crypto-icons .altcoin__wrapper {
+    width: 115.9px;
+    height: 133.73px;
+  }
+  .crypto-icons {
+    width: 566.19px;
+    height: 526px;
+    -webkit-animation-name: crypto-icons-animation-tablet;
+            animation-name: crypto-icons-animation-tablet;
+  }
+  .crypto-icons > .bitcoin {
+    top: calc((100% - 257.96px) / 2);
+    left: calc((100% - 222.88px) / 2);
+  }
+  .crypto-icons > .eth, .crypto-icons > .uni {
+    top: calc((100% - 133.73px) / 2);
+  }
+  .crypto-icons > .usdc, .crypto-icons > .usdt {
+    left: calc(25% + 17.834985px - 57.95px);
+  }
+  .crypto-icons > .xrp, .crypto-icons > .doge {
+    right: calc(25% + 17.834985px - 57.95px);
+  }
+  .crypto-icons__wrapper {
+    width: 566.19px;
+    height: 526px;
+  }
+  .block-1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 3.108125rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .block-1__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0;
+    gap: 3.125rem;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+  }
+  .block-1__title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0;
+    gap: 1.25rem;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+    -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+    width: 40.125rem;
+  }
+  .block-1__title > h1, .block-1__title > h2 {
+    margin: 0;
+  }
+  .block-1__title > h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 3.375rem;
+    text-align: center;
+    color: #FFFFFF;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+    -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+  }
+  .block-1__title > h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5625rem;
+    text-align: center;
+    color: #FFFFFF;
+    opacity: 0.5;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+  }
+}
+@media screen and (min-width: 71em) {
+  .button__sell, .button__change, .button__buy {
+    height: 3.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    padding: 0.9375rem 2.375rem;
+  }
+  .button.popular-currencies__button {
+    padding: 0.9375rem 1.875rem;
+  }
+  .main-footer__info {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    gap: 9.9375rem;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .menu-footer {
+    height: 9.125rem;
+  }
+}
+@media screen and (min-width: 834px) {
+  .button.header__cta {
+    width: 11.5625rem;
+    height: 2.75rem;
+  }
+}
+@media screen and (min-width: 61.99875em) {
+  .button.block-1__cta {
+    padding: 0.9375rem 1.875rem;
+    width: 17.8125rem;
+    height: 3.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+  .button.popular-currencies__button {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+  .header__logo {
+    width: 8.75rem;
+    height: 2.8125rem;
+  }
+  .header__container {
+    height: 7.8125rem;
+    padding: 0 2rem;
+  }
+  .button-plus-burger {
+    gap: 2.3125rem;
+  }
+  .nav-plus-button {
+    top: 7.8125rem;
+  }
+}
 @media screen and (max-width: 71em) and (min-width: 78.75em) {
   .block-text__image {
     width: 48.101875rem;
@@ -3497,7 +3913,6 @@ input[type=number] {
     height: 33.9375rem;
   }
 }
-
 @media screen and (max-width: 71em) and (min-width: 20em) and (max-width: 78.75em) {
   @supports (width: clamp( 20.5rem , 11.1036170213rem  +  46.9819148936vw , 48.101875rem )) {
     .block-text__image {
@@ -3520,7 +3935,6 @@ input[type=number] {
     }
   }
 }
-
 @media screen and (max-width: 71em) and (max-width: 20em) {
   .block-text__image {
     width: 20.5rem;
@@ -3529,55 +3943,222 @@ input[type=number] {
     height: 14.45625rem;
   }
 }
-
-@media screen and (min-width: 47.99875em) {
-  .header__logo {
-    width: 14.875rem;
+@media screen and (max-width: 78.75em) {
+  .header__menu-active {
+    position: fixed;
+    background-color: rgb(2, 0, 21);
   }
+  .nav-plus-button {
+    position: fixed;
+    left: 0;
+    width: 100%;
+  }
+  .nav-plus-button.hidden {
+    display: none;
+  }
+  .hidden__mobile {
+    display: none;
+  }
+  .lang-select__mobile__wrapper, .menu__link {
+    font-size: 1.375rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .block-2__item > label {
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+  }
+  .block-2__desktop {
+    display: none;
+  }
+  .popular-currencies__top {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .popular-currencies__colum-header {
+    display: none;
+  }
+}
+@media screen and (min-width: 78.75em) {
   .header__container {
-    height: 5.625rem;
+    padding: 0 6.5625rem;
+    height: 7.3125rem;
+  }
+  .header__menu {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+  }
+  .header__cta {
+    display: none;
+  }
+  .header__cta-desktop {
+    display: unset;
   }
   .menu__icons {
     display: none;
   }
-  .footer__menu {
-    width: 100%;
+  .button-plus-burger {
+    display: none;
   }
-  .main-footer__info {
+  .nav-plus-button {
+    top: 7.3125rem;
+  }
+  .hidden__desktop {
+    display: none;
+  }
+  .block-2 {
+    display: none;
+  }
+  .crypto-icons .btc {
+    width: 232px;
+    height: 255px;
+  }
+  .crypto-icons .btc__wrapper {
+    width: 200.05px;
+    height: 229.14px;
+  }
+  .crypto-icons .altcoin {
+    width: 130px;
+    height: 144px;
+  }
+  .crypto-icons .altcoin__wrapper {
+    width: 103.92px;
+    height: 118.14px;
+  }
+  .crypto-icons {
+    width: 508.06px;
+    height: 472px;
+    -webkit-animation-name: crypto-icons-animation-desktop;
+            animation-name: crypto-icons-animation-desktop;
+  }
+  .crypto-icons > .bitcoin {
+    top: calc((100% - 229.14px) / 2);
+    left: calc((100% - 200.05px) / 2);
+  }
+  .crypto-icons > .eth, .crypto-icons > .uni {
+    top: calc((100% - 118.14px) / 2);
+  }
+  .crypto-icons > .usdc, .crypto-icons > .usdt {
+    left: calc(25% + 16.00389px - 51.96px);
+  }
+  .crypto-icons > .xrp, .crypto-icons > .doge {
+    right: calc(25% + 16.00389px - 51.96px);
+  }
+  .crypto-icons__wrapper {
+    width: 508.06px;
+    height: 472px;
+  }
+  .block-1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 0;
+    gap: 1rem;
+  }
+  .block-1__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 0.9375rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+    padding: 0;
+    gap: 3.125rem;
+    width: 44rem;
   }
-  .main-footer__logo {
-    margin-bottom: 0.9375rem;
+  .block-1__title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 0;
+    gap: 1.25rem;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+    -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+    width: 44.0625rem;
   }
-  .menu-footer__contacts {
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    margin-top: -2rem;
+  .block-1__title > h1, .block-1__title > h2 {
+    margin: 0;
+    text-align: left;
   }
-  .button__change::after {
-    content: "Change";
+  .block-1__title > h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 3.375rem;
+    color: #FFFFFF;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+  }
+  .block-1__title > h2 {
+    font-style: normal;
     font-weight: 400;
-    color: #676673;
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+    color: #FFFFFF;
+    opacity: 0.5;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    -ms-flex-positive: 0;
+        flex-grow: 0;
+    width: 38.25rem;
   }
-  .button__change:hover::after {
-    color: #fff;
-  }
-  .button__search {
-    display: none;
-  }
+  .no-webp body{
+    background-image: url(../img/background/bg-desktop.jpg); }
 }
-
-@media (max-width: 47.99875em) {
+@media (max-width: 78.75em) {
   .menu__body {
-    position: fixed;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3586,10 +4167,11 @@ input[type=number] {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    top: 4.625rem;
-    left: 0;
     overflow: auto;
     background-color: #0F0D21;
+  }
+  .menu__body.hidden {
+    display: none;
   }
   .menu__list {
     -webkit-box-align: stretch;
@@ -3601,8 +4183,9 @@ input[type=number] {
             flex-direction: column;
   }
   .menu__item {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 1rem 1rem;
+    background: rgba(13, 20, 37, 0.5);
+    border-bottom: 1px solid #7B46E8;
+    padding: 1rem 1.5rem;
   }
   .menu__item .icon {
     display: -webkit-box;
@@ -3610,82 +4193,35 @@ input[type=number] {
     display: flex;
     opacity: 0.4;
   }
-  .menu__link {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-    font-size: 1.375rem;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  .menu__link::after {
-    height: 22px;
-    width: 12px;
-    position: absolute;
-    content: "";
-    background-image: url("../img/chevron-right.svg");
-    right: 0;
-  }
-  .icon-menu {
-    display: block;
-    position: relative;
-    width: 1.875rem;
-    height: 1.125rem;
-    z-index: 5;
-  }
-  .icon-menu span, .icon-menu::before, .icon-menu::after {
-    content: "";
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-    right: 0;
-    position: absolute;
-    width: 100%;
-    height: 0.125rem;
-    background-color: #FFFFFF;
-    opacity: 0.5;
-  }
-  .icon-menu::before {
-    top: 0;
-  }
-  .icon-menu::after {
-    bottom: 0;
-  }
-  .icon-menu span {
-    top: calc(50% - 0.0625rem);
-  }
-  .icon-menu__active span {
-    width: 0;
-  }
-  .icon-menu__active::before {
-    top: calc(50% - 0.0625rem);
-    -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
-  .icon-menu__active::after {
-    bottom: calc(50% - 0.0625rem);
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+  .menu__item:not(.menu__item__noactive):target, .menu__item:not(.menu__item__noactive):active {
+    background: #202E51;
+    border: 1px solid #7B46E8;
+    padding: 0.9375rem 1.4375rem;
   }
 }
-
-@media (max-width: 47.99875em) and (any-hover: none) {
+@media (any-hover: target) {
+  .button__icon:target {
+    background: rgba(0, 0, 0, 0);
+  }
+  .menu-footer__link:target {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#676673), to(#676673));
+    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #676673, #676673);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #676673, #676673);
+  }
+  .social__item:target {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, left bottom, left top, from(#676673), to(#676673));
+    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), -o-linear-gradient(bottom, #676673, #676673);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, #676673, #676673);
+  }
+}
+@media (any-hover: none) {
   .icon-menu {
     cursor: default;
   }
 }
-
 @media (min-width: 78.75em) {
   .footer__main {
     padding-bottom: 2.1875rem;
-  }
-  .menu-footer__list {
-    gap: 1.875rem;
   }
   .spollers-faq__title {
     padding-top: 1.25rem;
@@ -3706,7 +4242,6 @@ input[type=number] {
     font-size: 1.125rem;
   }
 }
-
 @media (min-width: 20em) and (max-width: 78.75em) {
   @supports (padding-bottom: clamp( 2.1875rem , 2.6063829787rem  +  -0.5319148936vw , 2.5rem )) {
     .footer__main {
@@ -3716,16 +4251,6 @@ input[type=number] {
   @supports not (padding-bottom: clamp( 2.1875rem , 2.6063829787rem  +  -0.5319148936vw , 2.5rem )) {
     .footer__main {
       padding-bottom: calc(2.5rem + -0.3125 * (100vw - 20rem) / 58.75);
-    }
-  }
-  @supports (gap: clamp( 1.5rem , 1.3723404255rem  +  0.6382978723vw , 1.875rem )) {
-    .menu-footer__list {
-      gap: clamp( 1.5rem , 1.3723404255rem  +  0.6382978723vw , 1.875rem );
-    }
-  }
-  @supports not (gap: clamp( 1.5rem , 1.3723404255rem  +  0.6382978723vw , 1.875rem )) {
-    .menu-footer__list {
-      gap: calc(1.5rem + 0.375 * (100vw - 20rem) / 58.75);
     }
   }
   @supports (padding-top: clamp( 0.9375rem , 0.8311170213rem  +  0.5319148936vw , 1.25rem )) {
@@ -3789,13 +4314,9 @@ input[type=number] {
     }
   }
 }
-
 @media (max-width: 20em) {
   .footer__main {
     padding-bottom: 2.5rem;
-  }
-  .menu-footer__list {
-    gap: 1.5rem;
   }
   .spollers-faq__title {
     padding-top: 0.9375rem;
@@ -3816,7 +4337,6 @@ input[type=number] {
     font-size: 1rem;
   }
 }
-
 @media screen and (max-width: 61.99875em) {
   .footer__bottom {
     font-size: 1rem;
@@ -3824,19 +4344,17 @@ input[type=number] {
   .footer__container {
     padding: 3.75rem 2rem;
   }
+  .colum__actions {
+    gap: 1.5rem;
+  }
 }
-
 @media screen and (min-width: 47.99875em) and (max-width: 61.99875em) {
   .menu-footer__list {
     font-size: 0.875rem;
     line-height: 1.3125rem;
   }
 }
-
 @media screen and (max-width: 29.99875em) {
-  .popular-currencies__button {
-    padding: 1rem 1.1875rem;
-  }
   .features__items {
     gap: 0.625rem;
   }
@@ -3844,404 +4362,6 @@ input[type=number] {
     max-width: 11.125rem;
   }
 }
-
-@media screen and (max-width: 47.99875em) and (any-hover: target) and (any-hover: hover) {
-  .button__search:target {
-    background: rgb(110, 64, 242);
-  }
-  .button__search:active {
-    background: rgb(110, 64, 242);
-  }
-}
-
-@media screen and (min-width: 29.99875em) and (max-width: 47.99875em) {
-  .popular-currencies__container {
-    padding-top: 7.5rem;
-  }
-  .search-icon__mobile-active {
-    max-width: 29.99875em;
-    margin: auto;
-  }
-}
-
-@media screen and (min-width: 47.99875em) and (max-width: 1300px) {
-  .popular-currencies__container {
-    padding-top: 15rem;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .popular-currencies__container {
-    padding-top: 2rem;
-  }
-}
-
-@media screen and (min-width: 61.99875em) {
-  .crypto-icons .btc {
-    width: 259px;
-    height: 284px;
-  }
-  .crypto-icons .btc__wrapper {
-    width: 222.88px;
-    height: 257.96px;
-  }
-  .crypto-icons .altcoin {
-    width: 144px;
-    height: 160px;
-  }
-  .crypto-icons .altcoin__wrapper {
-    width: 115.9px;
-    height: 133.73px;
-  }
-  .crypto-icons {
-    width: 566.19px;
-    height: 526px;
-    -webkit-animation-name: crypto-icons-animation-tablet;
-            animation-name: crypto-icons-animation-tablet;
-  }
-  .crypto-icons > .bitcoin {
-    top: calc((100% - 257.96px) / 2);
-    left: calc((100% - 222.88px) / 2);
-  }
-  .crypto-icons > .eth, .crypto-icons > .uni {
-    top: calc((100% - 133.73px) / 2);
-  }
-  .crypto-icons > .usdc, .crypto-icons > .usdt {
-    left: calc(25% + 17.834985px - 57.95px);
-  }
-  .crypto-icons > .xrp, .crypto-icons > .doge {
-    right: calc(25% + 17.834985px - 57.95px);
-  }
-  .crypto-icons__wrapper {
-    width: 566.19px;
-    height: 526px;
-  }
-  .block-1 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    gap: 49.73px;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .block-1__content {
-    /* Auto layout */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 0px;
-    gap: 50px;
-    /* Inside auto layout */
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
-    -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
-        align-self: stretch;
-    -ms-flex-positive: 0;
-        flex-grow: 0;
-  }
-  .block-1__title {
-    /* Auto layout */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 0px;
-    gap: 20px;
-    /* Inside auto layout */
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    -webkit-box-ordinal-group: 1;
-        -ms-flex-order: 0;
-            order: 0;
-    -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
-        align-self: stretch;
-    -ms-flex-positive: 0;
-        flex-grow: 0;
-  }
-  .block-1__title > h1, .block-1__title > h2 {
-    margin: 0;
-  }
-  .block-1__title > h1 {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 54px;
-    text-align: center;
-    /* white */
-    color: #FFFFFF;
-    /* Inside auto layout */
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    -webkit-box-ordinal-group: 1;
-        -ms-flex-order: 0;
-            order: 0;
-    -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
-        align-self: stretch;
-    -ms-flex-positive: 0;
-        flex-grow: 0;
-  }
-  .block-1__title > h2 {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 125%;
-    /* or 25px */
-    text-align: center;
-    /* white */
-    color: #FFFFFF;
-    opacity: 0.5;
-    /* Inside auto layout */
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
-    -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
-        align-self: stretch;
-    -ms-flex-positive: 0;
-        flex-grow: 0;
-  }
-  .block-1 .btn {
-    /* Auto layout */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 15px 30px;
-    gap: 10px;
-    width: 285px;
-    height: 60px;
-    /* 1 */
-    background: #7B46E8;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    /* identical to box height */
-    /* white */
-    color: #FFFFFF;
-  }
-}
-
-@media screen and (min-width: 78.75em) {
-  .crypto-icons .btc {
-    width: 232px;
-    height: 255px;
-  }
-  .crypto-icons .btc__wrapper {
-    width: 200.05px;
-    height: 229.14px;
-  }
-  .crypto-icons .altcoin {
-    width: 130px;
-    height: 144px;
-  }
-  .crypto-icons .altcoin__wrapper {
-    width: 103.92px;
-    height: 118.14px;
-  }
-  .crypto-icons {
-    width: 508.06px;
-    height: 472px;
-    -webkit-animation-name: crypto-icons-animation-desktop;
-            animation-name: crypto-icons-animation-desktop;
-  }
-  .crypto-icons > .bitcoin {
-    top: calc((100% - 229.14px) / 2);
-    left: calc((100% - 200.05px) / 2);
-  }
-  .crypto-icons > .eth, .crypto-icons > .uni {
-    top: calc((100% - 118.14px) / 2);
-  }
-  .crypto-icons > .usdc, .crypto-icons > .usdt {
-    left: calc(25% + 16.00389px - 51.96px);
-  }
-  .crypto-icons > .xrp, .crypto-icons > .doge {
-    right: calc(25% + 16.00389px - 51.96px);
-  }
-  .crypto-icons__wrapper {
-    width: 508.06px;
-    height: 472px;
-  }
-  .block-1 {
-    /* Auto layout */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 0px;
-    gap: 16px;
-  }
-  .block-1__content {
-    /* Auto layout */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    padding: 0px;
-    gap: 50px;
-    width: 704px;
-  }
-  .block-1__title {
-    /* Auto layout */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    padding: 0px;
-    gap: 20px;
-    /* Inside auto layout */
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    -webkit-box-ordinal-group: 1;
-        -ms-flex-order: 0;
-            order: 0;
-    -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
-        align-self: stretch;
-    -ms-flex-positive: 0;
-        flex-grow: 0;
-  }
-  .block-1__title > h1, .block-1__title > h2 {
-    margin: 0;
-    text-align: left;
-  }
-  .block-1__title > h1 {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 54px;
-    /* white */
-    color: #FFFFFF;
-    /* Inside auto layout */
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    -webkit-box-ordinal-group: 1;
-        -ms-flex-order: 0;
-            order: 0;
-    -ms-flex-positive: 0;
-        flex-grow: 0;
-  }
-  .block-1__title > h2 {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 125%;
-    /* or 28px */
-    /* white */
-    color: #FFFFFF;
-    opacity: 0.5;
-    /* Inside auto layout */
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
-    -ms-flex-positive: 0;
-        flex-grow: 0;
-  }
-  .block-1 .btn {
-    /* Auto layout */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 15px 30px;
-    gap: 10px;
-    width: 285px;
-    height: 60px;
-    /* 1 */
-    background: #7B46E8;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    /* identical to box height */
-    /* white */
-    color: #FFFFFF;
-  }
-}
-
 @media (max-width: 992px) {
   .field-wrapper.currency {
     -ms-grid-column: 1;
@@ -4264,7 +4384,6 @@ input[type=number] {
     grid-column: 8/13;
   }
 }
-
 @media (max-width: 576px) {
   .field-wrapper.currency {
     -ms-grid-column: 1;
@@ -4315,7 +4434,6 @@ input[type=number] {
     grid-column: 1/13;
   }
 }
-
 @media (max-width: 1200px) {
   .field-wrapper.copy-address {
     -ms-grid-column: 1;
@@ -4333,7 +4451,6 @@ input[type=number] {
     grid-column: 7/13;
   }
 }
-
 @media screen and (max-width: 768) {
   .exchanger__container {
     padding-top: 5.6875rem;
@@ -4341,4 +4458,25 @@ input[type=number] {
   .ex-form {
     margin-top: 1rem;
   }
+}
+@media screen and (min-width: 29.99875em) and (max-width: 78.75em) {
+  .no-webp body{
+    background-image: url(../img/background/bg-tablet.jpg); }
+  body {
+    background-color: #020015;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .no-webp body{
+    background-image: url(../img/background/bg-desktop-xl.jpg); }
+}
+.webp body{ background-image: url(../img/background/bg-mobile.webp); }
+@media screen and (min-width: 78.75em){
+  .webp body{ background-image: url(../img/background/bg-desktop.webp); }
+}
+@media screen and (min-width: 29.99875em) and (max-width: 78.75em){
+  .webp body{ background-image: url(../img/background/bg-tablet.webp); }
+}
+@media screen and (min-width: 1920px){
+  .webp body{ background-image: url(../img/background/bg-desktop-xl.webp); }
 }
