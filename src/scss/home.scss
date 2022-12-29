@@ -1,402 +1,395 @@
 //====================================================================================================
 .page__main {
-   padding-top: rem(140);
+  padding-top: rem(140);
 }
 
 .block-2 {
-   @media screen and (min-width: $pc) {
-      display: none;
-   }
-   
-   margin: rem(50) auto;
+  @media screen and (min-width: $pc) {
+    display: none;
+  }
+  
+  margin: rem(50) auto;
 
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 0;
-   gap: rem(32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  gap: rem(32);
 
-   &__line {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 0;
-      gap: rem(79);
-      width: rem(741);
+  &__line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: rem(79);
+  }
 
-      
-   }
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: rem(15);
 
-   &__item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 0;
-      gap: rem(15);
+    &__icon {
+      width: rem(70);
+      height: rem(70);
+    }
 
-      > img {
-         width: rem(70);
-         height: rem(70);
+    > label {
+      font-style: normal;
+      font-weight: 400;
+      font-size: rem(14);
+      line-height: rem(18);
+      color: $mainColor;
+      opacity: 0.5;
+
+      @media screen and (min-width: $mobile) {
+        font-size: rem(22);
+        line-height: rem(28);
       }
 
-      > label {
-         font-style: normal;
-         font-weight: 400;
-         font-size: rem(24);
-         line-height: rem(30);
-         color: $mainColor;
-         opacity: 0.5;
-
-         @media screen and (max-width: $pc) {
-            font-size: rem(22);
-            line-height: rem(28);
-         }
+      @media screen and (min-width: $pc) {
+        font-size: rem(24);
+        line-height: rem(30);
       }
-   }
+    }
+  }
 
-   &__separator {
-      width: rem(100);
-      height: rem(1);
-      background-image: linear-gradient(90.17deg, #7B46E8 -1.15%, rgba(123, 70, 232, 0) 87.83%);
-   }
+  &__separator {
+    width: rem(100);
+    height: rem(1);
+    background-image: linear-gradient(90.17deg, #7B46E8 -1.15%, rgba(123, 70, 232, 0) 87.83%);
+  }
 
-   & > #step-1 > label, &__line > #step-1 > label {
-      width: rem(162);
-   }
+  & > #step-1 > label, &__line > #step-1 > label {
+    width: rem(162);
+  }
 
-   & > #step-2 > label, &__line > #step-2 > label {
-      width: rem(151);
-   }
+  & > #step-2 > label, &__line > #step-2 > label {
+    width: rem(151);
+  }
 
-   & > #step-3 > label, &__line > #step-3 > label {
-      width: rem(190);
-   }
+  & > #step-3 > label, &__line > #step-3 > label {
+    width: rem(190);
+  }
 
-   @media screen and (max-width: $mobile) {
+  @media screen and (max-width: $mobile) {
+    gap: rem(16);
+    margin: rem(48) auto;
+
+    &__line {
       gap: rem(16);
-      margin: rem(48) auto;
+    }
 
-      &__line {
-         width: rem(367);
-         gap: rem(16);
+    &__item {
+      &__icon {
+        width: rem(45);
+        height: rem(45);
       }
+    }
 
-      &__item {
-         > img {
-            width: rem(45);
-            height: rem(45);
-         }
+    &__separator {
+      width: rem(30);
+    }
 
-         > label {
-            font-size: rem(14);
-            line-height: rem(18);
-         }
-      }
+    & > #step-1 > label, &__line > #step-1 > label {
+      width: rem(103);
+    }
 
-      &__separator {
-         width: rem(30);
-      }
+    & > #step-2 > label, &__line > #step-2 > label {
+      width: rem(96);
+    }
 
-      & > #step-1 > label, &__line > #step-1 > label {
-         width: rem(103);
-      }
-
-      & > #step-2 > label, &__line > #step-2 > label {
-         width: rem(96);
-      }
-
-      & > #step-3 > label, &__line > #step-3 > label {
-         width: rem(121);
-      }
-   }
+    & > #step-3 > label, &__line > #step-3 > label {
+      width: rem(121);
+    }
+  }
 }
 
 .block-2__desktop {
-   @media screen and (max-width: $pc) {
-      display: none;
-   }
+  @media screen and (max-width: $pc) {
+     display: none;
+  }
 
-   margin: rem(70) auto;
-   width: rem(1231);
+  margin: rem(70) auto;
 
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   padding: 0;
-   gap: rem(57);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  gap: rem(57);
 
-   flex-wrap: wrap;
+  > #step-1 > label {
+    width: rem(176);
+  }
 
-   > #step-1 > label {
-      width: rem(176);
-   }
+  > #step-2 > label {
+    width: rem(165);
+  }
 
-   > #step-2 > label {
-      width: rem(165);
-   }
-
-   > #step-3 > label {
-      width: rem(207);
-   }
+  > #step-3 > label {
+    width: rem(207);
+  }
 }
 
-//====================================================================================================
 
 .features {
-   &__container {
-      padding: rem(100) rem(15);
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      position: relative;
-   }
+  &__container {
+     padding: rem(100) rem(15);
+     display: flex;
+     align-items: center;
+     flex-wrap: wrap;
+     position: relative;
+  }
 
-   &__content {
-      display: flex;
-      flex: 0 1 52%;
-      padding-right: rem(52);
-   }
+  &__content {
+     display: flex;
+     flex: 0 1 52%;
+     padding-right: rem(52);
+  }
 
-   &__block-text {}
+  &__block-text {}
 
-   &__items {
-      display: flex;
-      gap: rem(30);
-   }
+  &__items {
+     display: flex;
+     gap: rem(30);
+  }
 
-   &__item {}
+  &__item {}
 
-   &__image {
-      display: flex;
-      flex: 0 1 48%;
-      justify-content: end;
-      position: relative;
+  &__image {
+     display: flex;
+     flex: 0 1 48%;
+     justify-content: end;
+     position: relative;
 
-      img {
-         max-width: 100%;
-      }
-   }
+     img {
+        max-width: 100%;
+     }
+  }
 
-   @media screen and (max-width: $laptop) {
-      &__container {
-         padding: rem(80) rem(15);
-      }
-   
-      &__content {
-         padding: 0;
-         margin: 0 auto;
-      }
-   
-      &__block-text {
-         display: grid;
-         grid-template-rows: auto;
-      }
-   
-      &__items {
-         gap: rem(90);
-      }
-      &__image {
-         display: none;
-      }
-   }
-   @media screen and (max-width: $mobile) {
-      &__container {
-         padding: rem(56) rem(15);
-      }
-      &__items {
-         gap: rem(24);
-      }
-   }
-   @media screen and (max-width: $mobileSmall) {
-      &__items {
-         gap: rem(10);
-      }
-   }
+  @media screen and (max-width: $laptop) {
+     &__container {
+        padding: rem(80) rem(15);
+     }
+  
+     &__content {
+        padding: 0;
+        margin: 0 auto;
+     }
+  
+     &__block-text {
+        display: grid;
+        grid-template-rows: auto;
+     }
+  
+     &__items {
+        gap: rem(90);
+     }
+     &__image {
+        display: none;
+     }
+  }
+  @media screen and (max-width: $mobile) {
+     &__container {
+        padding: rem(56) rem(15);
+     }
+     &__items {
+        gap: rem(24);
+     }
+  }
+  @media screen and (max-width: $mobileSmall) {
+     &__items {
+        gap: rem(10);
+     }
+  }
 }
 
 .item-features {
+  &__numbers {
+     color: $purpleColor;
+     font-weight: 500;
+     font-size: rem(36);
+     line-height: math.div(54, 36);
+     margin-bottom: rem(5);
+  }
 
-   &__numbers {
-      color: $purpleColor;
-      font-weight: 500;
-      font-size: rem(36);
-      line-height: math.div(54, 36);
-      margin-bottom: rem(5);
-   }
+  &__text {}
 
-   &__text {}
-
-   @media screen and (max-width: $laptop) {
-      &__numbers {
-         font-size: rem(32);
-         text-align: center;
-         margin-bottom: rem(4);
-      }
-   
-      &__text {
-         text-align: center;
-         line-height: math.div(30, $fontSizeValue);
-      }
-   }
-   @media screen and (max-width: $mobile) {
-      &__numbers {
-         font-size: rem(24);
-         line-height: math.div(36, 24);
-         text-align: center;
-      }
-   
-      &__text {
-         font-size: rem(16);
-         line-height: math.div(20, 16);
-      }
-   }
+  @media screen and (max-width: $laptop) {
+     &__numbers {
+        font-size: rem(32);
+        text-align: center;
+        margin-bottom: rem(4);
+     }
+  
+     &__text {
+        text-align: center;
+        line-height: math.div(30, $fontSizeValue);
+     }
+  }
+  @media screen and (max-width: $mobile) {
+     &__numbers {
+        font-size: rem(24);
+        line-height: math.div(36, 24);
+        text-align: center;
+     }
+  
+     &__text {
+        font-size: rem(16);
+        line-height: math.div(20, 16);
+     }
+  }
 }
 
 .guarantees {
-   background-color: #121B33;
+  background-color: #121B33;
 
-   &__container {
-      padding: rem(50) rem(15);
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      position: relative;
-   }
+  &__container {
+     padding: rem(50) rem(15);
+     display: flex;
+     align-items: center;
+     flex-wrap: wrap;
+     position: relative;
+  }
 
-   &__image {
-      flex: 0 1 30%;
-   }
+  &__image {
+     flex: 0 1 30%;
+  }
 
-   &__content {
-      padding-left: rem(91);
-      flex: 0 1 70%;
-   }
+  &__content {
+     padding-left: rem(91);
+     flex: 0 1 70%;
+  }
 
-   &__block-text {}
+  &__block-text {}
 
-   @media screen and (max-width: $laptop) {
-      &__container {
-         padding: rem(47) rem(15);
-         flex-direction: column;
-      }
+  @media screen and (max-width: $laptop) {
+     &__container {
+        padding: rem(47) rem(15);
+        flex-direction: column;
+     }
 
-      &__content {
-         padding: 0;
-         margin: 0 auto;
-      }
+     &__content {
+        padding: 0;
+        margin: 0 auto;
+     }
 
-      &__image {
-         margin-bottom: rem(16);
-      }
+     &__image {
+        margin-bottom: rem(16);
+     }
 
-      &__block-text {
-         max-width: rem(566);
-         margin: 0 auto;
-      }
-   }
-   @media screen and (max-width: $mobile) {
-      &__container {
-         padding: rem(40) rem(15);
-      }
+     &__block-text {
+        max-width: rem(566);
+        margin: 0 auto;
+     }
+  }
+  @media screen and (max-width: $mobile) {
+     &__container {
+        padding: rem(40) rem(15);
+     }
 
-      &__image img {
-         max-width: rem(236);
-      }
-   }
-   
-   @media screen and (max-width: $mobileSmall) {
-      &__image img {
-         max-width: rem(178);
-      }
-   }
+     &__image img {
+        max-width: rem(236);
+     }
+  }
+  
+  @media screen and (max-width: $mobileSmall) {
+     &__image img {
+        max-width: rem(178);
+     }
+  }
 }
 
 .faq {
-   &__container {
-      padding-top: rem(100);
-      display: flex;
-      flex-wrap: wrap;
-   }
-   &__content {
-      display: flex;
-      flex: 0 1 42%;
-      padding-right: rem(60);
-   }
-   &__block-text {
-   }
-   &__spollers {
-      display: flex;
-      flex-direction: column;
-      flex: 0 1 58%;
-   }
-   @media screen and (max-width: $laptop) {
-      &__container {
-         padding-top: rem(80);
-         flex-direction: column;
-      }
-   
-      &__content {
-         padding: 0;
-         margin: 0 auto;
-      }
-   
-      &__block-text {
-      }
-      &__spollers {}
+  &__container {
+     padding-top: rem(100);
+     display: flex;
+     flex-wrap: wrap;
+  }
+  &__content {
+     display: flex;
+     flex: 0 1 42%;
+     padding-right: rem(60);
+  }
+  &__block-text {
+  }
+  &__spollers {
+     display: flex;
+     flex-direction: column;
+     flex: 0 1 58%;
+  }
+  @media screen and (max-width: $laptop) {
+     &__container {
+        padding-top: rem(80);
+        flex-direction: column;
+     }
+  
+     &__content {
+        padding: 0;
+        margin: 0 auto;
+     }
+  
+     &__block-text {
+     }
+     &__spollers {}
 
-   }
-   @media screen and (max-width: $mobile) {
-      &__container {
-         padding: rem(56) rem(15);
-      }
-   }
-   @media screen and (max-width: $mobileSmall) {
-   }
+  }
+  @media screen and (max-width: $mobile) {
+     &__container {
+        padding: rem(56) rem(15);
+     }
+  }
+  @media screen and (max-width: $mobileSmall) {
+  }
 
 }
 
 .spollers-faq {
-   &__item {
-      border-bottom: 1px solid #7B46E8;
-      overflow: hidden;
+  &__item {
+     border-bottom: 1px solid #7B46E8;
+     overflow: hidden;
+  }
+  &__title {
+     width: 100%;
+     background-color: transparent;
+     display: block;
+     text-align: left;
+     padding: rem(20) 0;
+     @include adaptiveValue("padding-top", 20, 15);
+     @include adaptiveValue("padding-right", 20, 15);
+     display: flex;
+     line-height: math.div(30, 20);
+     @include adaptiveValue("font-size", 20, 18);
+     align-items: center;
+     justify-content: space-between;
+     gap: rem(60);
+     &::after{
+        content:'';
+        background: url("@img/icons/arrow.svg") center / 100% no-repeat;
+        flex: 0 0 rem(20);
+        height: rem(20);
+        transition: all 0.3s ease 0s;
+     }
+     &._spoller-active {
+        &__title {
+           padding: rem(21) 0;
+        }
+     &::after {
+           background: url("@img/icons/arrow-top.svg") center / 100% no-repeat;
+     }
    }
-   &__title {
-      width: 100%;
-      background-color: transparent;
-      display: block;
-      text-align: left;
-      padding: rem(20) 0;
-      @include adaptiveValue("padding-top", 20, 15);
-      @include adaptiveValue("padding-right", 20, 15);
-      display: flex;
-      line-height: math.div(30, 20);
-      @include adaptiveValue("font-size", 20, 18);
-      align-items: center;
-      justify-content: space-between;
-      gap: rem(60);
-      &::after{
-         content:'';
-         background: url("@img/icons/arrow.svg") center / 100% no-repeat;
-         flex: 0 0 rem(20);
-         height: rem(20);
-         transition: all 0.3s ease 0s;
-      }
-      &._spoller-active {
-         &__title {
-            padding: rem(21) 0;
-         }
-			&::after {
-            background: url("@img/icons/arrow-top.svg") center / 100% no-repeat;
-			}
-		}
-   }
-   &__body {
-      @include adaptiveValue("padding-top", 20, 16);
-      @include adaptiveValue("padding-bottom", 30, 24);
-      @include adaptiveValue("font-size", 18, 16);
-      line-height: math.div(20, 16);
-      opacity: 0.5;
-   }
+  }
+  &__body {
+     @include adaptiveValue("padding-top", 20, 16);
+     @include adaptiveValue("padding-bottom", 30, 24);
+     @include adaptiveValue("font-size", 18, 16);
+     line-height: math.div(20, 16);
+     opacity: 0.5;
+  }
 }
 
 @import 'popular-currencies';
