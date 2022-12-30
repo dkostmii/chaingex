@@ -34,6 +34,7 @@ Import `fonticons` SCSS using:
 |![](../../img/fonticons/DOT.svg)|Polkadot|`.fonticons-dot`|
 |![](../../img/fonticons/EGLD.svg)|MultiversX (Elrond)|`.fonticons-egld`|
 |![](../../img/fonticons/ETH.svg)|Ethereum|`.fonticons-eth`|
+|![](../../img/fonticons/ETC.svg)|Ethereum Classic|`.fonticons-etc`|
 |![](../../img/fonticons/FLOW.svg)|Flow|`.fonticons-flow`|
 |![](../../img/fonticons/FTT.svg)|FTX Token|`.fonticons-ftt`|
 |![](../../img/fonticons/HBAR.svg)|Hedera|`.fonticons-hbar`|
