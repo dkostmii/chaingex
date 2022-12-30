@@ -37,17 +37,17 @@
      display: grid;
      align-items: center;
      padding: rem(11) 0;
-     gap: 24px;
-     grid-template-columns: 0.65fr rem(160) 0.25fr rem(385);
+     gap: rem(79);
+     grid-template-columns: 1fr rem(130) rem(80) rem(430.716);
   }
 
   &__colum-header {
     display: grid;
     padding: rem(50) 0;
     color: $greyColor;
-    gap: 24px;
+    gap: rem(79);
 
-    grid-template-columns: 0.65fr rem(160) 0.25fr rem(385);
+    grid-template-columns: 1fr rem(130) rem(80) rem(430.716);
 
     @media screen and (max-width: $pc) {
       display: none;
