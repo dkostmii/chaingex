@@ -6082,11 +6082,11 @@
             short: "ETC"
         }, {
             id: "1tronic",
-            name: "Tronix",
+            name: "TRON",
             short: "TRX"
         }, {
             id: "doge-token",
-            name: "Doge Token",
+            name: "Dogecoin",
             short: "DOGE"
         }, {
             id: "litentry",
@@ -6108,6 +6108,14 @@
             id: "pancakeswap-token",
             name: "Pancake Swap",
             short: "CAKE"
+        }, {
+            id: "litecoin",
+            name: "Litecoin",
+            short: "LTC"
+        }, {
+            id: "usdc",
+            name: "USD Coin",
+            short: "USDC"
         } ];
         function getCryptoSymbol(currencyPartial) {
             throwIfNotAPartialCurrency(currencyPartial);
