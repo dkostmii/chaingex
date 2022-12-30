@@ -6053,14 +6053,6 @@
             name: "Solana",
             short: "SOL"
         }, {
-            id: "atomic-token",
-            name: "Atom",
-            short: "ATOM"
-        }, {
-            id: "terra-luna",
-            name: "Terra luna",
-            short: "LUNC"
-        }, {
             id: "polkadot",
             name: "Polkadot",
             short: "DOT"
@@ -6089,14 +6081,6 @@
             name: "Dogecoin",
             short: "DOGE"
         }, {
-            id: "litentry",
-            name: "Litentry",
-            short: "LIT"
-        }, {
-            id: "trust-wallet-token",
-            name: "Trust Wallet Token",
-            short: "TWT"
-        }, {
             id: "shiba-inu",
             name: "Shiba Inu",
             short: "SHIB"
@@ -6104,10 +6088,6 @@
             id: "avalanche-2",
             name: "Avalanche",
             short: "AVAX"
-        }, {
-            id: "pancakeswap-token",
-            name: "Pancake Swap",
-            short: "CAKE"
         }, {
             id: "litecoin",
             name: "Litecoin",
