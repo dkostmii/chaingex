@@ -254,20 +254,12 @@
      padding: rem(50) rem(15);
      display: flex;
      align-items: center;
-     flex-wrap: wrap;
      position: relative;
-  }
-
-  &__image {
-     flex: 0 1 30%;
   }
 
   &__content {
      padding-left: rem(91);
-     flex: 0 1 70%;
   }
-
-  &__block-text {}
 
   @media screen and (max-width: $laptop) {
      &__container {
@@ -289,6 +281,7 @@
         margin: 0 auto;
      }
   }
+
   @media screen and (max-width: $mobile) {
      &__container {
         padding: rem(40) rem(15);
@@ -342,7 +335,7 @@
   }
   @media screen and (max-width: $mobile) {
      &__container {
-        padding: rem(56) rem(15);
+        padding-top: rem(56);
      }
   }
   @media screen and (max-width: $mobileSmall) {
