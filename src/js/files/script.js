@@ -123,17 +123,15 @@ export function homePageLoad() {
  */
 let isShown = false;
 
-const hiddenClass = "colum__hidden";
-const currencyElements = Array.from(document.getElementsByClassName(hiddenClass));
+const hideableClass = "colum__hideable";
 
 export function hideCurrencies() {
   if (isShown) {
     const button = document.getElementsByClassName("popular-currencies__button")[0];
+    const currencyElements = document.getElementsByClassName(hideableClass);
 
-    currencyElements.forEach(currencyEl => {
-      if (!currencyEl.classList.contains(hiddenClass)) {
-        currencyEl.classList.add(hiddenClass);
-      }
+    [...currencyElements].forEach(currencyEl => {
+      currencyEl.classList.add("colum__hidden");
     })
     isShown = false;
     button.textContent = "See all cryptocurrencies"
@@ -143,11 +141,10 @@ export function hideCurrencies() {
 export function showCurrencies() {
   if (!isShown) {
     const button = document.getElementsByClassName("popular-currencies__button")[0];
+    const currencyElements = document.getElementsByClassName(hideableClass);
 
-    currencyElements.forEach(currencyEl => {
-      if (currencyEl.classList.contains(hiddenClass)) {
-        currencyEl.classList.remove(hiddenClass);
-      }
+    [...currencyElements].forEach(currencyEl => {
+      currencyEl.classList.remove("colum__hidden");
     });
 
     isShown = true;

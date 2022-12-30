@@ -85,6 +85,7 @@ function createCryptoElement(crypto, id = 0) {
 
   if (id > showFirstNCryptocurrencies - 1) {
     colum.classList.add('colum__hidden');
+    colum.classList.add('colum__hideable');
   }
 
   const item = createCryptocurrencyItem(crypto);
