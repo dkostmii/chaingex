@@ -299,6 +299,151 @@ body {
   padding: 0.9375rem 1.875rem;
   color: #FFFFFF;
 }
+.fonticons {
+  background-size: 2rem 2rem;
+  background-repeat: no-repeat;
+  width: 2rem;
+  height: 2rem;
+}
+
+.fonticons__wrapper {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.fonticons-btc {
+  background-image: url("../img/fonticons/BTC.svg");
+}
+.fonticons-ltc {
+  background-image: url("../img/fonticons/LTC.svg");
+}
+.fonticons-eth {
+  background-image: url("../img/fonticons/ETH.svg");
+}
+.fonticons-xrp {
+  background-image: url("../img/fonticons/XRP.svg");
+}
+.fonticons-doge {
+  background-image: url("../img/fonticons/DOGE.svg");
+}
+.fonticons-usdt {
+  background-image: url("../img/fonticons/USDT.svg");
+}
+.fonticons-xtz {
+  background-image: url("../img/fonticons/XTZ.svg");
+}
+.fonticons-trx {
+  background-image: url("../img/fonticons/TRX.svg");
+}
+.fonticons-link {
+  background-image: url("../img/fonticons/LINK.svg");
+}
+.fonticons-ada {
+  background-image: url("../img/fonticons/ADA.svg");
+}
+.fonticons-leo {
+  background-image: url("../img/fonticons/LEO.svg");
+}
+.fonticons-matic {
+  background-image: url("../img/fonticons/MATIC.svg");
+}
+.fonticons-near {
+  background-image: url("../img/fonticons/NEAR.svg");
+}
+.fonticons-sand {
+  background-image: url("../img/fonticons/SAND.svg");
+}
+.fonticons-shib {
+  background-image: url("../img/fonticons/SHIB.svg");
+}
+.fonticons-vet {
+  background-image: url("../img/fonticons/VET.svg");
+}
+.fonticons-xmr {
+  background-image: url("../img/fonticons/XMR.svg");
+}
+.fonticons-usdc {
+  background-image: url("../img/fonticons/USDC.svg");
+}
+.fonticons-wbtc {
+  background-image: url("../img/fonticons/WBTC.svg");
+}
+.fonticons-xlm {
+  background-image: url("../img/fonticons/XLM.svg");
+}
+.fonticons-uni {
+  background-image: url("../img/fonticons/UNI.svg");
+}
+.fonticons-algo {
+  background-image: url("../img/fonticons/ALGO.svg");
+}
+.fonticons-bch {
+  background-image: url("../img/fonticons/BCH.svg");
+}
+.fonticons-cro {
+  background-image: url("../img/fonticons/CRO.svg");
+}
+.fonticons-bnb {
+  background-image: url("../img/fonticons/BNB.svg");
+}
+.fonticons-mana {
+  background-image: url("../img/fonticons/MANA.svg");
+}
+.fonticons-busd {
+  background-image: url("../img/fonticons/BUSD.svg");
+}
+.fonticons-dai {
+  background-image: url("../img/fonticons/DAI.svg");
+}
+.fonticons-dot {
+  background-image: url("../img/fonticons/DOT.svg");
+}
+.fonticons-egld {
+  background-image: url("../img/fonticons/EGLD.svg");
+}
+.fonticons-flow {
+  background-image: url("../img/fonticons/FLOW.svg");
+}
+.fonticons-ftt {
+  background-image: url("../img/fonticons/FTT.svg");
+}
+.fonticons-hbar {
+  background-image: url("../img/fonticons/HBAR.svg");
+}
+.fonticons-icp {
+  background-image: url("../img/fonticons/ICP.svg");
+}
+.fonticons-kcs {
+  background-image: url("../img/fonticons/KCS.svg");
+}
+.fonticons-leo {
+  background-image: url("../img/fonticons/LEO.svg");
+}
+.fonticons-sol {
+  background-image: url("../img/fonticons/SOL.svg");
+}
+.fonticons-ape {
+  background-image: url("../img/fonticons/APE.svg");
+}
+.fonticons-avax {
+  background-image: url("../img/fonticons/AVAX.svg");
+}
+
+.fonticons-sub-bitcoin {
+  background-image: url("../img/fonticons/sub/bitcoin.svg");
+}
+.fonticons-sub-fingerprint {
+  background-image: url("../img/fonticons/sub/fingerprint.svg");
+}
+.fonticons-sub-shield {
+  background-image: url("../img/fonticons/sub/shield.svg");
+}
+
 .header {
   position: absolute;
   width: 100%;
@@ -723,6 +868,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 0;
   gap: 2rem;
 }
@@ -739,7 +887,6 @@ body {
           align-items: center;
   padding: 0;
   gap: 4.9375rem;
-  width: 46.3125rem;
 }
 .block-2__item {
   display: -webkit-box;
@@ -755,15 +902,16 @@ body {
   padding: 0;
   gap: 0.9375rem;
 }
-.block-2__item > img {
+.block-2__item__icon {
   width: 4.375rem;
   height: 4.375rem;
+  background-size: 4.375rem;
 }
 .block-2__item > label {
   font-style: normal;
   font-weight: 400;
-  font-size: 1.5rem;
-  line-height: 1.875rem;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
   color: #FFFFFF;
   opacity: 0.5;
 }
@@ -785,7 +933,6 @@ body {
 
 .block-2__desktop {
   margin: 4.375rem auto;
-  width: 76.9375rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -796,10 +943,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 0;
   gap: 3.5625rem;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 .block-2__desktop > #step-1 > label {
   width: 11rem;
@@ -3600,16 +3748,12 @@ body {
     margin: 3rem auto;
   }
   .block-2__line {
-    width: 22.9375rem;
     gap: 1rem;
   }
-  .block-2__item > img {
+  .block-2__item__icon {
     width: 2.8125rem;
     height: 2.8125rem;
-  }
-  .block-2__item > label {
-    font-size: 0.875rem;
-    line-height: 1.125rem;
+    background-size: 2.8125rem;
   }
   .block-2__separator {
     width: 1.875rem;
@@ -3701,6 +3845,10 @@ body {
   }
   .menu-footer__contacts {
     gap: 1.25rem;
+  }
+  .block-2__item > label {
+    font-size: 1.375rem;
+    line-height: 1.75rem;
   }
   .popular-currencies__container {
     padding-top: 1.875rem;
@@ -3970,10 +4118,6 @@ body {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .block-2__item > label {
-    font-size: 1.375rem;
-    line-height: 1.75rem;
-  }
   .block-2__desktop {
     display: none;
   }
@@ -4017,6 +4161,10 @@ body {
   }
   .block-2 {
     display: none;
+  }
+  .block-2__item > label {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
   }
   .crypto-icons .btc {
     width: 232px;

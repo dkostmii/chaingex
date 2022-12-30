@@ -6103,7 +6103,7 @@
         }, {
             id: "avalanche-2",
             name: "Avalanche",
-            short: "AVA"
+            short: "AVAX"
         }, {
             id: "pancakeswap-token",
             name: "Pancake Swap",
@@ -6238,6 +6238,68 @@
             if (x < 1e-4) return x.toFixed(8); else if (Math.floor(x) < 1e4) return x.toPrecision(4);
             return x.toString();
         }
+        const showFirstNCryptocurrencies = 5;
+        const popularCurrenciesContainer = document.querySelector(".popular-currencies__container");
+        if (null === popularCurrenciesContainer) throw new ElementNotFoundError(".popular-currencies__container");
+        const actionEl = popularCurrenciesContainer.querySelector(".popular-currencies__action");
+        if (null === actionEl) throw new ElementNotFoundError(".popular-currencies__action");
+        function createCryptoActions() {
+            const changeButton = document.createElement("a");
+            changeButton.href = "";
+            changeButton.className = "button__change";
+            const sellButton = document.createElement("a");
+            sellButton.href = "";
+            sellButton.className = "button__sell";
+            sellButton.innerHTML = "Sell";
+            const buyButton = document.createElement("a");
+            buyButton.href = "";
+            buyButton.className = "button__buy";
+            buyButton.innerHTML = "Buy";
+            const columActions = document.createElement("div");
+            columActions.className = "colum__actions";
+            columActions.append(changeButton, sellButton, buyButton);
+            return columActions;
+        }
+        function createCryptocurrencyItem(crypto) {
+            throwIfNotAPartialCurrency(crypto);
+            const item = document.createElement("div");
+            item.className = "cryptocurrency__item";
+            const left = document.createElement("div");
+            left.className = "cryptocurrency__left";
+            const icon = document.createElement("i");
+            icon.className = `fonticons-${crypto.short.toLowerCase()} cryptocurrency__icon`;
+            const name = document.createElement("div");
+            name.className = "cryptocurrency__name";
+            name.innerHTML = crypto.name;
+            left.append(icon, name);
+            const short = document.createElement("div");
+            short.className = "cryptocurrency__short";
+            short.innerHTML = crypto.short;
+            item.append(left, short);
+            return item;
+        }
+        function createCryptoElement(crypto, id = 0) {
+            throwIfNotAPartialCurrency(crypto);
+            throwIfNotANumber(id);
+            const colum = document.createElement("div");
+            colum.className = "popular-currencies__colum colum";
+            if (id > showFirstNCryptocurrencies - 1) colum.classList.add("colum__hidden");
+            const item = createCryptocurrencyItem(crypto);
+            const price = document.createElement("div");
+            price.className = "colum__price";
+            price.id = crypto.id;
+            const change = document.createElement("div");
+            change.className = "colum__change";
+            const actions = createCryptoActions();
+            colum.append(item, price, change, actions);
+            return colum;
+        }
+        function addCryptocurrencies() {
+            cryptocurrencies.forEach(((crypto, id) => {
+                const cryptoEl = createCryptoElement(crypto, id);
+                popularCurrenciesContainer.insertBefore(cryptoEl, actionEl);
+            }));
+        }
         const storageConfig = {
             tokenNames: {
                 sendCrypto: "sendCrypto",
@@ -6245,16 +6307,8 @@
             }
         };
         const storage = storageConfig;
+        addCryptocurrencies();
         const script_cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
-        const cIds = cryptocurrencies.map((c => c.id));
-        [ ...script_cryptocurrencies ].forEach((cryptoEl => {
-            const priceEl = cryptoEl.querySelector(".colum__price");
-            const changeEl = cryptoEl.querySelector(".colum__change");
-            if (!(priceEl instanceof Element)) throw new ElementNotFoundError(".colum__price");
-            if (!(changeEl instanceof Element)) throw new ElementNotFoundError(".colum__change");
-            if (!priceEl.hasAttribute("id")) throw new Error("Missing 'id' attribute in .colum__price element.\nElement contents: " + priceEl.innerHTML);
-            if (!cIds.includes(priceEl.id)) throw new Error(`Unknown cryptocurrency: ${priceEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
-        }));
         function preCheckChange(num) {
             return num.toFixed(2);
         }
@@ -6325,21 +6379,32 @@
         let isShown = false;
         const hiddenClass = "colum__hidden";
         const currencyElements = Array.from(document.getElementsByClassName(hiddenClass));
-        function toggleCurrencies() {
-            const button = document.getElementsByClassName("popular-currencies__button")[0];
+        function hideCurrencies() {
             if (isShown) {
+                const button = document.getElementsByClassName("popular-currencies__button")[0];
                 currencyElements.forEach((currencyEl => {
                     if (!currencyEl.classList.contains(hiddenClass)) currencyEl.classList.add(hiddenClass);
                 }));
                 isShown = false;
                 button.textContent = "See all cryptocurrencies";
-            } else {
+            }
+        }
+        function showCurrencies() {
+            if (!isShown) {
+                const button = document.getElementsByClassName("popular-currencies__button")[0];
                 currencyElements.forEach((currencyEl => {
                     if (currencyEl.classList.contains(hiddenClass)) currencyEl.classList.remove(hiddenClass);
                 }));
                 isShown = true;
                 button.textContent = "Hide all currencies";
             }
+        }
+        function toggleCurrencies() {
+            if (isShown) {
+                hideCurrencies();
+                return;
+            }
+            showCurrencies();
         }
         function remCheck() {
             const html = document.documentElement;
@@ -6612,9 +6677,106 @@
             return currencyPair;
         }
         __webpack_require__(711);
+        let sc = 1;
+        const fonticonsSelector = "i[class^='fonticons-'],i[class*=' fonticons-']";
+        const fonticonsPartialClass = "fonticons-";
+        let before;
+        let after;
+        function calcIconElStyle(requiredWidth, requiredHeight) {
+            const {width, height} = {
+                width: `${1.9 * requiredWidth * sc}px`,
+                height: `${1.8135 * requiredHeight * sc}px`
+            };
+            return {
+                width,
+                height,
+                backgroundSize: `${width} ${height}`
+            };
+        }
+        const wrapperClassName = "fonticons__wrapper";
+        function unwrapFonticons() {
+            const wrapperElements = document.querySelectorAll(`.${wrapperClassName}`);
+            wrapperElements.forEach((wrapperEl => {
+                const iconEl = wrapperEl.querySelector(fonticonsSelector);
+                if (!iconEl) {
+                    wrapperEl.remove();
+                    return;
+                }
+                wrapperEl.classList.remove(wrapperClassName);
+                wrapperEl.classList.forEach((className => iconEl.classList.add(className)));
+                wrapperEl.removeChild(iconEl);
+                wrapperEl.parentElement.insertBefore(iconEl, wrapperEl);
+                iconEl.removeAttribute("style");
+                wrapperEl.remove();
+            }));
+        }
+        function wrapFonticons() {
+            const iconElements = document.querySelectorAll(fonticonsSelector);
+            iconElements.forEach((iconEl => {
+                if (iconEl.parentElement.classList.contains(wrapperClassName)) return;
+                iconEl.classList.add("fonticons");
+                if (iconEl.className.includes("-sub-")) return;
+                const {width: requiredWidth, height: requiredHeight} = iconEl.getBoundingClientRect();
+                const wrapperEl = document.createElement("div");
+                wrapperEl.classList.add(wrapperClassName);
+                const classes = [ ...iconEl.classList ].filter((className => !className.includes(fonticonsPartialClass)));
+                iconEl.classList.remove(...classes);
+                wrapperEl.classList.add(...classes);
+                iconEl.parentElement.insertBefore(wrapperEl, iconEl);
+                iconEl.parentElement.removeChild(iconEl);
+                wrapperEl.appendChild(iconEl);
+                Object.assign(wrapperEl.style, {
+                    width: `${requiredWidth}px`,
+                    height: `${requiredHeight}px`
+                });
+                Object.assign(iconEl.style, calcIconElStyle(requiredWidth, requiredHeight));
+            }));
+        }
+        function mediaChangedHandler() {
+            if (before instanceof Function) before();
+            unwrapFonticons();
+            wrapFonticons();
+            if (after instanceof Function) after();
+        }
+        function breakpoint(bp) {
+            if ("string" !== typeof bp) throw new TypeError("Expected bp to be a string.");
+            if (0 === bp.length) throw new TypeError("Expected bp to be non-empty string.");
+            if (bp.match(/^\d+(\.\d+)?(px|em|rem|pt|cm|in)$/)[0] !== bp) throw new Error(`Invalid bp value: ${bp}. Expected integer or decimal in px, em, rem, pt, cm or in units.`);
+            window.matchMedia(`(min-width: ${bp})`).addEventListener("change", mediaChangedHandler);
+            return {
+                scale,
+                breakpoint
+            };
+        }
+        function scale(factor) {
+            if ("number" !== typeof factor) throw new TypeError(`Expected factor to be a number. Got: ${typeof factor}.`);
+            if (factor < 0) throw new Error(`Expected factor to be non-negative number. Got: ${factor}.`);
+            sc = factor;
+            mediaChangedHandler();
+            return {
+                breakpoint,
+                scale
+            };
+        }
+        function fonticons(actionBefore, actionAfter) {
+            if (actionBefore instanceof Function) {
+                before = actionBefore;
+                before();
+            }
+            wrapFonticons();
+            if (actionAfter instanceof Function) {
+                after = actionAfter;
+                after();
+            }
+            return {
+                scale,
+                breakpoint
+            };
+        }
         window["FLS"] = true;
         isWebp();
         spollers();
+        fonticons(showCurrencies, hideCurrencies).scale(.9);
         Object.assign(window, {
             toggleCurrencies,
             toggleMenu
