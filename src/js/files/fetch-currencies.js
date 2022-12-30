@@ -22,13 +22,16 @@ export const cryptocurrencies = [
   { id: "near", name: "Near", short: "NEAR" },
   { id: "cardano", name: "Cardano", short: "ADA" },
   { id: "ethereum-classic", name: "Ethereum Classic", short: "ETC" },
-  { id: "1tronic", name: "Tronix", short: "TRX" },
-  { id: "doge-token", name: "Doge Token", short: "DOGE" },
+  { id: "1tronic", name: "TRON", short: "TRX" },
+  { id: "doge-token", name: "Dogecoin", short: "DOGE" },
   { id: "litentry", name: "Litentry", short: "LIT" },
   { id: "trust-wallet-token", name: "Trust Wallet Token", short: "TWT" },
   { id: "shiba-inu", name: "Shiba Inu", short: "SHIB" },
   { id: "avalanche-2", name: "Avalanche", short: "AVAX" },
   { id: "pancakeswap-token", name: "Pancake Swap", short: "CAKE" },
+
+  { id: "litecoin", name: "Litecoin", short: "LTC" },
+  { id: "usdc", name: "USD Coin", short: "USDC" }
 ];
 
 /**
