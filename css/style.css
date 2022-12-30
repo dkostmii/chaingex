@@ -298,6 +298,8 @@ body {
   background-color: #7B46E8;
   padding: 0.9375rem 1.875rem;
   color: #FFFFFF;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
 }
 .fonticons {
   background-size: 2rem 2rem;
@@ -682,7 +684,7 @@ body {
 }
 
 .footer {
-  margin-top: 9.375rem;
+  margin-top: 4rem;
   background-color: #121B33;
 }
 .footer__container {
@@ -1024,20 +1026,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   position: relative;
-}
-.guarantees__image {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 30%;
-          flex: 0 1 30%;
 }
 .guarantees__content {
   padding-left: 5.6875rem;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 70%;
-          flex: 0 1 70%;
 }
 
 .faq__container {
@@ -1135,18 +1127,18 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 0.6875rem 0;
-  gap: 24px;
-  -ms-grid-columns: 0.65fr 10rem 0.25fr 24.0625rem;
-  grid-template-columns: 0.65fr 10rem 0.25fr 24.0625rem;
+  gap: 4.9375rem;
+  -ms-grid-columns: 1fr 8.125rem 5rem 26.91975rem;
+  grid-template-columns: 1fr 8.125rem 5rem 26.91975rem;
 }
 .popular-currencies__colum-header {
   display: -ms-grid;
   display: grid;
   padding: 3.125rem 0;
   color: #676673;
-  gap: 24px;
-  -ms-grid-columns: 0.65fr 10rem 0.25fr 24.0625rem;
-  grid-template-columns: 0.65fr 10rem 0.25fr 24.0625rem;
+  gap: 4.9375rem;
+  -ms-grid-columns: 1fr 8.125rem 5rem 26.91975rem;
+  grid-template-columns: 1fr 8.125rem 5rem 26.91975rem;
 }
 .popular-currencies__action {
   margin-top: 3.125rem;
@@ -3688,6 +3680,8 @@ body {
   }
   .block-text__button {
     max-width: 11.125rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
   .button__icon {
     display: block;
@@ -3792,7 +3786,7 @@ body {
     max-width: 14.75rem;
   }
   .faq__container {
-    padding: 3.5rem 0.9375rem;
+    padding-top: 3.5rem;
   }
   .popular-currencies__title {
     font-size: 1.25rem;
@@ -3822,6 +3816,13 @@ body {
     font-size: 1.375rem;
     line-height: 2.0625rem;
     padding: 0.5rem 2rem;
+  }
+  .button.block-1__cta {
+    padding: 0.9375rem 1.875rem;
+    width: 17.8125rem;
+    height: 3.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
   .footer__menu {
     width: 100%;
@@ -4030,13 +4031,6 @@ body {
   }
 }
 @media screen and (min-width: 61.99875em) {
-  .button.block-1__cta {
-    padding: 0.9375rem 1.875rem;
-    width: 17.8125rem;
-    height: 3.75rem;
-    font-size: 1.25rem;
-    line-height: 1.875rem;
-  }
   .button.popular-currencies__button {
     font-size: 1.25rem;
     line-height: 1.875rem;
@@ -4148,7 +4142,9 @@ body {
     display: none;
   }
   .header__cta-desktop {
-    display: unset;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
   }
   .menu__icons {
     display: none;

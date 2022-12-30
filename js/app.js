@@ -5288,7 +5288,8 @@
             id: "usdt",
             name: "USDT",
             short: "USDT",
-            price: 1
+            price: 1,
+            change: 0
         };
         class YouSend {
             constructor(currency, amount, allCurrencies) {
@@ -6227,10 +6228,6 @@
             return x.toString();
         }
         const showFirstNCryptocurrencies = 5;
-        const popularCurrenciesContainer = document.querySelector(".popular-currencies__container");
-        if (null === popularCurrenciesContainer) throw new ElementNotFoundError(".popular-currencies__container");
-        const actionEl = popularCurrenciesContainer.querySelector(".popular-currencies__action");
-        if (null === actionEl) throw new ElementNotFoundError(".popular-currencies__action");
         function createCryptoActions() {
             const changeButton = document.createElement("a");
             changeButton.href = "";
@@ -6283,6 +6280,10 @@
             return colum;
         }
         function addCryptocurrencies() {
+            const popularCurrenciesContainer = document.querySelector(".popular-currencies__container");
+            if (null === popularCurrenciesContainer) throw new ElementNotFoundError(".popular-currencies__container");
+            const actionEl = popularCurrenciesContainer.querySelector(".popular-currencies__action");
+            if (null === actionEl) throw new ElementNotFoundError(".popular-currencies__action");
             cryptocurrencies.forEach(((crypto, id) => {
                 const cryptoEl = createCryptoElement(crypto, id);
                 popularCurrenciesContainer.insertBefore(cryptoEl, actionEl);
@@ -6295,8 +6296,6 @@
             }
         };
         const storage = storageConfig;
-        addCryptocurrencies();
-        const script_cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
         function preCheckChange(num) {
             return num.toFixed(2);
         }
@@ -6336,34 +6335,38 @@
             preloader.classList.remove("show");
             preloader.remove();
         }
-        loadCryptos().then((cryptos => {
-            [ ...script_cryptocurrencies ].forEach((cryptoEl => {
-                const priceEl = cryptoEl.querySelector(".colum__price");
-                const changeEl = cryptoEl.querySelector(".colum__change");
-                const crypto = cryptos.find((c => c.id === priceEl.id));
-                util_throwIfNotACurrency(crypto);
-                const priceStr = preCheck(crypto.price);
-                const changeValue = parseFloat(preCheckChange(crypto.change));
-                const changeStr = prependSignLiteral(changeValue);
-                const cryptocurrencyMobileEl = document.createElement("div");
-                cryptocurrencyMobileEl.className = "cryptocurrency__price";
-                cryptocurrencyMobileEl.innerHTML = priceStr;
-                const cryptoNameEl = cryptoEl.querySelector(".cryptocurrency__name");
-                cryptoNameEl.parentElement.removeChild(cryptoNameEl);
-                const cryptoNamePrice = document.createElement("div");
-                cryptoNamePrice.classList.add("cryptocurrency__nameprice");
-                cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
-                const cryptoLeftEl = cryptoEl.querySelector(".cryptocurrency__left");
-                cryptoLeftEl.appendChild(cryptoNamePrice);
-                priceEl.innerHTML = priceStr;
-                changeEl.innerHTML = changeStr;
-                const changeElSignClass = mapSignStyleClass(changeValue);
-                if (changeElSignClass) changeEl.classList.add(changeElSignClass);
+        function homePageLoad() {
+            addCryptocurrencies();
+            const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
+            loadCryptos().then((cryptos => {
+                [ ...cryptocurrencies ].forEach((cryptoEl => {
+                    const priceEl = cryptoEl.querySelector(".colum__price");
+                    const changeEl = cryptoEl.querySelector(".colum__change");
+                    const crypto = cryptos.find((c => c.id === priceEl.id));
+                    util_throwIfNotACurrency(crypto);
+                    const priceStr = preCheck(crypto.price);
+                    const changeValue = parseFloat(preCheckChange(crypto.change));
+                    const changeStr = prependSignLiteral(changeValue);
+                    const cryptocurrencyMobileEl = document.createElement("div");
+                    cryptocurrencyMobileEl.className = "cryptocurrency__price";
+                    cryptocurrencyMobileEl.innerHTML = priceStr;
+                    const cryptoNameEl = cryptoEl.querySelector(".cryptocurrency__name");
+                    cryptoNameEl.parentElement.removeChild(cryptoNameEl);
+                    const cryptoNamePrice = document.createElement("div");
+                    cryptoNamePrice.classList.add("cryptocurrency__nameprice");
+                    cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
+                    const cryptoLeftEl = cryptoEl.querySelector(".cryptocurrency__left");
+                    cryptoLeftEl.appendChild(cryptoNamePrice);
+                    priceEl.innerHTML = priceStr;
+                    changeEl.innerHTML = changeStr;
+                    const changeElSignClass = mapSignStyleClass(changeValue);
+                    if (changeElSignClass) changeEl.classList.add(changeElSignClass);
+                }));
+                hideSpinner();
+            })).catch((e => {
+                throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
             }));
-            hideSpinner();
-        })).catch((e => {
-            throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
-        }));
+        }
         let isShown = false;
         const hiddenClass = "colum__hidden";
         const currencyElements = Array.from(document.getElementsByClassName(hiddenClass));
@@ -6628,6 +6631,7 @@
             const currencyModel = new model_currency([ sendCrypto, receiveCrypto ], youSendReceiveModel, createCurrencyPairs(cryptos));
             const formElement = document.querySelector(exFormId);
             new currency(currencyModel, formElement);
+            hideSpinner();
         }
         function getRequestedCryptos(cryptos) {
             throwIfNotArrayOfCurrencies(cryptos);
@@ -6764,13 +6768,12 @@
         window["FLS"] = true;
         isWebp();
         spollers();
-        fonticons(showCurrencies, hideCurrencies).scale(.9);
         Object.assign(window, {
             toggleCurrencies,
             toggleMenu
         });
         const currentPage = document.body.dataset.page;
-        if ("Exchanger" == currentPage) {
+        if ("Exchanger" === currentPage) {
             exchanger_select();
             check_length();
             copy();
@@ -6778,9 +6781,11 @@
             request_script_main_submitHandler();
             exchangerPageLoad();
             autoCloseMenu();
-        } else if ("Home" == currentPage) {
+        } else if ("Home" === currentPage) {
+            homePageLoad();
             changeSellBuyToExchangeRedirect();
             autoCloseMenu();
+            fonticons(showCurrencies, hideCurrencies).scale(.9);
         }
     })();
 })();
