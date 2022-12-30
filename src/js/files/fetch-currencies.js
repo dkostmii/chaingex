@@ -15,8 +15,6 @@ export const cryptocurrencies = [
   { id: "ethereum", name: "Ethereum", short: "ETH" },
   { id: "binancecoin", name: "Binance coin", short: "BNB" },
   { id: "solana", name: "Solana", short: "SOL" },
-  { id: "atomic-token", name: "Atom", short: "ATOM" },
-  { id: "terra-luna", name: "Terra luna", short: "LUNC" },
   { id: "polkadot", name: "Polkadot", short: "DOT" },
   { id: "matic-network", name: "Matic", short: "MATIC" },
   { id: "near", name: "Near", short: "NEAR" },
@@ -24,12 +22,8 @@ export const cryptocurrencies = [
   { id: "ethereum-classic", name: "Ethereum Classic", short: "ETC" },
   { id: "1tronic", name: "TRON", short: "TRX" },
   { id: "doge-token", name: "Dogecoin", short: "DOGE" },
-  { id: "litentry", name: "Litentry", short: "LIT" },
-  { id: "trust-wallet-token", name: "Trust Wallet Token", short: "TWT" },
   { id: "shiba-inu", name: "Shiba Inu", short: "SHIB" },
   { id: "avalanche-2", name: "Avalanche", short: "AVAX" },
-  { id: "pancakeswap-token", name: "Pancake Swap", short: "CAKE" },
-
   { id: "litecoin", name: "Litecoin", short: "LTC" },
   { id: "usdc", name: "USD Coin", short: "USDC" }
 ];
