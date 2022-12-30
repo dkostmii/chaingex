@@ -21,6 +21,8 @@ import './files/animation-on-scroll.js';
 // Подключение основного файла стилей
 import "../scss/style.scss";
 
+
+
 // ========================================================================================================================================================================================================================================================
 // Функционал ========================================================================================================================================================================================================================================================
 // ========================================================================================================================================================================================================================================================
@@ -219,6 +221,8 @@ import * as flsScroll from "./files/scroll/scroll.js";
 /* Подключаем файлы со своим кодом */
 import { 
 	toggleCurrencies,
+	showCurrencies,
+	hideCurrencies,
 	toggleMenu,
 	changeSellBuyToExchangeRedirect,
 	autoCloseMenu,
@@ -235,6 +239,12 @@ import submitHandler from './files/exchanger/request-script-main/submitHandler.j
 import { exchangerPageLoad } from './files/exchanger/page-load.js';
 
 import AOS from 'aos';
+
+// Fonticons
+import fonticons from './fonticons/index.js';
+
+fonticons(showCurrencies, hideCurrencies)
+	.scale(0.9);
 
 Object.assign(window, {
 	toggleCurrencies,

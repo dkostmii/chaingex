@@ -12,36 +12,14 @@ import {
 import $ from "jquery";
 
 import { ElementNotFoundError } from "./exchanger/views/util.js";
-import { throwIfNotACurrency, isArrayOfCurrencies } from "./exchanger/model/util.js";
+import { throwIfNotACurrency } from "./exchanger/model/util.js";
 
-import { loadCryptos, cryptocurrencies as cryptos, preCheck } from './fetch-currencies.js';
+import { addCryptocurrencies } from "./popular-cryptocurrencies.js";
+import { loadCryptos, preCheck } from './fetch-currencies.js';
 import storageConfig from "../config/storage.js";
 
+addCryptocurrencies();
 const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
-
-const cIds = cryptos.map(c => c.id);
-
-// Integrity check
-[...cryptocurrencies].forEach(cryptoEl => {
-  const priceEl = cryptoEl.querySelector('.colum__price');
-  const changeEl = cryptoEl.querySelector('.colum__change');
-
-  if (!(priceEl instanceof Element)) {
-    throw new ElementNotFoundError('.colum__price');
-  }
-
-  if (!(changeEl instanceof Element)) {
-    throw new ElementNotFoundError('.colum__change');
-  }
-
-  if (!priceEl.hasAttribute('id')) {
-    throw new Error('Missing \'id\' attribute in .colum__price element.\nElement contents: ' + priceEl.innerHTML);
-  }
-
-  if (!cIds.includes(priceEl.id)) {
-    throw new Error(`Unknown cryptocurrency: ${priceEl.id}. Add it to cryptocurrencies array in fetch-currencies.js.`);
-  }
-});
 
 function preCheckChange(num) {
   return num.toFixed(2);
@@ -146,15 +124,10 @@ let isShown = false;
 const hiddenClass = "colum__hidden";
 const currencyElements = Array.from(document.getElementsByClassName(hiddenClass));
 
-/**
- * Shows or hides more cryptocurrencies at *Home page*
- * 
- * Is called after clicking `See all cryptocurrencies` button.
- */
-export function toggleCurrencies() {
-  const button = document.getElementsByClassName("popular-currencies__button")[0];
-
+export function hideCurrencies() {
   if (isShown) {
+    const button = document.getElementsByClassName("popular-currencies__button")[0];
+
     currencyElements.forEach(currencyEl => {
       if (!currencyEl.classList.contains(hiddenClass)) {
         currencyEl.classList.add(hiddenClass);
@@ -162,8 +135,13 @@ export function toggleCurrencies() {
     })
     isShown = false;
     button.textContent = "See all cryptocurrencies"
+  }
+}
 
-  } else {
+export function showCurrencies() {
+  if (!isShown) {
+    const button = document.getElementsByClassName("popular-currencies__button")[0];
+
     currencyElements.forEach(currencyEl => {
       if (currencyEl.classList.contains(hiddenClass)) {
         currencyEl.classList.remove(hiddenClass);
@@ -173,6 +151,20 @@ export function toggleCurrencies() {
     isShown = true;
     button.textContent = "Hide all currencies";
   }
+}
+
+/**
+ * Shows or hides more cryptocurrencies at *Home page*
+ * 
+ * Is called after clicking `See all cryptocurrencies` button.
+ */
+export function toggleCurrencies() {
+  if (isShown) {
+    hideCurrencies();
+    return;
+  }
+
+  showCurrencies();
 }
 
 /**
