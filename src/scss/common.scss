@@ -67,6 +67,9 @@
       background-color: $purpleColor;
       padding: rem(15) rem(30);
       color: #FFFFFF;
+
+      font-size: rem(20);
+      line-height: rem(30);
    }
 
    @media screen and (max-width: $laptop) {
@@ -106,6 +109,9 @@
 
       &__button {
          max-width: rem(178);
+
+         font-size: rem(16);
+         line-height: rem(24);
       }
    }
 

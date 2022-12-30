@@ -159,7 +159,7 @@
 
     color: $mainColor;
 
-		@media screen and (min-width: $tablet) {
+		@media screen and (min-width: $mobile) {
 			padding: rem(15) rem(30);
 			width: rem(285);
 			height: rem(60);
