@@ -6268,7 +6268,10 @@
             throwIfNotANumber(id);
             const colum = document.createElement("div");
             colum.className = "popular-currencies__colum colum";
-            if (id > showFirstNCryptocurrencies - 1) colum.classList.add("colum__hidden");
+            if (id > showFirstNCryptocurrencies - 1) {
+                colum.classList.add("colum__hidden");
+                colum.classList.add("colum__hideable");
+            }
             const item = createCryptocurrencyItem(crypto);
             const price = document.createElement("div");
             price.className = "colum__price";
@@ -6368,13 +6371,13 @@
             }));
         }
         let isShown = false;
-        const hiddenClass = "colum__hidden";
-        const currencyElements = Array.from(document.getElementsByClassName(hiddenClass));
+        const hideableClass = "colum__hideable";
         function hideCurrencies() {
             if (isShown) {
                 const button = document.getElementsByClassName("popular-currencies__button")[0];
-                currencyElements.forEach((currencyEl => {
-                    if (!currencyEl.classList.contains(hiddenClass)) currencyEl.classList.add(hiddenClass);
+                const currencyElements = document.getElementsByClassName(hideableClass);
+                [ ...currencyElements ].forEach((currencyEl => {
+                    currencyEl.classList.add("colum__hidden");
                 }));
                 isShown = false;
                 button.textContent = "See all cryptocurrencies";
@@ -6383,8 +6386,9 @@
         function showCurrencies() {
             if (!isShown) {
                 const button = document.getElementsByClassName("popular-currencies__button")[0];
-                currencyElements.forEach((currencyEl => {
-                    if (currencyEl.classList.contains(hiddenClass)) currencyEl.classList.remove(hiddenClass);
+                const currencyElements = document.getElementsByClassName(hideableClass);
+                [ ...currencyElements ].forEach((currencyEl => {
+                    currencyEl.classList.remove("colum__hidden");
                 }));
                 isShown = true;
                 button.textContent = "Hide all currencies";
