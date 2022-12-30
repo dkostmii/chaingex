@@ -8,17 +8,7 @@ const showFirstNCryptocurrencies = 5;
  * @typedef {import('./fetch-currencies.js').currencyPartial} currencyPartial
  */
 
-const popularCurrenciesContainer = document.querySelector('.popular-currencies__container');
 
-if (popularCurrenciesContainer === null) {
-  throw new ElementNotFoundError('.popular-currencies__container');
-}
-
-const actionEl = popularCurrenciesContainer.querySelector('.popular-currencies__action');
-
-if (actionEl === null) {
-  throw new ElementNotFoundError('.popular-currencies__action');
-}
 
 /**
  * 
@@ -116,6 +106,18 @@ function createCryptoElement(crypto, id = 0) {
  * Adds all {@link cryptocurrencies} to `popular-currencies` section.
  */
 export function addCryptocurrencies() {
+  const popularCurrenciesContainer = document.querySelector('.popular-currencies__container');
+
+  if (popularCurrenciesContainer === null) {
+    throw new ElementNotFoundError('.popular-currencies__container');
+  }
+
+  const actionEl = popularCurrenciesContainer.querySelector('.popular-currencies__action');
+
+  if (actionEl === null) {
+    throw new ElementNotFoundError('.popular-currencies__action');
+  }
+
   cryptocurrencies.forEach((crypto, id) => {
     const cryptoEl = createCryptoElement(crypto, id);
     popularCurrenciesContainer.insertBefore(cryptoEl, actionEl);

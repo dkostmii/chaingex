@@ -7,7 +7,7 @@ import storageConfig from "../../config/storage.js";
 
 import { exFormId } from "./views/util.js";
 
-import { throwIfNotACurrency, createCurrencyPairs, throwIfNotArrayOfCurrencies, throwIfNotPairOfCurrencies } from "./model/util.js";
+import { throwIfNotACurrency, createCurrencyPairs, throwIfNotArrayOfCurrencies, throwIfNotPairOfCurrencies, isCurrency } from "./model/util.js";
 
 // Models
 import CurrencyModel from './model/currency.js';
@@ -17,6 +17,8 @@ import YouReceiveModel from "./model/you-receive.js";
 
 // Views
 import CurrencyView from './views/currency.js';
+
+import { hideSpinner } from "../script.js";
 
 /**
  * Entry point for the **Exchanger** page.
@@ -53,6 +55,8 @@ export async function exchangerPageLoad() {
   const formElement = document.querySelector(exFormId);
 
   new CurrencyView(currencyModel, formElement);
+
+  hideSpinner();
 }
 
 /**

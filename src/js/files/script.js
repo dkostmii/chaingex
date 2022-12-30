@@ -18,9 +18,6 @@ import { addCryptocurrencies } from "./popular-cryptocurrencies.js";
 import { loadCryptos, preCheck } from './fetch-currencies.js';
 import storageConfig from "../config/storage.js";
 
-addCryptocurrencies();
-const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
-
 function preCheckChange(num) {
   return num.toFixed(2);
 }
@@ -65,54 +62,59 @@ export function hideSpinner() {
   preloader.remove();
 }
 
-// Fill cryptocurrency prices at Home page
-loadCryptos()
-  .then(cryptos => {
-    [...cryptocurrencies].forEach(cryptoEl => {
-      const priceEl = cryptoEl.querySelector('.colum__price');
-      const changeEl = cryptoEl.querySelector('.colum__change');
+export function homePageLoad() {
+  addCryptocurrencies();
+  const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
 
-      const crypto = cryptos.find(c => c.id === priceEl.id);
+  // Fill cryptocurrency prices at Home page
+  loadCryptos()
+    .then(cryptos => {
+      [...cryptocurrencies].forEach(cryptoEl => {
+        const priceEl = cryptoEl.querySelector('.colum__price');
+        const changeEl = cryptoEl.querySelector('.colum__change');
 
-      throwIfNotACurrency(crypto);
+        const crypto = cryptos.find(c => c.id === priceEl.id);
 
-      const priceStr = preCheck(crypto.price);
-      const changeValue = parseFloat(preCheckChange(crypto.change));
-      const changeStr = prependSignLiteral(changeValue);
+        throwIfNotACurrency(crypto);
 
-      // Mobile price label .cryptocurrency__price
-      const cryptocurrencyMobileEl = document.createElement('div');
-      cryptocurrencyMobileEl.className = 'cryptocurrency__price';
-      cryptocurrencyMobileEl.innerHTML = priceStr;
+        const priceStr = preCheck(crypto.price);
+        const changeValue = parseFloat(preCheckChange(crypto.change));
+        const changeStr = prependSignLiteral(changeValue);
 
-      const cryptoNameEl = cryptoEl.querySelector('.cryptocurrency__name');
-      cryptoNameEl.parentElement.removeChild(cryptoNameEl);
+        // Mobile price label .cryptocurrency__price
+        const cryptocurrencyMobileEl = document.createElement('div');
+        cryptocurrencyMobileEl.className = 'cryptocurrency__price';
+        cryptocurrencyMobileEl.innerHTML = priceStr;
 
-      const cryptoNamePrice = document.createElement('div');
-      cryptoNamePrice.classList.add('cryptocurrency__nameprice');
+        const cryptoNameEl = cryptoEl.querySelector('.cryptocurrency__name');
+        cryptoNameEl.parentElement.removeChild(cryptoNameEl);
 
-      cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
-      
-      const cryptoLeftEl = cryptoEl.querySelector('.cryptocurrency__left');
-      cryptoLeftEl.appendChild(cryptoNamePrice);
+        const cryptoNamePrice = document.createElement('div');
+        cryptoNamePrice.classList.add('cryptocurrency__nameprice');
 
-      // Tablet and desktop price label
-      priceEl.innerHTML = priceStr;
+        cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
+        
+        const cryptoLeftEl = cryptoEl.querySelector('.cryptocurrency__left');
+        cryptoLeftEl.appendChild(cryptoNamePrice);
 
-      changeEl.innerHTML = changeStr;
-      
-      const changeElSignClass = mapSignStyleClass(changeValue);
+        // Tablet and desktop price label
+        priceEl.innerHTML = priceStr;
 
-      if (changeElSignClass) {
-        changeEl.classList.add(changeElSignClass);
-      }
+        changeEl.innerHTML = changeStr;
+        
+        const changeElSignClass = mapSignStyleClass(changeValue);
+
+        if (changeElSignClass) {
+          changeEl.classList.add(changeElSignClass);
+        }
+      });
+
+      hideSpinner();
+    })
+    .catch(e => {
+      throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
     });
-
-    hideSpinner();
-  })
-  .catch(e => {
-    throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
-  });
+}
 
 /**
  * Indicates if all cryptocurrencies at *Home page* are displayed.

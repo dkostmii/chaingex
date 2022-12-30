@@ -24,5 +24,5 @@ export const minAmountUsdt = 150;
  * @constant usdt
  * @type {currency}
  */
-export const usdt = { id: "usdt", name: "USDT", short: "USDT", price: 1 };
+export const usdt = { id: "usdt", name: "USDT", short: "USDT", price: 1, change: 0 };
 

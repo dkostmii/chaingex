@@ -226,6 +226,7 @@ import {
 	toggleMenu,
 	changeSellBuyToExchangeRedirect,
 	autoCloseMenu,
+	homePageLoad,
 } from "./files/script.js";
 
 import selectHandler from './files/exchanger/select.js';
@@ -240,11 +241,7 @@ import { exchangerPageLoad } from './files/exchanger/page-load.js';
 
 import AOS from 'aos';
 
-// Fonticons
 import fonticons from './fonticons/index.js';
-
-fonticons(showCurrencies, hideCurrencies)
-	.scale(0.9);
 
 Object.assign(window, {
 	toggleCurrencies,
@@ -253,7 +250,7 @@ Object.assign(window, {
 
 const currentPage = document.body.dataset.page;
 
-if (currentPage == 'Exchanger') {
+if (currentPage === 'Exchanger') {
 	selectHandler();
 	//concatValueHandler();
 	checkLengthHandler();
@@ -263,10 +260,15 @@ if (currentPage == 'Exchanger') {
 	//reverseHanlder();
 	exchangerPageLoad();
 	autoCloseMenu();
-} else if (currentPage == 'Home') {
+} else if (currentPage === 'Home') {
+	homePageLoad();
+
 	changeSellBuyToExchangeRedirect();
 	autoCloseMenu();
 
+	// Fonticons on Home page
+	fonticons(showCurrencies, hideCurrencies)
+		.scale(0.9);
 }
 
 //============================================================================================================================================================================================================================================
