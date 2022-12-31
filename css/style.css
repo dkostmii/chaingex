@@ -3497,6 +3497,7 @@ body {
   background-color: #0D1425;
   background-repeat: no-repeat;
   background-position: top center;
+  background-size: 61.875rem 64rem;
 }
 @media (any-hover: hover) {
   .button__change:hover::after {
@@ -4310,6 +4311,9 @@ body {
   }
   .no-webp body{
     background-image: url(../img/background/bg-desktop.jpg); }
+  body {
+    background-size: 120rem 120rem;
+  }
 }
 @media (max-width: 78.75em) {
   .menu__body {
@@ -4677,11 +4681,15 @@ body {
     background-image: url(../img/background/bg-tablet.jpg); }
   body {
     background-color: #020015;
+    background-size: 90rem 108rem;
   }
 }
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 120em) {
   .no-webp body{
     background-image: url(../img/background/bg-desktop-xl.jpg); }
+  body {
+    background-size: 240rem 120rem;
+  }
 }
 .webp body{ background-image: url(../img/background/bg-mobile.webp); }
 @media screen and (min-width: 78.75em){
@@ -4690,6 +4698,6 @@ body {
 @media screen and (min-width: 29.99875em) and (max-width: 78.75em){
   .webp body{ background-image: url(../img/background/bg-tablet.webp); }
 }
-@media screen and (min-width: 1920px){
+@media screen and (min-width: 120em){
   .webp body{ background-image: url(../img/background/bg-desktop-xl.webp); }
 }
