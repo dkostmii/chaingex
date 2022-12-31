@@ -7,7 +7,7 @@
   @media screen and (min-width: $pc) {
     display: none;
   }
-  
+
   margin: rem(50) auto;
 
   display: flex;
@@ -38,7 +38,7 @@
       background-size: rem(70);
     }
 
-    > label {
+    >label {
       font-style: normal;
       font-weight: 400;
       font-size: rem(14);
@@ -64,15 +64,18 @@
     background-image: linear-gradient(90.17deg, #7B46E8 -1.15%, rgba(123, 70, 232, 0) 87.83%);
   }
 
-  & > #step-1 > label, &__line > #step-1 > label {
+  &>#step-1>label,
+  &__line>#step-1>label {
     width: rem(162);
   }
 
-  & > #step-2 > label, &__line > #step-2 > label {
+  &>#step-2>label,
+  &__line>#step-2>label {
     width: rem(151);
   }
 
-  & > #step-3 > label, &__line > #step-3 > label {
+  &>#step-3>label,
+  &__line>#step-3>label {
     width: rem(190);
   }
 
@@ -96,15 +99,18 @@
       width: rem(30);
     }
 
-    & > #step-1 > label, &__line > #step-1 > label {
+    &>#step-1>label,
+    &__line>#step-1>label {
       width: rem(103);
     }
 
-    & > #step-2 > label, &__line > #step-2 > label {
+    &>#step-2>label,
+    &__line>#step-2>label {
       width: rem(96);
     }
 
-    & > #step-3 > label, &__line > #step-3 > label {
+    &>#step-3>label,
+    &__line>#step-3>label {
       width: rem(121);
     }
   }
@@ -112,7 +118,7 @@
 
 .block-2__desktop {
   @media screen and (max-width: $pc) {
-     display: none;
+    display: none;
   }
 
   margin: rem(70) auto;
@@ -124,15 +130,15 @@
   padding: 0;
   gap: rem(57);
 
-  > #step-1 > label {
+  >#step-1>label {
     width: rem(176);
   }
 
-  > #step-2 > label {
+  >#step-2>label {
     width: rem(165);
   }
 
-  > #step-3 > label {
+  >#step-3>label {
     width: rem(207);
   }
 }
@@ -140,110 +146,115 @@
 
 .features {
   &__container {
-     padding: rem(100) rem(15);
-     display: flex;
-     align-items: center;
-     flex-wrap: wrap;
-     position: relative;
+    padding: rem(100) rem(15);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
   }
 
   &__content {
-     display: flex;
-     flex: 0 1 52%;
-     padding-right: rem(52);
+    display: flex;
+    flex: 0 1 52%;
+    padding-right: rem(52);
   }
 
   &__block-text {}
 
   &__items {
-     display: flex;
-     gap: rem(30);
+    display: flex;
+    gap: rem(30);
   }
 
   &__item {}
 
   &__image {
-     display: flex;
-     flex: 0 1 48%;
-     justify-content: end;
-     position: relative;
+    display: flex;
+    flex: 0 1 48%;
+    justify-content: end;
+    position: relative;
 
-     img {
-        max-width: 100%;
-     }
+    img {
+      max-width: 100%;
+    }
   }
 
   @media screen and (max-width: $laptop) {
-     &__container {
-        padding: rem(80) rem(15);
-     }
-  
-     &__content {
-        padding: 0;
-        margin: 0 auto;
-     }
-  
-     &__block-text {
-        display: grid;
-        grid-template-rows: auto;
-     }
-  
-     &__items {
-        gap: rem(90);
-     }
-     &__image {
-        display: none;
-     }
+    &__container {
+      padding: rem(80) rem(15);
+    }
+
+    &__content {
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    &__block-text {
+      display: grid;
+      grid-template-rows: auto;
+    }
+
+    &__items {
+      gap: rem(90);
+    }
+
+    &__image {
+      display: none;
+    }
   }
+
   @media screen and (max-width: $mobile) {
-     &__container {
-        padding: rem(56) rem(15);
-     }
-     &__items {
-        gap: rem(24);
-     }
+    &__container {
+      padding: rem(56) rem(15);
+    }
+
+    &__items {
+      gap: rem(24);
+    }
   }
+
   @media screen and (max-width: $mobileSmall) {
-     &__items {
-        gap: rem(10);
-     }
+    &__items {
+      gap: rem(10);
+    }
   }
 }
 
 .item-features {
   &__numbers {
-     color: $purpleColor;
-     font-weight: 500;
-     font-size: rem(36);
-     line-height: math.div(54, 36);
-     margin-bottom: rem(5);
+    color: $purpleColor;
+    font-weight: 500;
+    font-size: rem(36);
+    line-height: math.div(54, 36);
+    margin-bottom: rem(5);
   }
 
   &__text {}
 
   @media screen and (max-width: $laptop) {
-     &__numbers {
-        font-size: rem(32);
-        text-align: center;
-        margin-bottom: rem(4);
-     }
-  
-     &__text {
-        text-align: center;
-        line-height: math.div(30, $fontSizeValue);
-     }
+    &__numbers {
+      font-size: rem(32);
+      text-align: center;
+      margin-bottom: rem(4);
+    }
+
+    &__text {
+      text-align: center;
+      line-height: math.div(30, $fontSizeValue);
+    }
   }
+
   @media screen and (max-width: $mobile) {
-     &__numbers {
-        font-size: rem(24);
-        line-height: math.div(36, 24);
-        text-align: center;
-     }
-  
-     &__text {
-        font-size: rem(16);
-        line-height: math.div(20, 16);
-     }
+    &__numbers {
+      font-size: rem(24);
+      line-height: math.div(36, 24);
+      text-align: center;
+    }
+
+    &__text {
+      font-size: rem(16);
+      line-height: math.div(20, 16);
+    }
   }
 }
 
@@ -251,139 +262,148 @@
   background-color: #121B33;
 
   &__container {
-     padding: rem(50) rem(15);
-     display: flex;
-     align-items: center;
-     position: relative;
+    padding: rem(50) rem(15);
+    display: flex;
+    align-items: center;
+    position: relative;
   }
 
   &__content {
-     padding-left: rem(91);
+    padding-left: rem(91);
   }
 
   @media screen and (max-width: $laptop) {
-     &__container {
-        padding: rem(47) rem(15);
-        flex-direction: column;
-     }
+    &__container {
+      padding: rem(47) rem(15);
+      flex-direction: column;
+    }
 
-     &__content {
-        padding: 0;
-        margin: 0 auto;
-     }
+    &__content {
+      padding: 0;
+      margin: 0 auto;
+    }
 
-     &__image {
-        margin-bottom: rem(16);
-     }
+    &__image {
+      margin-bottom: rem(16);
+    }
 
-     &__block-text {
-        max-width: rem(566);
-        margin: 0 auto;
-     }
+    &__block-text {
+      max-width: rem(566);
+      margin: 0 auto;
+    }
   }
 
   @media screen and (max-width: $mobile) {
-     &__container {
-        padding: rem(40) rem(15);
-     }
+    &__container {
+      padding: rem(40) rem(15);
+    }
 
-     &__image img {
-        max-width: rem(236);
-     }
+    &__image img {
+      max-width: rem(236);
+    }
   }
-  
+
   @media screen and (max-width: $mobileSmall) {
-     &__image img {
-        max-width: rem(178);
-     }
+    &__image img {
+      max-width: rem(178);
+    }
   }
 }
 
 .faq {
   &__container {
-     padding-top: rem(100);
-     display: flex;
-     flex-wrap: wrap;
+    padding-top: rem(100);
+    display: flex;
+    flex-wrap: wrap;
   }
+
   &__content {
-     display: flex;
-     flex: 0 1 42%;
-     padding-right: rem(60);
+    display: flex;
+    flex: 0 1 42%;
+    padding-right: rem(60);
   }
-  &__block-text {
-  }
+
+  &__block-text {}
+
   &__spollers {
-     display: flex;
-     flex-direction: column;
-     flex: 0 1 58%;
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 58%;
   }
+
   @media screen and (max-width: $laptop) {
-     &__container {
-        padding-top: rem(80);
-        flex-direction: column;
-     }
-  
-     &__content {
-        padding: 0;
-        margin: 0 auto;
-     }
-  
-     &__block-text {
-     }
-     &__spollers {}
+    &__container {
+      padding-top: rem(80);
+      flex-direction: column;
+    }
+
+    &__content {
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    &__block-text {}
+
+    &__spollers {}
 
   }
+
   @media screen and (max-width: $mobile) {
-     &__container {
-        padding-top: rem(56);
-     }
+    &__container {
+      padding-top: rem(56);
+    }
   }
-  @media screen and (max-width: $mobileSmall) {
-  }
+
+  @media screen and (max-width: $mobileSmall) {}
 
 }
 
 .spollers-faq {
   &__item {
-     border-bottom: 1px solid #7B46E8;
-     overflow: hidden;
+    border-bottom: 1px solid #7B46E8;
+    overflow: hidden;
   }
+
   &__title {
-     width: 100%;
-     background-color: transparent;
-     display: block;
-     text-align: left;
-     padding: rem(20) 0;
-     @include adaptiveValue("padding-top", 20, 15);
-     @include adaptiveValue("padding-right", 20, 15);
-     display: flex;
-     line-height: math.div(30, 20);
-     @include adaptiveValue("font-size", 20, 18);
-     align-items: center;
-     justify-content: space-between;
-     gap: rem(60);
-     &::after{
-        content:'';
-        background: url("@img/icons/arrow.svg") center / 100% no-repeat;
-        flex: 0 0 rem(20);
-        height: rem(20);
-        transition: all 0.3s ease 0s;
-     }
-     &._spoller-active {
-        &__title {
-           padding: rem(21) 0;
-        }
-     &::after {
-           background: url("@img/icons/arrow-top.svg") center / 100% no-repeat;
-     }
-   }
+    width: 100%;
+    background-color: transparent;
+    display: block;
+    text-align: left;
+    padding: rem(20) 0;
+    @include adaptiveValue("padding-top", 20, 15);
+    @include adaptiveValue("padding-right", 20, 15);
+    display: flex;
+    line-height: math.div(30, 20);
+    @include adaptiveValue("font-size", 20, 18);
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(60);
+
+    &::after {
+      content: '';
+      background: url("@img/icons/arrow.svg") center / 100% no-repeat;
+      flex: 0 0 rem(20);
+      height: rem(20);
+      transition: all 0.3s ease 0s;
+    }
+
+    &._spoller-active {
+      &__title {
+        padding: rem(21) 0;
+      }
+
+      &::after {
+        background: url("@img/icons/arrow-top.svg") center / 100% no-repeat;
+      }
+    }
   }
+
   &__body {
-     @include adaptiveValue("padding-top", 20, 16);
-     @include adaptiveValue("padding-bottom", 30, 24);
-     @include adaptiveValue("font-size", 18, 16);
-     line-height: math.div(20, 16);
-     opacity: 0.5;
+    @include adaptiveValue("padding-top", 20, 16);
+    @include adaptiveValue("padding-bottom", 30, 24);
+    @include adaptiveValue("font-size", 18, 16);
+    line-height: math.div(20, 16);
+    opacity: 0.5;
   }
 }
 
