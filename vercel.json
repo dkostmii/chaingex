@@ -1,0 +1,10 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "master": true,
+      "gh-pages": false,
+      "dev-dkostmii": false,
+      "dev-webbobuskiy": false
+    }
+  }
+}
