@@ -94,7 +94,7 @@
 
 	&__list {
 		display: flex;
-		column-gap: rem(30);
+		column-gap: rem(50);
 		justify-content: flex-end;
 		align-items: center;
 
@@ -275,7 +275,7 @@
 .button-plus-burger {
 	display: flex;
 	align-items: center;
-	gap: rem(32);
+	@include adaptiveValue("gap", 32, 16);
 
 	@media screen and (min-width: $tablet) {
 		gap: rem(37);		
