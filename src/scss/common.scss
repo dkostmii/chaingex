@@ -102,11 +102,6 @@
          max-width: rem(380);
       }
 
-      &__image {
-         img {
-         }
-      }
-
       &__button {
          max-width: rem(178);
 
@@ -117,8 +112,7 @@
 
    @media screen and (max-width: $mobileSmall) {
       &__image {
-         img {
-         }
+         width: rem(345);
       }
    }
 
