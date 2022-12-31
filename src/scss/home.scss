@@ -30,7 +30,7 @@
     flex-direction: row;
     align-items: center;
     padding: 0;
-    gap: rem(15);
+    @include adaptiveValue("gap", 15, 8);
 
     &__icon {
       width: rem(70);
@@ -85,6 +85,7 @@
 
     &__line {
       gap: rem(16);
+      @include adaptiveValue("gap", 16, 8);
     }
 
     &__item {
