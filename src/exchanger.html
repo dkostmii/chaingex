@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 @@include('html/_head.htm',{
-  "title":"Exchange | Change Crypto Coin"
+"title":"Exchange | Change Crypto Coin"
 })
+
 <body data-page="Exchanger">
-  @@include('html/_header.htm',{})
-  @@include('html/_loader.htm',{})
-  <main class="section-exchanger" id="section-exchanger">
+    @@include('html/_header.htm',{})
+    @@include('html/_loader.htm',{})
+    <!--<main class="section-exchanger" id="section-exchanger">
     <div class="exchanger__container">
       <form class="ex-form" id="ex-form">
         <div class="field-wrapper currency">
@@ -106,9 +107,57 @@
         </div>
       </form>
     </div>
-  </main>
-  @@include('html/_footer.htm',{})
-  @@include('html/_popup.htm',{})
-  @@include('html/_js.htm',{})
+  </main>-->
+    <main class="exchanger" id="section-exchanger">
+        <div class="exchanger__container">
+            <div class="exchanger__content">
+              <div class="exchanger__link">
+                <a href="index.html">Home</a> | <a href="#">Change</a>
+              </div>
+                <div class="exchanger__block-text block-text">
+                    <h2 class="block-text__title title">
+                        Limitless Crypto Exchange
+                    </h2>
+                    <div class="block-text__text text">
+                        Fast Crypto Swaps, Free of Custody
+                    </div>
+                </div>
+            </div>
+            <div class="exchanger__block exchanger-block">
+                <div data-tabs class="exchanger-block__tab block-tab">
+                    <nav data-tabs-titles class="block-tab__navigation">
+                        <button type="button" class="block-tab__title">Bank</button>
+                        <button type="button" class="block-tab__title _tab-active">Crypto address</button>
+                    </nav>
+                    <div data-tabs-body class="block-tab__content">
+                        <div class="block-tab__body">
+                            Содержимое первого таба
+                        </div>
+                        <div class="block-tab__body">
+                            Содержимое второго таба
+                        </div>
+                    </div>
+                </div>
+                <div data-tabs class="exchanger-block__tab block-tab">
+                    <nav data-tabs-titles class="block-tab__navigation">
+                        <button type="button" class="block-tab__title">Exchange Crypto</button>
+                        <button type="button" class="block-tab__title _tab-active">Buy / Sell Crypto</button>
+                    </nav>
+                    <div data-tabs-body class="block-tab__content">
+                        <div class="block-tab__body">
+                            Содержимое первого таба
+                        </div>
+                        <div class="block-tab__body">
+                            Содержимое второго таба
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    @@include('html/_footer.htm',{})
+    @@include('html/_popup.htm',{})
+    @@include('html/_js.htm',{})
 </body>
+
 </html>

@@ -13,12 +13,89 @@
 
 .exchanger {
   &__container {
-    padding-top: rem(100);
+    @include adaptiveValue("padding-top", 117, 96);
+  }
+  &__content {
+  }
+  &__block-text {
+  }
+  &__block {
+  }
+  &__link{
+    font-size: rem(18);
+    line-height: math.div(27, 18);
+    margin-bottom: rem(50);
+    a:first-child{
+      opacity: 0.5;
+    }
+  }
+}
+
+.exchanger-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: rem(30);
+  &__tab {
+    display: flex;
+    flex-direction: column;
+    background-color: #202E51;
+  }
+  @media screen and (max-width: $laptop) {
+    gap: rem(50);
+  }
+}
+
+.block-tab {
+  &__navigation {
+    display: flex;
   }
 
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(123, 70, 232, 0.5);
+    @include adaptiveValue("font-size", 18, 16);
+    line-height: math.div(27, 18);
+    padding: rem(22) 0;
+    opacity: 0.5;
+    @include adaptiveValue("width", 300, 214);
+    &._tab-active {
+      border: 1px solid rgba(123, 70, 232, 0.5);
+      border-width: rem(1) rem(1) 0 rem(1);
+      opacity: 1;
+    }  
+  }
+
+  &__content {
+    padding: rem(30) rem(30) 0 rem(30);
+    border: 1px solid rgba(123, 70, 232, 0.5);
+    border-width: 0 rem(1) rem(1) rem(1);
+  }
+
+  &__body {
+  }
+  @media screen and (min-width: $laptop){
+    &__title {
+      width: rem(300);
+    }
+  }
+  @media screen and (max-width: $laptop) {
+    &__title {
+      @include adaptiveValue("width", 385, 214);
+    }
+
+    &__content {
+      padding: rem(33) rem(32) 0 rem(32);
+    }
+  }
   @media screen and (max-width: $tablet) {
-    &__container {
-      padding-top: rem(91);
+    &__title {
+      line-height: math.div(24, 16);
+    }
+    &__content {
+      padding: rem(32) rem(24) 0 rem(24);
     }
   }
 }

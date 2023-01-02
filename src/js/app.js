@@ -52,7 +52,7 @@ flsFunctions.spollers();
 Документация: https://template.fls.guru/template-docs/modul-taby.html
 Сниппет (HTML): tabs
 */
-// flsFunctions.tabs();
+flsFunctions.tabs();
 
 /*
 Модуль "показать еще"
@@ -251,13 +251,6 @@ Object.assign(window, {
 const currentPage = document.body.dataset.page;
 
 if (currentPage === 'Exchanger') {
-	selectHandler();
-	//concatValueHandler();
-	checkLengthHandler();
-	copyHandler();
-	cardFormatHandler();
-	submitHandler();
-	//reverseHanlder();
 	exchangerPageLoad();
 	autoCloseMenu();
 } else if (currentPage === 'Home') {
