@@ -46,14 +46,8 @@
 		}
 	}
 
-	@media screen and (max-width: $pc) {
-		&__menu-active {
-			position: fixed;
-			background-color: rgba(2, 0, 21, 1);
-		}
-	}
-
 	@media screen and (min-width: $pc) {
+
 		&__container {
 			height: rem(117);
 		}
@@ -81,7 +75,6 @@
 			display: flex;
 			flex-direction: column;
 			overflow: auto;
-			background-color: #0F0D21;
 
 			&.hidden {
 				display: none;
@@ -91,7 +84,7 @@
 
 	&__list {
 		display: flex;
-		column-gap: rem(50);
+		@include adaptiveValue("column-gap", 50, 34);
 		justify-content: flex-end;
 		align-items: center;
 
@@ -287,21 +280,8 @@
 	display: flex;
 	gap: rem(50);
 	align-items: center;
-	top: rem(96);
-
-	@media screen and (min-width: $tablet) {
-		top: rem(125);
-	}
-
-	@media screen and (min-width: $pc) {
-		top: rem(117);
-	}
 
 	@media screen and (max-width: $pc) {
-		position: fixed;
-		left: 0;
-		width: 100%;
-
 		&.hidden {
 			display: none;
 		}

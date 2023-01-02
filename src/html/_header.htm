@@ -7,48 +7,50 @@
             <button class="icon-menu" onclick="toggleMenu()"><span></span></button>
          </div>
       </div>
-      <div class="nav-plus-button hidden">
-         <nav class="menu__body hidden">
-            <ul class="menu__list">
-               <li class="menu__item menu__item__noactive hidden__desktop">
-                  <div class="lang-select__mobile__wrapper">
-                     <label>Language</label>
-                     <div class="lang-select__mobile">
-                        <div class="lang-select__mobile__option">US</div>
-                        <div class="lang-select__mobile__option">RU</div>
-                        <div class="lang-select__mobile__option">NU</div>
-                        <div class="lang-select__mobile__option">PL</div>
-                     </div>
+   </div>
+   <!-- INFO: This navigation element is moved from .header to .header__container on desktops -->
+   <!-- See src/js/files/headerDesktop.js -->
+   <div class="nav-plus-button hidden">
+      <nav class="menu__body hidden">
+         <ul class="menu__list">
+            <li class="menu__item menu__item__noactive hidden__desktop">
+               <div class="lang-select__mobile__wrapper">
+                  <label>Language</label>
+                  <div class="lang-select__mobile">
+                     <div class="lang-select__mobile__option">US</div>
+                     <div class="lang-select__mobile__option">RU</div>
+                     <div class="lang-select__mobile__option">NU</div>
+                     <div class="lang-select__mobile__option">PL</div>
                   </div>
-               </li>
-               <li class="menu__item">
-                  <a class="menu__link" href="index.html">Home</a>
-               </li>
-               <li class="menu__item">
-                  <a class="menu__link" href="index.html#section-currencies">Exchange rate</a>
-               </li>
-               <li class="menu__item">
-                  <a class="menu__link" href="index.html#section-features">Features</a>
-               </li>
-               <li class="menu__item">
-                  <a class="menu__link" href="index.html#section-guarantees">Guarantees</a>
-               </li>
-               <li class="menu__item">
-                  <a class="menu__link" href="index.html#section-faq">FAQ</a>
-               </li>
-               <li class="menu__item hidden__mobile">
-                  <div class="lang-select menu__lang-select">
-                     <div class="lang-select__current">Eng</div>
-                     <div class="lang-select__options">
-                        <div class="lang-select__option">Rus</div>
-                        <div class="lang-select__option">Nu</div>
-                        <div class="lang-select__option">Pl</div>
-                     </div>
+               </div>
+            </li>
+            <li class="menu__item">
+               <a class="menu__link" href="index.html">Home</a>
+            </li>
+            <li class="menu__item">
+               <a class="menu__link" href="index.html#section-currencies">Exchange rate</a>
+            </li>
+            <li class="menu__item">
+               <a class="menu__link" href="index.html#section-features">Features</a>
+            </li>
+            <li class="menu__item">
+               <a class="menu__link" href="index.html#section-guarantees">Guarantees</a>
+            </li>
+            <li class="menu__item">
+               <a class="menu__link" href="index.html#section-faq">FAQ</a>
+            </li>
+            <li class="menu__item hidden__mobile">
+               <div class="lang-select menu__lang-select">
+                  <div class="lang-select__current">Eng</div>
+                  <div class="lang-select__options">
+                     <div class="lang-select__option">Rus</div>
+                     <div class="lang-select__option">Nu</div>
+                     <div class="lang-select__option">Pl</div>
                   </div>
-               </li>
-            </ul>
-         </nav>
-         <a href="exchanger.html" class="button header__cta-desktop">Change crypto</a>
-      </div>
+               </div>
+            </li>
+         </ul>
+      </nav>
+      <a href="exchanger.html" class="button header__cta-desktop">Change crypto</a>
    </div>
 </header>

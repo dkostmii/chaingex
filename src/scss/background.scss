@@ -1,5 +1,10 @@
 body {
   background-color: #0D1425;
+}
+
+// .background class is used in src/js/files/header-desktop.js
+// for styling .header element
+body, .background {
   background-image: url(@img/background/bg-mobile.jpg);
   background-repeat: no-repeat;
   background-position: top center;

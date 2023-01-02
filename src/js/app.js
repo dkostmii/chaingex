@@ -241,6 +241,9 @@ import { exchangerPageLoad } from './files/exchanger/page-load.js';
 
 import AOS from 'aos';
 
+import headerDesktop from './files/header-desktop.js';
+headerDesktop();
+
 import fonticons from './fonticons/index.js';
 
 Object.assign(window, {
