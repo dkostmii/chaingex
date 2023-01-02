@@ -205,6 +205,8 @@ const header = document.getElementsByClassName('header')[0];
 function enableMenu() {
   menuState = true;
 
+  document.body.classList.add('lock-scroll');
+
   header.classList.add('header__menu-active');
   [...menuBodyNavElements].forEach(el => el.classList.remove('hidden'));
   iconMenu.classList.add('icon-menu__active');
@@ -215,6 +217,8 @@ function enableMenu() {
  */
 function disableMenu() {
   menuState = false;
+
+  document.body.classList.remove('lock-scroll');
 
   header.classList.remove('header__menu-active');
   [...menuBodyNavElements].forEach(el => el.classList.add('hidden'));
