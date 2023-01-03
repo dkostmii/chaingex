@@ -1,15 +1,7 @@
 /* ---- Page [Exchanger] ---- */
-@import 'base/variables';
-@import 'base/mixins';
-@import 'base/specification';
-@import 'base/animations';
 
-// @import 'loader';
-
-@import 'form';
-@import 'fields';
-@import 'buttons';
-
+@import '../../base/variables';
+@import '../../base/mixins';
 
 .exchanger {
   &__container {
@@ -35,14 +27,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: rem(30);
+  gap: rem(50);
+
+  @media screen and (min-width: $laptop) {
+    gap: rem(30);
+  }
+
   &__tab {
     display: flex;
     flex-direction: column;
     background-color: #202E51;
-  }
-  @media screen and (max-width: $laptop) {
-    gap: rem(50);
   }
 }
 
@@ -56,11 +50,14 @@
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgba(123, 70, 232, 0.5);
-    @include adaptiveValue("font-size", 18, 16);
     line-height: math.div(27, 18);
     padding: rem(22) 0;
     opacity: 0.5;
-    @include adaptiveValue("width", 300, 214);
+
+    @include adaptiveValue("font-size", 18, 16);
+
+    @include adaptiveValue("width", 385, 214, 0, $laptopValue, $minWidth);
+
     &._tab-active {
       border: 1px solid rgba(123, 70, 232, 0.5);
       border-width: rem(1) rem(1) 0 rem(1);
@@ -76,24 +73,24 @@
 
   &__body {
   }
-  @media screen and (min-width: $laptop){
+
+  @media screen and (min-width: $pc) {
     &__title {
       width: rem(300);
     }
   }
-  @media screen and (max-width: $laptop) {
-    &__title {
-      @include adaptiveValue("width", 385, 214);
-    }
 
+  @media screen and (max-width: $laptop) {
     &__content {
       padding: rem(33) rem(32) 0 rem(32);
     }
   }
+
   @media screen and (max-width: $tablet) {
     &__title {
       line-height: math.div(24, 16);
     }
+
     &__content {
       padding: rem(32) rem(24) 0 rem(24);
     }
