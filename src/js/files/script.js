@@ -17,6 +17,8 @@ import { throwIfNotACurrency } from "./exchanger/model/util.js";
 import { addCryptocurrencies } from "./popular-cryptocurrencies.js";
 import { loadCryptos, preCheck } from './fetch-currencies.js';
 import storageConfig from "../config/storage.js";
+import detectUserLanguage from "../i18n/detect.js";
+import translate from "../i18n/translate.js";
 
 function preCheckChange(num) {
   return num.toFixed(2);
@@ -124,6 +126,7 @@ export function homePageLoad() {
 let isShown = false;
 
 const hideableClass = "colum__hideable";
+const currentLanguage = detectUserLanguage();
 
 export function hideCurrencies() {
   if (isShown) {
@@ -134,7 +137,9 @@ export function hideCurrencies() {
       currencyEl.classList.add("colum__hidden");
     })
     isShown = false;
-    button.textContent = "See all cryptocurrencies"
+
+    button.dataset.i18n = 'popular-currencies-button-see-all';
+    translate(button, currentLanguage);
   }
 }
 
@@ -148,7 +153,9 @@ export function showCurrencies() {
     });
 
     isShown = true;
-    button.textContent = "Hide all currencies";
+
+    button.dataset.i18n = 'popular-currencies-button-hide-all';
+    translate(button, currentLanguage);
   }
 }
 

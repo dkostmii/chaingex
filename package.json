@@ -86,6 +86,7 @@
 		"aos": "^2.3.4",
 		"jquery": "^3.6.1",
 		"rfs": "^9.0.6",
+		"roddeh-i18n": "^1.2.1",
 		"simplebar": "latest"
 	}
 }

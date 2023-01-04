@@ -8,8 +8,6 @@ const showFirstNCryptocurrencies = 5;
  * @typedef {import('./fetch-currencies.js').currencyPartial} currencyPartial
  */
 
-
-
 /**
  * 
  * @returns {HTMLDivElement}
@@ -17,17 +15,19 @@ const showFirstNCryptocurrencies = 5;
 function createCryptoActions() {
   const changeButton = document.createElement('a');
   changeButton.href = '';
-  changeButton.className = 'button__change';
+  changeButton.className = 'button__change i18n-style';
+  // Change button is being translated using SCSS
+  // changeButton.dataset.i18n = 'popular-currencies-change';
 
   const sellButton = document.createElement('a');
   sellButton.href = '';
-  sellButton.className = 'button__sell';
-  sellButton.innerHTML = 'Sell';
+  sellButton.className = 'button__sell i18n';
+  sellButton.dataset.i18n = 'popular-currencies-sell';
 
   const buyButton = document.createElement('a');
   buyButton.href = '';
-  buyButton.className = 'button__buy';
-  buyButton.innerHTML = 'Buy';
+  buyButton.className = 'button__buy i18n';
+  buyButton.dataset.i18n = 'popular-currencies-buy';
 
   const columActions = document.createElement('div');
   columActions.className = 'colum__actions';

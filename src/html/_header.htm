@@ -2,7 +2,7 @@
 	<div class="header__container">
 		<a href="index.html" class="header__logo"><img src="@img/logo.svg" alt="Change crypto coin"></a>
       <div class="button-plus-burger">
-         <a href="exchanger.html" class="button header__cta">Change</a>
+         <a href="exchanger.html" class="button header__cta i18n" data-i18n="header-cta">Change</a>
          <div class="menu__icons">
             <button class="icon-menu" onclick="toggleMenu()"><span></span></button>
          </div>
@@ -15,7 +15,7 @@
          <ul class="menu__list">
             <li class="menu__item menu__item__noactive hidden__desktop">
                <div class="lang-select__mobile__wrapper">
-                  <label>Language</label>
+                  <label class="i18n" data-i18n="lang-select-language">Language</label>
                   <div class="lang-select__mobile">
                      <div class="lang-select__mobile__option">US</div>
                      <div class="lang-select__mobile__option">RU</div>
@@ -25,19 +25,19 @@
                </div>
             </li>
             <li class="menu__item">
-               <a class="menu__link" href="index.html">Home</a>
+               <a class="menu__link i18n" href="index.html" data-i18n="nav-home">Home</a>
             </li>
             <li class="menu__item">
-               <a class="menu__link" href="index.html#section-currencies">Exchange rate</a>
+               <a class="menu__link i18n" href="index.html#section-currencies" data-i18n="nav-exchange-rate">Exchange rate</a>
             </li>
             <li class="menu__item">
-               <a class="menu__link" href="index.html#section-features">Features</a>
+               <a class="menu__link i18n" href="index.html#section-features" data-i18n="nav-features">Features</a>
             </li>
             <li class="menu__item">
-               <a class="menu__link" href="index.html#section-guarantees">Guarantees</a>
+               <a class="menu__link i18n" href="index.html#section-guarantees" data-i18n="nav-guarantees">Guarantees</a>
             </li>
             <li class="menu__item">
-               <a class="menu__link" href="index.html#section-faq">FAQ</a>
+               <a class="menu__link i18n" href="index.html#section-faq" data-i18n="nav-faq">FAQ</a>
             </li>
             <li class="menu__item hidden__mobile">
                <div class="lang-select menu__lang-select">
@@ -51,6 +51,6 @@
             </li>
          </ul>
       </nav>
-      <a href="exchanger.html" class="button header__cta-desktop">Change crypto</a>
+      <a href="exchanger.html" class="button header__cta-desktop i18n" data-i18n="header-cta-desktop">Change crypto</a>
    </div>
 </header>
