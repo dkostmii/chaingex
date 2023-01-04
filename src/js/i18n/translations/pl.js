@@ -3,7 +3,7 @@ const pl = {
   'header-cta': 'Wymień',
   'header-cta-desktop': 'Wymień kryptowalutę',
   'lang-select-language': 'Język',
-  // INFO: Nav is used both in header and footer      
+  // INFO: Nav is used both in header and footer
   'nav-home': 'Strona główna',
   'nav-exchange-rate': 'Kurs wymiany',
   'nav-features': 'Osobliwości',

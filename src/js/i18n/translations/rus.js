@@ -3,7 +3,7 @@ const rus = {
   'header-cta': 'Обменять',
   'header-cta-desktop': 'Обменять',
   'lang-select-language': 'Язык',
-  // INFO: Nav is used both in header and footer      
+  // INFO: Nav is used both in header and footer
   'nav-home': 'Главная страница',
   'nav-exchange-rate': 'Курс',
   'nav-features': 'Особенности',

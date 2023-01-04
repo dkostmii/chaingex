@@ -3,7 +3,7 @@ const de = {
   "header-cta": "Veränderung",
   "header-cta-desktop": "Krypto ändern",
   'lang-select-language': 'Sprache',
-  // INFO: Nav is used both in header and footer      
+  // INFO: Nav is used both in header and footer
   "nav-home": "Startseite",
   "nav-exchange-rate": "Tauschrate",
   "nav-features": "Merkmale",
