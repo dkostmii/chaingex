@@ -323,6 +323,9 @@
 	&__option:not(:last-child) {
 		padding-bottom: rem(5);
 	}
+	&__option:hover {
+		opacity: 0.6;
+	}
 
 	&__mobile {
 		display: flex;
@@ -331,6 +334,11 @@
 		&__option {
 			color: $mainColor;
 			text-decoration-line: underline;
+		}
+
+		&__option__current {
+			text-decoration-line: none;
+			opacity: 0.8;
 		}
 	}
 }
