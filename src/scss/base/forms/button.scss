@@ -20,20 +20,22 @@
 		}
 	}
 
-	&__change.i18n__eng::after {
-		content: "Change";
-	}
-
-	&__change.i18n__pl::after {
-		content: "Wymień";
-	}
-
-	&__change.i18n__de::after {
-		content: "Veränderung";
-	}
-
-	&__change.i18n__rus::after {
-		content: "Обменять";
+	@media screen and (min-width: $laptop) {
+		&__change.i18n__eng::after {
+			content: "Change";
+		}
+	
+		&__change.i18n__pl::after {
+			content: "Wymień";
+		}
+	
+		&__change.i18n__de::after {
+			content: "Veränderung";
+		}
+	
+		&__change.i18n__rus::after {
+			content: "Обменять";
+		}
 	}
 
 	&__change {
