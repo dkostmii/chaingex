@@ -83,6 +83,11 @@ function mapUserLanguage() {
   throw new Error('No languages in langs array are defined.');
 }
 
+/**
+ * Returns a current user language or if no such exists, returns user browser's first preferred language.
+ * 
+ * @returns {Language} A current user language, if it was set by user or user browser's first preferred language.
+ */
 function detectUserLanguage() {
   const currentLangValue = getLanguage();
 

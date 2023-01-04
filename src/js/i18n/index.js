@@ -43,6 +43,9 @@ function createDesktopOption(lang) {
   return option;
 }
 
+/**
+ * Bootstraps `.lang-select` and `.lang-select__mobile` elements, so the user can change current language.
+ */
 function useLanguageSelect() {
   const langSelectMobile = document.querySelector('.lang-select__mobile');
 
@@ -74,6 +77,9 @@ function useLanguageSelect() {
   });
 }
 
+/**
+ * Translates the pages to user browser's preferred language, or previously set language, if such was selected before.
+ */
 function translatePage() {
   const elements = document.querySelectorAll('.i18n, .i18n-style');
 

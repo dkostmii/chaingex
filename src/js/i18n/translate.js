@@ -1,3 +1,13 @@
+/**
+ * @typedef {import('./data.js').Language} Language
+ */
+
+/**
+ * Translated an {@link element} to specific {@link language}.
+ * 
+ * @param {Element | HTMLElement} element A element which is translated to {@link language}.
+ * @param {Language} language A current language.
+ */
 function translate(element, language) {
   if (!(element instanceof Element || element instanceof HTMLElement)) {
     throw new TypeError('Expected element to be instance of either Element or HTMLElement.');
