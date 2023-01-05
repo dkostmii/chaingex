@@ -404,7 +404,24 @@
     @include adaptiveValue("padding-bottom", 30, 24);
     @include adaptiveValue("font-size", 18, 16);
     line-height: math.div(20, 16);
-    opacity: 0.5;
+
+    // opacity: 0.5;
+    // As the opacity applies to entire block
+
+    // Use color instead
+    color: rgba($mainColor, 0.5);
+
+    &__link {
+      color: $purpleColor;
+      text-decoration-line: underline;
+
+      // so here opacity will do nothing
+      // opacity: 1;
+
+      &:hover {
+        color: rgba($mainColor, 0.8);
+      }
+    }
   }
 }
 

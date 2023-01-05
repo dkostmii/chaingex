@@ -17,8 +17,8 @@ const eng = {
   'block-1-subtitle': 'Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.',
   'block-1-cta': 'Change crypto',
   'block-2-step-1': 'Choose crypto for change',
-  'block-2-step-2': 'Entering data exchange',
-  'block-2-step-3': 'Secure exchange cryptocurrencies',
+  'block-2-step-2': 'Enter exchange data',
+  'block-2-step-3': 'Securely receive cryptocurrency',
 
   // Popular currencies
   'popular-currencies-title': 'Popular Cryptocurrencies',
@@ -33,32 +33,52 @@ const eng = {
   'popular-currencies-buy': 'Buy',
 
   'popular-currencies-button-see-all': 'See all cryptocurrencies',
-  'popular-currencies-button-hide-all': 'Hide all currencies',
+  'popular-currencies-button-hide-all': 'Hide all cryptocurrencies',
 
   // Features
   'features-title': 'Our best users are all over the world with wide coverage',
-  'features-text': 'Our platform reaches people all over the world. hereby we are trusted as the best platform for crypto trading',
-  'features-item-1-caption': 'People who chose us',
+  'features-text': 'Our platform reaches people all over the world. Hereby we are trusted as the best platform for crypto trading.',
+  'features-item-1-caption': 'People chose us',
   'features-item-2-caption': 'Exchange every day',
-  'features-item-3-caption': 'At the crypto market',
-  "features-item-3-years": "Years",
+  'features-item-3-caption': 'On the crypto market',
+  'features-item-3-years': 'Years',
 
   // Guarantees
-  'guarantees-title': 'Exchange cryptocurrency right now and most importantly safely',
+  'guarantees-title': 'Exchange cryptocurrency right now and, most importantly, safely',
   'guarantees-text': 'In order to safely exchange your cryptocurrency, you need to press only one button that will take you to the exchange itself',
   'guarantees-button': 'Change',
 
   // FAQ
-  'faq-title': 'Frequently asked questions',
-  'faq-text': 'Here we have listed the questions with answers that our clients often ask us',
+  'faq-title': 'Frequently asked questions (FAQ)',
+  'faq-text': 'Here we have listed the questions with answers that our clients often ask us.',
+
+  // Links used in item body
+  'faq-item-body-popular-currencies-link': '‘Popular Cryptocurrencies’',
+
+  // FAQ item 1
   'faq-item-1-title': 'How can I convert one cryptocurrency into another?',
-  'faq-item-1-body': 'Select the ‘Convert’ option in the app. You can also find it in the exchange panel if you are operating from a desktop. Select the cryptocurrency you wish to convert and the cryptocurrency you wish to receive in exchange. Enter the amount and confirm.',
-  'faq-item-2-title': 'How to transfer from Young Platform to my current account?',
-  'faq-item-2-body': 'To transfer money to your current account, make sure you do so from the Euro Wallet section of your account. Click on “Withdraw” and enter the name of your bank and your IBAN. The transfer will be executed within 2-5 working days.',
+  // 'faq-item-1-body': '',
+  'faq-item-1-body-chunk-1': 'Select the ‘Change’ option in the app. You can also find it in the ',
+  // Split by faq-item-body-popular-currencies-link
+  'faq-item-1-body-chunk-2': ' section. Choose the cryptocurrencies you wish to convert. Enter the amount and crypto wallet address for the receive cryptocurrency. Click the ‘Exchange’ button to confirm.',
+
+  // FAQ item 2
+  'faq-item-2-title': 'How to do transfer from Chaingex to my bank account?',
+  // 'faq-item-2-body': '',
+  'faq-item-2-body-chunk-1': 'To transfer money to your bank account, choose the cryptocurrency you wish to sell in the ',
+  // Split by faq-item-body-popular-currencies-link
+  'faq-item-2-body-chunk-2': ' section. Enter the transfer amount and select your bank account currency. The transfer will be executed within 2-5 working days.',
+
+  // FAQ item 3
   'faq-item-3-title': 'How can I buy some crypto?',
-  'faq-item-3-body': 'From the exchange section of your Young Platform account, go to the order panel. Select the cryptocurrency you wish to buy, enter the amount and confirm the purchase. You can follow the same procedure in the app by clicking on the middle button and selecting ‘Buy.’',
-  'faq-item-4-title': 'How do I transfer cryptocurrencies from Young Platform to another exchange?',
-  'faq-item-4-body': 'Go to the Wallet section of your account and click on the cryptocurrency you want to transfer. Click on ‘Withdraw’ and enter the destination crypto wallet address. To avoid losing your cryptocurrencies, copy and paste the wallet address. Do not enter it manually.',
+  // 'faq-item-3-body': '',
+  'faq-item-3-body-chunk-1': 'In the ',
+  // Split by faq-item-body-popular-currencies-link
+  'faq-item-3-body-chunk-2': ' section choose a cryptocurrency to buy. Select the currency of your bank account, enter the amount and confirm the purchase. You can follow the same procedure on ‘Change’ page by selecting ‘Buy / Sell Crypto’ tab.',
+
+  // FAQ item 4
+  'faq-item-4-title': 'How do I transfer cryptocurrency from Chaingex to another exchange?',
+  'faq-item-4-body': 'Click the ‘Change’ button and select ‘Exchange crypto’ tab. Choose a cryptocurrency you wish to send and its amount. Enter the destination crypto wallet address. To avoid losing your cryptocurrency, copy and paste the wallet address. Do not enter it manually.',
 };
 
 export default eng;
