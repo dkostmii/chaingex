@@ -418,7 +418,7 @@
       // so here opacity will do nothing
       // opacity: 1;
 
-      &:hover {
+      &:hover, &:target, &:active {
         color: rgba($mainColor, 0.8);
       }
     }
