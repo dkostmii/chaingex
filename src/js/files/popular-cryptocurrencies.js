@@ -81,7 +81,7 @@ function createCryptoElement(crypto, id = 0) {
   throwIfNotANumber(id);
 
   const colum = document.createElement('div');
-  colum.className = 'popular-currencies__colum colum';
+  colum.className = 'popular-currencies__colum colum i18n-style';
 
   if (id > showFirstNCryptocurrencies - 1) {
     colum.classList.add('colum__hidden');

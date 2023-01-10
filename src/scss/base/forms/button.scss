@@ -20,7 +20,59 @@
 		}
 	}
 
-	@media screen and (min-width: $laptop) {
+	@media screen and (max-width: $mobileSmall) {
+		&__change, &__sell, &__buy {
+			&.i18n__pl {
+				padding-left: rem(12);
+				padding-right: rem(12);
+			}
+
+			&.i18n__de, &.i18n__rus {
+				padding-left: rem(8);
+				padding-right: rem(8);
+			}
+		}
+
+		&__sell, &__buy {
+			&.i18n__pl, &.i18n__rus {
+				font-size: rem(14);
+				line-height: rem(18);
+			}
+
+			&.i18n__de {
+				font-size: rem(12);
+				line-height: rem(16);
+			}
+		}
+
+		&__change {
+			&.i18n__pl, &.i18n__rus {
+				&::after {
+					width: rem(18);
+					height: rem(18);
+					background-size: rem(18) rem(18);
+				}
+			}
+
+			&.i18n__rus {
+				padding-left: rem(10);
+				padding-right: rem(10);
+			}
+
+			&.i18n__de {
+				padding-left: rem(12);
+				padding-right: rem(12);
+
+				&::after {
+					width: rem(16);
+					height: rem(16);
+					background-size: rem(16) rem(16);
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: $pc) {
 		&__change.i18n__eng::after {
 			content: "Change";
 		}
@@ -30,7 +82,7 @@
 		}
 	
 		&__change.i18n__de::after {
-			content: "Veränderung";
+			content: "Austausch";
 		}
 	
 		&__change.i18n__rus::after {
@@ -61,7 +113,7 @@
   }
 
 	&__change {
-		@media screen and (max-width: $laptop)  {
+		@media screen and (max-width: $pc)  {
 			&::after {
 				content: "";
 				width: rem(32);
@@ -91,12 +143,22 @@
 		}
 	}
 
-	@media screen and (min-width: $laptop) {
+	@media screen and (min-width: $pc) {
 		&__sell, &__change, &__buy {
 			height: rem(60);
 			font-size: rem(20);
 			line-height: rem(30);
 			padding: rem(15) rem(38);
+
+			&.i18n__pl {
+				padding-left: rem(30);
+				padding-right: rem(30);
+			}
+
+			&.i18n__de, &.i18n__rus {
+				padding-left: rem(20);
+				padding-right: rem(20);
+			}
 		}
 	}
 
@@ -142,7 +204,13 @@
 		width: rem(125);
 		height: rem(48);
 
-		@media screen and (min-width: 834px) {
+		@media screen and (min-width: em(400)) and (max-width: $mobile) {
+			&.i18n__de {
+				width: rem(166.05);
+			}
+		}
+
+		@media screen and (min-width: $mobile) {
 			width: rem(185);
 			height: rem(44);
 		}
@@ -153,6 +221,10 @@
 		line-height: rem(27);
 		width: rem(197);
 		height: rem(47);
+
+		&.i18n__de {
+			width: rem(242.833);
+		}
 	}
 
 	&.block-1__cta {
@@ -183,6 +255,24 @@
 			height: rem(60);
 			font-size: rem(20);
 			line-height: rem(30);
+
+			&.i18n__rus {
+				width: rem(325);
+			}
+		}
+
+		@media screen and (max-width: $mobile) {
+			&.i18n__pl {
+				width: rem(240);
+			}
+
+			&.i18n__de {
+				width: rem(230);
+			}
+
+			&.i18n__rus {
+				width: rem(270);
+			}
 		}
 	}
 

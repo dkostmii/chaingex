@@ -33,12 +33,34 @@
     }
   }
 
+  @media screen and (max-width: em(400)) {
+    &__title {
+      &.i18n__rus {
+        font-size: rem(22);
+      }
+    }
+  }
+
   &__colum {
     display: grid;
     align-items: center;
     padding: rem(11) 0;
     gap: rem(79);
-    grid-template-columns: 1fr rem(130) rem(80) rem(430.716);
+    grid-template-columns: minmax(rem(352.283), 1fr) rem(130) rem(80) rem(430.716);
+
+    @media screen and (min-width: $pc) {
+      &.i18n__pl {
+        grid-template-columns: minmax(rem(352.283), 1fr) rem(110) rem(80) rem(436.75);
+      }
+
+      &.i18n__de {
+        grid-template-columns: minmax(rem(352.283), 1fr) rem(122) rem(80) rem(447.667);
+      }
+
+      &.i18n__rus {
+        grid-template-columns: minmax(rem(352.283), 1fr) rem(126) rem(80) rem(436.6);
+      }
+    }
   }
 
   &__colum-header {
@@ -47,22 +69,36 @@
     color: $greyColor;
     gap: rem(79);
 
-    grid-template-columns: 1fr rem(130) rem(80) rem(430.716);
+    grid-template-columns: minmax(rem(352.283), 1fr) rem(130) rem(80) rem(430.716);
+
+    @media screen and (min-width: $pc) {
+      &.i18n__pl {
+        grid-template-columns: minmax(rem(352.283), 1fr) rem(110) rem(80) rem(436.75);
+      }
+
+      &.i18n__de {
+        grid-template-columns: minmax(rem(352.283), 1fr) rem(122) rem(80) rem(447.667);
+      }
+
+      &.i18n__rus {
+        grid-template-columns: minmax(rem(352.283), 1fr) rem(126) rem(80) rem(436.6);
+      }
+    }
 
     @media screen and (max-width: $pc) {
       display: none;
     }
   }
 
-  @media screen and (max-width: $laptop) {
+  @media screen and (max-width: $pc) {
     &__colum {
       gap: rem(10);
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(rem(135), 1fr) 1fr;
     }
 
     &__colum-header {
       gap: rem(10);
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(rem(135), 1fr) 1fr;
     }
   }
 
@@ -122,7 +158,7 @@
     display: none;
   }
 
-  @media screen and (max-width: $laptop) {
+  @media screen and (max-width: $pc) {
 
     /* desktop price label */
     &__price,
@@ -199,7 +235,7 @@
     width: rem(80);
   }
 
-  @media screen and (max-width: $laptop) {
+  @media screen and (max-width: $pc) {
     &__name {
       font-size: rem(22);
       line-height: rem(33);
