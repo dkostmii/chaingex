@@ -36,36 +36,38 @@
   &__tab {
     display: flex;
     flex-direction: column;
-    background-color: #202E51;
   }
 }
 
 .block-tab {
   &__navigation {
     display: flex;
+    background-color: #202E51;
   }
 
   &__title {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid rgba(123, 70, 232, 0.5);
+    border-bottom: rem(1) solid rgba(123, 70, 232, 0.5);
     line-height: math.div(27, 18);
     padding: rem(22) 0;
     opacity: 0.5;
 
     @include adaptiveValue("font-size", 18, 16);
 
-    @include adaptiveValue("width", 385, 214, 0, $laptopValue, $minWidth);
+    @include adaptiveValue("width", 214, 187.5, 0, 428, 375);
+    @include adaptiveValue("width", 385, 198, 0, $laptopValue, 428);
 
     &._tab-active {
-      border: 1px solid rgba(123, 70, 232, 0.5);
+      border: rem(1) solid rgba(123, 70, 232, 0.5);
       border-width: rem(1) rem(1) 0 rem(1);
       opacity: 1;
     }  
   }
 
   &__content {
+    background-color: #202E51;
     padding: rem(30) rem(30) 0 rem(30);
     border: 1px solid rgba(123, 70, 232, 0.5);
     border-width: 0 rem(1) rem(1) rem(1);
@@ -73,6 +75,73 @@
 
   &__body {
   }
+
+  &__form {
+    background-color: rgba(123, 70, 232, 0.1);
+    border: 1px solid #7B46E8;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    padding: rem(10) rem(21);
+    position: relative;
+    &:last-child{
+      margin-bottom: rem(59);
+    }
+  }
+  &__label {
+    @include adaptiveValue("font-size", 16, 14);
+    line-height: math.div(24, 16);
+    opacity: 0.5;
+  }
+  &__input {
+    background-color: rgba(123, 70, 232, 0);
+    color: #FFFFFF;
+    font-size: rem(24);
+    line-height: math.div(36, 24);
+    outline: none
+  }
+  &__copy {
+    display: flex;
+    &::after{
+      content: "";
+      background: url(../img/exchanger/copy-icon.svg) no-repeat center top/cover;
+      position: absolute;
+      top: 50%;
+      right: rem(28);
+      transform: translate(-50%,-50%);
+      transition: all .2s ease;
+      width: rem(32);
+      height: rem(32);
+    }
+  }
+  &__reverse{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__labels {
+    padding: rem(16) 0;
+  }
+  &__select {
+    font-size: rem(24);
+    line-height: math.div(36, 24);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    border-left: rem(1) solid #7b46e8;
+  }
+  &__buttons {
+    margin: rem(40) 0 rem(30) 0;
+  }
+  &__button {
+    color: #FFFFFF;
+    justify-content: center;
+    background-color: #7B46E8;
+    width: 100%;
+    padding: rem(15) 0;
+  }
+
 
   @media screen and (min-width: $pc) {
     &__title {
@@ -95,14 +164,90 @@
       padding: rem(32) rem(24) 0 rem(24);
     }
   }
+  @media screen and (max-width: $mobileSmall) {
+    &__copy {
+      display: none;
+    }
+    &__label {
+      line-height: math.div(21, 14);
+      &:last-child{
+        margin-top: rem(16);
+      }
+    }
+  }
+
 }
 
-.ex-form {
-  margin-top: rem(10);
-}
-
-@media screen and (max-width: $tablet) {
-  .ex-form {
-    margin-top: rem(16);
+.block-select {
+  &__value {
+    position: relative;
+    background-color: #202E51;
+    padding: rem(21) rem(30) rem(21) rem(30);
+    &::after{
+      content: "";
+      background: url(../img/exchanger/arrow-down.svg) no-repeat center top/cover;
+      transition: all .2s ease;
+      position: absolute;
+      top: 50%;
+      right: rem(30);
+      height: rem(32);
+      width: rem(32);
+      transform: translateY(-50%) rotate(0);
+    }
+  }
+  &__list {
+    opacity: 0;
+    transition: all .2s ease;
+    position: absolute;
+    background: #0f0d21;
+    z-index: 10;
+    width: 100%;
+    border: rem(1) solid #7B46E8;
+    height: rem(200);
+    overflow-y: scroll;
+  }
+  &__item {
+  }
+  &__input {
   }
 }
+.reverse {
+  &__labels {
+  }
+
+  &__button {
+    transition: all .2s ease;
+    position: relative;
+    width: rem(71);
+    height: rem(51);
+    background-color: rgba(123, 70, 232, 0.1);
+    border: rem(1) solid #7B46E8;
+    &::after{
+      content: "";
+      background: url(../img/exchanger/reverse-icon.svg) no-repeat center top/cover;
+      transform: translate(-50%,-50%);
+      position: absolute;
+      width: 31px;
+      height: 31px;
+      top: 50%;
+      left: 50%;
+    }
+  }
+}
+
+.form{
+  &-bank{
+    &:first-child{
+      margin-bottom: rem(30);
+    }
+    &:last-child{
+      margin-bottom: rem(85);
+    }
+  }
+  &-select{
+    .block-tab__input{
+      width: 50%;
+    }
+  }
+}
+
