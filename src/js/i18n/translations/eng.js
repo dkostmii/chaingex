@@ -17,8 +17,8 @@ const eng = {
   'block-1-subtitle': 'Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.',
   'block-1-cta': 'Change crypto',
   'block-2-step-1': 'Choose crypto for change',
-  'block-2-step-2': 'Enter exchange data',
-  'block-2-step-3': 'Securely receive cryptocurrency',
+  'block-2-step-2': 'Fill the data',
+  'block-2-step-3': 'Securely exchange cryptocurrency',
 
   // Popular currencies
   'popular-currencies-title': 'Popular Cryptocurrencies',

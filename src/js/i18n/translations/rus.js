@@ -1,7 +1,7 @@
 const rus = {
   // Header
   'header-cta': 'Обменять',
-  'header-cta-desktop': 'Обменять криптовалюту',
+  'header-cta-desktop': 'Обменять',
   'lang-select-language': 'Язык',
   // INFO: Nav is used both in header and footer
   'nav-home': 'Главная страница',
@@ -16,16 +16,16 @@ const rus = {
   'block-1-title': 'Покупайте биткойны и криптовалюты мгновенно и безопасно!',
   'block-1-subtitle': 'Chaingex — это простая и безопасная платформа для создания своего криптопортфеля и обмена валюты с гарантией.',
   'block-1-cta': 'Обменять криптовалюту',
-  'block-2-step-1': 'Выберите криптовалюту для обмена',
-  'block-2-step-2': 'Введите данные обмена',
-  'block-2-step-3': 'Надежно получите криптовалюту',
+  'block-2-step-1': 'Выберите криптовалюту',
+  'block-2-step-2': 'Заполните данные',
+  'block-2-step-3': 'Надежно обменяйте её',
 
   // Popular currencies
   'popular-currencies-title': 'Популярные Криптовалюты',
   'popular-currencies-colum-1': 'Название',
   'popular-currencies-colum-2': 'Цена',
-  'popular-currencies-colum-3': 'Изменение цены',
-  'popular-currencies-colum-4': 'Функции',
+  'popular-currencies-colum-3': 'Изменение',
+  'popular-currencies-colum-4': 'Действия',
 
   // Change button is being translated using SCSS
   // 'popular-currencies-change': 'Обменять',
@@ -39,7 +39,7 @@ const rus = {
   'features-title': 'Наши лучшие пользователи по всему миру с широким охватом',
   'features-text': 'Наша платформа доступна людям по всему миру. Нам доверяют как лучшей платформе для криптотрейдинга.',
   'features-item-1-caption': 'Клиентов уже с нами',
-  'features-item-2-caption': 'Операций обмена ежедневно',
+  'features-item-2-caption': 'Транзакций ежедневно',
   'features-item-3-caption': 'На рынке криптовалют',
   'features-item-3-years': 'Года',
 

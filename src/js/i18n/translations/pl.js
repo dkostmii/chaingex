@@ -1,7 +1,7 @@
 const pl = {
   // Header
   'header-cta': 'Wymień',
-  'header-cta-desktop': 'Wymień kryptowalutę',
+  'header-cta-desktop': 'Wymień',
   'lang-select-language': 'Język',
   // INFO: Nav is used both in header and footer
   'nav-home': 'Strona główna',
@@ -14,17 +14,17 @@ const pl = {
 
   // block-1
   'block-1-title': 'Kupuj bitcoiny oraz kryptowaluty szybko i biezpiecznie!',
-  'block-1-subtitle': 'Chainex to prosta i bezpieczna platforma do tworzenia portfela kryptowalut i wymiany walut z gwarancją.',
+  'block-1-subtitle': 'Chaingex to prosta i bezpieczna platforma do tworzenia portfela kryptowalut i wymiany walut z gwarancją.',
   'block-1-cta': 'Wymień kryptowalutę',
-  'block-2-step-1': 'Wybierz krypto do wymiany',
-  'block-2-step-2': 'Wprowadź dane wymiany',
-  'block-2-step-3': 'Bezpiecznie otrzymaj kryptowalutę',
+  'block-2-step-1': 'Wybierz kryptowalutę',
+  'block-2-step-2': 'Wypełnij dane',
+  'block-2-step-3': 'Bezpiecznie wymień ją',
 
   // Popular currencies
   'popular-currencies-title': 'Popularne Kryptowaluty',
   'popular-currencies-colum-1': 'Nazwa',
   'popular-currencies-colum-2': 'Cena',
-  'popular-currencies-colum-3': 'Zmiana ceny',
+  'popular-currencies-colum-3': 'Zmiana',
   'popular-currencies-colum-4': 'Akcje',
 
   // Change button is being translated using SCSS
@@ -39,7 +39,7 @@ const pl = {
   'features-title': 'Nasi najlepsi użytkownicy są na całym świecie z szerokim zasięgiem',
   'features-text': 'Nasza platforma dociera do ludzi na całym świecie. Cieszymy się zaufaniem jako najlepsza platforma do handlu kryptowalutami',
   'features-item-1-caption': 'Klientów już wybrali nas',
-  'features-item-2-caption': 'Operacji wymiany codziennie',
+  'features-item-2-caption': 'Transakcji dziennie',
   'features-item-3-caption': 'Na rynku kryptowalut',
   'features-item-3-years': 'Lata',
 
