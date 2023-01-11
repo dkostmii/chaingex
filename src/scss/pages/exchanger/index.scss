@@ -12,6 +12,11 @@
   &__block-text {
   }
   &__block {
+    @media screen and (max-width: $pc) {
+      &-text {
+        text-align: center;
+      }
+    }
   }
   &__link{
     font-size: rem(18);
@@ -36,6 +41,9 @@
   &__tab {
     display: flex;
     flex-direction: column;
+
+    // Important as .exchanger__block is wider
+    flex-shrink: 0;
 
     @include adaptiveValue("width", 428, 375, 0, 428, 375);
     @include adaptiveValue("width", 770, 396, 0, $laptopValue, 428);
