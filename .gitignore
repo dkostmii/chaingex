@@ -10,4 +10,4 @@ version.json
 **/*.zip
 **/*.rar
 src/scss/keyframes/**/*.s[a|c]ss
-.vercel
+.vercel/
