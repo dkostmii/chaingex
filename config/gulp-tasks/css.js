@@ -10,12 +10,14 @@ export const css = () => {
 				title: "CSS",
 				message: "Error: <%= error.message %>"
 			})))
+		/*
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
 				mqpack()
 			)
 		)
+		*/
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
