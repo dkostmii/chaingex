@@ -36,6 +36,15 @@
   &__tab {
     display: flex;
     flex-direction: column;
+
+    @include adaptiveValue("width", 428, 375, 0, 428, 375);
+    @include adaptiveValue("width", 770, 396, 0, $laptopValue, 428);
+  }
+
+  @media screen and (min-width: $pc) {
+    &__tab {
+      width: rem(600);
+    }
   }
 }
 
@@ -56,8 +65,7 @@
 
     @include adaptiveValue("font-size", 18, 16);
 
-    @include adaptiveValue("width", 214, 187.5, 0, 428, 375);
-    @include adaptiveValue("width", 385, 198, 0, $laptopValue, 428);
+    width: 50%;
 
     &._tab-active {
       border: rem(1) solid rgba(123, 70, 232, 0.5);
@@ -98,7 +106,7 @@
     color: #FFFFFF;
     font-size: rem(24);
     line-height: math.div(36, 24);
-    outline: none
+    outline: none;
   }
   &__copy {
     display: flex;
@@ -140,13 +148,6 @@
     background-color: #7B46E8;
     width: 100%;
     padding: rem(15) 0;
-  }
-
-
-  @media screen and (min-width: $pc) {
-    &__title {
-      width: rem(300);
-    }
   }
 
   @media screen and (max-width: $laptop) {
