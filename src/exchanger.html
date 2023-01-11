@@ -1,114 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 @@include('html/_head.htm',{
-  "title":"Exchange | Change Crypto Coin"
+"title":"Exchange | Change Crypto Coin"
 })
+
 <body data-page="Exchanger">
-  @@include('html/_header.htm',{})
-  @@include('html/_loader.htm',{})
-  <main class="section-exchanger" id="section-exchanger">
-    <div class="exchanger__container">
-      <form class="ex-form" id="ex-form">
-        <div class="field-wrapper currency">
-          <p class="field-label">Choose cryptocurrency</p>
-          <div class="field-select">
-            <p class="field-select__value">Cardano | USDT</p>
-            <ul class="field-select__list">
-              <li class="field-select__item">Cardano | USDT</li>
-              <li class="field-select__item">Binance | USDT</li>
-            </ul>
-            <input type="hidden" class="field-select__input" value="Cardano | USDT" name="ex-currency" data-text="Cryptocurrency" data-smile="💲">
-          </div>
-          <p class="field-attention">Minimum 150 USDT</p>
-        </div>
-
-        <div class="field-wrapper send">
-          <p class="field-label">You send</p>
-          <div class="field-row select">
-            <input type="number" class="field-input" name="number-input">
-            <div class="field-select">
-              <p class="field-select__value">USDT</p>
-              <ul class="field-select__list">
-                <li class="field-select__item">USDT</li>
-                <li class="field-select__item">ADA</li>
-              </ul>
-              <input type="hidden" class="field-select__input" name="select-input">
+    @@include('html/_header.htm',{})
+    @@include('html/_loader.htm',{})
+    <main class="exchanger" id="section-exchanger">
+        <div class="exchanger__container">
+            <div class="exchanger__content">
+                <div class="exchanger__link">
+                    <a href="index.html">Home</a> | <a href="#">Change</a>
+                </div>
+                <div class="exchanger__block-text block-text">
+                    <h2 class="block-text__title title">
+                        Limitless Crypto Exchange
+                    </h2>
+                    <div class="block-text__text text">
+                        Fast Crypto Swaps, Free of Custody
+                    </div>
+                </div>
             </div>
-          </div>
-          <p class="field-error-msg"></p>
-          <input type="hidden" class="result-value" name="ex-send" data-text="Send" data-smile="➡️" value="150 | USDT">
-        </div>
-
-        <div class="field-wrapper reverse">
-          <button type="button" class="reverse-btn"></button>
-        </div>
-
-        <div class="field-wrapper receive">
-          <p class="field-label">You receive</p>
-          <div class="field-row select">
-            <input type="number" class="field-input" name="number-input">
-            <div class="field-select">
-              <p class="field-select__value">ADA</p>
-              <ul class="field-select__list">
-                <li class="field-select__item">USDT</li>
-                <li class="field-select__item">ADA</li>
-              </ul>
-              <input type="hidden" class="field-select__input" name="select-input">
+            <div class="exchanger__block exchanger-block">
+                <div data-tabs class="exchanger-block__tab block-tab">
+                    <nav data-tabs-titles class="block-tab__navigation">
+                        <button type="button" class="block-tab__title _tab-active">Crypto address</button>
+                        <button type="button" class="block-tab__title">Bank</button>
+                    </nav>
+                    <form data-tabs-body class="block-tab__content">
+                        <div class="block-tab__body">
+                            <div class="block-tab__form">
+                                <p class="block-tab__label">USDT card</p>
+                                <input type="text" class="block-tab__input" value="4444 4444 4444 4444" readonly>
+                                <button type="button" class="block-tab__copy"></button>
+                            </div>
+                            <div class="block-tab__labels">
+                                <p class="block-tab__label">Net: TRC20</p>
+                            </div>
+                            <div class="block-tab__form">
+                                <p class="block-tab__label">Copy address</p>
+                                <input type="text" class="block-tab__input" value="Sd3f3mf3ofmo3fm3ofm3ofmomfo2mfor">
+                            </div>
+                        </div>
+                        <div class="block-tab__body">
+                            <div class="block-tab__form form-bank">
+                                <p class="block-tab__label">USD card</p>
+                                <input type="text" class="block-tab__input" value="4444 4444 4444 4444" readonly>
+                                <button type="button" class="block-tab__copy"></button>
+                            </div>
+                            <div class="block-tab__form form-bank">
+                                <p class="block-tab__label">Enter your card</p>
+                                <input type="text" class="block-tab__input" value="4444 4444 4444 4444">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div data-tabs class="exchanger-block__tab block-tab">
+                    <nav data-tabs-titles class="block-tab__navigation">
+                        <button type="button" class="block-tab__title">Exchange Crypto</button>
+                        <button type="button" class="block-tab__title _tab-active">Buy / Sell Crypto</button>
+                    </nav>
+                    <form data-tabs-body class="block-tab__content">
+                        <div class="block-tab__body">
+                            <div class="block-tab__form form-select">
+                                <p class="block-tab__label">You send</p>
+                                <input type="number" class="block-tab__input" name="number-input">
+                                <div class="block-tab__select block-select">
+                                    <p class="block-select__value">USDT</p>
+                                    <ul class="block-select__list">
+                                        <li class="block-select__item">USDT</li>
+                                        <li class="block-select__item">ADA</li>
+                                    </ul>
+                                    <input type="hidden" class="block-select__input" name="select-input">
+                                </div>
+                            </div>
+                    
+                            <div class="block-tab__reverse reverse">
+                                <div class="block-tab__labels reverse__labels">
+                                    <p class="block-tab__label">No extra fees</p>
+                                    <p class="block-tab__label">Estimated rate: 1 BTC - 17714.23 USD</p>
+                                </div>
+                                <button type="button" class="reverse__button"></button>
+                            </div>
+                    
+                            <div class="block-tab__form form-select">
+                                <p class="block-tab__label">You Get</p>
+                                <input type="number" class="block-tab__input" name="number-input">
+                                <div class="block-tab__select block-select">
+                                    <p class="block-select__value">ADA</p>
+                                    <ul class="block-select__list">
+                                        <li class="block-select__item">USDT</li>
+                                        <li class="block-select__item">ADA</li>
+                                    </ul>
+                                </div>
+                            </div>
+                    
+                            <div class="block-tab__buttons">
+                                <button type="submit" class="block-tab__button">Exchange</button>
+                            </div>
+                    
+                        </div>
+                        <div class="block-tab__body">
+                            <div class="block-tab__form form-select">
+                                <p class="block-tab__label">You Pay</p>
+                                <input type="number" class="block-tab__input" name="number-input">
+                                <div class="block-tab__select block-select">
+                                    <p class="block-select__value">USDT</p>
+                                    <ul class="block-select__list">
+                                        <li class="block-select__item">USDT</li>
+                                        <li class="block-select__item">ADA</li>
+                                    </ul>
+                                </div>
+                            </div>
+                    
+                            <div class="block-tab__reverse reverse">
+                                <div class="block-tab__labels reverse__labels">
+                                    <p class="block-tab__label">No extra fees</p>
+                                    <p class="block-tab__label">Estimated rate: 1 BTC - 17714.23 USD</p>
+                                </div>
+                                <button type="button" class="reverse__button"></button>
+                            </div>
+                    
+                            <div class="block-tab__form form-select">
+                                <p class="block-tab__label">You Get</p>
+                                <input type="number" class="block-tab__input" name="number-input">
+                                <div class="block-tab__select block-select">
+                                    <p class="block-select__value">ADA</p>
+                                    <ul class="block-select__list">
+                                        <li class="block-select__item">USDT</li>
+                                        <li class="block-select__item">ADA</li>
+                                    </ul>
+                                </div>
+                            </div>
+                    
+                            <div class="block-tab__buttons">
+                                <button type="submit" class="block-tab__button">Send</button>
+                            </div>
+                    
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
-          <p class="field-error-msg"></p>
-          <input type="hidden" class="result-value" name="ex-receive" data-text="Receive" data-smile="⬅️" value="300 | ADA">
         </div>
-
-        <div class="field-wrapper address">
-          <p class="field-label">Type your address</p>
-          <input type="text" placeholder="Address" class="field-input" name="ex-address" data-text="Address" data-smile="📃" data-length="34" data-empty="true">
-          <p class="field-msg">#</p>
-        </div>
-
-        <div class="field-wrapper card">
-          <p class="field-label">Type your card number</p>
-          <input type="text" placeholder="Card Number" class="field-input" name="ex-card" data-text="Card Number" data-smile="💳" data-length="19" data-empty="true">
-          <p class="field-msg">#</p>
-        </div>
-
-        <div class="field-wrapper copy-address">
-          <p class="field-label">Copy address</p>
-          <div class="field-row copy">
-            <input type="text" class="field-input" value="TKPkeFykLkJL3NdaW3b7yAPkeznWquh9fX" readonly>
-            <button type="button" class="field-copy-btn"></button>
-          </div>
-        </div>
-
-        <div class="field-wrapper copy-ua-card">
-          <p class="field-label">Copy UA card</p>
-          <div class="field-row copy">
-            <input type="text" class="field-input" value="5355 0860 2202 3757" readonly>
-            <button type="button" class="field-copy-btn"></button>
-          </div>
-        </div>
-
-        <div class="field-wrapper copy-usd-card">
-          <p class="field-label">Copy USD card</p>
-          <div class="field-row copy">
-            <input type="text" class="field-input" value="4569 3334 0359 8501" readonly>
-            <button type="button" class="field-copy-btn"></button>
-          </div>
-        </div>
-
-        <p class="field-text">
-          Send <span >860 USDT</span> to this address/card and we will send you <span>2000 ADA.</span> Then click the button <span>“I send”</span>
-        </p>
-
-        <div class="buttons">
-          <a href="index.html" class="btn gray-btn buttons__back">Back</a>
-          <button type="submit" class="btn purple-btn buttons__send">I send</button>
-        </div>
-      </form>
-    </div>
-  </main>
-  @@include('html/_footer.htm',{})
-  @@include('html/_popup.htm',{})
-  @@include('html/_js.htm',{})
+    </main>
+    @@include('html/_footer.htm',{})
+    @@include('html/_popup.htm',{})
+    @@include('html/_js.htm',{})
 </body>
+
 </html>

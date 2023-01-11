@@ -26,36 +26,6 @@ import { hideSpinner } from "../script.js";
  * Is executed after **Exchanger** page is loaded, to fill exchanger form with {@link currency cryptocurrency} data.
  */
 export async function exchangerPageLoad() {
-  const cryptos = await loadCryptos();
-
-  if (!Array.isArray(cryptos)) {
-    throw new Error('Unable to load cryptocurrencies.');
-  }
-
-  cryptos.push(usdt);
-
-  const [sendCrypto, receiveCrypto] = getRequestedCryptos(cryptos);
-
-  const youSendModel = new YouSendModel(sendCrypto, minAmountUsdt / sendCrypto.price, cryptos);
-
-  const receiveAmount = youSendModel.amount * youSendModel.currency.price / receiveCrypto.price;
-
-  const youReceiveModel = new YouReceiveModel(
-    receiveCrypto,
-    receiveAmount,
-    cryptos
-  );
-
-  const youSendReceiveModel = new YouSendReceiveModel(youSendModel, youReceiveModel, cryptos);
-
-  const currencyModel = new CurrencyModel(
-    [sendCrypto, receiveCrypto],
-    youSendReceiveModel, createCurrencyPairs(cryptos));
-
-  const formElement = document.querySelector(exFormId);
-
-  new CurrencyView(currencyModel, formElement);
-
   hideSpinner();
 }
 
