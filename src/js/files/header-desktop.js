@@ -18,7 +18,7 @@ const desktopMedia = '(min-width: 78.75em)';
  * This function also add .background to header. See `src/scss/background.scss`.
  */
 export default function headerDesktop() {
-  const header = document.querySelector('.wrapper > .header');
+  const header = document.querySelector('.header');
   const headerContainer = header.querySelector('.header__container');
 
   const mediaResult = window.matchMedia(desktopMedia);
