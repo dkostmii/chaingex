@@ -32,6 +32,10 @@
 
     width: rem(380)
 
+    @media screen and (max-width: $mobile)
+      &.i18n__pl
+        width: rem(370)
+
     & > h1, & > h2
       margin: 0
 
@@ -202,3 +206,6 @@
         flex-grow: 0
 
         width: rem(612)
+
+        &.i18n__pl
+          width: auto

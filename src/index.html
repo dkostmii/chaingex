@@ -4,7 +4,7 @@
 "title":"Home | Change Crypto Coin"
 })
 
-<body data-page="Home">
+<body class="i18n-style" data-page="Home">
 	<div class="wrapper">
 		@@include('html/_header.htm',{})
 		@@include('html/_loader.htm',{})
@@ -25,57 +25,57 @@
 						</div>
 					</div>
 					<div class="block-1__content">
-						<div class="block-1__title">
-							<h1>Buy bitcoins and cryptocurrencies instantly and securely!</h1>
-							<h2>Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.</h2>
+						<div class="block-1__title i18n-style">
+							<h1 class="i18n" data-i18n="block-1-title">Buy bitcoins and cryptocurrencies instantly and securely!</h1>
+							<h2 class="i18n" data-i18n="block-1-subtitle">Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.</h2>
 						</div>
-						<a href="exchanger.html" class="button block-1__cta">Change crypto</a>
+						<a href="exchanger.html" class="button block-1__cta i18n" data-i18n="block-1-cta">Change crypto</a>
 					</div>
 				</div>
             <div class="block-2__desktop">
                <div class="block-2__item" id="step-1">
                   <i class="fonticons-sub-bitcoin block-2__item__icon"></i>
-                  <label>Choose crypto for change</label>
+                  <label class="i18n" data-i18n="block-2-step-1">Choose crypto for change</label>
                </div>
                <span class="block-2__separator"></span>
                <div class="block-2__item" id="step-2">
                   <i class="fonticons-sub-fingerprint block-2__item__icon"></i>
-                  <label>entering data exchange</label>
+                  <label class="i18n" data-i18n="block-2-step-2">entering data exchange</label>
                </div>
                <span class="block-2__separator"></span>
                <div class="block-2__item" id="step-3">
                   <i class="fonticons-sub-shield block-2__item__icon"></i>
-                  <label>secure exchange cryptocurrencies</label>
+                  <label class="i18n" data-i18n="block-2-step-3">secure exchange cryptocurrencies</label>
                </div>
             </div>
             <div class="block-2">
-               <div class="block-2__line">
+               <div class="block-2__line i18n-style">
                   <div class="block-2__item" id="step-1">
                      <i class="fonticons-sub-bitcoin block-2__item__icon"></i>
-                     <label>Choose crypto for change</label>
+                     <label class="i18n" data-i18n="block-2-step-1">Choose crypto for change</label>
                   </div>
                   <span class="block-2__separator"></span>
                   <div class="block-2__item" id="step-2">
                      <i class="fonticons-sub-fingerprint block-2__item__icon"></i>
-                     <label>entering data exchange</label>
+                     <label class="i18n" data-i18n="block-2-step-2">entering data exchange</label>
                   </div>
                </div>
                <div class="block-2__item" id="step-3">
                   <i class="fonticons-sub-shield block-2__item__icon"></i>
-                  <label>secure exchange cryptocurrencies</label>
+                  <label class="i18n" data-i18n="block-2-step-3">secure exchange cryptocurrencies</label>
                </div>
             </div>    
 			</section>
-			@@include('html/_popular-currencies.html', {})
+			@@include('html/_popular-currencies.htm', {})
 			<section class="features" id="section-features">
             <div class="features__container">
                <div class="features__content">
                   <div class="features__block-text block-text">
                      <div class="block-text__body">
-                        <h2 class="block-text__title title">
+                        <h2 class="block-text__title title i18n" data-i18n="features-title">
                            Our best users are all over the world with wide coverage
                         </h2>
-                        <div class="block-text__text text">
+                        <div class="block-text__text text i18n" data-i18n="features-text">
                            Our platform reaches people all over the world. hereby we are trusted as the best platform for crypto trading
                         </div>
                      </div>
@@ -85,15 +85,15 @@
                      <div class="features__items features__item">
                         <div class="features__item item-features">
                            <div class="item-features__numbers"><span class="animation-on-scroll" data-val="20">0</span>K+</div>
-                           <div class="item-features__text text">People who chose us</div>
+                           <div class="item-features__text text i18n" data-i18n="features-item-1-caption">People who chose us</div>
                         </div>
                         <div class="features__item item-features">
                            <div class="item-features__numbers"><span class="animation-on-scroll" data-val="4">0</span>K+</div>
-                           <div class="item-features__text text">Exchange every day</div>
+                           <div class="item-features__text text i18n" data-i18n="features-item-2-caption">Exchange every day</div>
                         </div>
                         <div class="features__item item-features">
-                           <div class="item-features__numbers"><span class="animation-on-scroll" data-val="3">0</span> Years</div>
-                           <div class="item-features__text text">At the crypto market</div>
+                           <div class="item-features__numbers"><span class="animation-on-scroll" data-val="3">0</span> <span class="i18n" data-i18n="features-item-3-years">Years</span></div>
+                           <div class="item-features__text text i18n" data-i18n="features-item-3-caption">At the crypto market</div>
                         </div>
                      </div>
                   </div>
@@ -110,13 +110,13 @@
                </div>
                <div class="guarantees__content">
                   <div class="guarantees__block-text block-text">
-                     <h2 class="block-text__title title">
+                     <h2 class="block-text__title title i18n" data-i18n="guarantees-title">
                         Exchange cryptocurrency right now and most importantly safely
                      </h2>
-                     <div class="block-text__text text">
+                     <div class="block-text__text text i18n" data-i18n="guarantees-text">
                         In order to safely exchange your cryptocurrency, you need to press only one button that will take you to the exchange itself
                      </div>
-                     <a class="block-text__button button" href="exchanger.html">Change</a>
+                     <a class="block-text__button button i18n" data-i18n="guarantees-button" href="exchanger.html">Change</a>
                   </div>
                </div>
             </div>
@@ -125,31 +125,43 @@
             <div class="faq__container">
                <div class="faq__content">
                   <div class="faq__block-text block-text">
-                     <h2 class="block-text__title title">
+                     <h2 class="block-text__title title i18n" data-i18n="faq-title">
                         Frequently asked questions
                      </h2>
-                     <div class="block-text__text text">
+                     <div class="block-text__text text i18n" data-i18n="faq-text">
                         Here we have listed the questions with answers that our clients often ask us
                      </div>
                   </div>
                </div>
                <div data-spollers class="faq__spollers spollers-faq">
                   <div class="spollers-faq__item">
-                     <button type="button" data-spoller class="spollers-faq__title">How can I convert one cryptocurrency into another?
+                     <button type="button" data-spoller class="spollers-faq__title i18n" data-i18n="faq-item-1-title">How can I convert one cryptocurrency into another?
                      </button>
-                     <div class="spollers-faq__body">Select the ‘Convert’ option in the app. You can also find it in the exchange panel if you are operating from a desktop. Select the cryptocurrency you wish to convert and the cryptocurrency you wish to receive in exchange. Enter the amount and confirm.</div>
+                     <div class="spollers-faq__body">
+                        <span class="i18n" data-i18n="faq-item-1-body-chunk-1"></span>
+                        <a href="#section-currencies" class="spollers-faq__body__link i18n" data-i18n="faq-item-body-popular-currencies-link"></a>
+                        <span class="i18n" data-i18n="faq-item-1-body-chunk-2"></span>
+                     </div>
                   </div>
                   <div class="spollers-faq__item">
-                     <button type="button" data-spoller class="spollers-faq__title">How to transfer from Young Platform to my current account?</button>
-                     <div class="spollers-faq__body">To transfer money to your current account, make sure you do so from the Euro Wallet section of your account. Click on “Withdraw” and enter the name of your bank and your IBAN. The transfer will be executed within 2-5 working.</div>
+                     <button type="button" data-spoller class="spollers-faq__title i18n" data-i18n="faq-item-2-title">How to transfer from Young Platform to my current account?</button>
+                     <div class="spollers-faq__body">
+                        <span class="i18n" data-i18n="faq-item-2-body-chunk-1"></span>
+                        <a href="#section-currencies" class="spollers-faq__body__link i18n" data-i18n="faq-item-body-popular-currencies-link"></a>
+                        <span class="i18n" data-i18n="faq-item-2-body-chunk-2"></span>
+                     </div>
                   </div>
                   <div class="spollers-faq__item">
-                     <button type="button" data-spoller class="spollers-faq__title">How can I buy some crypto?</button>
-                     <div class="spollers-faq__body">From the exchange section of your Young Platform account, go to the order panel. Select the cryptocurrency you wish to buy, enter the amount and confirm the purchase. You can follow the same procedure in the app by clicking on the middle button and selecting ‘Buy.’</div>
+                     <button type="button" data-spoller class="spollers-faq__title i18n" data-i18n="faq-item-3-title">How can I buy some crypto?</button>
+                     <div class="spollers-faq__body">
+                        <span class="i18n" data-i18n="faq-item-3-body-chunk-1"></span>
+                        <a href="#section-currencies" class="spollers-faq__body__link i18n" data-i18n="faq-item-body-popular-currencies-link"></a>
+                        <span class="i18n" data-i18n="faq-item-3-body-chunk-2"></span>
+                     </div>
                   </div>
                   <div class="spollers-faq__item">
-                     <button type="button" data-spoller class="spollers-faq__title">How do I transfer cryptocurrencies from Young Platform to another exchange?</button>
-                     <div class="spollers-faq__body">Go to the Wallet section of your account and click on the cryptocurrency you want to transfer. Click on ‘Withdraw’ and enter the destination crypto wallet address. To avoid losing your cryptocurrencies, copy and paste the wallet address. Do not enter it manually.</div>
+                     <button type="button" data-spoller class="spollers-faq__title i18n" data-i18n="faq-item-4-title">How do I transfer cryptocurrencies from Young Platform to another exchange?</button>
+                     <div class="spollers-faq__body i18n" data-i18n="faq-item-4-body"></div>
                   </div>
                </div>
             </div>

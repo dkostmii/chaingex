@@ -1,6 +1,10 @@
 import { changeSellBuyToExchangeRedirect } from "../files/script.js";
 
 /**
+ * @typedef {import('../i18n/data.js').Language} Language
+ */
+
+/**
  * `localStorage` configuration.
  * 
  * Contains tokenNames for browser's `localStorage`.
@@ -19,7 +23,9 @@ const storageConfig = {
     sendCrypto: 'sendCrypto',
     /** A token name to use to store receive crypto id (asset to buy). */
     receiveCrypto: 'receiveCrypto',
-  }
+    /** A token name to use to store current {@link Language.value}.  */
+    currentLanguage: 'currentLang',
+  },
 };
 
 export default storageConfig;

@@ -21,8 +21,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     padding: 0;
     gap: rem(79);
+
+    @media screen and (min-width: $mobile) {
+      &.i18n__de {
+        gap: rem(48);
+      }
+    }
   }
 
   &__item {
@@ -67,16 +74,36 @@
   &>#step-1>label,
   &__line>#step-1>label {
     width: rem(162);
+
+    &.i18n__de {
+      width: rem(190);
+    }
   }
 
   &>#step-2>label,
   &__line>#step-2>label {
-    width: rem(151);
+    width: rem(125);
+    &.i18n__pl {
+      width: rem(130);
+    }
+
+    &.i18n__de {
+      width: rem(190);
+    }
   }
 
   &>#step-3>label,
   &__line>#step-3>label {
-    width: rem(190);
+    width: rem(220);
+    &.i18n__pl {
+      width: rem(140);
+    }
+    &.i18n__rus {
+      width: rem(160);
+    }
+    &.i18n__de {
+      width: rem(180);
+    }
   }
 
   @media screen and (max-width: $mobile) {
@@ -86,6 +113,10 @@
     &__line {
       gap: rem(16);
       @include adaptiveValue("gap", 16, 8);
+
+      &.i18n__pl {
+        width: rem(360);
+      }
     }
 
     &__item {
@@ -103,16 +134,81 @@
     &>#step-1>label,
     &__line>#step-1>label {
       width: rem(103);
+
+      &.i18n__de {
+        width: rem(120);
+      }
     }
 
     &>#step-2>label,
     &__line>#step-2>label {
-      width: rem(96);
+      width: rem(60);
+      &.i18n__pl {
+        width: rem(72);
+      }
+      &.i18n__rus {
+        width: rem(80);
+      }
+      &.i18n__de {
+        width: rem(120);
+      }
     }
 
     &>#step-3>label,
     &__line>#step-3>label {
-      width: rem(121);
+      width: rem(135);
+      &.i18n__pl {
+        width: rem(90);
+      }
+
+      &.i18n__rus {
+        width: rem(105);
+      }
+      &.i18n__de {
+        width: rem(115);
+      }
+    }
+  }
+
+  @media screen and (max-width: em(400)) {
+    &__line.i18n__pl {
+      width: rem(320);
+    }
+
+    &__item {
+      >label.i18n__de {
+        font-size: rem(12);
+        line-height: rem(16);
+      }
+    }
+
+    &>#step-1>label,
+    &__line>#step-1>label {
+      &.i18n__de {
+        width: rem(100);
+      }
+    }
+
+    &>#step-2>label,
+    &__line>#step-2>label {
+      &.i18n__de {
+        width: rem(100);
+      }
+    }
+
+    &>#step-3>label,
+    &__line>#step-3>label {
+      &.i18n__de {
+        width: rem(100);
+      }
+    }
+
+    &__item {
+      &__icon {
+        width: rem(36);
+        height: rem(36);
+        background-size: rem(36) rem(36);
+      }
     }
   }
 }
@@ -133,17 +229,46 @@
 
   >#step-1>label {
     width: rem(176);
+
+    &.i18n__rus {
+      width: rem(186);
+    }
+
+    &.i18n__de {
+      width: rem(190);
+    }
   }
 
   >#step-2>label {
-    width: rem(165);
+    width: rem(80);
+    &.i18n__pl {
+      width: rem(125);
+    }
+
+    &.i18n__rus {
+      width: rem(140);
+    }
+
+    &.i18n__de {
+      width: rem(205);
+    }
   }
 
   >#step-3>label {
-    width: rem(207);
+    width: rem(270);
+    &.i18n__pl {
+      width: rem(210);
+    }
+
+    &.i18n__rus {
+      width: rem(176);
+    }
+
+    &.i18n__de {
+      width: rem(200);
+    }
   }
 }
-
 
 .features {
   &__container {
@@ -271,6 +396,10 @@
 
   &__content {
     padding-left: rem(91);
+  }
+
+  &__block-text > .block-text__button {
+    font-weight: 500;
   }
 
   @media screen and (max-width: $laptop) {
@@ -404,7 +533,24 @@
     @include adaptiveValue("padding-bottom", 30, 24);
     @include adaptiveValue("font-size", 18, 16);
     line-height: math.div(20, 16);
-    opacity: 0.5;
+
+    // opacity: 0.5;
+    // As the opacity applies to entire block
+
+    // Use color instead
+    color: rgba($mainColor, 0.5);
+
+    &__link {
+      color: $purpleColor;
+      text-decoration-line: underline;
+
+      // so here opacity will do nothing
+      // opacity: 1;
+
+      &:hover, &:target, &:active {
+        color: rgba($mainColor, 0.8);
+      }
+    }
   }
 }
 

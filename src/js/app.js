@@ -241,6 +241,9 @@ import { exchangerPageLoad } from './files/exchanger/page-load.js';
 
 import AOS from 'aos';
 
+import headerDesktop from './files/header-desktop.js';
+headerDesktop();
+
 import fonticons from './fonticons/index.js';
 
 Object.assign(window, {
@@ -263,5 +266,9 @@ if (currentPage === 'Exchanger') {
 	fonticons(showCurrencies, hideCurrencies)
 		.scale(0.9);
 }
+
+// Import i18n last, so the all DOM manipulations occurred.
+import useI18n from './i18n/index.js';
+useI18n();
 
 //============================================================================================================================================================================================================================================

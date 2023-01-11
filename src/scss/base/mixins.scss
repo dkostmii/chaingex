@@ -26,9 +26,15 @@
 
 //Currency
 @mixin currency($sym) {
-	&::after {
+	&::before {
 		content: "#{$sym}";
 	}
+}
+
+@mixin selection() {
+	background: none;
+	color: $purpleColor;
+	text-shadow: none;
 }
 
 // Grids
