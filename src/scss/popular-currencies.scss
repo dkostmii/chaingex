@@ -220,9 +220,7 @@
     color: $mainColor;
     opacity: 0.8;
 
-    &::before {
-      content: '$';
-    }
+    @include currency('$');
   }
 
   &__short {
