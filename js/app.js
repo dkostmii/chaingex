@@ -4932,6 +4932,201 @@
                 if ("undefined" === typeof noGlobal) window.jQuery = window.$ = jQuery;
                 return jQuery;
             }));
+        },
+        733: function(module, exports) {
+            var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+            (function() {
+                "use strict";
+                var __bind = function(fn, me) {
+                    return function() {
+                        return fn.apply(me, arguments);
+                    };
+                };
+                (function(root, factory) {
+                    if (true) return !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+                        return root.i18n = factory();
+                    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), void 0 !== __WEBPACK_AMD_DEFINE_RESULT__ && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+                })("undefined" !== typeof self && null !== self ? self : this, (function() {
+                    var Translator, i18n, translator;
+                    Translator = function() {
+                        function Translator() {
+                            this.translate = __bind(this.translate, this);
+                            this.data = {
+                                values: {},
+                                contexts: []
+                            };
+                            this.globalContext = {};
+                        }
+                        Translator.prototype.translate = function(text, defaultNumOrFormatting, numOrFormattingOrContext, formattingOrContext, context) {
+                            var defaultText, formatting, isObject, num;
+                            if (null == context) context = this.globalContext;
+                            isObject = function(obj) {
+                                var type;
+                                type = typeof obj;
+                                return "function" === type || "object" === type && !!obj;
+                            };
+                            if (isObject(defaultNumOrFormatting)) {
+                                defaultText = null;
+                                num = null;
+                                formatting = defaultNumOrFormatting;
+                                context = numOrFormattingOrContext || this.globalContext;
+                            } else if ("number" === typeof defaultNumOrFormatting) {
+                                defaultText = null;
+                                num = defaultNumOrFormatting;
+                                formatting = numOrFormattingOrContext;
+                                context = formattingOrContext || this.globalContext;
+                            } else {
+                                defaultText = defaultNumOrFormatting;
+                                if ("number" === typeof numOrFormattingOrContext) {
+                                    num = numOrFormattingOrContext;
+                                    formatting = formattingOrContext;
+                                    context;
+                                } else {
+                                    num = null;
+                                    formatting = numOrFormattingOrContext;
+                                    context = formattingOrContext || this.globalContext;
+                                }
+                            }
+                            if (isObject(text)) {
+                                if (isObject(text["i18n"])) text = text["i18n"];
+                                return this.translateHash(text, context);
+                            } else return this.translateText(text, num, formatting, context, defaultText);
+                        };
+                        Translator.prototype.add = function(d) {
+                            var c, k, v, _i, _len, _ref, _ref1, _results;
+                            if (null != d.values) {
+                                _ref = d.values;
+                                for (k in _ref) {
+                                    v = _ref[k];
+                                    this.data.values[k] = v;
+                                }
+                            }
+                            if (null != d.contexts) {
+                                _ref1 = d.contexts;
+                                _results = [];
+                                for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+                                    c = _ref1[_i];
+                                    _results.push(this.data.contexts.push(c));
+                                }
+                                return _results;
+                            }
+                        };
+                        Translator.prototype.setContext = function(key, value) {
+                            return this.globalContext[key] = value;
+                        };
+                        Translator.prototype.extend = function(ext) {
+                            return this.extension = ext;
+                        };
+                        Translator.prototype.clearContext = function(key) {
+                            return this.globalContext[key] = null;
+                        };
+                        Translator.prototype.reset = function() {
+                            this.resetData();
+                            return this.resetContext();
+                        };
+                        Translator.prototype.resetData = function() {
+                            return this.data = {
+                                values: {},
+                                contexts: []
+                            };
+                        };
+                        Translator.prototype.resetContext = function() {
+                            return this.globalContext = {};
+                        };
+                        Translator.prototype.translateHash = function(hash, context) {
+                            var k, v;
+                            for (k in hash) {
+                                v = hash[k];
+                                if ("string" === typeof v) hash[k] = this.translateText(v, null, null, context);
+                            }
+                            return hash;
+                        };
+                        Translator.prototype.translateText = function(text, num, formatting, context, defaultText) {
+                            var contextData, result;
+                            if (null == context) context = this.globalContext;
+                            if (null == this.data) return this.useOriginalText(defaultText || text, num, formatting);
+                            contextData = this.getContextData(this.data, context);
+                            if (null != contextData) result = this.findTranslation(text, num, formatting, contextData.values, defaultText);
+                            if (null == result) result = this.findTranslation(text, num, formatting, this.data.values, defaultText);
+                            if (null == result) return this.useOriginalText(defaultText || text, num, formatting);
+                            return result;
+                        };
+                        Translator.prototype.findTranslation = function(text, num, formatting, data, defaultText) {
+                            var a, b, c, d, e, result, triple, value, _i, _len;
+                            value = data[text];
+                            if (null == value) return null;
+                            if ("object" === typeof value && !Array.isArray(value)) if (this.extension && "function" === typeof this.extension) {
+                                value = this.extension(text, num, formatting, value);
+                                value = this.applyNumbers(value, num);
+                                return this.applyFormatting(value, num, formatting);
+                            } else return this.useOriginalText(defaultText || text, num, formatting);
+                            if (null == num && !Array.isArray(value)) {
+                                if ("string" === typeof value) return this.applyFormatting(value, num, formatting);
+                            } else if (value instanceof Array || value.length) {
+                                a = null === num;
+                                for (_i = 0, _len = value.length; _i < _len; _i++) {
+                                    triple = value[_i];
+                                    b = null === triple[0];
+                                    c = null === triple[1];
+                                    d = num >= triple[0];
+                                    e = num <= triple[1];
+                                    if (a && b && c || !a && (!b && d && (c || e) || b && !c && e)) {
+                                        result = this.applyFormatting(triple[2].replace("-%n", String(-num)), num, formatting);
+                                        return this.applyFormatting(result.replace("%n", String(num)), num, formatting);
+                                    }
+                                }
+                            }
+                            return null;
+                        };
+                        Translator.prototype.applyNumbers = function(str, num) {
+                            str = str.replace("-%n", String(-num));
+                            str = str.replace("%n", String(num));
+                            return str;
+                        };
+                        Translator.prototype.getContextData = function(data, context) {
+                            var c, equal, key, value, _i, _len, _ref, _ref1;
+                            if (null == data.contexts) return null;
+                            _ref = data.contexts;
+                            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                                c = _ref[_i];
+                                equal = true;
+                                _ref1 = c.matches;
+                                for (key in _ref1) {
+                                    value = _ref1[key];
+                                    equal = equal && value === context[key];
+                                }
+                                if (equal) return c;
+                            }
+                            return null;
+                        };
+                        Translator.prototype.useOriginalText = function(text, num, formatting) {
+                            if (null == num) return this.applyFormatting(text, num, formatting);
+                            return this.applyFormatting(text.replace("%n", String(num)), num, formatting);
+                        };
+                        Translator.prototype.applyFormatting = function(text, num, formatting) {
+                            var ind, regex;
+                            for (ind in formatting) {
+                                regex = new RegExp("%{" + ind + "}", "g");
+                                text = text.replace(regex, formatting[ind]);
+                            }
+                            return text;
+                        };
+                        return Translator;
+                    }();
+                    translator = new Translator;
+                    i18n = translator.translate;
+                    i18n.translator = translator;
+                    i18n.create = function(data) {
+                        var trans;
+                        trans = new Translator;
+                        if (null != data) trans.add(data);
+                        trans.translate.create = i18n.create;
+                        trans.translate.translator = trans;
+                        return trans.translate;
+                    };
+                    return i18n;
+                }));
+            }).call(this);
         }
     };
     var __webpack_module_cache__ = {};
@@ -5551,15 +5746,15 @@
         function createCryptoActions() {
             const changeButton = document.createElement("a");
             changeButton.href = "";
-            changeButton.className = "button__change";
+            changeButton.className = "button__change i18n-style";
             const sellButton = document.createElement("a");
             sellButton.href = "";
-            sellButton.className = "button__sell";
-            sellButton.innerHTML = "Sell";
+            sellButton.className = "button__sell i18n";
+            sellButton.dataset.i18n = "popular-currencies-sell";
             const buyButton = document.createElement("a");
             buyButton.href = "";
-            buyButton.className = "button__buy";
-            buyButton.innerHTML = "Buy";
+            buyButton.className = "button__buy i18n";
+            buyButton.dataset.i18n = "popular-currencies-buy";
             const columActions = document.createElement("div");
             columActions.className = "colum__actions";
             columActions.append(changeButton, sellButton, buyButton);
@@ -5587,7 +5782,7 @@
             throwIfNotAPartialCurrency(crypto);
             util_throwIfNotANumber(id);
             const colum = document.createElement("div");
-            colum.className = "popular-currencies__colum colum";
+            colum.className = "popular-currencies__colum colum i18n-style";
             if (id > showFirstNCryptocurrencies - 1) {
                 colum.classList.add("colum__hidden");
                 colum.classList.add("colum__hideable");
@@ -5615,10 +5810,318 @@
         const storage_storageConfig = {
             tokenNames: {
                 sendCrypto: "sendCrypto",
-                receiveCrypto: "receiveCrypto"
+                receiveCrypto: "receiveCrypto",
+                currentLanguage: "currentLang"
             }
         };
         const storage = storage_storageConfig;
+        var i18n = __webpack_require__(733);
+        const eng = {
+            "header-cta": "Change",
+            "header-cta-desktop": "Change crypto",
+            "lang-select-language": "Language",
+            "nav-home": "Home",
+            "nav-exchange-rate": "Exchange rate",
+            "nav-features": "Features",
+            "nav-guarantees": "Guarantees",
+            "nav-faq": "FAQ",
+            "block-1-title": "Buy bitcoins and cryptocurrencies instantly and securely!",
+            "block-1-subtitle": "Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.",
+            "block-1-cta": "Change crypto",
+            "block-2-step-1": "Choose crypto for change",
+            "block-2-step-2": "Fill the data",
+            "block-2-step-3": "Securely exchange cryptocurrency",
+            "popular-currencies-title": "Popular Cryptocurrencies",
+            "popular-currencies-colum-1": "Name",
+            "popular-currencies-colum-2": "Price",
+            "popular-currencies-colum-3": "Change",
+            "popular-currencies-colum-4": "Actions",
+            "popular-currencies-sell": "Sell",
+            "popular-currencies-buy": "Buy",
+            "popular-currencies-button-see-all": "See all cryptocurrencies",
+            "popular-currencies-button-hide-all": "Hide all cryptocurrencies",
+            "features-title": "Our best users are all over the world with wide coverage",
+            "features-text": "Our platform reaches people all over the world. Hereby we are trusted as the best platform for crypto trading.",
+            "features-item-1-caption": "People chose us",
+            "features-item-2-caption": "Exchange every day",
+            "features-item-3-caption": "On the crypto market",
+            "features-item-3-years": "Years",
+            "guarantees-title": "Exchange cryptocurrency right now and, most importantly, safely",
+            "guarantees-text": "In order to safely exchange your cryptocurrency, you need to press only one button that will take you to the exchange itself",
+            "guarantees-button": "Change",
+            "faq-title": "Frequently asked questions (FAQ)",
+            "faq-text": "Here we have listed the questions with answers that our clients often ask us.",
+            "faq-item-body-popular-currencies-link": "‘Popular Cryptocurrencies’",
+            "faq-item-1-title": "How can I convert one cryptocurrency into another?",
+            "faq-item-1-body-chunk-1": "Select the ‘Change’ option in the app. You can also find it in the ",
+            "faq-item-1-body-chunk-2": " section. Choose the cryptocurrencies you wish to convert. Enter the amount and crypto wallet address for the receive cryptocurrency. Click the ‘Exchange’ button to confirm.",
+            "faq-item-2-title": "How to do transfer from Chaingex to my bank account?",
+            "faq-item-2-body-chunk-1": "To transfer money to your bank account, choose the cryptocurrency you wish to sell in the ",
+            "faq-item-2-body-chunk-2": " section. Enter the transfer amount and select your bank account currency. The transfer will be executed within 2-5 working days.",
+            "faq-item-3-title": "How can I buy some crypto?",
+            "faq-item-3-body-chunk-1": "In the ",
+            "faq-item-3-body-chunk-2": " section choose a cryptocurrency to buy. Select the currency of your bank account, enter the amount and confirm the purchase. You can follow the same procedure on ‘Change’ page by selecting ‘Buy / Sell Crypto’ tab.",
+            "faq-item-4-title": "How do I transfer cryptocurrency from Chaingex to another exchange?",
+            "faq-item-4-body": "Click the ‘Change’ button and select ‘Exchange crypto’ tab. Choose a cryptocurrency you wish to send and its amount. Enter the destination crypto wallet address. To avoid losing your cryptocurrency, copy and paste the wallet address. Do not enter it manually."
+        };
+        const translations_eng = eng;
+        const de = {
+            "header-cta": "Austauschen",
+            "header-cta-desktop": "Krypto austauschen",
+            "lang-select-language": "Sprache",
+            "nav-home": "Startseite",
+            "nav-exchange-rate": "Tauschrate",
+            "nav-features": "Merkmale",
+            "nav-guarantees": "Garantien",
+            "nav-faq": "FAQ",
+            "block-1-title": "Kaufen Sie Bitcoins und Kryptowährungen sofort und sicher!",
+            "block-1-subtitle": "Chaingex ist eine einfache und sichere Plattform, um Ihr Krypto-Portfolio zu erstellen und Währungen mit einer Garantie auszutauschen.",
+            "block-1-cta": "Krypto austauschen",
+            "block-2-step-1": "Wählen Sie eine Kryptowährung",
+            "block-2-step-2": "Eingeben die Austauschdetails",
+            "block-2-step-3": "Kryptowährung sicher tauschen",
+            "popular-currencies-title": "Beliebte Kryptowährungen",
+            "popular-currencies-colum-1": "Name",
+            "popular-currencies-colum-2": "Preis",
+            "popular-currencies-colum-3": "Änderung",
+            "popular-currencies-colum-4": "Aktionen",
+            "popular-currencies-sell": "Verkaufen",
+            "popular-currencies-buy": "Kaufen",
+            "popular-currencies-button-see-all": "Alle Kryptowährungen anzeigen",
+            "popular-currencies-button-hide-all": "Alle Kryptowährungen ausblenden",
+            "features-title": "Unsere besten Benutzer sind auf der ganzen Welt mit einer breiten Abdeckung",
+            "features-text": "Unsere Plattform erreicht Menschen auf der ganzen Welt. Hiermit wird uns als die beste Plattform für den Kryptohandel vertraut.",
+            "features-item-1-caption": "Kunden wählen uns",
+            "features-item-2-caption": "Jeden Tag austauschen",
+            "features-item-3-caption": "Auf dem Kryptomarkt",
+            "features-item-3-years": "Jahre",
+            "guarantees-title": "Tauschen Sie Kryptowährungen jetzt und, vor allem, sicher",
+            "guarantees-text": "Um Ihre Kryptowährung sicher umzutauschen, müssen Sie nur eine Taste drücken, die Sie zur Börse selbst führt",
+            "guarantees-button": "Austauschen",
+            "faq-title": "Häufig gestellte Fragen (FAQ)",
+            "faq-text": "Hier haben wir die Fragen mit Antworten aufgelistet, die uns unsere Kunden häufig stellen.",
+            "faq-item-body-popular-currencies-link": "‘Beliebte Kryptowährungen’",
+            "faq-item-1-title": "Wie kann ich eine Kryptowährung in eine andere umwandeln?",
+            "faq-item-1-body-chunk-1": "Wählen Sie in der App die Option ‘Austauschen’. Sie finden es auch im Abschnitt ",
+            "faq-item-1-body-chunk-2": ". Wählen Sie die Kryptowährungen aus, die Sie konvertieren möchten. Geben Sie den Betrag und die Krypto-Wallet-Adresse für die empfangene Kryptowährung ein. Klicken Sie zur Bestätigung auf die Schaltfläche ‘Austauschen’.",
+            "faq-item-2-title": "Wie überweise ich von Chaingex auf mein Bankkonto?",
+            "faq-item-2-body-chunk-1": "Um Geld auf Ihr Bankkonto zu überweisen, wählen Sie im Abschnitt ",
+            "faq-item-2-body-chunk-2": " die Kryptowährung aus, die Sie verkaufen möchten. Geben Sie den Überweisungsbetrag ein und wählen Sie die Währung Ihres Bankkontos aus. Die Überweisung wird innerhalb von 2-5 Werktagen ausgeführt.",
+            "faq-item-3-title": "Wie kann ich Krypto kaufen?",
+            "faq-item-3-body-chunk-1": "Wählen Sie im Abschnitt ",
+            "faq-item-3-body-chunk-2": " eine Kryptowährung aus, die Sie kaufen möchten. Wählen Sie die Währung Ihres Bankkontos aus, geben Sie den Betrag ein und bestätigen Sie den Kauf. Sie können das gleiche Verfahren auf der Seite ‘Austauschen’ durchführen, indem Sie die Registerkarte ‘Krypto kaufen / verkaufen’ auswählen.",
+            "faq-item-4-title": "Wie übertrage ich Kryptowährung von Chaingex zu einer anderen Börse?",
+            "faq-item-4-body": "Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto austauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein."
+        };
+        const translations_de = de;
+        const pl = {
+            "header-cta": "Wymień",
+            "header-cta-desktop": "Wymień",
+            "lang-select-language": "Język",
+            "nav-home": "Strona główna",
+            "nav-exchange-rate": "Kurs wymiany",
+            "nav-features": "Osobliwości",
+            "nav-guarantees": "Gwarancje",
+            "nav-faq": "FAQ",
+            "block-1-title": "Kupuj bitcoiny oraz kryptowaluty szybko i biezpiecznie!",
+            "block-1-subtitle": "Chaingex to prosta i bezpieczna platforma do tworzenia portfela kryptowalut i wymiany walut z gwarancją.",
+            "block-1-cta": "Wymień kryptowalutę",
+            "block-2-step-1": "Wybierz kryptowalutę",
+            "block-2-step-2": "Wypełnij dane",
+            "block-2-step-3": "Bezpiecznie wymień ją",
+            "popular-currencies-title": "Popularne Kryptowaluty",
+            "popular-currencies-colum-1": "Nazwa",
+            "popular-currencies-colum-2": "Cena",
+            "popular-currencies-colum-3": "Zmiana",
+            "popular-currencies-colum-4": "Akcje",
+            "popular-currencies-sell": "Sprzedaj",
+            "popular-currencies-buy": "Kup",
+            "popular-currencies-button-see-all": "Zobacz wszystkie kryptowaluty",
+            "popular-currencies-button-hide-all": "Ukryj wszystkie kryptowaluty",
+            "features-title": "Nasi najlepsi użytkownicy są na całym świecie z szerokim zasięgiem",
+            "features-text": "Nasza platforma dociera do ludzi na całym świecie. Cieszymy się zaufaniem jako najlepsza platforma do handlu kryptowalutami",
+            "features-item-1-caption": "Klientów już wybrali nas",
+            "features-item-2-caption": "Transakcji dziennie",
+            "features-item-3-caption": "Na rynku kryptowalut",
+            "features-item-3-years": "Lata",
+            "guarantees-title": "Wymieniaj kryptowaluty już teraz i, co najważniejsze, bezpiecznie",
+            "guarantees-text": "Aby bezpiecznie wymienić swoją kryptowalutę wystarczy nacisnąć tylko jeden przycisk, który przekieruje Cię do samej giełdy",
+            "guarantees-button": "Wymień",
+            "faq-title": "Często Zadawane Pytania (FAQ)",
+            "faq-text": "Tutaj wymieniliśmy pytania wraz z odpowiedziami, które często zadają nam nasi klienci.",
+            "faq-item-body-popular-currencies-link": "‘Popularne Kryptowaluty’",
+            "faq-item-1-title": "Jak mogę przekonwertować jedną kryptowalutę na inną?",
+            "faq-item-1-body-chunk-1": "Wybierz opcję ‘Wymień’ w aplikacji. Znajdziesz ją również w sekcji ",
+            "faq-item-1-body-chunk-2": ". Wybierz kryptowaluty, które chcesz przekonwertować. Wprowadź sumę oraz adres krypto portfelu tej kryptowaluty, którą otrzymasz. Wciśnij przycisk ‘Wymień’ w celu potwierdzenia.",
+            "faq-item-2-title": "Jak mogę przelać z Chaingex na swoje konto bankowe?",
+            "faq-item-2-body-chunk-1": "Aby dokonać przelewu na własne konto bankowe, wybierz kryptowalutę, którą chcesz sprzedać w sekcji ",
+            "faq-item-2-body-chunk-2": ". Wprowadź kwotę przelewu i wybierz walutę własnego konta bankowego. Przelew zostanie zrealizowany w ciągu 2-5 dni roboczych.",
+            "faq-item-3-title": "Jak mogę kupić kryptowalutę?",
+            "faq-item-3-body-chunk-1": "W sekcji ",
+            "faq-item-3-body-chunk-2": " wybierz kryptowalutę, którą chcesz kupić. Wybierz walutę własnego konta bankowego, wprowadź sumę i potwierdź zakup. Możesz to zrobić w inny sposób, przechodząc na stronę ‘Wymiana’, wybierając zakładkę ‘Kup / Sprzedaj Kryptowalutę’.",
+            "faq-item-4-title": "Jak przelać kryptowalutę z Chaingex na inną giełdę?",
+            "faq-item-4-body": "Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień Kryptowalutę’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie."
+        };
+        const translations_pl = pl;
+        const rus = {
+            "header-cta": "Обменять",
+            "header-cta-desktop": "Обменять",
+            "lang-select-language": "Язык",
+            "nav-home": "Главная страница",
+            "nav-exchange-rate": "Курс",
+            "nav-features": "Особенности",
+            "nav-guarantees": "Гарантии",
+            "nav-faq": "FAQ",
+            "block-1-title": "Покупайте биткойны и криптовалюты мгновенно и безопасно!",
+            "block-1-subtitle": "Chaingex — это простая и безопасная платформа для создания своего криптопортфеля и обмена валюты с гарантией.",
+            "block-1-cta": "Обменять криптовалюту",
+            "block-2-step-1": "Выберите криптовалюту",
+            "block-2-step-2": "Заполните данные",
+            "block-2-step-3": "Надежно обменяйте её",
+            "popular-currencies-title": "Популярные Криптовалюты",
+            "popular-currencies-colum-1": "Название",
+            "popular-currencies-colum-2": "Цена",
+            "popular-currencies-colum-3": "Изменение",
+            "popular-currencies-colum-4": "Действия",
+            "popular-currencies-sell": "Продать",
+            "popular-currencies-buy": "Купить",
+            "popular-currencies-button-see-all": "Смотреть все криптовалюты",
+            "popular-currencies-button-hide-all": "Скрыть все криптовалюты",
+            "features-title": "Наши лучшие пользователи по всему миру с широким охватом",
+            "features-text": "Наша платформа доступна людям по всему миру. Нам доверяют как лучшей платформе для криптотрейдинга.",
+            "features-item-1-caption": "Клиентов уже с нами",
+            "features-item-2-caption": "Транзакций ежедневно",
+            "features-item-3-caption": "На рынке криптовалют",
+            "features-item-3-years": "Года",
+            "guarantees-title": "Обменивайте криптовалюту прямо сейчас и, самое главное, безопасно",
+            "guarantees-text": "Для того, чтобы безопасно обменять свою криптовалюту, вам нужно нажать всего одну кнопку, которая перенаправит вас к обмену",
+            "guarantees-button": "Обменять",
+            "faq-title": "Часто задаваемые вопросы (FAQ)",
+            "faq-text": "Здесь мы перечислили вопросы с ответами, которые часто задают нам наши клиенты.",
+            "faq-item-body-popular-currencies-link": "‘Популярные Криптовалюты’",
+            "faq-item-1-title": "Как я могу конвертировать одну криптовалюту в другую?",
+            "faq-item-1-body-chunk-1": "Выберите опцию ‘Обменять’ в приложении. Вы также можете найти её в разделе ",
+            "faq-item-1-body-chunk-2": ". Выберите криптовалюты, которые хотите конвертировать. Введите сумму и адрес криптокошелька для криптовалюты, которую получаете. Нажмите кнопку ‘Обменять’ для подтверждения.",
+            "faq-item-2-title": "Как я могу сделать перевод с Chaingex на свой банковский счёт?",
+            "faq-item-2-body-chunk-1": "Чтобы перевести деньги на ваш банковский счёт, выберите криптовалюту, которую хотите продать в разделе ",
+            "faq-item-2-body-chunk-2": ". Введите сумму перевода и выберите валюту вашего банковского счёта. Перевод будет осуществлен на протяжении 2-5 рабочих дней.",
+            "faq-item-3-title": "Как я могу купить криптовалюту?",
+            "faq-item-3-body-chunk-1": "В разделе ",
+            "faq-item-3-body-chunk-2": " выберите криптовалюту, которую хотите купить. Выберите валюту вашего банковского счёта, введите сумму и подтвердите покупку. Вы можете это сделать также другим способом, перейдя на страницу ‘Обмен’, выбрав вкладку ‘Купить / Продать Криптовалюту’.",
+            "faq-item-4-title": "Как перевести криптовалюту с Chaingex на другую биржу?",
+            "faq-item-4-body": "Нажмите кнопку ‘Обменять’ и выберите вкладку ‘Обменять криптовалюту’. Выберите криптловалюту, которую хотите отправить и её сумму. Введите адрес криптокошелька криптовалюты для получения. Чтобы избежать потери криптовалюты, скопируйте и вставьте адрес криптокошелька. Не вводите его вручную."
+        };
+        const translations_rus = rus;
+        const translations = {
+            eng: translations_eng,
+            de: translations_de,
+            pl: translations_pl,
+            rus: translations_rus
+        };
+        const langs = [ {
+            name: "English",
+            shortNames: {
+                short: "Eng",
+                shorter: "EN"
+            },
+            value: "eng",
+            styleClass: "i18n__eng",
+            languageCodes: /en-*/g,
+            dict: i18n.create({
+                values: translations.eng
+            })
+        }, {
+            name: "Russian",
+            shortNames: {
+                short: "Rus",
+                shorter: "RU"
+            },
+            value: "rus",
+            styleClass: "i18n__rus",
+            languageCodes: [ "ru", "uk", "bg", "be" ],
+            dict: i18n.create({
+                values: translations.rus
+            })
+        }, {
+            name: "Polish",
+            shortNames: {
+                short: "Pl",
+                shorter: "PL"
+            },
+            value: "pl",
+            styleClass: "i18n__pl",
+            languageCodes: "pl",
+            dict: i18n.create({
+                values: translations.pl
+            })
+        }, {
+            name: "German",
+            shortNames: {
+                short: "De",
+                shorter: "DE"
+            },
+            value: "de",
+            styleClass: "i18n__de",
+            languageCodes: /de.*/g,
+            dict: i18n.create({
+                values: translations.de
+            })
+        } ];
+        const data = langs;
+        function setLanguage(languageValue) {
+            const {tokenNames: {currentLanguage}} = storage;
+            const {localStorage} = window;
+            const language = data.find((lang => lang.value === languageValue));
+            if (!language) throw new Error("Unabled to find language by languageValue.");
+            localStorage.setItem(currentLanguage, language.value);
+        }
+        function getLanguage() {
+            const {tokenNames: {currentLanguage}} = storage;
+            const {localStorage} = window;
+            const languageValue = localStorage.getItem(currentLanguage);
+            if (!languageValue) return null;
+            const language = data.find((lang => lang.value === languageValue));
+            if (!language) throw new Error("Unabled to find language by languageValue.");
+            return languageValue;
+        }
+        const defaultLanguage = data.find((lang => "eng" === lang.value));
+        function isMatchLanguage(userLanguage, language) {
+            if ("string" === typeof language.languageCodes || language.languageCodes instanceof String) return language.languageCodes === userLanguage;
+            if (language.languageCodes instanceof RegExp) return language.languageCodes.test(userLanguage);
+            for (const code of language.languageCodes) {
+                if ("string" === typeof code || code instanceof String) if (code === userLanguage) return true;
+                if (code instanceof RegExp) if (code.test(userLanguage)) return true;
+            }
+            return false;
+        }
+        function mapUserLanguage() {
+            const userLanguage = navigator.language || navigator.userLanguage;
+            for (const l of data) if (isMatchLanguage(userLanguage, l)) return l;
+            if (defaultLanguage) return defaultLanguage;
+            if (data.length > 0) return data[0];
+            throw new Error("No languages in langs array are defined.");
+        }
+        function detectUserLanguage() {
+            const currentLangValue = getLanguage();
+            if (!currentLangValue) {
+                const mappedLang = mapUserLanguage();
+                setLanguage(mappedLang.value);
+                return mappedLang;
+            }
+            const language = data.find((lang => lang.value === currentLangValue));
+            if (!language) throw new Error("Unabled to find language by currentLangValue.");
+            return language;
+        }
+        const detect = detectUserLanguage;
+        function translate(element, language) {
+            if (!(element instanceof Element || element instanceof HTMLElement)) throw new TypeError("Expected element to be instance of either Element or HTMLElement.");
+            if (!("i18n" in element.dataset && "string" === typeof element.dataset.i18n)) throw new Error(`Element with class ${element.className} misses data-i18n attribute. If you want only style element for language, use 'i18n-style' class instead.`);
+            if (element.dataset.i18n.length < 1) throw new Error(`Element with class ${element.className} has empty data-i18n attribute. If you want only style element for language, use 'i18n-style' class instead.`);
+            const caption = language.dict(element.dataset.i18n);
+            if (caption === element.dataset.i18n) throw new Error(`No '${element.dataset.i18n}' definition found for language ${language.name}. Check whether data-i18n attribute is spelled correctly.`);
+            element.innerHTML = caption;
+        }
+        const i18n_translate = translate;
         function preCheckChange(num) {
             return num.toFixed(2);
         }
@@ -5692,6 +6195,7 @@
         }
         let isShown = false;
         const hideableClass = "colum__hideable";
+        const currentLanguage = detect();
         function hideCurrencies() {
             if (isShown) {
                 const button = document.getElementsByClassName("popular-currencies__button")[0];
@@ -5700,7 +6204,8 @@
                     currencyEl.classList.add("colum__hidden");
                 }));
                 isShown = false;
-                button.textContent = "See all cryptocurrencies";
+                button.dataset.i18n = "popular-currencies-button-see-all";
+                i18n_translate(button, currentLanguage);
             }
         }
         function showCurrencies() {
@@ -5711,7 +6216,8 @@
                     currencyEl.classList.remove("colum__hidden");
                 }));
                 isShown = true;
-                button.textContent = "Hide all currencies";
+                button.dataset.i18n = "popular-currencies-button-hide-all";
+                i18n_translate(button, currentLanguage);
             }
         }
         function toggleCurrencies() {
@@ -5735,12 +6241,14 @@
         const header = document.getElementsByClassName("header")[0];
         function enableMenu() {
             menuState = true;
+            document.body.classList.add("lock-scroll");
             header.classList.add("header__menu-active");
             [ ...menuBodyNavElements ].forEach((el => el.classList.remove("hidden")));
             iconMenu.classList.add("icon-menu__active");
         }
         function disableMenu() {
             menuState = false;
+            document.body.classList.remove("lock-scroll");
             header.classList.remove("header__menu-active");
             [ ...menuBodyNavElements ].forEach((el => el.classList.add("hidden")));
             iconMenu.classList.remove("icon-menu__active");
@@ -5790,6 +6298,36 @@
             hideSpinner();
         }
         __webpack_require__(711);
+        const desktopMedia = "(min-width: 78.75em)";
+        function headerDesktop() {
+            const header = document.querySelector(".header");
+            const headerContainer = header.querySelector(".header__container");
+            const mediaResult = window.matchMedia(desktopMedia);
+            const moveToContainer = () => {
+                const navPlusButton = header.querySelector(".nav-plus-button");
+                header.removeChild(navPlusButton);
+                headerContainer.appendChild(navPlusButton);
+            };
+            const moveToHeader = () => {
+                const navPlusButton = headerContainer.querySelector(".nav-plus-button");
+                headerContainer.removeChild(navPlusButton);
+                header.appendChild(navPlusButton);
+            };
+            header.classList.add("background");
+            if (mediaResult.matches) {
+                header.classList.remove("background");
+                moveToContainer();
+            }
+            mediaResult.addEventListener("change", (e => {
+                if (e.matches) {
+                    header.classList.remove("background");
+                    moveToContainer();
+                } else {
+                    header.classList.add("background");
+                    moveToHeader();
+                }
+            }));
+        }
         let sc = 1;
         const fonticonsSelector = "i[class^='fonticons-'],i[class*=' fonticons-']";
         const fonticonsPartialClass = "fonticons-";
@@ -5886,10 +6424,66 @@
                 breakpoint
             };
         }
+        function style(element, language) {
+            if (!(element instanceof Element || element instanceof HTMLElement)) throw new TypeError("Expected element to be instance of either Element or HTMLElement.");
+            element.classList.add(language.styleClass);
+        }
+        const i18n_style = style;
+        const i18n_currentLanguage = detect();
+        function optionClickedHandler(lang) {
+            setLanguage(lang.value);
+            window.location.reload(true);
+        }
+        function createMobileOption(lang) {
+            const option = document.createElement("div");
+            option.classList.add("lang-select__mobile__option");
+            option.innerHTML = lang.shortNames.shorter;
+            if (lang.value === i18n_currentLanguage.value) option.classList.add("lang-select__mobile__option__current"); else option.addEventListener("click", (() => optionClickedHandler(lang)));
+            return option;
+        }
+        function createDesktopOption(lang) {
+            const option = document.createElement("div");
+            option.classList.add("lang-select__option");
+            option.innerHTML = lang.shortNames.short;
+            option.addEventListener("click", (() => optionClickedHandler(lang)));
+            option.dataset;
+            return option;
+        }
+        function useLanguageSelect() {
+            const langSelectMobile = document.querySelector(".lang-select__mobile");
+            while (langSelectMobile.firstElementChild) langSelectMobile.removeChild(langSelectMobile.firstElementChild);
+            const langSelect = document.querySelector(".lang-select");
+            while (langSelect.firstElementChild) langSelect.removeChild(langSelect.firstElementChild);
+            const langSelectCurrent = document.createElement("div");
+            langSelectCurrent.classList.add("lang-select__current");
+            langSelectCurrent.innerHTML = i18n_currentLanguage.shortNames.short;
+            const langSelectOptions = document.createElement("div");
+            langSelectOptions.classList.add("lang-select__options");
+            langSelect.append(langSelectCurrent, langSelectOptions);
+            data.forEach((lang => {
+                langSelectMobile.appendChild(createMobileOption(lang));
+                if (lang.value !== i18n_currentLanguage.value) langSelect.appendChild(createDesktopOption(lang));
+            }));
+        }
+        function translatePage() {
+            const elements = document.querySelectorAll(".i18n, .i18n-style");
+            elements.forEach((el => {
+                if (el.classList.contains("i18n")) {
+                    i18n_style(el, i18n_currentLanguage);
+                    i18n_translate(el, i18n_currentLanguage);
+                } else if (el.classList.contains("i18n-style")) i18n_style(el, i18n_currentLanguage);
+            }));
+        }
+        function useI18n() {
+            useLanguageSelect();
+            translatePage();
+        }
+        const js_i18n = useI18n;
         window["FLS"] = true;
         isWebp();
         spollers();
         tabs();
+        headerDesktop();
         Object.assign(window, {
             toggleCurrencies,
             toggleMenu
@@ -5904,5 +6498,6 @@
             autoCloseMenu();
             fonticons(showCurrencies, hideCurrencies).scale(.9);
         }
+        js_i18n();
     })();
 })();
