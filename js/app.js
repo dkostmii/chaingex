@@ -4997,6 +4997,13 @@
                 document.documentElement.classList.add(className);
             }));
         }
+        function functions_getHash() {
+            if (location.hash) return location.hash.replace("#", "");
+        }
+        function setHash(hash) {
+            hash = hash ? `#${hash}` : window.location.href.split("#")[0];
+            history.pushState("", "", hash);
+        }
         let _slideUp = (target, duration = 500, showmore = 0) => {
             if (!target.classList.contains("_slide")) {
                 target.classList.add("_slide");
@@ -5146,6 +5153,103 @@
                 }));
             }
         }
+        function tabs() {
+            const tabs = document.querySelectorAll("[data-tabs]");
+            let tabsActiveHash = [];
+            if (tabs.length > 0) {
+                const hash = functions_getHash();
+                if (hash && hash.startsWith("tab-")) tabsActiveHash = hash.replace("tab-", "").split("-");
+                tabs.forEach(((tabsBlock, index) => {
+                    tabsBlock.classList.add("_tab-init");
+                    tabsBlock.setAttribute("data-tabs-index", index);
+                    tabsBlock.addEventListener("click", setTabsAction);
+                    initTabs(tabsBlock);
+                }));
+                let mdQueriesArray = dataMediaQueries(tabs, "tabs");
+                if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
+                    mdQueriesItem.matchMedia.addEventListener("change", (function() {
+                        setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                    }));
+                    setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                }));
+            }
+            function setTitlePosition(tabsMediaArray, matchMedia) {
+                tabsMediaArray.forEach((tabsMediaItem => {
+                    tabsMediaItem = tabsMediaItem.item;
+                    let tabsTitles = tabsMediaItem.querySelector("[data-tabs-titles]");
+                    let tabsTitleItems = tabsMediaItem.querySelectorAll("[data-tabs-title]");
+                    let tabsContent = tabsMediaItem.querySelector("[data-tabs-body]");
+                    let tabsContentItems = tabsMediaItem.querySelectorAll("[data-tabs-item]");
+                    tabsTitleItems = Array.from(tabsTitleItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                    tabsContentItems = Array.from(tabsContentItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                    tabsContentItems.forEach(((tabsContentItem, index) => {
+                        if (matchMedia.matches) {
+                            tabsContent.append(tabsTitleItems[index]);
+                            tabsContent.append(tabsContentItem);
+                            tabsMediaItem.classList.add("_tab-spoller");
+                        } else {
+                            tabsTitles.append(tabsTitleItems[index]);
+                            tabsMediaItem.classList.remove("_tab-spoller");
+                        }
+                    }));
+                }));
+            }
+            function initTabs(tabsBlock) {
+                let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles]>*");
+                let tabsContent = tabsBlock.querySelectorAll("[data-tabs-body]>*");
+                const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+                const tabsActiveHashBlock = tabsActiveHash[0] == tabsBlockIndex;
+                if (tabsActiveHashBlock) {
+                    const tabsActiveTitle = tabsBlock.querySelector("[data-tabs-titles]>._tab-active");
+                    tabsActiveTitle ? tabsActiveTitle.classList.remove("_tab-active") : null;
+                }
+                if (tabsContent.length) {
+                    tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsContent.forEach(((tabsContentItem, index) => {
+                        tabsTitles[index].setAttribute("data-tabs-title", "");
+                        tabsContentItem.setAttribute("data-tabs-item", "");
+                        if (tabsActiveHashBlock && index == tabsActiveHash[1]) tabsTitles[index].classList.add("_tab-active");
+                        tabsContentItem.hidden = !tabsTitles[index].classList.contains("_tab-active");
+                    }));
+                }
+            }
+            function setTabsStatus(tabsBlock) {
+                let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+                let tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
+                const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+                function isTabsAnamate(tabsBlock) {
+                    if (tabsBlock.hasAttribute("data-tabs-animate")) return tabsBlock.dataset.tabsAnimate > 0 ? Number(tabsBlock.dataset.tabsAnimate) : 500;
+                }
+                const tabsBlockAnimate = isTabsAnamate(tabsBlock);
+                if (tabsContent.length > 0) {
+                    const isHash = tabsBlock.hasAttribute("data-tabs-hash");
+                    tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                    tabsContent.forEach(((tabsContentItem, index) => {
+                        if (tabsTitles[index].classList.contains("_tab-active")) {
+                            if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = false;
+                            if (isHash && !tabsContentItem.closest(".popup")) setHash(`tab-${tabsBlockIndex}-${index}`);
+                        } else if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = true;
+                    }));
+                }
+            }
+            function setTabsAction(e) {
+                const el = e.target;
+                if (el.closest("[data-tabs-title]")) {
+                    const tabTitle = el.closest("[data-tabs-title]");
+                    const tabsBlock = tabTitle.closest("[data-tabs]");
+                    if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
+                        let tabActiveTitle = tabsBlock.querySelectorAll("[data-tabs-title]._tab-active");
+                        tabActiveTitle.length ? tabActiveTitle = Array.from(tabActiveTitle).filter((item => item.closest("[data-tabs]") === tabsBlock)) : null;
+                        tabActiveTitle.length ? tabActiveTitle[0].classList.remove("_tab-active") : null;
+                        tabTitle.classList.add("_tab-active");
+                        setTabsStatus(tabsBlock);
+                    }
+                    e.preventDefault();
+                }
+            }
+        }
         function uniqArray(array) {
             return array.filter((function(item, index, self) {
                 return self.indexOf(item) === index;
@@ -5199,91 +5303,6 @@
             }
         }), 0);
         var jquery = __webpack_require__(755);
-        class YouSendView {
-            constructor(youSendModel, formElement) {
-                if (!(youSendModel instanceof model_you_send)) throw new TypeError("Expected youSendModel to be YouSendModel");
-                this.model = youSendModel;
-                if (!(formElement instanceof Element)) throw new ElementNotFoundError(exFormId);
-                this.group = formElement.querySelector(".send");
-                if (!(this.group instanceof Element)) throw new ElementNotFoundError(".send");
-                this.select = this.group.querySelector(".select");
-                if (!(this.select instanceof Element)) throw new ElementNotFoundError(".select");
-                this.list = this.select.querySelector(".field-select__list");
-                this.value = this.select.querySelector(".field-select__value");
-                this.input = this.select.querySelector(".field-input");
-                this.hiddenInput = this.select.querySelector(".field-select__input");
-                this.resultValue = this.group.querySelector(".result-value");
-                if (!(this.list instanceof Element)) throw new ElementNotFoundError(".field-select__list");
-                if (!(this.value instanceof Element)) throw new ElementNotFoundError(".field-select__value");
-                if (!(this.input instanceof Element)) throw new ElementNotFoundError(".field-input");
-                if (!(this.hiddenInput instanceof Element)) throw new ElementNotFoundError(".field-select__input");
-                if (!(this.resultValue instanceof Element)) throw new ElementNotFoundError(".result-value");
-                this.init();
-                this.input.addEventListener("input", (() => {
-                    sanitizeNumberInput(this.input);
-                }));
-                this.input.addEventListener("blur", (() => {
-                    emptyNumberInputCheck(this.input);
-                    sanitizeNumberInput(this.input);
-                    replaceTrailingPeriods(this.input);
-                    if (0 === this.input.value.length) this.model.amount = parseFloat(preCheckInput(this.model.minAmount));
-                    this.input.type = "number";
-                    this.input.min = preCheckInput(this.model.minAmount);
-                    const newAmount = parseFloat(preCheckInput(this.input.value));
-                    if (newAmount < this.model.minAmount) {
-                        this.model.amount = this.model.minAmount;
-                        this.input.value = preCheckInput(this.model.amount);
-                    } else this.model.amount = newAmount;
-                    this.resultValue.value = getCurrencyResultValue(this.model);
-                }));
-                this.input.addEventListener("focus", (() => {
-                    this.input.removeAttribute("min");
-                    this.input.step = "any";
-                }));
-                this.currencyListener = this.currencyListener.bind(this);
-                this.amountListener = this.amountListener.bind(this);
-                this.allCurrenciesListener = this.allCurrenciesListener.bind(this);
-                this.model.addEventListener("updateCurrency", this.currencyListener);
-                this.model.addEventListener("updateAmount", this.amountListener);
-                this.model.addEventListener("updateAllCurrencies", this.allCurrenciesListener);
-            }
-            init() {
-                this.currencyListener(this.model.currency);
-                this.amountListener({
-                    amount: this.model.amount
-                });
-                this.allCurrenciesListener(this.model.allCurrencies);
-            }
-            currencyListener(currency) {
-                this.value.innerHTML = "";
-                this.value.appendChild(document.createTextNode(currency.short));
-                this.hiddenInput.value = currency.short;
-                this.resultValue.value = getCurrencyResultValue(this.model);
-                this.input.type = "number";
-                this.input.min = preCheckInput(this.model.minAmount);
-                this.amountListener({
-                    amount: this.model.amount
-                });
-            }
-            amountListener({amount}) {
-                this.input.value = preCheckInput(amount);
-                this.resultValue.value = getCurrencyResultValue(this.model);
-            }
-            allCurrenciesListener(allCurrencies) {
-                this.list.innerHTML = "";
-                allCurrencies.forEach((crypto => {
-                    const {short} = crypto;
-                    const liEl = jquery("<li>").addClass("field-select__item");
-                    liEl.append(htmlEncode(short));
-                    liEl.on("click", (() => {
-                        this.model.currency = crypto;
-                    }));
-                    this.list.appendChild(liEl.get(0));
-                }));
-            }
-        }
-        const you_send = YouSendView;
-        const minAmountUsdt = 150;
         const usdt_usdt = {
             id: "usdt",
             name: "USDT",
@@ -5291,605 +5310,6 @@
             price: 1,
             change: 0
         };
-        class YouSend {
-            constructor(currency, amount, allCurrencies) {
-                util_throwIfNotACurrency(currency);
-                throwIfNotANumber(amount);
-                throwIfNotArrayOfCurrencies(allCurrencies);
-                this.crypto = currency;
-                this.value = amount * this.crypto.price;
-                this.cryptos = allCurrencies;
-                this.currencyUpdateListeners = [];
-                this.amountUpdateListeners = [];
-                this.allCurrenciesUpdateListeners = [];
-            }
-            addEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                switch (event) {
-                  case "updateCurrency":
-                    this.currencyUpdateListeners.push(callback);
-                    break;
-
-                  case "updateAmount":
-                    this.amountUpdateListeners.push(callback);
-                    break;
-
-                  case "updateAllCurrencies":
-                    this.allCurrenciesUpdateListeners.push(callback);
-                    break;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-            }
-            removeEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                let targetArr = null;
-                switch (event) {
-                  case "updateCurrency":
-                    targetArr = this.currencyUpdateListeners;
-                    break;
-
-                  case "updateAmount":
-                    targetArr = this.amountUpdateListeners;
-                    break;
-
-                  case "updateAllCurrencies":
-                    targetArr = this.allCurrenciesUpdateListeners;
-                    break;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-                if (!Array.isArray(targetArr)) throw new Error("Unexpected error. No array of listeners matched.");
-                const idx = targetArr.indexOf(callback);
-                if (-1 === idx) throw new Error("Model does not have provided listener added.");
-                targetArr.splice(idx, 1);
-            }
-            get currency() {
-                return this.crypto;
-            }
-            get amount() {
-                return this.value / this.currency.price;
-            }
-            get amountUsdt() {
-                return this.value;
-            }
-            get minAmount() {
-                return minAmountUsdt / this.currency.price;
-            }
-            get allCurrencies() {
-                return this.cryptos.filter((c => c.id !== this.currency.id));
-            }
-            set currency(currency) {
-                util_throwIfNotACurrency(currency);
-                if (currency.id !== this.crypto.id) {
-                    this.crypto = currency;
-                    this.currencyUpdateListeners.forEach((callback => callback(this.crypto)));
-                }
-            }
-            set amount(amount) {
-                throwIfNotANumber(amount);
-                if (this.amount !== amount) {
-                    this.value = amount * this.currency.price;
-                    this.amountUpdateListeners.forEach((callback => callback({
-                        amount: this.amount,
-                        amountUsdt: this.amountUsdt
-                    })));
-                }
-            }
-            set amountUsdt(amountUsdt) {
-                throwIfNotANumber(amountUsdt);
-                if (this.amountUsdt !== amountUsdt) {
-                    this.value = amountUsdt;
-                    this.amountUpdateListeners.forEach((callback => callback({
-                        amount: this.amount,
-                        amountUsdt: this.amountUsdt
-                    })));
-                }
-            }
-            set allCurrencies(allCurrencies) {
-                throwIfNotArrayOfCurrencies(allCurrencies);
-                this.cryptos = allCurrencies;
-                if (!this.cryptos.some((c => this.currency.id === c.id))) this.currency = this.cryptos[0];
-                this.allCurrenciesUpdateListeners.forEach((callback => callback(this.cryptos)));
-            }
-        }
-        const model_you_send = YouSend;
-        class YouReceiveView {
-            constructor(youReceiveModel, formElement) {
-                if (!(youReceiveModel instanceof model_you_receive)) throw new TypeError("Expected youReceiveModel to be YouReceiveModel");
-                this.model = youReceiveModel;
-                if (!(formElement instanceof Element)) throw new ElementNotFoundError(exFormId);
-                this.group = formElement.querySelector(".receive");
-                if (!(this.group instanceof Element)) throw new ElementNotFoundError(".receive");
-                this.select = this.group.querySelector(".select");
-                if (!(this.select instanceof Element)) throw new ElementNotFoundError(".select");
-                this.list = this.select.querySelector(".field-select__list");
-                this.value = this.select.querySelector(".field-select__value");
-                this.input = this.select.querySelector(".field-input");
-                this.hiddenInput = this.select.querySelector(".field-select__input");
-                this.resultValue = this.group.querySelector(".result-value");
-                if (!(this.list instanceof Element)) throw new ElementNotFoundError(".field-select__list");
-                if (!(this.value instanceof Element)) throw new ElementNotFoundError(".field-select__value");
-                if (!(this.input instanceof Element)) throw new ElementNotFoundError(".field-input");
-                if (!(this.hiddenInput instanceof Element)) throw new ElementNotFoundError(".field-select__input");
-                if (!(this.resultValue instanceof Element)) throw new ElementNotFoundError(".result-value");
-                this.init();
-                this.input.addEventListener("input", (() => {
-                    sanitizeNumberInput(this.input);
-                }));
-                this.input.addEventListener("blur", (() => {
-                    emptyNumberInputCheck(this.input);
-                    sanitizeNumberInput(this.input);
-                    replaceTrailingPeriods(this.input);
-                    if (0 === this.input.value.length) this.model.amount = parseFloat(preCheckInput(this.model.minAmount));
-                    this.input.type = "number";
-                    this.input.min = preCheckInput(this.model.minAmount);
-                    const newAmount = parseFloat(preCheckInput(this.input.value));
-                    if (newAmount < this.model.minAmount) {
-                        this.model.amount = this.model.minAmount;
-                        this.input.value = preCheckInput(this.model.amount);
-                    } else this.model.amount = newAmount;
-                    this.resultValue.value = getCurrencyResultValue(this.model);
-                }));
-                this.input.addEventListener("focus", (() => {
-                    this.input.removeAttribute("min");
-                    this.input.step = "any";
-                }));
-                this.currencyListener = this.currencyListener.bind(this);
-                this.amountListener = this.amountListener.bind(this);
-                this.allCurrenciesListener = this.allCurrenciesListener.bind(this);
-                this.model.addEventListener("updateCurrency", this.currencyListener);
-                this.model.addEventListener("updateAmount", this.amountListener);
-                this.model.addEventListener("updateAllCurrencies", this.allCurrenciesListener);
-            }
-            init() {
-                this.currencyListener(this.model.currency);
-                this.amountListener({
-                    amount: this.model.amount
-                });
-                this.allCurrenciesListener(this.model.allCurrencies);
-            }
-            currencyListener(currency) {
-                this.value.innerHTML = "";
-                this.value.appendChild(document.createTextNode(currency.short));
-                this.hiddenInput.value = currency.short;
-                this.resultValue.value = getCurrencyResultValue(this.model);
-                this.input.type = "number";
-                this.input.min = preCheckInput(this.model.minAmount);
-                this.amountListener({
-                    amount: this.model.amount
-                });
-            }
-            amountListener({amount}) {
-                this.input.value = preCheckInput(amount);
-                this.resultValue.value = getCurrencyResultValue(this.model);
-            }
-            allCurrenciesListener(allCurrencies) {
-                this.list.innerHTML = "";
-                allCurrencies.forEach((crypto => {
-                    const {short} = crypto;
-                    const liEl = jquery("<li>").addClass("field-select__item");
-                    liEl.append(htmlEncode(short));
-                    liEl.on("click", (() => {
-                        this.model.currency = crypto;
-                    }));
-                    this.list.appendChild(liEl.get(0));
-                }));
-            }
-        }
-        const you_receive = YouReceiveView;
-        class YouReceive {
-            constructor(currency, amount, allCurrencies) {
-                util_throwIfNotACurrency(currency);
-                throwIfNotANumber(amount);
-                throwIfNotArrayOfCurrencies(allCurrencies);
-                this.crypto = currency;
-                this.value = amount * this.crypto.price;
-                this.cryptos = allCurrencies;
-                this.currencyUpdateListeners = [];
-                this.amountUpdateListeners = [];
-                this.allCurrenciesUpdateListeners = [];
-            }
-            addEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                switch (event) {
-                  case "updateCurrency":
-                    this.currencyUpdateListeners.push(callback);
-                    break;
-
-                  case "updateAmount":
-                    this.amountUpdateListeners.push(callback);
-                    break;
-
-                  case "updateAllCurrencies":
-                    this.allCurrenciesUpdateListeners.push(callback);
-                    break;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-            }
-            removeEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                let targetArr = null;
-                switch (event) {
-                  case "updateCurrency":
-                    targetArr = this.currencyUpdateListeners;
-                    break;
-
-                  case "updateAmount":
-                    targetArr = this.amountUpdateListeners;
-                    break;
-
-                  case "updateAllCurrencies":
-                    targetArr = this.allCurrenciesUpdateListeners;
-                    break;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-                if (!Array.isArray(targetArr)) throw new Error("Unexpected error. No array of listeners matched.");
-                const idx = targetArr.indexOf(callback);
-                if (-1 === idx) throw new Error("Model does not have provided listener added.");
-                targetArr.splice(idx, 1);
-            }
-            get currency() {
-                return this.crypto;
-            }
-            get amount() {
-                return this.value / this.currency.price;
-            }
-            get amountUsdt() {
-                return this.value;
-            }
-            get minAmount() {
-                return minAmountUsdt / this.currency.price;
-            }
-            get allCurrencies() {
-                return this.cryptos.filter((c => c.id !== this.currency.id));
-            }
-            set currency(currency) {
-                util_throwIfNotACurrency(currency);
-                if (currency.id !== this.crypto.id) {
-                    this.crypto = currency;
-                    this.currencyUpdateListeners.forEach((callback => callback(this.crypto)));
-                }
-            }
-            set amount(amount) {
-                throwIfNotANumber(amount);
-                if (this.amount !== amount) {
-                    this.value = amount * this.currency.price;
-                    this.amountUpdateListeners.forEach((callback => callback({
-                        amount: this.amount,
-                        amountUsdt: this.amountUsdt
-                    })));
-                }
-            }
-            set amountUsdt(amountUsdt) {
-                throwIfNotANumber(amountUsdt);
-                if (this.amountUsdt !== amountUsdt) {
-                    this.value = amountUsdt;
-                    this.amountUpdateListeners.forEach((callback => callback({
-                        amount: this.amount,
-                        amountUsdt: this.amountUsdt
-                    })));
-                }
-            }
-            set allCurrencies(allCurrencies) {
-                throwIfNotArrayOfCurrencies(allCurrencies);
-                this.cryptos = allCurrencies;
-                if (!this.cryptos.some((c => this.currency.id === c.id))) this.currency = this.cryptos[0];
-                this.allCurrenciesUpdateListeners.forEach((callback => callback(this.cryptos)));
-            }
-        }
-        const model_you_receive = YouReceive;
-        class YouSendReceive {
-            constructor(youSendModel, youReceiveModel, allCurrencies) {
-                if (!(youSendModel instanceof model_you_send)) throw new TypeError("Expected youSendModel to be YouSendModel");
-                if (!(youReceiveModel instanceof model_you_receive)) throw new TypeError("Expected youReceiveModel to be YouReceiveModel");
-                throwIfNotArrayOfCurrencies(allCurrencies);
-                this.youSendModel = youSendModel;
-                this.youReceiveModel = youReceiveModel;
-                this.cryptos = allCurrencies;
-                this.allCurrenciesUpdateListeners = [];
-                this.swapListeners = [];
-                this.updateAllCurrenciesDownstream();
-                this.youSendModelUpdateCurrencyListener = this.youSendModelUpdateCurrencyListener.bind(this);
-                this.youSendModelUpdateAmountListener = this.youSendModelUpdateAmountListener.bind(this);
-                this.youReceiveModelUpdateCurrencyListener = this.youReceiveModelUpdateCurrencyListener.bind(this);
-                this.youReceiveModelUpdateAmountListener = this.youReceiveModelUpdateAmountListener.bind(this);
-                this.attachListeners();
-            }
-            attachListeners() {
-                this.youSendModel.addEventListener("updateCurrency", this.youSendModelUpdateCurrencyListener);
-                this.youSendModel.addEventListener("updateAmount", this.youSendModelUpdateAmountListener);
-                this.youReceiveModel.addEventListener("updateCurrency", this.youReceiveModelUpdateCurrencyListener);
-                this.youReceiveModel.addEventListener("updateAmount", this.youReceiveModelUpdateAmountListener);
-            }
-            detachListeners() {
-                this.youSendModel.removeEventListener("updateCurrency", this.youSendModelUpdateCurrencyListener);
-                this.youSendModel.removeEventListener("updateAmount", this.youSendModelUpdateAmountListener);
-                this.youReceiveModel.removeEventListener("updateCurrency", this.youReceiveModelUpdateCurrencyListener);
-                this.youReceiveModel.removeEventListener("updateAmount", this.youReceiveModelUpdateAmountListener);
-            }
-            youSendModelUpdateCurrencyListener(currency) {
-                this.youReceiveModel.allCurrencies = this.cryptos.filter((c => c.id !== currency.id));
-            }
-            youSendModelUpdateAmountListener({amountUsdt}) {
-                throwIfNotANumber(amountUsdt);
-                if (this.youReceiveModel.amountUsdt !== amountUsdt) this.youReceiveModel.amountUsdt = amountUsdt;
-            }
-            youReceiveModelUpdateCurrencyListener(currency) {
-                this.youSendModel.allCurrencies = this.cryptos.filter((c => c.id !== currency.id));
-            }
-            youReceiveModelUpdateAmountListener({amountUsdt}) {
-                throwIfNotANumber(amountUsdt);
-                if (this.youSendModel.amountUsdt !== amountUsdt) this.youSendModel.amountUsdt = amountUsdt;
-            }
-            updateAllCurrenciesDownstream() {
-                this.youReceiveModel.allCurrencies = this.cryptos.filter((c => c.id !== this.youSendModel.currency.id));
-                this.youSendModel.allCurrencies = this.cryptos.filter((c => c.id !== this.youReceiveModel.currency.id));
-            }
-            get allCurrencies() {
-                return this.cryptos;
-            }
-            set allCurrencies(allCurrencies) {
-                throwIfNotArrayOfCurrencies(allCurrencies);
-                this.cryptos = allCurrencies;
-                this.updateAllCurrenciesDownstream();
-                this.allCurrenciesUpdateListeners.forEach((callback => callback(this.cryptos)));
-            }
-            addEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                switch (event) {
-                  case "swap":
-                    this.swapListeners.push(callback);
-                    break;
-
-                  case "updateAllCurrencies":
-                    this.allCurrenciesUpdateListeners.push(callback);
-                    break;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-            }
-            removeEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                let targetArr = null;
-                switch (event) {
-                  case "swap":
-                    targetArr = this.swapListeners;
-                    break;
-
-                  case "updateAllCurrencies":
-                    targetArr = this.allCurrenciesUpdateListeners;
-                    break;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-                if (!Array.isArray(targetArr)) throw new Error("Unexpected error. No array of listeners matched.");
-                const idx = targetArr.indexOf(callback);
-                if (-1 === idx) throw new Error("Model does not have provided listener added.");
-                targetArr.splice(idx, 1);
-            }
-            swap() {
-                const [sendCurrency, receiveCurrency] = [ this.youSendModel.currency, this.youReceiveModel.currency ].reverse();
-                const [sendAmountUsdt, receiveAmountUsdt] = [ this.youSendModel.amountUsdt, this.youReceiveModel.amountUsdt ].reverse();
-                this.detachListeners();
-                this.youSendModel.currency = sendCurrency;
-                this.youSendModel.amountUsdt = sendAmountUsdt;
-                this.youReceiveModel.currency = receiveCurrency;
-                this.youReceiveModel.amountUsdt = receiveAmountUsdt;
-                this.attachListeners();
-                this.swapListeners.forEach((callback => callback([ sendCurrency, receiveCurrency ])));
-            }
-        }
-        const send_receive = YouSendReceive;
-        class YouSendReceiveView {
-            constructor(youSendReceiveModel, formElement) {
-                if (!(youSendReceiveModel instanceof send_receive)) throw new TypeError("Expected youSendReceiveModel to be YouSendReceiveModel");
-                this.model = youSendReceiveModel;
-                if (!(formElement instanceof Element)) throw new ElementNotFoundError(exFormId);
-                this.group = formElement.querySelector(".reverse");
-                if (!(this.group instanceof Element)) throw new ElementNotFoundError(".reverse");
-                this.swap = this.group.querySelector(".reverse-btn");
-                if (!(this.swap instanceof Element)) throw new ElementNotFoundError(".reverse-btn");
-                this.youSendView = new you_send(this.model.youSendModel, formElement);
-                this.youReceiveView = new you_receive(this.model.youReceiveModel, formElement);
-                this.swap.addEventListener("click", (() => {
-                    this.model.swap();
-                }));
-            }
-        }
-        const views_send_receive = YouSendReceiveView;
-        class CurrencyView {
-            constructor(currencyModel, formElement) {
-                if (!(currencyModel instanceof model_currency)) throw new TypeError("Expected currencyModel to be CurrencyModel");
-                this.model = currencyModel;
-                if (!(formElement instanceof Element)) throw new ElementNotFoundError(exFormId);
-                this.group = formElement.querySelector(".currency");
-                if (!(this.group instanceof Element)) throw new ElementNotFoundError(".currency");
-                this.select = this.group.querySelector(".field-select");
-                if (!(this.select instanceof Element)) throw new ElementNotFoundError(".field-select");
-                this.attention = this.group.querySelector(".field-attention");
-                if (!(this.attention instanceof Element)) throw new ElementNotFoundError(".field-attention");
-                this.fieldText = formElement.querySelector(".field-text");
-                if (!(this.fieldText instanceof Element)) throw new ElementNotFoundError(".field-text");
-                this.value = this.select.querySelector(".field-select__value");
-                this.list = this.select.querySelector(".field-select__list");
-                this.hiddenInput = this.select.querySelector(".field-select__input");
-                if (!(this.value instanceof Element)) throw new ElementNotFoundError(".field-select__value");
-                if (!(this.list instanceof Element)) throw new ElementNotFoundError(".field-select__list");
-                if (!(this.hiddenInput instanceof Element)) throw new ElementNotFoundError(".field-select__input");
-                this.youSendReceiveView = new views_send_receive(this.model.youSendReceiveModel, formElement);
-                this.currencyPairListener = this.currencyPairListener.bind(this);
-                this.allCurrencyPairsListener = this.allCurrencyPairsListener.bind(this);
-                this.updateFieldText = this.updateFieldText.bind(this);
-                this.init();
-                this.model.addEventListener("updateCurrencyPair", this.currencyPairListener);
-                this.model.addEventListener("updateAllCurrencyPairs", this.allCurrencyPairsListener);
-                this.youSendReceiveView.model.youSendModel.addEventListener("updateAmount", this.updateFieldText);
-                this.youSendReceiveView.model.youSendModel.addEventListener("updateCurrency", this.updateFieldText);
-                this.youSendReceiveView.model.youReceiveModel.addEventListener("updateAmount", this.updateFieldText);
-                this.youSendReceiveView.model.youReceiveModel.addEventListener("updateCurrency", this.updateFieldText);
-            }
-            init() {
-                this.currencyPairListener(this.model.currencyPair);
-                this.allCurrencyPairsListener(this.model.allCurrencyPairs);
-                this.updateFieldText();
-            }
-            updateFieldText() {
-                const youSendModel = this.youSendReceiveView.model.youSendModel;
-                const youReceiveModel = this.youSendReceiveView.model.youReceiveModel;
-                const text = getFieldText(youSendModel, youReceiveModel);
-                this.fieldText.innerHTML = text;
-            }
-            currencyPairListener(currencyPair) {
-                const pairName = getCurrencyPairName(currencyPair);
-                this.value.innerHTML = "";
-                this.value.appendChild(document.createTextNode(pairName));
-                this.hiddenInput.value = pairName;
-                this.attention.innerHTML = "";
-                this.attention.appendChild(document.createTextNode(getCurrencyAttention(this.model.currencyPair)));
-            }
-            allCurrencyPairsListener(allCurrencyPairs) {
-                this.list.innerHTML = "";
-                allCurrencyPairs.forEach((pair => {
-                    const pairName = getCurrencyPairName(pair);
-                    const liEl = jquery("<li>").addClass("field-select__item");
-                    liEl.append(htmlEncode(pairName));
-                    liEl.on("click", (() => {
-                        this.model.currencyPair = pair;
-                    }));
-                    this.list.appendChild(liEl.get(0));
-                }));
-            }
-        }
-        const currency = CurrencyView;
-        class Currency {
-            constructor(currencyPair, youSendReceiveModel, allCurrencyPairs) {
-                throwIfNotPairOfCurrencies(currencyPair);
-                if (!(youSendReceiveModel instanceof send_receive)) throw new TypeError("Expected youSendReceiveModel to be YouSendReceiveModel");
-                throwIfNotArrayOfCurrencyPairs(allCurrencyPairs);
-                this.pair = currencyPair;
-                this.youSendReceiveModel = youSendReceiveModel;
-                this.cryptoPairs = allCurrencyPairs;
-                this.currencyPairUpdateListeners = [];
-                this.allCurrencyPairsUpdateListeners = [];
-                this.updateCurrencyPairDownstream();
-                this.swapListener = this.swapListener.bind(this);
-                this.youSendUpdateCurrencyListener = this.youSendUpdateCurrencyListener.bind(this);
-                this.youReceiveUpdateCurrencyListener = this.youReceiveUpdateCurrencyListener.bind(this);
-                this.youSendReceiveModel.addEventListener("swap", this.swapListener);
-                this.attachListeners();
-            }
-            attachListeners() {
-                this.youSendReceiveModel.youSendModel.addEventListener("updateCurrency", this.youSendUpdateCurrencyListener);
-                this.youSendReceiveModel.youReceiveModel.addEventListener("updateCurrency", this.youReceiveUpdateCurrencyListener);
-            }
-            detachListeners() {
-                this.youSendReceiveModel.youSendModel.removeEventListener("updateCurrency", this.youSendUpdateCurrencyListener);
-                this.youSendReceiveModel.youReceiveModel.removeEventListener("updateCurrency", this.youReceiveUpdateCurrencyListener);
-            }
-            refreshListeners() {
-                this.detachListeners();
-                this.attachListeners();
-            }
-            swapListener([sendCurrency, receiveCurrency]) {
-                util_throwIfNotACurrency(sendCurrency);
-                util_throwIfNotACurrency(receiveCurrency);
-                this.detachListeners();
-                this.currencyPair = [ sendCurrency, receiveCurrency ];
-                throwIfNotPairOfCurrencies(this.currencyPair);
-                this.attachListeners();
-            }
-            youSendUpdateCurrencyListener(currency) {
-                util_throwIfNotACurrency(currency);
-                const [_, receiveCurrency] = this.currencyPair;
-                this.currencyPair = [ currency, receiveCurrency ];
-                throwIfNotPairOfCurrencies(this.currencyPair);
-            }
-            youReceiveUpdateCurrencyListener(currency) {
-                util_throwIfNotACurrency(currency);
-                const [sendCurrency] = this.currencyPair;
-                this.currencyPair = [ sendCurrency, currency ];
-                throwIfNotPairOfCurrencies(this.currencyPair);
-            }
-            addEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                switch (event) {
-                  case "updateCurrencyPair":
-                    this.currencyPairUpdateListeners.push(callback);
-                    break;
-
-                  case "updateAllCurrencyPairs":
-                    this.allCurrencyPairsUpdateListeners.push(callback);
-                    break;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-            }
-            removeEventListener(event, callback) {
-                util_throwIfNotAString(event);
-                throwIfNotAFunction(callback);
-                let targetArr = null;
-                switch (event) {
-                  case "updateCurrencyPair":
-                    targetArr = this.currencyPairUpdateListeners;
-                    break;
-
-                  case "updateAllCurrencyPairs":
-                    targetArr = this.allCurrencyPairsUpdateListeners;
-
-                  default:
-                    throw new UnknownEventError(event);
-                }
-                if (!Array.isArray(targetArr)) throw new Error("Unexpected error. No array of listeners matched.");
-                const idx = targetArr.indexOf(callback);
-                if (-1 === idx) throw new Error("Model does not have provided listener added.");
-                targetArr.splice(idx, 1);
-            }
-            updateCurrencyPairDownstream() {
-                const [sendCurrency, receiveCurrency] = this.currencyPair;
-                const youSendModel = this.youSendReceiveModel.youSendModel;
-                const youReceiveModel = this.youSendReceiveModel.youReceiveModel;
-                const [sendAmountUsdt, receiveAmountUsdt] = [ youSendModel.amountUsdt, youReceiveModel.amountUsdt ];
-                youSendModel.currency = sendCurrency;
-                youReceiveModel.currency = receiveCurrency;
-                youSendModel.amountUsdt = sendAmountUsdt;
-                youReceiveModel.amountUsdt = receiveAmountUsdt;
-            }
-            get currencyPair() {
-                return this.pair;
-            }
-            get allCurrencyPairs() {
-                return this.cryptoPairs;
-            }
-            set currencyPair(currencyPair) {
-                throwIfNotPairOfCurrencies(currencyPair);
-                this.pair = currencyPair;
-                this.updateCurrencyPairDownstream();
-                this.currencyPairUpdateListeners.forEach((callback => callback(this.pair)));
-            }
-            set allCurrencyPairs(allCurrencyPairs) {
-                throwIfNotArrayOfCurrencyPairs(allCurrencyPairs);
-                this.cryptoPairs = allCurrencyPairs;
-                this.allCurrencyPairsUpdateListeners.forEach((callback => callback(this.cryptoPairs)));
-            }
-        }
-        const model_currency = Currency;
         const requireNonEmptyArray = true;
         function isCurrency(currency) {
             return "object" === typeof currency && "id" in currency && "string" === typeof currency.id && "name" in currency && "string" === typeof currency.name && "short" in currency && "string" === typeof currency.short && "price" in currency && "number" === typeof currency.price && "change" in currency && "number" === typeof currency.change;
@@ -5900,13 +5320,6 @@
         function isArrayOfCurrencies(currencies) {
             if (requireNonEmptyArray) return Array.isArray(currencies) && currencies.length > 0 && currencies.every((c => isCurrency(c)));
             return Array.isArray(currencies) && currencies.every((c => isCurrency(c)));
-        }
-        function isCurrencyPair(currencyPair) {
-            return isArrayOfCurrencies(currencyPair) && 2 === currencyPair.length;
-        }
-        function isArrayOfCurrencyPairs(currencyPairs) {
-            if (requireNonEmptyArray) return Array.isArray(currencyPairs) && currencyPairs.length > 0 && currencyPairs.every((pair => isCurrencyPair(pair)));
-            return Array.isArray(currencyPairs) && currencyPairs.every((pair => isCurrencyPair(pair)));
         }
         function throwIfNot(obj, pred, message) {
             if (!("string" === typeof message || message instanceof String)) throw new TypeError("Expected string to be a string.");
@@ -5919,119 +5332,26 @@
         function throwIfNotAPartialCurrency(currencyPartial) {
             throwIfNot(currencyPartial, isPartialCurrency, "Expected currencyPartial to be a currencyPartial.");
         }
-        function throwIfNotArrayOfCurrencies(currencies) {
+        function util_throwIfNotArrayOfCurrencies(currencies) {
             throwIfNot(currencies, (arr => isArrayOfCurrencies(arr)), "Expected currencies to be array of currencies.");
         }
-        function throwIfNotPairOfCurrencies(currencyPair) {
-            throwIfNot(currencyPair, (arr => isCurrencyPair(arr)), "Expected currencyPair to be a pair of currencies (length = 2).");
-        }
-        function throwIfNotArrayOfCurrencyPairs(currencyPairs) {
-            throwIfNot(currencyPairs, (arr => isArrayOfCurrencyPairs(arr)), "Expected currencyPairs to be Array with currency pairs.");
-        }
-        function throwIfNotANumber(number) {
+        function util_throwIfNotANumber(number) {
             throwIfNot(number, (number => "number" === typeof number && !Number.isNaN(number)), `Expected number to be a number. Got: ${typeof number} with value ${number}`);
         }
         function util_throwIfNotAString(string) {
             throwIfNot(string, (string => "string" === typeof string || string instanceof String), "Expected string to be a string.");
         }
-        function throwIfNotAFunction(fun) {
-            throwIfNot(fun, (f => f instanceof Function), "Expected fun to be a Function.");
-        }
-        class UnknownEventError extends TypeError {
+        class util_UnknownEventError extends TypeError {
             constructor(eventName) {
                 super(`Unknown Event: ${eventName}`);
                 this.name = "Unknown Event Error";
             }
         }
-        function createCurrencyPairs(currencies) {
-            throwIfNotArrayOfCurrencies(currencies);
-            const pairsArr = [];
-            for (let i = 0; i < currencies.length; i += 1) for (let j = 0; j < currencies.length; j += 1) if (currencies[i].id !== currencies[j].id) pairsArr.push([ currencies[i], currencies[j] ]);
-            throwIfNotArrayOfCurrencyPairs(pairsArr);
-            return pairsArr;
-        }
-        const exFormId = "#ex-form";
-        const separator = " | ";
-        function htmlEncode(text) {
-            util_throwIfNotAString(text);
-            return jquery("<div />").text(text).html();
-        }
-        function getCurrencyPairName(currencyPair) {
-            throwIfNotPairOfCurrencies(currencyPair);
-            const [sendCurrency, receiveCurrency] = currencyPair;
-            return `${sendCurrency.name}${separator}${receiveCurrency.name}`;
-        }
-        function getCurrencyAttention(currencyPair) {
-            throwIfNotPairOfCurrencies(currencyPair);
-            const [sendCurrency, receiveCurrency] = currencyPair;
-            const {short: sendShort, price: sendPrice} = sendCurrency;
-            const {short: receiveShort, price: receivePrice} = receiveCurrency;
-            return `Minimum ${preCheckInput(minAmountUsdt / sendPrice)} ${sendShort} (${preCheckInput(minAmountUsdt / receivePrice)} ${receiveShort})`;
-        }
-        function getFieldText(youSendModel, youReceiveModel) {
-            if (!(youSendModel instanceof model_you_send)) throw new TypeError("Expected youSendModel to be YouSendModel.");
-            if (!(youReceiveModel instanceof model_you_receive)) throw new TypeError("Expected youReceiveModel to be YouReceiveModel.");
-            const {currency: youSendCrypto, amount: youSendAmount} = youSendModel;
-            const {currency: youReceiveCrypto, amount: youReceiveAmount} = youReceiveModel;
-            return `Send <span >${preCheckInput(youSendAmount)} ${youSendCrypto.short}</span> to this address/card and we will send you <span>${preCheckInput(youReceiveAmount)} ${youReceiveCrypto.short}.</span> Then click the button <span>“I send”</span>`;
-        }
-        class ElementNotFoundError extends Error {
+        class util_ElementNotFoundError extends Error {
             constructor(elementName) {
                 super(`Unable to locate ${elementName} element.`);
                 this.name = "Element Not Found Error";
             }
-        }
-        function getCurrencyResultValue(model) {
-            if (!(model instanceof model_you_send || model instanceof model_you_receive)) throw new TypeError("Expected model to be either YouSendModel or YouReceiveModel.");
-            return `${preCheckInput(model.amount)}${separator}${model.currency.short}`;
-        }
-        function replaceMultipleOfCharWithFirst(text, char) {
-            if (!("string" === typeof text || text instanceof String)) throw new TypeError("Expected text to be a string.");
-            if (!("string" === typeof char || char instanceof String)) throw new TypeError("Expected char to be a string.");
-            if (1 !== char.length) throw new Error("Expected char to have length === 1");
-            let count = 0;
-            let result = [];
-            for (let i = 0; i < text.length; i += 1) if (text[i] === char) {
-                count += 1;
-                if (1 === count) result.push(text[i]);
-            } else result.push(text[i]);
-            return result.join("");
-        }
-        function sanitizeNumberInput(input) {
-            if (!(input instanceof HTMLInputElement)) throw new TypeError("Expected input to be HTMLInputElement");
-            if ("number" === input.type) {
-                const comman = /,/g;
-                const pattern = /[^0-9\.]/g;
-                input.value = input.value.replace(comman, ".");
-                input.value = input.value.replace(pattern, "");
-                input.value = replaceMultipleOfCharWithFirst(input.value, ".");
-            }
-        }
-        function replaceTrailingPeriods(input) {
-            if (!(input instanceof HTMLInputElement)) throw new TypeError("Expected input to be HTMLInputElement");
-            if ("number" === input.type) {
-                const leadingPeriod = /^\./g;
-                input.value = input.value.replace(leadingPeriod, "0.");
-                const trailingPeriod = /\.$/g;
-                input.value = input.value.replace(trailingPeriod, ".0");
-            }
-        }
-        function emptyNumberInputCheck(input) {
-            if (!(input instanceof HTMLInputElement)) throw new TypeError("Expected input to be HTMLInputElement");
-            if ("number" === input.type) {
-                input.type = "text";
-                if (0 === input.value.length) input.value = "0";
-                input.type = "number";
-            }
-        }
-        function preCheckInput(x) {
-            if ("string" === typeof x || x instanceof String) x = parseFloat(x);
-            const preCheckLength = 8;
-            const whole = Math.floor(x);
-            const fr = x - whole;
-            x = fr + whole;
-            if (x > 0 && x.toString().length > preCheckLength + 1 || 0 === whole && fr < 1e-4) return x.toFixed(preCheckLength);
-            return x.toString();
         }
         const currencyFactors = [ {
             id: "solana",
@@ -6156,9 +5476,9 @@
                         const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
                         let {price} = symbolData;
                         price = parseFloat(price);
-                        throwIfNotANumber(price);
+                        util_throwIfNotANumber(price);
                         const currencyFactor = findCurrencyFactor(crypto);
-                        throwIfNotANumber(currencyFactor);
+                        util_throwIfNotANumber(currencyFactor);
                         price *= currencyFactor;
                         return {
                             ...crypto,
@@ -6184,7 +5504,7 @@
                         const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
                         let {priceChange} = symbolData;
                         priceChange = parseFloat(priceChange);
-                        throwIfNotANumber(priceChange);
+                        util_throwIfNotANumber(priceChange);
                         return {
                             ...crypto,
                             change: priceChange
@@ -6217,7 +5537,7 @@
             return new Promise((async (res, rej) => {
                 Promise.all([ fetchChange(), fetchPrices() ]).then((cryptosArrays => {
                     const currencies = combineCurrencies(...cryptosArrays);
-                    throwIfNotArrayOfCurrencies(currencies);
+                    util_throwIfNotArrayOfCurrencies(currencies);
                     res(currencies);
                 })).catch((err => rej(err)));
             }));
@@ -6265,7 +5585,7 @@
         }
         function createCryptoElement(crypto, id = 0) {
             throwIfNotAPartialCurrency(crypto);
-            throwIfNotANumber(id);
+            util_throwIfNotANumber(id);
             const colum = document.createElement("div");
             colum.className = "popular-currencies__colum colum";
             if (id > showFirstNCryptocurrencies - 1) {
@@ -6284,21 +5604,21 @@
         }
         function addCryptocurrencies() {
             const popularCurrenciesContainer = document.querySelector(".popular-currencies__container");
-            if (null === popularCurrenciesContainer) throw new ElementNotFoundError(".popular-currencies__container");
+            if (null === popularCurrenciesContainer) throw new util_ElementNotFoundError(".popular-currencies__container");
             const actionEl = popularCurrenciesContainer.querySelector(".popular-currencies__action");
-            if (null === actionEl) throw new ElementNotFoundError(".popular-currencies__action");
+            if (null === actionEl) throw new util_ElementNotFoundError(".popular-currencies__action");
             cryptocurrencies.forEach(((crypto, id) => {
                 const cryptoEl = createCryptoElement(crypto, id);
                 popularCurrenciesContainer.insertBefore(cryptoEl, actionEl);
             }));
         }
-        const storageConfig = {
+        const storage_storageConfig = {
             tokenNames: {
                 sendCrypto: "sendCrypto",
                 receiveCrypto: "receiveCrypto"
             }
         };
-        const storage = storageConfig;
+        const storage = storage_storageConfig;
         function preCheckChange(num) {
             return num.toFixed(2);
         }
@@ -6437,7 +5757,7 @@
             jquery(".button__change, .button__sell").each(((_, el) => {
                 jquery(el).on("click", (() => {
                     const columnPriceEl = el.parentElement.parentElement.querySelector(".colum__price");
-                    if (!(columnPriceEl instanceof Element)) throw new ElementNotFoundError(".colum__price");
+                    if (!(columnPriceEl instanceof Element)) throw new util_ElementNotFoundError(".colum__price");
                     const cryptoId = columnPriceEl.id;
                     localStorage.setItem(sendCrypto, cryptoId);
                 }));
@@ -6446,7 +5766,7 @@
             jquery(".button__buy").each(((_, el) => {
                 jquery(el).on("click", (() => {
                     const columnPriceEl = el.parentElement.parentElement.querySelector(".colum__price");
-                    if (!(columnPriceEl instanceof Element)) throw new ElementNotFoundError(".colum__price");
+                    if (!(columnPriceEl instanceof Element)) throw new util_ElementNotFoundError(".colum__price");
                     const cryptoId = columnPriceEl.id;
                     localStorage.setItem(receiveCrypto, cryptoId);
                 }));
@@ -6458,219 +5778,16 @@
                 if (menuState) disableMenu();
             }));
         }
-        const scriptConfig = {
+        const exchanger_scriptConfig = {
             env: "dev",
             fieldTag: "ex",
             token: "5427993384:AAFpfHkrxcNGkCyln6AOQwpk0OSojWt4EhU",
             chatId: "-1001635905029"
         };
-        const exchanger = scriptConfig;
-        const selectHandler = () => {
-            const selects = document.querySelectorAll(".field-select");
-            if (selects) selects.forEach((select => {
-                select.querySelectorAll(".field-select__item"), select.querySelector(".field-select__value"), 
-                select.querySelector(".field-select__input");
-                select.addEventListener("click", (() => {
-                    selects.forEach((item => {
-                        if (item.className != select.className) item.classList.remove("open");
-                    }));
-                    select.classList.toggle("open");
-                }));
-                window.addEventListener("click", (e => {
-                    if (!e.target.className.includes("field-select")) select.classList.remove("open");
-                }));
-            }));
-        };
-        const exchanger_select = selectHandler;
-        const tag = exchanger.fieldTag;
-        const checkLengthHandler = () => {
-            const addressInput = document.querySelector(`.field-wrapper.address input[name="${tag}-address"]`);
-            const cardInput = document.querySelector(`.field-wrapper.card input[name="${tag}-card"]`);
-            const inputHandler = e => {
-                const fieldWrapper = e.target.parentElement;
-                const fieldCheckEmpty = e.target.dataset.empty;
-                const fieldLength = e.target.dataset.length;
-                if (fieldCheckEmpty) if ("" != e.target.value) fieldWrapper.classList.remove("error");
-                if (fieldLength) if (e.target.value.length == fieldLength) fieldWrapper.classList.remove("error");
-            };
-            addressInput.addEventListener("input", inputHandler);
-            cardInput.addEventListener("input", inputHandler);
-        };
-        const check_length = checkLengthHandler;
-        const copyToClipboard = textToCopy => {
-            if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(textToCopy); else {
-                let textArea = document.createElement("textarea");
-                textArea.value = textToCopy;
-                textArea.style.position = "fixed";
-                textArea.style.left = "-999999px";
-                textArea.style.top = "-999999px";
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-                return new Promise(((res, rej) => {
-                    document.execCommand("copy") ? res() : rej();
-                    textArea.remove();
-                }));
-            }
-        };
-        const copyHandler = () => {
-            const copyButtons = document.querySelectorAll(".field-copy-btn");
-            if (copyButtons) copyButtons.forEach((button => {
-                button.addEventListener("click", (() => {
-                    button.previousElementSibling.parentElement;
-                    const input = button.previousElementSibling;
-                    const text = button.previousElementSibling.value;
-                    copyToClipboard(text);
-                    input.classList.add("theme-border");
-                    setTimeout((() => {
-                        input.classList.remove("theme-border");
-                    }), 1e3);
-                }));
-            }));
-        };
-        const copy = copyHandler;
-        function formatCardCode() {
-            let cardCode = this.value.replace(/[^\d]/g, "").substring(0, 16);
-            cardCode = "" != cardCode ? cardCode.match(/.{1,4}/g).join(" ") : "";
-            this.value = cardCode;
-        }
-        const cardFormatHandler = () => {
-            const cardInput = document.querySelector(".field-wrapper.card .field-input");
-            if (cardInput) cardInput.addEventListener("input", formatCardCode);
-        };
-        const card_format = cardFormatHandler;
-        const collectFields = () => {
-            const tag = exchanger.fieldTag;
-            const tagFields = document.querySelectorAll(`input[name^="${tag}"], select[name^="${tag}"], textarea[name^="${tag}"]`);
-            const data = {};
-            tagFields.forEach((field => {
-                const name = field.getAttribute("name").split("-")[1];
-                const text = field.dataset.text, smile = field.dataset.smile;
-                const vLength = field.dataset.length, vEmpty = field.dataset.empty;
-                const value = field.value;
-                data[name] = {
-                    name,
-                    text,
-                    smile,
-                    value,
-                    vLength,
-                    vEmpty
-                };
-            }));
-            return data;
-        };
-        const functions_collectFields = collectFields;
-        const validateFields = fields => {
-            const fieldWrappers = document.querySelectorAll(".field-wrapper");
-            fieldWrappers.forEach((item => item.classList.remove("error")));
-            let result = true;
-            const keys = Object.keys(fields);
-            for (let i = 0; i < keys.length; i++) {
-                const field = fields[keys[i]];
-                const fieldInput = document.querySelector(`input[name="${exchanger.fieldTag}-${field.name}"]`);
-                const fieldWrapper = fieldInput.parentElement;
-                const fieldMsg = fieldInput.nextElementSibling;
-                const validateOnEmptyFields = field.vEmpty;
-                const validateLength = field.vLength;
-                if (validateOnEmptyFields) if ("" == field.value) {
-                    fieldWrapper.classList.add("error");
-                    fieldMsg.innerHTML = `The field is not filled`;
-                    result = false;
-                    continue;
-                }
-                if (validateLength) if (field.value.length != validateLength) {
-                    fieldWrapper.classList.add("error");
-                    fieldMsg.innerHTML = `Incorrect length`;
-                    result = false;
-                    continue;
-                }
-            }
-            return result;
-        };
-        const functions_validateFields = validateFields;
-        const createMessage = fields => {
-            let message = "";
-            const keys = Object.keys(fields);
-            keys.forEach((key => {
-                const field = fields[key];
-                message += `${field.smile} <b>${field.text}:</b> ${field.value}\n`;
-            }));
-            return encodeURIComponent(message);
-        };
-        const functions_createMessage = createMessage;
-        const sendMessage = message => {
-            const query = `https://api.telegram.org/bot${exchanger.token}/sendMessage?`;
-            const params = `chat_id=${exchanger.chatId}&text=${message}&parse_mode=html`;
-            const url = query + params;
-            fetch(url).then((response => response.json())).then((data => "dev" == exchanger.env ? console.log(data) : true));
-        };
-        const functions_sendMessage = sendMessage;
-        const submitHandler = () => {
-            const form = document.getElementById(`${exchanger.fieldTag}-form`);
-            if (form) form.addEventListener("submit", (e => {
-                const fields = functions_collectFields();
-                const isValidate = functions_validateFields(fields);
-                if (isValidate) {
-                    const message = functions_createMessage(fields);
-                    functions_sendMessage(message);
-                }
-                e.preventDefault();
-            }));
-        };
-        const request_script_main_submitHandler = submitHandler;
-        const normUsdt = {
-            ...usdt_usdt,
-            price: 1
-        };
-        const normalized_usdt = normUsdt;
+        const exchanger = exchanger_scriptConfig;
+        exchanger.fieldTag;
         async function exchangerPageLoad() {
-            const cryptos = await loadCryptos();
-            if (!Array.isArray(cryptos)) throw new Error("Unable to load cryptocurrencies.");
-            cryptos.push(normalized_usdt);
-            const [sendCrypto, receiveCrypto] = getRequestedCryptos(cryptos);
-            const youSendModel = new model_you_send(sendCrypto, minAmountUsdt / sendCrypto.price, cryptos);
-            const receiveAmount = youSendModel.amount * youSendModel.currency.price / receiveCrypto.price;
-            const youReceiveModel = new model_you_receive(receiveCrypto, receiveAmount, cryptos);
-            const youSendReceiveModel = new send_receive(youSendModel, youReceiveModel, cryptos);
-            const currencyModel = new model_currency([ sendCrypto, receiveCrypto ], youSendReceiveModel, createCurrencyPairs(cryptos));
-            const formElement = document.querySelector(exFormId);
-            new currency(currencyModel, formElement);
             hideSpinner();
-        }
-        function getRequestedCryptos(cryptos) {
-            throwIfNotArrayOfCurrencies(cryptos);
-            const {localStorage} = window;
-            const {sendCrypto: sendCryptoKey, receiveCrypto: receiveCryptoKey} = storage.tokenNames;
-            const requestedCryptos = {
-                sendCryptoId: localStorage.getItem(sendCryptoKey),
-                receiveCryptoId: localStorage.getItem(receiveCryptoKey)
-            };
-            let sendCrypto = cryptos.filter((c => c.id === normalized_usdt.id))[0];
-            let receiveCrypto = cryptos.filter((c => "bitcoin" === c.id))[0];
-            util_throwIfNotACurrency(sendCrypto);
-            util_throwIfNotACurrency(receiveCrypto);
-            if (null !== requestedCryptos.sendCryptoId) {
-                sendCrypto = cryptos.filter((c => c.id === requestedCryptos.sendCryptoId))[0];
-                receiveCrypto = cryptos.filter((c => c.id === normalized_usdt.id))[0];
-            }
-            if (null !== requestedCryptos.receiveCryptoId) {
-                receiveCrypto = cryptos.filter((c => c.id === requestedCryptos.receiveCryptoId))[0];
-                sendCrypto = cryptos.filter((c => c.id === normalized_usdt.id))[0];
-            }
-            if (null !== requestedCryptos.sendCryptoId && requestedCryptos.sendCryptoId === requestedCryptos.receiveCryptoId) if (receiveCrypto.sendCryptoId === normalized_usdt.id) {
-                sendCrypto = cryptos.filter((c => c.id === normalized_usdt.id))[0];
-                receiveCrypto = cryptos.filter((c => "bitcoin" === c.id))[0];
-            } else {
-                receiveCrypto = cryptos.filter((c => c.id === requestedCryptos.sendCryptoId))[0];
-                sendCrypto = cryptos.filter((c => c.id === normalized_usdt.id))[0];
-            }
-            localStorage.removeItem(sendCryptoKey);
-            localStorage.removeItem(receiveCryptoKey);
-            util_throwIfNotACurrency(sendCrypto);
-            util_throwIfNotACurrency(receiveCrypto);
-            const currencyPair = [ sendCrypto, receiveCrypto ];
-            throwIfNotPairOfCurrencies(currencyPair);
-            return currencyPair;
         }
         __webpack_require__(711);
         let sc = 1;
@@ -6772,17 +5889,13 @@
         window["FLS"] = true;
         isWebp();
         spollers();
+        tabs();
         Object.assign(window, {
             toggleCurrencies,
             toggleMenu
         });
         const currentPage = document.body.dataset.page;
         if ("Exchanger" === currentPage) {
-            exchanger_select();
-            check_length();
-            copy();
-            card_format();
-            request_script_main_submitHandler();
             exchangerPageLoad();
             autoCloseMenu();
         } else if ("Home" === currentPage) {
