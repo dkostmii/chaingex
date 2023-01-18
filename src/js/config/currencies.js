@@ -1,31 +1,45 @@
-import { cryptocurrencies } from "../files/fetch-currencies.js";
+import { CurrencyFactor, CurrencyPartial } from '../types/currency.js';
+import { usdt } from './usdt.js';
+
+export const showFirstNCryptocurrencies = 5;
 
 /**
- * An object containing factor of specified cryptocurrency price.
+ * An array of {@link CurrencyFactor}.
  * 
- * @typedef {Object} currencyFactor
- * @property {string} id A currency identifier.
- * 
- * See {@link cryptocurrencies} for possible cryptocurrency identifiers.
- * 
- * @property {number} factor A number which multiplies a price.
- * 
- * For example, `factor: 0.5` halves the price and `factor: 2` doubles.
- * 
- * **Must be non-negative.**
- */
-
-/**
- * An array containing {@link currencyFactor cryptocurrency price factors}.
- * 
- * **If you want control USDT price, proceed to `usdt.js`**
+ * **If you want control USDT price, see {@link usdt}**.
  * 
  * See {@link cryptocurrencies} for possible cryptocurrency identifiers.
  * 
  * @constant currencyFactors
- * @type {currencyFactor[]}
+ * @type {CurrencyFactor[]}
  */
 export const currencyFactors = [
-  //{ id: 'bitcoin', factor: 0.2 }
-    { id: 'solana', factor: 0.9 }
-];
+//{ id: 'bitcoin', factor: 0.2 }
+  { id: 'solana', factor: 0.9 }
+  
+].map(currencyFactorData => new CurrencyFactor(currencyFactorData));
+
+
+/**
+ * An array of {@link CurrencyPartial}.
+ * 
+ * @constant cryptocurrencies
+ * @type {CurrencyPartial[]}
+ */
+export const cryptocurrencies = [
+  { id: "bitcoin", name: "Bitcoin", short: "BTC" },
+  { id: "ethereum", name: "Ethereum", short: "ETH" },
+  { id: "binancecoin", name: "Binance coin", short: "BNB" },
+  { id: "solana", name: "Solana", short: "SOL" },
+  { id: "polkadot", name: "Polkadot", short: "DOT" },
+  { id: "matic-network", name: "Matic", short: "MATIC" },
+  { id: "near", name: "Near", short: "NEAR" },
+  { id: "cardano", name: "Cardano", short: "ADA" },
+  { id: "ethereum-classic", name: "Ethereum Classic", short: "ETC" },
+  { id: "1tronic", name: "TRON", short: "TRX" },
+  { id: "doge-token", name: "Dogecoin", short: "DOGE" },
+  { id: "shiba-inu", name: "Shiba Inu", short: "SHIB" },
+  { id: "avalanche-2", name: "Avalanche", short: "AVAX" },
+  { id: "litecoin", name: "Litecoin", short: "LTC" },
+  { id: "usdc", name: "USD Coin", short: "USDC" }
+].map(currencyPartialData => new CurrencyPartial(currencyPartialData));
