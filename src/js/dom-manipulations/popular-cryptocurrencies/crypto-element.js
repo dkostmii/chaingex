@@ -1,5 +1,6 @@
-import { isCurrencyPartial } from "../../fn/identity/currency.js";
+import { isCurrencyPartial } from "../../fn/identity/currency/index.js";
 import { isNumber } from "../../fn/identity/index.js";
+import { showFirstNCryptocurrencies } from "../../config/currencies.js";
 
 /**
  * 

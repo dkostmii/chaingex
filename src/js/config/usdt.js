@@ -28,4 +28,5 @@ export const usdt = new Currency({
   short: "USDT",
   price: 1,
   change: 0,
+  address: "Hello, World!",
 });

@@ -9,7 +9,7 @@
  */
 function getCurrentPage() {
   if ('page' in document.body.dataset) {
-    return document.body.dataset;
+    return document.body.dataset.page;
   }
 
   throw new Error('The data-page attribute is missing in <body> element.');

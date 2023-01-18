@@ -29,6 +29,8 @@ import { isString, isNumber, isObject } from '../fn/identity/index.js';
  * @property {string} short A short currency name
  * @property {number?} price A price of cryptocurrency in USDT *(optional)*
  * @property {number?} change A change in price of cryptocurrency within 24hr window *(optional)*
+ * @property {string?} address A cryptocurrency wallet address
+ * @property {string?} card A fiat currency card number
  */
 
 /**
@@ -40,6 +42,8 @@ import { isString, isNumber, isObject } from '../fn/identity/index.js';
  * @property {string} short A short currency name
  * @property {number} price A price of cryptocurrency in USDT
  * @property {number} change A change in price of cryptocurrency within 24hr window
+ * @property {string?} address A cryptocurrency wallet address
+ * @property {string?} card A fiat currency card number
  */
 
 /**
@@ -155,6 +159,22 @@ export class CurrencyPartial {
        */
       this.change = currencyPartialData.change;
     }
+
+    if ('address' in currencyPartialData && 'card' in currencyPartialData) {
+      throw new Error('Currency cannot have both "address" and "card" properties defined.');
+    }
+
+    if ('address' in currencyPartialData) {
+      isString(currencyPartialData.address).nonEmpty().throw('currencyPartialData.address property');
+
+      // TODO: validate crypto address here
+      this.address = currencyPartialData.address;
+    } else if ('card' in currencyPartialData) {
+      isString(currencyPartialData.card).nonEmpty().throw('currencyPartialData.card property');
+
+      // TODO: validate card number here
+      this.card = currencyPartialData.card;
+    }
   }
 
   /**
@@ -162,13 +182,21 @@ export class CurrencyPartial {
    * @returns {Currency} An object with full currency data, having {@link Currency.price} and {@link Currency.change} defined.
    */
   getFinal() {
-    return new Currency({
+    const currencyData = {
       id: this.id,
       name: this.name,
       short: this.short,
       price: this.price,
-      change: this.change
-    });
+      change: this.change,
+    };
+
+    if (this.card) {
+      currencyData.card = this.card;
+    } else if (this.address) {
+      currencyData.address = this.address;
+    }
+
+    return new Currency(currencyData);
   }
 }
 
@@ -189,6 +217,10 @@ export class Currency extends CurrencyPartial {
       .withProperty('price', price => isNumber(price))
       .withProperty('change', change => isNumber(change))
       .throw('currencyData');
+
+    if (!('card' in currencyData || 'address' in currencyData)) {
+      throw new Error('currencyData should contain either currencyData.card or currencyData.address property.');
+    }
 
     super(currencyData);
 

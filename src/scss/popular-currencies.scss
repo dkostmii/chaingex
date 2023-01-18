@@ -194,8 +194,7 @@
 
   &__icon {
     position: absolute;
-    width: rem($iconSize);
-    height: rem($iconSize);
+    @include wrapFonticons(rem($iconSize), rem($iconSize));
   }
 
   &__name {

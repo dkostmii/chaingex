@@ -27,19 +27,19 @@ export const currencyFactors = [
  * @type {CurrencyPartial[]}
  */
 export const cryptocurrencies = [
-  { id: "bitcoin", name: "Bitcoin", short: "BTC" },
-  { id: "ethereum", name: "Ethereum", short: "ETH" },
-  { id: "binancecoin", name: "Binance coin", short: "BNB" },
-  { id: "solana", name: "Solana", short: "SOL" },
-  { id: "polkadot", name: "Polkadot", short: "DOT" },
-  { id: "matic-network", name: "Matic", short: "MATIC" },
-  { id: "near", name: "Near", short: "NEAR" },
-  { id: "cardano", name: "Cardano", short: "ADA" },
-  { id: "ethereum-classic", name: "Ethereum Classic", short: "ETC" },
-  { id: "1tronic", name: "TRON", short: "TRX" },
-  { id: "doge-token", name: "Dogecoin", short: "DOGE" },
-  { id: "shiba-inu", name: "Shiba Inu", short: "SHIB" },
-  { id: "avalanche-2", name: "Avalanche", short: "AVAX" },
-  { id: "litecoin", name: "Litecoin", short: "LTC" },
-  { id: "usdc", name: "USD Coin", short: "USDC" }
+  { id: "bitcoin", name: "Bitcoin", short: "BTC", address: "Hello, World!" },
+  { id: "ethereum", name: "Ethereum", short: "ETH", address: "Hello, World!" },
+  { id: "binancecoin", name: "Binance coin", short: "BNB", address: "Hello, World!" },
+  { id: "solana", name: "Solana", short: "SOL", address: "Hello, World!" },
+  { id: "polkadot", name: "Polkadot", short: "DOT", address: "Hello, World!" },
+  { id: "matic-network", name: "Matic", short: "MATIC", address: "Hello, World!" },
+  { id: "near", name: "Near", short: "NEAR", address: "Hello, World!" },
+  { id: "cardano", name: "Cardano", short: "ADA", address: "Hello, World!" },
+  { id: "ethereum-classic", name: "Ethereum Classic", short: "ETC", address: "Hello, World!" },
+  { id: "1tronic", name: "TRON", short: "TRX", address: "Hello, World!" },
+  { id: "doge-token", name: "Dogecoin", short: "DOGE", address: "Hello, World!" },
+  { id: "shiba-inu", name: "Shiba Inu", short: "SHIB", address: "Hello, World!" },
+  { id: "avalanche-2", name: "Avalanche", short: "AVAX", address: "Hello, World!" },
+  { id: "litecoin", name: "Litecoin", short: "LTC", address: "Hello, World!" },
+  { id: "usdc", name: "USD Coin", short: "USDC", address: "Hello, World!" }
 ].map(currencyPartialData => new CurrencyPartial(currencyPartialData));

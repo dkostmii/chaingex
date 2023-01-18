@@ -35,21 +35,16 @@ export default function headerDesktop() {
     header.appendChild(navPlusButton);
   }
 
-  header.classList.add('background');
-
   if (mediaResult.matches) {
-    header.classList.remove('background');
     moveToContainer();
   }
 
   mediaResult.addEventListener('change', e => {
     // Desktop
     if (e.matches) {
-      header.classList.remove('background');
       moveToContainer();
     // Tablet / Mobile
     } else {
-      header.classList.add('background');
       moveToHeader();
     }
   });

@@ -1,4 +1,5 @@
 import { isCurrencyPartialArray } from '../fn/identity/currency/index.js';
+import { CurrencyPartial } from '../types/currency.js';
 
 /**
  * @typedef {import('../types/currency').CurrencyPartial} CurrencyPartial
@@ -34,7 +35,7 @@ function combineCurrencies(...cryptosArrays) {
         throw new Error(`Crypto with id: ${crypto.id} is missing in one of arrays.`);
       }
 
-      result[resultCryptoIndex] = { ...result[resultCryptoIndex], ...crypto };
+      result[resultCryptoIndex] = new CurrencyPartial({ ...result[resultCryptoIndex], ...crypto });
     });
   });
 

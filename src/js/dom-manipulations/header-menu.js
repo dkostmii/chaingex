@@ -12,11 +12,13 @@ const header = document.getElementsByClassName('header')[0];
 function enableMenu() {
   menuState = true;
 
-  document.body.classList.add('lock-scroll');
+  document.body.classList.add('lock', 'lock-scroll');
 
   header.classList.add('header__menu-active');
   [...menuBodyNavElements].forEach(el => el.classList.remove('hidden'));
   iconMenu.classList.add('icon-menu__active');
+
+  header.classList.add('background');
 }
 
 /**
@@ -25,11 +27,13 @@ function enableMenu() {
 function disableMenu() {
   menuState = false;
 
-  document.body.classList.remove('lock-scroll');
+  document.body.classList.remove('lock', 'lock-scroll');
 
   header.classList.remove('header__menu-active');
   [...menuBodyNavElements].forEach(el => el.classList.add('hidden'));
   iconMenu.classList.remove('icon-menu__active');
+
+  header.classList.remove('background');
 }
 
 /**

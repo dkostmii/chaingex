@@ -5,6 +5,8 @@ import { isCurrency } from "../../fn/identity/currency/currency.js";
 import { preCheckChange } from "../../fn/numbers/pre-check.js";
 import { prependSignLiteral } from "../../fn/numbers/sign.js";
 import { preCheck } from "../../fn/numbers/pre-check.js";
+import createCryptoElement from './crypto-element.js';
+import { getSign } from "../../fn/numbers/sign.js";
 
 /**
  * @typedef {import('../types/currency.js').CurrencyPartial} CurrencyPartial
