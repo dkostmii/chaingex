@@ -1,9 +1,9 @@
-@mixin wrapFonticons($width, $height) {
+@mixin wrapFonticons($width, $height, $offset: 0) {
   width: $width;
   height: $height;
-  background-position: center calc($height / 3.2);
-  padding: calc($height / 2.666) 0;
-  margin: calc($height / -2.666) 0;
+  background-position: center calc($height / 1.75 + $offset);
+  padding: calc($height / 1.5) calc($width / 2.5);
+  margin: calc($height / -1.5) calc($width / -2.5);
 
   background-size: calc($width * 1.9) calc($height * 1.8135);
   display: block;

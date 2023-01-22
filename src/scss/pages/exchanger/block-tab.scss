@@ -1,0 +1,269 @@
+.block-tab {
+  &__navigation, &__content {
+    background-color: rgba(#202E51, 0.5);
+  }
+
+  &__navigation > * {
+    background-color: transparent;
+  }
+
+  &__navigation {
+    display: flex;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: rem(1) solid rgba(123, 70, 232, 0.5);
+    line-height: math.div(27, 18);
+    padding: rem(22) 0;
+    color: rgba($mainColor, 0.5);
+    @include adaptiveValue("font-size", 18, 16);
+    width: 50%;
+
+    &._tab-active {
+      border: rem(1) solid rgba(123, 70, 232, 0.5);
+      border-width: rem(1) rem(1) 0 rem(1);
+      color: rgba($mainColor, 1);
+    }
+  }
+
+  &__content {
+    padding: rem(30);
+    border: rem(1) solid rgba(123, 70, 232, 0.5);
+    border-width: 0 rem(1) rem(1) rem(1);
+  }
+
+  &__credentials {
+    padding-bottom: rem(59);
+  }
+
+  &__body {
+    & > .message:not(.hidden) + *:last-child:not(.message) {
+      margin-top: 0;
+    }
+
+    & > *:last-child:not(.message) {
+      margin-top: rem(40);
+    }
+  }
+
+  &__form {
+    background-color: rgba(123, 70, 232, 0.1);
+    border: 1px solid #7B46E8;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    padding: rem(10) rem(30);
+    height: rem(80);
+    position: relative;
+  }
+
+  &__form.form-select > &__input {
+    width: calc(50% - rem(30));
+    @media screen and (max-width: $mobile) {
+      width: calc(50% - rem(16));
+    }
+  }
+
+  
+  &__label, .message {
+    @include adaptiveValue("font-size", 16, 14);
+    @extend %noselect;
+    line-height: math.div(24, 16);
+    opacity: 0.5;
+  }
+
+  &__input {
+    background-color: rgba(123, 70, 232, 0);
+    color: #FFFFFF;
+    font-size: rem(24);
+    line-height: math.div(36, 24);
+    outline: none;
+
+    &__copy {
+      width: calc(100% - rem(32) - rem(30));
+    }
+
+    @media screen and (max-width: $mobile) {
+      &__copy {
+        width: calc(100% - rem(24) - rem(16));
+      }
+    }
+  }
+
+  &__input::-webkit-outer-spin-button,
+  &__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &__input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
+  &__input[type="text"],
+  &__input[type="text"]:active {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .invalid > &__input {
+    color: #F04438;
+  }
+
+  .invalid > &__label {
+    opacity: 1;
+  }
+
+  &__form.invalid {
+    color: #F04438;
+    border-color: #F04438;
+  }
+
+  .message.hidden + .hidden + &__form {
+    margin-top: rem(32);
+  }
+
+  &__copy {
+    & > input {
+      cursor: pointer;
+    }
+    
+    cursor: pointer;
+    display: flex;
+
+    &::after {
+      content: "";
+      background: url(@img/exchanger/copy-icon.svg) no-repeat center top/cover;
+      position: absolute;
+      top: 50%;
+      right: rem(30);
+      transform: translate(0, -50%);
+      transition: all .2s ease;
+      width: rem(32);
+      height: rem(32);
+    }
+
+    &.copied::after {
+      background-image: url(@img/exchanger/check.svg);
+    }
+
+    @media screen and (max-width: $mobile) {
+      &::after {
+        right: rem(16);
+        width: rem(24);
+        height: rem(24);
+      }
+    }
+  }
+
+  &__reverse{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__labels, .message {
+    margin: rem(16) 0;    
+  }
+
+  .message:last-child {
+    margin-bottom: 0;
+  }
+
+  &__select {
+    font-size: rem(24);
+    line-height: math.div(36, 24);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    border-left: rem(1) solid #7b46e8;
+  }
+  
+  &__button {
+    color: #FFFFFF;
+    justify-content: center;
+    background-color: #7B46E8;
+    width: 100%;
+    line-height: rem(30);
+    font-size: rem(20);
+    padding: rem(15) 0;
+  }
+
+  @media screen and (max-width: $laptop) {
+    &__content {
+      padding: rem(33) rem(32) rem(28) rem(32);
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    &__title {
+      line-height: math.div(24, 16);
+    }
+
+    &__content {
+      padding: rem(24);
+    }
+
+    &__credentials {
+      padding-bottom: rem(24);
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    &__form {
+      padding: rem(8) rem(16);
+      height: rem(64);
+    }
+
+    &__select {
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+
+    &__input {
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+
+    .reverse__labels > &__label {
+      font-size: rem(14);
+      line-height: rem(21);
+      margin-top: rem(4);
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__body > :last-child:not(.message) {
+      margin-top: rem(32);
+    }
+
+    &__button {
+      padding: rem(8) 0;
+      font-size: rem(16);
+      line-height: rem(24);
+    }
+  }
+
+  @media screen and (max-width: $mobileSmall) {
+    &__label, .message {
+      line-height: math.div(21, 14);
+    }
+  }
+}
+
+.message.hidden, .block-tab__label.hidden, .block-tab__labels.hidden {
+  display: none;
+}
+
+.message.invalid {
+  color: #F04438;
+  opacity: 1;
+}

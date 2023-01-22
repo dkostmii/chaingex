@@ -1,0 +1,52 @@
+.exchanger {
+  &__container {
+    @include adaptiveValue("padding-top", 117, 96);
+  }
+  &__content {
+  }
+  &__block-text {
+  }
+  &__block {
+    @media screen and (max-width: $pc) {
+      &-text {
+        text-align: center;
+      }
+    }
+  }
+  &__link{
+    font-size: rem(18);
+    line-height: math.div(27, 18);
+    margin-bottom: rem(50);
+    a:first-child{
+      opacity: 0.5;
+    }
+  }
+}
+
+.exchanger-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: rem(50);
+
+  @media screen and (min-width: $laptop) {
+    gap: rem(30);
+  }
+
+  &__tab {
+    display: flex;
+    flex-direction: column;
+
+    // Important as .exchanger__block is wider
+    flex-shrink: 0;
+
+    @include adaptiveValue("width", 428, 375, 0, 428, 375);
+    @include adaptiveValue("width", 770, 396, 0, $laptopValue, 428);
+  }
+
+  @media screen and (min-width: $pc) {
+    &__tab {
+      width: rem(600);
+    }
+  }
+}

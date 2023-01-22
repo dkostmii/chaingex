@@ -1,0 +1,121 @@
+import { ModelRepository } from "../../model/base.js";
+import { inverse } from "../../model/buySellOperation.js";
+
+/**
+ * 
+ * @param {ModelRepository} modelRepository 
+ */
+function swapView(modelRepository) {
+  if (!(modelRepository instanceof ModelRepository)) {
+    throw new TypeError('Expected modelRepository to be instance of ModelRepository.');
+  }
+
+  const buySellOperationModel = modelRepository.find('operation:buy-sell');
+
+  const swapButton = document.querySelector('.reverse__button[data-model="operation:buy-sell"][data-modelaction]');
+
+  swapButton.addEventListener('click', e => {
+    e.preventDefault();
+    buySellOperationModel.doAction(swapButton.dataset.modelaction);
+  });
+
+  buySellOperationModel.addEventListener('update', (oldValue, newValue) => {
+    if (oldValue !== newValue || newValue !== inverse(inverse('buy'))) {
+      // Swap inputs
+      const cryptoInputGroup = document.querySelector('div[data-model="buy-sell:crypto"]').parentElement;
+      const currencyInputGroup = document.querySelector('div[data-model="buy-sell:currency"]').parentElement;
+      const cryptoLabel = cryptoInputGroup.querySelector('.block-tab__label');
+      const currencyLabel = currencyInputGroup.querySelector('.block-tab__label');
+
+      const tempLabelCaption = cryptoLabel.innerHTML;
+      cryptoLabel.innerHTML = currencyLabel.innerHTML;
+      currencyLabel.innerHTML = tempLabelCaption;
+
+      const cryptoPrevEl = cryptoInputGroup.previousElementSibling;
+      const currencyPrevEl = currencyInputGroup.previousElementSibling;
+
+      const parent = cryptoInputGroup.parentElement;
+
+      cryptoInputGroup.parentElement.removeChild(cryptoInputGroup);
+      currencyInputGroup.parentElement.removeChild(currencyInputGroup);
+
+      if (cryptoPrevEl) {
+        cryptoPrevEl.insertAdjacentElement('afterend', currencyInputGroup);
+      } else {
+        parent.prepend(currencyInputGroup);
+      }
+
+      if (currencyPrevEl) {
+        currencyPrevEl.insertAdjacentElement('afterend', cryptoInputGroup);
+      } else {
+        parent.prepend(cryptoInputGroup);
+      }
+
+      // Swap address and card
+      const isBuy = buySellOperationModel.value === inverse(inverse('buy'));
+      const isSell = buySellOperationModel.value === inverse('buy');
+
+      // Labels
+      const cryptoAddressInputLabelSelector = '.block-tab__label *[data-model="buy-sell:crypto:short"]';
+      const currencyCardInputLabelSelector = '.block-tab__label *[data-model="buy-sell:currency:short"]';
+
+      let userInputLabel = document.querySelector(
+        isBuy ?
+        currencyCardInputLabelSelector :
+        cryptoAddressInputLabelSelector
+      );
+
+      let copyInputLabel = document.querySelector(
+        isSell ?
+        currencyCardInputLabelSelector :
+        cryptoAddressInputLabelSelector
+      );
+
+      const tempLabelDataset = copyInputLabel.dataset.model;
+      copyInputLabel.dataset.model = userInputLabel.dataset.model;
+      userInputLabel.dataset.model = tempLabelDataset;
+
+      // const firstChunkCopy = copyInputLabel.previousElementSibling;
+      const lastChunkCopy = copyInputLabel.nextElementSibling;
+      const lastChunkUser = userInputLabel.nextElementSibling;
+
+      let temp = lastChunkCopy.innerHTML;
+      lastChunkCopy.innerHTML = lastChunkUser.innerHTML;
+      lastChunkUser.innerHTML = temp;
+
+      // TODO: Apply i18n
+      if (isBuy) {
+        // Address here
+        const firstChunkUser = userInputLabel.previousElementSibling;
+        firstChunkUser.innerHTML = 'Your ';
+      }
+      if (isSell) {
+        // Card here
+        const firstChunkUser = userInputLabel.previousElementSibling;
+        firstChunkUser.innerHTML = 'Your ';
+      }
+
+      // Inputs
+      const cryptoAddressInputSelector = 'input[data-model="buy-sell:crypto:address"]';
+      const currencyCardInputSelector = 'input[data-model="buy-sell:currency:card"]';
+
+      const userInput = document.querySelector(
+        isBuy ?
+        currencyCardInputSelector :
+        cryptoAddressInputSelector
+      );
+    
+      const copyInput = document.querySelector(
+        isSell ?
+        currencyCardInputSelector :
+        cryptoAddressInputSelector
+      );
+
+      const tempInputDataset = copyInput.dataset.model;
+      copyInput.dataset.model = userInput.dataset.model;
+      userInput.dataset.model = tempInputDataset;
+    }
+  })
+}
+
+export default swapView;

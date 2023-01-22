@@ -30,6 +30,7 @@ import { isString, isNumber, isObject } from '../fn/identity/index.js';
  * @property {number?} price A price of cryptocurrency in USDT *(optional)*
  * @property {number?} change A change in price of cryptocurrency within 24hr window *(optional)*
  * @property {string?} address A cryptocurrency wallet address
+ * @property {string?} network A network for cryptocurrency
  * @property {string?} card A fiat currency card number
  */
 
@@ -43,6 +44,7 @@ import { isString, isNumber, isObject } from '../fn/identity/index.js';
  * @property {number} price A price of cryptocurrency in USDT
  * @property {number} change A change in price of cryptocurrency within 24hr window
  * @property {string?} address A cryptocurrency wallet address
+ * @property {string?} network A network for cryptocurrency
  * @property {string?} card A fiat currency card number
  */
 
@@ -167,6 +169,12 @@ export class CurrencyPartial {
     if ('address' in currencyPartialData) {
       isString(currencyPartialData.address).nonEmpty().throw('currencyPartialData.address property');
 
+      if (isObject(currencyPartialData).withProperty('network', isString).value) {
+        this.network = currencyPartialData.network;
+      } else {
+        this.network = "";
+      }
+
       // TODO: validate crypto address here
       this.address = currencyPartialData.address;
     } else if ('card' in currencyPartialData) {
@@ -174,6 +182,10 @@ export class CurrencyPartial {
 
       // TODO: validate card number here
       this.card = currencyPartialData.card;
+
+      if (isObject(currencyPartialData).withProperty('network', () => true).value) {
+        throw new Error('Fiat currency cannot have assigned crypto network.');
+      }
     }
   }
 
@@ -194,6 +206,7 @@ export class CurrencyPartial {
       currencyData.card = this.card;
     } else if (this.address) {
       currencyData.address = this.address;
+      currencyData.network = this.network;
     }
 
     return new Currency(currencyData);
@@ -220,6 +233,12 @@ export class Currency extends CurrencyPartial {
 
     if (!('card' in currencyData || 'address' in currencyData)) {
       throw new Error('currencyData should contain either currencyData.card or currencyData.address property.');
+    }
+
+    if ('address' in currencyData) {
+      if (!('network' in currencyData)) {
+        throw new Error('currencyData should have assigned crypto network, if has address property.');
+      }
     }
 
     super(currencyData);

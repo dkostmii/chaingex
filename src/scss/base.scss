@@ -114,6 +114,8 @@
 // Отменить выделение
 %noselect {
 	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 }
 // Зеркальное отображение
 %mirror {

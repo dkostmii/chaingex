@@ -22,3 +22,19 @@ export function preCheck(x) {
 export function preCheckChange(num) {
   return num.toFixed(2);
 }
+
+export function preCheckInput(x) {
+  if (typeof x === 'string' || x instanceof String) {
+    x = parseFloat(x);
+  }
+
+  const preCheckLength = 8;
+
+  const whole = Math.floor(x);
+  const fr = x - whole;
+  x = fr + whole;
+
+  if (x > 0 && (x.toString().length > preCheckLength + 1) || (whole === 0 && fr < 1e-4)) return x.toFixed(preCheckLength);
+
+  return x.toString();
+}

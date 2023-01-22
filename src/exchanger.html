@@ -25,119 +25,186 @@
             <div class="exchanger__block exchanger-block">
                 <div data-tabs class="exchanger-block__tab block-tab">
                     <nav data-tabs-titles class="block-tab__navigation">
-                        <button type="button" class="block-tab__title _tab-active">Crypto address</button>
-                        <button type="button" class="block-tab__title">Bank</button>
+                        <button
+                            type="button" class="block-tab__title _tab-active"
+                            data-model="operation"
+                            data-modelaction="select-exchange">Crypto address</button>
+                        <button
+                            type="button" class="block-tab__title"
+                            data-model="operation"
+                            data-modelaction="select-buy-sell">Bank</button>
                     </nav>
-                    <form data-tabs-body class="block-tab__content">
+                    <form data-tabs-body class="block-tab__content block-tab__credentials">
                         <div class="block-tab__body">
-                            <div class="block-tab__form">
-                                <p class="block-tab__label">USDT card</p>
-                                <input type="text" class="block-tab__input" value="4444 4444 4444 4444" readonly>
-                                <button type="button" class="block-tab__copy"></button>
+                            <div class="block-tab__form block-tab__copy">
+                                <p class="block-tab__label">
+                                    <span>Copy </span>
+                                    <span data-model="exchange:crypto-in:short"></span>
+                                    <span> address</span>
+                                </p>
+                                <input
+                                    type="text" class="block-tab__input block-tab__input__copy"
+                                    data-model="exchange:crypto-in:address"
+                                    readonly />
                             </div>
+
+                            <p class="message hidden"></p>
+
                             <div class="block-tab__labels">
-                                <p class="block-tab__label">Net: TRC20</p>
+                                <p class="block-tab__label">Net: <span data-model="exchange:crypto-in:network"></span></p>
                             </div>
                             <div class="block-tab__form">
-                                <p class="block-tab__label">Copy address</p>
-                                <input type="text" class="block-tab__input" value="Sd3f3mf3ofmo3fm3ofm3ofmomfo2mfor">
+                                <p class="block-tab__label">
+                                    <span>Your </span>
+                                    <span data-model="exchange:crypto-out:address"></span>
+                                    <span> address</span>
+                                </p>
+                                <input
+                                    type="text" class="block-tab__input"
+                                    data-model="exchange:crypto-out:address">
                             </div>
+
+                            <p class="message hidden"></p>
                         </div>
                         <div class="block-tab__body">
-                            <div class="block-tab__form form-bank">
-                                <p class="block-tab__label">USD card</p>
-                                <input type="text" class="block-tab__input" value="4444 4444 4444 4444" readonly>
-                                <button type="button" class="block-tab__copy"></button>
+                            <div class="block-tab__form form-bank block-tab__copy">
+                                <p class="block-tab__label">
+                                    <span data-model="buy-sell:currency:short"></span>
+                                    <span> card</span>
+                                </p>
+                                <input
+                                    type="text" class="block-tab__input block-tab__input__copy"
+                                    data-model="buy-sell:currency:card"
+                                    readonly />
                             </div>
-                            <div class="block-tab__form form-bank">
-                                <p class="block-tab__label">Enter your card</p>
-                                <input type="text" class="block-tab__input" value="4444 4444 4444 4444">
+
+                            <p class="message hidden"></p>
+
+                            <div class="block-tab__labels">
+                                <p class="block-tab__label">Net: <span data-model="buy-sell:crypto:network"></span></p>
                             </div>
+
+                            <div class="block-tab__form form-bank">
+                                <p class="block-tab__label">
+                                    <span>Your </span>
+                                    <span data-model="buy-sell:crypto:short"></span>
+                                    <span> address</span>
+                                </p>
+                                <input
+                                    type="text" class="block-tab__input"
+                                    data-model="buy-sell:crypto:address" />
+                            </div>
+
+                            <p class="message hidden"></p>
                         </div>
                     </form>
                 </div>
                 <div data-tabs class="exchanger-block__tab block-tab">
                     <nav data-tabs-titles class="block-tab__navigation">
-                        <button type="button" class="block-tab__title">Exchange Crypto</button>
-                        <button type="button" class="block-tab__title _tab-active">Buy / Sell Crypto</button>
+                        <button
+                            type="button" class="block-tab__title _tab-active"
+                            data-model="operation"
+                            data-modelaction="select-exchange">Exchange Crypto</button>
+                        <button
+                            type="button" class="block-tab__title"
+                            data-model="operation"
+                            data-modelaction="select-buy-sell">Buy / Sell Crypto</button>
                     </nav>
                     <form data-tabs-body class="block-tab__content">
                         <div class="block-tab__body">
                             <div class="block-tab__form form-select">
                                 <p class="block-tab__label">You send</p>
-                                <input type="number" class="block-tab__input" name="number-input">
-                                <div class="block-tab__select block-select">
-                                    <p class="block-select__value">USDT</p>
-                                    <ul class="block-select__list">
-                                        <li class="block-select__item">USDT</li>
-                                        <li class="block-select__item">ADA</li>
-                                    </ul>
-                                    <input type="hidden" class="block-select__input" name="select-input">
+                                <input
+                                    type="number" class="block-tab__input" name="number-input"
+                                    data-model="exchange:crypto-in:amount">
+                                <div
+                                    class="block-tab__select block-select"
+                                    data-model="exchange:crypto-in">
                                 </div>
                             </div>
+                            <p class="message hidden"></p>
                     
                             <div class="block-tab__reverse reverse">
                                 <div class="block-tab__labels reverse__labels">
-                                    <p class="block-tab__label">No extra fees</p>
-                                    <p class="block-tab__label">Estimated rate: 1 BTC - 17714.23 USD</p>
+                                    <p
+                                        class="block-tab__label"
+                                        data-model="exchange:fee"></p>
+                                    <p class="block-tab__label">
+                                        <span>Estimated rate: </span>
+                                        <span data-model="exchange:rate"></span>
+                                    </p>
                                 </div>
-                                <button type="button" class="reverse__button"></button>
+                                <button
+                                    type="button" class="reverse__button"
+                                    data-model="exchange"
+                                    data-modelaction="swap"></button>
                             </div>
                     
                             <div class="block-tab__form form-select">
-                                <p class="block-tab__label">You Get</p>
-                                <input type="number" class="block-tab__input" name="number-input">
-                                <div class="block-tab__select block-select">
-                                    <p class="block-select__value">ADA</p>
-                                    <ul class="block-select__list">
-                                        <li class="block-select__item">USDT</li>
-                                        <li class="block-select__item">ADA</li>
-                                    </ul>
+                                <p class="block-tab__label">You get</p>
+                                <input
+                                    type="number" class="block-tab__input" name="number-input"
+                                    data-model="exchange:crypto-out:amount">
+                                <div
+                                    class="block-tab__select block-select"
+                                    data-model="exchange:crypto-out">
                                 </div>
                             </div>
+                            <p class="message hidden"></p>
                     
                             <div class="block-tab__buttons">
-                                <button type="submit" class="block-tab__button">Exchange</button>
+                                <button
+                                    type="submit" class="block-tab__button"
+                                    data-model="exchange">Exchange</button>
                             </div>
-                    
                         </div>
                         <div class="block-tab__body">
                             <div class="block-tab__form form-select">
-                                <p class="block-tab__label">You Pay</p>
-                                <input type="number" class="block-tab__input" name="number-input">
-                                <div class="block-tab__select block-select">
-                                    <p class="block-select__value">USDT</p>
-                                    <ul class="block-select__list">
-                                        <li class="block-select__item">USDT</li>
-                                        <li class="block-select__item">ADA</li>
-                                    </ul>
+                                <p class="block-tab__label">You pay</p>
+                                <input
+                                    type="number" class="block-tab__input" name="number-input"
+                                    data-model="buy-sell:currency:amount">
+                                <div
+                                    class="block-tab__select block-select"
+                                    data-model="buy-sell:currency">
                                 </div>
                             </div>
+                            <p class="message hidden"></p>
                     
                             <div class="block-tab__reverse reverse">
                                 <div class="block-tab__labels reverse__labels">
-                                    <p class="block-tab__label">No extra fees</p>
-                                    <p class="block-tab__label">Estimated rate: 1 BTC - 17714.23 USD</p>
+                                    <p
+                                        class="block-tab__label"
+                                        data-model="buy-sell:fee">
+                                    </p>
+                                    <p class="block-tab__label">
+                                        <span>Estimated rate: </span>
+                                        <span data-model="buy-sell:rate"></span>
+                                    </p>
                                 </div>
-                                <button type="button" class="reverse__button"></button>
+                                <button
+                                    type="button" class="reverse__button"
+                                    data-model="operation:buy-sell"
+                                    data-modelaction="swap"></button>
                             </div>
                     
                             <div class="block-tab__form form-select">
-                                <p class="block-tab__label">You Get</p>
-                                <input type="number" class="block-tab__input" name="number-input">
-                                <div class="block-tab__select block-select">
-                                    <p class="block-select__value">ADA</p>
-                                    <ul class="block-select__list">
-                                        <li class="block-select__item">USDT</li>
-                                        <li class="block-select__item">ADA</li>
-                                    </ul>
+                                <p class="block-tab__label">You get</p>
+                                <input
+                                    type="number" class="block-tab__input" name="number-input"
+                                    data-model="buy-sell:crypto:amount">
+                                <div
+                                    class="block-tab__select block-select"
+                                    data-model="buy-sell:crypto">
                                 </div>
                             </div>
+                            <p class="message hidden"></p>
                     
                             <div class="block-tab__buttons">
-                                <button type="submit" class="block-tab__button">Send</button>
+                                <button
+                                    type="submit" class="block-tab__button"
+                                    data-model="buy-sell"></button>
                             </div>
-                    
                         </div>
                     </form>
                 </div>

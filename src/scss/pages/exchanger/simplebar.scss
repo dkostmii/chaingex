@@ -1,0 +1,27 @@
+.simplebar-track {
+  background: linear-gradient(0deg, rgba(#7B46E8, 0.2), rgba(#7B46E8, 0.2)) #000;
+}
+
+.simplebar-scrollbar::before {
+  background: #7B46E8 !important;
+  border-radius: 0 !important;
+  width: rem(4) !important;
+  left: rem(2) !important;
+  right: rem(2) !important;
+}
+
+.simple-scrollbar.simplebar-visible::before {
+  /* When hovered, remove all transitions from drag handle */
+  opacity: 1;
+  transition: opacity 0s linear;
+}
+
+.simplebar-track.simplebar-vertical {
+  top: 0 !important;
+  width: rem(8) !important;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+  top: rem(2) !important;
+  bottom: rem(2) !important;
+}

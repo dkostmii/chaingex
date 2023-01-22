@@ -1,6 +1,8 @@
 import { cryptocurrencies } from '../config/currencies.js';
 import { isCurrencyPartial } from '../fn/identity/currency/currency.js';
-import { usdt } from '../config/usdt.js';
+import { restCryptos } from '../config/currencies.js';
+
+const usdtShort = restCryptos.find(c => c.id.includes("usdt")).short.split(" ")[0];
 
 export const settings = {
   "async": true,
@@ -10,7 +12,7 @@ export const settings = {
 }
 
 /**
- * @typedef {import('../types/currency').CurrencyPartial} CurrencyPartial
+ * @typedef {import('../types/currency.js').CurrencyPartial} CurrencyPartial
  */
 
 /**
@@ -21,7 +23,7 @@ export const settings = {
 export function getCryptoSymbol(currencyPartial) {
   isCurrencyPartial(currencyPartial).throw('currencyPartial');
 
-  return currencyPartial.short + usdt.short;
+  return currencyPartial.short + usdtShort;
 }
 
 const symbolsArr = cryptocurrencies.map(c => getCryptoSymbol(c));

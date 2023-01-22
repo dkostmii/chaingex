@@ -56,5 +56,9 @@ function scrollHandler() {
    }
 }
 
-window.addEventListener('scroll', scrollHandler);
-scrollHandler();
+function useAnimationOnScroll() {
+   window.addEventListener('scroll', scrollHandler);
+   scrollHandler();
+}
+
+export default useAnimationOnScroll;

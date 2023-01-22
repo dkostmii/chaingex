@@ -16,7 +16,7 @@ import { toggleMenu, autoCloseMenu } from '../dom-manipulations/header-menu.js';
 import getCurrentPage from '../fn/currentPage.js';
 
 import homePageLoad from '../pages/home.js';
-import exchangerPageLoad from '../pages/exchanger.js';
+import exchangerPageLoad from '../pages/exchanger/index.js';
 
 headerDesktop();
 autoCloseMenu();
