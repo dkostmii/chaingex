@@ -1,5 +1,6 @@
 import { Model, ModelRepository } from "./base.js";
 import createBuySellOperationModel from "./buySellOperation.js";
+import createLanguageModel from "./language.js";
 import createOperationModel from "./operation.js";
 
 /**
@@ -21,6 +22,8 @@ function createDefaults(modelRepository) {
 
   createOperationModel("exchange", modelRepository);
   createBuySellOperationModel("buy", modelRepository);
+
+  createLanguageModel(modelRepository);
 }
 
 export default createDefaults;

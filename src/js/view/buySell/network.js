@@ -1,5 +1,7 @@
 import { ModelRepository } from "../../model/base.js";
 
+import getTranslation from "../../i18n/get.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -13,18 +15,20 @@ function cryptoNetworkView(modelRepository) {
 
   const cryptoNetworkElements = document.querySelectorAll('*[data-model="buy-sell:crypto:network"]');
 
+  const currentLanguage = modelRepository.find('language').value;
+
   cryptoNetwork.addEventListener('update', (_, newValue) => {
     if (!newValue) {
       [...cryptoNetworkElements].forEach(el => {
+        el.classList.add('hidden');
         el.parentElement.classList.add('hidden');
-        el.parentElement.parentElement.classList.add('hidden');
         el.innerHTML = "";
       });
     } else {
       [...cryptoNetworkElements].forEach(el => {
+        el.classList.remove('hidden');
         el.parentElement.classList.remove('hidden');
-        el.parentElement.parentElement.classList.remove('hidden');
-        el.innerHTML = newValue;
+        el.innerHTML = getTranslation('net', currentLanguage, { net: newValue });
       });
     }
   });

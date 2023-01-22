@@ -2,6 +2,8 @@ import { ModelRepository } from "../../model/base.js";
 import { minAmountCryptoOrCurrency } from "../../model/transformers/amount.js";
 import { preCheckInput } from "../../fn/numbers/pre-check.js";
 
+import getTranslation from "../../i18n/get.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -19,6 +21,8 @@ function cryptoAmountView(modelRepository) {
 
   const cryptoInAmountInput = document.querySelector('input[data-model="exchange:crypto-in:amount"]');
   const cryptoOutAmountInput = document.querySelector('input[data-model="exchange:crypto-out:amount"]');
+
+  const currentLanguage = modelRepository.find('language').value;
 
   cryptoInAmountInput.step = 'any';
   cryptoOutAmountInput.step = 'any';
@@ -53,7 +57,9 @@ function cryptoAmountView(modelRepository) {
 
     // TODO: Apply i18n
     if ('clampApplied' in cryptoInAmount && cryptoInAmount.clampApplied) {
-      cryptoInAmountMessage.innerHTML = `Min amount: ${preCheckInput(cryptoInAmount.clampRange[0])} ${cryptoInModel.value.short}`;
+      const amount = `${preCheckInput(cryptoInAmount.clampRange[0])} ${cryptoInModel.value.short}`;
+
+      cryptoInAmountMessage.innerHTML = getTranslation('min-amount', currentLanguage, { amount });
       cryptoInAmountMessage.classList.remove('hidden');
     } else {
       cryptoInAmountMessage.innerHTML = "";
@@ -66,7 +72,9 @@ function cryptoAmountView(modelRepository) {
 
     // TODO: Apply i18n
     if ('clampApplied' in cryptoOutAmount && cryptoOutAmount.clampApplied) {
-      cryptoOutAmountMessage.innerHTML = `Min amount: ${preCheckInput(cryptoOutAmount.clampRange[0])} ${cryptoOutModel.value.short}`;
+      const amount = `${preCheckInput(cryptoOutAmount.clampRange[0])} ${cryptoOutModel.value.short}`;
+
+      cryptoOutAmountMessage.innerHTML = getTranslation('min-amount', currentLanguage, { amount });
       cryptoOutAmountMessage.classList.remove('hidden');
     } else {
       cryptoOutAmountMessage.innerHTML = "";

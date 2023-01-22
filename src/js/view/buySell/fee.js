@@ -1,5 +1,7 @@
 import { ModelRepository } from "../../model/base.js";
 
+import getTranslation from "../../i18n/get.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -13,12 +15,13 @@ function buySellFeeView(modelRepository) {
 
   const buySellFeeElement = document.querySelector('*[data-model="buy-sell:fee"]');
 
+  const currentLanguage = modelRepository.find('language').value;
+
   buySellFeeModel.addEventListener('update', (_, newValue) => {
     if (!newValue) {
-      // TODO: Apply i18n
-      buySellFeeElement.innerHTML = 'No extra fees';
+      buySellFeeElement.innerHTML = getTranslation('no-extra-fees', currentLanguage);
     } else {
-      buySellFeeElement.innerHTML = newValue;
+      buySellFeeElement.innerHTML = getTranslation('fee', currentLanguage, { fee: newValue });
     }
   });
 }

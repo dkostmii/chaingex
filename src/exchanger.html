@@ -11,13 +11,15 @@
         <div class="exchanger__container">
             <div class="exchanger__content">
                 <div class="exchanger__link">
-                    <a href="index.html">Home</a> | <a href="#">Change</a>
+                    <a class="i18n" href="index.html" data-i18n="nav-home">Home</a> | <a class="i18n" href="#" data-i18n="header-cta">Change</a>
                 </div>
                 <div class="exchanger__block-text block-text">
-                    <h2 class="block-text__title title">
+                    <h2 class="block-text__title title i18n"
+                        data-i18n="exchanger-title">
                         Limitless Crypto Exchange
                     </h2>
-                    <div class="block-text__text text">
+                    <div class="block-text__text text i18n"
+                        data-i18n="exchanger-subtitle">
                         Fast Crypto Swaps, Free of Custody
                     </div>
                 </div>
@@ -26,21 +28,23 @@
                 <div data-tabs class="exchanger-block__tab block-tab">
                     <nav data-tabs-titles class="block-tab__navigation">
                         <button
-                            type="button" class="block-tab__title _tab-active"
+                            type="button" class="block-tab__title _tab-active i18n"
                             data-model="operation"
-                            data-modelaction="select-exchange">Crypto address</button>
+                            data-modelaction="select-exchange"
+                            data-i18n="crypto-address-tab">Crypto address</button>
                         <button
-                            type="button" class="block-tab__title"
+                            type="button" class="block-tab__title i18n"
                             data-model="operation"
-                            data-modelaction="select-buy-sell">Bank</button>
+                            data-modelaction="select-buy-sell"
+                            data-i18n="bank-tab">Bank</button>
                     </nav>
                     <form data-tabs-body class="block-tab__content block-tab__credentials">
                         <div class="block-tab__body">
                             <div class="block-tab__form block-tab__copy">
-                                <p class="block-tab__label">
-                                    <span>Copy </span>
-                                    <span data-model="exchange:crypto-in:short"></span>
-                                    <span> address</span>
+                                <p
+                                    class="block-tab__label i18n"
+                                    data-model="exchange:crypto-out:short"
+                                    data-i18n="copy-address">
                                 </p>
                                 <input
                                     type="text" class="block-tab__input block-tab__input__copy"
@@ -51,13 +55,17 @@
                             <p class="message hidden"></p>
 
                             <div class="block-tab__labels">
-                                <p class="block-tab__label">Net: <span data-model="exchange:crypto-in:network"></span></p>
+                                <p
+                                    class="block-tab__label i18n"
+                                    data-model="exchange:crypto-in:network"
+                                    data-i18n="net">
+                                </p>
                             </div>
                             <div class="block-tab__form">
-                                <p class="block-tab__label">
-                                    <span>Your </span>
-                                    <span data-model="exchange:crypto-out:address"></span>
-                                    <span> address</span>
+                                <p
+                                    class="block-tab__label i18n"
+                                    data-model="exchange:crypto-out:short"
+                                    data-i18n="your-address">
                                 </p>
                                 <input
                                     type="text" class="block-tab__input"
@@ -68,9 +76,10 @@
                         </div>
                         <div class="block-tab__body">
                             <div class="block-tab__form form-bank block-tab__copy">
-                                <p class="block-tab__label">
-                                    <span data-model="buy-sell:currency:short"></span>
-                                    <span> card</span>
+                                <p
+                                    class="block-tab__label i18n"
+                                    data-model="buy-sell:currency:short"
+                                    data-i18n="copy-card">
                                 </p>
                                 <input
                                     type="text" class="block-tab__input block-tab__input__copy"
@@ -81,14 +90,18 @@
                             <p class="message hidden"></p>
 
                             <div class="block-tab__labels">
-                                <p class="block-tab__label">Net: <span data-model="buy-sell:crypto:network"></span></p>
+                                <p
+                                    class="block-tab__label i18n"
+                                    data-model="buy-sell:crypto:network"
+                                    data-i18n="net">
+                                </p>
                             </div>
 
                             <div class="block-tab__form form-bank">
-                                <p class="block-tab__label">
-                                    <span>Your </span>
-                                    <span data-model="buy-sell:crypto:short"></span>
-                                    <span> address</span>
+                                <p
+                                    class="block-tab__label i18n"
+                                    data-model="buy-sell:crypto:short"
+                                    data-i18n="your-address">
                                 </p>
                                 <input
                                     type="text" class="block-tab__input"
@@ -102,18 +115,21 @@
                 <div data-tabs class="exchanger-block__tab block-tab">
                     <nav data-tabs-titles class="block-tab__navigation">
                         <button
-                            type="button" class="block-tab__title _tab-active"
+                            type="button" class="block-tab__title _tab-active i18n"
                             data-model="operation"
-                            data-modelaction="select-exchange">Exchange Crypto</button>
+                            data-modelaction="select-exchange"
+                            data-i18n="exchange-crypto-tab">Exchange Crypto</button>
                         <button
-                            type="button" class="block-tab__title"
+                            type="button" class="block-tab__title i18n"
                             data-model="operation"
-                            data-modelaction="select-buy-sell">Buy / Sell Crypto</button>
+                            data-modelaction="select-buy-sell"
+                            data-i18n="buy-sell-crypto-tab">Buy / Sell Crypto</button>
                     </nav>
                     <form data-tabs-body class="block-tab__content">
                         <div class="block-tab__body">
                             <div class="block-tab__form form-select">
-                                <p class="block-tab__label">You send</p>
+                                <p class="block-tab__label i18n"
+                                    data-i18n="you-send">You send</p>
                                 <input
                                     type="number" class="block-tab__input" name="number-input"
                                     data-model="exchange:crypto-in:amount">
@@ -127,10 +143,14 @@
                             <div class="block-tab__reverse reverse">
                                 <div class="block-tab__labels reverse__labels">
                                     <p
-                                        class="block-tab__label"
-                                        data-model="exchange:fee"></p>
+                                        class="block-tab__label i18n"
+                                        data-model="exchange:fee"
+                                        data-i18n="fee"
+                                        ></p>
                                     <p class="block-tab__label">
-                                        <span>Estimated rate: </span>
+                                        <span
+                                            class="i18n"
+                                            data-i18n="estimated-rate">Estimated rate: </span>
                                         <span data-model="exchange:rate"></span>
                                     </p>
                                 </div>
@@ -141,7 +161,8 @@
                             </div>
                     
                             <div class="block-tab__form form-select">
-                                <p class="block-tab__label">You get</p>
+                                <p class="block-tab__label i18n"
+                                    data-i18n="you-get">You get</p>
                                 <input
                                     type="number" class="block-tab__input" name="number-input"
                                     data-model="exchange:crypto-out:amount">
@@ -154,13 +175,15 @@
                     
                             <div class="block-tab__buttons">
                                 <button
-                                    type="submit" class="block-tab__button"
-                                    data-model="exchange">Exchange</button>
+                                    type="submit" class="block-tab__button i18n"
+                                    data-model="exchange"
+                                    data-i18n="exchange-button">Exchange</button>
                             </div>
                         </div>
                         <div class="block-tab__body">
                             <div class="block-tab__form form-select">
-                                <p class="block-tab__label">You pay</p>
+                                <p class="block-tab__label i18n"
+                                    data-i18n="you-pay">You pay</p>
                                 <input
                                     type="number" class="block-tab__input" name="number-input"
                                     data-model="buy-sell:currency:amount">
@@ -174,11 +197,14 @@
                             <div class="block-tab__reverse reverse">
                                 <div class="block-tab__labels reverse__labels">
                                     <p
-                                        class="block-tab__label"
-                                        data-model="buy-sell:fee">
+                                        class="block-tab__label i18n"
+                                        data-model="buy-sell:fee"
+                                        data-i18n="fee">
                                     </p>
                                     <p class="block-tab__label">
-                                        <span>Estimated rate: </span>
+                                        <span
+                                            class="i18n"
+                                            data-i18n="estimated-rate">Estimated rate: </span>
                                         <span data-model="buy-sell:rate"></span>
                                     </p>
                                 </div>
@@ -189,7 +215,8 @@
                             </div>
                     
                             <div class="block-tab__form form-select">
-                                <p class="block-tab__label">You get</p>
+                                <p class="block-tab__label i18n"
+                                    data-i18n="you-get">You get</p>
                                 <input
                                     type="number" class="block-tab__input" name="number-input"
                                     data-model="buy-sell:crypto:amount">

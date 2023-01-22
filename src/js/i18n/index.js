@@ -1,5 +1,5 @@
-import { setLanguage } from "./localStorage.js";
-import detectUserLanguage from "./detect.js";
+import { setLanguage } from "./detect.js";
+import useLanguageDetect from './detect.js';
 import langs from './data.js';
 
 import style from "./style.js";
@@ -9,7 +9,7 @@ import translate from "./translate.js";
  * @typedef {import('./data.js').Language} Language
  */
 
-const currentLanguage = detectUserLanguage();
+let currentLanguage = null;
 
 function optionClickedHandler(lang) {
   setLanguage(lang.value)
@@ -37,8 +37,6 @@ function createDesktopOption(lang) {
   option.innerHTML = lang.shortNames.short;
 
   option.addEventListener('click', () => optionClickedHandler(lang));
-
-  option.dataset
 
   return option;
 }
@@ -72,7 +70,7 @@ function useLanguageSelect() {
     langSelectMobile.appendChild(createMobileOption(lang));
 
     if (lang.value !== currentLanguage.value) {
-      langSelect.appendChild(createDesktopOption(lang));
+      langSelectOptions.appendChild(createDesktopOption(lang));
     }
   });
 }
@@ -101,6 +99,12 @@ function translatePage() {
  * To translate an element, use `i18n` class and add `data-i18n` attibute pointing to appropriate token in {@link Language.dict} dictionary.
  */
 function useI18n() {
+  if (!(window.detectUserLanguage instanceof Function)) {
+    useLanguageDetect();
+  }
+  
+  currentLanguage = window.detectUserLanguage();
+
   useLanguageSelect();
   translatePage();
 }

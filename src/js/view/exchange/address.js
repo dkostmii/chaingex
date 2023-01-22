@@ -1,5 +1,7 @@
 import { ModelRepository } from "../../model/base.js";
 
+import getTranslation from "../../i18n/get.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -8,6 +10,8 @@ function cryptoAddressView(modelRepository) {
   if (!(modelRepository instanceof ModelRepository)) {
     throw new TypeError('Expected modelRepository to be instance of ModelRepository.');
   }
+
+  const currentLanguage = modelRepository.find('language').value;
 
   const cryptoOutModel = modelRepository.find('exchange:crypto-out');
 
@@ -38,7 +42,7 @@ function cryptoAddressView(modelRepository) {
   const cryptoInFocusListener = () => {
     navigator.clipboard.writeText(cryptoInAddressInput.value);
     cryptoInAddressInput.parentElement.classList.add('copied');
-    cryptoInMessage.innerHTML = 'Copied.';
+    cryptoInMessage.innerHTML = getTranslation('copied-message', currentLanguage);
     cryptoInMessage.classList.remove('hidden');
   };
 
@@ -68,7 +72,7 @@ function cryptoAddressView(modelRepository) {
       cryptoOutAddressInput.parentElement.classList.add('invalid');
 
       // TODO: Apply i18n
-      cryptoOutMessage.innerHTML = 'Invalid crypto address. Please, do not write it by hand, copy from clipboard instead.'
+      cryptoOutMessage.innerHTML = getTranslation('invalid-address-message', currentLanguage);
       cryptoOutMessage.classList.add('invalid');
       cryptoOutMessage.classList.remove('hidden');
     }

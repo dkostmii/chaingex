@@ -1,4 +1,3 @@
-import detectUserLanguage from "../../i18n/detect.js";
 import translate from "../../i18n/translate.js";
 import { showFirstNCryptocurrencies } from "../../config/currencies.js";
 
@@ -14,10 +13,7 @@ let isShown = false;
  */
 const hideableClass = "colum__hideable";
 
-/**
- * Language for See all / Hide all button.
- */
-const currentLanguage = detectUserLanguage();
+
 
 /**
  * Hides the currencies, so only {@link showFirstNCryptocurrencies} is shown.
@@ -33,6 +29,12 @@ export function hideCurrencies() {
     isShown = false;
 
     button.dataset.i18n = 'popular-currencies-button-see-all';
+
+    /**
+     * Language for See all / Hide all button.
+     */
+    const currentLanguage = window.detectUserLanguage();
+
     translate(button, currentLanguage);
   }
 }
@@ -50,6 +52,11 @@ export function showCurrencies() {
     });
 
     isShown = true;
+
+    /**
+     * Language for See all / Hide all button.
+     */
+    const currentLanguage = window.detectUserLanguage();
 
     button.dataset.i18n = 'popular-currencies-button-hide-all';
     translate(button, currentLanguage);

@@ -17,6 +17,8 @@ import getCurrentPage from '../fn/currentPage.js';
 
 import homePageLoad from '../pages/home.js';
 import exchangerPageLoad from '../pages/exchanger/index.js';
+import useLanguageDetect from '../i18n/detect.js';
+useLanguageDetect();
 
 headerDesktop();
 autoCloseMenu();

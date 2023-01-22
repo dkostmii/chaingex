@@ -12,6 +12,9 @@ function swapView(modelRepository) {
 
   const buySellOperationModel = modelRepository.find('operation:buy-sell');
 
+  const cryptoModel = modelRepository.find('buy-sell:crypto:short');
+  const currencyModel = modelRepository.find('buy-sell:currency:short');
+
   const swapButton = document.querySelector('.reverse__button[data-model="operation:buy-sell"][data-modelaction]');
 
   swapButton.addEventListener('click', e => {
@@ -56,8 +59,8 @@ function swapView(modelRepository) {
       const isSell = buySellOperationModel.value === inverse('buy');
 
       // Labels
-      const cryptoAddressInputLabelSelector = '.block-tab__label *[data-model="buy-sell:crypto:short"]';
-      const currencyCardInputLabelSelector = '.block-tab__label *[data-model="buy-sell:currency:short"]';
+      const cryptoAddressInputLabelSelector = '.block-tab__label[data-model="buy-sell:crypto:short"]';
+      const currencyCardInputLabelSelector = '.block-tab__label[data-model="buy-sell:currency:short"]';
 
       let userInputLabel = document.querySelector(
         isBuy ?
@@ -75,25 +78,17 @@ function swapView(modelRepository) {
       copyInputLabel.dataset.model = userInputLabel.dataset.model;
       userInputLabel.dataset.model = tempLabelDataset;
 
-      // const firstChunkCopy = copyInputLabel.previousElementSibling;
-      const lastChunkCopy = copyInputLabel.nextElementSibling;
-      const lastChunkUser = userInputLabel.nextElementSibling;
-
-      let temp = lastChunkCopy.innerHTML;
-      lastChunkCopy.innerHTML = lastChunkUser.innerHTML;
-      lastChunkUser.innerHTML = temp;
-
-      // TODO: Apply i18n
       if (isBuy) {
-        // Address here
-        const firstChunkUser = userInputLabel.previousElementSibling;
-        firstChunkUser.innerHTML = 'Your ';
+        copyInputLabel.dataset.i18n = 'copy-card';
+        userInputLabel.dataset.i18n = 'your-address';
       }
       if (isSell) {
-        // Card here
-        const firstChunkUser = userInputLabel.previousElementSibling;
-        firstChunkUser.innerHTML = 'Your ';
+        copyInputLabel.dataset.i18n = 'copy-address';
+        userInputLabel.dataset.i18n = 'your-card';
       }
+
+      cryptoModel.updateModel(cryptoModel.value);
+      currencyModel.updateModel(currencyModel.value);
 
       // Inputs
       const cryptoAddressInputSelector = 'input[data-model="buy-sell:crypto:address"]';

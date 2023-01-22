@@ -9,14 +9,14 @@ export function homePageLoad() {
   Object.assign(window, {
     toggleCurrencies,
   });
-
+  
   addCryptocurrencies();
-
+  
   loadCryptos()
-    .then(fillCryptocurrencies)
-    .catch(e => {
-      throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
-    });
+  .then(fillCryptocurrencies)
+  .catch(e => {
+    throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
+  });
   hideSpinner();
   useAnimationOnScroll();
 }

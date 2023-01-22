@@ -1,5 +1,6 @@
 import { ModelRepository } from "../../model/base.js";
 import { inverse } from "../../model/buySellOperation.js";
+import getTranslation from "../../i18n/get.js";
 
 /**
  * 
@@ -9,6 +10,8 @@ function currencyCardAddressView(modelRepository) {
   if (!(modelRepository instanceof ModelRepository)) {
     throw new TypeError('Expected modelRepository to be instance of ModelRepository.');
   }
+
+  const currentLanguage = modelRepository.find('language').value;
 
   const cryptoAddress = modelRepository.find('buy-sell:crypto:address');
   const currencyCard = modelRepository.find('buy-sell:currency:card');
@@ -43,7 +46,7 @@ function currencyCardAddressView(modelRepository) {
 
   const copyInputFocusListener = () => {
     navigator.clipboard.writeText(copyInput.value);
-    copyInputMessage.innerHTML = 'Copied.';
+    copyInputMessage.innerHTML = getTranslation('copied-message', currentLanguage);
     copyInput.parentElement.classList.add('copied');
     copyInputMessage.classList.remove('hidden');
   };
@@ -114,8 +117,7 @@ function currencyCardAddressView(modelRepository) {
     if (document.activeElement !== currencyCardInput) {
       currencyCardInput.parentElement.classList.add('invalid');
 
-      // TODO: Apply i18n
-      currencyMessage.innerHTML = 'Invalid card number.';
+      currencyMessage.innerHTML = getTranslation('invalid-card-message', currentLanguage);
       currencyMessage.classList.remove('hidden');
       currencyMessage.classList.add('invalid');
     }
@@ -128,8 +130,7 @@ function currencyCardAddressView(modelRepository) {
     if (document.activeElement !== cryptoAddressInput) {
       cryptoAddressInput.parentElement.classList.add('invalid');
 
-      // TODO: Apply i18n
-      cryptoMessage.innerHTML = 'Invalid crypto address. Please, do not write it by hand, copy from clipboard instead.'
+      cryptoMessage.innerHTML = getTranslation('invalid-address-message', currentLanguage);
       cryptoMessage.classList.remove('hidden');
       cryptoMessage.classList.add('invalid');
     }

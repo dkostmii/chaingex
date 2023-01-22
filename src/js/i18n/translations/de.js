@@ -41,7 +41,11 @@ const de = {
   'features-item-1-caption': 'Kunden wählen uns',
   'features-item-2-caption': 'Jeden Tag austauschen',
   'features-item-3-caption': 'Auf dem Kryptomarkt',
-  'features-item-3-years': 'Jahre',
+  'features-item-3-years': [
+    [0, 0, '%n Jahre'],
+    [1, 1, '%n Jahr'],
+    [2, null, '%n Jahre'],
+  ],
 
   // Guarantees
   'guarantees-title': 'Tauschen Sie Kryptowährungen jetzt und, vor allem, sicher',
@@ -75,7 +79,39 @@ const de = {
 
   // FAQ item 4
   'faq-item-4-title': 'Wie übertrage ich Kryptowährung von Chaingex zu einer anderen Börse?',
-  'faq-item-4-body': 'Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto austauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein.'
+  'faq-item-4-body': 'Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto austauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein.',
+
+  // Exchanger
+  'exchanger-title': 'Unbegrenzter Krypto-Austausch',
+  'exchanger-subtitle': 'Schnelle Krypto-Swaps, verwahrungsfrei',
+  'crypto-address-tab': 'Krypto-Adresse',
+  'bank-tab': 'Bank',
+  'exchange-crypto-tab': 'Krypto tauschen',
+  'buy-sell-crypto-tab': 'Krypto kaufen / verkaufen',
+  
+  'exchange-button': 'Austausch',
+  'buy-button': 'Kaufen',
+  'sell-button': 'Verkaufen',
+
+  'estimated-rate': 'Geschätzter Preis: ',
+  'you-get': 'Sie kriegst',
+  'you-send': 'Sie sendest',
+  'you-pay': 'Sie zahlen',
+  'no-extra-fees': 'Keine zusätzlichen Gebühren',
+  'fee': 'Gebühr: %{fee}',
+  'net': 'Net: %{net}',
+  'copy-card': '%{short} Karte kopieren',
+  'your-card': 'Deine %{short} Karte',
+  'copy-address': '%{short} Adresse kopieren',
+  'your-address': 'Deine %{short} Adresse',
+
+  'your-card-invalid': 'Ungültige Karte',
+  'your-address-invalid': 'Ungültige Adresse',
+
+  'invalid-address-message': 'Bitte überprüfen Sie Ihre Adresse. Schreiben Sie es nicht von Hand, sondern kopieren Sie es aus der Zwischenablage.',
+  'invalid-card-message': 'Bitte überprüfen Sie Ihre Kartennummer.',
+  'min-amount': 'Mindestbetrag: %{amount}',
+  'copied-message': 'Kopiert',
 };
 
 export default de;
