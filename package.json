@@ -70,7 +70,6 @@
 		"pug-loader": "latest",
 		"sass": "^1.57.0",
 		"sass-loader": "^13.2.0",
-		"smooth-scroll": "latest",
 		"string-replace-loader": "latest",
 		"style-loader": "^3.3.1",
 		"swiper": "latest",
@@ -91,6 +90,7 @@
 		"jquery": "^3.6.1",
 		"rfs": "^9.0.6",
 		"roddeh-i18n": "^1.2.1",
-		"simplebar": "latest"
+		"simplebar": "latest",
+		"smooth-scroll": "^16.1.3"
 	}
 }

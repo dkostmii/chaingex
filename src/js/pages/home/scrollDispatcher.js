@@ -27,11 +27,16 @@ export function scrollAction(targetElement) {
  * Dispatch target element from query parameters and do {@link scrollAction}.
  */
 function useScrollDispatcher() {
-  const { targetElement: targetElementURIEncoded } = dispatch('targetElement');
-  const targetElement = decodeURIComponent(targetElementURIEncoded);
+  const dispatchResult = dispatch('targetElement');
 
-  if (isString(targetElement).nonEmpty().value) {
-    setTimeout(() => scrollAction(targetElement), 100);
+  const { targetElement: targetElementURIEncoded } = dispatchResult;
+
+  if (isString(targetElementURIEncoded).nonEmpty().value) {
+    const targetElement = decodeURIComponent(targetElementURIEncoded);
+
+    if (isString(targetElement).nonEmpty().value) {
+      setTimeout(() => scrollAction(targetElement), 100);
+    }
   }
 }
 

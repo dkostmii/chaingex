@@ -51,3 +51,11 @@ export function capitalize(str) {
 
   return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
 }
+
+export function replaceAllDigits(str) {
+  if (!(typeof str === 'string' || str instanceof String)) {
+    throw new TypeError('Expected str to be a string.');
+  }
+
+  return str.replace(/[0-9]/g, '');
+}

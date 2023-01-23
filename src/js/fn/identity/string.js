@@ -26,7 +26,7 @@ function isString(str) {
      */
     nonEmpty() {
       return {
-        value: value ? str.trim().replace("\n", "").length > 0 : value,
+        value: value ? str.trim().replace("\n", "").length > 0 : false,
         /**
          * Throw an error if identity is not true.
          * @param {string} paramName A name of parameter which represents the object, tested by identity function.

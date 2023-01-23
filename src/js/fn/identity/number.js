@@ -26,7 +26,7 @@ function isNumber(number) {
      */
     nonNegative() {
       return {
-        value: value ? number >= 0 : value,
+        value: value ? number >= 0 : false,
         /**
          * Throw an error if identity is not true.
          * @param {string} paramName A name of parameter which represents the object, tested by identity function.

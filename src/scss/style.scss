@@ -31,6 +31,7 @@
 body {
 	// Скролл заблокирован
 	background-color: #020015;
+	scroll-behavior: smooth;
 	.lock &, &.lock {
 		overflow: hidden;
 		touch-action: none;

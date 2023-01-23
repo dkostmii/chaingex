@@ -7,6 +7,8 @@ import exchangeFeeView from "./fee.js";
 import exchangeRateView from "./rate.js";
 import cryptoShortView from "./short.js";
 
+import sendMessage from "../../requests/sendMessage.js";
+
 import { ModelRepository } from "../../model/base.js";
 
 /**
@@ -40,7 +42,7 @@ function exchangeView(modelRepository) {
       return;
     }
 
-    alert(exchangeModel.getValue());
+    sendMessage(exchangeModel.getValue());
   });
 }
 

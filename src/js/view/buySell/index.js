@@ -9,6 +9,8 @@ import buySellRateView from "./rate.js";
 import currencyShortView from "./short.js";
 import swapView from "./swap.js";
 
+import sendMessage from "../../requests/sendMessage.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -59,7 +61,7 @@ function buySellView(modelRepository) {
       return;
     }
 
-    alert(buySellModel.getValue());
+    sendMessage(buySellModel.getValue());
   });
 }
 

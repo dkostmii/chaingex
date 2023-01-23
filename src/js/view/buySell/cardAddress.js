@@ -15,6 +15,8 @@ function currencyCardAddressView(modelRepository) {
 
   const cryptoAddress = modelRepository.find('buy-sell:crypto:address');
   const currencyCard = modelRepository.find('buy-sell:currency:card');
+  const cryptoShortModel = modelRepository.find('buy-sell:crypto:short');
+  const currencyShortModel = modelRepository.find('buy-sell:currency:short');
 
   const buySellOperationModel = modelRepository.find('operation:buy-sell');
 
@@ -66,6 +68,12 @@ function currencyCardAddressView(modelRepository) {
   };
 
   const userInputFocusListener = () => {
+    if (buySellOperationModel.value === inverse(inverse('buy'))) {
+      cryptoShortModel.updateModel(cryptoShortModel.value);
+    } else if (buySellOperationModel.value === inverse('buy')) {
+      currencyShortModel.updateModel(currencyShortModel.value);
+    }
+
     userInput.parentElement.classList.remove('invalid');
     userInputMessage.innerHTML = ''
     userInputMessage.classList.remove('invalid');
@@ -116,6 +124,7 @@ function currencyCardAddressView(modelRepository) {
 
     if (document.activeElement !== currencyCardInput) {
       currencyCardInput.parentElement.classList.add('invalid');
+      currencyCardInput.previousElementSibling.innerHTML = getTranslation('your-card-invalid', currentLanguage);
 
       currencyMessage.innerHTML = getTranslation('invalid-card-message', currentLanguage);
       currencyMessage.classList.remove('hidden');
@@ -129,6 +138,7 @@ function currencyCardAddressView(modelRepository) {
 
     if (document.activeElement !== cryptoAddressInput) {
       cryptoAddressInput.parentElement.classList.add('invalid');
+      cryptoAddressInput.previousElementSibling.innerHTML = getTranslation('your-address-invalid', currentLanguage);
 
       cryptoMessage.innerHTML = getTranslation('invalid-address-message', currentLanguage);
       cryptoMessage.classList.remove('hidden');

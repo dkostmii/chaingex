@@ -39,7 +39,7 @@ function currencyShortView(modelRepository) {
   });
 
   cryptoShortModel.addEventListener('update', (_, newValue) => {
-    const cryptoShortElements = document.querySelectorAll('span[data-model="buy-sell:crypto:short"]');
+    const cryptoShortElements = document.querySelectorAll('*[data-model="buy-sell:crypto:short"]');
     [...cryptoShortElements].forEach(el => {
       if ('i18n' in el.dataset) {
         el.innerHTML = getTranslation(el.dataset.i18n, currentLanguage, { short: newValue });
@@ -50,7 +50,7 @@ function currencyShortView(modelRepository) {
   });
 
   currencyShortModel.addEventListener('update', (_, newValue) => {
-    const currencyShortElements = document.querySelectorAll('span[data-model="buy-sell:currency:short"]');
+    const currencyShortElements = document.querySelectorAll('*[data-model="buy-sell:currency:short"]');
     [...currencyShortElements].forEach(el => {
       if ('i18n' in el.dataset) {
         el.innerHTML = getTranslation(el.dataset.i18n, currentLanguage, { short: newValue });

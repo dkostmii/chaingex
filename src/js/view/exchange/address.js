@@ -18,6 +18,8 @@ function cryptoAddressView(modelRepository) {
   const cryptoInAddress = modelRepository.find('exchange:crypto-in:address');
   const cryptoOutAddress = modelRepository.find('exchange:crypto-out:address');
 
+  const cryptoOutShortModel = modelRepository.find('exchange:crypto-out:short');
+
   const cryptoInAddressInput = document.querySelector('input[data-model="exchange:crypto-in:address"]');
   const cryptoOutAddressInput = document.querySelector('input[data-model="exchange:crypto-out:address"]');
   
@@ -70,6 +72,7 @@ function cryptoAddressView(modelRepository) {
   cryptoOutAddress.addEventListener('invalid', () => {
     if (document.activeElement !== cryptoOutAddressInput) {
       cryptoOutAddressInput.parentElement.classList.add('invalid');
+      cryptoOutAddressInput.previousElementSibling.innerHTML = getTranslation('your-address-invalid', currentLanguage);
 
       // TODO: Apply i18n
       cryptoOutMessage.innerHTML = getTranslation('invalid-address-message', currentLanguage);
@@ -83,6 +86,7 @@ function cryptoAddressView(modelRepository) {
   });
 
   const cryptoOutAddressInputFocusListener = () => {
+    cryptoOutShortModel.updateModel(cryptoOutShortModel.value);
     cryptoOutAddressInput.parentElement.classList.remove('invalid');
     cryptoOutMessage.innerHTML = ''
     cryptoOutMessage.classList.remove('invalid');

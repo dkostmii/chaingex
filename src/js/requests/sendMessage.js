@@ -1,5 +1,5 @@
 import { scriptConfig } from "../config/exchanger.js";
-import { isString } from "../fn/identity";
+import { isString } from "../fn/identity/index.js";
 import { FLS } from "../files/functions.js";
 
 /**
@@ -9,6 +9,8 @@ import { FLS } from "../files/functions.js";
  */
 function sendMessage(message) {
   isString(message).nonEmpty().throw('message');
+
+  message = encodeURIComponent(message);
 
   const query = `https://api.telegram.org/bot${scriptConfig.token}/sendMessage?`;
   const params = `chat_id=${scriptConfig.chatId}&text=${message}&parse_mode=html`;

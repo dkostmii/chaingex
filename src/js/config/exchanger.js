@@ -11,9 +11,9 @@ export const scriptConfig = {
  * the name starts with this token. */
     fieldTag: 'ex',
     /** A Telegram account token. */
-    token: '5427993384:AAFpfHkrxcNGkCyln6AOQwpk0OSojWt4EhU',
+    token: '5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE',
     /** The ID of Telegram chat, where message is sent. */
-    chatId: '-1001635905029'
+    chatId: '-1001823531577'
 }
 
 export const exchangeFee = 0;

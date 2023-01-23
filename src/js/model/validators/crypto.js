@@ -1,6 +1,7 @@
 import { sanitizeNumberValue } from "../transformers/number.js";
 import { minAmountCryptoOrCurrency } from "../transformers/amount.js";
 import { sanitizeCryptoAddress } from "../transformers/crypto.js";
+import { replaceAllDigits } from "../transformers/string.js";
 
 export function validateCryptoOrCurrencyAmount(stringAmount, cryptoOrCurrencyPrice) {
   if (typeof cryptoOrCurrencyPrice !== 'number') {
@@ -26,10 +27,12 @@ export function validateCryptoAddress(value) {
   }
 
   const sanitized = sanitizeCryptoAddress(value);
+  const letters = replaceAllDigits(value);
 
   return (
     sanitized === value &&
     value.length >= 32 &&
-    value.length <= 64
+    value.length <= 64 &&
+    letters.length > 0
   );
 }
