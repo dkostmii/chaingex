@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import ElementNotFoundError from '../../errors/elementNotFound.js';
 
+import storageConfig from '../../config/storage.js';
+
 /**
  * Injects the redirection link (./exchanger.html) into all Change, Sell and Buy buttons.
  * 
@@ -8,40 +10,44 @@ import ElementNotFoundError from '../../errors/elementNotFound.js';
  * into browser `localStorage`, so **Exchanger** page can select required crypto for the user.
  */
 export function changeSellBuyToExchangeRedirect() {
-  const { localStorage } = window;
+  const { targetCrypto, operation } = storageConfig.tokenNames;
 
-  const { sendCrypto, receiveCrypto } = storageConfig.tokenNames;
-
-  $('.button__change, .button__sell')
+  $('.button__change')
     .each((_, el) => {
-      $(el).on('click', () => {
-        const columnPriceEl = el.parentElement.parentElement.querySelector('.colum__price');
+      const columnPriceEl = el.parentElement.parentElement.querySelector('.colum__price');
 
-        if (!(columnPriceEl instanceof Element)) {
-          throw new ElementNotFoundError('.colum__price');
-        }
+      if (!(columnPriceEl instanceof Element)) {
+        throw new ElementNotFoundError('.colum__price');
+      }
 
-        const cryptoId = columnPriceEl.id;
+      const cryptoId = columnPriceEl.id;
 
-        localStorage.setItem(sendCrypto, cryptoId);
-      });
-
-      $(el).attr('href', './exchanger.html');
+      $(el).attr('href', `exchanger.html?${targetCrypto}=${cryptoId}&${operation}=exchange`);
     });
 
   $('.button__buy')
     .each((_, el) => {
-      $(el).on('click', () => {
-        const columnPriceEl = el.parentElement.parentElement.querySelector('.colum__price');
+      const columnPriceEl = el.parentElement.parentElement.querySelector('.colum__price');
 
-        if (!(columnPriceEl instanceof Element)) {
-          throw new ElementNotFoundError('.colum__price');
-        }
+      if (!(columnPriceEl instanceof Element)) {
+        throw new ElementNotFoundError('.colum__price');
+      }
 
-        const cryptoId = columnPriceEl.id;
-   
-        localStorage.setItem(receiveCrypto, cryptoId);
-      });
-      $(el).attr('href', './exchanger.html');
+      const cryptoId = columnPriceEl.id;
+
+      $(el).attr('href', `exchanger.html?${targetCrypto}=${cryptoId}&${operation}=buy`);
+    });
+
+  $('.button__sell')
+    .each((_, el) => {
+      const columnPriceEl = el.parentElement.parentElement.querySelector('.colum__price');
+
+      if (!(columnPriceEl instanceof Element)) {
+        throw new ElementNotFoundError('.colum__price');
+      }
+
+      const cryptoId = columnPriceEl.id;
+
+      $(el).attr('href', `exchanger.html?${targetCrypto}=${cryptoId}&${operation}=sell`);
     });
 }

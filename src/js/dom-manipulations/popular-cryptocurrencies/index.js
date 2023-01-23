@@ -7,6 +7,7 @@ import { prependSignLiteral } from "../../fn/numbers/sign.js";
 import { preCheck } from "../../fn/numbers/pre-check.js";
 import createCryptoElement from './crypto-element.js';
 import { getSign } from "../../fn/numbers/sign.js";
+import { changeSellBuyToExchangeRedirect } from "./redirect.js";
 
 /**
  * @typedef {import('../types/currency.js').CurrencyPartial} CurrencyPartial
@@ -33,6 +34,8 @@ export function addCryptocurrencies() {
     const cryptoEl = createCryptoElement(crypto, id);
     popularCurrenciesContainer.insertBefore(cryptoEl, actionEl);
   });
+
+  changeSellBuyToExchangeRedirect();
 }
 
 function mapSignStyleClass(num) {
