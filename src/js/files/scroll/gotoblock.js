@@ -46,7 +46,7 @@ export let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 
 			targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
 			window.scrollTo({
 				top: targetBlockElementPosition,
-				behavior: "smooth"
+				behavior: "smooth",
 			});
 		}
 		FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);

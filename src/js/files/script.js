@@ -15,9 +15,11 @@ import { toggleMenu, autoCloseMenu } from '../dom-manipulations/header-menu.js';
 
 import getCurrentPage from '../fn/currentPage.js';
 
-import homePageLoad from '../pages/home.js';
+import homePageLoad from '../pages/home/index.js';
 import exchangerPageLoad from '../pages/exchanger/index.js';
 import useLanguageDetect from '../i18n/detect.js';
+import useScrollRouter from '../dom-manipulations/scroll-router.js';
+
 useLanguageDetect();
 
 headerDesktop();
@@ -28,13 +30,14 @@ Object.assign(window, {
 
 const page = getCurrentPage();
 
-
 if (page === 'Exchanger') {
 	exchangerPageLoad();
 
 } else if (page === 'Home') {
 	homePageLoad();
 }
+
+useScrollRouter();
 
 // Import i18n last, so the all DOM manipulations occurred.
 import useI18n from '../i18n/index.js';

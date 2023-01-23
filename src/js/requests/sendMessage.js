@@ -1,5 +1,6 @@
 import { scriptConfig } from "../config/exchanger.js";
 import { isString } from "../fn/identity";
+import { FLS } from "../files/functions.js";
 
 /**
  * Sends message to Telegram chat using {@link scriptConfig.token} and {@link scriptConfig.chatId} credentials.
@@ -15,7 +16,7 @@ function sendMessage(message) {
 
   fetch(url)
       .then(response => response.json())
-      .then(data => scriptConfig.env === 'dev' ? console.log(data) : true);
+      .then(data => scriptConfig.env === 'dev' ? FLS(data) : true);
 }
 
 export default sendMessage;
