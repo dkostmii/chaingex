@@ -115,6 +115,15 @@ const eng = {
   'invalid-card-message': 'Please, check your card number.',
   'min-amount': 'Min amount: %{amount}',
   'copied-message': 'Copied',
+
+  // Popup
+  'popup-success-title': 'Success!',
+  'popup-success-text': 'The exchange has been successfully completed, please wait for a confirmation message',
+  'popup-failure-title': 'Oh, no!',
+  'popup-failure-text': 'Something went wrong with the exchange, please try again or reload the page',
+  'popup-button-home': 'Go to home',
+  'popup-button-continue': 'Continue',
+  'popup-button-refresh': 'Refresh',
 };
 
 export default eng;

@@ -1,0 +1,131 @@
+.popup {
+  background-color: #0D1425;
+  padding: rem(40);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: rem(420);
+
+  gap: rem(30);
+
+  &.hidden {
+    display: none;
+  }
+
+  &__icon {
+    width: rem(100);
+    height: rem(100);
+  }
+
+  &__content {
+    display: inherit;
+    flex-direction: inherit;
+    gap: rem(20);
+    align-items: center;
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    gap: rem(5);
+    color: $mainColor;
+
+    align-items: center;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: rem(32);
+    line-height: 1.25;
+  }
+
+  &__text {
+    font-size: rem(18);
+    line-height: 1.25;
+    opacity: 0.5;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: rem(20);
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__buttons > .button {
+    font-size: rem(16);
+    line-height: math.div(24, 16);
+
+    flex: 1 1 0;
+
+    padding: rem(10) rem(30);
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__screen {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(#000, 0.65);
+    z-index: 1000;
+  }
+
+  &__screen.hidden {
+    display: none;
+  }
+
+  @media screen and (max-width: $tablet) {
+    padding: rem(32);
+    gap: rem(24);
+    
+    &__icon {
+      width: rem(80);
+      height: rem(80);
+    }
+
+    &__buttons {
+      flex-direction: column;
+      gap: rem(20.24);
+    }
+
+    &__buttons > .button {
+      font-size: rem(16);
+      padding: rem(10.119) rem(30.3571);
+    }
+
+    &__content {
+      gap: rem(20.24);
+    }
+
+    &__title {
+      font-size: rem(20);
+    }
+
+    &__text {
+      font-size: rem(16);
+    }
+  }
+}
+
+.button {
+  &-primary {
+    background-color: #8AC44B;
+    color: $mainColor;
+  }
+
+  &-secondary {
+    background-color: transparent;
+    border: 1px solid #7B46E8;
+    color: $mainColor;
+  }
+}

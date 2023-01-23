@@ -10,6 +10,7 @@ import currencyShortView from "./short.js";
 import swapView from "./swap.js";
 
 import sendMessage from "../../requests/sendMessage.js";
+import popupView from "../popup.js";
 
 /**
  * 
@@ -54,6 +55,8 @@ function buySellView(modelRepository) {
     }
   });
 
+  const resultModel = modelRepository.find('result');
+
   buySellButton.addEventListener('click', e => {
     e.preventDefault();
 
@@ -61,7 +64,11 @@ function buySellView(modelRepository) {
       return;
     }
 
-    sendMessage(buySellModel.getValue());
+    sendMessage(buySellModel.getValue())
+      .then(result => {
+        resultModel.updateModel(result);
+        popupView(modelRepository);
+      });
   });
 }
 

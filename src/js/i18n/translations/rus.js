@@ -91,7 +91,7 @@ const rus = {
   'crypto-address-tab': 'Крипто-адрес',
   'bank-tab': 'Банк',
   'exchange-crypto-tab': 'Обмен Криптовалюты',
-  'buy-sell-crypto-tab': 'Купить / Продать Криптовалюту',
+  'buy-sell-crypto-tab': 'Купить / Продать',
   
   'exchange-button': 'Обменять',
   'buy-button': 'Купить',
@@ -116,6 +116,15 @@ const rus = {
   'invalid-card-message': 'Пожалуйста, проверьте номер карты.',
   'min-amount': 'Мин сумма: %{amount}',
   'copied-message': 'Скопировано',
+
+  // Popup
+  'popup-success-title': 'Успех!',
+  'popup-success-text': 'Обмен успешно завершен, пожалуйста, дождитесь подтверждающего сообщения',
+  'popup-failure-title': 'О, нет!',
+  'popup-failure-text': 'Что-то пошло не так при обмене, попробуйте еще раз или перезагрузите страницу',
+  'popup-button-home': 'Главная страница',
+  'popup-button-continue': 'Продолжить',
+  'popup-button-refresh': 'Обновить',
 }
 
 export default rus;

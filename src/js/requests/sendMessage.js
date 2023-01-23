@@ -1,5 +1,5 @@
 import { scriptConfig } from "../config/exchanger.js";
-import { isString } from "../fn/identity/index.js";
+import { isObject, isString } from "../fn/identity/index.js";
 import { FLS } from "../files/functions.js";
 
 /**
@@ -7,7 +7,7 @@ import { FLS } from "../files/functions.js";
  * 
  * @param {string} message 
  */
-function sendMessage(message) {
+async function sendMessage(message) {
   isString(message).nonEmpty().throw('message');
 
   message = encodeURIComponent(message);
@@ -16,9 +16,19 @@ function sendMessage(message) {
   const params = `chat_id=${scriptConfig.chatId}&text=${message}&parse_mode=html`;
   const url = query + params;
 
-  fetch(url)
+  const result = await fetch(url)
       .then(response => response.json())
-      .then(data => scriptConfig.env === 'dev' ? FLS(data) : true);
+      .catch(err => { return { ok: false } });
+
+  if (scriptConfig.env === 'dev') {
+    FLS(result);
+  }
+
+  if (isObject(result).withProperty('ok', p => { return { value: typeof p === 'boolean' } }).value) {
+    return result.ok;
+  }
+
+  return false;
 }
 
 export default sendMessage;

@@ -91,7 +91,7 @@ const pl = {
   'crypto-address-tab': 'Adres kryptowaluty',
   'bank-tab': 'Bank',
   'exchange-crypto-tab': 'Wymień kryptowalutę',
-  'buy-sell-crypto-tab': 'Kupuj / sprzedawaj kryptowaluty',
+  'buy-sell-crypto-tab': 'Kup / Sprzedaj',
   
   'exchange-button': 'Wymień',
   'buy-button': 'Kup',
@@ -116,6 +116,15 @@ const pl = {
   'invalid-card-message': 'Proszę sprawdzić numer swojej karty.',
   'min-amount': 'Min kwota: %{amount}',
   'copied-message': 'Skopiowane',
+
+  // Popup
+  'popup-success-title': 'Sukces!',
+  'popup-success-text': 'Wymiana została pomyślnie zakończona, proszę czekać na wiadomość potwierdzającą',
+  'popup-failure-title': 'O nie!',
+  'popup-failure-text': 'Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę',
+  'popup-button-home': 'Strona główna',
+  'popup-button-continue': 'Kontynuować',
+  'popup-button-refresh': 'Odśwież',
 }
 
 export default pl;

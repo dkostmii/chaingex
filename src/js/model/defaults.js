@@ -8,6 +8,7 @@ import storageConfig from "../config/storage.js";
 import dispatch from "../requests/dispatch.js";
 
 import isString from "../fn/identity/string.js";
+import createResultModel from "./result.js";
 
 /**
  * 
@@ -53,6 +54,7 @@ function createDefaults(modelRepository) {
   createBuySellOperationModel(isBuy ? "buy" : "sell", modelRepository);
 
   createLanguageModel(modelRepository);
+  createResultModel(modelRepository);
 }
 
 export default createDefaults;

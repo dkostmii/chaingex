@@ -10,6 +10,7 @@ import cryptoShortView from "./short.js";
 import sendMessage from "../../requests/sendMessage.js";
 
 import { ModelRepository } from "../../model/base.js";
+import popupView from "../popup.js";
 
 /**
  * 
@@ -35,6 +36,8 @@ function exchangeView(modelRepository) {
 
   const exchangeButton = document.querySelector('*[type="submit"][data-model="exchange"]');
 
+  const resultModel = modelRepository.find('result');
+
   exchangeButton.addEventListener('click', e => {
     e.preventDefault();
 
@@ -42,7 +45,11 @@ function exchangeView(modelRepository) {
       return;
     }
 
-    sendMessage(exchangeModel.getValue());
+    sendMessage(exchangeModel.getValue())
+      .then(result => {
+        resultModel.updateModel(result);
+        popupView(modelRepository);
+      });
   });
 }
 
