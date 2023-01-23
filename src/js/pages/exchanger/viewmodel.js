@@ -6,6 +6,8 @@ import buySellView from '../../view/buySell/index.js';
 import exchangeView from '../../view/exchange/index.js';
 import createOperationView from '../../view/operation.js';
 
+import { FLS } from '../../files/functions.js';
+
 /**
  * 
  * @param {Currency[]} cryptos 
@@ -27,7 +29,7 @@ function useViewModels(cryptos, currencies) {
   
   models.forEach(model => {
     model.addEventListener('update', (oldValue, newValue) => {
-      console.log(`[Update ${model.id}]: "${oldValue}" => "${newValue}"`);
+      FLS(`[Update ${model.id}]: "${oldValue}" => "${newValue}"`);
     });
   });
 }
