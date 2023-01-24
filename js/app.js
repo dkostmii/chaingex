@@ -1,447 +1,10 @@
 (() => {
     var __webpack_modules__ = {
-        711: function(module) {
-            !function(e, t) {
-                true ? module.exports = t() : 0;
-            }(0, (function() {
-                return function(e) {
-                    function t(o) {
-                        if (n[o]) return n[o].exports;
-                        var i = n[o] = {
-                            exports: {},
-                            id: o,
-                            loaded: !1
-                        };
-                        return e[o].call(i.exports, i, i.exports, t), i.loaded = !0, i.exports;
-                    }
-                    var n = {};
-                    return t.m = e, t.c = n, t.p = "dist/", t(0);
-                }([ function(e, t, n) {
-                    "use strict";
-                    function o(e) {
-                        return e && e.__esModule ? e : {
-                            default: e
-                        };
-                    }
-                    var i = Object.assign || function(e) {
-                        for (var t = 1; t < arguments.length; t++) {
-                            var n = arguments[t];
-                            for (var o in n) Object.prototype.hasOwnProperty.call(n, o) && (e[o] = n[o]);
-                        }
-                        return e;
-                    }, r = n(1), a = (o(r), n(6)), u = o(a), c = n(7), s = o(c), f = n(8), d = o(f), l = n(9), p = o(l), m = n(10), b = o(m), v = n(11), y = o(v), g = n(14), h = o(g), w = [], k = !1, x = {
-                        offset: 120,
-                        delay: 0,
-                        easing: "ease",
-                        duration: 400,
-                        disable: !1,
-                        once: !1,
-                        startEvent: "DOMContentLoaded",
-                        throttleDelay: 99,
-                        debounceDelay: 50,
-                        disableMutationObserver: !1
-                    }, j = function() {
-                        var e = arguments.length > 0 && void 0 !== arguments[0] && arguments[0];
-                        if (e && (k = !0), k) return w = (0, y.default)(w, x), (0, b.default)(w, x.once), 
-                        w;
-                    }, O = function() {
-                        w = (0, h.default)(), j();
-                    }, M = function() {
-                        w.forEach((function(e, t) {
-                            e.node.removeAttribute("data-aos"), e.node.removeAttribute("data-aos-easing"), e.node.removeAttribute("data-aos-duration"), 
-                            e.node.removeAttribute("data-aos-delay");
-                        }));
-                    }, S = function(e) {
-                        return !0 === e || "mobile" === e && p.default.mobile() || "phone" === e && p.default.phone() || "tablet" === e && p.default.tablet() || "function" == typeof e && !0 === e();
-                    }, _ = function(e) {
-                        x = i(x, e), w = (0, h.default)();
-                        var t = document.all && !window.atob;
-                        return S(x.disable) || t ? M() : (x.disableMutationObserver || d.default.isSupported() || (console.info('\n      aos: MutationObserver is not supported on this browser,\n      code mutations observing has been disabled.\n      You may have to call "refreshHard()" by yourself.\n    '), 
-                        x.disableMutationObserver = !0), document.querySelector("body").setAttribute("data-aos-easing", x.easing), 
-                        document.querySelector("body").setAttribute("data-aos-duration", x.duration), document.querySelector("body").setAttribute("data-aos-delay", x.delay), 
-                        "DOMContentLoaded" === x.startEvent && [ "complete", "interactive" ].indexOf(document.readyState) > -1 ? j(!0) : "load" === x.startEvent ? window.addEventListener(x.startEvent, (function() {
-                            j(!0);
-                        })) : document.addEventListener(x.startEvent, (function() {
-                            j(!0);
-                        })), window.addEventListener("resize", (0, s.default)(j, x.debounceDelay, !0)), 
-                        window.addEventListener("orientationchange", (0, s.default)(j, x.debounceDelay, !0)), 
-                        window.addEventListener("scroll", (0, u.default)((function() {
-                            (0, b.default)(w, x.once);
-                        }), x.throttleDelay)), x.disableMutationObserver || d.default.ready("[data-aos]", O), 
-                        w);
-                    };
-                    e.exports = {
-                        init: _,
-                        refresh: j,
-                        refreshHard: O
-                    };
-                }, function(e, t) {}, , , , , function(e, t) {
-                    (function(t) {
-                        "use strict";
-                        function n(e, t, n) {
-                            function o(t) {
-                                var n = b, o = v;
-                                return b = v = void 0, k = t, g = e.apply(o, n);
-                            }
-                            function r(e) {
-                                return k = e, h = setTimeout(f, t), M ? o(e) : g;
-                            }
-                            function a(e) {
-                                var n = e - w, o = e - k, i = t - n;
-                                return S ? j(i, y - o) : i;
-                            }
-                            function c(e) {
-                                var n = e - w, o = e - k;
-                                return void 0 === w || n >= t || n < 0 || S && o >= y;
-                            }
-                            function f() {
-                                var e = O();
-                                return c(e) ? d(e) : void (h = setTimeout(f, a(e)));
-                            }
-                            function d(e) {
-                                return h = void 0, _ && b ? o(e) : (b = v = void 0, g);
-                            }
-                            function l() {
-                                void 0 !== h && clearTimeout(h), k = 0, b = w = v = h = void 0;
-                            }
-                            function p() {
-                                return void 0 === h ? g : d(O());
-                            }
-                            function m() {
-                                var e = O(), n = c(e);
-                                if (b = arguments, v = this, w = e, n) {
-                                    if (void 0 === h) return r(w);
-                                    if (S) return h = setTimeout(f, t), o(w);
-                                }
-                                return void 0 === h && (h = setTimeout(f, t)), g;
-                            }
-                            var b, v, y, g, h, w, k = 0, M = !1, S = !1, _ = !0;
-                            if ("function" != typeof e) throw new TypeError(s);
-                            return t = u(t) || 0, i(n) && (M = !!n.leading, S = "maxWait" in n, y = S ? x(u(n.maxWait) || 0, t) : y, 
-                            _ = "trailing" in n ? !!n.trailing : _), m.cancel = l, m.flush = p, m;
-                        }
-                        function o(e, t, o) {
-                            var r = !0, a = !0;
-                            if ("function" != typeof e) throw new TypeError(s);
-                            return i(o) && (r = "leading" in o ? !!o.leading : r, a = "trailing" in o ? !!o.trailing : a), 
-                            n(e, t, {
-                                leading: r,
-                                maxWait: t,
-                                trailing: a
-                            });
-                        }
-                        function i(e) {
-                            var t = "undefined" == typeof e ? "undefined" : c(e);
-                            return !!e && ("object" == t || "function" == t);
-                        }
-                        function r(e) {
-                            return !!e && "object" == ("undefined" == typeof e ? "undefined" : c(e));
-                        }
-                        function a(e) {
-                            return "symbol" == ("undefined" == typeof e ? "undefined" : c(e)) || r(e) && k.call(e) == d;
-                        }
-                        function u(e) {
-                            if ("number" == typeof e) return e;
-                            if (a(e)) return f;
-                            if (i(e)) {
-                                var t = "function" == typeof e.valueOf ? e.valueOf() : e;
-                                e = i(t) ? t + "" : t;
-                            }
-                            if ("string" != typeof e) return 0 === e ? e : +e;
-                            e = e.replace(l, "");
-                            var n = m.test(e);
-                            return n || b.test(e) ? v(e.slice(2), n ? 2 : 8) : p.test(e) ? f : +e;
-                        }
-                        var c = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
-                            return typeof e;
-                        } : function(e) {
-                            return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-                        }, s = "Expected a function", f = NaN, d = "[object Symbol]", l = /^\s+|\s+$/g, p = /^[-+]0x[0-9a-f]+$/i, m = /^0b[01]+$/i, b = /^0o[0-7]+$/i, v = parseInt, y = "object" == ("undefined" == typeof t ? "undefined" : c(t)) && t && t.Object === Object && t, g = "object" == ("undefined" == typeof self ? "undefined" : c(self)) && self && self.Object === Object && self, h = y || g || Function("return this")(), w = Object.prototype, k = w.toString, x = Math.max, j = Math.min, O = function() {
-                            return h.Date.now();
-                        };
-                        e.exports = o;
-                    }).call(t, function() {
-                        return this;
-                    }());
-                }, function(e, t) {
-                    (function(t) {
-                        "use strict";
-                        function n(e, t, n) {
-                            function i(t) {
-                                var n = b, o = v;
-                                return b = v = void 0, O = t, g = e.apply(o, n);
-                            }
-                            function r(e) {
-                                return O = e, h = setTimeout(f, t), M ? i(e) : g;
-                            }
-                            function u(e) {
-                                var n = e - w, o = e - O, i = t - n;
-                                return S ? x(i, y - o) : i;
-                            }
-                            function s(e) {
-                                var n = e - w, o = e - O;
-                                return void 0 === w || n >= t || n < 0 || S && o >= y;
-                            }
-                            function f() {
-                                var e = j();
-                                return s(e) ? d(e) : void (h = setTimeout(f, u(e)));
-                            }
-                            function d(e) {
-                                return h = void 0, _ && b ? i(e) : (b = v = void 0, g);
-                            }
-                            function l() {
-                                void 0 !== h && clearTimeout(h), O = 0, b = w = v = h = void 0;
-                            }
-                            function p() {
-                                return void 0 === h ? g : d(j());
-                            }
-                            function m() {
-                                var e = j(), n = s(e);
-                                if (b = arguments, v = this, w = e, n) {
-                                    if (void 0 === h) return r(w);
-                                    if (S) return h = setTimeout(f, t), i(w);
-                                }
-                                return void 0 === h && (h = setTimeout(f, t)), g;
-                            }
-                            var b, v, y, g, h, w, O = 0, M = !1, S = !1, _ = !0;
-                            if ("function" != typeof e) throw new TypeError(c);
-                            return t = a(t) || 0, o(n) && (M = !!n.leading, S = "maxWait" in n, y = S ? k(a(n.maxWait) || 0, t) : y, 
-                            _ = "trailing" in n ? !!n.trailing : _), m.cancel = l, m.flush = p, m;
-                        }
-                        function o(e) {
-                            var t = "undefined" == typeof e ? "undefined" : u(e);
-                            return !!e && ("object" == t || "function" == t);
-                        }
-                        function i(e) {
-                            return !!e && "object" == ("undefined" == typeof e ? "undefined" : u(e));
-                        }
-                        function r(e) {
-                            return "symbol" == ("undefined" == typeof e ? "undefined" : u(e)) || i(e) && w.call(e) == f;
-                        }
-                        function a(e) {
-                            if ("number" == typeof e) return e;
-                            if (r(e)) return s;
-                            if (o(e)) {
-                                var t = "function" == typeof e.valueOf ? e.valueOf() : e;
-                                e = o(t) ? t + "" : t;
-                            }
-                            if ("string" != typeof e) return 0 === e ? e : +e;
-                            e = e.replace(d, "");
-                            var n = p.test(e);
-                            return n || m.test(e) ? b(e.slice(2), n ? 2 : 8) : l.test(e) ? s : +e;
-                        }
-                        var u = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
-                            return typeof e;
-                        } : function(e) {
-                            return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-                        }, c = "Expected a function", s = NaN, f = "[object Symbol]", d = /^\s+|\s+$/g, l = /^[-+]0x[0-9a-f]+$/i, p = /^0b[01]+$/i, m = /^0o[0-7]+$/i, b = parseInt, v = "object" == ("undefined" == typeof t ? "undefined" : u(t)) && t && t.Object === Object && t, y = "object" == ("undefined" == typeof self ? "undefined" : u(self)) && self && self.Object === Object && self, g = v || y || Function("return this")(), h = Object.prototype, w = h.toString, k = Math.max, x = Math.min, j = function() {
-                            return g.Date.now();
-                        };
-                        e.exports = n;
-                    }).call(t, function() {
-                        return this;
-                    }());
-                }, function(e, t) {
-                    "use strict";
-                    function n(e) {
-                        var t = void 0, o = void 0;
-                        for (t = 0; t < e.length; t += 1) {
-                            if (o = e[t], o.dataset && o.dataset.aos) return !0;
-                            if (o.children && n(o.children)) return !0;
-                        }
-                        return !1;
-                    }
-                    function o() {
-                        return window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-                    }
-                    function i() {
-                        return !!o();
-                    }
-                    function r(e, t) {
-                        var n = window.document, i = o(), r = new i(a);
-                        u = t, r.observe(n.documentElement, {
-                            childList: !0,
-                            subtree: !0,
-                            removedNodes: !0
-                        });
-                    }
-                    function a(e) {
-                        e && e.forEach((function(e) {
-                            var t = Array.prototype.slice.call(e.addedNodes), o = Array.prototype.slice.call(e.removedNodes), i = t.concat(o);
-                            if (n(i)) return u();
-                        }));
-                    }
-                    Object.defineProperty(t, "__esModule", {
-                        value: !0
-                    });
-                    var u = function() {};
-                    t.default = {
-                        isSupported: i,
-                        ready: r
-                    };
-                }, function(e, t) {
-                    "use strict";
-                    function n(e, t) {
-                        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-                    }
-                    function o() {
-                        return navigator.userAgent || navigator.vendor || window.opera || "";
-                    }
-                    Object.defineProperty(t, "__esModule", {
-                        value: !0
-                    });
-                    var i = function() {
-                        function e(e, t) {
-                            for (var n = 0; n < t.length; n++) {
-                                var o = t[n];
-                                o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), 
-                                Object.defineProperty(e, o.key, o);
-                            }
-                        }
-                        return function(t, n, o) {
-                            return n && e(t.prototype, n), o && e(t, o), t;
-                        };
-                    }(), r = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i, a = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i, u = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i, c = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i, s = function() {
-                        function e() {
-                            n(this, e);
-                        }
-                        return i(e, [ {
-                            key: "phone",
-                            value: function() {
-                                var e = o();
-                                return !(!r.test(e) && !a.test(e.substr(0, 4)));
-                            }
-                        }, {
-                            key: "mobile",
-                            value: function() {
-                                var e = o();
-                                return !(!u.test(e) && !c.test(e.substr(0, 4)));
-                            }
-                        }, {
-                            key: "tablet",
-                            value: function() {
-                                return this.mobile() && !this.phone();
-                            }
-                        } ]), e;
-                    }();
-                    t.default = new s;
-                }, function(e, t) {
-                    "use strict";
-                    Object.defineProperty(t, "__esModule", {
-                        value: !0
-                    });
-                    var n = function(e, t, n) {
-                        var o = e.node.getAttribute("data-aos-once");
-                        t > e.position ? e.node.classList.add("aos-animate") : "undefined" != typeof o && ("false" === o || !n && "true" !== o) && e.node.classList.remove("aos-animate");
-                    }, o = function(e, t) {
-                        var o = window.pageYOffset, i = window.innerHeight;
-                        e.forEach((function(e, r) {
-                            n(e, i + o, t);
-                        }));
-                    };
-                    t.default = o;
-                }, function(e, t, n) {
-                    "use strict";
-                    function o(e) {
-                        return e && e.__esModule ? e : {
-                            default: e
-                        };
-                    }
-                    Object.defineProperty(t, "__esModule", {
-                        value: !0
-                    });
-                    var i = n(12), r = o(i), a = function(e, t) {
-                        return e.forEach((function(e, n) {
-                            e.node.classList.add("aos-init"), e.position = (0, r.default)(e.node, t.offset);
-                        })), e;
-                    };
-                    t.default = a;
-                }, function(e, t, n) {
-                    "use strict";
-                    function o(e) {
-                        return e && e.__esModule ? e : {
-                            default: e
-                        };
-                    }
-                    Object.defineProperty(t, "__esModule", {
-                        value: !0
-                    });
-                    var i = n(13), r = o(i), a = function(e, t) {
-                        var n = 0, o = 0, i = window.innerHeight, a = {
-                            offset: e.getAttribute("data-aos-offset"),
-                            anchor: e.getAttribute("data-aos-anchor"),
-                            anchorPlacement: e.getAttribute("data-aos-anchor-placement")
-                        };
-                        switch (a.offset && !isNaN(a.offset) && (o = parseInt(a.offset)), a.anchor && document.querySelectorAll(a.anchor) && (e = document.querySelectorAll(a.anchor)[0]), 
-                        n = (0, r.default)(e).top, a.anchorPlacement) {
-                          case "top-bottom":
-                            break;
-
-                          case "center-bottom":
-                            n += e.offsetHeight / 2;
-                            break;
-
-                          case "bottom-bottom":
-                            n += e.offsetHeight;
-                            break;
-
-                          case "top-center":
-                            n += i / 2;
-                            break;
-
-                          case "bottom-center":
-                            n += i / 2 + e.offsetHeight;
-                            break;
-
-                          case "center-center":
-                            n += i / 2 + e.offsetHeight / 2;
-                            break;
-
-                          case "top-top":
-                            n += i;
-                            break;
-
-                          case "bottom-top":
-                            n += e.offsetHeight + i;
-                            break;
-
-                          case "center-top":
-                            n += e.offsetHeight / 2 + i;
-                        }
-                        return a.anchorPlacement || a.offset || isNaN(t) || (o = t), n + o;
-                    };
-                    t.default = a;
-                }, function(e, t) {
-                    "use strict";
-                    Object.defineProperty(t, "__esModule", {
-                        value: !0
-                    });
-                    var n = function(e) {
-                        for (var t = 0, n = 0; e && !isNaN(e.offsetLeft) && !isNaN(e.offsetTop); ) t += e.offsetLeft - ("BODY" != e.tagName ? e.scrollLeft : 0), 
-                        n += e.offsetTop - ("BODY" != e.tagName ? e.scrollTop : 0), e = e.offsetParent;
-                        return {
-                            top: n,
-                            left: t
-                        };
-                    };
-                    t.default = n;
-                }, function(e, t) {
-                    "use strict";
-                    Object.defineProperty(t, "__esModule", {
-                        value: !0
-                    });
-                    var n = function(e) {
-                        return e = e || document.querySelectorAll("[data-aos]"), Array.prototype.map.call(e, (function(e) {
-                            return {
-                                node: e
-                            };
-                        }));
-                    };
-                    t.default = n;
-                } ]);
-            }));
+        1807: module => {
+            var canUseDOM = !!("undefined" !== typeof window && window.document && window.document.createElement);
+            module.exports = canUseDOM;
         },
-        755: function(module, exports) {
+        9755: function(module, exports) {
             var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
             /*!
  * jQuery JavaScript Library v3.6.2
@@ -4933,7 +4496,437 @@
                 return jQuery;
             }));
         },
-        733: function(module, exports) {
+        1296: (module, __unused_webpack_exports, __webpack_require__) => {
+            var FUNC_ERROR_TEXT = "Expected a function";
+            var NAN = 0 / 0;
+            var symbolTag = "[object Symbol]";
+            var reTrim = /^\s+|\s+$/g;
+            var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+            var reIsBinary = /^0b[01]+$/i;
+            var reIsOctal = /^0o[0-7]+$/i;
+            var freeParseInt = parseInt;
+            var freeGlobal = "object" == typeof __webpack_require__.g && __webpack_require__.g && __webpack_require__.g.Object === Object && __webpack_require__.g;
+            var freeSelf = "object" == typeof self && self && self.Object === Object && self;
+            var root = freeGlobal || freeSelf || Function("return this")();
+            var objectProto = Object.prototype;
+            var objectToString = objectProto.toString;
+            var nativeMax = Math.max, nativeMin = Math.min;
+            var now = function() {
+                return root.Date.now();
+            };
+            function debounce(func, wait, options) {
+                var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+                if ("function" != typeof func) throw new TypeError(FUNC_ERROR_TEXT);
+                wait = toNumber(wait) || 0;
+                if (isObject(options)) {
+                    leading = !!options.leading;
+                    maxing = "maxWait" in options;
+                    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+                    trailing = "trailing" in options ? !!options.trailing : trailing;
+                }
+                function invokeFunc(time) {
+                    var args = lastArgs, thisArg = lastThis;
+                    lastArgs = lastThis = void 0;
+                    lastInvokeTime = time;
+                    result = func.apply(thisArg, args);
+                    return result;
+                }
+                function leadingEdge(time) {
+                    lastInvokeTime = time;
+                    timerId = setTimeout(timerExpired, wait);
+                    return leading ? invokeFunc(time) : result;
+                }
+                function remainingWait(time) {
+                    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, result = wait - timeSinceLastCall;
+                    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+                }
+                function shouldInvoke(time) {
+                    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+                    return void 0 === lastCallTime || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+                }
+                function timerExpired() {
+                    var time = now();
+                    if (shouldInvoke(time)) return trailingEdge(time);
+                    timerId = setTimeout(timerExpired, remainingWait(time));
+                }
+                function trailingEdge(time) {
+                    timerId = void 0;
+                    if (trailing && lastArgs) return invokeFunc(time);
+                    lastArgs = lastThis = void 0;
+                    return result;
+                }
+                function cancel() {
+                    if (void 0 !== timerId) clearTimeout(timerId);
+                    lastInvokeTime = 0;
+                    lastArgs = lastCallTime = lastThis = timerId = void 0;
+                }
+                function flush() {
+                    return void 0 === timerId ? result : trailingEdge(now());
+                }
+                function debounced() {
+                    var time = now(), isInvoking = shouldInvoke(time);
+                    lastArgs = arguments;
+                    lastThis = this;
+                    lastCallTime = time;
+                    if (isInvoking) {
+                        if (void 0 === timerId) return leadingEdge(lastCallTime);
+                        if (maxing) {
+                            timerId = setTimeout(timerExpired, wait);
+                            return invokeFunc(lastCallTime);
+                        }
+                    }
+                    if (void 0 === timerId) timerId = setTimeout(timerExpired, wait);
+                    return result;
+                }
+                debounced.cancel = cancel;
+                debounced.flush = flush;
+                return debounced;
+            }
+            function isObject(value) {
+                var type = typeof value;
+                return !!value && ("object" == type || "function" == type);
+            }
+            function isObjectLike(value) {
+                return !!value && "object" == typeof value;
+            }
+            function isSymbol(value) {
+                return "symbol" == typeof value || isObjectLike(value) && objectToString.call(value) == symbolTag;
+            }
+            function toNumber(value) {
+                if ("number" == typeof value) return value;
+                if (isSymbol(value)) return NAN;
+                if (isObject(value)) {
+                    var other = "function" == typeof value.valueOf ? value.valueOf() : value;
+                    value = isObject(other) ? other + "" : other;
+                }
+                if ("string" != typeof value) return 0 === value ? value : +value;
+                value = value.replace(reTrim, "");
+                var isBinary = reIsBinary.test(value);
+                return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+            }
+            module.exports = debounce;
+        },
+        773: (module, __unused_webpack_exports, __webpack_require__) => {
+            var FUNC_ERROR_TEXT = "Expected a function";
+            var HASH_UNDEFINED = "__lodash_hash_undefined__";
+            var funcTag = "[object Function]", genTag = "[object GeneratorFunction]";
+            var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+            var reIsHostCtor = /^\[object .+?Constructor\]$/;
+            var freeGlobal = "object" == typeof __webpack_require__.g && __webpack_require__.g && __webpack_require__.g.Object === Object && __webpack_require__.g;
+            var freeSelf = "object" == typeof self && self && self.Object === Object && self;
+            var root = freeGlobal || freeSelf || Function("return this")();
+            function getValue(object, key) {
+                return null == object ? void 0 : object[key];
+            }
+            function isHostObject(value) {
+                var result = false;
+                if (null != value && "function" != typeof value.toString) try {
+                    result = !!(value + "");
+                } catch (e) {}
+                return result;
+            }
+            var arrayProto = Array.prototype, funcProto = Function.prototype, objectProto = Object.prototype;
+            var coreJsData = root["__core-js_shared__"];
+            var maskSrcKey = function() {
+                var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
+                return uid ? "Symbol(src)_1." + uid : "";
+            }();
+            var funcToString = funcProto.toString;
+            var hasOwnProperty = objectProto.hasOwnProperty;
+            var objectToString = objectProto.toString;
+            var reIsNative = RegExp("^" + funcToString.call(hasOwnProperty).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$");
+            var splice = arrayProto.splice;
+            var Map = getNative(root, "Map"), nativeCreate = getNative(Object, "create");
+            function Hash(entries) {
+                var index = -1, length = entries ? entries.length : 0;
+                this.clear();
+                while (++index < length) {
+                    var entry = entries[index];
+                    this.set(entry[0], entry[1]);
+                }
+            }
+            function hashClear() {
+                this.__data__ = nativeCreate ? nativeCreate(null) : {};
+            }
+            function hashDelete(key) {
+                return this.has(key) && delete this.__data__[key];
+            }
+            function hashGet(key) {
+                var data = this.__data__;
+                if (nativeCreate) {
+                    var result = data[key];
+                    return result === HASH_UNDEFINED ? void 0 : result;
+                }
+                return hasOwnProperty.call(data, key) ? data[key] : void 0;
+            }
+            function hashHas(key) {
+                var data = this.__data__;
+                return nativeCreate ? void 0 !== data[key] : hasOwnProperty.call(data, key);
+            }
+            function hashSet(key, value) {
+                var data = this.__data__;
+                data[key] = nativeCreate && void 0 === value ? HASH_UNDEFINED : value;
+                return this;
+            }
+            Hash.prototype.clear = hashClear;
+            Hash.prototype["delete"] = hashDelete;
+            Hash.prototype.get = hashGet;
+            Hash.prototype.has = hashHas;
+            Hash.prototype.set = hashSet;
+            function ListCache(entries) {
+                var index = -1, length = entries ? entries.length : 0;
+                this.clear();
+                while (++index < length) {
+                    var entry = entries[index];
+                    this.set(entry[0], entry[1]);
+                }
+            }
+            function listCacheClear() {
+                this.__data__ = [];
+            }
+            function listCacheDelete(key) {
+                var data = this.__data__, index = assocIndexOf(data, key);
+                if (index < 0) return false;
+                var lastIndex = data.length - 1;
+                if (index == lastIndex) data.pop(); else splice.call(data, index, 1);
+                return true;
+            }
+            function listCacheGet(key) {
+                var data = this.__data__, index = assocIndexOf(data, key);
+                return index < 0 ? void 0 : data[index][1];
+            }
+            function listCacheHas(key) {
+                return assocIndexOf(this.__data__, key) > -1;
+            }
+            function listCacheSet(key, value) {
+                var data = this.__data__, index = assocIndexOf(data, key);
+                if (index < 0) data.push([ key, value ]); else data[index][1] = value;
+                return this;
+            }
+            ListCache.prototype.clear = listCacheClear;
+            ListCache.prototype["delete"] = listCacheDelete;
+            ListCache.prototype.get = listCacheGet;
+            ListCache.prototype.has = listCacheHas;
+            ListCache.prototype.set = listCacheSet;
+            function MapCache(entries) {
+                var index = -1, length = entries ? entries.length : 0;
+                this.clear();
+                while (++index < length) {
+                    var entry = entries[index];
+                    this.set(entry[0], entry[1]);
+                }
+            }
+            function mapCacheClear() {
+                this.__data__ = {
+                    hash: new Hash,
+                    map: new (Map || ListCache),
+                    string: new Hash
+                };
+            }
+            function mapCacheDelete(key) {
+                return getMapData(this, key)["delete"](key);
+            }
+            function mapCacheGet(key) {
+                return getMapData(this, key).get(key);
+            }
+            function mapCacheHas(key) {
+                return getMapData(this, key).has(key);
+            }
+            function mapCacheSet(key, value) {
+                getMapData(this, key).set(key, value);
+                return this;
+            }
+            MapCache.prototype.clear = mapCacheClear;
+            MapCache.prototype["delete"] = mapCacheDelete;
+            MapCache.prototype.get = mapCacheGet;
+            MapCache.prototype.has = mapCacheHas;
+            MapCache.prototype.set = mapCacheSet;
+            function assocIndexOf(array, key) {
+                var length = array.length;
+                while (length--) if (eq(array[length][0], key)) return length;
+                return -1;
+            }
+            function baseIsNative(value) {
+                if (!isObject(value) || isMasked(value)) return false;
+                var pattern = isFunction(value) || isHostObject(value) ? reIsNative : reIsHostCtor;
+                return pattern.test(toSource(value));
+            }
+            function getMapData(map, key) {
+                var data = map.__data__;
+                return isKeyable(key) ? data["string" == typeof key ? "string" : "hash"] : data.map;
+            }
+            function getNative(object, key) {
+                var value = getValue(object, key);
+                return baseIsNative(value) ? value : void 0;
+            }
+            function isKeyable(value) {
+                var type = typeof value;
+                return "string" == type || "number" == type || "symbol" == type || "boolean" == type ? "__proto__" !== value : null === value;
+            }
+            function isMasked(func) {
+                return !!maskSrcKey && maskSrcKey in func;
+            }
+            function toSource(func) {
+                if (null != func) {
+                    try {
+                        return funcToString.call(func);
+                    } catch (e) {}
+                    try {
+                        return func + "";
+                    } catch (e) {}
+                }
+                return "";
+            }
+            function memoize(func, resolver) {
+                if ("function" != typeof func || resolver && "function" != typeof resolver) throw new TypeError(FUNC_ERROR_TEXT);
+                var memoized = function() {
+                    var args = arguments, key = resolver ? resolver.apply(this, args) : args[0], cache = memoized.cache;
+                    if (cache.has(key)) return cache.get(key);
+                    var result = func.apply(this, args);
+                    memoized.cache = cache.set(key, result);
+                    return result;
+                };
+                memoized.cache = new (memoize.Cache || MapCache);
+                return memoized;
+            }
+            memoize.Cache = MapCache;
+            function eq(value, other) {
+                return value === other || value !== value && other !== other;
+            }
+            function isFunction(value) {
+                var tag = isObject(value) ? objectToString.call(value) : "";
+                return tag == funcTag || tag == genTag;
+            }
+            function isObject(value) {
+                var type = typeof value;
+                return !!value && ("object" == type || "function" == type);
+            }
+            module.exports = memoize;
+        },
+        3096: (module, __unused_webpack_exports, __webpack_require__) => {
+            var FUNC_ERROR_TEXT = "Expected a function";
+            var NAN = 0 / 0;
+            var symbolTag = "[object Symbol]";
+            var reTrim = /^\s+|\s+$/g;
+            var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+            var reIsBinary = /^0b[01]+$/i;
+            var reIsOctal = /^0o[0-7]+$/i;
+            var freeParseInt = parseInt;
+            var freeGlobal = "object" == typeof __webpack_require__.g && __webpack_require__.g && __webpack_require__.g.Object === Object && __webpack_require__.g;
+            var freeSelf = "object" == typeof self && self && self.Object === Object && self;
+            var root = freeGlobal || freeSelf || Function("return this")();
+            var objectProto = Object.prototype;
+            var objectToString = objectProto.toString;
+            var nativeMax = Math.max, nativeMin = Math.min;
+            var now = function() {
+                return root.Date.now();
+            };
+            function debounce(func, wait, options) {
+                var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+                if ("function" != typeof func) throw new TypeError(FUNC_ERROR_TEXT);
+                wait = toNumber(wait) || 0;
+                if (isObject(options)) {
+                    leading = !!options.leading;
+                    maxing = "maxWait" in options;
+                    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+                    trailing = "trailing" in options ? !!options.trailing : trailing;
+                }
+                function invokeFunc(time) {
+                    var args = lastArgs, thisArg = lastThis;
+                    lastArgs = lastThis = void 0;
+                    lastInvokeTime = time;
+                    result = func.apply(thisArg, args);
+                    return result;
+                }
+                function leadingEdge(time) {
+                    lastInvokeTime = time;
+                    timerId = setTimeout(timerExpired, wait);
+                    return leading ? invokeFunc(time) : result;
+                }
+                function remainingWait(time) {
+                    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, result = wait - timeSinceLastCall;
+                    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+                }
+                function shouldInvoke(time) {
+                    var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+                    return void 0 === lastCallTime || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+                }
+                function timerExpired() {
+                    var time = now();
+                    if (shouldInvoke(time)) return trailingEdge(time);
+                    timerId = setTimeout(timerExpired, remainingWait(time));
+                }
+                function trailingEdge(time) {
+                    timerId = void 0;
+                    if (trailing && lastArgs) return invokeFunc(time);
+                    lastArgs = lastThis = void 0;
+                    return result;
+                }
+                function cancel() {
+                    if (void 0 !== timerId) clearTimeout(timerId);
+                    lastInvokeTime = 0;
+                    lastArgs = lastCallTime = lastThis = timerId = void 0;
+                }
+                function flush() {
+                    return void 0 === timerId ? result : trailingEdge(now());
+                }
+                function debounced() {
+                    var time = now(), isInvoking = shouldInvoke(time);
+                    lastArgs = arguments;
+                    lastThis = this;
+                    lastCallTime = time;
+                    if (isInvoking) {
+                        if (void 0 === timerId) return leadingEdge(lastCallTime);
+                        if (maxing) {
+                            timerId = setTimeout(timerExpired, wait);
+                            return invokeFunc(lastCallTime);
+                        }
+                    }
+                    if (void 0 === timerId) timerId = setTimeout(timerExpired, wait);
+                    return result;
+                }
+                debounced.cancel = cancel;
+                debounced.flush = flush;
+                return debounced;
+            }
+            function throttle(func, wait, options) {
+                var leading = true, trailing = true;
+                if ("function" != typeof func) throw new TypeError(FUNC_ERROR_TEXT);
+                if (isObject(options)) {
+                    leading = "leading" in options ? !!options.leading : leading;
+                    trailing = "trailing" in options ? !!options.trailing : trailing;
+                }
+                return debounce(func, wait, {
+                    leading,
+                    maxWait: wait,
+                    trailing
+                });
+            }
+            function isObject(value) {
+                var type = typeof value;
+                return !!value && ("object" == type || "function" == type);
+            }
+            function isObjectLike(value) {
+                return !!value && "object" == typeof value;
+            }
+            function isSymbol(value) {
+                return "symbol" == typeof value || isObjectLike(value) && objectToString.call(value) == symbolTag;
+            }
+            function toNumber(value) {
+                if ("number" == typeof value) return value;
+                if (isSymbol(value)) return NAN;
+                if (isObject(value)) {
+                    var other = "function" == typeof value.valueOf ? value.valueOf() : value;
+                    value = isObject(other) ? other + "" : other;
+                }
+                if ("string" != typeof value) return 0 === value ? value : +value;
+                value = value.replace(reTrim, "");
+                var isBinary = reIsBinary.test(value);
+                return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+            }
+            module.exports = throttle;
+        },
+        4733: function(module, exports) {
             var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
             (function() {
                 "use strict";
@@ -5127,6 +5120,2996 @@
                     return i18n;
                 }));
             }).call(this);
+        },
+        5055: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isCallable = __webpack_require__(6282);
+            var tryToString = __webpack_require__(180);
+            var $TypeError = TypeError;
+            module.exports = function(argument) {
+                if (isCallable(argument)) return argument;
+                throw $TypeError(tryToString(argument) + " is not a function");
+            };
+        },
+        2004: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isCallable = __webpack_require__(6282);
+            var $String = String;
+            var $TypeError = TypeError;
+            module.exports = function(argument) {
+                if ("object" == typeof argument || isCallable(argument)) return argument;
+                throw $TypeError("Can't set " + $String(argument) + " as a prototype");
+            };
+        },
+        9256: (module, __unused_webpack_exports, __webpack_require__) => {
+            var wellKnownSymbol = __webpack_require__(8149);
+            var create = __webpack_require__(1525);
+            var defineProperty = __webpack_require__(9168).f;
+            var UNSCOPABLES = wellKnownSymbol("unscopables");
+            var ArrayPrototype = Array.prototype;
+            if (void 0 == ArrayPrototype[UNSCOPABLES]) defineProperty(ArrayPrototype, UNSCOPABLES, {
+                configurable: true,
+                value: create(null)
+            });
+            module.exports = function(key) {
+                ArrayPrototype[UNSCOPABLES][key] = true;
+            };
+        },
+        3615: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var charAt = __webpack_require__(7321).charAt;
+            module.exports = function(S, index, unicode) {
+                return index + (unicode ? charAt(S, index).length : 1);
+            };
+        },
+        3046: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isPrototypeOf = __webpack_require__(1786);
+            var $TypeError = TypeError;
+            module.exports = function(it, Prototype) {
+                if (isPrototypeOf(Prototype, it)) return it;
+                throw $TypeError("Incorrect invocation");
+            };
+        },
+        1474: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isObject = __webpack_require__(5896);
+            var $String = String;
+            var $TypeError = TypeError;
+            module.exports = function(argument) {
+                if (isObject(argument)) return argument;
+                throw $TypeError($String(argument) + " is not an object");
+            };
+        },
+        8774: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            module.exports = fails((function() {
+                if ("function" == typeof ArrayBuffer) {
+                    var buffer = new ArrayBuffer(8);
+                    if (Object.isExtensible(buffer)) Object.defineProperty(buffer, "a", {
+                        value: 8
+                    });
+                }
+            }));
+        },
+        1269: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var $forEach = __webpack_require__(528).forEach;
+            var arrayMethodIsStrict = __webpack_require__(1923);
+            var STRICT_METHOD = arrayMethodIsStrict("forEach");
+            module.exports = !STRICT_METHOD ? function forEach(callbackfn) {
+                return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : void 0);
+            } : [].forEach;
+        },
+        5675: (module, __unused_webpack_exports, __webpack_require__) => {
+            var toIndexedObject = __webpack_require__(3206);
+            var toAbsoluteIndex = __webpack_require__(9623);
+            var lengthOfArrayLike = __webpack_require__(1829);
+            var createMethod = function(IS_INCLUDES) {
+                return function($this, el, fromIndex) {
+                    var O = toIndexedObject($this);
+                    var length = lengthOfArrayLike(O);
+                    var index = toAbsoluteIndex(fromIndex, length);
+                    var value;
+                    if (IS_INCLUDES && el != el) while (length > index) {
+                        value = O[index++];
+                        if (value != value) return true;
+                    } else for (;length > index; index++) if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+                    return !IS_INCLUDES && -1;
+                };
+            };
+            module.exports = {
+                includes: createMethod(true),
+                indexOf: createMethod(false)
+            };
+        },
+        528: (module, __unused_webpack_exports, __webpack_require__) => {
+            var bind = __webpack_require__(1098);
+            var uncurryThis = __webpack_require__(1768);
+            var IndexedObject = __webpack_require__(7530);
+            var toObject = __webpack_require__(9473);
+            var lengthOfArrayLike = __webpack_require__(1829);
+            var arraySpeciesCreate = __webpack_require__(2768);
+            var push = uncurryThis([].push);
+            var createMethod = function(TYPE) {
+                var IS_MAP = 1 == TYPE;
+                var IS_FILTER = 2 == TYPE;
+                var IS_SOME = 3 == TYPE;
+                var IS_EVERY = 4 == TYPE;
+                var IS_FIND_INDEX = 6 == TYPE;
+                var IS_FILTER_REJECT = 7 == TYPE;
+                var NO_HOLES = 5 == TYPE || IS_FIND_INDEX;
+                return function($this, callbackfn, that, specificCreate) {
+                    var O = toObject($this);
+                    var self = IndexedObject(O);
+                    var boundFunction = bind(callbackfn, that);
+                    var length = lengthOfArrayLike(self);
+                    var index = 0;
+                    var create = specificCreate || arraySpeciesCreate;
+                    var target = IS_MAP ? create($this, length) : IS_FILTER || IS_FILTER_REJECT ? create($this, 0) : void 0;
+                    var value, result;
+                    for (;length > index; index++) if (NO_HOLES || index in self) {
+                        value = self[index];
+                        result = boundFunction(value, index, O);
+                        if (TYPE) if (IS_MAP) target[index] = result; else if (result) switch (TYPE) {
+                          case 3:
+                            return true;
+
+                          case 5:
+                            return value;
+
+                          case 6:
+                            return index;
+
+                          case 2:
+                            push(target, value);
+                        } else switch (TYPE) {
+                          case 4:
+                            return false;
+
+                          case 7:
+                            push(target, value);
+                        }
+                    }
+                    return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
+                };
+            };
+            module.exports = {
+                forEach: createMethod(0),
+                map: createMethod(1),
+                filter: createMethod(2),
+                some: createMethod(3),
+                every: createMethod(4),
+                find: createMethod(5),
+                findIndex: createMethod(6),
+                filterReject: createMethod(7)
+            };
+        },
+        4820: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var V8_VERSION = __webpack_require__(4324);
+            var SPECIES = wellKnownSymbol("species");
+            module.exports = function(METHOD_NAME) {
+                return V8_VERSION >= 51 || !fails((function() {
+                    var array = [];
+                    var constructor = array.constructor = {};
+                    constructor[SPECIES] = function() {
+                        return {
+                            foo: 1
+                        };
+                    };
+                    return 1 !== array[METHOD_NAME](Boolean).foo;
+                }));
+            };
+        },
+        1923: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var fails = __webpack_require__(6183);
+            module.exports = function(METHOD_NAME, argument) {
+                var method = [][METHOD_NAME];
+                return !!method && fails((function() {
+                    method.call(null, argument || function() {
+                        return 1;
+                    }, 1);
+                }));
+            };
+        },
+        6589: (module, __unused_webpack_exports, __webpack_require__) => {
+            var aCallable = __webpack_require__(5055);
+            var toObject = __webpack_require__(9473);
+            var IndexedObject = __webpack_require__(7530);
+            var lengthOfArrayLike = __webpack_require__(1829);
+            var $TypeError = TypeError;
+            var createMethod = function(IS_RIGHT) {
+                return function(that, callbackfn, argumentsLength, memo) {
+                    aCallable(callbackfn);
+                    var O = toObject(that);
+                    var self = IndexedObject(O);
+                    var length = lengthOfArrayLike(O);
+                    var index = IS_RIGHT ? length - 1 : 0;
+                    var i = IS_RIGHT ? -1 : 1;
+                    if (argumentsLength < 2) while (true) {
+                        if (index in self) {
+                            memo = self[index];
+                            index += i;
+                            break;
+                        }
+                        index += i;
+                        if (IS_RIGHT ? index < 0 : length <= index) throw $TypeError("Reduce of empty array with no initial value");
+                    }
+                    for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) memo = callbackfn(memo, self[index], index, O);
+                    return memo;
+                };
+            };
+            module.exports = {
+                left: createMethod(false),
+                right: createMethod(true)
+            };
+        },
+        4072: (module, __unused_webpack_exports, __webpack_require__) => {
+            var toAbsoluteIndex = __webpack_require__(9623);
+            var lengthOfArrayLike = __webpack_require__(1829);
+            var createProperty = __webpack_require__(2759);
+            var $Array = Array;
+            var max = Math.max;
+            module.exports = function(O, start, end) {
+                var length = lengthOfArrayLike(O);
+                var k = toAbsoluteIndex(start, length);
+                var fin = toAbsoluteIndex(void 0 === end ? length : end, length);
+                var result = $Array(max(fin - k, 0));
+                for (var n = 0; k < fin; k++, n++) createProperty(result, n, O[k]);
+                result.length = n;
+                return result;
+            };
+        },
+        9882: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isArray = __webpack_require__(7931);
+            var isConstructor = __webpack_require__(2240);
+            var isObject = __webpack_require__(5896);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var SPECIES = wellKnownSymbol("species");
+            var $Array = Array;
+            module.exports = function(originalArray) {
+                var C;
+                if (isArray(originalArray)) {
+                    C = originalArray.constructor;
+                    if (isConstructor(C) && (C === $Array || isArray(C.prototype))) C = void 0; else if (isObject(C)) {
+                        C = C[SPECIES];
+                        if (null === C) C = void 0;
+                    }
+                }
+                return void 0 === C ? $Array : C;
+            };
+        },
+        2768: (module, __unused_webpack_exports, __webpack_require__) => {
+            var arraySpeciesConstructor = __webpack_require__(9882);
+            module.exports = function(originalArray, length) {
+                return new (arraySpeciesConstructor(originalArray))(0 === length ? 0 : length);
+            };
+        },
+        1751: (module, __unused_webpack_exports, __webpack_require__) => {
+            var wellKnownSymbol = __webpack_require__(8149);
+            var ITERATOR = wellKnownSymbol("iterator");
+            var SAFE_CLOSING = false;
+            try {
+                var called = 0;
+                var iteratorWithReturn = {
+                    next: function() {
+                        return {
+                            done: !!called++
+                        };
+                    },
+                    return: function() {
+                        SAFE_CLOSING = true;
+                    }
+                };
+                iteratorWithReturn[ITERATOR] = function() {
+                    return this;
+                };
+                Array.from(iteratorWithReturn, (function() {
+                    throw 2;
+                }));
+            } catch (error) {}
+            module.exports = function(exec, SKIP_CLOSING) {
+                if (!SKIP_CLOSING && !SAFE_CLOSING) return false;
+                var ITERATION_SUPPORT = false;
+                try {
+                    var object = {};
+                    object[ITERATOR] = function() {
+                        return {
+                            next: function() {
+                                return {
+                                    done: ITERATION_SUPPORT = true
+                                };
+                            }
+                        };
+                    };
+                    exec(object);
+                } catch (error) {}
+                return ITERATION_SUPPORT;
+            };
+        },
+        1510: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var toString = uncurryThis({}.toString);
+            var stringSlice = uncurryThis("".slice);
+            module.exports = function(it) {
+                return stringSlice(toString(it), 8, -1);
+            };
+        },
+        9225: (module, __unused_webpack_exports, __webpack_require__) => {
+            var TO_STRING_TAG_SUPPORT = __webpack_require__(4823);
+            var isCallable = __webpack_require__(6282);
+            var classofRaw = __webpack_require__(1510);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+            var $Object = Object;
+            var CORRECT_ARGUMENTS = "Arguments" == classofRaw(function() {
+                return arguments;
+            }());
+            var tryGet = function(it, key) {
+                try {
+                    return it[key];
+                } catch (error) {}
+            };
+            module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function(it) {
+                var O, tag, result;
+                return void 0 === it ? "Undefined" : null === it ? "Null" : "string" == typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) ? tag : CORRECT_ARGUMENTS ? classofRaw(O) : "Object" == (result = classofRaw(O)) && isCallable(O.callee) ? "Arguments" : result;
+            };
+        },
+        7790: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var uncurryThis = __webpack_require__(1768);
+            var defineBuiltIns = __webpack_require__(6367);
+            var getWeakData = __webpack_require__(6582).getWeakData;
+            var anInstance = __webpack_require__(3046);
+            var anObject = __webpack_require__(1474);
+            var isNullOrUndefined = __webpack_require__(2420);
+            var isObject = __webpack_require__(5896);
+            var iterate = __webpack_require__(1518);
+            var ArrayIterationModule = __webpack_require__(528);
+            var hasOwn = __webpack_require__(8281);
+            var InternalStateModule = __webpack_require__(1030);
+            var setInternalState = InternalStateModule.set;
+            var internalStateGetterFor = InternalStateModule.getterFor;
+            var find = ArrayIterationModule.find;
+            var findIndex = ArrayIterationModule.findIndex;
+            var splice = uncurryThis([].splice);
+            var id = 0;
+            var uncaughtFrozenStore = function(store) {
+                return store.frozen || (store.frozen = new UncaughtFrozenStore);
+            };
+            var UncaughtFrozenStore = function() {
+                this.entries = [];
+            };
+            var findUncaughtFrozen = function(store, key) {
+                return find(store.entries, (function(it) {
+                    return it[0] === key;
+                }));
+            };
+            UncaughtFrozenStore.prototype = {
+                get: function(key) {
+                    var entry = findUncaughtFrozen(this, key);
+                    if (entry) return entry[1];
+                },
+                has: function(key) {
+                    return !!findUncaughtFrozen(this, key);
+                },
+                set: function(key, value) {
+                    var entry = findUncaughtFrozen(this, key);
+                    if (entry) entry[1] = value; else this.entries.push([ key, value ]);
+                },
+                delete: function(key) {
+                    var index = findIndex(this.entries, (function(it) {
+                        return it[0] === key;
+                    }));
+                    if (~index) splice(this.entries, index, 1);
+                    return !!~index;
+                }
+            };
+            module.exports = {
+                getConstructor: function(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER) {
+                    var Constructor = wrapper((function(that, iterable) {
+                        anInstance(that, Prototype);
+                        setInternalState(that, {
+                            type: CONSTRUCTOR_NAME,
+                            id: id++,
+                            frozen: void 0
+                        });
+                        if (!isNullOrUndefined(iterable)) iterate(iterable, that[ADDER], {
+                            that,
+                            AS_ENTRIES: IS_MAP
+                        });
+                    }));
+                    var Prototype = Constructor.prototype;
+                    var getInternalState = internalStateGetterFor(CONSTRUCTOR_NAME);
+                    var define = function(that, key, value) {
+                        var state = getInternalState(that);
+                        var data = getWeakData(anObject(key), true);
+                        if (true === data) uncaughtFrozenStore(state).set(key, value); else data[state.id] = value;
+                        return that;
+                    };
+                    defineBuiltIns(Prototype, {
+                        delete: function(key) {
+                            var state = getInternalState(this);
+                            if (!isObject(key)) return false;
+                            var data = getWeakData(key);
+                            if (true === data) return uncaughtFrozenStore(state)["delete"](key);
+                            return data && hasOwn(data, state.id) && delete data[state.id];
+                        },
+                        has: function has(key) {
+                            var state = getInternalState(this);
+                            if (!isObject(key)) return false;
+                            var data = getWeakData(key);
+                            if (true === data) return uncaughtFrozenStore(state).has(key);
+                            return data && hasOwn(data, state.id);
+                        }
+                    });
+                    defineBuiltIns(Prototype, IS_MAP ? {
+                        get: function get(key) {
+                            var state = getInternalState(this);
+                            if (isObject(key)) {
+                                var data = getWeakData(key);
+                                if (true === data) return uncaughtFrozenStore(state).get(key);
+                                return data ? data[state.id] : void 0;
+                            }
+                        },
+                        set: function set(key, value) {
+                            return define(this, key, value);
+                        }
+                    } : {
+                        add: function add(value) {
+                            return define(this, value, true);
+                        }
+                    });
+                    return Constructor;
+                }
+            };
+        },
+        6645: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var $ = __webpack_require__(4761);
+            var global = __webpack_require__(8454);
+            var uncurryThis = __webpack_require__(1768);
+            var isForced = __webpack_require__(1949);
+            var defineBuiltIn = __webpack_require__(2054);
+            var InternalMetadataModule = __webpack_require__(6582);
+            var iterate = __webpack_require__(1518);
+            var anInstance = __webpack_require__(3046);
+            var isCallable = __webpack_require__(6282);
+            var isNullOrUndefined = __webpack_require__(2420);
+            var isObject = __webpack_require__(5896);
+            var fails = __webpack_require__(6183);
+            var checkCorrectnessOfIteration = __webpack_require__(1751);
+            var setToStringTag = __webpack_require__(820);
+            var inheritIfRequired = __webpack_require__(7770);
+            module.exports = function(CONSTRUCTOR_NAME, wrapper, common) {
+                var IS_MAP = -1 !== CONSTRUCTOR_NAME.indexOf("Map");
+                var IS_WEAK = -1 !== CONSTRUCTOR_NAME.indexOf("Weak");
+                var ADDER = IS_MAP ? "set" : "add";
+                var NativeConstructor = global[CONSTRUCTOR_NAME];
+                var NativePrototype = NativeConstructor && NativeConstructor.prototype;
+                var Constructor = NativeConstructor;
+                var exported = {};
+                var fixMethod = function(KEY) {
+                    var uncurriedNativeMethod = uncurryThis(NativePrototype[KEY]);
+                    defineBuiltIn(NativePrototype, KEY, "add" == KEY ? function add(value) {
+                        uncurriedNativeMethod(this, 0 === value ? 0 : value);
+                        return this;
+                    } : "delete" == KEY ? function(key) {
+                        return IS_WEAK && !isObject(key) ? false : uncurriedNativeMethod(this, 0 === key ? 0 : key);
+                    } : "get" == KEY ? function get(key) {
+                        return IS_WEAK && !isObject(key) ? void 0 : uncurriedNativeMethod(this, 0 === key ? 0 : key);
+                    } : "has" == KEY ? function has(key) {
+                        return IS_WEAK && !isObject(key) ? false : uncurriedNativeMethod(this, 0 === key ? 0 : key);
+                    } : function set(key, value) {
+                        uncurriedNativeMethod(this, 0 === key ? 0 : key, value);
+                        return this;
+                    });
+                };
+                var REPLACE = isForced(CONSTRUCTOR_NAME, !isCallable(NativeConstructor) || !(IS_WEAK || NativePrototype.forEach && !fails((function() {
+                    (new NativeConstructor).entries().next();
+                }))));
+                if (REPLACE) {
+                    Constructor = common.getConstructor(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER);
+                    InternalMetadataModule.enable();
+                } else if (isForced(CONSTRUCTOR_NAME, true)) {
+                    var instance = new Constructor;
+                    var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
+                    var THROWS_ON_PRIMITIVES = fails((function() {
+                        instance.has(1);
+                    }));
+                    var ACCEPT_ITERABLES = checkCorrectnessOfIteration((function(iterable) {
+                        new NativeConstructor(iterable);
+                    }));
+                    var BUGGY_ZERO = !IS_WEAK && fails((function() {
+                        var $instance = new NativeConstructor;
+                        var index = 5;
+                        while (index--) $instance[ADDER](index, index);
+                        return !$instance.has(-0);
+                    }));
+                    if (!ACCEPT_ITERABLES) {
+                        Constructor = wrapper((function(dummy, iterable) {
+                            anInstance(dummy, NativePrototype);
+                            var that = inheritIfRequired(new NativeConstructor, dummy, Constructor);
+                            if (!isNullOrUndefined(iterable)) iterate(iterable, that[ADDER], {
+                                that,
+                                AS_ENTRIES: IS_MAP
+                            });
+                            return that;
+                        }));
+                        Constructor.prototype = NativePrototype;
+                        NativePrototype.constructor = Constructor;
+                    }
+                    if (THROWS_ON_PRIMITIVES || BUGGY_ZERO) {
+                        fixMethod("delete");
+                        fixMethod("has");
+                        IS_MAP && fixMethod("get");
+                    }
+                    if (BUGGY_ZERO || HASNT_CHAINING) fixMethod(ADDER);
+                    if (IS_WEAK && NativePrototype.clear) delete NativePrototype.clear;
+                }
+                exported[CONSTRUCTOR_NAME] = Constructor;
+                $({
+                    global: true,
+                    constructor: true,
+                    forced: Constructor != NativeConstructor
+                }, exported);
+                setToStringTag(Constructor, CONSTRUCTOR_NAME);
+                if (!IS_WEAK) common.setStrong(Constructor, CONSTRUCTOR_NAME, IS_MAP);
+                return Constructor;
+            };
+        },
+        882: (module, __unused_webpack_exports, __webpack_require__) => {
+            var hasOwn = __webpack_require__(8281);
+            var ownKeys = __webpack_require__(1441);
+            var getOwnPropertyDescriptorModule = __webpack_require__(5663);
+            var definePropertyModule = __webpack_require__(9168);
+            module.exports = function(target, source, exceptions) {
+                var keys = ownKeys(source);
+                var defineProperty = definePropertyModule.f;
+                var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+                }
+            };
+        },
+        7401: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            module.exports = !fails((function() {
+                function F() {}
+                F.prototype.constructor = null;
+                return Object.getPrototypeOf(new F) !== F.prototype;
+            }));
+        },
+        5351: module => {
+            module.exports = function(value, done) {
+                return {
+                    value,
+                    done
+                };
+            };
+        },
+        1501: (module, __unused_webpack_exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var definePropertyModule = __webpack_require__(9168);
+            var createPropertyDescriptor = __webpack_require__(9273);
+            module.exports = DESCRIPTORS ? function(object, key, value) {
+                return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
+            } : function(object, key, value) {
+                object[key] = value;
+                return object;
+            };
+        },
+        9273: module => {
+            module.exports = function(bitmap, value) {
+                return {
+                    enumerable: !(1 & bitmap),
+                    configurable: !(2 & bitmap),
+                    writable: !(4 & bitmap),
+                    value
+                };
+            };
+        },
+        2759: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var toPropertyKey = __webpack_require__(2988);
+            var definePropertyModule = __webpack_require__(9168);
+            var createPropertyDescriptor = __webpack_require__(9273);
+            module.exports = function(object, key, value) {
+                var propertyKey = toPropertyKey(key);
+                if (propertyKey in object) definePropertyModule.f(object, propertyKey, createPropertyDescriptor(0, value)); else object[propertyKey] = value;
+            };
+        },
+        2054: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isCallable = __webpack_require__(6282);
+            var definePropertyModule = __webpack_require__(9168);
+            var makeBuiltIn = __webpack_require__(5903);
+            var defineGlobalProperty = __webpack_require__(7194);
+            module.exports = function(O, key, value, options) {
+                if (!options) options = {};
+                var simple = options.enumerable;
+                var name = void 0 !== options.name ? options.name : key;
+                if (isCallable(value)) makeBuiltIn(value, name, options);
+                if (options.global) if (simple) O[key] = value; else defineGlobalProperty(key, value); else {
+                    try {
+                        if (!options.unsafe) delete O[key]; else if (O[key]) simple = true;
+                    } catch (error) {}
+                    if (simple) O[key] = value; else definePropertyModule.f(O, key, {
+                        value,
+                        enumerable: false,
+                        configurable: !options.nonConfigurable,
+                        writable: !options.nonWritable
+                    });
+                }
+                return O;
+            };
+        },
+        6367: (module, __unused_webpack_exports, __webpack_require__) => {
+            var defineBuiltIn = __webpack_require__(2054);
+            module.exports = function(target, src, options) {
+                for (var key in src) defineBuiltIn(target, key, src[key], options);
+                return target;
+            };
+        },
+        7194: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var defineProperty = Object.defineProperty;
+            module.exports = function(key, value) {
+                try {
+                    defineProperty(global, key, {
+                        value,
+                        configurable: true,
+                        writable: true
+                    });
+                } catch (error) {
+                    global[key] = value;
+                }
+                return value;
+            };
+        },
+        723: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            module.exports = !fails((function() {
+                return 7 != Object.defineProperty({}, 1, {
+                    get: function() {
+                        return 7;
+                    }
+                })[1];
+            }));
+        },
+        1685: module => {
+            var documentAll = "object" == typeof document && document.all;
+            var IS_HTMLDDA = "undefined" == typeof documentAll && void 0 !== documentAll;
+            module.exports = {
+                all: documentAll,
+                IS_HTMLDDA
+            };
+        },
+        7282: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var isObject = __webpack_require__(5896);
+            var document = global.document;
+            var EXISTS = isObject(document) && isObject(document.createElement);
+            module.exports = function(it) {
+                return EXISTS ? document.createElement(it) : {};
+            };
+        },
+        6181: module => {
+            module.exports = {
+                CSSRuleList: 0,
+                CSSStyleDeclaration: 0,
+                CSSValueList: 0,
+                ClientRectList: 0,
+                DOMRectList: 0,
+                DOMStringList: 0,
+                DOMTokenList: 1,
+                DataTransferItemList: 0,
+                FileList: 0,
+                HTMLAllCollection: 0,
+                HTMLCollection: 0,
+                HTMLFormElement: 0,
+                HTMLSelectElement: 0,
+                MediaList: 0,
+                MimeTypeArray: 0,
+                NamedNodeMap: 0,
+                NodeList: 1,
+                PaintRequestList: 0,
+                Plugin: 0,
+                PluginArray: 0,
+                SVGLengthList: 0,
+                SVGNumberList: 0,
+                SVGPathSegList: 0,
+                SVGPointList: 0,
+                SVGStringList: 0,
+                SVGTransformList: 0,
+                SourceBufferList: 0,
+                StyleSheetList: 0,
+                TextTrackCueList: 0,
+                TextTrackList: 0,
+                TouchList: 0
+            };
+        },
+        2387: (module, __unused_webpack_exports, __webpack_require__) => {
+            var documentCreateElement = __webpack_require__(7282);
+            var classList = documentCreateElement("span").classList;
+            var DOMTokenListPrototype = classList && classList.constructor && classList.constructor.prototype;
+            module.exports = DOMTokenListPrototype === Object.prototype ? void 0 : DOMTokenListPrototype;
+        },
+        7594: (module, __unused_webpack_exports, __webpack_require__) => {
+            var classof = __webpack_require__(1510);
+            var global = __webpack_require__(8454);
+            module.exports = "process" == classof(global.process);
+        },
+        2543: (module, __unused_webpack_exports, __webpack_require__) => {
+            var getBuiltIn = __webpack_require__(4991);
+            module.exports = getBuiltIn("navigator", "userAgent") || "";
+        },
+        4324: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var userAgent = __webpack_require__(2543);
+            var process = global.process;
+            var Deno = global.Deno;
+            var versions = process && process.versions || Deno && Deno.version;
+            var v8 = versions && versions.v8;
+            var match, version;
+            if (v8) {
+                match = v8.split(".");
+                version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+            }
+            if (!version && userAgent) {
+                match = userAgent.match(/Edge\/(\d+)/);
+                if (!match || match[1] >= 74) {
+                    match = userAgent.match(/Chrome\/(\d+)/);
+                    if (match) version = +match[1];
+                }
+            }
+            module.exports = version;
+        },
+        8409: module => {
+            module.exports = [ "constructor", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "toLocaleString", "toString", "valueOf" ];
+        },
+        4761: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var getOwnPropertyDescriptor = __webpack_require__(5663).f;
+            var createNonEnumerableProperty = __webpack_require__(1501);
+            var defineBuiltIn = __webpack_require__(2054);
+            var defineGlobalProperty = __webpack_require__(7194);
+            var copyConstructorProperties = __webpack_require__(882);
+            var isForced = __webpack_require__(1949);
+            module.exports = function(options, source) {
+                var TARGET = options.target;
+                var GLOBAL = options.global;
+                var STATIC = options.stat;
+                var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+                if (GLOBAL) target = global; else if (STATIC) target = global[TARGET] || defineGlobalProperty(TARGET, {}); else target = (global[TARGET] || {}).prototype;
+                if (target) for (key in source) {
+                    sourceProperty = source[key];
+                    if (options.dontCallGetSet) {
+                        descriptor = getOwnPropertyDescriptor(target, key);
+                        targetProperty = descriptor && descriptor.value;
+                    } else targetProperty = target[key];
+                    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? "." : "#") + key, options.forced);
+                    if (!FORCED && void 0 !== targetProperty) {
+                        if (typeof sourceProperty == typeof targetProperty) continue;
+                        copyConstructorProperties(sourceProperty, targetProperty);
+                    }
+                    if (options.sham || targetProperty && targetProperty.sham) createNonEnumerableProperty(sourceProperty, "sham", true);
+                    defineBuiltIn(target, key, sourceProperty, options);
+                }
+            };
+        },
+        6183: module => {
+            module.exports = function(exec) {
+                try {
+                    return !!exec();
+                } catch (error) {
+                    return true;
+                }
+            };
+        },
+        9696: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            __webpack_require__(9989);
+            var uncurryThis = __webpack_require__(9252);
+            var defineBuiltIn = __webpack_require__(2054);
+            var regexpExec = __webpack_require__(5510);
+            var fails = __webpack_require__(6183);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var createNonEnumerableProperty = __webpack_require__(1501);
+            var SPECIES = wellKnownSymbol("species");
+            var RegExpPrototype = RegExp.prototype;
+            module.exports = function(KEY, exec, FORCED, SHAM) {
+                var SYMBOL = wellKnownSymbol(KEY);
+                var DELEGATES_TO_SYMBOL = !fails((function() {
+                    var O = {};
+                    O[SYMBOL] = function() {
+                        return 7;
+                    };
+                    return 7 != ""[KEY](O);
+                }));
+                var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails((function() {
+                    var execCalled = false;
+                    var re = /a/;
+                    if ("split" === KEY) {
+                        re = {};
+                        re.constructor = {};
+                        re.constructor[SPECIES] = function() {
+                            return re;
+                        };
+                        re.flags = "";
+                        re[SYMBOL] = /./[SYMBOL];
+                    }
+                    re.exec = function() {
+                        execCalled = true;
+                        return null;
+                    };
+                    re[SYMBOL]("");
+                    return !execCalled;
+                }));
+                if (!DELEGATES_TO_SYMBOL || !DELEGATES_TO_EXEC || FORCED) {
+                    var uncurriedNativeRegExpMethod = uncurryThis(/./[SYMBOL]);
+                    var methods = exec(SYMBOL, ""[KEY], (function(nativeMethod, regexp, str, arg2, forceStringMethod) {
+                        var uncurriedNativeMethod = uncurryThis(nativeMethod);
+                        var $exec = regexp.exec;
+                        if ($exec === regexpExec || $exec === RegExpPrototype.exec) {
+                            if (DELEGATES_TO_SYMBOL && !forceStringMethod) return {
+                                done: true,
+                                value: uncurriedNativeRegExpMethod(regexp, str, arg2)
+                            };
+                            return {
+                                done: true,
+                                value: uncurriedNativeMethod(str, regexp, arg2)
+                            };
+                        }
+                        return {
+                            done: false
+                        };
+                    }));
+                    defineBuiltIn(String.prototype, KEY, methods[0]);
+                    defineBuiltIn(RegExpPrototype, SYMBOL, methods[1]);
+                }
+                if (SHAM) createNonEnumerableProperty(RegExpPrototype[SYMBOL], "sham", true);
+            };
+        },
+        3116: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            module.exports = !fails((function() {
+                return Object.isExtensible(Object.preventExtensions({}));
+            }));
+        },
+        6218: (module, __unused_webpack_exports, __webpack_require__) => {
+            var NATIVE_BIND = __webpack_require__(160);
+            var FunctionPrototype = Function.prototype;
+            var apply = FunctionPrototype.apply;
+            var call = FunctionPrototype.call;
+            module.exports = "object" == typeof Reflect && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+                return call.apply(apply, arguments);
+            });
+        },
+        1098: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(9252);
+            var aCallable = __webpack_require__(5055);
+            var NATIVE_BIND = __webpack_require__(160);
+            var bind = uncurryThis(uncurryThis.bind);
+            module.exports = function(fn, that) {
+                aCallable(fn);
+                return void 0 === that ? fn : NATIVE_BIND ? bind(fn, that) : function() {
+                    return fn.apply(that, arguments);
+                };
+            };
+        },
+        160: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            module.exports = !fails((function() {
+                var test = function() {}.bind();
+                return "function" != typeof test || test.hasOwnProperty("prototype");
+            }));
+        },
+        4552: (module, __unused_webpack_exports, __webpack_require__) => {
+            var NATIVE_BIND = __webpack_require__(160);
+            var call = Function.prototype.call;
+            module.exports = NATIVE_BIND ? call.bind(call) : function() {
+                return call.apply(call, arguments);
+            };
+        },
+        4530: (module, __unused_webpack_exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var hasOwn = __webpack_require__(8281);
+            var FunctionPrototype = Function.prototype;
+            var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
+            var EXISTS = hasOwn(FunctionPrototype, "name");
+            var PROPER = EXISTS && "something" === function something() {}.name;
+            var CONFIGURABLE = EXISTS && (!DESCRIPTORS || DESCRIPTORS && getDescriptor(FunctionPrototype, "name").configurable);
+            module.exports = {
+                EXISTS,
+                PROPER,
+                CONFIGURABLE
+            };
+        },
+        9252: (module, __unused_webpack_exports, __webpack_require__) => {
+            var classofRaw = __webpack_require__(1510);
+            var uncurryThis = __webpack_require__(1768);
+            module.exports = function(fn) {
+                if ("Function" === classofRaw(fn)) return uncurryThis(fn);
+            };
+        },
+        1768: (module, __unused_webpack_exports, __webpack_require__) => {
+            var NATIVE_BIND = __webpack_require__(160);
+            var FunctionPrototype = Function.prototype;
+            var call = FunctionPrototype.call;
+            var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
+            module.exports = NATIVE_BIND ? uncurryThisWithBind : function(fn) {
+                return function() {
+                    return call.apply(fn, arguments);
+                };
+            };
+        },
+        4991: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var isCallable = __webpack_require__(6282);
+            var aFunction = function(argument) {
+                return isCallable(argument) ? argument : void 0;
+            };
+            module.exports = function(namespace, method) {
+                return arguments.length < 2 ? aFunction(global[namespace]) : global[namespace] && global[namespace][method];
+            };
+        },
+        650: (module, __unused_webpack_exports, __webpack_require__) => {
+            var classof = __webpack_require__(9225);
+            var getMethod = __webpack_require__(9827);
+            var isNullOrUndefined = __webpack_require__(2420);
+            var Iterators = __webpack_require__(6126);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var ITERATOR = wellKnownSymbol("iterator");
+            module.exports = function(it) {
+                if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR) || getMethod(it, "@@iterator") || Iterators[classof(it)];
+            };
+        },
+        7755: (module, __unused_webpack_exports, __webpack_require__) => {
+            var call = __webpack_require__(4552);
+            var aCallable = __webpack_require__(5055);
+            var anObject = __webpack_require__(1474);
+            var tryToString = __webpack_require__(180);
+            var getIteratorMethod = __webpack_require__(650);
+            var $TypeError = TypeError;
+            module.exports = function(argument, usingIterator) {
+                var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
+                if (aCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
+                throw $TypeError(tryToString(argument) + " is not iterable");
+            };
+        },
+        9827: (module, __unused_webpack_exports, __webpack_require__) => {
+            var aCallable = __webpack_require__(5055);
+            var isNullOrUndefined = __webpack_require__(2420);
+            module.exports = function(V, P) {
+                var func = V[P];
+                return isNullOrUndefined(func) ? void 0 : aCallable(func);
+            };
+        },
+        4742: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var toObject = __webpack_require__(9473);
+            var floor = Math.floor;
+            var charAt = uncurryThis("".charAt);
+            var replace = uncurryThis("".replace);
+            var stringSlice = uncurryThis("".slice);
+            var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
+            var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
+            module.exports = function(matched, str, position, captures, namedCaptures, replacement) {
+                var tailPos = position + matched.length;
+                var m = captures.length;
+                var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
+                if (void 0 !== namedCaptures) {
+                    namedCaptures = toObject(namedCaptures);
+                    symbols = SUBSTITUTION_SYMBOLS;
+                }
+                return replace(replacement, symbols, (function(match, ch) {
+                    var capture;
+                    switch (charAt(ch, 0)) {
+                      case "$":
+                        return "$";
+
+                      case "&":
+                        return matched;
+
+                      case "`":
+                        return stringSlice(str, 0, position);
+
+                      case "'":
+                        return stringSlice(str, tailPos);
+
+                      case "<":
+                        capture = namedCaptures[stringSlice(ch, 1, -1)];
+                        break;
+
+                      default:
+                        var n = +ch;
+                        if (0 === n) return match;
+                        if (n > m) {
+                            var f = floor(n / 10);
+                            if (0 === f) return match;
+                            if (f <= m) return void 0 === captures[f - 1] ? charAt(ch, 1) : captures[f - 1] + charAt(ch, 1);
+                            return match;
+                        }
+                        capture = captures[n - 1];
+                    }
+                    return void 0 === capture ? "" : capture;
+                }));
+            };
+        },
+        8454: (module, __unused_webpack_exports, __webpack_require__) => {
+            var check = function(it) {
+                return it && it.Math == Math && it;
+            };
+            module.exports = check("object" == typeof globalThis && globalThis) || check("object" == typeof window && window) || check("object" == typeof self && self) || check("object" == typeof __webpack_require__.g && __webpack_require__.g) || function() {
+                return this;
+            }() || Function("return this")();
+        },
+        8281: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var toObject = __webpack_require__(9473);
+            var hasOwnProperty = uncurryThis({}.hasOwnProperty);
+            module.exports = Object.hasOwn || function hasOwn(it, key) {
+                return hasOwnProperty(toObject(it), key);
+            };
+        },
+        4377: module => {
+            module.exports = {};
+        },
+        7461: (module, __unused_webpack_exports, __webpack_require__) => {
+            var getBuiltIn = __webpack_require__(4991);
+            module.exports = getBuiltIn("document", "documentElement");
+        },
+        4985: (module, __unused_webpack_exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var fails = __webpack_require__(6183);
+            var createElement = __webpack_require__(7282);
+            module.exports = !DESCRIPTORS && !fails((function() {
+                return 7 != Object.defineProperty(createElement("div"), "a", {
+                    get: function() {
+                        return 7;
+                    }
+                }).a;
+            }));
+        },
+        7530: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var fails = __webpack_require__(6183);
+            var classof = __webpack_require__(1510);
+            var $Object = Object;
+            var split = uncurryThis("".split);
+            module.exports = fails((function() {
+                return !$Object("z").propertyIsEnumerable(0);
+            })) ? function(it) {
+                return "String" == classof(it) ? split(it, "") : $Object(it);
+            } : $Object;
+        },
+        7770: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isCallable = __webpack_require__(6282);
+            var isObject = __webpack_require__(5896);
+            var setPrototypeOf = __webpack_require__(5900);
+            module.exports = function($this, dummy, Wrapper) {
+                var NewTarget, NewTargetPrototype;
+                if (setPrototypeOf && isCallable(NewTarget = dummy.constructor) && NewTarget !== Wrapper && isObject(NewTargetPrototype = NewTarget.prototype) && NewTargetPrototype !== Wrapper.prototype) setPrototypeOf($this, NewTargetPrototype);
+                return $this;
+            };
+        },
+        6901: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var isCallable = __webpack_require__(6282);
+            var store = __webpack_require__(2047);
+            var functionToString = uncurryThis(Function.toString);
+            if (!isCallable(store.inspectSource)) store.inspectSource = function(it) {
+                return functionToString(it);
+            };
+            module.exports = store.inspectSource;
+        },
+        6582: (module, __unused_webpack_exports, __webpack_require__) => {
+            var $ = __webpack_require__(4761);
+            var uncurryThis = __webpack_require__(1768);
+            var hiddenKeys = __webpack_require__(4377);
+            var isObject = __webpack_require__(5896);
+            var hasOwn = __webpack_require__(8281);
+            var defineProperty = __webpack_require__(9168).f;
+            var getOwnPropertyNamesModule = __webpack_require__(6785);
+            var getOwnPropertyNamesExternalModule = __webpack_require__(6675);
+            var isExtensible = __webpack_require__(6662);
+            var uid = __webpack_require__(9059);
+            var FREEZING = __webpack_require__(3116);
+            var REQUIRED = false;
+            var METADATA = uid("meta");
+            var id = 0;
+            var setMetadata = function(it) {
+                defineProperty(it, METADATA, {
+                    value: {
+                        objectID: "O" + id++,
+                        weakData: {}
+                    }
+                });
+            };
+            var fastKey = function(it, create) {
+                if (!isObject(it)) return "symbol" == typeof it ? it : ("string" == typeof it ? "S" : "P") + it;
+                if (!hasOwn(it, METADATA)) {
+                    if (!isExtensible(it)) return "F";
+                    if (!create) return "E";
+                    setMetadata(it);
+                }
+                return it[METADATA].objectID;
+            };
+            var getWeakData = function(it, create) {
+                if (!hasOwn(it, METADATA)) {
+                    if (!isExtensible(it)) return true;
+                    if (!create) return false;
+                    setMetadata(it);
+                }
+                return it[METADATA].weakData;
+            };
+            var onFreeze = function(it) {
+                if (FREEZING && REQUIRED && isExtensible(it) && !hasOwn(it, METADATA)) setMetadata(it);
+                return it;
+            };
+            var enable = function() {
+                meta.enable = function() {};
+                REQUIRED = true;
+                var getOwnPropertyNames = getOwnPropertyNamesModule.f;
+                var splice = uncurryThis([].splice);
+                var test = {};
+                test[METADATA] = 1;
+                if (getOwnPropertyNames(test).length) {
+                    getOwnPropertyNamesModule.f = function(it) {
+                        var result = getOwnPropertyNames(it);
+                        for (var i = 0, length = result.length; i < length; i++) if (result[i] === METADATA) {
+                            splice(result, i, 1);
+                            break;
+                        }
+                        return result;
+                    };
+                    $({
+                        target: "Object",
+                        stat: true,
+                        forced: true
+                    }, {
+                        getOwnPropertyNames: getOwnPropertyNamesExternalModule.f
+                    });
+                }
+            };
+            var meta = module.exports = {
+                enable,
+                fastKey,
+                getWeakData,
+                onFreeze
+            };
+            hiddenKeys[METADATA] = true;
+        },
+        1030: (module, __unused_webpack_exports, __webpack_require__) => {
+            var NATIVE_WEAK_MAP = __webpack_require__(9780);
+            var global = __webpack_require__(8454);
+            var isObject = __webpack_require__(5896);
+            var createNonEnumerableProperty = __webpack_require__(1501);
+            var hasOwn = __webpack_require__(8281);
+            var shared = __webpack_require__(2047);
+            var sharedKey = __webpack_require__(8873);
+            var hiddenKeys = __webpack_require__(4377);
+            var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
+            var TypeError = global.TypeError;
+            var WeakMap = global.WeakMap;
+            var set, get, has;
+            var enforce = function(it) {
+                return has(it) ? get(it) : set(it, {});
+            };
+            var getterFor = function(TYPE) {
+                return function(it) {
+                    var state;
+                    if (!isObject(it) || (state = get(it)).type !== TYPE) throw TypeError("Incompatible receiver, " + TYPE + " required");
+                    return state;
+                };
+            };
+            if (NATIVE_WEAK_MAP || shared.state) {
+                var store = shared.state || (shared.state = new WeakMap);
+                store.get = store.get;
+                store.has = store.has;
+                store.set = store.set;
+                set = function(it, metadata) {
+                    if (store.has(it)) throw TypeError(OBJECT_ALREADY_INITIALIZED);
+                    metadata.facade = it;
+                    store.set(it, metadata);
+                    return metadata;
+                };
+                get = function(it) {
+                    return store.get(it) || {};
+                };
+                has = function(it) {
+                    return store.has(it);
+                };
+            } else {
+                var STATE = sharedKey("state");
+                hiddenKeys[STATE] = true;
+                set = function(it, metadata) {
+                    if (hasOwn(it, STATE)) throw TypeError(OBJECT_ALREADY_INITIALIZED);
+                    metadata.facade = it;
+                    createNonEnumerableProperty(it, STATE, metadata);
+                    return metadata;
+                };
+                get = function(it) {
+                    return hasOwn(it, STATE) ? it[STATE] : {};
+                };
+                has = function(it) {
+                    return hasOwn(it, STATE);
+                };
+            }
+            module.exports = {
+                set,
+                get,
+                has,
+                enforce,
+                getterFor
+            };
+        },
+        5859: (module, __unused_webpack_exports, __webpack_require__) => {
+            var wellKnownSymbol = __webpack_require__(8149);
+            var Iterators = __webpack_require__(6126);
+            var ITERATOR = wellKnownSymbol("iterator");
+            var ArrayPrototype = Array.prototype;
+            module.exports = function(it) {
+                return void 0 !== it && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
+            };
+        },
+        7931: (module, __unused_webpack_exports, __webpack_require__) => {
+            var classof = __webpack_require__(1510);
+            module.exports = Array.isArray || function isArray(argument) {
+                return "Array" == classof(argument);
+            };
+        },
+        6282: (module, __unused_webpack_exports, __webpack_require__) => {
+            var $documentAll = __webpack_require__(1685);
+            var documentAll = $documentAll.all;
+            module.exports = $documentAll.IS_HTMLDDA ? function(argument) {
+                return "function" == typeof argument || argument === documentAll;
+            } : function(argument) {
+                return "function" == typeof argument;
+            };
+        },
+        2240: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var fails = __webpack_require__(6183);
+            var isCallable = __webpack_require__(6282);
+            var classof = __webpack_require__(9225);
+            var getBuiltIn = __webpack_require__(4991);
+            var inspectSource = __webpack_require__(6901);
+            var noop = function() {};
+            var empty = [];
+            var construct = getBuiltIn("Reflect", "construct");
+            var constructorRegExp = /^\s*(?:class|function)\b/;
+            var exec = uncurryThis(constructorRegExp.exec);
+            var INCORRECT_TO_STRING = !constructorRegExp.exec(noop);
+            var isConstructorModern = function isConstructor(argument) {
+                if (!isCallable(argument)) return false;
+                try {
+                    construct(noop, empty, argument);
+                    return true;
+                } catch (error) {
+                    return false;
+                }
+            };
+            var isConstructorLegacy = function isConstructor(argument) {
+                if (!isCallable(argument)) return false;
+                switch (classof(argument)) {
+                  case "AsyncFunction":
+                  case "GeneratorFunction":
+                  case "AsyncGeneratorFunction":
+                    return false;
+                }
+                try {
+                    return INCORRECT_TO_STRING || !!exec(constructorRegExp, inspectSource(argument));
+                } catch (error) {
+                    return true;
+                }
+            };
+            isConstructorLegacy.sham = true;
+            module.exports = !construct || fails((function() {
+                var called;
+                return isConstructorModern(isConstructorModern.call) || !isConstructorModern(Object) || !isConstructorModern((function() {
+                    called = true;
+                })) || called;
+            })) ? isConstructorLegacy : isConstructorModern;
+        },
+        1949: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            var isCallable = __webpack_require__(6282);
+            var replacement = /#|\.prototype\./;
+            var isForced = function(feature, detection) {
+                var value = data[normalize(feature)];
+                return value == POLYFILL ? true : value == NATIVE ? false : isCallable(detection) ? fails(detection) : !!detection;
+            };
+            var normalize = isForced.normalize = function(string) {
+                return String(string).replace(replacement, ".").toLowerCase();
+            };
+            var data = isForced.data = {};
+            var NATIVE = isForced.NATIVE = "N";
+            var POLYFILL = isForced.POLYFILL = "P";
+            module.exports = isForced;
+        },
+        2420: module => {
+            module.exports = function(it) {
+                return null === it || void 0 === it;
+            };
+        },
+        5896: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isCallable = __webpack_require__(6282);
+            var $documentAll = __webpack_require__(1685);
+            var documentAll = $documentAll.all;
+            module.exports = $documentAll.IS_HTMLDDA ? function(it) {
+                return "object" == typeof it ? null !== it : isCallable(it) || it === documentAll;
+            } : function(it) {
+                return "object" == typeof it ? null !== it : isCallable(it);
+            };
+        },
+        8977: module => {
+            module.exports = false;
+        },
+        1527: (module, __unused_webpack_exports, __webpack_require__) => {
+            var getBuiltIn = __webpack_require__(4991);
+            var isCallable = __webpack_require__(6282);
+            var isPrototypeOf = __webpack_require__(1786);
+            var USE_SYMBOL_AS_UID = __webpack_require__(4746);
+            var $Object = Object;
+            module.exports = USE_SYMBOL_AS_UID ? function(it) {
+                return "symbol" == typeof it;
+            } : function(it) {
+                var $Symbol = getBuiltIn("Symbol");
+                return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
+            };
+        },
+        1518: (module, __unused_webpack_exports, __webpack_require__) => {
+            var bind = __webpack_require__(1098);
+            var call = __webpack_require__(4552);
+            var anObject = __webpack_require__(1474);
+            var tryToString = __webpack_require__(180);
+            var isArrayIteratorMethod = __webpack_require__(5859);
+            var lengthOfArrayLike = __webpack_require__(1829);
+            var isPrototypeOf = __webpack_require__(1786);
+            var getIterator = __webpack_require__(7755);
+            var getIteratorMethod = __webpack_require__(650);
+            var iteratorClose = __webpack_require__(9193);
+            var $TypeError = TypeError;
+            var Result = function(stopped, result) {
+                this.stopped = stopped;
+                this.result = result;
+            };
+            var ResultPrototype = Result.prototype;
+            module.exports = function(iterable, unboundFunction, options) {
+                var that = options && options.that;
+                var AS_ENTRIES = !!(options && options.AS_ENTRIES);
+                var IS_RECORD = !!(options && options.IS_RECORD);
+                var IS_ITERATOR = !!(options && options.IS_ITERATOR);
+                var INTERRUPTED = !!(options && options.INTERRUPTED);
+                var fn = bind(unboundFunction, that);
+                var iterator, iterFn, index, length, result, next, step;
+                var stop = function(condition) {
+                    if (iterator) iteratorClose(iterator, "normal", condition);
+                    return new Result(true, condition);
+                };
+                var callFn = function(value) {
+                    if (AS_ENTRIES) {
+                        anObject(value);
+                        return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
+                    }
+                    return INTERRUPTED ? fn(value, stop) : fn(value);
+                };
+                if (IS_RECORD) iterator = iterable.iterator; else if (IS_ITERATOR) iterator = iterable; else {
+                    iterFn = getIteratorMethod(iterable);
+                    if (!iterFn) throw $TypeError(tryToString(iterable) + " is not iterable");
+                    if (isArrayIteratorMethod(iterFn)) {
+                        for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
+                            result = callFn(iterable[index]);
+                            if (result && isPrototypeOf(ResultPrototype, result)) return result;
+                        }
+                        return new Result(false);
+                    }
+                    iterator = getIterator(iterable, iterFn);
+                }
+                next = IS_RECORD ? iterable.next : iterator.next;
+                while (!(step = call(next, iterator)).done) {
+                    try {
+                        result = callFn(step.value);
+                    } catch (error) {
+                        iteratorClose(iterator, "throw", error);
+                    }
+                    if ("object" == typeof result && result && isPrototypeOf(ResultPrototype, result)) return result;
+                }
+                return new Result(false);
+            };
+        },
+        9193: (module, __unused_webpack_exports, __webpack_require__) => {
+            var call = __webpack_require__(4552);
+            var anObject = __webpack_require__(1474);
+            var getMethod = __webpack_require__(9827);
+            module.exports = function(iterator, kind, value) {
+                var innerResult, innerError;
+                anObject(iterator);
+                try {
+                    innerResult = getMethod(iterator, "return");
+                    if (!innerResult) {
+                        if ("throw" === kind) throw value;
+                        return value;
+                    }
+                    innerResult = call(innerResult, iterator);
+                } catch (error) {
+                    innerError = true;
+                    innerResult = error;
+                }
+                if ("throw" === kind) throw value;
+                if (innerError) throw innerResult;
+                anObject(innerResult);
+                return value;
+            };
+        },
+        392: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var IteratorPrototype = __webpack_require__(6524).IteratorPrototype;
+            var create = __webpack_require__(1525);
+            var createPropertyDescriptor = __webpack_require__(9273);
+            var setToStringTag = __webpack_require__(820);
+            var Iterators = __webpack_require__(6126);
+            var returnThis = function() {
+                return this;
+            };
+            module.exports = function(IteratorConstructor, NAME, next, ENUMERABLE_NEXT) {
+                var TO_STRING_TAG = NAME + " Iterator";
+                IteratorConstructor.prototype = create(IteratorPrototype, {
+                    next: createPropertyDescriptor(+!ENUMERABLE_NEXT, next)
+                });
+                setToStringTag(IteratorConstructor, TO_STRING_TAG, false, true);
+                Iterators[TO_STRING_TAG] = returnThis;
+                return IteratorConstructor;
+            };
+        },
+        335: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var $ = __webpack_require__(4761);
+            var call = __webpack_require__(4552);
+            var IS_PURE = __webpack_require__(8977);
+            var FunctionName = __webpack_require__(4530);
+            var isCallable = __webpack_require__(6282);
+            var createIteratorConstructor = __webpack_require__(392);
+            var getPrototypeOf = __webpack_require__(4204);
+            var setPrototypeOf = __webpack_require__(5900);
+            var setToStringTag = __webpack_require__(820);
+            var createNonEnumerableProperty = __webpack_require__(1501);
+            var defineBuiltIn = __webpack_require__(2054);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var Iterators = __webpack_require__(6126);
+            var IteratorsCore = __webpack_require__(6524);
+            var PROPER_FUNCTION_NAME = FunctionName.PROPER;
+            var CONFIGURABLE_FUNCTION_NAME = FunctionName.CONFIGURABLE;
+            var IteratorPrototype = IteratorsCore.IteratorPrototype;
+            var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
+            var ITERATOR = wellKnownSymbol("iterator");
+            var KEYS = "keys";
+            var VALUES = "values";
+            var ENTRIES = "entries";
+            var returnThis = function() {
+                return this;
+            };
+            module.exports = function(Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+                createIteratorConstructor(IteratorConstructor, NAME, next);
+                var getIterationMethod = function(KIND) {
+                    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
+                    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
+                    switch (KIND) {
+                      case KEYS:
+                        return function keys() {
+                            return new IteratorConstructor(this, KIND);
+                        };
+
+                      case VALUES:
+                        return function values() {
+                            return new IteratorConstructor(this, KIND);
+                        };
+
+                      case ENTRIES:
+                        return function entries() {
+                            return new IteratorConstructor(this, KIND);
+                        };
+                    }
+                    return function() {
+                        return new IteratorConstructor(this);
+                    };
+                };
+                var TO_STRING_TAG = NAME + " Iterator";
+                var INCORRECT_VALUES_NAME = false;
+                var IterablePrototype = Iterable.prototype;
+                var nativeIterator = IterablePrototype[ITERATOR] || IterablePrototype["@@iterator"] || DEFAULT && IterablePrototype[DEFAULT];
+                var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
+                var anyNativeIterator = "Array" == NAME ? IterablePrototype.entries || nativeIterator : nativeIterator;
+                var CurrentIteratorPrototype, methods, KEY;
+                if (anyNativeIterator) {
+                    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable));
+                    if (CurrentIteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
+                        if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) if (setPrototypeOf) setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype); else if (!isCallable(CurrentIteratorPrototype[ITERATOR])) defineBuiltIn(CurrentIteratorPrototype, ITERATOR, returnThis);
+                        setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true, true);
+                        if (IS_PURE) Iterators[TO_STRING_TAG] = returnThis;
+                    }
+                }
+                if (PROPER_FUNCTION_NAME && DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) if (!IS_PURE && CONFIGURABLE_FUNCTION_NAME) createNonEnumerableProperty(IterablePrototype, "name", VALUES); else {
+                    INCORRECT_VALUES_NAME = true;
+                    defaultIterator = function values() {
+                        return call(nativeIterator, this);
+                    };
+                }
+                if (DEFAULT) {
+                    methods = {
+                        values: getIterationMethod(VALUES),
+                        keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
+                        entries: getIterationMethod(ENTRIES)
+                    };
+                    if (FORCED) {
+                        for (KEY in methods) if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) defineBuiltIn(IterablePrototype, KEY, methods[KEY]);
+                    } else $({
+                        target: NAME,
+                        proto: true,
+                        forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME
+                    }, methods);
+                }
+                if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) defineBuiltIn(IterablePrototype, ITERATOR, defaultIterator, {
+                    name: DEFAULT
+                });
+                Iterators[NAME] = defaultIterator;
+                return methods;
+            };
+        },
+        6524: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var fails = __webpack_require__(6183);
+            var isCallable = __webpack_require__(6282);
+            var isObject = __webpack_require__(5896);
+            var create = __webpack_require__(1525);
+            var getPrototypeOf = __webpack_require__(4204);
+            var defineBuiltIn = __webpack_require__(2054);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var IS_PURE = __webpack_require__(8977);
+            var ITERATOR = wellKnownSymbol("iterator");
+            var BUGGY_SAFARI_ITERATORS = false;
+            var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+            if ([].keys) {
+                arrayIterator = [].keys();
+                if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true; else {
+                    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+                    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+                }
+            }
+            var NEW_ITERATOR_PROTOTYPE = !isObject(IteratorPrototype) || fails((function() {
+                var test = {};
+                return IteratorPrototype[ITERATOR].call(test) !== test;
+            }));
+            if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {}; else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
+            if (!isCallable(IteratorPrototype[ITERATOR])) defineBuiltIn(IteratorPrototype, ITERATOR, (function() {
+                return this;
+            }));
+            module.exports = {
+                IteratorPrototype,
+                BUGGY_SAFARI_ITERATORS
+            };
+        },
+        6126: module => {
+            module.exports = {};
+        },
+        1829: (module, __unused_webpack_exports, __webpack_require__) => {
+            var toLength = __webpack_require__(3917);
+            module.exports = function(obj) {
+                return toLength(obj.length);
+            };
+        },
+        5903: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            var isCallable = __webpack_require__(6282);
+            var hasOwn = __webpack_require__(8281);
+            var DESCRIPTORS = __webpack_require__(723);
+            var CONFIGURABLE_FUNCTION_NAME = __webpack_require__(4530).CONFIGURABLE;
+            var inspectSource = __webpack_require__(6901);
+            var InternalStateModule = __webpack_require__(1030);
+            var enforceInternalState = InternalStateModule.enforce;
+            var getInternalState = InternalStateModule.get;
+            var defineProperty = Object.defineProperty;
+            var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails((function() {
+                return 8 !== defineProperty((function() {}), "length", {
+                    value: 8
+                }).length;
+            }));
+            var TEMPLATE = String(String).split("String");
+            var makeBuiltIn = module.exports = function(value, name, options) {
+                if ("Symbol(" === String(name).slice(0, 7)) name = "[" + String(name).replace(/^Symbol\(([^)]*)\)/, "$1") + "]";
+                if (options && options.getter) name = "get " + name;
+                if (options && options.setter) name = "set " + name;
+                if (!hasOwn(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) if (DESCRIPTORS) defineProperty(value, "name", {
+                    value: name,
+                    configurable: true
+                }); else value.name = name;
+                if (CONFIGURABLE_LENGTH && options && hasOwn(options, "arity") && value.length !== options.arity) defineProperty(value, "length", {
+                    value: options.arity
+                });
+                try {
+                    if (options && hasOwn(options, "constructor") && options.constructor) {
+                        if (DESCRIPTORS) defineProperty(value, "prototype", {
+                            writable: false
+                        });
+                    } else if (value.prototype) value.prototype = void 0;
+                } catch (error) {}
+                var state = enforceInternalState(value);
+                if (!hasOwn(state, "source")) state.source = TEMPLATE.join("string" == typeof name ? name : "");
+                return value;
+            };
+            Function.prototype.toString = makeBuiltIn((function toString() {
+                return isCallable(this) && getInternalState(this).source || inspectSource(this);
+            }), "toString");
+        },
+        1021: module => {
+            var ceil = Math.ceil;
+            var floor = Math.floor;
+            module.exports = Math.trunc || function trunc(x) {
+                var n = +x;
+                return (n > 0 ? floor : ceil)(n);
+            };
+        },
+        8513: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var fails = __webpack_require__(6183);
+            var uncurryThis = __webpack_require__(1768);
+            var toString = __webpack_require__(7655);
+            var trim = __webpack_require__(9749).trim;
+            var whitespaces = __webpack_require__(8342);
+            var $parseInt = global.parseInt;
+            var Symbol = global.Symbol;
+            var ITERATOR = Symbol && Symbol.iterator;
+            var hex = /^[+-]?0x/i;
+            var exec = uncurryThis(hex.exec);
+            var FORCED = 8 !== $parseInt(whitespaces + "08") || 22 !== $parseInt(whitespaces + "0x16") || ITERATOR && !fails((function() {
+                $parseInt(Object(ITERATOR));
+            }));
+            module.exports = FORCED ? function parseInt(string, radix) {
+                var S = trim(toString(string));
+                return $parseInt(S, radix >>> 0 || (exec(hex, S) ? 16 : 10));
+            } : $parseInt;
+        },
+        4727: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var DESCRIPTORS = __webpack_require__(723);
+            var uncurryThis = __webpack_require__(1768);
+            var call = __webpack_require__(4552);
+            var fails = __webpack_require__(6183);
+            var objectKeys = __webpack_require__(1340);
+            var getOwnPropertySymbolsModule = __webpack_require__(8074);
+            var propertyIsEnumerableModule = __webpack_require__(4043);
+            var toObject = __webpack_require__(9473);
+            var IndexedObject = __webpack_require__(7530);
+            var $assign = Object.assign;
+            var defineProperty = Object.defineProperty;
+            var concat = uncurryThis([].concat);
+            module.exports = !$assign || fails((function() {
+                if (DESCRIPTORS && 1 !== $assign({
+                    b: 1
+                }, $assign(defineProperty({}, "a", {
+                    enumerable: true,
+                    get: function() {
+                        defineProperty(this, "b", {
+                            value: 3,
+                            enumerable: false
+                        });
+                    }
+                }), {
+                    b: 2
+                })).b) return true;
+                var A = {};
+                var B = {};
+                var symbol = Symbol();
+                var alphabet = "abcdefghijklmnopqrst";
+                A[symbol] = 7;
+                alphabet.split("").forEach((function(chr) {
+                    B[chr] = chr;
+                }));
+                return 7 != $assign({}, A)[symbol] || objectKeys($assign({}, B)).join("") != alphabet;
+            })) ? function assign(target, source) {
+                var T = toObject(target);
+                var argumentsLength = arguments.length;
+                var index = 1;
+                var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+                var propertyIsEnumerable = propertyIsEnumerableModule.f;
+                while (argumentsLength > index) {
+                    var S = IndexedObject(arguments[index++]);
+                    var keys = getOwnPropertySymbols ? concat(objectKeys(S), getOwnPropertySymbols(S)) : objectKeys(S);
+                    var length = keys.length;
+                    var j = 0;
+                    var key;
+                    while (length > j) {
+                        key = keys[j++];
+                        if (!DESCRIPTORS || call(propertyIsEnumerable, S, key)) T[key] = S[key];
+                    }
+                }
+                return T;
+            } : $assign;
+        },
+        1525: (module, __unused_webpack_exports, __webpack_require__) => {
+            var anObject = __webpack_require__(1474);
+            var definePropertiesModule = __webpack_require__(262);
+            var enumBugKeys = __webpack_require__(8409);
+            var hiddenKeys = __webpack_require__(4377);
+            var html = __webpack_require__(7461);
+            var documentCreateElement = __webpack_require__(7282);
+            var sharedKey = __webpack_require__(8873);
+            var GT = ">";
+            var LT = "<";
+            var PROTOTYPE = "prototype";
+            var SCRIPT = "script";
+            var IE_PROTO = sharedKey("IE_PROTO");
+            var EmptyConstructor = function() {};
+            var scriptTag = function(content) {
+                return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
+            };
+            var NullProtoObjectViaActiveX = function(activeXDocument) {
+                activeXDocument.write(scriptTag(""));
+                activeXDocument.close();
+                var temp = activeXDocument.parentWindow.Object;
+                activeXDocument = null;
+                return temp;
+            };
+            var NullProtoObjectViaIFrame = function() {
+                var iframe = documentCreateElement("iframe");
+                var JS = "java" + SCRIPT + ":";
+                var iframeDocument;
+                iframe.style.display = "none";
+                html.appendChild(iframe);
+                iframe.src = String(JS);
+                iframeDocument = iframe.contentWindow.document;
+                iframeDocument.open();
+                iframeDocument.write(scriptTag("document.F=Object"));
+                iframeDocument.close();
+                return iframeDocument.F;
+            };
+            var activeXDocument;
+            var NullProtoObject = function() {
+                try {
+                    activeXDocument = new ActiveXObject("htmlfile");
+                } catch (error) {}
+                NullProtoObject = "undefined" != typeof document ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
+                var length = enumBugKeys.length;
+                while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
+                return NullProtoObject();
+            };
+            hiddenKeys[IE_PROTO] = true;
+            module.exports = Object.create || function create(O, Properties) {
+                var result;
+                if (null !== O) {
+                    EmptyConstructor[PROTOTYPE] = anObject(O);
+                    result = new EmptyConstructor;
+                    EmptyConstructor[PROTOTYPE] = null;
+                    result[IE_PROTO] = O;
+                } else result = NullProtoObject();
+                return void 0 === Properties ? result : definePropertiesModule.f(result, Properties);
+            };
+        },
+        262: (__unused_webpack_module, exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(8654);
+            var definePropertyModule = __webpack_require__(9168);
+            var anObject = __webpack_require__(1474);
+            var toIndexedObject = __webpack_require__(3206);
+            var objectKeys = __webpack_require__(1340);
+            exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
+                anObject(O);
+                var props = toIndexedObject(Properties);
+                var keys = objectKeys(Properties);
+                var length = keys.length;
+                var index = 0;
+                var key;
+                while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
+                return O;
+            };
+        },
+        9168: (__unused_webpack_module, exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var IE8_DOM_DEFINE = __webpack_require__(4985);
+            var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(8654);
+            var anObject = __webpack_require__(1474);
+            var toPropertyKey = __webpack_require__(2988);
+            var $TypeError = TypeError;
+            var $defineProperty = Object.defineProperty;
+            var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+            var ENUMERABLE = "enumerable";
+            var CONFIGURABLE = "configurable";
+            var WRITABLE = "writable";
+            exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
+                anObject(O);
+                P = toPropertyKey(P);
+                anObject(Attributes);
+                if ("function" === typeof O && "prototype" === P && "value" in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
+                    var current = $getOwnPropertyDescriptor(O, P);
+                    if (current && current[WRITABLE]) {
+                        O[P] = Attributes.value;
+                        Attributes = {
+                            configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
+                            enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
+                            writable: false
+                        };
+                    }
+                }
+                return $defineProperty(O, P, Attributes);
+            } : $defineProperty : function defineProperty(O, P, Attributes) {
+                anObject(O);
+                P = toPropertyKey(P);
+                anObject(Attributes);
+                if (IE8_DOM_DEFINE) try {
+                    return $defineProperty(O, P, Attributes);
+                } catch (error) {}
+                if ("get" in Attributes || "set" in Attributes) throw $TypeError("Accessors not supported");
+                if ("value" in Attributes) O[P] = Attributes.value;
+                return O;
+            };
+        },
+        5663: (__unused_webpack_module, exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var call = __webpack_require__(4552);
+            var propertyIsEnumerableModule = __webpack_require__(4043);
+            var createPropertyDescriptor = __webpack_require__(9273);
+            var toIndexedObject = __webpack_require__(3206);
+            var toPropertyKey = __webpack_require__(2988);
+            var hasOwn = __webpack_require__(8281);
+            var IE8_DOM_DEFINE = __webpack_require__(4985);
+            var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+            exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
+                O = toIndexedObject(O);
+                P = toPropertyKey(P);
+                if (IE8_DOM_DEFINE) try {
+                    return $getOwnPropertyDescriptor(O, P);
+                } catch (error) {}
+                if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
+            };
+        },
+        6675: (module, __unused_webpack_exports, __webpack_require__) => {
+            var classof = __webpack_require__(1510);
+            var toIndexedObject = __webpack_require__(3206);
+            var $getOwnPropertyNames = __webpack_require__(6785).f;
+            var arraySlice = __webpack_require__(4072);
+            var windowNames = "object" == typeof window && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
+            var getWindowNames = function(it) {
+                try {
+                    return $getOwnPropertyNames(it);
+                } catch (error) {
+                    return arraySlice(windowNames);
+                }
+            };
+            module.exports.f = function getOwnPropertyNames(it) {
+                return windowNames && "Window" == classof(it) ? getWindowNames(it) : $getOwnPropertyNames(toIndexedObject(it));
+            };
+        },
+        6785: (__unused_webpack_module, exports, __webpack_require__) => {
+            var internalObjectKeys = __webpack_require__(5113);
+            var enumBugKeys = __webpack_require__(8409);
+            var hiddenKeys = enumBugKeys.concat("length", "prototype");
+            exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+                return internalObjectKeys(O, hiddenKeys);
+            };
+        },
+        8074: (__unused_webpack_module, exports) => {
+            exports.f = Object.getOwnPropertySymbols;
+        },
+        4204: (module, __unused_webpack_exports, __webpack_require__) => {
+            var hasOwn = __webpack_require__(8281);
+            var isCallable = __webpack_require__(6282);
+            var toObject = __webpack_require__(9473);
+            var sharedKey = __webpack_require__(8873);
+            var CORRECT_PROTOTYPE_GETTER = __webpack_require__(7401);
+            var IE_PROTO = sharedKey("IE_PROTO");
+            var $Object = Object;
+            var ObjectPrototype = $Object.prototype;
+            module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
+                var object = toObject(O);
+                if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
+                var constructor = object.constructor;
+                if (isCallable(constructor) && object instanceof constructor) return constructor.prototype;
+                return object instanceof $Object ? ObjectPrototype : null;
+            };
+        },
+        6662: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            var isObject = __webpack_require__(5896);
+            var classof = __webpack_require__(1510);
+            var ARRAY_BUFFER_NON_EXTENSIBLE = __webpack_require__(8774);
+            var $isExtensible = Object.isExtensible;
+            var FAILS_ON_PRIMITIVES = fails((function() {
+                $isExtensible(1);
+            }));
+            module.exports = FAILS_ON_PRIMITIVES || ARRAY_BUFFER_NON_EXTENSIBLE ? function isExtensible(it) {
+                if (!isObject(it)) return false;
+                if (ARRAY_BUFFER_NON_EXTENSIBLE && "ArrayBuffer" == classof(it)) return false;
+                return $isExtensible ? $isExtensible(it) : true;
+            } : $isExtensible;
+        },
+        1786: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            module.exports = uncurryThis({}.isPrototypeOf);
+        },
+        5113: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var hasOwn = __webpack_require__(8281);
+            var toIndexedObject = __webpack_require__(3206);
+            var indexOf = __webpack_require__(5675).indexOf;
+            var hiddenKeys = __webpack_require__(4377);
+            var push = uncurryThis([].push);
+            module.exports = function(object, names) {
+                var O = toIndexedObject(object);
+                var i = 0;
+                var result = [];
+                var key;
+                for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
+                while (names.length > i) if (hasOwn(O, key = names[i++])) ~indexOf(result, key) || push(result, key);
+                return result;
+            };
+        },
+        1340: (module, __unused_webpack_exports, __webpack_require__) => {
+            var internalObjectKeys = __webpack_require__(5113);
+            var enumBugKeys = __webpack_require__(8409);
+            module.exports = Object.keys || function keys(O) {
+                return internalObjectKeys(O, enumBugKeys);
+            };
+        },
+        4043: (__unused_webpack_module, exports) => {
+            "use strict";
+            var $propertyIsEnumerable = {}.propertyIsEnumerable;
+            var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+            var NASHORN_BUG = getOwnPropertyDescriptor && !$propertyIsEnumerable.call({
+                1: 2
+            }, 1);
+            exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+                var descriptor = getOwnPropertyDescriptor(this, V);
+                return !!descriptor && descriptor.enumerable;
+            } : $propertyIsEnumerable;
+        },
+        5900: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var anObject = __webpack_require__(1474);
+            var aPossiblePrototype = __webpack_require__(2004);
+            module.exports = Object.setPrototypeOf || ("__proto__" in {} ? function() {
+                var CORRECT_SETTER = false;
+                var test = {};
+                var setter;
+                try {
+                    setter = uncurryThis(Object.getOwnPropertyDescriptor(Object.prototype, "__proto__").set);
+                    setter(test, []);
+                    CORRECT_SETTER = test instanceof Array;
+                } catch (error) {}
+                return function setPrototypeOf(O, proto) {
+                    anObject(O);
+                    aPossiblePrototype(proto);
+                    if (CORRECT_SETTER) setter(O, proto); else O.__proto__ = proto;
+                    return O;
+                };
+            }() : void 0);
+        },
+        4117: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var TO_STRING_TAG_SUPPORT = __webpack_require__(4823);
+            var classof = __webpack_require__(9225);
+            module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
+                return "[object " + classof(this) + "]";
+            };
+        },
+        6891: (module, __unused_webpack_exports, __webpack_require__) => {
+            var call = __webpack_require__(4552);
+            var isCallable = __webpack_require__(6282);
+            var isObject = __webpack_require__(5896);
+            var $TypeError = TypeError;
+            module.exports = function(input, pref) {
+                var fn, val;
+                if ("string" === pref && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+                if (isCallable(fn = input.valueOf) && !isObject(val = call(fn, input))) return val;
+                if ("string" !== pref && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+                throw $TypeError("Can't convert object to primitive value");
+            };
+        },
+        1441: (module, __unused_webpack_exports, __webpack_require__) => {
+            var getBuiltIn = __webpack_require__(4991);
+            var uncurryThis = __webpack_require__(1768);
+            var getOwnPropertyNamesModule = __webpack_require__(6785);
+            var getOwnPropertySymbolsModule = __webpack_require__(8074);
+            var anObject = __webpack_require__(1474);
+            var concat = uncurryThis([].concat);
+            module.exports = getBuiltIn("Reflect", "ownKeys") || function ownKeys(it) {
+                var keys = getOwnPropertyNamesModule.f(anObject(it));
+                var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+                return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
+            };
+        },
+        8734: (module, __unused_webpack_exports, __webpack_require__) => {
+            var call = __webpack_require__(4552);
+            var anObject = __webpack_require__(1474);
+            var isCallable = __webpack_require__(6282);
+            var classof = __webpack_require__(1510);
+            var regexpExec = __webpack_require__(5510);
+            var $TypeError = TypeError;
+            module.exports = function(R, S) {
+                var exec = R.exec;
+                if (isCallable(exec)) {
+                    var result = call(exec, R, S);
+                    if (null !== result) anObject(result);
+                    return result;
+                }
+                if ("RegExp" === classof(R)) return call(regexpExec, R, S);
+                throw $TypeError("RegExp#exec called on incompatible receiver");
+            };
+        },
+        5510: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var call = __webpack_require__(4552);
+            var uncurryThis = __webpack_require__(1768);
+            var toString = __webpack_require__(7655);
+            var regexpFlags = __webpack_require__(8383);
+            var stickyHelpers = __webpack_require__(6558);
+            var shared = __webpack_require__(1748);
+            var create = __webpack_require__(1525);
+            var getInternalState = __webpack_require__(1030).get;
+            var UNSUPPORTED_DOT_ALL = __webpack_require__(7672);
+            var UNSUPPORTED_NCG = __webpack_require__(9729);
+            var nativeReplace = shared("native-string-replace", String.prototype.replace);
+            var nativeExec = RegExp.prototype.exec;
+            var patchedExec = nativeExec;
+            var charAt = uncurryThis("".charAt);
+            var indexOf = uncurryThis("".indexOf);
+            var replace = uncurryThis("".replace);
+            var stringSlice = uncurryThis("".slice);
+            var UPDATES_LAST_INDEX_WRONG = function() {
+                var re1 = /a/;
+                var re2 = /b*/g;
+                call(nativeExec, re1, "a");
+                call(nativeExec, re2, "a");
+                return 0 !== re1.lastIndex || 0 !== re2.lastIndex;
+            }();
+            var UNSUPPORTED_Y = stickyHelpers.BROKEN_CARET;
+            var NPCG_INCLUDED = void 0 !== /()??/.exec("")[1];
+            var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y || UNSUPPORTED_DOT_ALL || UNSUPPORTED_NCG;
+            if (PATCH) patchedExec = function exec(string) {
+                var re = this;
+                var state = getInternalState(re);
+                var str = toString(string);
+                var raw = state.raw;
+                var result, reCopy, lastIndex, match, i, object, group;
+                if (raw) {
+                    raw.lastIndex = re.lastIndex;
+                    result = call(patchedExec, raw, str);
+                    re.lastIndex = raw.lastIndex;
+                    return result;
+                }
+                var groups = state.groups;
+                var sticky = UNSUPPORTED_Y && re.sticky;
+                var flags = call(regexpFlags, re);
+                var source = re.source;
+                var charsAdded = 0;
+                var strCopy = str;
+                if (sticky) {
+                    flags = replace(flags, "y", "");
+                    if (-1 === indexOf(flags, "g")) flags += "g";
+                    strCopy = stringSlice(str, re.lastIndex);
+                    if (re.lastIndex > 0 && (!re.multiline || re.multiline && "\n" !== charAt(str, re.lastIndex - 1))) {
+                        source = "(?: " + source + ")";
+                        strCopy = " " + strCopy;
+                        charsAdded++;
+                    }
+                    reCopy = new RegExp("^(?:" + source + ")", flags);
+                }
+                if (NPCG_INCLUDED) reCopy = new RegExp("^" + source + "$(?!\\s)", flags);
+                if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
+                match = call(nativeExec, sticky ? reCopy : re, strCopy);
+                if (sticky) if (match) {
+                    match.input = stringSlice(match.input, charsAdded);
+                    match[0] = stringSlice(match[0], charsAdded);
+                    match.index = re.lastIndex;
+                    re.lastIndex += match[0].length;
+                } else re.lastIndex = 0; else if (UPDATES_LAST_INDEX_WRONG && match) re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
+                if (NPCG_INCLUDED && match && match.length > 1) call(nativeReplace, match[0], reCopy, (function() {
+                    for (i = 1; i < arguments.length - 2; i++) if (void 0 === arguments[i]) match[i] = void 0;
+                }));
+                if (match && groups) {
+                    match.groups = object = create(null);
+                    for (i = 0; i < groups.length; i++) {
+                        group = groups[i];
+                        object[group[0]] = match[group[1]];
+                    }
+                }
+                return match;
+            };
+            module.exports = patchedExec;
+        },
+        8383: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var anObject = __webpack_require__(1474);
+            module.exports = function() {
+                var that = anObject(this);
+                var result = "";
+                if (that.hasIndices) result += "d";
+                if (that.global) result += "g";
+                if (that.ignoreCase) result += "i";
+                if (that.multiline) result += "m";
+                if (that.dotAll) result += "s";
+                if (that.unicode) result += "u";
+                if (that.unicodeSets) result += "v";
+                if (that.sticky) result += "y";
+                return result;
+            };
+        },
+        6558: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            var global = __webpack_require__(8454);
+            var $RegExp = global.RegExp;
+            var UNSUPPORTED_Y = fails((function() {
+                var re = $RegExp("a", "y");
+                re.lastIndex = 2;
+                return null != re.exec("abcd");
+            }));
+            var MISSED_STICKY = UNSUPPORTED_Y || fails((function() {
+                return !$RegExp("a", "y").sticky;
+            }));
+            var BROKEN_CARET = UNSUPPORTED_Y || fails((function() {
+                var re = $RegExp("^r", "gy");
+                re.lastIndex = 2;
+                return null != re.exec("str");
+            }));
+            module.exports = {
+                BROKEN_CARET,
+                MISSED_STICKY,
+                UNSUPPORTED_Y
+            };
+        },
+        7672: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            var global = __webpack_require__(8454);
+            var $RegExp = global.RegExp;
+            module.exports = fails((function() {
+                var re = $RegExp(".", "s");
+                return !(re.dotAll && re.exec("\n") && "s" === re.flags);
+            }));
+        },
+        9729: (module, __unused_webpack_exports, __webpack_require__) => {
+            var fails = __webpack_require__(6183);
+            var global = __webpack_require__(8454);
+            var $RegExp = global.RegExp;
+            module.exports = fails((function() {
+                var re = $RegExp("(?<a>b)", "g");
+                return "b" !== re.exec("b").groups.a || "bc" !== "b".replace(re, "$<a>c");
+            }));
+        },
+        7431: (module, __unused_webpack_exports, __webpack_require__) => {
+            var isNullOrUndefined = __webpack_require__(2420);
+            var $TypeError = TypeError;
+            module.exports = function(it) {
+                if (isNullOrUndefined(it)) throw $TypeError("Can't call method on " + it);
+                return it;
+            };
+        },
+        820: (module, __unused_webpack_exports, __webpack_require__) => {
+            var defineProperty = __webpack_require__(9168).f;
+            var hasOwn = __webpack_require__(8281);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+            module.exports = function(target, TAG, STATIC) {
+                if (target && !STATIC) target = target.prototype;
+                if (target && !hasOwn(target, TO_STRING_TAG)) defineProperty(target, TO_STRING_TAG, {
+                    configurable: true,
+                    value: TAG
+                });
+            };
+        },
+        8873: (module, __unused_webpack_exports, __webpack_require__) => {
+            var shared = __webpack_require__(1748);
+            var uid = __webpack_require__(9059);
+            var keys = shared("keys");
+            module.exports = function(key) {
+                return keys[key] || (keys[key] = uid(key));
+            };
+        },
+        2047: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var defineGlobalProperty = __webpack_require__(7194);
+            var SHARED = "__core-js_shared__";
+            var store = global[SHARED] || defineGlobalProperty(SHARED, {});
+            module.exports = store;
+        },
+        1748: (module, __unused_webpack_exports, __webpack_require__) => {
+            var IS_PURE = __webpack_require__(8977);
+            var store = __webpack_require__(2047);
+            (module.exports = function(key, value) {
+                return store[key] || (store[key] = void 0 !== value ? value : {});
+            })("versions", []).push({
+                version: "3.26.1",
+                mode: IS_PURE ? "pure" : "global",
+                copyright: "© 2014-2022 Denis Pushkarev (zloirock.ru)",
+                license: "https://github.com/zloirock/core-js/blob/v3.26.1/LICENSE",
+                source: "https://github.com/zloirock/core-js"
+            });
+        },
+        7321: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var toIntegerOrInfinity = __webpack_require__(8037);
+            var toString = __webpack_require__(7655);
+            var requireObjectCoercible = __webpack_require__(7431);
+            var charAt = uncurryThis("".charAt);
+            var charCodeAt = uncurryThis("".charCodeAt);
+            var stringSlice = uncurryThis("".slice);
+            var createMethod = function(CONVERT_TO_STRING) {
+                return function($this, pos) {
+                    var S = toString(requireObjectCoercible($this));
+                    var position = toIntegerOrInfinity(pos);
+                    var size = S.length;
+                    var first, second;
+                    if (position < 0 || position >= size) return CONVERT_TO_STRING ? "" : void 0;
+                    first = charCodeAt(S, position);
+                    return first < 55296 || first > 56319 || position + 1 === size || (second = charCodeAt(S, position + 1)) < 56320 || second > 57343 ? CONVERT_TO_STRING ? charAt(S, position) : first : CONVERT_TO_STRING ? stringSlice(S, position, position + 2) : (first - 55296 << 10) + (second - 56320) + 65536;
+                };
+            };
+            module.exports = {
+                codeAt: createMethod(false),
+                charAt: createMethod(true)
+            };
+        },
+        9749: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var requireObjectCoercible = __webpack_require__(7431);
+            var toString = __webpack_require__(7655);
+            var whitespaces = __webpack_require__(8342);
+            var replace = uncurryThis("".replace);
+            var whitespace = "[" + whitespaces + "]";
+            var ltrim = RegExp("^" + whitespace + whitespace + "*");
+            var rtrim = RegExp(whitespace + whitespace + "*$");
+            var createMethod = function(TYPE) {
+                return function($this) {
+                    var string = toString(requireObjectCoercible($this));
+                    if (1 & TYPE) string = replace(string, ltrim, "");
+                    if (2 & TYPE) string = replace(string, rtrim, "");
+                    return string;
+                };
+            };
+            module.exports = {
+                start: createMethod(1),
+                end: createMethod(2),
+                trim: createMethod(3)
+            };
+        },
+        3801: (module, __unused_webpack_exports, __webpack_require__) => {
+            var V8_VERSION = __webpack_require__(4324);
+            var fails = __webpack_require__(6183);
+            module.exports = !!Object.getOwnPropertySymbols && !fails((function() {
+                var symbol = Symbol();
+                return !String(symbol) || !(Object(symbol) instanceof Symbol) || !Symbol.sham && V8_VERSION && V8_VERSION < 41;
+            }));
+        },
+        9623: (module, __unused_webpack_exports, __webpack_require__) => {
+            var toIntegerOrInfinity = __webpack_require__(8037);
+            var max = Math.max;
+            var min = Math.min;
+            module.exports = function(index, length) {
+                var integer = toIntegerOrInfinity(index);
+                return integer < 0 ? max(integer + length, 0) : min(integer, length);
+            };
+        },
+        3206: (module, __unused_webpack_exports, __webpack_require__) => {
+            var IndexedObject = __webpack_require__(7530);
+            var requireObjectCoercible = __webpack_require__(7431);
+            module.exports = function(it) {
+                return IndexedObject(requireObjectCoercible(it));
+            };
+        },
+        8037: (module, __unused_webpack_exports, __webpack_require__) => {
+            var trunc = __webpack_require__(1021);
+            module.exports = function(argument) {
+                var number = +argument;
+                return number !== number || 0 === number ? 0 : trunc(number);
+            };
+        },
+        3917: (module, __unused_webpack_exports, __webpack_require__) => {
+            var toIntegerOrInfinity = __webpack_require__(8037);
+            var min = Math.min;
+            module.exports = function(argument) {
+                return argument > 0 ? min(toIntegerOrInfinity(argument), 9007199254740991) : 0;
+            };
+        },
+        9473: (module, __unused_webpack_exports, __webpack_require__) => {
+            var requireObjectCoercible = __webpack_require__(7431);
+            var $Object = Object;
+            module.exports = function(argument) {
+                return $Object(requireObjectCoercible(argument));
+            };
+        },
+        3948: (module, __unused_webpack_exports, __webpack_require__) => {
+            var call = __webpack_require__(4552);
+            var isObject = __webpack_require__(5896);
+            var isSymbol = __webpack_require__(1527);
+            var getMethod = __webpack_require__(9827);
+            var ordinaryToPrimitive = __webpack_require__(6891);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var $TypeError = TypeError;
+            var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
+            module.exports = function(input, pref) {
+                if (!isObject(input) || isSymbol(input)) return input;
+                var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+                var result;
+                if (exoticToPrim) {
+                    if (void 0 === pref) pref = "default";
+                    result = call(exoticToPrim, input, pref);
+                    if (!isObject(result) || isSymbol(result)) return result;
+                    throw $TypeError("Can't convert object to primitive value");
+                }
+                if (void 0 === pref) pref = "number";
+                return ordinaryToPrimitive(input, pref);
+            };
+        },
+        2988: (module, __unused_webpack_exports, __webpack_require__) => {
+            var toPrimitive = __webpack_require__(3948);
+            var isSymbol = __webpack_require__(1527);
+            module.exports = function(argument) {
+                var key = toPrimitive(argument, "string");
+                return isSymbol(key) ? key : key + "";
+            };
+        },
+        4823: (module, __unused_webpack_exports, __webpack_require__) => {
+            var wellKnownSymbol = __webpack_require__(8149);
+            var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+            var test = {};
+            test[TO_STRING_TAG] = "z";
+            module.exports = "[object z]" === String(test);
+        },
+        7655: (module, __unused_webpack_exports, __webpack_require__) => {
+            var classof = __webpack_require__(9225);
+            var $String = String;
+            module.exports = function(argument) {
+                if ("Symbol" === classof(argument)) throw TypeError("Cannot convert a Symbol value to a string");
+                return $String(argument);
+            };
+        },
+        180: module => {
+            var $String = String;
+            module.exports = function(argument) {
+                try {
+                    return $String(argument);
+                } catch (error) {
+                    return "Object";
+                }
+            };
+        },
+        9059: (module, __unused_webpack_exports, __webpack_require__) => {
+            var uncurryThis = __webpack_require__(1768);
+            var id = 0;
+            var postfix = Math.random();
+            var toString = uncurryThis(1..toString);
+            module.exports = function(key) {
+                return "Symbol(" + (void 0 === key ? "" : key) + ")_" + toString(++id + postfix, 36);
+            };
+        },
+        4746: (module, __unused_webpack_exports, __webpack_require__) => {
+            var NATIVE_SYMBOL = __webpack_require__(3801);
+            module.exports = NATIVE_SYMBOL && !Symbol.sham && "symbol" == typeof Symbol.iterator;
+        },
+        8654: (module, __unused_webpack_exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var fails = __webpack_require__(6183);
+            module.exports = DESCRIPTORS && fails((function() {
+                return 42 != Object.defineProperty((function() {}), "prototype", {
+                    value: 42,
+                    writable: false
+                }).prototype;
+            }));
+        },
+        9780: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var isCallable = __webpack_require__(6282);
+            var WeakMap = global.WeakMap;
+            module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
+        },
+        8149: (module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var shared = __webpack_require__(1748);
+            var hasOwn = __webpack_require__(8281);
+            var uid = __webpack_require__(9059);
+            var NATIVE_SYMBOL = __webpack_require__(3801);
+            var USE_SYMBOL_AS_UID = __webpack_require__(4746);
+            var WellKnownSymbolsStore = shared("wks");
+            var Symbol = global.Symbol;
+            var symbolFor = Symbol && Symbol["for"];
+            var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
+            module.exports = function(name) {
+                if (!hasOwn(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || "string" == typeof WellKnownSymbolsStore[name])) {
+                    var description = "Symbol." + name;
+                    if (NATIVE_SYMBOL && hasOwn(Symbol, name)) WellKnownSymbolsStore[name] = Symbol[name]; else if (USE_SYMBOL_AS_UID && symbolFor) WellKnownSymbolsStore[name] = symbolFor(description); else WellKnownSymbolsStore[name] = createWellKnownSymbol(description);
+                }
+                return WellKnownSymbolsStore[name];
+            };
+        },
+        8342: module => {
+            module.exports = "\t\n\v\f\r      " + "          　\u2028\u2029\ufeff";
+        },
+        8165: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var $ = __webpack_require__(4761);
+            var $filter = __webpack_require__(528).filter;
+            var arrayMethodHasSpeciesSupport = __webpack_require__(4820);
+            var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport("filter");
+            $({
+                target: "Array",
+                proto: true,
+                forced: !HAS_SPECIES_SUPPORT
+            }, {
+                filter: function filter(callbackfn) {
+                    return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : void 0);
+                }
+            });
+        },
+        7543: (module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var toIndexedObject = __webpack_require__(3206);
+            var addToUnscopables = __webpack_require__(9256);
+            var Iterators = __webpack_require__(6126);
+            var InternalStateModule = __webpack_require__(1030);
+            var defineProperty = __webpack_require__(9168).f;
+            var defineIterator = __webpack_require__(335);
+            var createIterResultObject = __webpack_require__(5351);
+            var IS_PURE = __webpack_require__(8977);
+            var DESCRIPTORS = __webpack_require__(723);
+            var ARRAY_ITERATOR = "Array Iterator";
+            var setInternalState = InternalStateModule.set;
+            var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
+            module.exports = defineIterator(Array, "Array", (function(iterated, kind) {
+                setInternalState(this, {
+                    type: ARRAY_ITERATOR,
+                    target: toIndexedObject(iterated),
+                    index: 0,
+                    kind
+                });
+            }), (function() {
+                var state = getInternalState(this);
+                var target = state.target;
+                var kind = state.kind;
+                var index = state.index++;
+                if (!target || index >= target.length) {
+                    state.target = void 0;
+                    return createIterResultObject(void 0, true);
+                }
+                if ("keys" == kind) return createIterResultObject(index, false);
+                if ("values" == kind) return createIterResultObject(target[index], false);
+                return createIterResultObject([ index, target[index] ], false);
+            }), "values");
+            var values = Iterators.Arguments = Iterators.Array;
+            addToUnscopables("keys");
+            addToUnscopables("values");
+            addToUnscopables("entries");
+            if (!IS_PURE && DESCRIPTORS && "values" !== values.name) try {
+                defineProperty(values, "name", {
+                    value: "values"
+                });
+            } catch (error) {}
+        },
+        7985: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var $ = __webpack_require__(4761);
+            var $reduce = __webpack_require__(6589).left;
+            var arrayMethodIsStrict = __webpack_require__(1923);
+            var CHROME_VERSION = __webpack_require__(4324);
+            var IS_NODE = __webpack_require__(7594);
+            var STRICT_METHOD = arrayMethodIsStrict("reduce");
+            var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
+            $({
+                target: "Array",
+                proto: true,
+                forced: !STRICT_METHOD || CHROME_BUG
+            }, {
+                reduce: function reduce(callbackfn) {
+                    var length = arguments.length;
+                    return $reduce(this, callbackfn, length, length > 1 ? arguments[1] : void 0);
+                }
+            });
+        },
+        6618: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            var DESCRIPTORS = __webpack_require__(723);
+            var FUNCTION_NAME_EXISTS = __webpack_require__(4530).EXISTS;
+            var uncurryThis = __webpack_require__(1768);
+            var defineProperty = __webpack_require__(9168).f;
+            var FunctionPrototype = Function.prototype;
+            var functionToString = uncurryThis(FunctionPrototype.toString);
+            var nameRE = /function\b(?:\s|\/\*[\S\s]*?\*\/|\/\/[^\n\r]*[\n\r]+)*([^\s(/]*)/;
+            var regExpExec = uncurryThis(nameRE.exec);
+            var NAME = "name";
+            if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) defineProperty(FunctionPrototype, NAME, {
+                configurable: true,
+                get: function() {
+                    try {
+                        return regExpExec(nameRE, functionToString(this))[1];
+                    } catch (error) {
+                        return "";
+                    }
+                }
+            });
+        },
+        7692: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            var $ = __webpack_require__(4761);
+            var assign = __webpack_require__(4727);
+            $({
+                target: "Object",
+                stat: true,
+                arity: 2,
+                forced: Object.assign !== assign
+            }, {
+                assign
+            });
+        },
+        2352: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            var TO_STRING_TAG_SUPPORT = __webpack_require__(4823);
+            var defineBuiltIn = __webpack_require__(2054);
+            var toString = __webpack_require__(4117);
+            if (!TO_STRING_TAG_SUPPORT) defineBuiltIn(Object.prototype, "toString", toString, {
+                unsafe: true
+            });
+        },
+        4249: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            var $ = __webpack_require__(4761);
+            var $parseInt = __webpack_require__(8513);
+            $({
+                global: true,
+                forced: parseInt != $parseInt
+            }, {
+                parseInt: $parseInt
+            });
+        },
+        9989: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var $ = __webpack_require__(4761);
+            var exec = __webpack_require__(5510);
+            $({
+                target: "RegExp",
+                proto: true,
+                forced: /./.exec !== exec
+            }, {
+                exec
+            });
+        },
+        3344: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var charAt = __webpack_require__(7321).charAt;
+            var toString = __webpack_require__(7655);
+            var InternalStateModule = __webpack_require__(1030);
+            var defineIterator = __webpack_require__(335);
+            var createIterResultObject = __webpack_require__(5351);
+            var STRING_ITERATOR = "String Iterator";
+            var setInternalState = InternalStateModule.set;
+            var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
+            defineIterator(String, "String", (function(iterated) {
+                setInternalState(this, {
+                    type: STRING_ITERATOR,
+                    string: toString(iterated),
+                    index: 0
+                });
+            }), (function next() {
+                var state = getInternalState(this);
+                var string = state.string;
+                var index = state.index;
+                var point;
+                if (index >= string.length) return createIterResultObject(void 0, true);
+                point = charAt(string, index);
+                state.index += point.length;
+                return createIterResultObject(point, false);
+            }));
+        },
+        8307: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var call = __webpack_require__(4552);
+            var fixRegExpWellKnownSymbolLogic = __webpack_require__(9696);
+            var anObject = __webpack_require__(1474);
+            var isNullOrUndefined = __webpack_require__(2420);
+            var toLength = __webpack_require__(3917);
+            var toString = __webpack_require__(7655);
+            var requireObjectCoercible = __webpack_require__(7431);
+            var getMethod = __webpack_require__(9827);
+            var advanceStringIndex = __webpack_require__(3615);
+            var regExpExec = __webpack_require__(8734);
+            fixRegExpWellKnownSymbolLogic("match", (function(MATCH, nativeMatch, maybeCallNative) {
+                return [ function match(regexp) {
+                    var O = requireObjectCoercible(this);
+                    var matcher = isNullOrUndefined(regexp) ? void 0 : getMethod(regexp, MATCH);
+                    return matcher ? call(matcher, regexp, O) : new RegExp(regexp)[MATCH](toString(O));
+                }, function(string) {
+                    var rx = anObject(this);
+                    var S = toString(string);
+                    var res = maybeCallNative(nativeMatch, rx, S);
+                    if (res.done) return res.value;
+                    if (!rx.global) return regExpExec(rx, S);
+                    var fullUnicode = rx.unicode;
+                    rx.lastIndex = 0;
+                    var A = [];
+                    var n = 0;
+                    var result;
+                    while (null !== (result = regExpExec(rx, S))) {
+                        var matchStr = toString(result[0]);
+                        A[n] = matchStr;
+                        if ("" === matchStr) rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+                        n++;
+                    }
+                    return 0 === n ? null : A;
+                } ];
+            }));
+        },
+        4390: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var apply = __webpack_require__(6218);
+            var call = __webpack_require__(4552);
+            var uncurryThis = __webpack_require__(1768);
+            var fixRegExpWellKnownSymbolLogic = __webpack_require__(9696);
+            var fails = __webpack_require__(6183);
+            var anObject = __webpack_require__(1474);
+            var isCallable = __webpack_require__(6282);
+            var isNullOrUndefined = __webpack_require__(2420);
+            var toIntegerOrInfinity = __webpack_require__(8037);
+            var toLength = __webpack_require__(3917);
+            var toString = __webpack_require__(7655);
+            var requireObjectCoercible = __webpack_require__(7431);
+            var advanceStringIndex = __webpack_require__(3615);
+            var getMethod = __webpack_require__(9827);
+            var getSubstitution = __webpack_require__(4742);
+            var regExpExec = __webpack_require__(8734);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var REPLACE = wellKnownSymbol("replace");
+            var max = Math.max;
+            var min = Math.min;
+            var concat = uncurryThis([].concat);
+            var push = uncurryThis([].push);
+            var stringIndexOf = uncurryThis("".indexOf);
+            var stringSlice = uncurryThis("".slice);
+            var maybeToString = function(it) {
+                return void 0 === it ? it : String(it);
+            };
+            var REPLACE_KEEPS_$0 = function() {
+                return "$0" === "a".replace(/./, "$0");
+            }();
+            var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = function() {
+                if (/./[REPLACE]) return "" === /./[REPLACE]("a", "$0");
+                return false;
+            }();
+            var REPLACE_SUPPORTS_NAMED_GROUPS = !fails((function() {
+                var re = /./;
+                re.exec = function() {
+                    var result = [];
+                    result.groups = {
+                        a: "7"
+                    };
+                    return result;
+                };
+                return "7" !== "".replace(re, "$<a>");
+            }));
+            fixRegExpWellKnownSymbolLogic("replace", (function(_, nativeReplace, maybeCallNative) {
+                var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? "$" : "$0";
+                return [ function replace(searchValue, replaceValue) {
+                    var O = requireObjectCoercible(this);
+                    var replacer = isNullOrUndefined(searchValue) ? void 0 : getMethod(searchValue, REPLACE);
+                    return replacer ? call(replacer, searchValue, O, replaceValue) : call(nativeReplace, toString(O), searchValue, replaceValue);
+                }, function(string, replaceValue) {
+                    var rx = anObject(this);
+                    var S = toString(string);
+                    if ("string" == typeof replaceValue && -1 === stringIndexOf(replaceValue, UNSAFE_SUBSTITUTE) && -1 === stringIndexOf(replaceValue, "$<")) {
+                        var res = maybeCallNative(nativeReplace, rx, S, replaceValue);
+                        if (res.done) return res.value;
+                    }
+                    var functionalReplace = isCallable(replaceValue);
+                    if (!functionalReplace) replaceValue = toString(replaceValue);
+                    var global = rx.global;
+                    if (global) {
+                        var fullUnicode = rx.unicode;
+                        rx.lastIndex = 0;
+                    }
+                    var results = [];
+                    while (true) {
+                        var result = regExpExec(rx, S);
+                        if (null === result) break;
+                        push(results, result);
+                        if (!global) break;
+                        var matchStr = toString(result[0]);
+                        if ("" === matchStr) rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+                    }
+                    var accumulatedResult = "";
+                    var nextSourcePosition = 0;
+                    for (var i = 0; i < results.length; i++) {
+                        result = results[i];
+                        var matched = toString(result[0]);
+                        var position = max(min(toIntegerOrInfinity(result.index), S.length), 0);
+                        var captures = [];
+                        for (var j = 1; j < result.length; j++) push(captures, maybeToString(result[j]));
+                        var namedCaptures = result.groups;
+                        if (functionalReplace) {
+                            var replacerArgs = concat([ matched ], captures, position, S);
+                            if (void 0 !== namedCaptures) push(replacerArgs, namedCaptures);
+                            var replacement = toString(apply(replaceValue, void 0, replacerArgs));
+                        } else replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
+                        if (position >= nextSourcePosition) {
+                            accumulatedResult += stringSlice(S, nextSourcePosition, position) + replacement;
+                            nextSourcePosition = position + matched.length;
+                        }
+                    }
+                    return accumulatedResult + stringSlice(S, nextSourcePosition);
+                } ];
+            }), !REPLACE_SUPPORTS_NAMED_GROUPS || !REPLACE_KEEPS_$0 || REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE);
+        },
+        9703: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            "use strict";
+            var global = __webpack_require__(8454);
+            var uncurryThis = __webpack_require__(1768);
+            var defineBuiltIns = __webpack_require__(6367);
+            var InternalMetadataModule = __webpack_require__(6582);
+            var collection = __webpack_require__(6645);
+            var collectionWeak = __webpack_require__(7790);
+            var isObject = __webpack_require__(5896);
+            var isExtensible = __webpack_require__(6662);
+            var enforceInternalState = __webpack_require__(1030).enforce;
+            var NATIVE_WEAK_MAP = __webpack_require__(9780);
+            var IS_IE11 = !global.ActiveXObject && "ActiveXObject" in global;
+            var InternalWeakMap;
+            var wrapper = function(init) {
+                return function WeakMap() {
+                    return init(this, arguments.length ? arguments[0] : void 0);
+                };
+            };
+            var $WeakMap = collection("WeakMap", wrapper, collectionWeak);
+            if (NATIVE_WEAK_MAP && IS_IE11) {
+                InternalWeakMap = collectionWeak.getConstructor(wrapper, "WeakMap", true);
+                InternalMetadataModule.enable();
+                var WeakMapPrototype = $WeakMap.prototype;
+                var nativeDelete = uncurryThis(WeakMapPrototype["delete"]);
+                var nativeHas = uncurryThis(WeakMapPrototype.has);
+                var nativeGet = uncurryThis(WeakMapPrototype.get);
+                var nativeSet = uncurryThis(WeakMapPrototype.set);
+                defineBuiltIns(WeakMapPrototype, {
+                    delete: function(key) {
+                        if (isObject(key) && !isExtensible(key)) {
+                            var state = enforceInternalState(this);
+                            if (!state.frozen) state.frozen = new InternalWeakMap;
+                            return nativeDelete(this, key) || state.frozen["delete"](key);
+                        }
+                        return nativeDelete(this, key);
+                    },
+                    has: function has(key) {
+                        if (isObject(key) && !isExtensible(key)) {
+                            var state = enforceInternalState(this);
+                            if (!state.frozen) state.frozen = new InternalWeakMap;
+                            return nativeHas(this, key) || state.frozen.has(key);
+                        }
+                        return nativeHas(this, key);
+                    },
+                    get: function get(key) {
+                        if (isObject(key) && !isExtensible(key)) {
+                            var state = enforceInternalState(this);
+                            if (!state.frozen) state.frozen = new InternalWeakMap;
+                            return nativeHas(this, key) ? nativeGet(this, key) : state.frozen.get(key);
+                        }
+                        return nativeGet(this, key);
+                    },
+                    set: function set(key, value) {
+                        if (isObject(key) && !isExtensible(key)) {
+                            var state = enforceInternalState(this);
+                            if (!state.frozen) state.frozen = new InternalWeakMap;
+                            nativeHas(this, key) ? nativeSet(this, key, value) : state.frozen.set(key, value);
+                        } else nativeSet(this, key, value);
+                        return this;
+                    }
+                });
+            }
+        },
+        7323: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            __webpack_require__(9703);
+        },
+        3542: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var DOMIterables = __webpack_require__(6181);
+            var DOMTokenListPrototype = __webpack_require__(2387);
+            var forEach = __webpack_require__(1269);
+            var createNonEnumerableProperty = __webpack_require__(1501);
+            var handlePrototype = function(CollectionPrototype) {
+                if (CollectionPrototype && CollectionPrototype.forEach !== forEach) try {
+                    createNonEnumerableProperty(CollectionPrototype, "forEach", forEach);
+                } catch (error) {
+                    CollectionPrototype.forEach = forEach;
+                }
+            };
+            for (var COLLECTION_NAME in DOMIterables) if (DOMIterables[COLLECTION_NAME]) handlePrototype(global[COLLECTION_NAME] && global[COLLECTION_NAME].prototype);
+            handlePrototype(DOMTokenListPrototype);
+        },
+        4079: (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+            var global = __webpack_require__(8454);
+            var DOMIterables = __webpack_require__(6181);
+            var DOMTokenListPrototype = __webpack_require__(2387);
+            var ArrayIteratorMethods = __webpack_require__(7543);
+            var createNonEnumerableProperty = __webpack_require__(1501);
+            var wellKnownSymbol = __webpack_require__(8149);
+            var ITERATOR = wellKnownSymbol("iterator");
+            var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+            var ArrayValues = ArrayIteratorMethods.values;
+            var handlePrototype = function(CollectionPrototype, COLLECTION_NAME) {
+                if (CollectionPrototype) {
+                    if (CollectionPrototype[ITERATOR] !== ArrayValues) try {
+                        createNonEnumerableProperty(CollectionPrototype, ITERATOR, ArrayValues);
+                    } catch (error) {
+                        CollectionPrototype[ITERATOR] = ArrayValues;
+                    }
+                    if (!CollectionPrototype[TO_STRING_TAG]) createNonEnumerableProperty(CollectionPrototype, TO_STRING_TAG, COLLECTION_NAME);
+                    if (DOMIterables[COLLECTION_NAME]) for (var METHOD_NAME in ArrayIteratorMethods) if (CollectionPrototype[METHOD_NAME] !== ArrayIteratorMethods[METHOD_NAME]) try {
+                        createNonEnumerableProperty(CollectionPrototype, METHOD_NAME, ArrayIteratorMethods[METHOD_NAME]);
+                    } catch (error) {
+                        CollectionPrototype[METHOD_NAME] = ArrayIteratorMethods[METHOD_NAME];
+                    }
+                }
+            };
+            for (var COLLECTION_NAME in DOMIterables) handlePrototype(global[COLLECTION_NAME] && global[COLLECTION_NAME].prototype, COLLECTION_NAME);
+            handlePrototype(DOMTokenListPrototype, "DOMTokenList");
+        },
+        3002: function(module, exports, __webpack_require__) {
+            var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+ /*! smooth-scroll v16.1.3 | (c) 2020 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */            window.Element && !Element.prototype.closest && (Element.prototype.closest = function(e) {
+                var t, n = (this.document || this.ownerDocument).querySelectorAll(e), o = this;
+                do {
+                    for (t = n.length; 0 <= --t && n.item(t) !== o; ) ;
+                } while (t < 0 && (o = o.parentElement));
+                return o;
+            }), function() {
+                if ("function" == typeof window.CustomEvent) return;
+                function e(e, t) {
+                    t = t || {
+                        bubbles: !1,
+                        cancelable: !1,
+                        detail: void 0
+                    };
+                    var n = document.createEvent("CustomEvent");
+                    return n.initCustomEvent(e, t.bubbles, t.cancelable, t.detail), n;
+                }
+                e.prototype = window.Event.prototype, window.CustomEvent = e;
+            }(), function() {
+                for (var r = 0, e = [ "ms", "moz", "webkit", "o" ], t = 0; t < e.length && !window.requestAnimationFrame; ++t) window.requestAnimationFrame = window[e[t] + "RequestAnimationFrame"], 
+                window.cancelAnimationFrame = window[e[t] + "CancelAnimationFrame"] || window[e[t] + "CancelRequestAnimationFrame"];
+                window.requestAnimationFrame || (window.requestAnimationFrame = function(e, t) {
+                    var n = (new Date).getTime(), o = Math.max(0, 16 - (n - r)), a = window.setTimeout((function() {
+                        e(n + o);
+                    }), o);
+                    return r = n + o, a;
+                }), window.cancelAnimationFrame || (window.cancelAnimationFrame = function(e) {
+                    clearTimeout(e);
+                });
+            }(), function(e, t) {
+                true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+                    return t(e);
+                }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), void 0 !== __WEBPACK_AMD_DEFINE_RESULT__ && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : 0;
+            }("undefined" != typeof __webpack_require__.g ? __webpack_require__.g : "undefined" != typeof window ? window : this, (function(M) {
+                "use strict";
+                var q = {
+                    ignore: "[data-scroll-ignore]",
+                    header: null,
+                    topOnEmptyHash: !0,
+                    speed: 500,
+                    speedAsDuration: !1,
+                    durationMax: null,
+                    durationMin: null,
+                    clip: !0,
+                    offset: 0,
+                    easing: "easeInOutCubic",
+                    customEasing: null,
+                    updateURL: !0,
+                    popstate: !0,
+                    emitEvents: !0
+                }, I = function() {
+                    var n = {};
+                    return Array.prototype.forEach.call(arguments, (function(e) {
+                        for (var t in e) {
+                            if (!e.hasOwnProperty(t)) return;
+                            n[t] = e[t];
+                        }
+                    })), n;
+                }, r = function(e) {
+                    "#" === e.charAt(0) && (e = e.substr(1));
+                    for (var t, n = String(e), o = n.length, a = -1, r = "", i = n.charCodeAt(0); ++a < o; ) {
+                        if (0 === (t = n.charCodeAt(a))) throw new InvalidCharacterError("Invalid character: the input contains U+0000.");
+                        1 <= t && t <= 31 || 127 == t || 0 === a && 48 <= t && t <= 57 || 1 === a && 48 <= t && t <= 57 && 45 === i ? r += "\\" + t.toString(16) + " " : r += 128 <= t || 45 === t || 95 === t || 48 <= t && t <= 57 || 65 <= t && t <= 90 || 97 <= t && t <= 122 ? n.charAt(a) : "\\" + n.charAt(a);
+                    }
+                    return "#" + r;
+                }, F = function() {
+                    return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);
+                }, L = function(e) {
+                    return e ? (t = e, parseInt(M.getComputedStyle(t).height, 10) + e.offsetTop) : 0;
+                    var t;
+                }, x = function(e, t, n) {
+                    0 === e && document.body.focus(), n || (e.focus(), document.activeElement !== e && (e.setAttribute("tabindex", "-1"), 
+                    e.focus(), e.style.outline = "none"), M.scrollTo(0, t));
+                }, H = function(e, t, n, o) {
+                    if (t.emitEvents && "function" == typeof M.CustomEvent) {
+                        var a = new CustomEvent(e, {
+                            bubbles: !0,
+                            detail: {
+                                anchor: n,
+                                toggle: o
+                            }
+                        });
+                        document.dispatchEvent(a);
+                    }
+                };
+                return function(o, e) {
+                    var b, a, A, O, C = {};
+                    C.cancelScroll = function(e) {
+                        cancelAnimationFrame(O), O = null, e || H("scrollCancel", b);
+                    }, C.animateScroll = function(a, r, e) {
+                        C.cancelScroll();
+                        var i = I(b || q, e || {}), c = "[object Number]" === Object.prototype.toString.call(a), t = c || !a.tagName ? null : a;
+                        if (c || t) {
+                            var s = M.pageYOffset;
+                            i.header && !A && (A = document.querySelector(i.header));
+                            var n, o, u, l, m, d, f, h, p = L(A), g = c ? a : function(e, t, n, o) {
+                                var a = 0;
+                                if (e.offsetParent) for (;a += e.offsetTop, e = e.offsetParent; ) ;
+                                return a = Math.max(a - t - n, 0), o && (a = Math.min(a, F() - M.innerHeight)), 
+                                a;
+                            }(t, p, parseInt("function" == typeof i.offset ? i.offset(a, r) : i.offset, 10), i.clip), y = g - s, v = F(), w = 0, S = (n = y, 
+                            u = (o = i).speedAsDuration ? o.speed : Math.abs(n / 1e3 * o.speed), o.durationMax && u > o.durationMax ? o.durationMax : o.durationMin && u < o.durationMin ? o.durationMin : parseInt(u, 10)), E = function(e) {
+                                var t, n, o;
+                                l || (l = e), w += e - l, d = s + y * (n = m = 1 < (m = 0 === S ? 0 : w / S) ? 1 : m, 
+                                "easeInQuad" === (t = i).easing && (o = n * n), "easeOutQuad" === t.easing && (o = n * (2 - n)), 
+                                "easeInOutQuad" === t.easing && (o = n < .5 ? 2 * n * n : (4 - 2 * n) * n - 1), 
+                                "easeInCubic" === t.easing && (o = n * n * n), "easeOutCubic" === t.easing && (o = --n * n * n + 1), 
+                                "easeInOutCubic" === t.easing && (o = n < .5 ? 4 * n * n * n : (n - 1) * (2 * n - 2) * (2 * n - 2) + 1), 
+                                "easeInQuart" === t.easing && (o = n * n * n * n), "easeOutQuart" === t.easing && (o = 1 - --n * n * n * n), 
+                                "easeInOutQuart" === t.easing && (o = n < .5 ? 8 * n * n * n * n : 1 - 8 * --n * n * n * n), 
+                                "easeInQuint" === t.easing && (o = n * n * n * n * n), "easeOutQuint" === t.easing && (o = 1 + --n * n * n * n * n), 
+                                "easeInOutQuint" === t.easing && (o = n < .5 ? 16 * n * n * n * n * n : 1 + 16 * --n * n * n * n * n), 
+                                t.customEasing && (o = t.customEasing(n)), o || n), M.scrollTo(0, Math.floor(d)), 
+                                function(e, t) {
+                                    var n = M.pageYOffset;
+                                    if (e == t || n == t || (s < t && M.innerHeight + n) >= v) return C.cancelScroll(!0), 
+                                    x(a, t, c), H("scrollStop", i, a, r), !(O = l = null);
+                                }(d, g) || (O = M.requestAnimationFrame(E), l = e);
+                            };
+                            0 === M.pageYOffset && M.scrollTo(0, 0), f = a, h = i, c || history.pushState && h.updateURL && history.pushState({
+                                smoothScroll: JSON.stringify(h),
+                                anchor: f.id
+                            }, document.title, f === document.documentElement ? "#top" : "#" + f.id), "matchMedia" in M && M.matchMedia("(prefers-reduced-motion)").matches ? x(a, Math.floor(g), !1) : (H("scrollStart", i, a, r), 
+                            C.cancelScroll(!0), M.requestAnimationFrame(E));
+                        }
+                    };
+                    var t = function(e) {
+                        if (!e.defaultPrevented && !(0 !== e.button || e.metaKey || e.ctrlKey || e.shiftKey) && "closest" in e.target && (a = e.target.closest(o)) && "a" === a.tagName.toLowerCase() && !e.target.closest(b.ignore) && a.hostname === M.location.hostname && a.pathname === M.location.pathname && /#/.test(a.href)) {
+                            var t, n;
+                            try {
+                                t = r(decodeURIComponent(a.hash));
+                            } catch (e) {
+                                t = r(a.hash);
+                            }
+                            if ("#" === t) {
+                                if (!b.topOnEmptyHash) return;
+                                n = document.documentElement;
+                            } else n = document.querySelector(t);
+                            (n = n || "#top" !== t ? n : document.documentElement) && (e.preventDefault(), function(e) {
+                                if (history.replaceState && e.updateURL && !history.state) {
+                                    var t = M.location.hash;
+                                    t = t || "", history.replaceState({
+                                        smoothScroll: JSON.stringify(e),
+                                        anchor: t || M.pageYOffset
+                                    }, document.title, t || M.location.href);
+                                }
+                            }(b), C.animateScroll(n, a));
+                        }
+                    }, n = function(e) {
+                        if (null !== history.state && history.state.smoothScroll && history.state.smoothScroll === JSON.stringify(b)) {
+                            var t = history.state.anchor;
+                            "string" == typeof t && t && !(t = document.querySelector(r(history.state.anchor))) || C.animateScroll(t, null, {
+                                updateURL: !1
+                            });
+                        }
+                    };
+                    C.destroy = function() {
+                        b && (document.removeEventListener("click", t, !1), M.removeEventListener("popstate", n, !1), 
+                        C.cancelScroll(), O = A = a = b = null);
+                    };
+                    return function() {
+                        if (!("querySelector" in document && "addEventListener" in M && "requestAnimationFrame" in M && "closest" in M.Element.prototype)) throw "Smooth Scroll: This browser does not support the required JavaScript methods and browser APIs.";
+                        C.destroy(), b = I(q, e || {}), A = b.header ? document.querySelector(b.header) : null, 
+                        document.addEventListener("click", t, !1), b.updateURL && b.popstate && M.addEventListener("popstate", n, !1);
+                    }(), C;
+                };
+            }));
         }
     };
     var __webpack_module_cache__ = {};
@@ -5140,7 +8123,137 @@
         return module.exports;
     }
     (() => {
+        __webpack_require__.n = module => {
+            var getter = module && module.__esModule ? () => module["default"] : () => module;
+            __webpack_require__.d(getter, {
+                a: getter
+            });
+            return getter;
+        };
+    })();
+    (() => {
+        __webpack_require__.d = (exports, definition) => {
+            for (var key in definition) if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) Object.defineProperty(exports, key, {
+                enumerable: true,
+                get: definition[key]
+            });
+        };
+    })();
+    (() => {
+        __webpack_require__.g = function() {
+            if ("object" === typeof globalThis) return globalThis;
+            try {
+                return this || new Function("return this")();
+            } catch (e) {
+                if ("object" === typeof window) return window;
+            }
+        }();
+    })();
+    (() => {
+        __webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+    })();
+    (() => {
         "use strict";
+        function isString(str) {
+            const value = "string" === typeof str || str instanceof String;
+            return {
+                value,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "string");
+                },
+                nonEmpty() {
+                    return {
+                        value: value ? str.trim().replace("\n", "").length > 0 : false,
+                        throw(paramName) {
+                            if (!this.value) throw new FalseIdentityError(paramName, "non-empty string");
+                        }
+                    };
+                }
+            };
+        }
+        const string = isString;
+        class FalseIdentityError extends TypeError {
+            constructor(paramName, identityName) {
+                if (!string(paramName).nonEmpty().value) throw new TypeError("Expected paramName to be non-empty string.");
+                super(`Expected ${paramName} to be ${identityName}.`);
+                this.name = "False Identity Error";
+            }
+        }
+        function isNumber(number) {
+            const value = "number" === typeof number && !Number.isNaN(number);
+            return {
+                value,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "Number");
+                },
+                nonNegative() {
+                    return {
+                        value: value ? number >= 0 : false,
+                        throw(paramName) {
+                            if (!this.value) throw new FalseIdentityError(paramName, "non-negative Number");
+                        }
+                    };
+                }
+            };
+        }
+        const number = isNumber;
+        function isFunction(fn) {
+            return {
+                value: fn instanceof Function,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "Function");
+                }
+            };
+        }
+        const identity_function = isFunction;
+        function withPropertyFn(obj, propName, identity, prevResult) {
+            if (!string(propName)) throw new TypeError("Expected name to be a string.");
+            if (!identity_function(identity)) throw new TypeError("Expected identity to be a Function.");
+            let idAns = {
+                value: false
+            };
+            if ("object" === typeof obj && propName in obj) idAns = identity(obj[propName]);
+            if (!("object" === typeof idAns && "value" in idAns && "boolean" === typeof idAns.value)) throw new TypeError("Expected identity() to return { value: boolean }.");
+            const {value} = idAns;
+            return {
+                value: value && prevResult.value,
+                throw(paramName) {
+                    prevResult.throw(paramName);
+                    if (!this.value) throw new FalseIdentityError(paramName, `object with property ${propName} satisfying identity`);
+                }
+            };
+        }
+        function isObject(obj) {
+            const value = "object" === typeof obj;
+            const withProperty = (name, identity) => {
+                prevResult = withPropertyFn(obj, name, identity, prevResult);
+                return {
+                    ...prevResult,
+                    withProperty
+                };
+            };
+            let prevResult = {
+                value,
+                withProperty,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "object");
+                }
+            };
+            return prevResult;
+        }
+        const object = isObject;
+        function translationExists(i18nToken, language, ...i18nParams) {
+            string(i18nToken).nonEmpty().throw("i18nToken");
+            const translation = language.dict(i18nToken, ...i18nParams);
+            return translation !== i18nToken;
+        }
+        const exists = translationExists;
+        function getTranslation(i18nToken, language, ...i18nParams) {
+            string(i18nToken).nonEmpty().throw("i18nToken");
+            if (!exists(i18nToken, language, ...i18nParams)) throw new Error(`No '${i18nToken}' definition found for language ${language.name}. Check whether data-i18n attribute is spelled correctly.`);
+            return language.dict(i18nToken, ...i18nParams);
+        }
+        const get = getTranslation;
         function getAnimationStartScrollPosition(el) {
             const {innerHeight: windowHeight} = window;
             const {top} = el.getBoundingClientRect();
@@ -5150,6 +8263,7 @@
             const animatedElements = document.querySelectorAll(".animation-on-scroll");
             const animationTimeMs = 4e3;
             let onAnimationStartedCalled = false;
+            const currentLanguage = window.detectUserLanguage();
             animatedElements.forEach((el => {
                 const start = 0, end = parseInt(el.dataset.val);
                 const timeoutDuration = animationTimeMs / end;
@@ -5157,7 +8271,10 @@
                 const incrementValue = () => {
                     value += 1;
                     const prevValue = parseInt("0" | el.textContent);
-                    if (value > prevValue) el.textContent = value;
+                    if (value > prevValue) if ("i18n" in el.dataset) {
+                        const translatedCaption = get(el.dataset.i18n, currentLanguage, value);
+                        el.textContent = translatedCaption;
+                    } else el.textContent = value;
                 };
                 const interval = setInterval((() => {
                     if (!onAnimationStartedCalled && onAnimationStarted instanceof Function) {
@@ -5177,8 +8294,19 @@
             const triggerElement = document.querySelector(".features__content");
             if (null !== triggerElement) if (scrollY >= getAnimationStartScrollPosition(triggerElement)) animate((() => window.removeEventListener("scroll", scrollHandler)));
         }
-        window.addEventListener("scroll", scrollHandler);
-        scrollHandler();
+        function prepareTranslatedElements() {
+            const currentLanguage = window.detectUserLanguage();
+            const translatedElements = [ ...document.querySelectorAll(".animation-on-scroll") ].filter((el => "i18n" in el.dataset));
+            translatedElements.forEach((el => {
+                el.textContent = get(el.dataset.i18n, currentLanguage, 0);
+            }));
+        }
+        function useAnimationOnScroll() {
+            prepareTranslatedElements();
+            window.addEventListener("scroll", scrollHandler);
+            scrollHandler();
+        }
+        const animation_on_scroll = useAnimationOnScroll;
         function isWebp() {
             function testWebP(callback) {
                 let webP = new Image;
@@ -5468,7 +8596,7 @@
             bodyUnlock();
             document.documentElement.classList.remove("menu-open");
         }
-        function functions_FLS(message) {
+        function FLS(message) {
             setTimeout((() => {
                 if (window.FLS) console.log(message);
             }), 0);
@@ -5516,7 +8644,1123 @@
                 }
             }
         }
-        let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+        __webpack_require__(2352);
+        __webpack_require__(3542);
+        var can_use_dom = __webpack_require__(1807);
+        var can_use_dom_default = __webpack_require__.n(can_use_dom);
+        __webpack_require__(4249);
+        __webpack_require__(7692);
+        __webpack_require__(8165);
+        __webpack_require__(7543);
+        __webpack_require__(3344);
+        __webpack_require__(7323);
+        __webpack_require__(4079);
+        var lodash_throttle = __webpack_require__(3096);
+        var lodash_throttle_default = __webpack_require__.n(lodash_throttle);
+        var lodash_debounce = __webpack_require__(1296);
+        var lodash_debounce_default = __webpack_require__.n(lodash_debounce);
+        var lodash_memoize = __webpack_require__(773);
+        var lodash_memoize_default = __webpack_require__.n(lodash_memoize);
+        var resizeObservers = [];
+        var hasActiveObservations = function() {
+            return resizeObservers.some((function(ro) {
+                return ro.activeTargets.length > 0;
+            }));
+        };
+        var hasSkippedObservations = function() {
+            return resizeObservers.some((function(ro) {
+                return ro.skippedTargets.length > 0;
+            }));
+        };
+        var msg = "ResizeObserver loop completed with undelivered notifications.";
+        var deliverResizeLoopError = function() {
+            var event;
+            if ("function" === typeof ErrorEvent) event = new ErrorEvent("error", {
+                message: msg
+            }); else {
+                event = document.createEvent("Event");
+                event.initEvent("error", false, false);
+                event.message = msg;
+            }
+            window.dispatchEvent(event);
+        };
+        var ResizeObserverBoxOptions;
+        (function(ResizeObserverBoxOptions) {
+            ResizeObserverBoxOptions["BORDER_BOX"] = "border-box";
+            ResizeObserverBoxOptions["CONTENT_BOX"] = "content-box";
+            ResizeObserverBoxOptions["DEVICE_PIXEL_CONTENT_BOX"] = "device-pixel-content-box";
+        })(ResizeObserverBoxOptions || (ResizeObserverBoxOptions = {}));
+        var freeze = function(obj) {
+            return Object.freeze(obj);
+        };
+        var ResizeObserverSize = function() {
+            function ResizeObserverSize(inlineSize, blockSize) {
+                this.inlineSize = inlineSize;
+                this.blockSize = blockSize;
+                freeze(this);
+            }
+            return ResizeObserverSize;
+        }();
+        var DOMRectReadOnly = function() {
+            function DOMRectReadOnly(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.top = this.y;
+                this.left = this.x;
+                this.bottom = this.top + this.height;
+                this.right = this.left + this.width;
+                return freeze(this);
+            }
+            DOMRectReadOnly.prototype.toJSON = function() {
+                var _a = this, x = _a.x, y = _a.y, top = _a.top, right = _a.right, bottom = _a.bottom, left = _a.left, width = _a.width, height = _a.height;
+                return {
+                    x,
+                    y,
+                    top,
+                    right,
+                    bottom,
+                    left,
+                    width,
+                    height
+                };
+            };
+            DOMRectReadOnly.fromRect = function(rectangle) {
+                return new DOMRectReadOnly(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+            };
+            return DOMRectReadOnly;
+        }();
+        var isSVG = function(target) {
+            return target instanceof SVGElement && "getBBox" in target;
+        };
+        var isHidden = function(target) {
+            if (isSVG(target)) {
+                var _a = target.getBBox(), width = _a.width, height = _a.height;
+                return !width && !height;
+            }
+            var _b = target, offsetWidth = _b.offsetWidth, offsetHeight = _b.offsetHeight;
+            return !(offsetWidth || offsetHeight || target.getClientRects().length);
+        };
+        var isElement = function(obj) {
+            var _a;
+            if (obj instanceof Element) return true;
+            var scope = null === (_a = null === obj || void 0 === obj ? void 0 : obj.ownerDocument) || void 0 === _a ? void 0 : _a.defaultView;
+            return !!(scope && obj instanceof scope.Element);
+        };
+        var isReplacedElement = function(target) {
+            switch (target.tagName) {
+              case "INPUT":
+                if ("image" !== target.type) break;
+
+              case "VIDEO":
+              case "AUDIO":
+              case "EMBED":
+              case "OBJECT":
+              case "CANVAS":
+              case "IFRAME":
+              case "IMG":
+                return true;
+            }
+            return false;
+        };
+        var global = "undefined" !== typeof window ? window : {};
+        var cache = new WeakMap;
+        var scrollRegexp = /auto|scroll/;
+        var verticalRegexp = /^tb|vertical/;
+        var IE = /msie|trident/i.test(global.navigator && global.navigator.userAgent);
+        var parseDimension = function(pixel) {
+            return parseFloat(pixel || "0");
+        };
+        var size = function(inlineSize, blockSize, switchSizes) {
+            if (void 0 === inlineSize) inlineSize = 0;
+            if (void 0 === blockSize) blockSize = 0;
+            if (void 0 === switchSizes) switchSizes = false;
+            return new ResizeObserverSize((switchSizes ? blockSize : inlineSize) || 0, (switchSizes ? inlineSize : blockSize) || 0);
+        };
+        var zeroBoxes = freeze({
+            devicePixelContentBoxSize: size(),
+            borderBoxSize: size(),
+            contentBoxSize: size(),
+            contentRect: new DOMRectReadOnly(0, 0, 0, 0)
+        });
+        var calculateBoxSizes = function(target, forceRecalculation) {
+            if (void 0 === forceRecalculation) forceRecalculation = false;
+            if (cache.has(target) && !forceRecalculation) return cache.get(target);
+            if (isHidden(target)) {
+                cache.set(target, zeroBoxes);
+                return zeroBoxes;
+            }
+            var cs = getComputedStyle(target);
+            var svg = isSVG(target) && target.ownerSVGElement && target.getBBox();
+            var removePadding = !IE && "border-box" === cs.boxSizing;
+            var switchSizes = verticalRegexp.test(cs.writingMode || "");
+            var canScrollVertically = !svg && scrollRegexp.test(cs.overflowY || "");
+            var canScrollHorizontally = !svg && scrollRegexp.test(cs.overflowX || "");
+            var paddingTop = svg ? 0 : parseDimension(cs.paddingTop);
+            var paddingRight = svg ? 0 : parseDimension(cs.paddingRight);
+            var paddingBottom = svg ? 0 : parseDimension(cs.paddingBottom);
+            var paddingLeft = svg ? 0 : parseDimension(cs.paddingLeft);
+            var borderTop = svg ? 0 : parseDimension(cs.borderTopWidth);
+            var borderRight = svg ? 0 : parseDimension(cs.borderRightWidth);
+            var borderBottom = svg ? 0 : parseDimension(cs.borderBottomWidth);
+            var borderLeft = svg ? 0 : parseDimension(cs.borderLeftWidth);
+            var horizontalPadding = paddingLeft + paddingRight;
+            var verticalPadding = paddingTop + paddingBottom;
+            var horizontalBorderArea = borderLeft + borderRight;
+            var verticalBorderArea = borderTop + borderBottom;
+            var horizontalScrollbarThickness = !canScrollHorizontally ? 0 : target.offsetHeight - verticalBorderArea - target.clientHeight;
+            var verticalScrollbarThickness = !canScrollVertically ? 0 : target.offsetWidth - horizontalBorderArea - target.clientWidth;
+            var widthReduction = removePadding ? horizontalPadding + horizontalBorderArea : 0;
+            var heightReduction = removePadding ? verticalPadding + verticalBorderArea : 0;
+            var contentWidth = svg ? svg.width : parseDimension(cs.width) - widthReduction - verticalScrollbarThickness;
+            var contentHeight = svg ? svg.height : parseDimension(cs.height) - heightReduction - horizontalScrollbarThickness;
+            var borderBoxWidth = contentWidth + horizontalPadding + verticalScrollbarThickness + horizontalBorderArea;
+            var borderBoxHeight = contentHeight + verticalPadding + horizontalScrollbarThickness + verticalBorderArea;
+            var boxes = freeze({
+                devicePixelContentBoxSize: size(Math.round(contentWidth * devicePixelRatio), Math.round(contentHeight * devicePixelRatio), switchSizes),
+                borderBoxSize: size(borderBoxWidth, borderBoxHeight, switchSizes),
+                contentBoxSize: size(contentWidth, contentHeight, switchSizes),
+                contentRect: new DOMRectReadOnly(paddingLeft, paddingTop, contentWidth, contentHeight)
+            });
+            cache.set(target, boxes);
+            return boxes;
+        };
+        var calculateBoxSize = function(target, observedBox, forceRecalculation) {
+            var _a = calculateBoxSizes(target, forceRecalculation), borderBoxSize = _a.borderBoxSize, contentBoxSize = _a.contentBoxSize, devicePixelContentBoxSize = _a.devicePixelContentBoxSize;
+            switch (observedBox) {
+              case ResizeObserverBoxOptions.DEVICE_PIXEL_CONTENT_BOX:
+                return devicePixelContentBoxSize;
+
+              case ResizeObserverBoxOptions.BORDER_BOX:
+                return borderBoxSize;
+
+              default:
+                return contentBoxSize;
+            }
+        };
+        var ResizeObserverEntry = function() {
+            function ResizeObserverEntry(target) {
+                var boxes = calculateBoxSizes(target);
+                this.target = target;
+                this.contentRect = boxes.contentRect;
+                this.borderBoxSize = freeze([ boxes.borderBoxSize ]);
+                this.contentBoxSize = freeze([ boxes.contentBoxSize ]);
+                this.devicePixelContentBoxSize = freeze([ boxes.devicePixelContentBoxSize ]);
+            }
+            return ResizeObserverEntry;
+        }();
+        var calculateDepthForNode = function(node) {
+            if (isHidden(node)) return 1 / 0;
+            var depth = 0;
+            var parent = node.parentNode;
+            while (parent) {
+                depth += 1;
+                parent = parent.parentNode;
+            }
+            return depth;
+        };
+        var broadcastActiveObservations = function() {
+            var shallowestDepth = 1 / 0;
+            var callbacks = [];
+            resizeObservers.forEach((function processObserver(ro) {
+                if (0 === ro.activeTargets.length) return;
+                var entries = [];
+                ro.activeTargets.forEach((function processTarget(ot) {
+                    var entry = new ResizeObserverEntry(ot.target);
+                    var targetDepth = calculateDepthForNode(ot.target);
+                    entries.push(entry);
+                    ot.lastReportedSize = calculateBoxSize(ot.target, ot.observedBox);
+                    if (targetDepth < shallowestDepth) shallowestDepth = targetDepth;
+                }));
+                callbacks.push((function resizeObserverCallback() {
+                    ro.callback.call(ro.observer, entries, ro.observer);
+                }));
+                ro.activeTargets.splice(0, ro.activeTargets.length);
+            }));
+            for (var _i = 0, callbacks_1 = callbacks; _i < callbacks_1.length; _i++) {
+                var callback = callbacks_1[_i];
+                callback();
+            }
+            return shallowestDepth;
+        };
+        var gatherActiveObservationsAtDepth = function(depth) {
+            resizeObservers.forEach((function processObserver(ro) {
+                ro.activeTargets.splice(0, ro.activeTargets.length);
+                ro.skippedTargets.splice(0, ro.skippedTargets.length);
+                ro.observationTargets.forEach((function processTarget(ot) {
+                    if (ot.isActive()) if (calculateDepthForNode(ot.target) > depth) ro.activeTargets.push(ot); else ro.skippedTargets.push(ot);
+                }));
+            }));
+        };
+        var process = function() {
+            var depth = 0;
+            gatherActiveObservationsAtDepth(depth);
+            while (hasActiveObservations()) {
+                depth = broadcastActiveObservations();
+                gatherActiveObservationsAtDepth(depth);
+            }
+            if (hasSkippedObservations()) deliverResizeLoopError();
+            return depth > 0;
+        };
+        var trigger;
+        var callbacks = [];
+        var notify = function() {
+            return callbacks.splice(0).forEach((function(cb) {
+                return cb();
+            }));
+        };
+        var queueMicroTask = function(callback) {
+            if (!trigger) {
+                var toggle_1 = 0;
+                var el_1 = document.createTextNode("");
+                var config = {
+                    characterData: true
+                };
+                new MutationObserver((function() {
+                    return notify();
+                })).observe(el_1, config);
+                trigger = function() {
+                    el_1.textContent = "".concat(toggle_1 ? toggle_1-- : toggle_1++);
+                };
+            }
+            callbacks.push(callback);
+            trigger();
+        };
+        var queueResizeObserver = function(cb) {
+            queueMicroTask((function ResizeObserver() {
+                requestAnimationFrame(cb);
+            }));
+        };
+        var watching = 0;
+        var isWatching = function() {
+            return !!watching;
+        };
+        var CATCH_PERIOD = 250;
+        var observerConfig = {
+            attributes: true,
+            characterData: true,
+            childList: true,
+            subtree: true
+        };
+        var events = [ "resize", "load", "transitionend", "animationend", "animationstart", "animationiteration", "keyup", "keydown", "mouseup", "mousedown", "mouseover", "mouseout", "blur", "focus" ];
+        var time = function(timeout) {
+            if (void 0 === timeout) timeout = 0;
+            return Date.now() + timeout;
+        };
+        var scheduled = false;
+        var Scheduler = function() {
+            function Scheduler() {
+                var _this = this;
+                this.stopped = true;
+                this.listener = function() {
+                    return _this.schedule();
+                };
+            }
+            Scheduler.prototype.run = function(timeout) {
+                var _this = this;
+                if (void 0 === timeout) timeout = CATCH_PERIOD;
+                if (scheduled) return;
+                scheduled = true;
+                var until = time(timeout);
+                queueResizeObserver((function() {
+                    var elementsHaveResized = false;
+                    try {
+                        elementsHaveResized = process();
+                    } finally {
+                        scheduled = false;
+                        timeout = until - time();
+                        if (!isWatching()) return;
+                        if (elementsHaveResized) _this.run(1e3); else if (timeout > 0) _this.run(timeout); else _this.start();
+                    }
+                }));
+            };
+            Scheduler.prototype.schedule = function() {
+                this.stop();
+                this.run();
+            };
+            Scheduler.prototype.observe = function() {
+                var _this = this;
+                var cb = function() {
+                    return _this.observer && _this.observer.observe(document.body, observerConfig);
+                };
+                document.body ? cb() : global.addEventListener("DOMContentLoaded", cb);
+            };
+            Scheduler.prototype.start = function() {
+                var _this = this;
+                if (this.stopped) {
+                    this.stopped = false;
+                    this.observer = new MutationObserver(this.listener);
+                    this.observe();
+                    events.forEach((function(name) {
+                        return global.addEventListener(name, _this.listener, true);
+                    }));
+                }
+            };
+            Scheduler.prototype.stop = function() {
+                var _this = this;
+                if (!this.stopped) {
+                    this.observer && this.observer.disconnect();
+                    events.forEach((function(name) {
+                        return global.removeEventListener(name, _this.listener, true);
+                    }));
+                    this.stopped = true;
+                }
+            };
+            return Scheduler;
+        }();
+        var scheduler = new Scheduler;
+        var updateCount = function(n) {
+            !watching && n > 0 && scheduler.start();
+            watching += n;
+            !watching && scheduler.stop();
+        };
+        var skipNotifyOnElement = function(target) {
+            return !isSVG(target) && !isReplacedElement(target) && "inline" === getComputedStyle(target).display;
+        };
+        var ResizeObservation = function() {
+            function ResizeObservation(target, observedBox) {
+                this.target = target;
+                this.observedBox = observedBox || ResizeObserverBoxOptions.CONTENT_BOX;
+                this.lastReportedSize = {
+                    inlineSize: 0,
+                    blockSize: 0
+                };
+            }
+            ResizeObservation.prototype.isActive = function() {
+                var size = calculateBoxSize(this.target, this.observedBox, true);
+                if (skipNotifyOnElement(this.target)) this.lastReportedSize = size;
+                if (this.lastReportedSize.inlineSize !== size.inlineSize || this.lastReportedSize.blockSize !== size.blockSize) return true;
+                return false;
+            };
+            return ResizeObservation;
+        }();
+        var ResizeObserverDetail = function() {
+            function ResizeObserverDetail(resizeObserver, callback) {
+                this.activeTargets = [];
+                this.skippedTargets = [];
+                this.observationTargets = [];
+                this.observer = resizeObserver;
+                this.callback = callback;
+            }
+            return ResizeObserverDetail;
+        }();
+        var observerMap = new WeakMap;
+        var getObservationIndex = function(observationTargets, target) {
+            for (var i = 0; i < observationTargets.length; i += 1) if (observationTargets[i].target === target) return i;
+            return -1;
+        };
+        var ResizeObserverController = function() {
+            function ResizeObserverController() {}
+            ResizeObserverController.connect = function(resizeObserver, callback) {
+                var detail = new ResizeObserverDetail(resizeObserver, callback);
+                observerMap.set(resizeObserver, detail);
+            };
+            ResizeObserverController.observe = function(resizeObserver, target, options) {
+                var detail = observerMap.get(resizeObserver);
+                var firstObservation = 0 === detail.observationTargets.length;
+                if (getObservationIndex(detail.observationTargets, target) < 0) {
+                    firstObservation && resizeObservers.push(detail);
+                    detail.observationTargets.push(new ResizeObservation(target, options && options.box));
+                    updateCount(1);
+                    scheduler.schedule();
+                }
+            };
+            ResizeObserverController.unobserve = function(resizeObserver, target) {
+                var detail = observerMap.get(resizeObserver);
+                var index = getObservationIndex(detail.observationTargets, target);
+                var lastObservation = 1 === detail.observationTargets.length;
+                if (index >= 0) {
+                    lastObservation && resizeObservers.splice(resizeObservers.indexOf(detail), 1);
+                    detail.observationTargets.splice(index, 1);
+                    updateCount(-1);
+                }
+            };
+            ResizeObserverController.disconnect = function(resizeObserver) {
+                var _this = this;
+                var detail = observerMap.get(resizeObserver);
+                detail.observationTargets.slice().forEach((function(ot) {
+                    return _this.unobserve(resizeObserver, ot.target);
+                }));
+                detail.activeTargets.splice(0, detail.activeTargets.length);
+            };
+            return ResizeObserverController;
+        }();
+        var ResizeObserver = function() {
+            function ResizeObserver(callback) {
+                if (0 === arguments.length) throw new TypeError("Failed to construct 'ResizeObserver': 1 argument required, but only 0 present.");
+                if ("function" !== typeof callback) throw new TypeError("Failed to construct 'ResizeObserver': The callback provided as parameter 1 is not a function.");
+                ResizeObserverController.connect(this, callback);
+            }
+            ResizeObserver.prototype.observe = function(target, options) {
+                if (0 === arguments.length) throw new TypeError("Failed to execute 'observe' on 'ResizeObserver': 1 argument required, but only 0 present.");
+                if (!isElement(target)) throw new TypeError("Failed to execute 'observe' on 'ResizeObserver': parameter 1 is not of type 'Element");
+                ResizeObserverController.observe(this, target, options);
+            };
+            ResizeObserver.prototype.unobserve = function(target) {
+                if (0 === arguments.length) throw new TypeError("Failed to execute 'unobserve' on 'ResizeObserver': 1 argument required, but only 0 present.");
+                if (!isElement(target)) throw new TypeError("Failed to execute 'unobserve' on 'ResizeObserver': parameter 1 is not of type 'Element");
+                ResizeObserverController.unobserve(this, target);
+            };
+            ResizeObserver.prototype.disconnect = function() {
+                ResizeObserverController.disconnect(this);
+            };
+            ResizeObserver.toString = function() {
+                return "function ResizeObserver () { [polyfill code] }";
+            };
+            return ResizeObserver;
+        }();
+        __webpack_require__(7985);
+        __webpack_require__(9989);
+        __webpack_require__(8307);
+        __webpack_require__(6618);
+        __webpack_require__(4390);
+        var getOptions = function getOptions(obj) {
+            var options = Array.prototype.reduce.call(obj, (function(acc, attribute) {
+                var option = attribute.name.match(/data-simplebar-(.+)/);
+                if (option) {
+                    var key = option[1].replace(/\W+(.)/g, (function(x, chr) {
+                        return chr.toUpperCase();
+                    }));
+                    switch (attribute.value) {
+                      case "true":
+                        acc[key] = true;
+                        break;
+
+                      case "false":
+                        acc[key] = false;
+                        break;
+
+                      case void 0:
+                        acc[key] = true;
+                        break;
+
+                      default:
+                        acc[key] = attribute.value;
+                    }
+                }
+                return acc;
+            }), {});
+            return options;
+        };
+        function getElementWindow(element) {
+            if (!element || !element.ownerDocument || !element.ownerDocument.defaultView) return window;
+            return element.ownerDocument.defaultView;
+        }
+        function getElementDocument(element) {
+            if (!element || !element.ownerDocument) return document;
+            return element.ownerDocument;
+        }
+        var cachedScrollbarWidth = null;
+        var cachedDevicePixelRatio = null;
+        if (can_use_dom_default()) window.addEventListener("resize", (function() {
+            if (cachedDevicePixelRatio !== window.devicePixelRatio) {
+                cachedDevicePixelRatio = window.devicePixelRatio;
+                cachedScrollbarWidth = null;
+            }
+        }));
+        function scrollbarWidth(el) {
+            if (null === cachedScrollbarWidth) {
+                var document = getElementDocument(el);
+                if ("undefined" === typeof document) {
+                    cachedScrollbarWidth = 0;
+                    return cachedScrollbarWidth;
+                }
+                var body = document.body;
+                var box = document.createElement("div");
+                box.classList.add("simplebar-hide-scrollbar");
+                body.appendChild(box);
+                var width = box.getBoundingClientRect().right;
+                body.removeChild(box);
+                cachedScrollbarWidth = width;
+            }
+            return cachedScrollbarWidth;
+        }
+        var SimpleBar = function() {
+            function SimpleBar(element, options) {
+                var _this = this;
+                this.onScroll = function() {
+                    var elWindow = getElementWindow(_this.el);
+                    if (!_this.scrollXTicking) {
+                        elWindow.requestAnimationFrame(_this.scrollX);
+                        _this.scrollXTicking = true;
+                    }
+                    if (!_this.scrollYTicking) {
+                        elWindow.requestAnimationFrame(_this.scrollY);
+                        _this.scrollYTicking = true;
+                    }
+                };
+                this.scrollX = function() {
+                    if (_this.axis.x.isOverflowing) {
+                        _this.showScrollbar("x");
+                        _this.positionScrollbar("x");
+                    }
+                    _this.scrollXTicking = false;
+                };
+                this.scrollY = function() {
+                    if (_this.axis.y.isOverflowing) {
+                        _this.showScrollbar("y");
+                        _this.positionScrollbar("y");
+                    }
+                    _this.scrollYTicking = false;
+                };
+                this.onMouseEnter = function() {
+                    _this.showScrollbar("x");
+                    _this.showScrollbar("y");
+                };
+                this.onMouseMove = function(e) {
+                    _this.mouseX = e.clientX;
+                    _this.mouseY = e.clientY;
+                    if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) _this.onMouseMoveForAxis("x");
+                    if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) _this.onMouseMoveForAxis("y");
+                };
+                this.onMouseLeave = function() {
+                    _this.onMouseMove.cancel();
+                    if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) _this.onMouseLeaveForAxis("x");
+                    if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) _this.onMouseLeaveForAxis("y");
+                    _this.mouseX = -1;
+                    _this.mouseY = -1;
+                };
+                this.onWindowResize = function() {
+                    _this.scrollbarWidth = _this.getScrollbarWidth();
+                    _this.hideNativeScrollbar();
+                };
+                this.hideScrollbars = function() {
+                    _this.axis.x.track.rect = _this.axis.x.track.el.getBoundingClientRect();
+                    _this.axis.y.track.rect = _this.axis.y.track.el.getBoundingClientRect();
+                    if (!_this.isWithinBounds(_this.axis.y.track.rect)) {
+                        _this.axis.y.scrollbar.el.classList.remove(_this.classNames.visible);
+                        _this.axis.y.isVisible = false;
+                    }
+                    if (!_this.isWithinBounds(_this.axis.x.track.rect)) {
+                        _this.axis.x.scrollbar.el.classList.remove(_this.classNames.visible);
+                        _this.axis.x.isVisible = false;
+                    }
+                };
+                this.onPointerEvent = function(e) {
+                    var isWithinTrackXBounds, isWithinTrackYBounds;
+                    _this.axis.x.track.rect = _this.axis.x.track.el.getBoundingClientRect();
+                    _this.axis.y.track.rect = _this.axis.y.track.el.getBoundingClientRect();
+                    if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) isWithinTrackXBounds = _this.isWithinBounds(_this.axis.x.track.rect);
+                    if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) isWithinTrackYBounds = _this.isWithinBounds(_this.axis.y.track.rect);
+                    if (isWithinTrackXBounds || isWithinTrackYBounds) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if ("mousedown" === e.type) {
+                            if (isWithinTrackXBounds) {
+                                _this.axis.x.scrollbar.rect = _this.axis.x.scrollbar.el.getBoundingClientRect();
+                                if (_this.isWithinBounds(_this.axis.x.scrollbar.rect)) _this.onDragStart(e, "x"); else _this.onTrackClick(e, "x");
+                            }
+                            if (isWithinTrackYBounds) {
+                                _this.axis.y.scrollbar.rect = _this.axis.y.scrollbar.el.getBoundingClientRect();
+                                if (_this.isWithinBounds(_this.axis.y.scrollbar.rect)) _this.onDragStart(e, "y"); else _this.onTrackClick(e, "y");
+                            }
+                        }
+                    }
+                };
+                this.drag = function(e) {
+                    var eventOffset;
+                    var track = _this.axis[_this.draggedAxis].track;
+                    var trackSize = track.rect[_this.axis[_this.draggedAxis].sizeAttr];
+                    var scrollbar = _this.axis[_this.draggedAxis].scrollbar;
+                    var contentSize = _this.contentWrapperEl[_this.axis[_this.draggedAxis].scrollSizeAttr];
+                    var hostSize = parseInt(_this.elStyles[_this.axis[_this.draggedAxis].sizeAttr], 10);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if ("y" === _this.draggedAxis) eventOffset = e.pageY; else eventOffset = e.pageX;
+                    var dragPos = eventOffset - track.rect[_this.axis[_this.draggedAxis].offsetAttr] - _this.axis[_this.draggedAxis].dragOffset;
+                    var dragPerc = dragPos / (trackSize - scrollbar.size);
+                    var scrollPos = dragPerc * (contentSize - hostSize);
+                    if ("x" === _this.draggedAxis) {
+                        scrollPos = _this.isRtl && SimpleBar.getRtlHelpers().isRtlScrollbarInverted ? scrollPos - (trackSize + scrollbar.size) : scrollPos;
+                        scrollPos = _this.isRtl && SimpleBar.getRtlHelpers().isRtlScrollingInverted ? -scrollPos : scrollPos;
+                    }
+                    _this.contentWrapperEl[_this.axis[_this.draggedAxis].scrollOffsetAttr] = scrollPos;
+                };
+                this.onEndDrag = function(e) {
+                    var elDocument = getElementDocument(_this.el);
+                    var elWindow = getElementWindow(_this.el);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    _this.el.classList.remove(_this.classNames.dragging);
+                    elDocument.removeEventListener("mousemove", _this.drag, true);
+                    elDocument.removeEventListener("mouseup", _this.onEndDrag, true);
+                    _this.removePreventClickId = elWindow.setTimeout((function() {
+                        elDocument.removeEventListener("click", _this.preventClick, true);
+                        elDocument.removeEventListener("dblclick", _this.preventClick, true);
+                        _this.removePreventClickId = null;
+                    }));
+                };
+                this.preventClick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                };
+                this.el = element;
+                this.minScrollbarWidth = 20;
+                this.options = Object.assign({}, SimpleBar.defaultOptions, options);
+                this.classNames = Object.assign({}, SimpleBar.defaultOptions.classNames, this.options.classNames);
+                this.axis = {
+                    x: {
+                        scrollOffsetAttr: "scrollLeft",
+                        sizeAttr: "width",
+                        scrollSizeAttr: "scrollWidth",
+                        offsetSizeAttr: "offsetWidth",
+                        offsetAttr: "left",
+                        overflowAttr: "overflowX",
+                        dragOffset: 0,
+                        isOverflowing: true,
+                        isVisible: false,
+                        forceVisible: false,
+                        track: {},
+                        scrollbar: {}
+                    },
+                    y: {
+                        scrollOffsetAttr: "scrollTop",
+                        sizeAttr: "height",
+                        scrollSizeAttr: "scrollHeight",
+                        offsetSizeAttr: "offsetHeight",
+                        offsetAttr: "top",
+                        overflowAttr: "overflowY",
+                        dragOffset: 0,
+                        isOverflowing: true,
+                        isVisible: false,
+                        forceVisible: false,
+                        track: {},
+                        scrollbar: {}
+                    }
+                };
+                this.removePreventClickId = null;
+                if (SimpleBar.instances.has(this.el)) return;
+                this.recalculate = lodash_throttle_default()(this.recalculate.bind(this), 64);
+                this.onMouseMove = lodash_throttle_default()(this.onMouseMove.bind(this), 64);
+                this.hideScrollbars = lodash_debounce_default()(this.hideScrollbars.bind(this), this.options.timeout);
+                this.onWindowResize = lodash_debounce_default()(this.onWindowResize.bind(this), 64, {
+                    leading: true
+                });
+                SimpleBar.getRtlHelpers = lodash_memoize_default()(SimpleBar.getRtlHelpers);
+                this.init();
+            }
+            SimpleBar.getRtlHelpers = function getRtlHelpers() {
+                var dummyDiv = document.createElement("div");
+                dummyDiv.innerHTML = '<div class="hs-dummy-scrollbar-size"><div style="height: 200%; width: 200%; margin: 10px 0;"></div></div>';
+                var scrollbarDummyEl = dummyDiv.firstElementChild;
+                document.body.appendChild(scrollbarDummyEl);
+                var dummyContainerChild = scrollbarDummyEl.firstElementChild;
+                scrollbarDummyEl.scrollLeft = 0;
+                var dummyContainerOffset = SimpleBar.getOffset(scrollbarDummyEl);
+                var dummyContainerChildOffset = SimpleBar.getOffset(dummyContainerChild);
+                scrollbarDummyEl.scrollLeft = 999;
+                var dummyContainerScrollOffsetAfterScroll = SimpleBar.getOffset(dummyContainerChild);
+                return {
+                    isRtlScrollingInverted: dummyContainerOffset.left !== dummyContainerChildOffset.left && dummyContainerChildOffset.left - dummyContainerScrollOffsetAfterScroll.left !== 0,
+                    isRtlScrollbarInverted: dummyContainerOffset.left !== dummyContainerChildOffset.left
+                };
+            };
+            SimpleBar.getOffset = function getOffset(el) {
+                var rect = el.getBoundingClientRect();
+                var elDocument = getElementDocument(el);
+                var elWindow = getElementWindow(el);
+                return {
+                    top: rect.top + (elWindow.pageYOffset || elDocument.documentElement.scrollTop),
+                    left: rect.left + (elWindow.pageXOffset || elDocument.documentElement.scrollLeft)
+                };
+            };
+            var _proto = SimpleBar.prototype;
+            _proto.init = function init() {
+                SimpleBar.instances.set(this.el, this);
+                if (can_use_dom_default()) {
+                    this.initDOM();
+                    this.setAccessibilityAttributes();
+                    this.scrollbarWidth = this.getScrollbarWidth();
+                    this.recalculate();
+                    this.initListeners();
+                }
+            };
+            _proto.initDOM = function initDOM() {
+                var _this2 = this;
+                if (Array.prototype.filter.call(this.el.children, (function(child) {
+                    return child.classList.contains(_this2.classNames.wrapper);
+                })).length) {
+                    this.wrapperEl = this.el.querySelector("." + this.classNames.wrapper);
+                    this.contentWrapperEl = this.options.scrollableNode || this.el.querySelector("." + this.classNames.contentWrapper);
+                    this.contentEl = this.options.contentNode || this.el.querySelector("." + this.classNames.contentEl);
+                    this.offsetEl = this.el.querySelector("." + this.classNames.offset);
+                    this.maskEl = this.el.querySelector("." + this.classNames.mask);
+                    this.placeholderEl = this.findChild(this.wrapperEl, "." + this.classNames.placeholder);
+                    this.heightAutoObserverWrapperEl = this.el.querySelector("." + this.classNames.heightAutoObserverWrapperEl);
+                    this.heightAutoObserverEl = this.el.querySelector("." + this.classNames.heightAutoObserverEl);
+                    this.axis.x.track.el = this.findChild(this.el, "." + this.classNames.track + "." + this.classNames.horizontal);
+                    this.axis.y.track.el = this.findChild(this.el, "." + this.classNames.track + "." + this.classNames.vertical);
+                } else {
+                    this.wrapperEl = document.createElement("div");
+                    this.contentWrapperEl = document.createElement("div");
+                    this.offsetEl = document.createElement("div");
+                    this.maskEl = document.createElement("div");
+                    this.contentEl = document.createElement("div");
+                    this.placeholderEl = document.createElement("div");
+                    this.heightAutoObserverWrapperEl = document.createElement("div");
+                    this.heightAutoObserverEl = document.createElement("div");
+                    this.wrapperEl.classList.add(this.classNames.wrapper);
+                    this.contentWrapperEl.classList.add(this.classNames.contentWrapper);
+                    this.offsetEl.classList.add(this.classNames.offset);
+                    this.maskEl.classList.add(this.classNames.mask);
+                    this.contentEl.classList.add(this.classNames.contentEl);
+                    this.placeholderEl.classList.add(this.classNames.placeholder);
+                    this.heightAutoObserverWrapperEl.classList.add(this.classNames.heightAutoObserverWrapperEl);
+                    this.heightAutoObserverEl.classList.add(this.classNames.heightAutoObserverEl);
+                    while (this.el.firstChild) this.contentEl.appendChild(this.el.firstChild);
+                    this.contentWrapperEl.appendChild(this.contentEl);
+                    this.offsetEl.appendChild(this.contentWrapperEl);
+                    this.maskEl.appendChild(this.offsetEl);
+                    this.heightAutoObserverWrapperEl.appendChild(this.heightAutoObserverEl);
+                    this.wrapperEl.appendChild(this.heightAutoObserverWrapperEl);
+                    this.wrapperEl.appendChild(this.maskEl);
+                    this.wrapperEl.appendChild(this.placeholderEl);
+                    this.el.appendChild(this.wrapperEl);
+                }
+                if (!this.axis.x.track.el || !this.axis.y.track.el) {
+                    var track = document.createElement("div");
+                    var scrollbar = document.createElement("div");
+                    track.classList.add(this.classNames.track);
+                    scrollbar.classList.add(this.classNames.scrollbar);
+                    track.appendChild(scrollbar);
+                    this.axis.x.track.el = track.cloneNode(true);
+                    this.axis.x.track.el.classList.add(this.classNames.horizontal);
+                    this.axis.y.track.el = track.cloneNode(true);
+                    this.axis.y.track.el.classList.add(this.classNames.vertical);
+                    this.el.appendChild(this.axis.x.track.el);
+                    this.el.appendChild(this.axis.y.track.el);
+                }
+                this.axis.x.scrollbar.el = this.axis.x.track.el.querySelector("." + this.classNames.scrollbar);
+                this.axis.y.scrollbar.el = this.axis.y.track.el.querySelector("." + this.classNames.scrollbar);
+                if (!this.options.autoHide) {
+                    this.axis.x.scrollbar.el.classList.add(this.classNames.visible);
+                    this.axis.y.scrollbar.el.classList.add(this.classNames.visible);
+                }
+                this.el.setAttribute("data-simplebar", "init");
+            };
+            _proto.setAccessibilityAttributes = function setAccessibilityAttributes() {
+                var ariaLabel = this.options.ariaLabel || "scrollable content";
+                this.contentWrapperEl.setAttribute("tabindex", "0");
+                this.contentWrapperEl.setAttribute("role", "region");
+                this.contentWrapperEl.setAttribute("aria-label", ariaLabel);
+            };
+            _proto.initListeners = function initListeners() {
+                var _this3 = this;
+                var elWindow = getElementWindow(this.el);
+                if (this.options.autoHide) this.el.addEventListener("mouseenter", this.onMouseEnter);
+                [ "mousedown", "click", "dblclick" ].forEach((function(e) {
+                    _this3.el.addEventListener(e, _this3.onPointerEvent, true);
+                }));
+                [ "touchstart", "touchend", "touchmove" ].forEach((function(e) {
+                    _this3.el.addEventListener(e, _this3.onPointerEvent, {
+                        capture: true,
+                        passive: true
+                    });
+                }));
+                this.el.addEventListener("mousemove", this.onMouseMove);
+                this.el.addEventListener("mouseleave", this.onMouseLeave);
+                this.contentWrapperEl.addEventListener("scroll", this.onScroll);
+                elWindow.addEventListener("resize", this.onWindowResize);
+                var resizeObserverStarted = false;
+                var resizeAnimationFrameId = null;
+                var resizeObserver = elWindow.ResizeObserver || ResizeObserver;
+                this.resizeObserver = new resizeObserver((function() {
+                    if (!resizeObserverStarted || null !== resizeAnimationFrameId) return;
+                    resizeAnimationFrameId = elWindow.requestAnimationFrame((function() {
+                        _this3.recalculate();
+                        resizeAnimationFrameId = null;
+                    }));
+                }));
+                this.resizeObserver.observe(this.el);
+                this.resizeObserver.observe(this.contentEl);
+                elWindow.requestAnimationFrame((function() {
+                    resizeObserverStarted = true;
+                }));
+                this.mutationObserver = new elWindow.MutationObserver(this.recalculate);
+                this.mutationObserver.observe(this.contentEl, {
+                    childList: true,
+                    subtree: true,
+                    characterData: true
+                });
+            };
+            _proto.recalculate = function recalculate() {
+                var elWindow = getElementWindow(this.el);
+                this.elStyles = elWindow.getComputedStyle(this.el);
+                this.isRtl = "rtl" === this.elStyles.direction;
+                var isHeightAuto = this.heightAutoObserverEl.offsetHeight <= 1;
+                var isWidthAuto = this.heightAutoObserverEl.offsetWidth <= 1;
+                var contentElOffsetWidth = this.contentEl.offsetWidth;
+                var contentWrapperElOffsetWidth = this.contentWrapperEl.offsetWidth;
+                var elOverflowX = this.elStyles.overflowX;
+                var elOverflowY = this.elStyles.overflowY;
+                this.contentEl.style.padding = this.elStyles.paddingTop + " " + this.elStyles.paddingRight + " " + this.elStyles.paddingBottom + " " + this.elStyles.paddingLeft;
+                this.wrapperEl.style.margin = "-" + this.elStyles.paddingTop + " -" + this.elStyles.paddingRight + " -" + this.elStyles.paddingBottom + " -" + this.elStyles.paddingLeft;
+                var contentElScrollHeight = this.contentEl.scrollHeight;
+                var contentElScrollWidth = this.contentEl.scrollWidth;
+                this.contentWrapperEl.style.height = isHeightAuto ? "auto" : "100%";
+                this.placeholderEl.style.width = isWidthAuto ? contentElOffsetWidth + "px" : "auto";
+                this.placeholderEl.style.height = contentElScrollHeight + "px";
+                var contentWrapperElOffsetHeight = this.contentWrapperEl.offsetHeight;
+                this.axis.x.isOverflowing = contentElScrollWidth > contentElOffsetWidth;
+                this.axis.y.isOverflowing = contentElScrollHeight > contentWrapperElOffsetHeight;
+                this.axis.x.isOverflowing = "hidden" === elOverflowX ? false : this.axis.x.isOverflowing;
+                this.axis.y.isOverflowing = "hidden" === elOverflowY ? false : this.axis.y.isOverflowing;
+                this.axis.x.forceVisible = "x" === this.options.forceVisible || true === this.options.forceVisible;
+                this.axis.y.forceVisible = "y" === this.options.forceVisible || true === this.options.forceVisible;
+                this.hideNativeScrollbar();
+                var offsetForXScrollbar = this.axis.x.isOverflowing ? this.scrollbarWidth : 0;
+                var offsetForYScrollbar = this.axis.y.isOverflowing ? this.scrollbarWidth : 0;
+                this.axis.x.isOverflowing = this.axis.x.isOverflowing && contentElScrollWidth > contentWrapperElOffsetWidth - offsetForYScrollbar;
+                this.axis.y.isOverflowing = this.axis.y.isOverflowing && contentElScrollHeight > contentWrapperElOffsetHeight - offsetForXScrollbar;
+                this.axis.x.scrollbar.size = this.getScrollbarSize("x");
+                this.axis.y.scrollbar.size = this.getScrollbarSize("y");
+                this.axis.x.scrollbar.el.style.width = this.axis.x.scrollbar.size + "px";
+                this.axis.y.scrollbar.el.style.height = this.axis.y.scrollbar.size + "px";
+                this.positionScrollbar("x");
+                this.positionScrollbar("y");
+                this.toggleTrackVisibility("x");
+                this.toggleTrackVisibility("y");
+            };
+            _proto.getScrollbarSize = function getScrollbarSize(axis) {
+                if (void 0 === axis) axis = "y";
+                if (!this.axis[axis].isOverflowing) return 0;
+                var contentSize = this.contentEl[this.axis[axis].scrollSizeAttr];
+                var trackSize = this.axis[axis].track.el[this.axis[axis].offsetSizeAttr];
+                var scrollbarSize;
+                var scrollbarRatio = trackSize / contentSize;
+                scrollbarSize = Math.max(~~(scrollbarRatio * trackSize), this.options.scrollbarMinSize);
+                if (this.options.scrollbarMaxSize) scrollbarSize = Math.min(scrollbarSize, this.options.scrollbarMaxSize);
+                return scrollbarSize;
+            };
+            _proto.positionScrollbar = function positionScrollbar(axis) {
+                if (void 0 === axis) axis = "y";
+                if (!this.axis[axis].isOverflowing) return;
+                var contentSize = this.contentWrapperEl[this.axis[axis].scrollSizeAttr];
+                var trackSize = this.axis[axis].track.el[this.axis[axis].offsetSizeAttr];
+                var hostSize = parseInt(this.elStyles[this.axis[axis].sizeAttr], 10);
+                var scrollbar = this.axis[axis].scrollbar;
+                var scrollOffset = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
+                scrollOffset = "x" === axis && this.isRtl && SimpleBar.getRtlHelpers().isRtlScrollingInverted ? -scrollOffset : scrollOffset;
+                var scrollPourcent = scrollOffset / (contentSize - hostSize);
+                var handleOffset = ~~((trackSize - scrollbar.size) * scrollPourcent);
+                handleOffset = "x" === axis && this.isRtl && SimpleBar.getRtlHelpers().isRtlScrollbarInverted ? handleOffset + (trackSize - scrollbar.size) : handleOffset;
+                scrollbar.el.style.transform = "x" === axis ? "translate3d(" + handleOffset + "px, 0, 0)" : "translate3d(0, " + handleOffset + "px, 0)";
+            };
+            _proto.toggleTrackVisibility = function toggleTrackVisibility(axis) {
+                if (void 0 === axis) axis = "y";
+                var track = this.axis[axis].track.el;
+                var scrollbar = this.axis[axis].scrollbar.el;
+                if (this.axis[axis].isOverflowing || this.axis[axis].forceVisible) {
+                    track.style.visibility = "visible";
+                    this.contentWrapperEl.style[this.axis[axis].overflowAttr] = "scroll";
+                } else {
+                    track.style.visibility = "hidden";
+                    this.contentWrapperEl.style[this.axis[axis].overflowAttr] = "hidden";
+                }
+                if (this.axis[axis].isOverflowing) scrollbar.style.display = "block"; else scrollbar.style.display = "none";
+            };
+            _proto.hideNativeScrollbar = function hideNativeScrollbar() {
+                this.offsetEl.style[this.isRtl ? "left" : "right"] = this.axis.y.isOverflowing || this.axis.y.forceVisible ? "-" + this.scrollbarWidth + "px" : 0;
+                this.offsetEl.style.bottom = this.axis.x.isOverflowing || this.axis.x.forceVisible ? "-" + this.scrollbarWidth + "px" : 0;
+            };
+            _proto.onMouseMoveForAxis = function onMouseMoveForAxis(axis) {
+                if (void 0 === axis) axis = "y";
+                this.axis[axis].track.rect = this.axis[axis].track.el.getBoundingClientRect();
+                this.axis[axis].scrollbar.rect = this.axis[axis].scrollbar.el.getBoundingClientRect();
+                var isWithinScrollbarBoundsX = this.isWithinBounds(this.axis[axis].scrollbar.rect);
+                if (isWithinScrollbarBoundsX) this.axis[axis].scrollbar.el.classList.add(this.classNames.hover); else this.axis[axis].scrollbar.el.classList.remove(this.classNames.hover);
+                if (this.isWithinBounds(this.axis[axis].track.rect)) {
+                    this.showScrollbar(axis);
+                    this.axis[axis].track.el.classList.add(this.classNames.hover);
+                } else this.axis[axis].track.el.classList.remove(this.classNames.hover);
+            };
+            _proto.onMouseLeaveForAxis = function onMouseLeaveForAxis(axis) {
+                if (void 0 === axis) axis = "y";
+                this.axis[axis].track.el.classList.remove(this.classNames.hover);
+                this.axis[axis].scrollbar.el.classList.remove(this.classNames.hover);
+            };
+            _proto.showScrollbar = function showScrollbar(axis) {
+                if (void 0 === axis) axis = "y";
+                var scrollbar = this.axis[axis].scrollbar.el;
+                if (!this.axis[axis].isVisible) {
+                    scrollbar.classList.add(this.classNames.visible);
+                    this.axis[axis].isVisible = true;
+                }
+                if (this.options.autoHide) this.hideScrollbars();
+            };
+            _proto.onDragStart = function onDragStart(e, axis) {
+                if (void 0 === axis) axis = "y";
+                var elDocument = getElementDocument(this.el);
+                var elWindow = getElementWindow(this.el);
+                var scrollbar = this.axis[axis].scrollbar;
+                var eventOffset = "y" === axis ? e.pageY : e.pageX;
+                this.axis[axis].dragOffset = eventOffset - scrollbar.rect[this.axis[axis].offsetAttr];
+                this.draggedAxis = axis;
+                this.el.classList.add(this.classNames.dragging);
+                elDocument.addEventListener("mousemove", this.drag, true);
+                elDocument.addEventListener("mouseup", this.onEndDrag, true);
+                if (null === this.removePreventClickId) {
+                    elDocument.addEventListener("click", this.preventClick, true);
+                    elDocument.addEventListener("dblclick", this.preventClick, true);
+                } else {
+                    elWindow.clearTimeout(this.removePreventClickId);
+                    this.removePreventClickId = null;
+                }
+            };
+            _proto.onTrackClick = function onTrackClick(e, axis) {
+                var _this4 = this;
+                if (void 0 === axis) axis = "y";
+                if (!this.options.clickOnTrack) return;
+                var elWindow = getElementWindow(this.el);
+                this.axis[axis].scrollbar.rect = this.axis[axis].scrollbar.el.getBoundingClientRect();
+                var scrollbar = this.axis[axis].scrollbar;
+                var scrollbarOffset = scrollbar.rect[this.axis[axis].offsetAttr];
+                var hostSize = parseInt(this.elStyles[this.axis[axis].sizeAttr], 10);
+                var scrolled = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
+                var t = "y" === axis ? this.mouseY - scrollbarOffset : this.mouseX - scrollbarOffset;
+                var dir = t < 0 ? -1 : 1;
+                var scrollSize = -1 === dir ? scrolled - hostSize : scrolled + hostSize;
+                var scrollTo = function scrollTo() {
+                    if (-1 === dir) {
+                        if (scrolled > scrollSize) {
+                            var _this4$contentWrapper;
+                            scrolled -= _this4.options.clickOnTrackSpeed;
+                            _this4.contentWrapperEl.scrollTo((_this4$contentWrapper = {}, _this4$contentWrapper[_this4.axis[axis].offsetAttr] = scrolled, 
+                            _this4$contentWrapper));
+                            elWindow.requestAnimationFrame(scrollTo);
+                        }
+                    } else if (scrolled < scrollSize) {
+                        var _this4$contentWrapper2;
+                        scrolled += _this4.options.clickOnTrackSpeed;
+                        _this4.contentWrapperEl.scrollTo((_this4$contentWrapper2 = {}, _this4$contentWrapper2[_this4.axis[axis].offsetAttr] = scrolled, 
+                        _this4$contentWrapper2));
+                        elWindow.requestAnimationFrame(scrollTo);
+                    }
+                };
+                scrollTo();
+            };
+            _proto.getContentElement = function getContentElement() {
+                return this.contentEl;
+            };
+            _proto.getScrollElement = function getScrollElement() {
+                return this.contentWrapperEl;
+            };
+            _proto.getScrollbarWidth = function getScrollbarWidth() {
+                try {
+                    if ("none" === getComputedStyle(this.contentWrapperEl, "::-webkit-scrollbar").display || "scrollbarWidth" in document.documentElement.style || "-ms-overflow-style" in document.documentElement.style) return 0; else return scrollbarWidth(this.el);
+                } catch (e) {
+                    return scrollbarWidth(this.el);
+                }
+            };
+            _proto.removeListeners = function removeListeners() {
+                var _this5 = this;
+                var elWindow = getElementWindow(this.el);
+                if (this.options.autoHide) this.el.removeEventListener("mouseenter", this.onMouseEnter);
+                [ "mousedown", "click", "dblclick" ].forEach((function(e) {
+                    _this5.el.removeEventListener(e, _this5.onPointerEvent, true);
+                }));
+                [ "touchstart", "touchend", "touchmove" ].forEach((function(e) {
+                    _this5.el.removeEventListener(e, _this5.onPointerEvent, {
+                        capture: true,
+                        passive: true
+                    });
+                }));
+                this.el.removeEventListener("mousemove", this.onMouseMove);
+                this.el.removeEventListener("mouseleave", this.onMouseLeave);
+                if (this.contentWrapperEl) this.contentWrapperEl.removeEventListener("scroll", this.onScroll);
+                elWindow.removeEventListener("resize", this.onWindowResize);
+                if (this.mutationObserver) this.mutationObserver.disconnect();
+                if (this.resizeObserver) this.resizeObserver.disconnect();
+                this.recalculate.cancel();
+                this.onMouseMove.cancel();
+                this.hideScrollbars.cancel();
+                this.onWindowResize.cancel();
+            };
+            _proto.unMount = function unMount() {
+                this.removeListeners();
+                SimpleBar.instances.delete(this.el);
+            };
+            _proto.isWithinBounds = function isWithinBounds(bbox) {
+                return this.mouseX >= bbox.left && this.mouseX <= bbox.left + bbox.width && this.mouseY >= bbox.top && this.mouseY <= bbox.top + bbox.height;
+            };
+            _proto.findChild = function findChild(el, query) {
+                var matches = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+                return Array.prototype.filter.call(el.children, (function(child) {
+                    return matches.call(child, query);
+                }))[0];
+            };
+            return SimpleBar;
+        }();
+        SimpleBar.defaultOptions = {
+            autoHide: true,
+            forceVisible: false,
+            clickOnTrack: true,
+            clickOnTrackSpeed: 40,
+            classNames: {
+                contentEl: "simplebar-content",
+                contentWrapper: "simplebar-content-wrapper",
+                offset: "simplebar-offset",
+                mask: "simplebar-mask",
+                wrapper: "simplebar-wrapper",
+                placeholder: "simplebar-placeholder",
+                scrollbar: "simplebar-scrollbar",
+                track: "simplebar-track",
+                heightAutoObserverWrapperEl: "simplebar-height-auto-observer-wrapper",
+                heightAutoObserverEl: "simplebar-height-auto-observer",
+                visible: "simplebar-visible",
+                horizontal: "simplebar-horizontal",
+                vertical: "simplebar-vertical",
+                hover: "simplebar-hover",
+                dragging: "simplebar-dragging"
+            },
+            scrollbarMinSize: 25,
+            scrollbarMaxSize: 0,
+            timeout: 1e3
+        };
+        SimpleBar.instances = new WeakMap;
+        SimpleBar.initDOMLoadedElements = function() {
+            document.removeEventListener("DOMContentLoaded", this.initDOMLoadedElements);
+            window.removeEventListener("load", this.initDOMLoadedElements);
+            Array.prototype.forEach.call(document.querySelectorAll("[data-simplebar]"), (function(el) {
+                if ("init" !== el.getAttribute("data-simplebar") && !SimpleBar.instances.has(el)) new SimpleBar(el, getOptions(el.attributes));
+            }));
+        };
+        SimpleBar.removeObserver = function() {
+            this.globalObserver.disconnect();
+        };
+        SimpleBar.initHtmlApi = function() {
+            this.initDOMLoadedElements = this.initDOMLoadedElements.bind(this);
+            if ("undefined" !== typeof MutationObserver) {
+                this.globalObserver = new MutationObserver(SimpleBar.handleMutations);
+                this.globalObserver.observe(document, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+            if ("complete" === document.readyState || "loading" !== document.readyState && !document.documentElement.doScroll) window.setTimeout(this.initDOMLoadedElements); else {
+                document.addEventListener("DOMContentLoaded", this.initDOMLoadedElements);
+                window.addEventListener("load", this.initDOMLoadedElements);
+            }
+        };
+        SimpleBar.handleMutations = function(mutations) {
+            mutations.forEach((function(mutation) {
+                Array.prototype.forEach.call(mutation.addedNodes, (function(addedNode) {
+                    if (1 === addedNode.nodeType) if (addedNode.hasAttribute("data-simplebar")) !SimpleBar.instances.has(addedNode) && document.documentElement.contains(addedNode) && new SimpleBar(addedNode, getOptions(addedNode.attributes)); else Array.prototype.forEach.call(addedNode.querySelectorAll("[data-simplebar]"), (function(el) {
+                        if ("init" !== el.getAttribute("data-simplebar") && !SimpleBar.instances.has(el) && document.documentElement.contains(el)) new SimpleBar(el, getOptions(el.attributes));
+                    }));
+                }));
+                Array.prototype.forEach.call(mutation.removedNodes, (function(removedNode) {
+                    if (1 === removedNode.nodeType) if ("init" === removedNode.getAttribute("data-simplebar")) SimpleBar.instances.has(removedNode) && !document.documentElement.contains(removedNode) && SimpleBar.instances.get(removedNode).unMount(); else Array.prototype.forEach.call(removedNode.querySelectorAll('[data-simplebar="init"]'), (function(el) {
+                        SimpleBar.instances.has(el) && !document.documentElement.contains(el) && SimpleBar.instances.get(el).unMount();
+                    }));
+                }));
+            }));
+        };
+        SimpleBar.getOptions = getOptions;
+        if (can_use_dom_default()) SimpleBar.initHtmlApi();
+        var smooth_scroll_polyfills_min = __webpack_require__(3002);
+        let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
             const targetBlockElement = document.querySelector(targetBlock);
             if (targetBlockElement) {
                 let headerItem = "";
@@ -5542,7 +9786,7 @@
                     easing: "easeOutQuad"
                 };
                 document.documentElement.classList.contains("menu-open") ? menuClose() : null;
-                if ("undefined" !== typeof SmoothScroll) (new SmoothScroll).animateScroll(targetBlockElement, "", options); else {
+                if ("undefined" !== typeof smooth_scroll_polyfills_min) (new smooth_scroll_polyfills_min).animateScroll(targetBlockElement, "", options); else {
                     let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
                     targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
                     targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
@@ -5551,8 +9795,8 @@
                         behavior: "smooth"
                     });
                 }
-                functions_FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);
-            } else functions_FLS(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${targetBlock}`);
+                FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);
+            } else FLS(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${targetBlock}`);
         };
         let addWindowScrollEvent = false;
         function pageNavigation() {
@@ -5567,7 +9811,7 @@
                         const noHeader = gotoLink.hasAttribute("data-goto-header") ? true : false;
                         const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
                         const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
-                        gotoblock_gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+                        gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
                         e.preventDefault();
                     }
                 } else if ("watcherCallback" === e.type && e.detail) {
@@ -5590,7 +9834,7 @@
             if (getHash()) {
                 let goToHash;
                 if (document.querySelector(`#${getHash()}`)) goToHash = `#${getHash()}`; else if (document.querySelector(`.${getHash()}`)) goToHash = `.${getHash()}`;
-                goToHash ? gotoblock_gotoBlock(goToHash, true, 500, 20) : null;
+                goToHash ? gotoBlock(goToHash, true, 500, 20) : null;
             }
         }
         setTimeout((() => {
@@ -5601,252 +9845,305 @@
                 }));
             }
         }), 0);
-        var jquery = __webpack_require__(755);
-        const usdt_usdt = {
-            id: "usdt",
-            name: "USDT",
-            short: "USDT",
-            price: 1,
-            change: 0
-        };
-        const requireNonEmptyArray = true;
-        function isCurrency(currency) {
-            return "object" === typeof currency && "id" in currency && "string" === typeof currency.id && "name" in currency && "string" === typeof currency.name && "short" in currency && "string" === typeof currency.short && "price" in currency && "number" === typeof currency.price && "change" in currency && "number" === typeof currency.change;
+        const desktopMedia = "(min-width: 78.75em)";
+        function headerDesktop() {
+            const header = document.querySelector(".header");
+            const headerContainer = header.querySelector(".header__container");
+            const mediaResult = window.matchMedia(desktopMedia);
+            const moveToContainer = () => {
+                const navPlusButton = header.querySelector(".nav-plus-button");
+                header.removeChild(navPlusButton);
+                headerContainer.appendChild(navPlusButton);
+            };
+            const moveToHeader = () => {
+                const navPlusButton = headerContainer.querySelector(".nav-plus-button");
+                headerContainer.removeChild(navPlusButton);
+                header.appendChild(navPlusButton);
+            };
+            if (mediaResult.matches) moveToContainer();
+            mediaResult.addEventListener("change", (e => {
+                if (e.matches) moveToContainer(); else moveToHeader();
+            }));
         }
-        function isPartialCurrency(currencyPartial) {
-            return "object" === typeof currencyPartial && "id" in currencyPartial && "string" === typeof currencyPartial.id && "name" in currencyPartial && "string" === typeof currencyPartial.name && "short" in currencyPartial && "string" === typeof currencyPartial.short;
+        var jquery = __webpack_require__(9755);
+        let menuState = true;
+        const menuBodyNavElements = document.querySelectorAll(".menu__body, .nav-plus-button");
+        const iconMenu = document.querySelectorAll(".menu__icons > .icon-menu")[0];
+        const header = document.getElementsByClassName("header")[0];
+        function enableMenu() {
+            menuState = true;
+            document.body.classList.add("lock", "lock-scroll");
+            header.classList.add("header__menu-active");
+            [ ...menuBodyNavElements ].forEach((el => el.classList.remove("hidden")));
+            iconMenu.classList.add("icon-menu__active");
+            header.classList.add("background");
         }
-        function isArrayOfCurrencies(currencies) {
-            if (requireNonEmptyArray) return Array.isArray(currencies) && currencies.length > 0 && currencies.every((c => isCurrency(c)));
-            return Array.isArray(currencies) && currencies.every((c => isCurrency(c)));
+        function disableMenu() {
+            menuState = false;
+            document.body.classList.remove("lock", "lock-scroll");
+            header.classList.remove("header__menu-active");
+            [ ...menuBodyNavElements ].forEach((el => el.classList.add("hidden")));
+            iconMenu.classList.remove("icon-menu__active");
+            header.classList.remove("background");
         }
-        function throwIfNot(obj, pred, message) {
-            if (!("string" === typeof message || message instanceof String)) throw new TypeError("Expected string to be a string.");
-            if (!(pred instanceof Function)) throw new TypeError("Expected pred to be a Function.");
-            if (true !== pred(obj)) throw new Error(message);
+        function toggleMenu() {
+            if (menuState) disableMenu(); else enableMenu();
         }
-        function util_throwIfNotACurrency(currency) {
-            throwIfNot(currency, isCurrency, "Expected currency to be a currency.");
+        function autoCloseMenu() {
+            jquery("header a, footer a").on("click", (() => {
+                if (menuState) disableMenu();
+            }));
         }
-        function throwIfNotAPartialCurrency(currencyPartial) {
-            throwIfNot(currencyPartial, isPartialCurrency, "Expected currencyPartial to be a currencyPartial.");
+        function getCurrentPage() {
+            if ("page" in document.body.dataset) return document.body.dataset.page;
+            throw new Error("The data-page attribute is missing in <body> element.");
         }
-        function util_throwIfNotArrayOfCurrencies(currencies) {
-            throwIfNot(currencies, (arr => isArrayOfCurrencies(arr)), "Expected currencies to be array of currencies.");
-        }
-        function util_throwIfNotANumber(number) {
-            throwIfNot(number, (number => "number" === typeof number && !Number.isNaN(number)), `Expected number to be a number. Got: ${typeof number} with value ${number}`);
-        }
-        function util_throwIfNotAString(string) {
-            throwIfNot(string, (string => "string" === typeof string || string instanceof String), "Expected string to be a string.");
-        }
-        class util_UnknownEventError extends TypeError {
-            constructor(eventName) {
-                super(`Unknown Event: ${eventName}`);
-                this.name = "Unknown Event Error";
+        const currentPage = getCurrentPage;
+        class CurrencyFactor {
+            constructor(currencyFactorData) {
+                object(currencyFactorData).withProperty("id", (id => string(id).nonEmpty())).withProperty("factor", (factor => number(factor).nonNegative())).throw("currencyFactorData");
+                const {id, factor} = currencyFactorData;
+                this.id = id;
+                this.factor = factor;
             }
         }
-        class util_ElementNotFoundError extends Error {
+        class CurrencyPartial {
+            constructor(currencyPartialData) {
+                object(currencyPartialData).withProperty("id", (id => string(id).nonEmpty())).withProperty("name", (name => string(name).nonEmpty())).withProperty("short", (short => string(short).nonEmpty())).throw("currencyPartialData");
+                const {id, name, short} = currencyPartialData;
+                this.id = id;
+                this.name = name;
+                this.short = short;
+                if ("price" in currencyPartialData) {
+                    number(currencyPartialData.price).throw("currencyPartialData.price property");
+                    this.price = currencyPartialData.price;
+                }
+                if ("change" in currencyPartialData) {
+                    number(currencyPartialData.change).throw("currencyPartialData.change property");
+                    this.change = currencyPartialData.change;
+                }
+                if ("address" in currencyPartialData && "card" in currencyPartialData) throw new Error('Currency cannot have both "address" and "card" properties defined.');
+                if ("address" in currencyPartialData) {
+                    string(currencyPartialData.address).nonEmpty().throw("currencyPartialData.address property");
+                    if ("network" in currencyPartialData) {
+                        string(currencyPartialData.network).throw("currencyDataPartial.network property");
+                        this.network = currencyPartialData.network;
+                    } else this.network = "";
+                    this.address = currencyPartialData.address;
+                } else if ("card" in currencyPartialData) {
+                    string(currencyPartialData.card).nonEmpty().throw("currencyPartialData.card property");
+                    this.card = currencyPartialData.card;
+                    if (object(currencyPartialData).withProperty("network", (() => true)).value) throw new Error("Fiat currency cannot have assigned crypto network.");
+                }
+            }
+            getFinal() {
+                const currencyData = {
+                    id: this.id,
+                    name: this.name,
+                    short: this.short,
+                    price: this.price,
+                    change: this.change
+                };
+                if (this.card) currencyData.card = this.card; else if (this.address) {
+                    currencyData.address = this.address;
+                    currencyData.network = this.network;
+                }
+                return new Currency(currencyData);
+            }
+        }
+        class Currency extends CurrencyPartial {
+            constructor(currencyData) {
+                object(currencyData).withProperty("id", (id => string(id).nonEmpty())).withProperty("name", (name => string(name).nonEmpty())).withProperty("short", (short => string(short).nonEmpty())).withProperty("price", (price => number(price))).withProperty("change", (change => number(change))).throw("currencyData");
+                if (!("card" in currencyData || "address" in currencyData)) throw new Error("currencyData should contain either currencyData.card or currencyData.address property.");
+                if ("address" in currencyData) if (!("network" in currencyData)) throw new Error("currencyData should have assigned crypto network, if has address property.");
+                super(currencyData);
+                this.price;
+                this.change;
+            }
+        }
+        const showFirstNCryptocurrencies = 5;
+        const currencyFactors = [ {
+            id: "sol",
+            factor: .9
+        } ].map((currencyFactorData => new CurrencyFactor(currencyFactorData)));
+        const cryptocurrencies = [ {
+            id: "btc",
+            name: "Bitcoin",
+            short: "BTC",
+            address: "bc1qyq8vm0k2h54d7g5eueefae63e29yyxgehskvcf"
+        }, {
+            id: "eth",
+            name: "Ethereum",
+            short: "ETH",
+            network: "ERC20",
+            address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
+        }, {
+            id: "bnb",
+            name: "Binance coin",
+            short: "BNB",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "sol",
+            name: "Solana",
+            short: "SOL",
+            address: "AGDXgqwLidxazuoaVnsFXkbDvwJH1fwbFk8Uym8JKz7U"
+        }, {
+            id: "dot",
+            name: "Polkadot",
+            short: "DOT",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "matic",
+            name: "Matic",
+            short: "MATIC",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "near",
+            name: "Near",
+            short: "NEAR",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "ada",
+            name: "Cardano",
+            short: "ADA",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "etc",
+            name: "Ethereum Classic",
+            short: "ETC",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "trx",
+            name: "TRON",
+            short: "TRX",
+            network: "TRC20",
+            address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8"
+        }, {
+            id: "doge",
+            name: "Dogecoin",
+            short: "DOGE",
+            address: "DLm86Vf44xdpSRwV6X6168d9iNwDQKLqcG"
+        }, {
+            id: "shib",
+            name: "Shiba Inu",
+            short: "SHIB",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "avax",
+            name: "Avalanche",
+            short: "AVAX",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "ltc",
+            name: "Litecoin",
+            short: "LTC",
+            address: "ltc1qpkzhcxkeurxmzvkv8kj2k4dlr2nauerxflydzx"
+        }, {
+            id: "usdc",
+            name: "USD Coin",
+            short: "USDC",
+            network: "ERC20",
+            address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
+        } ].map((currencyPartialData => new CurrencyPartial(currencyPartialData)));
+        [ {
+            id: "usd",
+            name: "US Dollar",
+            short: "USD",
+            card: "4444444444444444"
+        } ].map((currencyPartialData => new CurrencyPartial(currencyPartialData)));
+        const restCryptos = [ {
+            id: "usdt-tron",
+            name: "USDT",
+            short: "USDT (TRC20)",
+            price: 1,
+            change: 0,
+            network: "TRC20",
+            address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8"
+        }, {
+            id: "usdt-eth",
+            name: "USDT",
+            short: "USDT (ERC20)",
+            price: 1,
+            change: 0,
+            network: "ERC20",
+            address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
+        } ].map((currencyData => new Currency(currencyData)));
+        class ElementNotFoundError extends Error {
             constructor(elementName) {
                 super(`Unable to locate ${elementName} element.`);
                 this.name = "Element Not Found Error";
             }
         }
-        const currencyFactors = [ {
-            id: "solana",
-            factor: .9
-        } ];
-        const cryptocurrencies = [ {
-            id: "bitcoin",
-            name: "Bitcoin",
-            short: "BTC"
-        }, {
-            id: "ethereum",
-            name: "Ethereum",
-            short: "ETH"
-        }, {
-            id: "binancecoin",
-            name: "Binance coin",
-            short: "BNB"
-        }, {
-            id: "solana",
-            name: "Solana",
-            short: "SOL"
-        }, {
-            id: "polkadot",
-            name: "Polkadot",
-            short: "DOT"
-        }, {
-            id: "matic-network",
-            name: "Matic",
-            short: "MATIC"
-        }, {
-            id: "near",
-            name: "Near",
-            short: "NEAR"
-        }, {
-            id: "cardano",
-            name: "Cardano",
-            short: "ADA"
-        }, {
-            id: "ethereum-classic",
-            name: "Ethereum Classic",
-            short: "ETC"
-        }, {
-            id: "1tronic",
-            name: "TRON",
-            short: "TRX"
-        }, {
-            id: "doge-token",
-            name: "Dogecoin",
-            short: "DOGE"
-        }, {
-            id: "shiba-inu",
-            name: "Shiba Inu",
-            short: "SHIB"
-        }, {
-            id: "avalanche-2",
-            name: "Avalanche",
-            short: "AVAX"
-        }, {
-            id: "litecoin",
-            name: "Litecoin",
-            short: "LTC"
-        }, {
-            id: "usdc",
-            name: "USD Coin",
-            short: "USDC"
-        } ];
-        function getCryptoSymbol(currencyPartial) {
-            throwIfNotAPartialCurrency(currencyPartial);
-            return currencyPartial.short + usdt_usdt.short;
-        }
-        const symbolsArr = cryptocurrencies.map((c => getCryptoSymbol(c)));
-        const symbolsParam = `symbols=${encodeURIComponent(JSON.stringify(symbolsArr))}`;
-        const tickerUrl = `https://api.binance.com/api/v3/ticker/price?${symbolsParam}`;
-        const changeUrl = `https://api.binance.com/api/v3/ticker/24hr?${symbolsParam}`;
-        const settings = {
-            async: true,
-            scrossDomain: true,
-            method: "GET",
-            headers: {}
-        };
-        function findCurrencyFactor(crypto) {
-            if ("object" !== typeof crypto) throw new TypeError(`Expected crypto to be an object. Got ${typeof crypto}`);
-            if (!("id" in crypto)) throw new TypeError("Expected crypto.id to be defined");
-            util_throwIfNotAString(crypto.id);
-            const factorObj = currencyFactors.find((c => c.id === crypto.id));
-            if ("object" === typeof factorObj && "factor" in factorObj && "number" === typeof factorObj.factor) {
-                const {factor} = factorObj;
-                if (factor < 0) throw new Error(`Expected factor to be non-negative. Got factor ${factor} for cryptoId ${crypto.id}`);
-                return factor;
-            }
-            return 1;
-        }
-        function isCurrencyPartialArray(cryptos) {
-            return Array.isArray(cryptos) && cryptos.every((c => isPartialCurrency(c)));
-        }
-        function validateCryptosParam(cryptos) {
-            const isDefined = isCurrencyPartialArray(cryptos);
-            const isValid = "undefined" === typeof cryptos || null === cryptos || isCurrencyPartialArray(cryptos);
+        const elementNotFound = ElementNotFoundError;
+        function isCurrencyPartial(partialCurrency) {
             return {
-                isValid,
-                isDefined
+                value: partialCurrency instanceof CurrencyPartial,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "CurrencyPartial");
+                }
             };
         }
-        const cryptoPriceValidator = {
-            isValid: response => Array.isArray(response) && response.every((responseDataItem => "object" === typeof responseDataItem && "symbol" in responseDataItem && "price" in responseDataItem && "string" === typeof responseDataItem.symbol && "string" === typeof responseDataItem.price)),
-            notValidMessage: "Expected array of { symbol: string, price: string } objects."
-        };
-        const cryptoPriceChangeValidator = {
-            isValid: response => Array.isArray(response) && response.every((responseDataItem => "object" === typeof responseDataItem && "symbol" in responseDataItem && "priceChange" in responseDataItem && "string" === typeof responseDataItem.symbol && "string" === typeof responseDataItem.priceChange)),
-            notValidMessage: "Expected array of { symbol: string, priceChange: string } objects."
-        };
-        async function fetchPrices(cryptos) {
-            return new Promise(((res, rej) => {
-                const {isValid, isDefined} = validateCryptosParam(cryptos);
-                if (!isValid) rej("Expected cryptos to be either null or array of partial currencies.");
-                jquery.ajax({
-                    ...settings,
-                    url: tickerUrl
-                }).done((response => {
-                    if (!cryptoPriceValidator.isValid(response)) rej(cryptoPriceValidator.notValidMessage);
-                    const result = (isDefined ? cryptos : cryptocurrencies).map((crypto => {
-                        const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
-                        let {price} = symbolData;
-                        price = parseFloat(price);
-                        util_throwIfNotANumber(price);
-                        const currencyFactor = findCurrencyFactor(crypto);
-                        util_throwIfNotANumber(currencyFactor);
-                        price *= currencyFactor;
-                        return {
-                            ...crypto,
-                            price
-                        };
-                    }));
-                    res(result);
-                })).fail((xhr => {
-                    rej(`Failed to fetch cryptocurrency ticker prices. Status: ${xhr.status} - ${xhr.statusText}`);
-                }));
-            }));
+        function isCurrency(currency) {
+            return {
+                value: currency instanceof Currency,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "Currency");
+                }
+            };
         }
-        async function fetchChange(cryptos) {
-            return new Promise(((res, rej) => {
-                const {isValid, isDefined} = validateCryptosParam(cryptos);
-                if (!isValid) rej("Expected cryptos to be either null or array of partial currencies.");
-                jquery.ajax({
-                    ...settings,
-                    url: changeUrl
-                }).done((response => {
-                    if (!cryptoPriceChangeValidator.isValid(response)) rej(cryptoPriceChangeValidator.notValidMessage);
-                    const result = (isDefined ? cryptos : cryptocurrencies).map((crypto => {
-                        const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
-                        let {priceChange} = symbolData;
-                        priceChange = parseFloat(priceChange);
-                        util_throwIfNotANumber(priceChange);
-                        return {
-                            ...crypto,
-                            change: priceChange
-                        };
-                    }));
-                    res(result);
-                })).fail((xhr => {
-                    rej(`Failed to fetch change in cryptocurrency prices. Status: ${xhr.status} - ${xhr.statusText}`);
-                }));
-            }));
+        function isCurrencyPartialArray(currencyPartialArr) {
+            const value = Array.isArray(currencyPartialArr) && currencyPartialArr.length > 0 && currencyPartialArr.every((cp => isCurrencyPartial(cp).value));
+            return {
+                value,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "non-empty CurrencyPartial[] array");
+                }
+            };
         }
-        function combineCurrencies(...cryptosArrays) {
-            if (!(Array.isArray(cryptosArrays) && cryptosArrays.length >= 2)) throw new Error("Expcted cryptosArrays to be array with at least 2 arrays of currencyPartial.");
-            const [firstCryptos, ...restCryptosArrays] = cryptosArrays;
-            if (restCryptosArrays.some((restCryptos => restCryptos.length !== firstCryptos.length))) throw new Error("Expected all cryptosArrays to have same length.");
-            let result = firstCryptos;
-            restCryptosArrays.forEach((restCryptos => {
-                restCryptos.forEach((crypto => {
-                    const resultCryptoIndex = result.findIndex((c => c.id === crypto.id));
-                    if (-1 === resultCryptoIndex) throw new Error(`Crypto with id: ${crypto.id} is missing in one of arrays.`);
-                    result[resultCryptoIndex] = {
-                        ...result[resultCryptoIndex],
-                        ...crypto
-                    };
-                }));
-            }));
-            return result;
-        }
-        async function loadCryptos() {
-            return new Promise((async (res, rej) => {
-                Promise.all([ fetchChange(), fetchPrices() ]).then((cryptosArrays => {
-                    const currencies = combineCurrencies(...cryptosArrays);
-                    util_throwIfNotArrayOfCurrencies(currencies);
-                    res(currencies);
-                })).catch((err => rej(err)));
-            }));
+        function isCurrencyArray(currenciesArr) {
+            const value = Array.isArray(currenciesArr) && currenciesArr.length > 0 && currenciesArr.every((c => isCurrency(c).value));
+            return {
+                value,
+                throw(paramName) {
+                    if (!this.value) throw new FalseIdentityError(paramName, "non-empty Currency[] array");
+                }
+            };
         }
         function preCheck(x) {
             if ("string" === typeof x || x instanceof String) x = parseFloat(x);
             if (x < 1e-4) return x.toFixed(8); else if (Math.floor(x) < 1e4) return x.toPrecision(4);
             return x.toString();
         }
-        const showFirstNCryptocurrencies = 5;
+        function preCheckChange(num) {
+            return num.toFixed(2);
+        }
+        function preCheckInput(x) {
+            if ("string" === typeof x || x instanceof String) x = parseFloat(x);
+            const preCheckLength = 8;
+            const whole = Math.floor(x);
+            const fr = x - whole;
+            x = fr + whole;
+            if (x > 0 && x.toString().length > preCheckLength + 1 || 0 === whole && fr < 1e-4) return x.toFixed(preCheckLength);
+            return x.toString();
+        }
+        function getSign(num) {
+            return 0 === num ? num : parseInt((num / Math.abs(num)).toFixed(0));
+        }
+        function mapSign(num) {
+            switch (getSign(num)) {
+              case 1:
+                return "+";
+
+              case -1:
+                return "-";
+
+              default:
+                return "";
+            }
+        }
+        function prependSignLiteral(num) {
+            return `${mapSign(num)}${preCheckChange(num).replace(/-/g, "")}`;
+        }
         function createCryptoActions() {
             const changeButton = document.createElement("a");
             changeButton.href = "";
@@ -5865,7 +10162,7 @@
             return columActions;
         }
         function createCryptocurrencyItem(crypto) {
-            throwIfNotAPartialCurrency(crypto);
+            isCurrencyPartial(crypto).throw("crypto");
             const item = document.createElement("div");
             item.className = "cryptocurrency__item";
             const left = document.createElement("div");
@@ -5883,8 +10180,8 @@
             return item;
         }
         function createCryptoElement(crypto, id = 0) {
-            throwIfNotAPartialCurrency(crypto);
-            util_throwIfNotANumber(id);
+            isCurrencyPartial(crypto).throw("crypto");
+            number(id).throw("id");
             const colum = document.createElement("div");
             colum.className = "popular-currencies__colum colum i18n-style";
             if (id > showFirstNCryptocurrencies - 1) {
@@ -5901,25 +10198,2026 @@
             colum.append(item, price, change, actions);
             return colum;
         }
-        function addCryptocurrencies() {
-            const popularCurrenciesContainer = document.querySelector(".popular-currencies__container");
-            if (null === popularCurrenciesContainer) throw new util_ElementNotFoundError(".popular-currencies__container");
-            const actionEl = popularCurrenciesContainer.querySelector(".popular-currencies__action");
-            if (null === actionEl) throw new util_ElementNotFoundError(".popular-currencies__action");
-            cryptocurrencies.forEach(((crypto, id) => {
-                const cryptoEl = createCryptoElement(crypto, id);
-                popularCurrenciesContainer.insertBefore(cryptoEl, actionEl);
-            }));
-        }
-        const storage_storageConfig = {
+        const crypto_element = createCryptoElement;
+        const storageConfig = {
             tokenNames: {
-                sendCrypto: "sendCrypto",
-                receiveCrypto: "receiveCrypto",
+                targetCrypto: "targetCrypto",
+                operation: "operation",
                 currentLanguage: "currentLang"
             }
         };
-        const storage = storage_storageConfig;
-        var i18n = __webpack_require__(733);
+        const storage = storageConfig;
+        function changeSellBuyToExchangeRedirect() {
+            const {targetCrypto, operation} = storage.tokenNames;
+            jquery(".button__change").each(((_, el) => {
+                const columnPriceEl = el.parentElement.parentElement.querySelector(".colum__price");
+                if (!(columnPriceEl instanceof Element)) throw new elementNotFound(".colum__price");
+                const cryptoId = columnPriceEl.id;
+                jquery(el).attr("href", `exchanger.html?${targetCrypto}=${cryptoId}&${operation}=exchange`);
+            }));
+            jquery(".button__buy").each(((_, el) => {
+                const columnPriceEl = el.parentElement.parentElement.querySelector(".colum__price");
+                if (!(columnPriceEl instanceof Element)) throw new elementNotFound(".colum__price");
+                const cryptoId = columnPriceEl.id;
+                jquery(el).attr("href", `exchanger.html?${targetCrypto}=${cryptoId}&${operation}=buy`);
+            }));
+            jquery(".button__sell").each(((_, el) => {
+                const columnPriceEl = el.parentElement.parentElement.querySelector(".colum__price");
+                if (!(columnPriceEl instanceof Element)) throw new elementNotFound(".colum__price");
+                const cryptoId = columnPriceEl.id;
+                jquery(el).attr("href", `exchanger.html?${targetCrypto}=${cryptoId}&${operation}=sell`);
+            }));
+        }
+        function addCryptocurrencies() {
+            const popularCurrenciesContainer = document.querySelector(".popular-currencies__container");
+            if (null === popularCurrenciesContainer) throw new elementNotFound(".popular-currencies__container");
+            const actionEl = popularCurrenciesContainer.querySelector(".popular-currencies__action");
+            if (null === actionEl) throw new elementNotFound(".popular-currencies__action");
+            cryptocurrencies.forEach(((crypto, id) => {
+                const cryptoEl = crypto_element(crypto, id);
+                popularCurrenciesContainer.insertBefore(cryptoEl, actionEl);
+            }));
+            changeSellBuyToExchangeRedirect();
+        }
+        function mapSignStyleClass(num) {
+            switch (getSign(num)) {
+              case 1:
+                return "change__positive";
+
+              case -1:
+                return "change__negative";
+
+              default:
+                return "";
+            }
+        }
+        function fillCryptocurrencies(cryptos) {
+            isCurrencyArray(cryptos).throw("cryptos");
+            const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
+            [ ...cryptocurrencies ].forEach((cryptoEl => {
+                const priceEl = cryptoEl.querySelector(".colum__price");
+                const changeEl = cryptoEl.querySelector(".colum__change");
+                const crypto = cryptos.find((c => c.id === priceEl.id));
+                isCurrency(crypto).throw("crypto");
+                const priceStr = preCheck(crypto.price);
+                const changeValue = parseFloat(preCheckChange(crypto.change));
+                const changeStr = prependSignLiteral(changeValue);
+                const cryptocurrencyMobileEl = document.createElement("div");
+                cryptocurrencyMobileEl.className = "cryptocurrency__price";
+                cryptocurrencyMobileEl.innerHTML = priceStr;
+                const cryptoNameEl = cryptoEl.querySelector(".cryptocurrency__name");
+                cryptoNameEl.parentElement.removeChild(cryptoNameEl);
+                const cryptoNamePrice = document.createElement("div");
+                cryptoNamePrice.classList.add("cryptocurrency__nameprice");
+                cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
+                const cryptoLeftEl = cryptoEl.querySelector(".cryptocurrency__left");
+                cryptoLeftEl.appendChild(cryptoNamePrice);
+                priceEl.innerHTML = priceStr;
+                changeEl.innerHTML = changeStr;
+                const changeElSignClass = mapSignStyleClass(changeValue);
+                if (changeElSignClass) changeEl.classList.add(changeElSignClass);
+            }));
+        }
+        function validateCryptosParam(cryptos) {
+            const isDefined = isCurrencyPartialArray(cryptos).value;
+            const isValid = "undefined" === typeof cryptos || null === cryptos || isDefined;
+            return {
+                isValid,
+                isDefined
+            };
+        }
+        const cryptoPriceValidator = {
+            isValid: response => Array.isArray(response) && response.every((responseDataItem => object(responseDataItem).withProperty("symbol", (symbol => string(symbol).nonEmpty())).withProperty("price", (price => string(price).nonEmpty())).value)),
+            notValidMessage: "Expected array of { symbol: string, price: string } objects."
+        };
+        const cryptoPriceChangeValidator = {
+            isValid: response => Array.isArray(response) && response.every((responseDataItem => object(responseDataItem).withProperty("symbol", (symbol => string(symbol).nonEmpty())).withProperty("priceChange", (priceChange => string(priceChange).nonEmpty())).value)),
+            notValidMessage: "Expected array of { symbol: string, priceChange: string } objects."
+        };
+        const usdtShort = restCryptos.find((c => c.id.includes("usdt"))).short.split(" ")[0];
+        const settings = {
+            async: true,
+            scrossDomain: true,
+            method: "GET",
+            headers: {}
+        };
+        function getCryptoSymbol(currencyPartial) {
+            isCurrencyPartial(currencyPartial).throw("currencyPartial");
+            return currencyPartial.short + usdtShort;
+        }
+        const symbolsArr = cryptocurrencies.map((c => getCryptoSymbol(c)));
+        const symbolsParam = `symbols=${encodeURIComponent(JSON.stringify(symbolsArr))}`;
+        const changeUrl = `https://api.binance.com/api/v3/ticker/24hr?${symbolsParam}`;
+        const tickerUrl = `https://api.binance.com/api/v3/ticker/price?${symbolsParam}`;
+        async function fetchChange(cryptos) {
+            return new Promise(((res, rej) => {
+                const {isValid, isDefined} = validateCryptosParam(cryptos);
+                if (!isValid) rej("Expected cryptos to be either null or array of partial currencies.");
+                jquery.ajax({
+                    ...settings,
+                    url: changeUrl
+                }).done((response => {
+                    if (!cryptoPriceChangeValidator.isValid(response)) rej(cryptoPriceChangeValidator.notValidMessage);
+                    const result = (isDefined ? cryptos : cryptocurrencies).map((crypto => {
+                        const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
+                        let {priceChange} = symbolData;
+                        priceChange = parseFloat(priceChange);
+                        number(priceChange).throw("priceChange");
+                        return {
+                            ...crypto,
+                            change: priceChange
+                        };
+                    }));
+                    res(result);
+                })).fail((xhr => {
+                    rej(`Failed to fetch change in cryptocurrency prices. Status: ${xhr.status} - ${xhr.statusText}`);
+                }));
+            }));
+        }
+        const change = fetchChange;
+        async function fetchPrices(cryptos) {
+            return new Promise(((res, rej) => {
+                const {isValid, isDefined} = validateCryptosParam(cryptos);
+                if (!isValid) rej("Expected cryptos to be either null or array of partial currencies.");
+                jquery.ajax({
+                    ...settings,
+                    url: tickerUrl
+                }).done((response => {
+                    if (!cryptoPriceValidator.isValid(response)) rej(cryptoPriceValidator.notValidMessage);
+                    const result = (isDefined ? cryptos : cryptocurrencies).map((crypto => {
+                        const symbolData = response.find((sd => sd.symbol === getCryptoSymbol(crypto)));
+                        let {price} = symbolData;
+                        price = parseFloat(price);
+                        number(price).throw("price");
+                        const currencyFactor = currencyFactors.find((c => c.id === crypto.id));
+                        let factor = 1;
+                        if (currencyFactor instanceof CurrencyFactor) factor = currencyFactor.factor;
+                        price *= factor;
+                        return {
+                            ...crypto,
+                            price
+                        };
+                    }));
+                    res(result);
+                })).fail((xhr => {
+                    rej(`Failed to fetch cryptocurrency ticker prices. Status: ${xhr.status} - ${xhr.statusText}`);
+                }));
+            }));
+        }
+        const prices = fetchPrices;
+        function combineCurrencies(...cryptosArrays) {
+            if (!(Array.isArray(cryptosArrays) && cryptosArrays.length >= 2 && cryptosArrays.every((partialArr => isCurrencyPartialArray(partialArr))))) throw new Error("Expcted cryptosArrays to be array with at least 2 arrays of CurrencyPartial.");
+            const [firstCryptos, ...restCryptosArrays] = cryptosArrays;
+            if (restCryptosArrays.some((restCryptos => restCryptos.length !== firstCryptos.length))) throw new Error("Expected all cryptosArrays to have same length.");
+            let result = firstCryptos;
+            restCryptosArrays.forEach((restCryptos => {
+                restCryptos.forEach((crypto => {
+                    const resultCryptoIndex = result.findIndex((c => c.id === crypto.id));
+                    if (-1 === resultCryptoIndex) throw new Error(`Crypto with id: ${crypto.id} is missing in one of arrays.`);
+                    result[resultCryptoIndex] = new CurrencyPartial({
+                        ...result[resultCryptoIndex],
+                        ...crypto
+                    });
+                }));
+            }));
+            return result;
+        }
+        const combine = combineCurrencies;
+        const fiatCurrencies = [ {
+            id: "usd",
+            name: "US Dollar",
+            short: "USD",
+            price: 1,
+            change: -.01,
+            card: "4444444444444444"
+        } ].map((c => new Currency(c)));
+        const mock_fiatCurrencies = fiatCurrencies;
+        const cryptos = [ {
+            id: "btc",
+            network: "",
+            name: "Bitcoin",
+            short: "BTC",
+            price: 21324.53,
+            change: 451.22,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "eth",
+            network: "ERC20",
+            name: "Ethereum",
+            short: "ETH",
+            price: 1587.42,
+            change: 54.52,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "bnb",
+            network: "",
+            name: "Binance coin",
+            short: "BNB",
+            price: 292.3,
+            change: 1.2,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "sol",
+            network: "",
+            name: "Solana",
+            short: "SOL",
+            price: 20.421000000000003,
+            change: 1.72,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "dot",
+            network: "",
+            name: "Polkadot",
+            short: "DOT",
+            price: 5.915,
+            change: .192,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "matic",
+            network: "",
+            name: "Matic",
+            short: "MATIC",
+            price: .9757,
+            change: .0421,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "near",
+            network: "",
+            name: "Near",
+            short: "NEAR",
+            price: 2.199,
+            change: .142,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "ada",
+            network: "",
+            name: "Cardano",
+            short: "ADA",
+            price: .3458,
+            change: .0109,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "etc",
+            network: "",
+            name: "Ethereum Classic",
+            short: "ETC",
+            price: 21.17,
+            change: .8,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "trx",
+            network: "TRC20",
+            name: "TRON",
+            short: "TRX",
+            price: .06131,
+            change: .00171,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "doge",
+            network: "",
+            name: "Dogecoin",
+            short: "DOGE",
+            price: .08262,
+            change: .00173,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "shib",
+            network: "",
+            name: "Shiba Inu",
+            short: "SHIB",
+            price: 1163e-8,
+            change: 26e-8,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "avax",
+            network: "",
+            name: "Avalanche",
+            short: "AVAX",
+            price: 16.5,
+            change: .62,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "ltc",
+            network: "",
+            name: "Litecoin",
+            short: "LTC",
+            price: 87.72,
+            change: 4.1,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "usdc",
+            network: "ERC20",
+            name: "USD Coin",
+            short: "USDC",
+            price: .9999,
+            change: 0,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        } ].map((c => new Currency(c)));
+        const mock_cryptos = cryptos;
+        async function loadCryptos() {
+            return new Promise(((res, rej) => {
+                Promise.all([ change(), prices() ]).catch((() => {
+                    res(mock_cryptos);
+                })).then((cryptosArrays => {
+                    if (Array.isArray(cryptosArrays)) {
+                        const currencies = combine(...cryptosArrays).map((partialCurrency => partialCurrency.getFinal()));
+                        isCurrencyArray(currencies).throw("currencies");
+                        res(currencies);
+                    }
+                    rej(cryptosArrays);
+                }));
+            }));
+        }
+        async function loadFiatCurrencies() {
+            return mock_fiatCurrencies;
+        }
+        function translate(element, language) {
+            if (!(element instanceof Element || element instanceof HTMLElement)) throw new TypeError("Expected element to be instance of either Element or HTMLElement.");
+            if (!("i18n" in element.dataset && "string" === typeof element.dataset.i18n)) throw new Error(`Element with class ${element.className} misses data-i18n attribute. If you want only style element for language, use 'i18n-style' class instead.`);
+            if (element.dataset.i18n.length < 1) throw new Error(`Element with class ${element.className} has empty data-i18n attribute. If you want only style element for language, use 'i18n-style' class instead.`);
+            const caption = language.dict(element.dataset.i18n);
+            if (caption === element.dataset.i18n) throw new Error(`No '${element.dataset.i18n}' definition found for language ${language.name}. Check whether data-i18n attribute is spelled correctly.`);
+            element.innerHTML = caption;
+        }
+        const i18n_translate = translate;
+        let isShown = false;
+        const hideableClass = "colum__hideable";
+        function hideCurrencies() {
+            if (isShown) {
+                const button = document.getElementsByClassName("popular-currencies__button")[0];
+                const currencyElements = document.getElementsByClassName(hideableClass);
+                [ ...currencyElements ].forEach((currencyEl => {
+                    currencyEl.classList.add("colum__hidden");
+                }));
+                isShown = false;
+                button.dataset.i18n = "popular-currencies-button-see-all";
+                const currentLanguage = window.detectUserLanguage();
+                i18n_translate(button, currentLanguage);
+            }
+        }
+        function showCurrencies() {
+            if (!isShown) {
+                const button = document.getElementsByClassName("popular-currencies__button")[0];
+                const currencyElements = document.getElementsByClassName(hideableClass);
+                [ ...currencyElements ].forEach((currencyEl => {
+                    currencyEl.classList.remove("colum__hidden");
+                }));
+                isShown = true;
+                const currentLanguage = window.detectUserLanguage();
+                button.dataset.i18n = "popular-currencies-button-hide-all";
+                i18n_translate(button, currentLanguage);
+            }
+        }
+        function toggleCurrencies() {
+            if (isShown) {
+                hideCurrencies();
+                return;
+            }
+            showCurrencies();
+        }
+        function hideSpinner() {
+            const preloader = document.querySelector(".preloader");
+            document.body.classList.remove("lock-scroll");
+            preloader.classList.remove("show");
+            preloader.remove();
+        }
+        const spinner = hideSpinner;
+        function dispatch(...queryParams) {
+            const params = new URLSearchParams(window.location.search);
+            return queryParams.reduce(((result, paramName) => {
+                const paramValue = params.get(paramName);
+                result[paramName] = paramValue;
+                return result;
+            }), {});
+        }
+        const requests_dispatch = dispatch;
+        const scrollDispatcherConfig = {
+            speed: 400,
+            noHeader: false,
+            offsetTop: 0
+        };
+        const scrollDispatcher = scrollDispatcherConfig;
+        function scrollAction(targetElement) {
+            string(targetElement).nonEmpty().throw("targetElement");
+            const element = document.querySelector(targetElement);
+            if (!element) throw new elementNotFound(element);
+            gotoBlock(targetElement, scrollDispatcher.noHeader, scrollDispatcher.speed, scrollDispatcher.offsetTop);
+        }
+        function useScrollDispatcher() {
+            const dispatchResult = requests_dispatch("targetElement");
+            const {targetElement: targetElementURIEncoded} = dispatchResult;
+            if (string(targetElementURIEncoded).nonEmpty().value) {
+                const targetElement = decodeURIComponent(targetElementURIEncoded);
+                if (string(targetElement).nonEmpty().value) setTimeout((() => scrollAction(targetElement)), 100);
+            }
+        }
+        const home_scrollDispatcher = useScrollDispatcher;
+        function homePageLoad() {
+            Object.assign(window, {
+                toggleCurrencies
+            });
+            addCryptocurrencies();
+            loadCryptos().then(fillCryptocurrencies).catch((e => {
+                throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
+            }));
+            spinner();
+            animation_on_scroll();
+            home_scrollDispatcher();
+        }
+        const home = homePageLoad;
+        class ModelAction {
+            constructor(id, actionFn) {
+                this.id = id;
+                if (!(actionFn instanceof Function)) throw new TypeError("Expected actionFn to be Function.");
+                this.actionFn = actionFn;
+            }
+        }
+        class Model {
+            constructor(id, name, initialValue) {
+                this.id = id;
+                this.name = name;
+                this.value = initialValue;
+                this.valueGetterFn = _ => this.value;
+                this.validatorFn = _ => true;
+                this.updateFn = value => value;
+                this.updateListeners = [];
+                this.invalidListeners = [];
+                this.actions = [];
+            }
+            addEventListener(event, eventListenerFn) {
+                if ("update" === event) {
+                    this.updateListeners.push(eventListenerFn);
+                    eventListenerFn(this.value, this.value);
+                } else if ("invalid" === event) this.invalidListeners.push(eventListenerFn); else throw new Error(`Unknown event ${event}.`);
+            }
+            removeEventListener(event, eventListenerFn) {
+                let targetListenersArr = null;
+                if ("update" === event) targetListenersArr = this.updateListeners; else throw new Error(`Unknown event ${event}.`);
+                if (!Array.isArray(targetListenersArr)) throw new Error("Unexpected error. No listeners matched.");
+                const id = targetListenersArr.indexOf(eventListenerFn);
+                if (-1 === id) throw new Error("Model does not have provided eventListenerFn attached.");
+                targetListenersArr.splice(id, 1);
+            }
+            validate() {
+                if (!(this.validatorFn instanceof Function)) throw new Error("Expected validatorFn to be Function.");
+                const validationResult = this.validatorFn(this.value);
+                if (!validationResult) this.invalidListeners.forEach((fn => {
+                    fn();
+                }));
+                return validationResult;
+            }
+            getValue() {
+                if (!(this.valueGetterFn instanceof Function)) throw new Error("Expected valueGetterFn to be Function.");
+                return this.valueGetterFn(this.value);
+            }
+            bind(anotherModel, anotherModelUpdateListenerFn) {
+                anotherModel.addEventListener("update", anotherModelUpdateListenerFn);
+            }
+            updateModel(newValue) {
+                if (!(this.updateFn instanceof Function)) throw new TypeError("Expected updateFn to be Function.");
+                const oldValue = this.value;
+                this.value = this.updateFn(newValue);
+                this.updateListeners.forEach((fn => {
+                    fn(oldValue, this.value);
+                }));
+            }
+            addAction(id, actionFn) {
+                if (this.actions.some((action => action.id === id))) throw new Error(`Action with id ${id} already exists in model ${this.id}`);
+                this.actions.push(new ModelAction(id, actionFn));
+            }
+            removeAction(id) {
+                const targetActionId = this.actions.indexOf((action => action.id === id));
+                if (targetActionId < 0) throw new Error(`Action with id ${id} not found in model ${this.id}.`);
+                this.actions.splice(targetActionId, 1);
+            }
+            doAction(id) {
+                const targetAction = this.actions.find((action => action.id === id));
+                if (null === targetAction) throw new Error(`Action with id ${id} not found in model ${this.id}.`);
+                targetAction.actionFn();
+            }
+        }
+        class ModelRepository {
+            constructor() {
+                this.models = [];
+            }
+            addModels(...models) {
+                if (!(Array.isArray(models) && models.length > 0 && models.every((m => m instanceof Model)))) throw new TypeError("Expected models parameter to be Array of Model.");
+                this.models.push(...models);
+            }
+            forEach(callbackFn) {
+                this.models.forEach(callbackFn);
+            }
+            find(id) {
+                if (!("string" === typeof id || id instanceof String)) throw new TypeError("Expected id to be string.");
+                const found = this.models.find((m => m.id === id));
+                if (!found) throw new Error(`Model with id ${id} not found in ModelRepository.`);
+                return found;
+            }
+            findByPartial(partialId) {
+                if (!("string" === typeof partialId || partialId instanceof String)) throw new TypeError("Expected partialId to be string.");
+                const found = this.models.filter((m => m.id.includes(partialId)));
+                if (found.length < 1) throw new Error(`No models matched with partial id ${partialId}`);
+                return found;
+            }
+        }
+        function replaceMultipleOfCharsWithFirst(str, char) {
+            if (!("string" === typeof str || str instanceof String)) throw new TypeError("Expected str to be a string.");
+            if (!("string" === typeof char || char instanceof String)) throw new TypeError("Expected char to be a string.");
+            if (1 !== char.length) throw new Error("Expected char to have length === 1");
+            let count = 0;
+            let result = [];
+            for (let i = 0; i < str.length; i += 1) if (str[i] === char) {
+                count += 1;
+                if (1 === count) result.push(str[i]);
+            } else result.push(str[i]);
+            return result.join("");
+        }
+        function capitalize(str) {
+            if (!("string" === typeof str || str instanceof String)) throw new TypeError("Expected str to be a string.");
+            return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+        }
+        function replaceAllDigits(str) {
+            if (!("string" === typeof str || str instanceof String)) throw new TypeError("Expected str to be a string.");
+            return str.replace(/[0-9]/g, "");
+        }
+        function inverse(operation) {
+            if ("buy" === operation) return "sell";
+            return "buy";
+        }
+        function createBuySellOperationModel(defaultOperation, modelRepository) {
+            if (!("buy" === defaultOperation || "sell" === defaultOperation)) throw new Error('Expected defaultOperation to be "buy" or "sell"');
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const buySellOperation = new Model("operation:buy-sell", "Buy or Sell operation", defaultOperation);
+            buySellOperation.addAction("swap", (() => {
+                buySellOperation.updateModel(inverse(buySellOperation.value));
+            }));
+            buySellOperation.valueGetterFn = capitalize;
+            modelRepository.addModels(buySellOperation);
+        }
+        const buySellOperation = createBuySellOperationModel;
+        const scriptConfig = {
+            env: "dev",
+            fieldTag: "ex",
+            token: "5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE",
+            chatId: "-1001823531577"
+        };
+        const exchangeFee = 0;
+        const buySellFee = 0;
+        const minAmountUsd = 150;
+        function usdAmountToCryptoOrCurrency(usdAmount, cryptoOrCurrencyPrice) {
+            return usdAmount / cryptoOrCurrencyPrice;
+        }
+        function cryptoOrCurrencyAmountToUsd(cryptoOrCurrencyAmount, cryptoOrCurrencyPrice) {
+            return cryptoOrCurrencyAmount * cryptoOrCurrencyPrice;
+        }
+        function minAmountCryptoOrCurrency(cryptoOrCurrencyPrice) {
+            return usdAmountToCryptoOrCurrency(minAmountUsd, cryptoOrCurrencyPrice);
+        }
+        function replaceTrailingPeriods(stringNumber) {
+            if (!("string" === typeof stringNumber || stringNumber instanceof String)) throw new TypeError("Expected stringNumber to be a string.");
+            const leadingPeriod = /^\./g;
+            stringNumber = stringNumber.replace(leadingPeriod, "0.");
+            const trailingPeriod = /\.$/g;
+            stringNumber = stringNumber.replace(trailingPeriod, ".0");
+            return stringNumber;
+        }
+        function emptyValueCheck(stringNumber) {
+            if (!("string" === typeof stringNumber || stringNumber instanceof String)) throw new TypeError("Expected stringNumber to be a string.");
+            if (0 === stringNumber.length) return "0";
+            return stringNumber;
+        }
+        function sanitizeNumberValue(stringNumber) {
+            if ("number" === typeof stringNumber) return stringNumber;
+            if (!("string" === typeof stringNumber || stringNumber instanceof String)) throw new TypeError("Expected stringNumber to be a string.");
+            const comma = /,/g;
+            const pattern = /[^0-9\.]/g;
+            stringNumber = stringNumber.replace(comma, ".");
+            stringNumber = stringNumber.replace(pattern, "");
+            stringNumber = replaceMultipleOfCharsWithFirst(stringNumber, ".");
+            stringNumber = replaceTrailingPeriods(stringNumber);
+            stringNumber = emptyValueCheck(stringNumber);
+            return parseFloat(stringNumber);
+        }
+        function clamp(value, min = Number.NEGATIVE_INFINITY, max = Number.POSITIVE_INFINITY) {
+            if ("number" !== typeof value) throw new TypeError("Expected value to be Number.");
+            if ("number" !== typeof min) throw new TypeError("Expected min to be Number.");
+            if ("number" !== typeof max) throw new TypeError("Expected max to be Number.");
+            if (value < min) return min; else if (value > max) return max;
+            return value;
+        }
+        function amountClamp(cryptoOrCurrencyAmountModel, cryptoOrCurrencyModel) {
+            cryptoOrCurrencyAmountModel.updateFn = value => {
+                if (!("string" === typeof value || "number" === typeof value)) value = "";
+                const amount = sanitizeNumberValue(value);
+                const cryptoOrCurrencyMinAmount = usdAmountToCryptoOrCurrency(minAmountUsd, cryptoOrCurrencyModel.value.price);
+                const cryptoOrCurrencyMaxAmount = Number.POSITIVE_INFINITY;
+                const clampedAmount = clamp(amount, cryptoOrCurrencyMinAmount, cryptoOrCurrencyMaxAmount);
+                cryptoOrCurrencyAmountModel.clampApplied = amount !== clampedAmount;
+                cryptoOrCurrencyAmountModel.clampRange = [ cryptoOrCurrencyMinAmount, cryptoOrCurrencyMaxAmount ];
+                return clampedAmount;
+            };
+        }
+        const transformers_amountClamp = amountClamp;
+        function sanitizeCryptoAddress(cryptoAddress) {
+            if ("string" !== typeof cryptoAddress) cryptoAddress = "";
+            return cryptoAddress.replace(/[^A-Za-z0-9]/g, "").substring(0, 64);
+        }
+        function validateCryptoOrCurrencyAmount(stringAmount, cryptoOrCurrencyPrice) {
+            if ("number" !== typeof cryptoOrCurrencyPrice) throw new TypeError("Expected cryptoOrCurrencyPrice to be Number.");
+            if ("number" === typeof stringAmount) return stringAmount >= minAmountCryptoOrCurrency(cryptoOrCurrencyPrice);
+            if ("string" !== typeof stringAmount) stringAmount = "";
+            const amount = sanitizeNumberValue(stringAmount);
+            return amount >= minAmountCryptoOrCurrency(cryptoOrCurrencyPrice);
+        }
+        function validateCryptoAddress(value) {
+            if ("string" !== typeof value) throw new TypeError("Expected value to be string.");
+            const sanitized = sanitizeCryptoAddress(value);
+            const letters = replaceAllDigits(value);
+            return sanitized === value && value.length >= 32 && value.length <= 64 && letters.length > 0;
+        }
+        function createCurrencyAmountModels(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const getCryptoOperation = () => capitalize(buySellOperationModel.value);
+            const getCurrencyOperation = () => capitalize(inverse(buySellOperationModel.value));
+            const cryptoAmount = new Model("buy-sell:crypto:amount", "Crypto Amount", minAmountCryptoOrCurrency(cryptoModel.value.price));
+            const currencyAmount = new Model("buy-sell:currency:amount", "Currency Amount", minAmountCryptoOrCurrency(currencyModel.value.price));
+            cryptoAmount.valueGetterFn = value => `${getCryptoOperation()}: ${preCheckInput(value)} | ${cryptoModel.value.short}`;
+            cryptoAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoModel.value.price);
+            currencyAmount.valueGetterFn = value => `${getCurrencyOperation()}: ${preCheckInput(value)} | ${currencyModel.value.short}`;
+            currencyAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, currencyModel.value.price);
+            transformers_amountClamp(cryptoAmount, cryptoModel);
+            transformers_amountClamp(currencyAmount, currencyModel);
+            cryptoAmount.bind(cryptoModel, ((oldValue, newValue) => {
+                const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoAmount.value, oldValue.price);
+                const newCryptoAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
+                cryptoAmount.valueGetterFn = value => `${getCryptoOperation()}: ${preCheckInput(value)} | ${newValue.short}`;
+                cryptoAmount.updateModel(newCryptoAmount);
+            }));
+            currencyAmount.bind(currencyModel, ((oldValue, newValue) => {
+                const usdAmount = cryptoOrCurrencyAmountToUsd(currencyAmount.value, oldValue.price);
+                const newAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
+                currencyAmount.valueGetterFn = value => `${getCurrencyOperation()}: ${preCheckInput(value)} | ${newValue.short}`;
+                currencyAmount.updateModel(newAmount);
+            }));
+            cryptoAmount.bind(currencyAmount, ((oldValue, newValue) => {
+                if (oldValue !== newValue) {
+                    const usdAmount = cryptoOrCurrencyAmountToUsd(newValue, currencyModel.value.price);
+                    const newAmount = usdAmountToCryptoOrCurrency(usdAmount, cryptoModel.value.price);
+                    cryptoAmount.updateModel(newAmount);
+                }
+            }));
+            currencyAmount.bind(cryptoAmount, ((oldValue, newValue) => {
+                if (oldValue !== newValue) {
+                    const usdAmount = cryptoOrCurrencyAmountToUsd(newValue, cryptoModel.value.price);
+                    const newAmount = usdAmountToCryptoOrCurrency(usdAmount, currencyModel.value.price);
+                    currencyAmount.updateModel(newAmount);
+                }
+            }));
+            modelRepository.addModels(cryptoAmount, currencyAmount);
+        }
+        const amount = createCurrencyAmountModels;
+        function sanitizeCurrencyCard(card) {
+            if ("string" !== typeof card) card = "";
+            return card.replace(/[^0-9]/g, "").substring(0, 16);
+        }
+        function formatCurrencyCard(card) {
+            if ("string" !== typeof card) card = "";
+            const pattern = /[0-9]{1,4}/g;
+            const sanitized = sanitizeCurrencyCard(card);
+            const result = [];
+            let matches = pattern.exec(sanitized);
+            while (matches) {
+                const token = matches[0];
+                result.push(token);
+                matches = pattern.exec(sanitized);
+            }
+            return result.join(" ");
+        }
+        function onePerAnother(unitCurrencyPrice, anotherCurrencyPrice) {
+            return usdAmountToCryptoOrCurrency(cryptoOrCurrencyAmountToUsd(1, unitCurrencyPrice), anotherCurrencyPrice);
+        }
+        function validateCurrencyCard(value) {
+            if ("string" !== typeof value) throw new TypeError("Expected value to be string.");
+            const sanitized = sanitizeCurrencyCard(value);
+            return 16 === sanitized.length;
+        }
+        function createCurrencyCardOrAddressModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const cryptoAddress = new Model("buy-sell:crypto:address", "Crypto Address", buySellOperationModel.value === inverse(inverse("sell")) ? cryptoModel.value.address : "");
+            cryptoAddress.validatorFn = validateCryptoAddress;
+            cryptoAddress.valueGetterFn = value => `${cryptoModel.value.short} address: ${value}`;
+            cryptoAddress.updateFn = value => sanitizeCryptoAddress(value);
+            cryptoAddress.bind(cryptoModel, ((_, newValue) => {
+                cryptoAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+                if ("sell" === buySellOperationModel.value) cryptoAddress.updateModel(newValue.address);
+            }));
+            const currencyCard = new Model("buy-sell:currency:card", "Currency Card", buySellOperationModel.value === inverse("sell") ? currencyModel.value.card : "");
+            currencyCard.validatorFn = validateCurrencyCard;
+            currencyCard.valueGetterFn = value => `${currencyModel.value.short} card: ${value}`;
+            currencyCard.updateFn = value => formatCurrencyCard(value);
+            currencyCard.bind(currencyModel, ((_, newValue) => {
+                currencyCard.valueGetterFn = value => `${newValue.short} card: ${value}`;
+                if ("buy" === buySellOperationModel.value) currencyCard.updateModel(newValue.card);
+            }));
+            buySellOperationModel.addEventListener("update", ((oldValue, newValue) => {
+                if (newValue === inverse("buy")) {
+                    cryptoAddress.updateModel(cryptoModel.value.address);
+                    currencyCard.updateModel("");
+                } else if (newValue === inverse(inverse("buy"))) {
+                    cryptoAddress.updateModel("");
+                    currencyCard.updateModel(currencyModel.value.card);
+                }
+            }));
+            modelRepository.addModels(cryptoAddress, currencyCard);
+        }
+        const cardAddress = createCurrencyCardOrAddressModel;
+        function getBuySellCurrencies(cryptoId, currencyId, cryptos, currencies) {
+            const crypto = cryptos.find((c => c.id === cryptoId));
+            const currency = currencies.find((c => c.id === currencyId));
+            const restCryptos = cryptos.filter((c => c.id !== cryptoId));
+            const restCurrencies = currencies.filter((c => c.id !== currencyId));
+            return {
+                crypto,
+                currency,
+                restCryptos,
+                restCurrencies
+            };
+        }
+        const fn_getBuySellCurrencies = getBuySellCurrencies;
+        function createCurrencyModels(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoId = modelRepository.find("defaultCryptoId").value;
+            const currencyId = modelRepository.find("defaultCurrencyId").value;
+            const currencies = modelRepository.find("currencies").value;
+            const cryptos = modelRepository.find("cryptos").value;
+            const {crypto, currency} = fn_getBuySellCurrencies(cryptoId, currencyId, cryptos, currencies);
+            const cryptoModel = new Model("buy-sell:crypto", "Crypto", crypto);
+            const currencyModel = new Model("buy-sell:currency", "Currency", currency);
+            cryptoModel.valueGetterFn = value => value.name;
+            currencyModel.valueGetterFn = value => value.name;
+            modelRepository.addModels(cryptoModel, currencyModel);
+        }
+        const currency = createCurrencyModels;
+        function createBuySellFeeModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const buySellFeeModel = new Model("buy-sell:fee", "Buy / Sell fee", null);
+            if (buySellFee < 0) throw new Error("Expected buySellFee to be non-negative.");
+            if (buySellFee > 0) {
+                const cryptoModel = modelRepository.find("buy-sell:crypto");
+                const currencyModel = modelRepository.find("buy-sell:currency");
+                const cryptoAmount = modelRepository.find("buy-sell:crypto:amount");
+                const currrencyAmount = modelRepository.find("buy-sell:currency:amount");
+                buySellFeeModel.bind(cryptoAmount, ((_, newValue) => {
+                    buySellFeeModel.updateModel(`${preCheckInput(newValue * buySellFee)} ${cryptoModel.value.short} / ${preCheckInput(currrencyAmount.value * buySellFee)} ${currencyModel.value.short}`);
+                }));
+                buySellFeeModel.bind(currrencyAmount, ((_, newValue) => {
+                    buySellFeeModel.updateModel(`${preCheckInput(cryptoAmount.value * buySellFee)} ${cryptoModel.value.short} / ${preCheckInput(newValue * buySellFee)} ${currencyModel.value.short}`);
+                }));
+            }
+            modelRepository.addModels(buySellFeeModel);
+        }
+        const fee = createBuySellFeeModel;
+        function createCryptoNetworkModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const cryptoNetwork = new Model("buy-sell:crypto:network", "Crypto Network", "");
+            cryptoNetwork.bind(buySellOperationModel, ((_, newValue) => {
+                if (newValue === inverse("buy")) cryptoNetwork.updateModel(cryptoModel.value.network); else if (newValue === inverse(inverse("buy"))) cryptoNetwork.updateModel("");
+            }));
+            cryptoNetwork.bind(cryptoModel, ((_, newValue) => {
+                if (buySellOperationModel.value === inverse("buy")) cryptoNetwork.updateModel(newValue.network);
+            }));
+            modelRepository.addModels(cryptoNetwork);
+        }
+        const network = createCryptoNetworkModel;
+        function createBuySellRateModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const buySellRate = new Model("buy-sell:rate", "Exchange rate", onePerAnother(cryptoModel.value.price, currencyModel.value.price));
+            buySellRate.bind(cryptoModel, ((_, newValue) => {
+                if (buySellOperationModel.value === inverse(inverse("sell"))) {
+                    buySellRate.updateModel(onePerAnother(currencyModel.value.price, cryptoModel.value.price));
+                    buySellRate.valueGetterFn = value => `1 ${currencyModel.value.short} - ${preCheckInput(value)} ${cryptoModel.value.short}`;
+                } else if (buySellOperationModel.value === inverse("sell")) {
+                    buySellRate.updateModel(onePerAnother(cryptoModel.value.price, currencyModel.value.price));
+                    buySellRate.valueGetterFn = value => `1 ${cryptoModel.value.short} - ${preCheckInput(value)} ${currencyModel.value.short}`;
+                }
+            }));
+            buySellRate.bind(currencyModel, ((_, newValue) => {
+                if (buySellOperationModel.value === inverse(inverse("sell"))) {
+                    buySellRate.updateModel(onePerAnother(currencyModel.value.price, cryptoModel.value.price));
+                    buySellRate.valueGetterFn = value => `1 ${currencyModel.value.short} - ${preCheckInput(value)} ${cryptoModel.value.short}`;
+                } else if (buySellOperationModel.value === inverse("sell")) {
+                    buySellRate.updateModel(onePerAnother(cryptoModel.value.price, currencyModel.value.price));
+                    buySellRate.valueGetterFn = value => `1 ${cryptoModel.value.short} - ${preCheckInput(value)} ${currencyModel.value.short}`;
+                }
+            }));
+            buySellRate.bind(buySellOperationModel, ((oldValue, newValue) => {
+                if (oldValue !== newValue) if (newValue === inverse(inverse("sell"))) {
+                    buySellRate.updateModel(onePerAnother(currencyModel.value.price, cryptoModel.value.price));
+                    buySellRate.valueGetterFn = value => `1 ${currencyModel.value.short} - ${preCheckInput(value)} ${cryptoModel.value.short}`;
+                } else if (newValue === inverse("sell")) {
+                    buySellRate.updateModel(onePerAnother(cryptoModel.value.price, currencyModel.value.price));
+                    buySellRate.valueGetterFn = value => `1 ${cryptoModel.value.short} - ${preCheckInput(value)} ${currencyModel.value.short}`;
+                }
+            }));
+            buySellRate.valueGetterFn = value => `1 ${cryptoModel.value.short} - ${preCheckInput(value)} ${currencyModel.value.short}`;
+            modelRepository.addModels(buySellRate);
+        }
+        const rate = createBuySellRateModel;
+        function createCurrencyShortModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const cryptoShort = new Model("buy-sell:crypto:short", "Crypto Short", cryptoModel.value.short);
+            const currencyShort = new Model("buy-sell:currency:short", "Currency Short", currencyModel.value.short);
+            cryptoShort.bind(cryptoModel, ((_, newValue) => {
+                cryptoShort.updateModel(newValue.short);
+            }));
+            currencyShort.bind(currencyModel, ((_, newValue) => {
+                currencyShort.updateModel(newValue.short);
+            }));
+            modelRepository.addModels(cryptoShort, currencyShort);
+        }
+        const buySell_short = createCurrencyShortModel;
+        function createBuySellModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            currency(modelRepository);
+            amount(modelRepository);
+            cardAddress(modelRepository);
+            network(modelRepository);
+            buySell_short(modelRepository);
+            fee(modelRepository);
+            rate(modelRepository);
+            const buySellModel = new Model("buy-sell", "Buy / Sell", null);
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const cryptoAmount = modelRepository.find("buy-sell:crypto:amount");
+            const currencyAmount = modelRepository.find("buy-sell:currency:amount");
+            const cryptoAddress = modelRepository.find("buy-sell:crypto:address");
+            const currencyCard = modelRepository.find("buy-sell:currency:card");
+            const buySellOperation = modelRepository.find("operation:buy-sell");
+            buySellModel.valueGetterFn = () => [ `Operation: ${buySellOperation.getValue()}`, `Cryptocurrency: ${cryptoModel.getValue()}`, `Fiat currency: ${currencyModel.getValue()}`, cryptoAmount.getValue(), currencyAmount.getValue(), cryptoAddress.getValue(), currencyCard.getValue() ].join("\n");
+            modelRepository.addModels(buySellModel);
+        }
+        const buySell = createBuySellModel;
+        function createLanguageModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const languageModel = new Model("language", "User language", window.detectUserLanguage());
+            modelRepository.addModels(languageModel);
+        }
+        const language = createLanguageModel;
+        function createOperationModel(defaultOperation, modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            if (!("buy-sell" === defaultOperation || "exchange" === defaultOperation)) throw new Error('Expected defaultOperation to be "buy-sell" or "exchange"');
+            const operation = new Model("operation", "Operation", defaultOperation);
+            operation.addAction("select-exchange", (() => {
+                if ("exchange" !== operation.value) operation.updateModel("exchange");
+            }));
+            operation.addAction("select-buy-sell", (() => {
+                if ("buy-sell" !== operation.value) operation.updateModel("buy-sell");
+            }));
+            modelRepository.addModels(operation);
+        }
+        const model_operation = createOperationModel;
+        function createResultModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const resultModel = new Model("result", "Result", false);
+            modelRepository.addModels(resultModel);
+        }
+        const result = createResultModel;
+        function createDefaults(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const {tokenNames: {targetCrypto: target, operation: op}} = storage;
+            const {targetCrypto, operation} = requests_dispatch(target, op);
+            let isExchange = "exchange" === operation;
+            let isBuy = "buy" === operation;
+            let changeCryptoId = "usdt-tron";
+            let anotherChangeCryptoId = "btc";
+            let sellBuyCryptoId = "btc";
+            if (string(operation).nonEmpty().value && string(targetCrypto).nonEmpty().value) if (isExchange) if (targetCrypto !== anotherChangeCryptoId) changeCryptoId = targetCrypto; else {
+                changeCryptoId = targetCrypto;
+                anotherChangeCryptoId = "usdt-tron";
+            } else sellBuyCryptoId = targetCrypto;
+            const defaultCryptoInId = new Model("defaultCryptoInId", "Default Crypto In Id", changeCryptoId);
+            const defauldCryptoOutId = new Model("defaultCryptoOutId", "Default Crypto Out Id", anotherChangeCryptoId);
+            const defaultCryptoId = new Model("defaultCryptoId", "Default Crypto Id", sellBuyCryptoId);
+            const defaultCurrencyId = new Model("defaultCurrencyId", "Default Currency Id", "usd");
+            modelRepository.addModels(defaultCryptoInId, defauldCryptoOutId, defaultCryptoId, defaultCurrencyId);
+            model_operation(isExchange ? "exchange" : "buy-sell", modelRepository);
+            buySellOperation(isBuy ? "buy" : "sell", modelRepository);
+            language(modelRepository);
+            result(modelRepository);
+        }
+        const defaults = createDefaults;
+        function createCryptoAddressModels(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const cryptoInAddress = new Model("exchange:crypto-in:address", "Crypto In Address", cryptoInModel.value.address);
+            cryptoInAddress.validatorFn = validateCryptoAddress;
+            cryptoInAddress.valueGetterFn = value => `${cryptoInModel.value.short} address: ${value}`;
+            cryptoInAddress.updateFn = value => sanitizeCryptoAddress(value);
+            cryptoInAddress.bind(cryptoInModel, ((_, newValue) => {
+                cryptoInAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+                cryptoInAddress.updateModel(newValue.address);
+            }));
+            const cryptoOutAddress = new Model("exchange:crypto-out:address", "Crypto Out address", "");
+            cryptoOutAddress.validatorFn = validateCryptoAddress;
+            cryptoOutAddress.valueGetterFn = value => `${cryptoOutModel.value.short} address: ${value}`;
+            cryptoOutAddress.updateFn = value => sanitizeCryptoAddress(value);
+            cryptoOutAddress.bind(cryptoOutModel, ((_, newValue) => {
+                cryptoOutAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+            }));
+            modelRepository.addModels(cryptoInAddress, cryptoOutAddress);
+        }
+        const address = createCryptoAddressModels;
+        function createCryptoAmountModels(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const cryptoInAmount = new Model("exchange:crypto-in:amount", "Crypto In Amount", minAmountCryptoOrCurrency(cryptoInModel.value.price));
+            const cryptoOutAmount = new Model("exchange:crypto-out:amount", "Crypto Out Amount", minAmountCryptoOrCurrency(cryptoOutModel.value.price));
+            cryptoInAmount.valueGetterFn = value => `Sell: ${preCheckInput(value)} | ${cryptoInModel.value.short}`;
+            cryptoInAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoInModel.value.price);
+            cryptoOutAmount.valueGetterFn = value => `Buy: ${preCheckInput(value)} | ${cryptoOutModel.value.short}`;
+            cryptoOutAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoOutModel.value.price);
+            transformers_amountClamp(cryptoInAmount, cryptoInModel);
+            transformers_amountClamp(cryptoOutAmount, cryptoOutModel);
+            cryptoInAmount.bind(cryptoInModel, ((oldValue, newValue) => {
+                const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoInAmount.value, oldValue.price);
+                const newCryptoAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
+                cryptoInAmount.valueGetterFn = value => `Sell: ${preCheckInput(value)} | ${newValue.short}`;
+                cryptoInAmount.updateModel(newCryptoAmount);
+            }));
+            cryptoOutAmount.bind(cryptoOutModel, ((oldValue, newValue) => {
+                const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoOutAmount.value, oldValue.price);
+                const newAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
+                cryptoOutAmount.valueGetterFn = value => `Buy: ${preCheckInput(value)} | ${newValue.short}`;
+                cryptoOutAmount.updateModel(newAmount);
+            }));
+            cryptoInAmount.bind(cryptoOutAmount, ((oldValue, newValue) => {
+                if (oldValue !== newValue) {
+                    const usdAmount = cryptoOrCurrencyAmountToUsd(newValue, cryptoOutModel.value.price);
+                    const newAmount = usdAmountToCryptoOrCurrency(usdAmount, cryptoInModel.value.price);
+                    cryptoInAmount.updateModel(newAmount);
+                }
+            }));
+            cryptoOutAmount.bind(cryptoInAmount, ((oldValue, newValue) => {
+                if (oldValue !== newValue) {
+                    const usdAmount = cryptoOrCurrencyAmountToUsd(newValue, cryptoInModel.value.price);
+                    const newAmount = usdAmountToCryptoOrCurrency(usdAmount, cryptoOutModel.value.price);
+                    cryptoOutAmount.updateModel(newAmount);
+                }
+            }));
+            modelRepository.addModels(cryptoInAmount, cryptoOutAmount);
+        }
+        const exchange_amount = createCryptoAmountModels;
+        function getExchangeCryptos(cryptoInId, cryptoOutId, cryptos) {
+            const cryptoIn = cryptos.find((c => c.id === cryptoInId));
+            const cryptoOut = cryptos.find((c => c.id === cryptoOutId));
+            const restCryptosIn = cryptos.filter((c => c.id !== cryptoInId && c.id !== cryptoOutId));
+            const restCryptosOut = cryptos.filter((c => c.id !== cryptoOutId && c.id !== cryptoInId));
+            return {
+                cryptoIn,
+                cryptoOut,
+                restCryptosIn,
+                restCryptosOut
+            };
+        }
+        const fn_getExchangeCryptos = getExchangeCryptos;
+        function createCryptoModels(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInId = modelRepository.find("defaultCryptoInId").value;
+            const cryptoOutId = modelRepository.find("defaultCryptoOutId").value;
+            const cryptos = modelRepository.find("cryptos").value;
+            const {cryptoIn, cryptoOut} = fn_getExchangeCryptos(cryptoInId, cryptoOutId, cryptos);
+            const cryptoInModel = new Model("exchange:crypto-in", "Crypto In", cryptoIn);
+            const cryptoOutModel = new Model("exchange:crypto-out", "Crypto out", cryptoOut);
+            cryptoInModel.valueGetterFn = value => value.name;
+            cryptoOutModel.valueGetterFn = value => value.name;
+            modelRepository.addModels(cryptoInModel, cryptoOutModel);
+        }
+        const exchange_crypto = createCryptoModels;
+        function createExchangeFeeModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const exchangeFeeModel = new Model("exchange:fee", "Exchange fee", null);
+            if (exchangeFee < 0) throw new Error("Expected exchangeFee to be non-negative.");
+            if (exchangeFee > 0) {
+                const cryptoInModel = modelRepository.find("exchange:crypto-in");
+                const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+                const cryptoInAmount = modelRepository.find("exchange:crypto-in:amount");
+                const cryptoOutAmount = modelRepository.find("exchange:crypto-out:amount");
+                exchangeFeeModel.bind(cryptoInAmount, ((_, newValue) => {
+                    exchangeFeeModel.updateModel(`${preCheckInput(newValue * exchangeFee)} ${cryptoInModel.value.short} / ${preCheckInput(cryptoOutAmount.value * exchangeFee)} ${cryptoOutModel.value.short}`);
+                }));
+                exchangeFeeModel.bind(cryptoOutAmount, ((_, newValue) => {
+                    exchangeFeeModel.updateModel(`${preCheckInput(cryptoInAmount.value * exchangeFee)} ${cryptoInModel.value.short} / ${preCheckInput(newValue * exchangeFee)} ${cryptoOutModel.value.short}`);
+                }));
+            }
+            modelRepository.addModels(exchangeFeeModel);
+        }
+        const exchange_fee = createExchangeFeeModel;
+        function createCryptoInNetworkModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoInNetwork = new Model("exchange:crypto-in:network", "Crypto In Network", cryptoInModel.value.network);
+            cryptoInNetwork.bind(cryptoInModel, ((_, newValue) => {
+                cryptoInNetwork.updateModel(newValue.network);
+            }));
+            modelRepository.addModels(cryptoInNetwork);
+        }
+        const exchange_network = createCryptoInNetworkModel;
+        function createExchangeRateModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const exchangeRate = new Model("exchange:rate", "Exchange rate", onePerAnother(cryptoInModel.value.price, cryptoOutModel.value.price));
+            exchangeRate.bind(cryptoInModel, ((_, newValue) => {
+                exchangeRate.updateModel(onePerAnother(newValue.price, cryptoOutModel.value.price));
+            }));
+            exchangeRate.bind(cryptoOutModel, ((_, newValue) => {
+                exchangeRate.updateModel(onePerAnother(cryptoInModel.value.price, newValue.price));
+            }));
+            exchangeRate.valueGetterFn = value => `1 ${cryptoInModel.value.short} - ${preCheckInput(value)} ${cryptoOutModel.value.short}`;
+            modelRepository.addModels(exchangeRate);
+        }
+        const exchange_rate = createExchangeRateModel;
+        function createCryptoShortModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const cryptoInShort = new Model("exchange:crypto-in:short", "Crypto In Short", cryptoInModel.value.short);
+            const cryptoOutShort = new Model("exchange:crypto-out:short", "Crypto Out Short", cryptoOutModel.value.short);
+            cryptoInShort.bind(cryptoInModel, ((_, newValue) => {
+                cryptoInShort.updateModel(newValue.short);
+            }));
+            cryptoOutShort.bind(cryptoOutModel, ((_, newValue) => {
+                cryptoOutShort.updateModel(newValue.short);
+            }));
+            modelRepository.addModels(cryptoInShort, cryptoOutShort);
+        }
+        const exchange_short = createCryptoShortModel;
+        function createExchangeModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            exchange_crypto(modelRepository);
+            exchange_amount(modelRepository);
+            address(modelRepository);
+            exchange_network(modelRepository);
+            exchange_short(modelRepository);
+            exchange_fee(modelRepository);
+            exchange_rate(modelRepository);
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const cryptoInAmount = modelRepository.find("exchange:crypto-in:amount");
+            const cryptoOutAmount = modelRepository.find("exchange:crypto-out:amount");
+            const cryptoInAddress = modelRepository.find("exchange:crypto-in:address");
+            const cryptoOutAddress = modelRepository.find("exchange:crypto-out:address");
+            const exchangeModel = new Model("exchange", "Exchange", null);
+            const cryptos = modelRepository.find("cryptos").value;
+            exchangeModel.addAction("swap", (() => {
+                const {cryptoIn, cryptoOut} = fn_getExchangeCryptos(cryptoOutModel.value.id, cryptoInModel.value.id, cryptos);
+                cryptoInModel.updateModel(cryptoIn);
+                cryptoOutModel.updateModel(cryptoOut);
+            }));
+            exchangeModel.valueGetterFn = () => [ "Operation: Exchange", `Cryptocurrency: ${cryptoInModel.getValue()} | ${cryptoOutModel.getValue()}`, cryptoInAmount.getValue(), cryptoOutAmount.getValue(), cryptoInAddress.getValue(), cryptoOutAddress.getValue() ].join("\n");
+            modelRepository.addModels(exchangeModel);
+        }
+        const exchange = createExchangeModel;
+        function currencyAmountView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const currentLanguage = modelRepository.find("language").value;
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const cryptoAmount = modelRepository.find("buy-sell:crypto:amount");
+            const currencyAmount = modelRepository.find("buy-sell:currency:amount");
+            const cryptoAmountInput = document.querySelector('input[data-model="buy-sell:crypto:amount"]');
+            const currencyAmountInput = document.querySelector('input[data-model="buy-sell:currency:amount"]');
+            cryptoAmountInput.step = "any";
+            currencyAmountInput.step = "any";
+            cryptoModel.addEventListener("update", ((_, newValue) => {
+                cryptoAmountInput.min = preCheckInput(minAmountCryptoOrCurrency(newValue.price));
+            }));
+            currencyModel.addEventListener("update", ((_, newValue) => {
+                currencyAmountInput.min = preCheckInput(minAmountCryptoOrCurrency(newValue.price));
+            }));
+            cryptoAmountInput.addEventListener("blur", (e => {
+                cryptoAmount.updateModel(e.target.value);
+            }));
+            currencyAmountInput.addEventListener("blur", (e => {
+                currencyAmount.updateModel(e.target.value);
+            }));
+            cryptoAmount.addEventListener("update", ((_, newValue) => {
+                cryptoAmountInput.value = preCheckInput(newValue);
+                const cryptoAmountMessage = cryptoAmountInput.parentElement.nextElementSibling;
+                if (!cryptoAmountMessage.classList.contains("message")) throw new Error("Expected .message element");
+                if ("clampApplied" in cryptoAmount && cryptoAmount.clampApplied) {
+                    const amount = `${preCheckInput(cryptoAmount.clampRange[0])} ${cryptoModel.value.short}`;
+                    cryptoAmountMessage.innerHTML = get("min-amount", currentLanguage, {
+                        amount
+                    });
+                    cryptoAmountMessage.classList.remove("hidden");
+                } else {
+                    cryptoAmountMessage.innerHTML = "";
+                    cryptoAmountMessage.classList.add("hidden");
+                }
+            }));
+            currencyAmount.addEventListener("update", ((_, newValue) => {
+                currencyAmountInput.value = preCheckInput(newValue);
+                const currencyAmountMessage = currencyAmountInput.parentElement.nextElementSibling;
+                if (!currencyAmountMessage.classList.contains("message")) throw new Error("Expected .message element");
+                if ("clampApplied" in currencyAmount && currencyAmount.clampApplied) {
+                    const amount = `${preCheckInput(currencyAmount.clampRange[0])} ${currencyModel.value.short}`;
+                    currencyAmountMessage.innerHTML = get("min-amount", currentLanguage, {
+                        amount
+                    });
+                    currencyAmountMessage.classList.remove("hidden");
+                } else {
+                    currencyAmountMessage.innerHTML = "";
+                    currencyAmountMessage.classList.add("hidden");
+                }
+            }));
+            const amountInputListener = () => {
+                const cryptoAmountMessage = cryptoAmountInput.parentElement.nextElementSibling;
+                if (!cryptoAmountMessage.classList.contains("message")) throw new Error("Expected .message element");
+                const currencyAmountMessage = currencyAmountInput.parentElement.nextElementSibling;
+                if (!currencyAmountMessage.classList.contains("message")) throw new Error("Expected .message element");
+                if (cryptoAmountMessage.innerHTML) {
+                    cryptoAmountMessage.innerHTML = "";
+                    cryptoAmountMessage.classList.add("hidden");
+                }
+                if (currencyAmountMessage.innerHTML) {
+                    currencyAmountMessage.innerHTML = "";
+                    currencyAmountMessage.classList.add("hidden");
+                }
+            };
+            cryptoAmountInput.addEventListener("input", amountInputListener);
+            currencyAmountInput.addEventListener("input", amountInputListener);
+        }
+        const buySell_amount = currencyAmountView;
+        function currencyCardAddressView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const currentLanguage = modelRepository.find("language").value;
+            const cryptoAddress = modelRepository.find("buy-sell:crypto:address");
+            const currencyCard = modelRepository.find("buy-sell:currency:card");
+            const cryptoShortModel = modelRepository.find("buy-sell:crypto:short");
+            const currencyShortModel = modelRepository.find("buy-sell:currency:short");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const cryptoAddressInputSelector = 'input[data-model="buy-sell:crypto:address"]';
+            const currencyCardInputSelector = 'input[data-model="buy-sell:currency:card"]';
+            const userInput = document.querySelector(buySellOperationModel.value === inverse(inverse("buy")) ? cryptoAddressInputSelector : currencyCardInputSelector);
+            const copyInput = document.querySelector(buySellOperationModel.value === inverse("buy") ? cryptoAddressInputSelector : currencyCardInputSelector);
+            const userInputMessage = userInput.parentElement.nextElementSibling;
+            const copyInputMessage = copyInput.parentElement.nextElementSibling;
+            if (!userInputMessage.classList.contains("message")) throw new Error("Expected .message element");
+            if (!copyInputMessage.classList.contains("message")) throw new Error("Expected .message element");
+            const copyInputFocusListener = () => {
+                navigator.clipboard.writeText(copyInput.value);
+                copyInputMessage.innerHTML = get("copied-message", currentLanguage);
+                copyInput.parentElement.classList.add("copied");
+                copyInputMessage.classList.remove("hidden");
+            };
+            const copyInputBlurListener = () => {
+                copyInputMessage.innerHTML = "";
+                copyInputMessage.classList.add("hidden");
+                copyInput.parentElement.classList.remove("copied");
+            };
+            const userInputInputListener = e => {
+                if (buySellOperationModel.value === inverse(inverse("buy"))) cryptoAddress.updateModel(e.target.value); else if (buySellOperationModel.value === inverse("buy")) currencyCard.updateModel(e.target.value);
+            };
+            const userInputFocusListener = () => {
+                if (buySellOperationModel.value === inverse(inverse("buy"))) cryptoShortModel.updateModel(cryptoShortModel.value); else if (buySellOperationModel.value === inverse("buy")) currencyShortModel.updateModel(currencyShortModel.value);
+                userInput.parentElement.classList.remove("invalid");
+                userInputMessage.innerHTML = "";
+                userInputMessage.classList.remove("invalid");
+                userInputMessage.classList.add("hidden");
+            };
+            const userInputBlurListener = () => {
+                if (buySellOperationModel.value === inverse(inverse("buy"))) cryptoAddress.validate(); else if (buySellOperationModel.value === inverse("buy")) currencyCard.validate();
+            };
+            copyInput.parentElement.addEventListener("click", copyInputFocusListener);
+            copyInput.addEventListener("focus", copyInputFocusListener);
+            userInput.addEventListener("blur", userInputBlurListener);
+            userInput.addEventListener("focus", userInputFocusListener);
+            userInput.addEventListener("input", userInputInputListener);
+            cryptoAddress.addEventListener("update", ((_, newValue) => {
+                if ("sell" === buySellOperationModel.value) {
+                    copyInput.value = newValue;
+                    copyInputBlurListener();
+                } else userInput.value = newValue;
+            }));
+            currencyCard.addEventListener("update", ((_, newValue) => {
+                if ("buy" === buySellOperationModel.value) {
+                    copyInput.value = newValue;
+                    copyInputBlurListener();
+                } else userInput.value = newValue;
+            }));
+            buySellOperationModel.addEventListener("update", (() => {
+                userInputFocusListener();
+            }));
+            currencyCard.addEventListener("invalid", (() => {
+                const currencyCardInput = document.querySelector(currencyCardInputSelector);
+                const currencyMessage = currencyCardInput.parentElement.nextElementSibling;
+                if (document.activeElement !== currencyCardInput) {
+                    currencyCardInput.parentElement.classList.add("invalid");
+                    currencyCardInput.previousElementSibling.innerHTML = get("your-card-invalid", currentLanguage);
+                    currencyMessage.innerHTML = get("invalid-card-message", currentLanguage);
+                    currencyMessage.classList.remove("hidden");
+                    currencyMessage.classList.add("invalid");
+                }
+            }));
+            cryptoAddress.addEventListener("invalid", (() => {
+                const cryptoAddressInput = document.querySelector(cryptoAddressInputSelector);
+                const cryptoMessage = cryptoAddressInput.parentElement.nextElementSibling;
+                if (document.activeElement !== cryptoAddressInput) {
+                    cryptoAddressInput.parentElement.classList.add("invalid");
+                    cryptoAddressInput.previousElementSibling.innerHTML = get("your-address-invalid", currentLanguage);
+                    cryptoMessage.innerHTML = get("invalid-address-message", currentLanguage);
+                    cryptoMessage.classList.remove("hidden");
+                    cryptoMessage.classList.add("invalid");
+                }
+            }));
+        }
+        const buySell_cardAddress = currencyCardAddressView;
+        const inputSelectClassName = "block-select";
+        const inputSelectEmptyClassName = "block-select__empty";
+        const activeClassName = "block-select__active";
+        const currentClassName = "block-select__value";
+        const optionsContainerClassName = "block-select__list";
+        const optionsContainerFewItemsClassName = "block-select__list__few-items";
+        const optionsContainerNoItemsClassName = "block-select__list__empty";
+        const singleOptionClassName = "block-select__item";
+        const fewItemsValue = 3;
+        function isOption(option) {
+            return "object" === typeof option && "value" in option && "string" === typeof option.value && "name" in option && "string" === typeof option.name;
+        }
+        class NotOptionError extends TypeError {
+            constructor(...paramNames) {
+                if (!(Array.isArray(paramNames) && paramNames.length > 0 && paramNames.every((p => "string" === typeof p)))) throw new TypeError("Expected paramNames to be non-empty array of strings containing parameter names."); else if (1 === paramNames.length) super(`Parameter ${paramNames[0]} is not InputSelectOption.`); else {
+                    const paramNamesStr = paramNames.join(", ");
+                    super(`Parameters ${paramNamesStr} are not InputSelectOption.`);
+                }
+            }
+        }
+        function optionAsParam(option, paramName) {
+            return {
+                validate() {
+                    if (!isOption(option)) throw new NotOptionError(paramName);
+                }
+            };
+        }
+        function optionArrayAsParam(options, paramName, allowEmpty = false) {
+            return {
+                validate() {
+                    if (!(Array.isArray(options) && (allowEmpty || options.length > 0))) throw new TypeError(`Expected ${paramName} to be ${allowEmpty ? "" : "non-empty"} array of InputSelectOption.`);
+                    const invalidRestOptionIds = options.reduce(((acc, val, id) => {
+                        if (!isOption(val)) return [ ...acc, id ];
+                        return acc;
+                    }), []);
+                    if (invalidRestOptionIds.length > 0) throw new NotOptionError(...invalidRestOptionIds.map((idx => `${paramName}[${idx}]`)));
+                }
+            };
+        }
+        function ensureUnique(options) {
+            optionArrayAsParam(options, "options").validate();
+            const nonUniqueOptions = options.reduce(((acc, val, id) => {
+                const withSameValue = options.map(((o, oId) => ({
+                    ...o,
+                    id: oId
+                }))).filter((o => o.value === val.value && o.id !== id));
+                withSameValue.forEach((o => {
+                    if ("object" !== typeof acc.find((existing => existing.id === o.id))) acc.push(o);
+                }));
+                return acc;
+            }), []).map((o => ({
+                value: o.value,
+                name: o.name
+            })));
+            if (nonUniqueOptions.length > 0) throw new Error(`All options must have unique value property. Got: ${JSON.stringify(nonUniqueOptions)}`);
+        }
+        function createNameSpanElements(name) {
+            const nameTokens = name.split(" ");
+            return nameTokens.map((token => {
+                const spanEl = document.createElement("span");
+                spanEl.appendChild(document.createTextNode(token));
+                return spanEl;
+            }));
+        }
+        function inputSelect(element, current, restOptions) {
+            if (!(element instanceof Element || element instanceof HTMLElement)) throw new TypeError("Expected element to be either Element or HTMLElement");
+            optionAsParam(current, "current").validate();
+            optionArrayAsParam(restOptions, "restOptions", true).validate();
+            ensureUnique([ current, ...restOptions ]);
+            if (!element.classList.contains(inputSelectClassName)) throw new Error("Expected element to contain className '.input-select'");
+            while (element.firstElementChild) element.removeChild(element.firstElementChild);
+            const currentEl = document.createElement("span");
+            currentEl.classList.add(currentClassName);
+            const nameElements = createNameSpanElements(current.name);
+            nameElements.forEach((el => {
+                currentEl.appendChild(el);
+            }));
+            currentEl.dataset.value = current.value;
+            const clickListener = () => {
+                if (restOptions.length > 0) {
+                    const anotherElements = [ ...document.querySelectorAll(`.${inputSelectClassName}`) ].filter((el => el !== element));
+                    anotherElements.forEach((el => {
+                        el.classList.remove(activeClassName);
+                    }));
+                    element.classList.toggle(activeClassName);
+                }
+            };
+            currentEl.addEventListener("click", clickListener);
+            const optionsContainer = document.createElement("div");
+            optionsContainer.classList.add(optionsContainerClassName);
+            if (restOptions.length <= fewItemsValue) {
+                optionsContainer.classList.add(optionsContainerFewItemsClassName);
+                if (0 === restOptions.length) {
+                    optionsContainer.classList.add(optionsContainerNoItemsClassName);
+                    element.classList.add(inputSelectEmptyClassName);
+                }
+            } else {
+                optionsContainer.dataset.simplebar = "";
+                optionsContainer.dataset.simplebarAutoHide = "false";
+                element.classList.remove(inputSelectEmptyClassName);
+            }
+            const changeListeners = [];
+            let newInputHandle = null;
+            const optionElements = restOptions.map((o => {
+                const optionEl = document.createElement("span");
+                optionEl.classList.add(singleOptionClassName);
+                const nameElements = createNameSpanElements(o.name);
+                nameElements.forEach((el => {
+                    optionEl.appendChild(el);
+                }));
+                optionEl.dataset.value = o.value;
+                optionEl.addEventListener("click", (() => {
+                    const newCurrent = o;
+                    const newRest = [ current, ...restOptions.filter((option => option.value !== o.value)) ];
+                    element.classList.remove(activeClassName);
+                    newInputHandle = inputSelect(element, newCurrent, newRest);
+                    changeListeners.forEach((changeListenerFn => {
+                        newInputHandle.addEventListener("change", changeListenerFn);
+                        changeListenerFn(current.value, newCurrent.value);
+                    }));
+                }));
+                return optionEl;
+            }));
+            optionsContainer.append(...optionElements);
+            element.append(currentEl, optionsContainer);
+            return {
+                addEventListener(event, eventListenerFn) {
+                    if (null !== newInputHandle) return newInputHandle.addEventListener(event, eventListenerFn);
+                    if ("change" === event) changeListeners.push(eventListenerFn); else throw new Error(`Unknown event ${event}.`);
+                },
+                removeEventListener(event, eventListenerFn) {
+                    if (null !== newInputHandle) return newInputHandle.removeEventListener(event, eventListenerFn);
+                    let targetListenersArr = null;
+                    if ("change" === event) targetListenersArr = updateListeners; else throw new Error(`Unknown event ${event}.`);
+                    if (!Array.isArray(targetListenersArr)) throw new Error("Unexpected error. No listeners matched.");
+                    const id = targetListenersArr.indexOf(eventListenerFn);
+                    if (-1 === id) throw new Error("Model does not have provided eventListenerFn attached.");
+                    targetListenersArr.splice(id, 1);
+                }
+            };
+        }
+        const base = inputSelect;
+        const iconClassName = "block-select__icon";
+        const iconClassPrefix = "fonticons-";
+        function createIconElement(value) {
+            const iconEl = document.createElement("i");
+            const [short, _] = value.split("-");
+            iconEl.classList.add(iconClassName);
+            iconEl.classList.add(`${iconClassPrefix}${short}`);
+            return iconEl;
+        }
+        function iconInputSelect(element, current, restOptions) {
+            const handle = base(element, current, restOptions);
+            const currentEl = element.querySelector(`.${currentClassName}`);
+            const restOptionElements = element.querySelectorAll(`.${optionsContainerClassName} > .${singleOptionClassName}`);
+            const currentIconEl = createIconElement(currentEl.dataset.value);
+            currentEl.prepend(currentIconEl);
+            [ ...restOptionElements ].forEach((restOptionEl => {
+                const iconEl = createIconElement(restOptionEl.dataset.value);
+                restOptionEl.prepend(iconEl);
+            }));
+            handle.addEventListener("change", (() => {
+                const currentEl = element.querySelector(`.${currentClassName}`);
+                const restOptionElements = element.querySelectorAll(`.${optionsContainerClassName} > .${singleOptionClassName}`);
+                const currentIconEl = createIconElement(currentEl.dataset.value);
+                currentEl.prepend(currentIconEl);
+                [ ...restOptionElements ].forEach((restOptionEl => {
+                    const iconEl = createIconElement(restOptionEl.dataset.value);
+                    restOptionEl.prepend(iconEl);
+                }));
+            }));
+            return handle;
+        }
+        const icon = iconInputSelect;
+        function currencyAsOption(currency) {
+            return {
+                value: currency.id,
+                name: currency.short
+            };
+        }
+        function optionAsCurrency(optionValue, cryptos = [], currencies = []) {
+            const crypto = cryptos.find((c => c.id === optionValue));
+            if (!crypto) {
+                const currency = currencies.find((c => c.id === optionValue));
+                if (!currency) throw new Error(`No Currency with id ${optionValue} found.`);
+                return currency;
+            }
+            return crypto;
+        }
+        function currencySelectView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptos = modelRepository.find("cryptos").value;
+            const currencies = modelRepository.find("currencies").value;
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const getCurrencies = (cryptoId, currencyId) => fn_getBuySellCurrencies(cryptoId, currencyId, cryptos, currencies);
+            const cryptoSelect = document.querySelector(`.${inputSelectClassName}[data-model="buy-sell:crypto"]`);
+            const currencySelect = document.querySelector(`.${inputSelectClassName}[data-model="buy-sell:currency"]`);
+            const {crypto, currency, restCryptos, restCurrencies} = getCurrencies(cryptoModel.value.id, currencyModel.value.id);
+            const cryptoSelectChangeListener = (_, newValue) => {
+                const newCrypto = optionAsCurrency(newValue, cryptos);
+                cryptoModel.updateModel(newCrypto);
+            };
+            const currencySelectChangeListener = (_, newValue) => {
+                const newCurrency = optionAsCurrency(newValue, currencies);
+                currencyModel.updateModel(newCurrency);
+            };
+            icon(cryptoSelect, currencyAsOption(crypto), restCryptos.map(currencyAsOption)).addEventListener("change", cryptoSelectChangeListener);
+            icon(currencySelect, currencyAsOption(currency), restCurrencies.map(currencyAsOption)).addEventListener("change", currencySelectChangeListener);
+            cryptoModel.addEventListener("update", ((_, newValue) => {
+                const {crypto, currency, restCryptos, restCurrencies} = getCurrencies(newValue.id, currencyModel.value.id);
+                icon(cryptoSelect, currencyAsOption(crypto), restCryptos.map(currencyAsOption)).addEventListener("change", cryptoSelectChangeListener);
+                icon(currencySelect, currencyAsOption(currency), restCurrencies.map(currencyAsOption)).addEventListener("change", currencySelectChangeListener);
+            }));
+            currencyModel.addEventListener("update", ((_, newValue) => {
+                const {crypto, currency, restCryptos, restCurrencies} = getCurrencies(cryptoModel.value.id, newValue.id);
+                icon(cryptoSelect, currencyAsOption(crypto), restCryptos.map(currencyAsOption)).addEventListener("change", cryptoSelectChangeListener);
+                icon(currencySelect, currencyAsOption(currency), restCurrencies.map(currencyAsOption)).addEventListener("change", currencySelectChangeListener);
+            }));
+        }
+        const buySell_currency = currencySelectView;
+        function buySellFeeView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const buySellFeeModel = modelRepository.find("buy-sell:fee");
+            const buySellFeeElement = document.querySelector('*[data-model="buy-sell:fee"]');
+            const currentLanguage = modelRepository.find("language").value;
+            buySellFeeModel.addEventListener("update", ((_, newValue) => {
+                if (!newValue) buySellFeeElement.innerHTML = get("no-extra-fees", currentLanguage); else buySellFeeElement.innerHTML = get("fee", currentLanguage, {
+                    fee: newValue
+                });
+            }));
+        }
+        const buySell_fee = buySellFeeView;
+        function cryptoNetworkView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoNetwork = modelRepository.find("buy-sell:crypto:network");
+            const cryptoNetworkElements = document.querySelectorAll('*[data-model="buy-sell:crypto:network"]');
+            const currentLanguage = modelRepository.find("language").value;
+            cryptoNetwork.addEventListener("update", ((_, newValue) => {
+                if (!newValue) [ ...cryptoNetworkElements ].forEach((el => {
+                    el.classList.add("hidden");
+                    el.parentElement.classList.add("hidden");
+                    el.innerHTML = "";
+                })); else [ ...cryptoNetworkElements ].forEach((el => {
+                    el.classList.remove("hidden");
+                    el.parentElement.classList.remove("hidden");
+                    el.innerHTML = get("net", currentLanguage, {
+                        net: newValue
+                    });
+                }));
+            }));
+        }
+        const buySell_network = cryptoNetworkView;
+        function buySellRateView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const buySellRateModel = modelRepository.find("buy-sell:rate");
+            const buySellRateElement = document.querySelector('*[data-model="buy-sell:rate"]');
+            buySellRateModel.addEventListener("update", (() => {
+                buySellRateElement.innerHTML = buySellRateModel.getValue();
+            }));
+        }
+        const buySell_rate = buySellRateView;
+        function currencyShortView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const currentLanguage = modelRepository.find("language").value;
+            const cryptoShortModel = modelRepository.find("buy-sell:crypto:short");
+            const currencyShortModel = modelRepository.find("buy-sell:currency:short");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            buySellOperationModel.addEventListener("update", (() => {
+                const cryptoShortElements = document.querySelectorAll('*[data-model="buy-sell:crypto:short"]');
+                [ ...cryptoShortElements ].forEach((el => {
+                    el.innerHTML = cryptoShortModel.value;
+                    if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
+                        short: cryptoShortModel.value
+                    }); else el.innerHTML = cryptoShortModel.value;
+                }));
+                const currencyShortElements = document.querySelectorAll('*[data-model="buy-sell:currency:short"]');
+                [ ...currencyShortElements ].forEach((el => {
+                    if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
+                        short: currencyShortModel.value
+                    }); else el.innerHTML = currencyShortModel.value;
+                }));
+            }));
+            cryptoShortModel.addEventListener("update", ((_, newValue) => {
+                const cryptoShortElements = document.querySelectorAll('*[data-model="buy-sell:crypto:short"]');
+                [ ...cryptoShortElements ].forEach((el => {
+                    if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
+                        short: newValue
+                    }); else el.innerHTML = newValue;
+                }));
+            }));
+            currencyShortModel.addEventListener("update", ((_, newValue) => {
+                const currencyShortElements = document.querySelectorAll('*[data-model="buy-sell:currency:short"]');
+                [ ...currencyShortElements ].forEach((el => {
+                    if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
+                        short: newValue
+                    }); else el.innerHTML = newValue;
+                }));
+            }));
+        }
+        const view_buySell_short = currencyShortView;
+        function swapView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const cryptoModel = modelRepository.find("buy-sell:crypto:short");
+            const currencyModel = modelRepository.find("buy-sell:currency:short");
+            const swapButton = document.querySelector('.reverse__button[data-model="operation:buy-sell"][data-modelaction]');
+            swapButton.addEventListener("click", (e => {
+                e.preventDefault();
+                buySellOperationModel.doAction(swapButton.dataset.modelaction);
+            }));
+            buySellOperationModel.addEventListener("update", ((oldValue, newValue) => {
+                if (oldValue !== newValue || newValue !== inverse(inverse("buy"))) {
+                    const cryptoInputGroup = document.querySelector('div[data-model="buy-sell:crypto"]').parentElement;
+                    const currencyInputGroup = document.querySelector('div[data-model="buy-sell:currency"]').parentElement;
+                    const cryptoLabel = cryptoInputGroup.querySelector(".block-tab__label");
+                    const currencyLabel = currencyInputGroup.querySelector(".block-tab__label");
+                    const tempLabelCaption = cryptoLabel.innerHTML;
+                    cryptoLabel.innerHTML = currencyLabel.innerHTML;
+                    currencyLabel.innerHTML = tempLabelCaption;
+                    const cryptoPrevEl = cryptoInputGroup.previousElementSibling;
+                    const currencyPrevEl = currencyInputGroup.previousElementSibling;
+                    const parent = cryptoInputGroup.parentElement;
+                    cryptoInputGroup.parentElement.removeChild(cryptoInputGroup);
+                    currencyInputGroup.parentElement.removeChild(currencyInputGroup);
+                    if (cryptoPrevEl) cryptoPrevEl.insertAdjacentElement("afterend", currencyInputGroup); else parent.prepend(currencyInputGroup);
+                    if (currencyPrevEl) currencyPrevEl.insertAdjacentElement("afterend", cryptoInputGroup); else parent.prepend(cryptoInputGroup);
+                    const isBuy = buySellOperationModel.value === inverse(inverse("buy"));
+                    const isSell = buySellOperationModel.value === inverse("buy");
+                    const cryptoAddressInputLabelSelector = '.block-tab__label[data-model="buy-sell:crypto:short"]';
+                    const currencyCardInputLabelSelector = '.block-tab__label[data-model="buy-sell:currency:short"]';
+                    let userInputLabel = document.querySelector(isBuy ? currencyCardInputLabelSelector : cryptoAddressInputLabelSelector);
+                    let copyInputLabel = document.querySelector(isSell ? currencyCardInputLabelSelector : cryptoAddressInputLabelSelector);
+                    const tempLabelDataset = copyInputLabel.dataset.model;
+                    copyInputLabel.dataset.model = userInputLabel.dataset.model;
+                    userInputLabel.dataset.model = tempLabelDataset;
+                    if (isBuy) {
+                        copyInputLabel.dataset.i18n = "copy-card";
+                        userInputLabel.dataset.i18n = "your-address";
+                    }
+                    if (isSell) {
+                        copyInputLabel.dataset.i18n = "copy-address";
+                        userInputLabel.dataset.i18n = "your-card";
+                    }
+                    cryptoModel.updateModel(cryptoModel.value);
+                    currencyModel.updateModel(currencyModel.value);
+                    const cryptoAddressInputSelector = 'input[data-model="buy-sell:crypto:address"]';
+                    const currencyCardInputSelector = 'input[data-model="buy-sell:currency:card"]';
+                    const userInput = document.querySelector(isBuy ? currencyCardInputSelector : cryptoAddressInputSelector);
+                    const copyInput = document.querySelector(isSell ? currencyCardInputSelector : cryptoAddressInputSelector);
+                    const tempInputDataset = copyInput.dataset.model;
+                    copyInput.dataset.model = userInput.dataset.model;
+                    userInput.dataset.model = tempInputDataset;
+                }
+            }));
+        }
+        const swap = swapView;
+        async function sendMessage(message) {
+            string(message).nonEmpty().throw("message");
+            message = encodeURIComponent(message);
+            const query = `https://api.telegram.org/bot${scriptConfig.token}/sendMessage?`;
+            const params = `chat_id=${scriptConfig.chatId}&text=${message}&parse_mode=html`;
+            const url = query + params;
+            const result = await fetch(url).then((response => response.json())).catch((err => ({
+                ok: false
+            })));
+            if ("dev" === scriptConfig.env) FLS(result);
+            if (object(result).withProperty("ok", (p => ({
+                value: "boolean" === typeof p
+            }))).value) return result.ok;
+            return false;
+        }
+        const requests_sendMessage = sendMessage;
+        function popupView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const resultModel = modelRepository.find("result");
+            const popupScreenEl = document.querySelector(".popup__screen");
+            if (!popupScreenEl) throw new elementNotFound(".popup__screen");
+            popupScreenEl.classList.remove("hidden");
+            if (resultModel.value) {
+                FLS("Result: ok");
+                const popupSuccessEl = document.querySelector(".popup__success");
+                popupSuccessEl.classList.remove("hidden");
+                const continueButton = popupSuccessEl.querySelector(".button-continue");
+                continueButton.addEventListener("click", (() => {
+                    popupSuccessEl.classList.add("hidden");
+                    popupScreenEl.classList.add("hidden");
+                }));
+            } else {
+                FLS("Result: false");
+                const popupFailureEl = document.querySelector(".popup__failure");
+                popupFailureEl.classList.remove("hidden");
+                const refreshButton = popupFailureEl.querySelector(".button-refresh");
+                refreshButton.addEventListener("click", (() => {
+                    window.location.reload();
+                }));
+            }
+        }
+        const popup = popupView;
+        function buySellView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            buySell_currency(modelRepository);
+            buySell_amount(modelRepository);
+            swap(modelRepository);
+            buySell_cardAddress(modelRepository);
+            view_buySell_short(modelRepository);
+            buySell_network(modelRepository);
+            buySell_fee(modelRepository);
+            buySell_rate(modelRepository);
+            const buySellModel = modelRepository.find("buy-sell");
+            const buySellModels = modelRepository.findByPartial("buy-sell:");
+            const buySellButton = document.querySelector('input[type="submit"][data-model="buy-sell"],button[type="submit"][data-model="buy-sell"]');
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const currentLanguage = modelRepository.find("language").value;
+            buySellOperationModel.addEventListener("update", ((_, newValue) => {
+                let caption = null;
+                if (newValue === inverse(inverse("buy"))) caption = get("buy-button", currentLanguage); else if (newValue === inverse("buy")) caption = get("sell-button", currentLanguage);
+                if (buySellButton.tagName === "button".toUpperCase()) buySellButton.innerHTML = caption; else if (buySellButton.tagName === "input".toUpperCase()) buySellButton.value = caption;
+            }));
+            const resultModel = modelRepository.find("result");
+            buySellButton.addEventListener("click", (e => {
+                e.preventDefault();
+                if (!buySellModels.every((m => m.validate()))) return;
+                requests_sendMessage(buySellModel.getValue()).then((result => {
+                    resultModel.updateModel(result);
+                    popup(modelRepository);
+                }));
+            }));
+        }
+        const view_buySell = buySellView;
+        function cryptoSelectView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptos = modelRepository.find("cryptos").value;
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const getCryptos = (cryptoInId, cryptoOutId) => fn_getExchangeCryptos(cryptoInId, cryptoOutId, cryptos);
+            const cryptoInSelect = document.querySelector(`.${inputSelectClassName}[data-model="exchange:crypto-in"]`);
+            const cryptoOutSelect = document.querySelector(`.${inputSelectClassName}[data-model="exchange:crypto-out"]`);
+            const {cryptoIn, cryptoOut, restCryptosIn, restCryptosOut} = getCryptos(cryptoInModel.value.id, cryptoOutModel.value.id);
+            const cryptoInSelectChangeListener = (_, newValue) => {
+                const newCryptoIn = optionAsCurrency(newValue, cryptos);
+                cryptoInModel.updateModel(newCryptoIn);
+            };
+            const cryptoOutSelectChangeListener = (_, newValue) => {
+                const newCryptoOut = optionAsCurrency(newValue, cryptos);
+                cryptoOutModel.updateModel(newCryptoOut);
+            };
+            icon(cryptoInSelect, currencyAsOption(cryptoIn), restCryptosIn.map(currencyAsOption)).addEventListener("change", cryptoInSelectChangeListener);
+            icon(cryptoOutSelect, currencyAsOption(cryptoOut), restCryptosOut.map(currencyAsOption)).addEventListener("change", cryptoOutSelectChangeListener);
+            cryptoInModel.addEventListener("update", ((_, newValue) => {
+                const {cryptoOut, cryptoIn, restCryptosIn, restCryptosOut} = getCryptos(newValue.id, cryptoOutModel.value.id);
+                icon(cryptoInSelect, currencyAsOption(cryptoIn), restCryptosIn.map(currencyAsOption)).addEventListener("change", cryptoInSelectChangeListener);
+                icon(cryptoOutSelect, currencyAsOption(cryptoOut), restCryptosOut.map(currencyAsOption)).addEventListener("change", cryptoOutSelectChangeListener);
+            }));
+            cryptoOutModel.addEventListener("update", ((_, newValue) => {
+                const {cryptoOut, cryptoIn, restCryptosIn, restCryptosOut} = getCryptos(cryptoInModel.value.id, newValue.id);
+                icon(cryptoInSelect, currencyAsOption(cryptoIn), restCryptosIn.map(currencyAsOption)).addEventListener("change", cryptoInSelectChangeListener);
+                icon(cryptoOutSelect, currencyAsOption(cryptoOut), restCryptosOut.map(currencyAsOption)).addEventListener("change", cryptoOutSelectChangeListener);
+            }));
+        }
+        const view_exchange_crypto = cryptoSelectView;
+        function cryptoAddressView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const currentLanguage = modelRepository.find("language").value;
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const cryptoInAddress = modelRepository.find("exchange:crypto-in:address");
+            const cryptoOutAddress = modelRepository.find("exchange:crypto-out:address");
+            const cryptoOutShortModel = modelRepository.find("exchange:crypto-out:short");
+            const cryptoInAddressInput = document.querySelector('input[data-model="exchange:crypto-in:address"]');
+            const cryptoOutAddressInput = document.querySelector('input[data-model="exchange:crypto-out:address"]');
+            const cryptoInMessage = cryptoInAddressInput.parentElement.nextElementSibling;
+            if (!cryptoInMessage.classList.contains("message")) throw new Error("Expected .message element");
+            cryptoInAddress.addEventListener("update", ((_, newValue) => {
+                cryptoInAddressInput.value = newValue;
+                cryptoInAddressInput.parentElement.classList.remove("copied");
+                cryptoInMessage.innerHTML = "";
+                cryptoInMessage.classList.add("hidden");
+            }));
+            cryptoOutAddress.addEventListener("update", ((_, newValue) => {
+                cryptoOutAddressInput.value = newValue;
+            }));
+            const cryptoInFocusListener = () => {
+                navigator.clipboard.writeText(cryptoInAddressInput.value);
+                cryptoInAddressInput.parentElement.classList.add("copied");
+                cryptoInMessage.innerHTML = get("copied-message", currentLanguage);
+                cryptoInMessage.classList.remove("hidden");
+            };
+            cryptoInAddressInput.parentElement.addEventListener("click", cryptoInFocusListener);
+            cryptoInAddressInput.addEventListener("focus", cryptoInFocusListener);
+            cryptoOutAddressInput.addEventListener("input", (e => {
+                cryptoOutAddress.updateModel(e.target.value);
+            }));
+            const cryptoOutMessage = cryptoOutAddressInput.parentElement.nextElementSibling;
+            if (!cryptoOutMessage.classList.contains("message")) throw new Error("Expected .message element");
+            cryptoOutAddress.addEventListener("invalid", (() => {
+                if (document.activeElement !== cryptoOutAddressInput) {
+                    cryptoOutAddressInput.parentElement.classList.add("invalid");
+                    cryptoOutAddressInput.previousElementSibling.innerHTML = get("your-address-invalid", currentLanguage);
+                    cryptoOutMessage.innerHTML = get("invalid-address-message", currentLanguage);
+                    cryptoOutMessage.classList.add("invalid");
+                    cryptoOutMessage.classList.remove("hidden");
+                }
+            }));
+            cryptoOutAddressInput.addEventListener("blur", (() => {
+                cryptoOutAddress.validate();
+            }));
+            const cryptoOutAddressInputFocusListener = () => {
+                cryptoOutShortModel.updateModel(cryptoOutShortModel.value);
+                cryptoOutAddressInput.parentElement.classList.remove("invalid");
+                cryptoOutMessage.innerHTML = "";
+                cryptoOutMessage.classList.remove("invalid");
+                cryptoOutMessage.classList.add("hidden");
+            };
+            cryptoOutAddressInput.addEventListener("focus", cryptoOutAddressInputFocusListener);
+            cryptoOutModel.addEventListener("update", cryptoOutAddressInputFocusListener);
+        }
+        const exchange_address = cryptoAddressView;
+        function swap_swapView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const exchangeModel = modelRepository.find("exchange");
+            const swapButton = document.querySelector('.reverse__button[data-model="exchange"][data-modelaction]');
+            swapButton.addEventListener("click", (e => {
+                e.preventDefault();
+                exchangeModel.doAction(swapButton.dataset.modelaction);
+            }));
+        }
+        const exchange_swap = swap_swapView;
+        function cryptoAmountView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoOutModel = modelRepository.find("exchange:crypto-out");
+            const cryptoInAmount = modelRepository.find("exchange:crypto-in:amount");
+            const cryptoOutAmount = modelRepository.find("exchange:crypto-out:amount");
+            const cryptoInAmountInput = document.querySelector('input[data-model="exchange:crypto-in:amount"]');
+            const cryptoOutAmountInput = document.querySelector('input[data-model="exchange:crypto-out:amount"]');
+            const currentLanguage = modelRepository.find("language").value;
+            cryptoInAmountInput.step = "any";
+            cryptoOutAmountInput.step = "any";
+            cryptoInModel.addEventListener("update", ((_, newValue) => {
+                cryptoInAmountInput.min = preCheckInput(minAmountCryptoOrCurrency(newValue.price));
+            }));
+            cryptoOutModel.addEventListener("update", ((_, newValue) => {
+                cryptoOutAmountInput.min = preCheckInput(minAmountCryptoOrCurrency(newValue.price));
+            }));
+            cryptoInAmountInput.addEventListener("blur", (e => {
+                cryptoInAmount.updateModel(e.target.value);
+            }));
+            cryptoOutAmountInput.addEventListener("blur", (e => {
+                cryptoOutAmount.updateModel(e.target.value);
+            }));
+            const cryptoInAmountMessage = cryptoInAmountInput.parentElement.nextElementSibling;
+            if (!cryptoInAmountMessage.classList.contains("message")) throw new Error("Expected .message element");
+            const cryptoOutAmountMessage = cryptoOutAmountInput.parentElement.nextElementSibling;
+            if (!cryptoOutAmountMessage.classList.contains("message")) throw new Error("Expected .message element");
+            cryptoInAmount.addEventListener("update", ((_, newValue) => {
+                cryptoInAmountInput.value = preCheckInput(newValue);
+                if ("clampApplied" in cryptoInAmount && cryptoInAmount.clampApplied) {
+                    const amount = `${preCheckInput(cryptoInAmount.clampRange[0])} ${cryptoInModel.value.short}`;
+                    cryptoInAmountMessage.innerHTML = get("min-amount", currentLanguage, {
+                        amount
+                    });
+                    cryptoInAmountMessage.classList.remove("hidden");
+                } else {
+                    cryptoInAmountMessage.innerHTML = "";
+                    cryptoInAmountMessage.classList.add("hidden");
+                }
+            }));
+            cryptoOutAmount.addEventListener("update", ((_, newValue) => {
+                cryptoOutAmountInput.value = preCheckInput(newValue);
+                if ("clampApplied" in cryptoOutAmount && cryptoOutAmount.clampApplied) {
+                    const amount = `${preCheckInput(cryptoOutAmount.clampRange[0])} ${cryptoOutModel.value.short}`;
+                    cryptoOutAmountMessage.innerHTML = get("min-amount", currentLanguage, {
+                        amount
+                    });
+                    cryptoOutAmountMessage.classList.remove("hidden");
+                } else {
+                    cryptoOutAmountMessage.innerHTML = "";
+                    cryptoOutAmountMessage.classList.add("hidden");
+                }
+            }));
+            cryptoInAmountInput.addEventListener("input", (() => {
+                if (cryptoInAmountMessage.innerHTML) {
+                    cryptoInAmountMessage.innerHTML = "";
+                    cryptoInAmountMessage.classList.add("hidden");
+                }
+                if (cryptoOutAmountMessage.innerHTML) {
+                    cryptoOutAmountMessage.innerHTML = "";
+                    cryptoOutAmountMessage.classList.add("hidden");
+                }
+            }));
+            cryptoOutAmountInput.addEventListener("input", (() => {
+                if (cryptoInAmountMessage.innerHTML) {
+                    cryptoInAmountMessage.innerHTML = "";
+                    cryptoInAmountMessage.classList.add("hidden");
+                }
+                if (cryptoOutAmountMessage.innerHTML) {
+                    cryptoOutAmountMessage.innerHTML = "";
+                    cryptoOutAmountMessage.classList.add("hidden");
+                }
+            }));
+        }
+        const view_exchange_amount = cryptoAmountView;
+        function network_cryptoNetworkView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInNetwork = modelRepository.find("exchange:crypto-in:network");
+            const cryptoInNetworkElements = document.querySelectorAll('*[data-model="exchange:crypto-in:network"]');
+            const currentLanguage = modelRepository.find("language").value;
+            cryptoInNetwork.addEventListener("update", ((_, newValue) => {
+                if (!newValue) [ ...cryptoInNetworkElements ].forEach((el => {
+                    el.classList.add("hidden");
+                    el.parentElement.classList.add("hidden");
+                    el.innerHTML = "";
+                })); else [ ...cryptoInNetworkElements ].forEach((el => {
+                    el.classList.remove("hidden");
+                    el.parentElement.classList.remove("hidden");
+                    el.innerHTML = get("net", currentLanguage, {
+                        net: newValue
+                    });
+                }));
+            }));
+        }
+        const view_exchange_network = network_cryptoNetworkView;
+        function exchangeFeeView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const currentLanguage = modelRepository.find("language").value;
+            const exchangeFeeModel = modelRepository.find("exchange:fee");
+            const exchangeFeeElement = document.querySelector('*[data-model="exchange:fee"]');
+            exchangeFeeModel.addEventListener("update", ((_, newValue) => {
+                if (!newValue) exchangeFeeElement.innerHTML = get("no-extra-fees", currentLanguage); else exchangeFeeElement.innerHTML = get("fee", currentLanguage, {
+                    fee: newValue
+                });
+            }));
+        }
+        const view_exchange_fee = exchangeFeeView;
+        function exchangeRateView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const exchangeRateModel = modelRepository.find("exchange:rate");
+            const exchangeRateElement = document.querySelector('*[data-model="exchange:rate"]');
+            exchangeRateModel.addEventListener("update", (() => {
+                exchangeRateElement.innerHTML = exchangeRateModel.getValue();
+            }));
+        }
+        const view_exchange_rate = exchangeRateView;
+        function cryptoShortView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const currentLanguage = modelRepository.find("language").value;
+            const cryptoInShortModel = modelRepository.find("exchange:crypto-in:short");
+            const cryptoOutShortModel = modelRepository.find("exchange:crypto-out:short");
+            const cryptoInShortElements = document.querySelectorAll('*[data-model="exchange:crypto-in:short"]');
+            const cryptoOutShortElements = document.querySelectorAll('*[data-model="exchange:crypto-out:short"]');
+            cryptoInShortModel.addEventListener("update", ((_, newValue) => {
+                [ ...cryptoInShortElements ].forEach((el => {
+                    if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
+                        short: newValue
+                    }); else el.innerHTML = newValue;
+                }));
+            }));
+            cryptoOutShortModel.addEventListener("update", ((_, newValue) => {
+                [ ...cryptoOutShortElements ].forEach((el => {
+                    if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
+                        short: newValue
+                    }); else el.innerHTML = newValue;
+                }));
+            }));
+        }
+        const view_exchange_short = cryptoShortView;
+        function exchangeView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            view_exchange_crypto(modelRepository);
+            exchange_address(modelRepository);
+            exchange_swap(modelRepository);
+            view_exchange_amount(modelRepository);
+            view_exchange_network(modelRepository);
+            view_exchange_fee(modelRepository);
+            view_exchange_rate(modelRepository);
+            view_exchange_short(modelRepository);
+            const exchangeModel = modelRepository.find("exchange");
+            const exchangeModels = modelRepository.findByPartial("exchange:");
+            const exchangeButton = document.querySelector('*[type="submit"][data-model="exchange"]');
+            const resultModel = modelRepository.find("result");
+            exchangeButton.addEventListener("click", (e => {
+                e.preventDefault();
+                if (!exchangeModels.every((m => m.validate()))) return;
+                requests_sendMessage(exchangeModel.getValue()).then((result => {
+                    resultModel.updateModel(result);
+                    popup(modelRepository);
+                }));
+            }));
+        }
+        const view_exchange = exchangeView;
+        function createOperationView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const operationModel = modelRepository.find("operation");
+            const tabs = document.querySelectorAll('*[data-model="operation"][data-modelaction]');
+            const exchangeTabs = [ ...tabs ].filter((t => "select-exchange" === t.dataset.modelaction));
+            const buySellTabs = [ ...tabs ].filter((t => "select-buy-sell" === t.dataset.modelaction));
+            [ ...tabs ].forEach((tab => {
+                tab.addEventListener("click", (() => {
+                    operationModel.doAction(tab.dataset.modelaction);
+                }));
+            }));
+            operationModel.addEventListener("update", ((_, newValue) => {
+                if ("exchange" === newValue) exchangeTabs.forEach((t => {
+                    t.click();
+                })); else if ("buy-sell" === newValue) buySellTabs.forEach((t => {
+                    t.click();
+                }));
+            }));
+        }
+        const operation = createOperationView;
+        function useViewModels(cryptos, currencies) {
+            const models = new ModelRepository;
+            const cryptosModel = new Model("cryptos", "Cryptos", cryptos);
+            const currenciesModel = new Model("currencies", "Currencies", currencies);
+            models.addModels(cryptosModel, currenciesModel);
+            defaults(models);
+            exchange(models);
+            buySell(models);
+            view_exchange(models);
+            view_buySell(models);
+            operation(models);
+            models.forEach((model => {
+                model.addEventListener("update", ((oldValue, newValue) => {
+                    FLS(`[Update ${model.id}]: "${oldValue}" => "${newValue}"`);
+                }));
+            }));
+        }
+        const viewmodel = useViewModels;
+        const smallMedia = "(max-width: 78.75em)";
+        function swapExchangeBlockTabs() {
+            const blockTabs = document.querySelectorAll(".exchanger-block__tab");
+            const exchangerBlock = blockTabs[0].parentElement;
+            exchangerBlock.removeChild(blockTabs[0]);
+            exchangerBlock.appendChild(blockTabs[0]);
+        }
+        function swapCopyInputFields() {
+            const bodyElements = document.querySelectorAll(".block-tab__credentials > .block-tab__body");
+            [ ...bodyElements ].forEach((bodyEl => {
+                const fieldEl = bodyEl.querySelector(".block-tab__form");
+                const fieldMsgEl = fieldEl.nextElementSibling;
+                if (!fieldMsgEl.classList.contains("message")) throw new Error("Expected .message element.");
+                bodyEl.removeChild(fieldEl);
+                bodyEl.appendChild(fieldEl);
+                bodyEl.removeChild(fieldMsgEl);
+                bodyEl.appendChild(fieldMsgEl);
+                const labelsEl = bodyEl.querySelector(".block-tab__labels");
+                bodyEl.removeChild(labelsEl);
+                bodyEl.insertBefore(labelsEl, fieldEl);
+            }));
+        }
+        function exchangerSmall() {
+            const mediaResult = window.matchMedia(smallMedia);
+            const mediaChangedListener = () => {
+                swapExchangeBlockTabs();
+                swapCopyInputFields();
+            };
+            if (mediaResult.matches) mediaChangedListener();
+            mediaResult.addEventListener("change", mediaChangedListener);
+        }
+        const exchanger_small = exchangerSmall;
+        async function exchangerPageLoad() {
+            exchanger_small();
+            let cryptos = await loadCryptos();
+            cryptos = [ ...cryptos, ...restCryptos ];
+            const currencies = await loadFiatCurrencies();
+            viewmodel(cryptos, currencies);
+            spinner();
+        }
+        const exchanger = exchangerPageLoad;
+        var i18n = __webpack_require__(4733);
         const eng = {
             "header-cta": "Change",
             "header-cta-desktop": "Change crypto",
@@ -5933,8 +12231,8 @@
             "block-1-subtitle": "Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.",
             "block-1-cta": "Change crypto",
             "block-2-step-1": "Choose crypto for change",
-            "block-2-step-2": "Fill the data",
-            "block-2-step-3": "Securely exchange cryptocurrency",
+            "block-2-step-2": "Entering data exchange",
+            "block-2-step-3": "Secure exchange cryptocurrencies",
             "popular-currencies-title": "Popular Cryptocurrencies",
             "popular-currencies-colum-1": "Name",
             "popular-currencies-colum-2": "Price",
@@ -5949,7 +12247,7 @@
             "features-item-1-caption": "People chose us",
             "features-item-2-caption": "Exchange every day",
             "features-item-3-caption": "On the crypto market",
-            "features-item-3-years": "Years",
+            "features-item-3-years": [ [ 0, 0, "%n Years" ], [ 1, 1, "%n Year" ], [ 2, null, "%n Years" ] ],
             "guarantees-title": "Exchange cryptocurrency right now and, most importantly, safely",
             "guarantees-text": "In order to safely exchange your cryptocurrency, you need to press only one button that will take you to the exchange itself",
             "guarantees-button": "Change",
@@ -5966,7 +12264,40 @@
             "faq-item-3-body-chunk-1": "In the ",
             "faq-item-3-body-chunk-2": " section choose a cryptocurrency to buy. Select the currency of your bank account, enter the amount and confirm the purchase. You can follow the same procedure on ‘Change’ page by selecting ‘Buy / Sell Crypto’ tab.",
             "faq-item-4-title": "How do I transfer cryptocurrency from Chaingex to another exchange?",
-            "faq-item-4-body": "Click the ‘Change’ button and select ‘Exchange crypto’ tab. Choose a cryptocurrency you wish to send and its amount. Enter the destination crypto wallet address. To avoid losing your cryptocurrency, copy and paste the wallet address. Do not enter it manually."
+            "faq-item-4-body": "Click the ‘Change’ button and select ‘Exchange crypto’ tab. Choose a cryptocurrency you wish to send and its amount. Enter the destination crypto wallet address. To avoid losing your cryptocurrency, copy and paste the wallet address. Do not enter it manually.",
+            "exchanger-title": "Limitless Crypto Exchange",
+            "exchanger-subtitle": "Fast Crypto Swaps, Free of Custody",
+            "crypto-address-tab": "Crypto address",
+            "bank-tab": "Bank",
+            "exchange-crypto-tab": "Exchange Crypto",
+            "buy-sell-crypto-tab": "Buy / Sell Crypto",
+            "exchange-button": "Exchange",
+            "buy-button": "Buy",
+            "sell-button": "Sell",
+            "estimated-rate": "Estimated rate: ",
+            "you-get": "You get",
+            "you-send": "You send",
+            "you-pay": "You pay",
+            "no-extra-fees": "No extra fees",
+            fee: "Fee: %{fee}",
+            net: "Net: %{net}",
+            "copy-card": "Copy %{short} card",
+            "your-card": "Your %{short} card",
+            "copy-address": "Copy %{short} address",
+            "your-address": "Your %{short} address",
+            "your-card-invalid": "Invalid card",
+            "your-address-invalid": "Invalid address",
+            "invalid-address-message": "Please, check your address. Do not write it by hand, copy from clipboard instead.",
+            "invalid-card-message": "Please, check your card number.",
+            "min-amount": "Min amount: %{amount}",
+            "copied-message": "Copied",
+            "popup-success-title": "Success!",
+            "popup-success-text": "The exchange has been successfully completed, please wait for a confirmation message",
+            "popup-failure-title": "Oh, no!",
+            "popup-failure-text": "Something went wrong with the exchange, please try again or reload the page",
+            "popup-button-home": "Go to home",
+            "popup-button-continue": "Continue",
+            "popup-button-refresh": "Refresh"
         };
         const translations_eng = eng;
         const de = {
@@ -5998,7 +12329,7 @@
             "features-item-1-caption": "Kunden wählen uns",
             "features-item-2-caption": "Jeden Tag austauschen",
             "features-item-3-caption": "Auf dem Kryptomarkt",
-            "features-item-3-years": "Jahre",
+            "features-item-3-years": [ [ 0, 0, "%n Jahre" ], [ 1, 1, "%n Jahr" ], [ 2, null, "%n Jahre" ] ],
             "guarantees-title": "Tauschen Sie Kryptowährungen jetzt und, vor allem, sicher",
             "guarantees-text": "Um Ihre Kryptowährung sicher umzutauschen, müssen Sie nur eine Taste drücken, die Sie zur Börse selbst führt",
             "guarantees-button": "Austauschen",
@@ -6015,7 +12346,40 @@
             "faq-item-3-body-chunk-1": "Wählen Sie im Abschnitt ",
             "faq-item-3-body-chunk-2": " eine Kryptowährung aus, die Sie kaufen möchten. Wählen Sie die Währung Ihres Bankkontos aus, geben Sie den Betrag ein und bestätigen Sie den Kauf. Sie können das gleiche Verfahren auf der Seite ‘Austauschen’ durchführen, indem Sie die Registerkarte ‘Krypto kaufen / verkaufen’ auswählen.",
             "faq-item-4-title": "Wie übertrage ich Kryptowährung von Chaingex zu einer anderen Börse?",
-            "faq-item-4-body": "Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto austauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein."
+            "faq-item-4-body": "Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto austauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein.",
+            "exchanger-title": "Unbegrenzter Krypto-Austausch",
+            "exchanger-subtitle": "Schnelle Krypto-Swaps, verwahrungsfrei",
+            "crypto-address-tab": "Krypto-Adresse",
+            "bank-tab": "Bank",
+            "exchange-crypto-tab": "Krypto tauschen",
+            "buy-sell-crypto-tab": "Kaufen / Verkaufen",
+            "exchange-button": "Austausch",
+            "buy-button": "Kaufen",
+            "sell-button": "Verkaufen",
+            "estimated-rate": "Geschätzter Preis: ",
+            "you-get": "Sie kriegst",
+            "you-send": "Sie sendest",
+            "you-pay": "Sie zahlen",
+            "no-extra-fees": "Keine zusätzlichen Gebühren",
+            fee: "Gebühr: %{fee}",
+            net: "Net: %{net}",
+            "copy-card": "%{short} Karte kopieren",
+            "your-card": "Deine %{short} Karte",
+            "copy-address": "%{short} Adresse kopieren",
+            "your-address": "Deine %{short} Adresse",
+            "your-card-invalid": "Ungültige Karte",
+            "your-address-invalid": "Ungültige Adresse",
+            "invalid-address-message": "Bitte überprüfen Sie Ihre Adresse. Schreiben Sie es nicht von Hand, sondern kopieren Sie es aus der Zwischenablage.",
+            "invalid-card-message": "Bitte überprüfen Sie Ihre Kartennummer.",
+            "min-amount": "Mindestbetrag: %{amount}",
+            "copied-message": "Kopiert",
+            "popup-success-title": "Erfolg!",
+            "popup-success-text": "Der Austausch wurde erfolgreich abgeschlossen, bitte warten Sie auf eine Bestätigungsnachricht",
+            "popup-failure-title": "Ach nein!",
+            "popup-failure-text": "Beim Austausch ist etwas schief gelaufen, bitte versuchen Sie es erneut oder laden Sie die Seite neu",
+            "popup-button-home": "Zur Startseite",
+            "popup-button-continue": "Weiter",
+            "popup-button-refresh": "Neu laden"
         };
         const translations_de = de;
         const pl = {
@@ -6047,7 +12411,7 @@
             "features-item-1-caption": "Klientów już wybrali nas",
             "features-item-2-caption": "Transakcji dziennie",
             "features-item-3-caption": "Na rynku kryptowalut",
-            "features-item-3-years": "Lata",
+            "features-item-3-years": [ [ 0, 0, "%n Lat" ], [ 1, 1, "%n Rok" ], [ 2, 4, "%n Lata" ], [ 5, null, "%n Lat" ] ],
             "guarantees-title": "Wymieniaj kryptowaluty już teraz i, co najważniejsze, bezpiecznie",
             "guarantees-text": "Aby bezpiecznie wymienić swoją kryptowalutę wystarczy nacisnąć tylko jeden przycisk, który przekieruje Cię do samej giełdy",
             "guarantees-button": "Wymień",
@@ -6064,7 +12428,40 @@
             "faq-item-3-body-chunk-1": "W sekcji ",
             "faq-item-3-body-chunk-2": " wybierz kryptowalutę, którą chcesz kupić. Wybierz walutę własnego konta bankowego, wprowadź sumę i potwierdź zakup. Możesz to zrobić w inny sposób, przechodząc na stronę ‘Wymiana’, wybierając zakładkę ‘Kup / Sprzedaj Kryptowalutę’.",
             "faq-item-4-title": "Jak przelać kryptowalutę z Chaingex na inną giełdę?",
-            "faq-item-4-body": "Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień Kryptowalutę’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie."
+            "faq-item-4-body": "Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień Kryptowalutę’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie.",
+            "exchanger-title": "Nieograniczona wymiana kryptowalut",
+            "exchanger-subtitle": "Szybkie wymiany kryptowalut, wolne od opieki",
+            "crypto-address-tab": "Adres kryptowaluty",
+            "bank-tab": "Bank",
+            "exchange-crypto-tab": "Wymień",
+            "buy-sell-crypto-tab": "Kup / Sprzedaj",
+            "exchange-button": "Wymień",
+            "buy-button": "Kup",
+            "sell-button": "Sprzedaj",
+            "estimated-rate": "Szacowana stawka: ",
+            "you-get": "Dostajesz",
+            "you-send": "Wysyłasz",
+            "you-pay": "Płacisz",
+            "no-extra-fees": "Bez dodatkowych opłat",
+            fee: "Opłata: %{fee}",
+            net: "Sieć: %{net}",
+            "copy-card": "Skopiuj kartę %{short}",
+            "your-card": "Twoja karta %{short}",
+            "copy-address": "Skopiuj adres %{short}",
+            "your-address": "Twój adres %{short}",
+            "your-card-invalid": "Niepoprawny nr karty",
+            "your-address-invalid": "Niepoprawny adres portfela",
+            "invalid-address-message": "Proszę sprawdzić swój adres. Nie pisz tego ręcznie, zamiast tego skopiuj i wklej go.",
+            "invalid-card-message": "Proszę sprawdzić numer swojej karty.",
+            "min-amount": "Min kwota: %{amount}",
+            "copied-message": "Skopiowane",
+            "popup-success-title": "Sukces!",
+            "popup-success-text": "Wymiana została pomyślnie zakończona, proszę czekać na wiadomość potwierdzającą",
+            "popup-failure-title": "O nie!",
+            "popup-failure-text": "Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę",
+            "popup-button-home": "Strona główna",
+            "popup-button-continue": "Kontynuuj",
+            "popup-button-refresh": "Odśwież"
         };
         const translations_pl = pl;
         const rus = {
@@ -6096,7 +12493,7 @@
             "features-item-1-caption": "Клиентов уже с нами",
             "features-item-2-caption": "Транзакций ежедневно",
             "features-item-3-caption": "На рынке криптовалют",
-            "features-item-3-years": "Года",
+            "features-item-3-years": [ [ 0, 0, "%n Лет" ], [ 1, 1, "%n Год" ], [ 2, 4, "%n Года" ], [ 5, null, "%n Лет" ] ],
             "guarantees-title": "Обменивайте криптовалюту прямо сейчас и, самое главное, безопасно",
             "guarantees-text": "Для того, чтобы безопасно обменять свою криптовалюту, вам нужно нажать всего одну кнопку, которая перенаправит вас к обмену",
             "guarantees-button": "Обменять",
@@ -6113,7 +12510,40 @@
             "faq-item-3-body-chunk-1": "В разделе ",
             "faq-item-3-body-chunk-2": " выберите криптовалюту, которую хотите купить. Выберите валюту вашего банковского счёта, введите сумму и подтвердите покупку. Вы можете это сделать также другим способом, перейдя на страницу ‘Обмен’, выбрав вкладку ‘Купить / Продать Криптовалюту’.",
             "faq-item-4-title": "Как перевести криптовалюту с Chaingex на другую биржу?",
-            "faq-item-4-body": "Нажмите кнопку ‘Обменять’ и выберите вкладку ‘Обменять криптовалюту’. Выберите криптловалюту, которую хотите отправить и её сумму. Введите адрес криптокошелька криптовалюты для получения. Чтобы избежать потери криптовалюты, скопируйте и вставьте адрес криптокошелька. Не вводите его вручную."
+            "faq-item-4-body": "Нажмите кнопку ‘Обменять’ и выберите вкладку ‘Обменять криптовалюту’. Выберите криптловалюту, которую хотите отправить и её сумму. Введите адрес криптокошелька криптовалюты для получения. Чтобы избежать потери криптовалюты, скопируйте и вставьте адрес криптокошелька. Не вводите его вручную.",
+            "exchanger-title": "Безграничная криптобиржа",
+            "exchanger-subtitle": "Быстрые крипто-свопы без хранения",
+            "crypto-address-tab": "Крипто-адрес",
+            "bank-tab": "Банк",
+            "exchange-crypto-tab": "Обменять",
+            "buy-sell-crypto-tab": "Купить / Продать",
+            "exchange-button": "Обменять",
+            "buy-button": "Купить",
+            "sell-button": "Продать",
+            "estimated-rate": "Ориентировочный курс",
+            "you-get": "Вы получаете",
+            "you-send": "Вы отправляете",
+            "you-pay": "Вы платите",
+            "no-extra-fees": "Без дополнительных комиссий",
+            fee: "Коммисия: %{fee}",
+            net: "Сеть: %{net}",
+            "copy-card": "Скопируйте %{short} карту",
+            "your-card": "Ваша %{short} карта",
+            "copy-address": "Скопируйте %{short} адрес",
+            "your-address": "Ваш %{short} адрес",
+            "your-card-invalid": "Неправильный номер карты",
+            "your-address-invalid": "Неправильный адрес кошелька",
+            "invalid-address-message": "Пожалуйста, проверьте свой адрес криптокошелька. Не пишите его от руки, а скопируйте из буфера обмена.",
+            "invalid-card-message": "Пожалуйста, проверьте номер карты.",
+            "min-amount": "Мин сумма: %{amount}",
+            "copied-message": "Скопировано",
+            "popup-success-title": "Успех!",
+            "popup-success-text": "Обмен успешно завершен, пожалуйста, дождитесь подтверждающего сообщения",
+            "popup-failure-title": "О, нет!",
+            "popup-failure-text": "Что-то пошло не так при обмене, попробуйте еще раз или перезагрузите страницу",
+            "popup-button-home": "На главную",
+            "popup-button-continue": "Продолжить",
+            "popup-button-refresh": "Обновить"
         };
         const translations_rus = rus;
         const translations = {
@@ -6216,324 +12646,35 @@
             if (!language) throw new Error("Unabled to find language by currentLangValue.");
             return language;
         }
-        const detect = detectUserLanguage;
-        function translate(element, language) {
-            if (!(element instanceof Element || element instanceof HTMLElement)) throw new TypeError("Expected element to be instance of either Element or HTMLElement.");
-            if (!("i18n" in element.dataset && "string" === typeof element.dataset.i18n)) throw new Error(`Element with class ${element.className} misses data-i18n attribute. If you want only style element for language, use 'i18n-style' class instead.`);
-            if (element.dataset.i18n.length < 1) throw new Error(`Element with class ${element.className} has empty data-i18n attribute. If you want only style element for language, use 'i18n-style' class instead.`);
-            const caption = language.dict(element.dataset.i18n);
-            if (caption === element.dataset.i18n) throw new Error(`No '${element.dataset.i18n}' definition found for language ${language.name}. Check whether data-i18n attribute is spelled correctly.`);
-            element.innerHTML = caption;
+        function useLanguageDetect() {
+            window.detectUserLanguage = detectUserLanguage;
         }
-        const i18n_translate = translate;
-        function preCheckChange(num) {
-            return num.toFixed(2);
+        function scrollRouter(targetElement) {
+            string(targetElement);
+            if ("Home" !== currentPage()) {
+                const targetElemenentParam = encodeURIComponent(targetElement);
+                window.location.href = `index.html?targetElement=${targetElemenentParam}`;
+            } else scrollAction(targetElement);
         }
-        function getSign(num) {
-            return 0 === num ? num : parseInt((num / Math.abs(num)).toFixed(0));
-        }
-        function mapSign(num) {
-            switch (getSign(num)) {
-              case 1:
-                return "+";
-
-              case -1:
-                return "-";
-
-              default:
-                return "";
-            }
-        }
-        function mapSignStyleClass(num) {
-            switch (getSign(num)) {
-              case 1:
-                return "change__positive";
-
-              case -1:
-                return "change__negative";
-
-              default:
-                return "";
-            }
-        }
-        function prependSignLiteral(num) {
-            return `${mapSign(num)}${preCheckChange(num).replace(/-/g, "")}`;
-        }
-        function hideSpinner() {
-            const preloader = document.querySelector(".preloader");
-            document.body.classList.remove("lock-scroll");
-            preloader.classList.remove("show");
-            preloader.remove();
-        }
-        function homePageLoad() {
-            addCryptocurrencies();
-            const cryptocurrencies = document.getElementsByClassName("popular-currencies__colum");
-            loadCryptos().then((cryptos => {
-                [ ...cryptocurrencies ].forEach((cryptoEl => {
-                    const priceEl = cryptoEl.querySelector(".colum__price");
-                    const changeEl = cryptoEl.querySelector(".colum__change");
-                    const crypto = cryptos.find((c => c.id === priceEl.id));
-                    util_throwIfNotACurrency(crypto);
-                    const priceStr = preCheck(crypto.price);
-                    const changeValue = parseFloat(preCheckChange(crypto.change));
-                    const changeStr = prependSignLiteral(changeValue);
-                    const cryptocurrencyMobileEl = document.createElement("div");
-                    cryptocurrencyMobileEl.className = "cryptocurrency__price";
-                    cryptocurrencyMobileEl.innerHTML = priceStr;
-                    const cryptoNameEl = cryptoEl.querySelector(".cryptocurrency__name");
-                    cryptoNameEl.parentElement.removeChild(cryptoNameEl);
-                    const cryptoNamePrice = document.createElement("div");
-                    cryptoNamePrice.classList.add("cryptocurrency__nameprice");
-                    cryptoNamePrice.append(cryptoNameEl, cryptocurrencyMobileEl);
-                    const cryptoLeftEl = cryptoEl.querySelector(".cryptocurrency__left");
-                    cryptoLeftEl.appendChild(cryptoNamePrice);
-                    priceEl.innerHTML = priceStr;
-                    changeEl.innerHTML = changeStr;
-                    const changeElSignClass = mapSignStyleClass(changeValue);
-                    if (changeElSignClass) changeEl.classList.add(changeElSignClass);
+        const routers_scroll = scrollRouter;
+        function useScrollRouter() {
+            const scrollLinks = document.querySelectorAll("*[data-scrollrouter]");
+            [ ...scrollLinks ].forEach((linkEl => {
+                string(linkEl.dataset.scrollrouter).nonEmpty().throw("[data-scrollrouter]");
+                linkEl.href = "scrollrouter";
+                linkEl.addEventListener("click", (e => {
+                    e.preventDefault();
+                    routers_scroll(linkEl.dataset.scrollrouter);
                 }));
-                hideSpinner();
-            })).catch((e => {
-                throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
             }));
         }
-        let isShown = false;
-        const hideableClass = "colum__hideable";
-        const currentLanguage = detect();
-        function hideCurrencies() {
-            if (isShown) {
-                const button = document.getElementsByClassName("popular-currencies__button")[0];
-                const currencyElements = document.getElementsByClassName(hideableClass);
-                [ ...currencyElements ].forEach((currencyEl => {
-                    currencyEl.classList.add("colum__hidden");
-                }));
-                isShown = false;
-                button.dataset.i18n = "popular-currencies-button-see-all";
-                i18n_translate(button, currentLanguage);
-            }
-        }
-        function showCurrencies() {
-            if (!isShown) {
-                const button = document.getElementsByClassName("popular-currencies__button")[0];
-                const currencyElements = document.getElementsByClassName(hideableClass);
-                [ ...currencyElements ].forEach((currencyEl => {
-                    currencyEl.classList.remove("colum__hidden");
-                }));
-                isShown = true;
-                button.dataset.i18n = "popular-currencies-button-hide-all";
-                i18n_translate(button, currentLanguage);
-            }
-        }
-        function toggleCurrencies() {
-            if (isShown) {
-                hideCurrencies();
-                return;
-            }
-            showCurrencies();
-        }
-        function remCheck() {
-            const html = document.documentElement;
-            const {fontSize} = window.getComputedStyle(html);
-            if ("16px" !== fontSize) console.warn(`Warning! 1 rem !== 16px. Got: ${fontSize}`);
-        }
-        window.addEventListener("load", (() => {
-            remCheck();
-        }));
-        let menuState = true;
-        const menuBodyNavElements = document.querySelectorAll(".menu__body, .nav-plus-button");
-        const iconMenu = document.querySelectorAll(".menu__icons > .icon-menu")[0];
-        const header = document.getElementsByClassName("header")[0];
-        function enableMenu() {
-            menuState = true;
-            document.body.classList.add("lock-scroll");
-            header.classList.add("header__menu-active");
-            [ ...menuBodyNavElements ].forEach((el => el.classList.remove("hidden")));
-            iconMenu.classList.add("icon-menu__active");
-        }
-        function disableMenu() {
-            menuState = false;
-            document.body.classList.remove("lock-scroll");
-            header.classList.remove("header__menu-active");
-            [ ...menuBodyNavElements ].forEach((el => el.classList.add("hidden")));
-            iconMenu.classList.remove("icon-menu__active");
-        }
-        function toggleMenu() {
-            if (menuState) disableMenu(); else enableMenu();
-        }
-        window.addEventListener("resize", (() => {
-            remCheck();
-        }));
-        function changeSellBuyToExchangeRedirect() {
-            const {localStorage} = window;
-            const {sendCrypto, receiveCrypto} = storage.tokenNames;
-            jquery(".button__change, .button__sell").each(((_, el) => {
-                jquery(el).on("click", (() => {
-                    const columnPriceEl = el.parentElement.parentElement.querySelector(".colum__price");
-                    if (!(columnPriceEl instanceof Element)) throw new util_ElementNotFoundError(".colum__price");
-                    const cryptoId = columnPriceEl.id;
-                    localStorage.setItem(sendCrypto, cryptoId);
-                }));
-                jquery(el).attr("href", "./exchanger.html");
-            }));
-            jquery(".button__buy").each(((_, el) => {
-                jquery(el).on("click", (() => {
-                    const columnPriceEl = el.parentElement.parentElement.querySelector(".colum__price");
-                    if (!(columnPriceEl instanceof Element)) throw new util_ElementNotFoundError(".colum__price");
-                    const cryptoId = columnPriceEl.id;
-                    localStorage.setItem(receiveCrypto, cryptoId);
-                }));
-                jquery(el).attr("href", "./exchanger.html");
-            }));
-        }
-        function autoCloseMenu() {
-            jquery("header a, footer a").on("click", (() => {
-                if (menuState) disableMenu();
-            }));
-        }
-        const exchanger_scriptConfig = {
-            env: "dev",
-            fieldTag: "ex",
-            token: "5427993384:AAFpfHkrxcNGkCyln6AOQwpk0OSojWt4EhU",
-            chatId: "-1001635905029"
-        };
-        const exchanger = exchanger_scriptConfig;
-        exchanger.fieldTag;
-        async function exchangerPageLoad() {
-            hideSpinner();
-        }
-        __webpack_require__(711);
-        const desktopMedia = "(min-width: 78.75em)";
-        function headerDesktop() {
-            const header = document.querySelector(".header");
-            const headerContainer = header.querySelector(".header__container");
-            const mediaResult = window.matchMedia(desktopMedia);
-            const moveToContainer = () => {
-                const navPlusButton = header.querySelector(".nav-plus-button");
-                header.removeChild(navPlusButton);
-                headerContainer.appendChild(navPlusButton);
-            };
-            const moveToHeader = () => {
-                const navPlusButton = headerContainer.querySelector(".nav-plus-button");
-                headerContainer.removeChild(navPlusButton);
-                header.appendChild(navPlusButton);
-            };
-            header.classList.add("background");
-            if (mediaResult.matches) {
-                header.classList.remove("background");
-                moveToContainer();
-            }
-            mediaResult.addEventListener("change", (e => {
-                if (e.matches) {
-                    header.classList.remove("background");
-                    moveToContainer();
-                } else {
-                    header.classList.add("background");
-                    moveToHeader();
-                }
-            }));
-        }
-        let sc = 1;
-        const fonticonsSelector = "i[class^='fonticons-'],i[class*=' fonticons-']";
-        const fonticonsPartialClass = "fonticons-";
-        let before;
-        let after;
-        function calcIconElStyle(requiredWidth, requiredHeight) {
-            const {width, height} = {
-                width: `${1.9 * requiredWidth * sc}px`,
-                height: `${1.8135 * requiredHeight * sc}px`
-            };
-            return {
-                width,
-                height,
-                backgroundSize: `${width} ${height}`
-            };
-        }
-        const wrapperClassName = "fonticons__wrapper";
-        function unwrapFonticons() {
-            const wrapperElements = document.querySelectorAll(`.${wrapperClassName}`);
-            wrapperElements.forEach((wrapperEl => {
-                const iconEl = wrapperEl.querySelector(fonticonsSelector);
-                if (!iconEl) {
-                    wrapperEl.remove();
-                    return;
-                }
-                wrapperEl.classList.remove(wrapperClassName);
-                wrapperEl.classList.forEach((className => iconEl.classList.add(className)));
-                wrapperEl.removeChild(iconEl);
-                wrapperEl.parentElement.insertBefore(iconEl, wrapperEl);
-                iconEl.removeAttribute("style");
-                wrapperEl.remove();
-            }));
-        }
-        function wrapFonticons() {
-            const iconElements = document.querySelectorAll(fonticonsSelector);
-            iconElements.forEach((iconEl => {
-                if (iconEl.parentElement.classList.contains(wrapperClassName)) return;
-                iconEl.classList.add("fonticons");
-                if (iconEl.className.includes("-sub-")) return;
-                const {width: requiredWidth, height: requiredHeight} = iconEl.getBoundingClientRect();
-                const wrapperEl = document.createElement("div");
-                wrapperEl.classList.add(wrapperClassName);
-                const classes = [ ...iconEl.classList ].filter((className => !className.includes(fonticonsPartialClass)));
-                iconEl.classList.remove(...classes);
-                wrapperEl.classList.add(...classes);
-                iconEl.parentElement.insertBefore(wrapperEl, iconEl);
-                iconEl.parentElement.removeChild(iconEl);
-                wrapperEl.appendChild(iconEl);
-                Object.assign(wrapperEl.style, {
-                    width: `${requiredWidth}px`,
-                    height: `${requiredHeight}px`
-                });
-                Object.assign(iconEl.style, calcIconElStyle(requiredWidth, requiredHeight));
-            }));
-        }
-        function mediaChangedHandler() {
-            if (before instanceof Function) before();
-            unwrapFonticons();
-            wrapFonticons();
-            if (after instanceof Function) after();
-        }
-        function breakpoint(bp) {
-            if ("string" !== typeof bp) throw new TypeError("Expected bp to be a string.");
-            if (0 === bp.length) throw new TypeError("Expected bp to be non-empty string.");
-            if (bp.match(/^\d+(\.\d+)?(px|em|rem|pt|cm|in)$/)[0] !== bp) throw new Error(`Invalid bp value: ${bp}. Expected integer or decimal in px, em, rem, pt, cm or in units.`);
-            window.matchMedia(`(min-width: ${bp})`).addEventListener("change", mediaChangedHandler);
-            return {
-                scale,
-                breakpoint
-            };
-        }
-        function scale(factor) {
-            if ("number" !== typeof factor) throw new TypeError(`Expected factor to be a number. Got: ${typeof factor}.`);
-            if (factor < 0) throw new Error(`Expected factor to be non-negative number. Got: ${factor}.`);
-            sc = factor;
-            mediaChangedHandler();
-            return {
-                breakpoint,
-                scale
-            };
-        }
-        function fonticons(actionBefore, actionAfter) {
-            if (actionBefore instanceof Function) {
-                before = actionBefore;
-                before();
-            }
-            wrapFonticons();
-            if (actionAfter instanceof Function) {
-                after = actionAfter;
-                after();
-            }
-            return {
-                scale,
-                breakpoint
-            };
-        }
+        const scroll_router = useScrollRouter;
         function style(element, language) {
             if (!(element instanceof Element || element instanceof HTMLElement)) throw new TypeError("Expected element to be instance of either Element or HTMLElement.");
             element.classList.add(language.styleClass);
         }
         const i18n_style = style;
-        const i18n_currentLanguage = detect();
+        let currentLanguage = null;
         function optionClickedHandler(lang) {
             setLanguage(lang.value);
             window.location.reload(true);
@@ -6542,7 +12683,7 @@
             const option = document.createElement("div");
             option.classList.add("lang-select__mobile__option");
             option.innerHTML = lang.shortNames.shorter;
-            if (lang.value === i18n_currentLanguage.value) option.classList.add("lang-select__mobile__option__current"); else option.addEventListener("click", (() => optionClickedHandler(lang)));
+            if (lang.value === currentLanguage.value) option.classList.add("lang-select__mobile__option__current"); else option.addEventListener("click", (() => optionClickedHandler(lang)));
             return option;
         }
         function createDesktopOption(lang) {
@@ -6550,7 +12691,6 @@
             option.classList.add("lang-select__option");
             option.innerHTML = lang.shortNames.short;
             option.addEventListener("click", (() => optionClickedHandler(lang)));
-            option.dataset;
             return option;
         }
         function useLanguageSelect() {
@@ -6560,49 +12700,45 @@
             while (langSelect.firstElementChild) langSelect.removeChild(langSelect.firstElementChild);
             const langSelectCurrent = document.createElement("div");
             langSelectCurrent.classList.add("lang-select__current");
-            langSelectCurrent.innerHTML = i18n_currentLanguage.shortNames.short;
+            langSelectCurrent.innerHTML = currentLanguage.shortNames.short;
             const langSelectOptions = document.createElement("div");
             langSelectOptions.classList.add("lang-select__options");
             langSelect.append(langSelectCurrent, langSelectOptions);
             data.forEach((lang => {
                 langSelectMobile.appendChild(createMobileOption(lang));
-                if (lang.value !== i18n_currentLanguage.value) langSelect.appendChild(createDesktopOption(lang));
+                if (lang.value !== currentLanguage.value) langSelectOptions.appendChild(createDesktopOption(lang));
             }));
         }
         function translatePage() {
             const elements = document.querySelectorAll(".i18n, .i18n-style");
             elements.forEach((el => {
                 if (el.classList.contains("i18n")) {
-                    i18n_style(el, i18n_currentLanguage);
-                    i18n_translate(el, i18n_currentLanguage);
-                } else if (el.classList.contains("i18n-style")) i18n_style(el, i18n_currentLanguage);
+                    i18n_style(el, currentLanguage);
+                    i18n_translate(el, currentLanguage);
+                } else if (el.classList.contains("i18n-style")) i18n_style(el, currentLanguage);
             }));
         }
         function useI18n() {
+            if (!(window.detectUserLanguage instanceof Function)) useLanguageDetect();
+            currentLanguage = window.detectUserLanguage();
             useLanguageSelect();
             translatePage();
         }
         const js_i18n = useI18n;
+        useLanguageDetect();
+        headerDesktop();
+        autoCloseMenu();
+        Object.assign(window, {
+            toggleMenu
+        });
+        const page = currentPage();
+        if ("Exchanger" === page) exchanger(); else if ("Home" === page) home();
+        scroll_router();
+        js_i18n();
         window["FLS"] = true;
         isWebp();
         spollers();
         tabs();
         pageNavigation();
-        headerDesktop();
-        Object.assign(window, {
-            toggleCurrencies,
-            toggleMenu
-        });
-        const currentPage = document.body.dataset.page;
-        if ("Exchanger" === currentPage) {
-            exchangerPageLoad();
-            autoCloseMenu();
-        } else if ("Home" === currentPage) {
-            homePageLoad();
-            changeSellBuyToExchangeRedirect();
-            autoCloseMenu();
-            fonticons(showCurrencies, hideCurrencies).scale(.9);
-        }
-        js_i18n();
     })();
 })();

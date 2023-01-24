@@ -41,17 +41,17 @@
 	<!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230117213534" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230124004842" rel="stylesheet">
     -->
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230117213534">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230124004842">
 </head>
 
 <body class="i18n-style" data-page="Exchanger">
 	<header class="header">
 		<div class="header__container">
-			<a href="index.html" class="header__logo"><img src="img/logo.svg" alt="Change crypto coin"></a>
+			<a data-scrollrouter=".header" class="header__logo"><img src="img/logo.svg" alt="Chaingex"></a>
 			<div class="button-plus-burger">
 				<a href="exchanger.html" class="button header__cta i18n" data-i18n="header-cta">Change</a>
 				<div class="menu__icons">
@@ -76,19 +76,19 @@
 						</div>
 					</li>
 					<li class="menu__item">
-						<a class="menu__link i18n" href="index.html" data-i18n="nav-home">Home</a>
+						<a class="menu__link i18n" data-scrollrouter=".header" data-i18n="nav-home">Home</a>
 					</li>
 					<li class="menu__item">
-						<a data-goto=".page__popular-currencies" class="menu__link i18n" href="#" data-i18n="nav-exchange-rate">Exchange rate</a>
+						<a class="menu__link i18n" data-scrollrouter="#section-currencies" data-i18n="nav-exchange-rate">Exchange rate</a>
 					</li>
 					<li class="menu__item">
-						<a data-goto=".features" class="menu__link i18n" href="#" data-i18n="nav-features">Features</a>
+						<a class="menu__link i18n" data-scrollrouter="#section-features" data-i18n="nav-features">Features</a>
 					</li>
 					<li class="menu__item">
-						<a data-goto=".guarantees" class="menu__link i18n" href="#" data-i18n="nav-guarantees">Guarantees</a>
+						<a class="menu__link i18n" data-scrollrouter="#section-guarantees" data-i18n="nav-guarantees">Guarantees</a>
 					</li>
 					<li class="menu__item">
-						<a data-goto=".faq" class="menu__link i18n" href="#" data-i18n="nav-faq">FAQ</a>
+						<a class="menu__link i18n" data-scrollrouter="#section-faq" data-i18n="nav-faq">FAQ</a>
 					</li>
 					<li class="menu__item hidden__mobile">
 						<div class="lang-select menu__lang-select">
@@ -122,13 +122,13 @@
 		<div class="exchanger__container">
 			<div class="exchanger__content">
 				<div class="exchanger__link">
-					<a href="index.html">Home</a> | <a href="#">Change</a>
+					<a class="i18n" data-scrollrouter=".header" data-i18n="nav-home">Home</a> | <a class="i18n" href="#" data-i18n="header-cta">Change</a>
 				</div>
 				<div class="exchanger__block-text block-text">
-					<h2 class="block-text__title title">
+					<h2 class="block-text__title title i18n" data-i18n="exchanger-title">
 						Limitless Crypto Exchange
 					</h2>
-					<div class="block-text__text text">
+					<div class="block-text__text text i18n" data-i18n="exchanger-subtitle">
 						Fast Crypto Swaps, Free of Custody
 					</div>
 				</div>
@@ -136,148 +136,183 @@
 			<div class="exchanger__block exchanger-block">
 				<div data-tabs class="exchanger-block__tab block-tab">
 					<nav data-tabs-titles class="block-tab__navigation">
-						<button type="button" class="block-tab__title _tab-active">Crypto address</button>
-						<button type="button" class="block-tab__title">Bank</button>
+						<button type="button" class="block-tab__title _tab-active i18n" data-model="operation" data-modelaction="select-exchange" data-i18n="crypto-address-tab">Crypto address</button>
+						<button type="button" class="block-tab__title i18n" data-model="operation" data-modelaction="select-buy-sell" data-i18n="bank-tab">Bank</button>
 					</nav>
-					<form data-tabs-body class="block-tab__content">
+					<form data-tabs-body class="block-tab__content block-tab__credentials">
 						<div class="block-tab__body">
-							<div class="block-tab__form">
-								<p class="block-tab__label">USDT card</p>
-								<input type="text" class="block-tab__input" value="4444 4444 4444 4444" readonly>
-								<button type="button" class="block-tab__copy"></button>
+							<div class="block-tab__form block-tab__copy">
+								<p class="block-tab__label i18n" data-model="exchange:crypto-in:short" data-i18n="copy-address">
+								</p>
+								<input type="text" class="block-tab__input block-tab__input__copy" data-model="exchange:crypto-in:address" readonly />
 							</div>
+
+							<p class="message hidden"></p>
+
 							<div class="block-tab__labels">
-								<p class="block-tab__label">Net: TRC20</p>
+								<p class="block-tab__label i18n" data-model="exchange:crypto-in:network" data-i18n="net">
+								</p>
 							</div>
 							<div class="block-tab__form">
-								<p class="block-tab__label">Copy address</p>
-								<input type="text" class="block-tab__input" value="Sd3f3mf3ofmo3fm3ofm3ofmomfo2mfor">
+								<p class="block-tab__label i18n" data-model="exchange:crypto-out:short" data-i18n="your-address">
+								</p>
+								<input type="text" class="block-tab__input" data-model="exchange:crypto-out:address">
 							</div>
+
+							<p class="message hidden"></p>
 						</div>
 						<div class="block-tab__body">
-							<div class="block-tab__form form-bank">
-								<p class="block-tab__label">USD card</p>
-								<input type="text" class="block-tab__input" value="4444 4444 4444 4444" readonly>
-								<button type="button" class="block-tab__copy"></button>
+							<div class="block-tab__form form-bank block-tab__copy">
+								<p class="block-tab__label i18n" data-model="buy-sell:currency:short" data-i18n="copy-card">
+								</p>
+								<input type="text" class="block-tab__input block-tab__input__copy" data-model="buy-sell:currency:card" readonly />
 							</div>
-							<div class="block-tab__form form-bank">
-								<p class="block-tab__label">Enter your card</p>
-								<input type="text" class="block-tab__input" value="4444 4444 4444 4444">
+
+							<p class="message hidden"></p>
+
+							<div class="block-tab__labels">
+								<p class="block-tab__label i18n" data-model="buy-sell:crypto:network" data-i18n="net">
+								</p>
 							</div>
+
+							<div class="block-tab__form form-bank">
+								<p class="block-tab__label i18n" data-model="buy-sell:crypto:short" data-i18n="your-address">
+								</p>
+								<input type="text" class="block-tab__input" data-model="buy-sell:crypto:address" />
+							</div>
+
+							<p class="message hidden"></p>
 						</div>
 					</form>
 				</div>
 				<div data-tabs class="exchanger-block__tab block-tab">
 					<nav data-tabs-titles class="block-tab__navigation">
-						<button type="button" class="block-tab__title">Exchange Crypto</button>
-						<button type="button" class="block-tab__title _tab-active">Buy / Sell Crypto</button>
+						<button type="button" class="block-tab__title _tab-active i18n" data-model="operation" data-modelaction="select-exchange" data-i18n="exchange-crypto-tab">Exchange Crypto</button>
+						<button type="button" class="block-tab__title i18n" data-model="operation" data-modelaction="select-buy-sell" data-i18n="buy-sell-crypto-tab">Buy / Sell Crypto</button>
 					</nav>
 					<form data-tabs-body class="block-tab__content">
 						<div class="block-tab__body">
 							<div class="block-tab__form form-select">
-								<p class="block-tab__label">You send</p>
-								<input type="number" class="block-tab__input" name="number-input">
-								<div class="block-tab__select block-select">
-									<p class="block-select__value">USDT</p>
-									<ul class="block-select__list">
-										<li class="block-select__item">USDT</li>
-										<li class="block-select__item">ADA</li>
-									</ul>
-									<input type="hidden" class="block-select__input" name="select-input">
+								<p class="block-tab__label i18n" data-i18n="you-send">You send</p>
+								<input type="number" class="block-tab__input" name="number-input" data-model="exchange:crypto-in:amount">
+								<div class="block-tab__select block-select" data-model="exchange:crypto-in">
 								</div>
 							</div>
+							<p class="message hidden"></p>
 
 							<div class="block-tab__reverse reverse">
 								<div class="block-tab__labels reverse__labels">
-									<p class="block-tab__label">No extra fees</p>
-									<p class="block-tab__label">Estimated rate: 1 BTC - 17714.23 USD</p>
+									<p class="block-tab__label i18n" data-model="exchange:fee" data-i18n="fee"></p>
+									<p class="block-tab__label">
+										<span class="i18n" data-i18n="estimated-rate">Estimated rate: </span>
+										<span data-model="exchange:rate"></span>
+									</p>
 								</div>
-								<button type="button" class="reverse__button"></button>
+								<button type="button" class="reverse__button" data-model="exchange" data-modelaction="swap"></button>
 							</div>
 
 							<div class="block-tab__form form-select">
-								<p class="block-tab__label">You Get</p>
-								<input type="number" class="block-tab__input" name="number-input">
-								<div class="block-tab__select block-select">
-									<p class="block-select__value">ADA</p>
-									<ul class="block-select__list">
-										<li class="block-select__item">USDT</li>
-										<li class="block-select__item">ADA</li>
-									</ul>
+								<p class="block-tab__label i18n" data-i18n="you-get">You get</p>
+								<input type="number" class="block-tab__input" name="number-input" data-model="exchange:crypto-out:amount">
+								<div class="block-tab__select block-select" data-model="exchange:crypto-out">
 								</div>
 							</div>
+							<p class="message hidden"></p>
 
 							<div class="block-tab__buttons">
-								<button type="submit" class="block-tab__button">Exchange</button>
+								<button type="submit" class="block-tab__button i18n" data-model="exchange" data-i18n="exchange-button">Exchange</button>
 							</div>
-
 						</div>
 						<div class="block-tab__body">
 							<div class="block-tab__form form-select">
-								<p class="block-tab__label">You Pay</p>
-								<input type="number" class="block-tab__input" name="number-input">
-								<div class="block-tab__select block-select">
-									<p class="block-select__value">USDT</p>
-									<ul class="block-select__list">
-										<li class="block-select__item">USDT</li>
-										<li class="block-select__item">ADA</li>
-									</ul>
+								<p class="block-tab__label i18n" data-i18n="you-pay">You pay</p>
+								<input type="number" class="block-tab__input" name="number-input" data-model="buy-sell:currency:amount">
+								<div class="block-tab__select block-select" data-model="buy-sell:currency">
 								</div>
 							</div>
+							<p class="message hidden"></p>
 
 							<div class="block-tab__reverse reverse">
 								<div class="block-tab__labels reverse__labels">
-									<p class="block-tab__label">No extra fees</p>
-									<p class="block-tab__label">Estimated rate: 1 BTC - 17714.23 USD</p>
+									<p class="block-tab__label i18n" data-model="buy-sell:fee" data-i18n="fee">
+									</p>
+									<p class="block-tab__label">
+										<span class="i18n" data-i18n="estimated-rate">Estimated rate: </span>
+										<span data-model="buy-sell:rate"></span>
+									</p>
 								</div>
-								<button type="button" class="reverse__button"></button>
+								<button type="button" class="reverse__button" data-model="operation:buy-sell" data-modelaction="swap"></button>
 							</div>
 
 							<div class="block-tab__form form-select">
-								<p class="block-tab__label">You Get</p>
-								<input type="number" class="block-tab__input" name="number-input">
-								<div class="block-tab__select block-select">
-									<p class="block-select__value">ADA</p>
-									<ul class="block-select__list">
-										<li class="block-select__item">USDT</li>
-										<li class="block-select__item">ADA</li>
-									</ul>
+								<p class="block-tab__label i18n" data-i18n="you-get">You get</p>
+								<input type="number" class="block-tab__input" name="number-input" data-model="buy-sell:crypto:amount">
+								<div class="block-tab__select block-select" data-model="buy-sell:crypto">
 								</div>
 							</div>
+							<p class="message hidden"></p>
 
 							<div class="block-tab__buttons">
-								<button type="submit" class="block-tab__button">Send</button>
+								<button type="submit" class="block-tab__button i18n-style" data-model="buy-sell"></button>
 							</div>
-
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</main>
+	<div class="popup__screen hidden">
+		<div class="popup popup__success hidden">
+			<div class="popup__content">
+				<img class="popup__icon" src="img/exchanger/success.svg" alt="Success">
+				<div class="popup__caption">
+					<h3 class="popup__title i18n" data-i18n="popup-success-title"></h3>
+					<p class="popup__text i18n" data-i18n="popup-success-text"></p>
+				</div>
+			</div>
+			<div class="popup__buttons">
+				<button data-scrollrouter=".header" class="button button-primary i18n" data-i18n="popup-button-home"></button>
+				<button class="button button-secondary i18n button-continue" data-i18n="popup-button-continue"></button>
+			</div>
+		</div>
+		<div class="popup popup__failure hidden">
+			<div class="popup__content">
+				<img class="popup__icon" src="img/exchanger/failure.svg" alt="Failure">
+				<div class="popup__caption">
+					<h3 class="popup__title i18n" data-i18n="popup-failure-title"></h3>
+					<p class="popup__text i18n" data-i18n="popup-failure-text"></p>
+				</div>
+			</div>
+			<div class="popup__buttons">
+				<button data-scrollrouter=".header" class="button button-primary i18n" data-i18n="popup-button-home"></button>
+				<button class="button button-secondary i18n button-refresh" data-i18n="popup-button-refresh"></button>
+			</div>
+		</div>
+	</div>
+
 	<footer class="footer">
 		<div class="footer__container">
 			<div class="footer__main main-footer">
 				<div class="main-footer__info">
-					<a href="index.html" class="main-footer__logo">
+					<a data-scrollrouter=".header" class="main-footer__logo">
 						<img src="img/logo.svg" alt="Logo">
 					</a>
 					<nav class="footer__menu menu-footer">
 						<ul class="menu-footer__list">
 							<li class="menu-footer__item">
-								<a class="menu-footer__link i18n" data-i18n="nav-home" href="index.html">Home</a>
+								<a class="menu-footer__link i18n" data-i18n="nav-home" data-scrollrouter=".header">Home</a>
 							</li>
 							<li class="menu-footer__item">
-								<a class="menu-footer__link i18n" data-i18n="nav-exchange-rate" href="index.html#section-currencies">Exchange rate</a>
+								<a class="menu-footer__link i18n" data-i18n="nav-exchange-rate" data-scrollrouter="#section-currencies">Exchange rate</a>
 							</li>
 							<li class="menu-footer__item">
-								<a class="menu-footer__link i18n" data-i18n="nav-features" href="index.html#section-features">Features</a>
+								<a class="menu-footer__link i18n" data-i18n="nav-features" data-scrollrouter="#section-features">Features</a>
 							</li>
 							<li class="menu-footer__item">
-								<a class="menu-footer__link i18n" data-i18n="nav-guarantees" href="index.html#section-guarantees">Guarantees</a>
+								<a class="menu-footer__link i18n" data-i18n="nav-guarantees" data-scrollrouter="#section-guarantees">Guarantees</a>
 							</li>
 							<li class="menu-footer__item">
-								<a class="menu-footer__link i18n" data-i18n="nav-faq" href="index.html#section-faq">FAQ</a>
+								<a class="menu-footer__link i18n" data-i18n="nav-faq" data-scrollrouter="#section-faq">FAQ</a>
 							</li>
 						</ul>
 						<div class="menu-footer__contacts" id="contact-info">
@@ -317,7 +352,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20230117213534"></script>
+	<script src="js/app.min.js?_v=20230124004842"></script>
 </body>
 
 </html>

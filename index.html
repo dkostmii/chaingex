@@ -41,18 +41,18 @@
 	<!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230117213534" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230124004842" rel="stylesheet">
     -->
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230117213534">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230124004842">
 </head>
 
 <body class="i18n-style" data-page="Home">
 	<div class="wrapper">
 		<header class="header">
 			<div class="header__container">
-				<a href="index.html" class="header__logo"><img src="img/logo.svg" alt="Change crypto coin"></a>
+				<a data-scrollrouter=".header" class="header__logo"><img src="img/logo.svg" alt="Chaingex"></a>
 				<div class="button-plus-burger">
 					<a href="exchanger.html" class="button header__cta i18n" data-i18n="header-cta">Change</a>
 					<div class="menu__icons">
@@ -77,19 +77,19 @@
 							</div>
 						</li>
 						<li class="menu__item">
-							<a class="menu__link i18n" href="index.html" data-i18n="nav-home">Home</a>
+							<a class="menu__link i18n" data-scrollrouter=".header" data-i18n="nav-home">Home</a>
 						</li>
 						<li class="menu__item">
-							<a data-goto=".page__popular-currencies" class="menu__link i18n" href="#" data-i18n="nav-exchange-rate">Exchange rate</a>
+							<a class="menu__link i18n" data-scrollrouter="#section-currencies" data-i18n="nav-exchange-rate">Exchange rate</a>
 						</li>
 						<li class="menu__item">
-							<a data-goto=".features" class="menu__link i18n" href="#" data-i18n="nav-features">Features</a>
+							<a class="menu__link i18n" data-scrollrouter="#section-features" data-i18n="nav-features">Features</a>
 						</li>
 						<li class="menu__item">
-							<a data-goto=".guarantees" class="menu__link i18n" href="#" data-i18n="nav-guarantees">Guarantees</a>
+							<a class="menu__link i18n" data-scrollrouter="#section-guarantees" data-i18n="nav-guarantees">Guarantees</a>
 						</li>
 						<li class="menu__item">
-							<a data-goto=".faq" class="menu__link i18n" href="#" data-i18n="nav-faq">FAQ</a>
+							<a class="menu__link i18n" data-scrollrouter="#section-faq" data-i18n="nav-faq">FAQ</a>
 						</li>
 						<li class="menu__item hidden__mobile">
 							<div class="lang-select menu__lang-select">
@@ -218,7 +218,7 @@
 									<div class="item-features__text text i18n" data-i18n="features-item-2-caption">Exchange every day</div>
 								</div>
 								<div class="features__item item-features">
-									<div class="item-features__numbers"><span class="animation-on-scroll" data-val="3">0</span> <span class="i18n" data-i18n="features-item-3-years">Years</span></div>
+									<div class="item-features__numbers"><span class="animation-on-scroll" data-i18n="features-item-3-years" data-val="3">0 Years</span></div>
 									<div class="item-features__text text i18n" data-i18n="features-item-3-caption">At the crypto market</div>
 								</div>
 							</div>
@@ -297,25 +297,25 @@
 			<div class="footer__container">
 				<div class="footer__main main-footer">
 					<div class="main-footer__info">
-						<a href="index.html" class="main-footer__logo">
+						<a data-scrollrouter=".header" class="main-footer__logo">
 							<img src="img/logo.svg" alt="Logo">
 						</a>
 						<nav class="footer__menu menu-footer">
 							<ul class="menu-footer__list">
 								<li class="menu-footer__item">
-									<a class="menu-footer__link i18n" data-i18n="nav-home" href="index.html">Home</a>
+									<a class="menu-footer__link i18n" data-i18n="nav-home" data-scrollrouter=".header">Home</a>
 								</li>
 								<li class="menu-footer__item">
-									<a class="menu-footer__link i18n" data-i18n="nav-exchange-rate" href="index.html#section-currencies">Exchange rate</a>
+									<a class="menu-footer__link i18n" data-i18n="nav-exchange-rate" data-scrollrouter="#section-currencies">Exchange rate</a>
 								</li>
 								<li class="menu-footer__item">
-									<a class="menu-footer__link i18n" data-i18n="nav-features" href="index.html#section-features">Features</a>
+									<a class="menu-footer__link i18n" data-i18n="nav-features" data-scrollrouter="#section-features">Features</a>
 								</li>
 								<li class="menu-footer__item">
-									<a class="menu-footer__link i18n" data-i18n="nav-guarantees" href="index.html#section-guarantees">Guarantees</a>
+									<a class="menu-footer__link i18n" data-i18n="nav-guarantees" data-scrollrouter="#section-guarantees">Guarantees</a>
 								</li>
 								<li class="menu-footer__item">
-									<a class="menu-footer__link i18n" data-i18n="nav-faq" href="index.html#section-faq">FAQ</a>
+									<a class="menu-footer__link i18n" data-i18n="nav-faq" data-scrollrouter="#section-faq">FAQ</a>
 								</li>
 							</ul>
 							<div class="menu-footer__contacts" id="contact-info">
@@ -356,7 +356,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20230117213534"></script>
+	<script src="js/app.min.js?_v=20230124004842"></script>
 </body>
 
 </html>
