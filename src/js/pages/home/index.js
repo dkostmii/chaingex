@@ -10,17 +10,19 @@ export function homePageLoad() {
   Object.assign(window, {
     toggleCurrencies,
   });
-  
+
   addCryptocurrencies();
   
   loadCryptos()
-  .then(fillCryptocurrencies)
   .catch(e => {
-    throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
+    throw new Error(`Unable to load home page.\nUnderlying error:\n${e}`);
+  })
+  .then(cryptos => {
+    fillCryptocurrencies(cryptos);
+    hideSpinner();
+    useAnimationOnScroll();
+    useScrollDispatcher();
   });
-  hideSpinner();
-  useAnimationOnScroll();
-  useScrollDispatcher();
 }
 
 export default homePageLoad;

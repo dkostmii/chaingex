@@ -8,6 +8,7 @@ import createExchangeRateModel from "./rate.js";
 import createCryptoShortModel from "./short.js";
 
 import getExchangeCryptos from '../../fn/getExchangeCryptos.js';
+import messageTemplates from "../../config/message.js";
 
 /**
  * 
@@ -49,8 +50,9 @@ function createExchangeModel(modelRepository) {
 
   exchangeModel.valueGetterFn = () => {
     return [
-      'Operation: Exchange',
-      `Cryptocurrency: ${cryptoInModel.getValue()} | ${cryptoOutModel.getValue()}`,
+      messageTemplates.operationType('Exchange'),
+      messageTemplates.cryptocurrency(
+        messageTemplates.currencyPair(cryptoInModel.getValue(), cryptoOutModel.getValue())),
       cryptoInAmount.getValue(),
       cryptoOutAmount.getValue(),
       cryptoInAddress.getValue(),

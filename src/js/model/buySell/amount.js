@@ -7,6 +7,7 @@ import { validateCryptoOrCurrencyAmount } from "../validators/crypto.js";
 
 import { preCheckInput } from "../../fn/numbers/pre-check.js";
 
+import messageTemplates from "../../config/message.js";
 
 /**
  * 
@@ -41,10 +42,10 @@ function createCurrencyAmountModels(modelRepository) {
     minAmountCryptoOrCurrency(currencyModel.value.price)
   );
 
-  cryptoAmount.valueGetterFn = value => `${getCryptoOperation()}: ${preCheckInput(value)} | ${cryptoModel.value.short}`;
+  cryptoAmount.valueGetterFn = value => messageTemplates.operation(getCryptoOperation(), preCheckInput(value), cryptoModel.value.short);
   cryptoAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoModel.value.price);
 
-  currencyAmount.valueGetterFn = value => `${getCurrencyOperation()}: ${preCheckInput(value)} | ${currencyModel.value.short}`;
+  currencyAmount.valueGetterFn = value => messageTemplates.operation(getCurrencyOperation(), preCheckInput(value), currencyModel.value.short);
   currencyAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, currencyModel.value.price);
 
   amountClamp(cryptoAmount, cryptoModel);
@@ -53,7 +54,7 @@ function createCurrencyAmountModels(modelRepository) {
   cryptoAmount.bind(cryptoModel, (oldValue, newValue) => {
     const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoAmount.value, oldValue.price);
     const newCryptoAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-    cryptoAmount.valueGetterFn = value => `${getCryptoOperation()}: ${preCheckInput(value)} | ${newValue.short}`;
+    cryptoAmount.valueGetterFn = value => messageTemplates.operation(getCryptoOperation(), preCheckInput(value), newValue.short);
 
     cryptoAmount.updateModel(newCryptoAmount);
   });
@@ -61,7 +62,7 @@ function createCurrencyAmountModels(modelRepository) {
   currencyAmount.bind(currencyModel, (oldValue, newValue) => {
     const usdAmount = cryptoOrCurrencyAmountToUsd(currencyAmount.value, oldValue.price);
     const newAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-    currencyAmount.valueGetterFn = value => `${getCurrencyOperation()}: ${preCheckInput(value)} | ${newValue.short}`;
+    currencyAmount.valueGetterFn = value => messageTemplates.operation(getCurrencyOperation(), preCheckInput(value), newValue.short);
 
     currencyAmount.updateModel(newAmount);
   });

@@ -8,6 +8,8 @@ import amountClamp from '../transformers/amountClamp.js';
 
 import { preCheckInput } from "../../fn/numbers/pre-check.js";
 
+import messageTemplates from "../../config/message.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -32,10 +34,11 @@ function createCryptoAmountModels(modelRepository) {
     minAmountCryptoOrCurrency(cryptoOutModel.value.price)
   );
 
-  cryptoInAmount.valueGetterFn = value => `Sell: ${preCheckInput(value)} | ${cryptoInModel.value.short}`;
+  cryptoInAmount.valueGetterFn = value => messageTemplates.sell(preCheckInput(value), cryptoInModel.value.short);
+
   cryptoInAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoInModel.value.price);
 
-  cryptoOutAmount.valueGetterFn = value => `Buy: ${preCheckInput(value)} | ${cryptoOutModel.value.short}`;
+  cryptoOutAmount.valueGetterFn = value => messageTemplates.buy(preCheckInput(value), cryptoOutModel.value.short);
   cryptoOutAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoOutModel.value.price);
 
   amountClamp(cryptoInAmount, cryptoInModel);
@@ -44,7 +47,7 @@ function createCryptoAmountModels(modelRepository) {
   cryptoInAmount.bind(cryptoInModel, (oldValue, newValue) => {
     const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoInAmount.value, oldValue.price);
     const newCryptoAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-    cryptoInAmount.valueGetterFn = value => `Sell: ${preCheckInput(value)} | ${newValue.short}`;
+    cryptoInAmount.valueGetterFn = value => messageTemplates.sell(preCheckInput(value), newValue.short);
 
     cryptoInAmount.updateModel(newCryptoAmount);
   });
@@ -52,7 +55,7 @@ function createCryptoAmountModels(modelRepository) {
   cryptoOutAmount.bind(cryptoOutModel, (oldValue, newValue) => {
     const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoOutAmount.value, oldValue.price);
     const newAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-    cryptoOutAmount.valueGetterFn = value => `Buy: ${preCheckInput(value)} | ${newValue.short}`;
+    cryptoOutAmount.valueGetterFn = value => messageTemplates.buy(preCheckInput(value), newValue.short);
 
     cryptoOutAmount.updateModel(newAmount);
   });

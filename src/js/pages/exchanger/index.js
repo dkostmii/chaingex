@@ -4,18 +4,22 @@ import useViewModels from "./viewmodel.js";
 import hideSpinner from "../../dom-manipulations/spinner.js";
 import exchangerSmall from "../../dom-manipulations/exchanger-small.js";
 
-async function exchangerPageLoad() {
+function exchangerPageLoad() {
   exchangerSmall();
 
-  // FIXME: Mock as fallback usage
-  let cryptos = await loadCryptos();
-  cryptos = [...cryptos, ...restCryptos];
-
-  const currencies = await loadFiatCurrencies();
-
-  useViewModels(cryptos, currencies);
-
-  hideSpinner();
+  loadCryptos()
+  .catch(e => {
+    throw new Error(`Unable to load exchange page.\nUnderlying error:\n${e}`);
+  })
+  .then(cryptos => {
+    cryptos = [...cryptos, ...restCryptos];
+  
+    loadFiatCurrencies()
+    .then(currencies => {
+      useViewModels(cryptos, currencies);
+      hideSpinner();
+    });
+  });
 }
 
 export default exchangerPageLoad;

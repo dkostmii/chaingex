@@ -10,6 +10,8 @@ import dispatch from "../requests/dispatch.js";
 import isString from "../fn/identity/string.js";
 import createResultModel from "./result.js";
 
+import { defaultOperation } from "../config/exchanger.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -21,9 +23,14 @@ function createDefaults(modelRepository) {
 
   const { tokenNames: { targetCrypto: target, operation: op } } = storageConfig;
   const { targetCrypto, operation } = dispatch(target, op);
+  
+  let isExchange = defaultOperation === 'exchange';
+  let isBuy = defaultOperation === 'buy';
 
-  let isExchange = operation === 'exchange';
-  let isBuy = operation === 'buy';
+  if (isString(operation).value) {
+    isExchange = operation === 'exchange';
+    isBuy = operation === 'buy';
+  }
 
   let changeCryptoId = 'usdt-tron';
   let anotherChangeCryptoId = 'btc';
@@ -51,7 +58,7 @@ function createDefaults(modelRepository) {
   modelRepository.addModels(defaultCryptoInId, defauldCryptoOutId, defaultCryptoId, defaultCurrencyId);
 
   createOperationModel(isExchange ? "exchange" : "buy-sell", modelRepository);
-  createBuySellOperationModel(isBuy ? "buy" : "sell", modelRepository);
+  createBuySellOperationModel(isBuy ? "buy" : (isExchange ? "buy" : "sell"), modelRepository);
 
   createLanguageModel(modelRepository);
   createResultModel(modelRepository);

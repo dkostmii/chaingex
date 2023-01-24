@@ -5,6 +5,8 @@ import { validateCurrencyCard } from "../validators/currency.js";
 import { validateCryptoAddress } from "../validators/crypto.js";
 import { sanitizeCryptoAddress } from "../transformers/crypto.js";
 
+import messageTemplates from "../../config/message.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -25,11 +27,11 @@ function createCurrencyCardOrAddressModel(modelRepository) {
   );
 
   cryptoAddress.validatorFn = validateCryptoAddress;
-  cryptoAddress.valueGetterFn = value => `${cryptoModel.value.short} address: ${value}`;
+  cryptoAddress.valueGetterFn = value => messageTemplates.address(value, cryptoModel.value.short);
   cryptoAddress.updateFn = value => sanitizeCryptoAddress(value);
 
   cryptoAddress.bind(cryptoModel, (_, newValue) => {
-    cryptoAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+    cryptoAddress.valueGetterFn = value => messageTemplates.address(value, newValue.short);
 
     if (buySellOperationModel.value === 'sell') {
       cryptoAddress.updateModel(newValue.address);
@@ -43,11 +45,12 @@ function createCurrencyCardOrAddressModel(modelRepository) {
   );
 
   currencyCard.validatorFn = validateCurrencyCard;
-  currencyCard.valueGetterFn = value => `${currencyModel.value.short} card: ${value}`;
+  currencyCard.valueGetterFn = value => messageTemplates.card(value, currencyModel.value.short);
+
   currencyCard.updateFn = value => formatCurrencyCard(value);
 
   currencyCard.bind(currencyModel, (_, newValue) => {
-    currencyCard.valueGetterFn = value => `${newValue.short} card: ${value}`;
+    currencyCard.valueGetterFn = value => messageTemplates.card(value, newValue.short);
 
     if (buySellOperationModel.value === 'buy') {
       currencyCard.updateModel(newValue.card);

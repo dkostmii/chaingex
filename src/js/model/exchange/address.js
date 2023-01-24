@@ -4,6 +4,8 @@ import { validateCryptoAddress } from '../validators/crypto.js';
 
 import { sanitizeCryptoAddress } from "../transformers/crypto.js";
 
+import messageTemplates from "../../config/message.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -23,11 +25,11 @@ function createCryptoAddressModels(modelRepository) {
   );
 
   cryptoInAddress.validatorFn = validateCryptoAddress;
-  cryptoInAddress.valueGetterFn = value => `${cryptoInModel.value.short} address: ${value}`;
+  cryptoInAddress.valueGetterFn = value => messageTemplates.address(value, cryptoInModel.value.short);
   cryptoInAddress.updateFn = value => sanitizeCryptoAddress(value);
 
   cryptoInAddress.bind(cryptoInModel, (_, newValue) => {
-    cryptoInAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+    cryptoInAddress.valueGetterFn = value => messageTemplates.address(value, newValue.short);
     cryptoInAddress.updateModel(newValue.address);
   });
   
@@ -38,11 +40,12 @@ function createCryptoAddressModels(modelRepository) {
   );
 
   cryptoOutAddress.validatorFn = validateCryptoAddress;
-  cryptoOutAddress.valueGetterFn = value => `${cryptoOutModel.value.short} address: ${value}`;
+  cryptoOutAddress.valueGetterFn = value => messageTemplates.address(value, cryptoOutModel.value.short);
+
   cryptoOutAddress.updateFn = value => sanitizeCryptoAddress(value);
 
   cryptoOutAddress.bind(cryptoOutModel, (_, newValue) => {
-    cryptoOutAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+    cryptoOutAddress.valueGetterFn = value => messageTemplates.address(value, newValue.short);
   });
 
   modelRepository.addModels(cryptoInAddress, cryptoOutAddress);

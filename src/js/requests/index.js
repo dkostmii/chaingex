@@ -5,6 +5,8 @@ import { isCurrencyArray } from "../fn/identity/currency/index.js";
 import fiatCurrencies from "./mock/fiatCurrencies.js";
 import cryptos from './mock/cryptos.js';
 
+import { scriptConfig } from '../config/exchanger.js';
+
 /**
  * @typedef {import('../types/currency.js').Currency} Currency
  */
@@ -15,12 +17,19 @@ import cryptos from './mock/cryptos.js';
  */
 export async function loadCryptos() {
   return new Promise((res, rej) => {
-    Promise.all([ fetchChange(), fetchPrices() ])
-    // FIXME: Catch errors and returning mock
-    .catch(() => {
-      res(cryptos);
-    })
-    .then(cryptosArrays => {
+    let promise = Promise.all([ fetchChange(), fetchPrices() ]);
+
+    if (scriptConfig.env === 'dev') {
+      promise = promise.catch(() => {
+        res(cryptos);
+      });
+    } else {
+      promise = promise.catch(() => {
+        rej('Unable to load cryptocurrency data.');
+      });
+    }
+
+    promise = promise.then(cryptosArrays => {
       if (Array.isArray(cryptosArrays)) {
         const currencies = combineCurrencies(...cryptosArrays)
         .map(partialCurrency => partialCurrency.getFinal());

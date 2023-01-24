@@ -7,6 +7,8 @@ import createCryptoNetworkModel from "./network.js";
 import createBuySellRateModel from "./rate.js";
 import createCurrencyShortModel from "./short.js";
 
+import messageTemplates from "../../config/message.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -36,9 +38,9 @@ function createBuySellModel(modelRepository) {
 
   buySellModel.valueGetterFn = () => {
     return [
-      `Operation: ${buySellOperation.getValue()}`,
-      `Cryptocurrency: ${cryptoModel.getValue()}`,
-      `Fiat currency: ${currencyModel.getValue()}`,
+      messageTemplates.operationType(buySellOperation.getValue()),
+      messageTemplates.cryptocurrency(cryptoModel.getValue()),
+      messageTemplates.fiatCurrency(currencyModel.getValue()),
       cryptoAmount.getValue(),
       currencyAmount.getValue(),
       cryptoAddress.getValue(),

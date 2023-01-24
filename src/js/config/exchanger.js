@@ -26,3 +26,8 @@ export const buySellFee = 0;
  * @type {number}
  */
 export const minAmountUsd = 150;
+
+/**
+ * @type {"exchange" | "buy" | "sell"}
+ */
+export const defaultOperation = 'exchange';
