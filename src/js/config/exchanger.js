@@ -13,7 +13,7 @@ export const scriptConfig = {
     /** A Telegram account token. */
     token: '5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE',
     /** The ID of Telegram chat, where message is sent. */
-    chatId: '-1001823531577'
+    chatId: '-1001749872032'
 }
 
 export const exchangeFee = 0;
