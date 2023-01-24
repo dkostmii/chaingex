@@ -18,4 +18,3 @@ The application configuration files are placed in `src/js/config/` folder:
 
 - [`storage.js`](../src/js/config/storage.js) contains a token names for `localStorage`, where to store cryptocurrency id between redirect from **Home** page to **Exchanger** page. As a result, cryptocurrency is selected at **Exchanger**.
 
-- [`usdt.js`](../src/js/config/usdt.js) contains data about USDT currency and equivalent `minAmountUsdt` amount for any currency to be exchanged.

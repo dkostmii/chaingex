@@ -41,7 +41,12 @@ const pl = {
   'features-item-1-caption': 'Klientów już wybrali nas',
   'features-item-2-caption': 'Transakcji dziennie',
   'features-item-3-caption': 'Na rynku kryptowalut',
-  'features-item-3-years': 'Lata',
+  'features-item-3-years': [
+    [0, 0, '%n Lat'],
+    [1, 1, '%n Rok'],
+    [2, 4, '%n Lata'],
+    [5, null, '%n Lat'],
+  ],
 
   // Guarantees
   'guarantees-title': 'Wymieniaj kryptowaluty już teraz i, co najważniejsze, bezpiecznie',
@@ -79,6 +84,47 @@ const pl = {
   // FAQ item 4
   'faq-item-4-title': 'Jak przelać kryptowalutę z Chaingex na inną giełdę?',
   'faq-item-4-body': 'Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień Kryptowalutę’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie.',
+
+  // Exchanger
+  'exchanger-title': 'Nieograniczona wymiana kryptowalut',
+  'exchanger-subtitle': 'Szybkie wymiany kryptowalut, wolne od opieki',
+  'crypto-address-tab': 'Adres kryptowaluty',
+  'bank-tab': 'Bank',
+  'exchange-crypto-tab': 'Wymień',
+  'buy-sell-crypto-tab': 'Kup / Sprzedaj',
+  
+  'exchange-button': 'Wymień',
+  'buy-button': 'Kup',
+  'sell-button': 'Sprzedaj',
+
+  'estimated-rate': 'Szacowana stawka: ',
+  'you-get': 'Dostajesz',
+  'you-send': 'Wysyłasz',
+  'you-pay': 'Płacisz',
+  'no-extra-fees': 'Bez dodatkowych opłat',
+  'fee': 'Opłata: %{fee}',
+  'net': 'Sieć: %{net}',
+  'copy-card': 'Skopiuj kartę %{short}',
+  'your-card': 'Twoja karta %{short}',
+  'copy-address': 'Skopiuj adres %{short}',
+  'your-address': 'Twój adres %{short}',
+
+  'your-card-invalid': 'Niepoprawny nr karty',
+  'your-address-invalid': 'Niepoprawny adres portfela',
+
+  'invalid-address-message': 'Proszę sprawdzić swój adres. Nie pisz tego ręcznie, zamiast tego skopiuj i wklej go.',
+  'invalid-card-message': 'Proszę sprawdzić numer swojej karty.',
+  'min-amount': 'Min kwota: %{amount}',
+  'copied-message': 'Skopiowane',
+
+  // Popup
+  'popup-success-title': 'Sukces!',
+  'popup-success-text': 'Wymiana została pomyślnie zakończona, proszę czekać na wiadomość potwierdzającą',
+  'popup-failure-title': 'O nie!',
+  'popup-failure-text': 'Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę',
+  'popup-button-home': 'Strona główna',
+  'popup-button-continue': 'Kontynuuj',
+  'popup-button-refresh': 'Odśwież',
 }
 
 export default pl;

@@ -18,9 +18,13 @@
 		"tmp": "gulp -f gulpfile.tmp.js",
 		"bem": "fls-bemtree-from-html",
 		"serve-static": "npm run build && npm run test && browser-sync dist -w",
-		"test": "jest -c config/jest.config.js"
+		"test": "jest -c config/jest.config.cjs"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.20.12",
+		"@babel/plugin-transform-modules-commonjs": "^7.20.11",
+		"@babel/preset-env": "^7.20.2",
+		"babel-jest": "^29.3.1",
 		"browser-sync": "^2.27.10",
 		"copy-webpack-plugin": "latest",
 		"css-loader": "^6.7.3",
@@ -66,7 +70,6 @@
 		"pug-loader": "latest",
 		"sass": "^1.57.0",
 		"sass-loader": "^13.2.0",
-		"smooth-scroll": "latest",
 		"string-replace-loader": "latest",
 		"style-loader": "^3.3.1",
 		"swiper": "latest",
@@ -87,6 +90,7 @@
 		"jquery": "^3.6.1",
 		"rfs": "^9.0.6",
 		"roddeh-i18n": "^1.2.1",
-		"simplebar": "latest"
+		"simplebar": "latest",
+		"smooth-scroll": "^16.1.3"
 	}
 }

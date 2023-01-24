@@ -1,9 +1,11 @@
-.fonticons {
-  background-size: 2rem 2rem;
-  background-repeat: no-repeat;
+:where([class*="fonticons-"]) {
   width: 2rem;
   height: 2rem;
+  background-repeat: no-repeat;
+  background-size: 2rem 2rem;
 }
 
 @import 'icons-cryptocurrency';
+@import 'icons-fiat';
 @import 'sub-icons';
+@import 'mixin';

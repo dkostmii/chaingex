@@ -21,8 +21,6 @@ import './files/animation-on-scroll.js';
 // Подключение основного файла стилей
 import "../scss/style.scss";
 
-
-
 // ========================================================================================================================================================================================================================================================
 // Функционал ========================================================================================================================================================================================================================================================
 // ========================================================================================================================================================================================================================================================
@@ -77,7 +75,7 @@ flsFunctions.tabs();
 // ========================================================================================================================================================================================================================================================
 // Работа с формами ========================================================================================================================================================================================================================================================
 // ========================================================================================================================================================================================================================================================
-import * as flsForms from "./files/forms/forms.js";
+// import * as flsForms from "./files/forms/forms.js";
 
 /* Работа с полями формы */
 /* Документация: https://template.fls.guru/template-docs/rabota-s-formami.html */
@@ -152,7 +150,7 @@ flsForms.formFieldsInit({
 Документация плагина: https://github.com/Grsmto/simplebar/tree/master/packages/simplebar
 Сниппет(HTML): 
 */
-// import './files/scroll/simplebar.js';
+import './files/scroll/simplebar.js';
 
 // Ленивая (отложенная) загрузка картинок
 // Документация по работе в шаблоне: https://template.fls.guru/template-docs/modul-lenivaya-podgruzka-lazy-loading.html
@@ -218,57 +216,11 @@ flsScroll.pageNavigation();
 // ========================================================================================================================================================================================================================================================
 // Прочее ========================================================================================================================================================================================================================================================
 // ========================================================================================================================================================================================================================================================
+
+/* AOS */
+// import AOS from 'aos';
+
 /* Подключаем файлы со своим кодом */
-import { 
-	toggleCurrencies,
-	showCurrencies,
-	hideCurrencies,
-	toggleMenu,
-	changeSellBuyToExchangeRedirect,
-	autoCloseMenu,
-	homePageLoad,
-} from "./files/script.js";
-
-import selectHandler from './files/exchanger/select.js';
-//import concatValueHandler from './files/exchanger/concat-value.js';
-import checkLengthHandler from './files/exchanger/check-length.js';
-import copyHandler from './files/exchanger/copy.js';
-import cardFormatHandler from './files/exchanger/card-format.js';
-//import reverseHandler from './files/exchanger/reverse.js';
-import submitHandler from './files/exchanger/request-script-main/submitHandler.js';
-
-import { exchangerPageLoad } from './files/exchanger/page-load.js';
-
-import AOS from 'aos';
-
-import headerDesktop from './files/header-desktop.js';
-headerDesktop();
-
-import fonticons from './fonticons/index.js';
-
-Object.assign(window, {
-	toggleCurrencies,
-	toggleMenu,
-});
-
-const currentPage = document.body.dataset.page;
-
-if (currentPage === 'Exchanger') {
-	exchangerPageLoad();
-	autoCloseMenu();
-} else if (currentPage === 'Home') {
-	homePageLoad();
-
-	changeSellBuyToExchangeRedirect();
-	autoCloseMenu();
-
-	// Fonticons on Home page
-	fonticons(showCurrencies, hideCurrencies)
-		.scale(0.9);
-}
-
-// Import i18n last, so the all DOM manipulations occurred.
-import useI18n from './i18n/index.js';
-useI18n();
+import './files/script.js';
 
 //============================================================================================================================================================================================================================================

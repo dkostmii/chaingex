@@ -17,8 +17,8 @@ const eng = {
   'block-1-subtitle': 'Chaingex is a simple and secure platform to create your crypto portfolio and exchange currency with a guarantee.',
   'block-1-cta': 'Change crypto',
   'block-2-step-1': 'Choose crypto for change',
-  'block-2-step-2': 'Fill the data',
-  'block-2-step-3': 'Securely exchange cryptocurrency',
+  'block-2-step-2': 'Entering data exchange',
+  'block-2-step-3': 'Secure exchange cryptocurrencies',
 
   // Popular currencies
   'popular-currencies-title': 'Popular Cryptocurrencies',
@@ -41,7 +41,11 @@ const eng = {
   'features-item-1-caption': 'People chose us',
   'features-item-2-caption': 'Exchange every day',
   'features-item-3-caption': 'On the crypto market',
-  'features-item-3-years': 'Years',
+  'features-item-3-years': [
+    [0, 0, '%n Years'],
+    [1, 1, '%n Year'],
+    [2, null, '%n Years'],
+  ],
 
   // Guarantees
   'guarantees-title': 'Exchange cryptocurrency right now and, most importantly, safely',
@@ -79,6 +83,47 @@ const eng = {
   // FAQ item 4
   'faq-item-4-title': 'How do I transfer cryptocurrency from Chaingex to another exchange?',
   'faq-item-4-body': 'Click the ‘Change’ button and select ‘Exchange crypto’ tab. Choose a cryptocurrency you wish to send and its amount. Enter the destination crypto wallet address. To avoid losing your cryptocurrency, copy and paste the wallet address. Do not enter it manually.',
+
+  // Exchanger
+  'exchanger-title': 'Limitless Crypto Exchange',
+  'exchanger-subtitle': 'Fast Crypto Swaps, Free of Custody',
+  'crypto-address-tab': 'Crypto address',
+  'bank-tab': 'Bank',
+  'exchange-crypto-tab': 'Exchange Crypto',
+  'buy-sell-crypto-tab': 'Buy / Sell Crypto',
+  
+  'exchange-button': 'Exchange',
+  'buy-button': 'Buy',
+  'sell-button': 'Sell',
+
+  'estimated-rate': 'Estimated rate: ',
+  'you-get': 'You get',
+  'you-send': 'You send',
+  'you-pay': 'You pay',
+  'no-extra-fees': 'No extra fees',
+  'fee': 'Fee: %{fee}',
+  'net': 'Net: %{net}',
+  'copy-card': 'Copy %{short} card',
+  'your-card': 'Your %{short} card',
+  'copy-address': 'Copy %{short} address',
+  'your-address': 'Your %{short} address',
+
+  'your-card-invalid': 'Invalid card',
+  'your-address-invalid': 'Invalid address',
+
+  'invalid-address-message': 'Please, check your address. Do not write it by hand, copy from clipboard instead.',
+  'invalid-card-message': 'Please, check your card number.',
+  'min-amount': 'Min amount: %{amount}',
+  'copied-message': 'Copied',
+
+  // Popup
+  'popup-success-title': 'Success!',
+  'popup-success-text': 'The exchange has been successfully completed, please wait for a confirmation message',
+  'popup-failure-title': 'Oh, no!',
+  'popup-failure-text': 'Something went wrong with the exchange, please try again or reload the page',
+  'popup-button-home': 'Go to home',
+  'popup-button-continue': 'Continue',
+  'popup-button-refresh': 'Refresh',
 };
 
 export default eng;

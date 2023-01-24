@@ -31,7 +31,8 @@
 body {
 	// Скролл заблокирован
 	background-color: #020015;
-	.lock & {
+	scroll-behavior: smooth;
+	.lock &, &.lock {
 		overflow: hidden;
 		touch-action: none;
 		overscroll-behavior: none;
@@ -149,3 +150,4 @@ input, button, textarea {
 @import "block-1";
 @import "pages/exchanger";
 @import "background";
+@import "popup";

@@ -41,7 +41,12 @@ const rus = {
   'features-item-1-caption': 'Клиентов уже с нами',
   'features-item-2-caption': 'Транзакций ежедневно',
   'features-item-3-caption': 'На рынке криптовалют',
-  'features-item-3-years': 'Года',
+  'features-item-3-years': [
+    [0, 0, '%n Лет'],
+    [1, 1, '%n Год'],
+    [2, 4, '%n Года'],
+    [5, null, '%n Лет'],
+  ],
 
   // Guarantees
   'guarantees-title': 'Обменивайте криптовалюту прямо сейчас и, самое главное, безопасно',
@@ -80,6 +85,46 @@ const rus = {
   'faq-item-4-title': 'Как перевести криптовалюту с Chaingex на другую биржу?',
   'faq-item-4-body': 'Нажмите кнопку ‘Обменять’ и выберите вкладку ‘Обменять криптовалюту’. Выберите криптловалюту, которую хотите отправить и её сумму. Введите адрес криптокошелька криптовалюты для получения. Чтобы избежать потери криптовалюты, скопируйте и вставьте адрес криптокошелька. Не вводите его вручную.',
 
+  // Exchanger
+  'exchanger-title': 'Безграничная криптобиржа',
+  'exchanger-subtitle': 'Быстрые крипто-свопы без хранения',
+  'crypto-address-tab': 'Крипто-адрес',
+  'bank-tab': 'Банк',
+  'exchange-crypto-tab': 'Обменять',
+  'buy-sell-crypto-tab': 'Купить / Продать',
+  
+  'exchange-button': 'Обменять',
+  'buy-button': 'Купить',
+  'sell-button': 'Продать',
+
+  'estimated-rate': 'Ориентировочный курс',
+  'you-get': 'Вы получаете',
+  'you-send': 'Вы отправляете',
+  'you-pay': 'Вы платите',
+  'no-extra-fees': 'Без дополнительных комиссий',
+  'fee': 'Коммисия: %{fee}',
+  'net': 'Сеть: %{net}',
+  'copy-card': 'Скопируйте %{short} карту',
+  'your-card': 'Ваша %{short} карта',
+  'copy-address': 'Скопируйте %{short} адрес',
+  'your-address': 'Ваш %{short} адрес',
+
+  'your-card-invalid': 'Неправильный номер карты',
+  'your-address-invalid': 'Неправильный адрес кошелька',
+
+  'invalid-address-message': 'Пожалуйста, проверьте свой адрес криптокошелька. Не пишите его от руки, а скопируйте из буфера обмена.',
+  'invalid-card-message': 'Пожалуйста, проверьте номер карты.',
+  'min-amount': 'Мин сумма: %{amount}',
+  'copied-message': 'Скопировано',
+
+  // Popup
+  'popup-success-title': 'Успех!',
+  'popup-success-text': 'Обмен успешно завершен, пожалуйста, дождитесь подтверждающего сообщения',
+  'popup-failure-title': 'О, нет!',
+  'popup-failure-text': 'Что-то пошло не так при обмене, попробуйте еще раз или перезагрузите страницу',
+  'popup-button-home': 'На главную',
+  'popup-button-continue': 'Продолжить',
+  'popup-button-refresh': 'Обновить',
 }
 
 export default rus;

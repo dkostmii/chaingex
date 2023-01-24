@@ -314,9 +314,7 @@
 	padding: rem(16) rem(67);
 	background-color: $purpleColor;
 	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
+	@extend %noselect;
 
 
 	@media (any-hover: hover) {

@@ -1,3 +1,5 @@
+import getTranslation from '../i18n/get.js';
+
 function getAnimationStartScrollPosition(el) {
    const { innerHeight: windowHeight } = window;
    const { top } = el.getBoundingClientRect();
@@ -10,6 +12,7 @@ function animate(onAnimationStarted) {
    const animationTimeMs = 4000;
 
    let onAnimationStartedCalled = false;
+   const currentLanguage = window.detectUserLanguage();
 
    animatedElements.forEach(el => {
       const start = 0, end = parseInt(el.dataset.val);
@@ -23,7 +26,12 @@ function animate(onAnimationStarted) {
          const prevValue = parseInt(el.textContent | "0");
 
          if (value > prevValue) {
-            el.textContent = value;
+            if ('i18n' in el.dataset) {
+               const translatedCaption = getTranslation(el.dataset.i18n, currentLanguage, value);
+               el.textContent = translatedCaption;               
+            } else {
+               el.textContent = value;
+            }
          }
       }
 
@@ -56,5 +64,19 @@ function scrollHandler() {
    }
 }
 
-window.addEventListener('scroll', scrollHandler);
-scrollHandler();
+function prepareTranslatedElements() {
+   const currentLanguage = window.detectUserLanguage();
+
+   const translatedElements = [...document.querySelectorAll(".animation-on-scroll")]
+      .filter(el => ('i18n' in el.dataset));
+
+   translatedElements.forEach(el => { el.textContent = getTranslation(el.dataset.i18n, currentLanguage, 0); });
+}
+
+function useAnimationOnScroll() {
+   prepareTranslatedElements();
+   window.addEventListener('scroll', scrollHandler);
+   scrollHandler();
+}
+
+export default useAnimationOnScroll;

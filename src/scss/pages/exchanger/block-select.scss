@@ -1,0 +1,112 @@
+.block-select {
+  cursor: pointer;
+
+  &__empty > &__value::after {
+    opacity: 0.3;
+  }
+
+  &__empty, &__empty > &__value {
+    cursor: default;
+  }
+
+  &__active > &__list:not(&__list__empty) {
+    opacity: 1;
+    z-index: 10;
+  }
+
+  &__active > &__value::after {
+    transform: translateY(-50%) rotate(-180deg);
+  }
+
+  &__value {
+    height: 100%;
+
+    position: relative;
+    &::after{
+      content: "";
+      background: url(../img/exchanger/arrow-down.svg) no-repeat center top/cover;
+      transition: all .2s ease;
+      position: absolute;
+      top: 50%;
+      right: rem(30);
+      height: rem(32);
+      width: rem(32);
+      transform: translateY(-50%) rotate(0);
+    }
+
+    @media screen and (max-width: $mobile) {
+      &::after {
+        width: rem(24);
+        height: rem(24);
+        right: rem(16);
+      }
+    }
+  }
+
+  &__value, &__item {
+    background-color: #202E51;
+    display: flex;
+    padding: rem(22) rem(30) rem(22) rem(31);
+    gap: rem(10);
+    @extend %noselect;
+  }
+
+  :is(&__value, &__item) > span:not(:first-of-type) {
+    font-size: 60%;
+    margin-left: rem(-6);
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: $mobileSmall) {
+    &__value > span:not(:first-of-type) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    &__value, &__item {
+      padding: rem(20) rem(16);
+    }
+  }
+
+  &__list {
+    opacity: 0;
+    transition: all .2s ease;
+    position: absolute;
+    background: #0f0d21;
+    z-index: -1;
+    width: calc(100% + rem(2));
+    border: rem(1) solid #7B46E8;
+    height: rem(240);
+    left: rem(-1);
+
+    display: flex;
+    flex-direction: column;
+
+    &__few-items {
+      height: min-content;
+    }
+
+    &__empty {
+      opacity: 0;
+    }
+  }
+
+  &__item:not(:last-child) {
+    border-bottom: rem(1) solid #7B46E8;
+  }
+
+  &__item:active, &__item:target, &__item:focus {
+    background-color: rgba(13, 20, 37, 0.5);
+  }
+
+  &__icon {
+    @include wrapFonticons(rem(32), rem(32), rem(3));
+
+    @media screen and (max-width: $mobile) {
+      @include wrapFonticons(rem(24), rem(24), rem(1));
+    }
+  }
+}
+
+@import 'simplebar';

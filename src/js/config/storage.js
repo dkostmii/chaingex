@@ -19,10 +19,8 @@ const storageConfig = {
    * to select required cryptocurrency after clicking Change, Sell or Buy button.
    */
   tokenNames: {
-    /** A token name to use to store send crypto id (asset to sell). */
-    sendCrypto: 'sendCrypto',
-    /** A token name to use to store receive crypto id (asset to buy). */
-    receiveCrypto: 'receiveCrypto',
+    targetCrypto: 'targetCrypto',
+    operation: 'operation',
     /** A token name to use to store current {@link Language.value}.  */
     currentLanguage: 'currentLang',
   },
