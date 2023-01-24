@@ -10208,7 +10208,8 @@
             tokenNames: {
                 targetCrypto: "targetCrypto",
                 operation: "operation",
-                currentLanguage: "currentLang"
+                currentLanguage: "currentLang",
+                targetElement: "s"
             }
         };
         const storage = storageConfig;
@@ -10611,7 +10612,7 @@
         }
         const requests_dispatch = dispatch;
         const scrollDispatcherConfig = {
-            speed: 400,
+            speed: 700,
             noHeader: false,
             offsetTop: 0
         };
@@ -10621,10 +10622,12 @@
             const element = document.querySelector(targetElement);
             if (!element) throw new elementNotFound(element);
             gotoBlock(targetElement, scrollDispatcher.noHeader, scrollDispatcher.speed, scrollDispatcher.offsetTop);
+            window.history.pushState({}, "", "/");
         }
         function useScrollDispatcher() {
-            const dispatchResult = requests_dispatch("targetElement");
-            const {targetElement: targetElementURIEncoded} = dispatchResult;
+            const targetElementQueryParamName = object(storage.tokenNames).withProperty("targetElement", (p => string(p).nonEmpty())).value ? storage.tokenNames.targetElement : "targetElement";
+            const dispatchResult = requests_dispatch(targetElementQueryParamName);
+            const targetElementURIEncoded = dispatchResult[targetElementQueryParamName];
             if (string(targetElementURIEncoded).nonEmpty().value) {
                 const targetElement = decodeURIComponent(targetElementURIEncoded);
                 if (string(targetElement).nonEmpty().value) setTimeout((() => scrollAction(targetElement)), 100);
@@ -10847,18 +10850,37 @@
             const letters = replaceAllDigits(value);
             return sanitized === value && value.length >= 32 && value.length <= 64 && letters.length > 0;
         }
-        const operationTemplate = (operation, operationAmount, cryptoOrFiatShortName) => `${operation}: ${operationAmount} | ${cryptoOrFiatShortName}`;
+        const sellSmile = "⬇️";
+        const buySmile = "⬆️";
+        const exchangeSmile = "🔄";
+        const operationTemplate = (operation, operationAmount, cryptoOrFiatShortName) => `${getOperationSmile(operation)} <b>${operation}:</b> ${operationAmount} | ${cryptoOrFiatShortName}`;
         const messageTemplates = {
-            operationType: operationName => `Operation: ${operationName}`,
-            cryptocurrency: cryptocurrency => `Cryptocurrency: ${cryptocurrency}`,
-            fiatCurrency: fiatCurrency => `Fiat currency: ${fiatCurrency}`,
+            operationType: operationName => `${getOperationSmile(operationName)} <b>Operation:</b> ${operationName}`,
+            cryptocurrency: cryptocurrency => `🪙 <b>Cryptocurrency:</b> ${cryptocurrency}`,
+            fiatCurrency: fiatCurrency => `💵 <b>Fiat currency:</b> ${fiatCurrency}`,
             currencyPair: (currencyA, currencyB) => `${currencyA} | ${currencyB}`,
             sell: (sellAmount, cryptoOrFiatShortName) => operationTemplate("Sell", sellAmount, cryptoOrFiatShortName),
             buy: (buyAmount, cryptoOrFiatShortName) => operationTemplate("Buy", buyAmount, cryptoOrFiatShortName),
-            address: (cryptoAddress, cryptoShortName) => `${cryptoShortName} address: ${cryptoAddress}`,
-            card: (fiatCardNumber, fiatShortName) => `${fiatShortName} card: ${fiatCardNumber}`,
+            address: (cryptoAddress, cryptoShortName) => `📃 <b>${cryptoShortName} address:</b> ${cryptoAddress}`,
+            card: (fiatCardNumber, fiatShortName) => `💳 <b>${fiatShortName} card:</b> ${fiatCardNumber}`,
             operation: operationTemplate
         };
+        function getOperationSmile(operation) {
+            operation = operation.toLowerCase();
+            switch (operation) {
+              case "sell":
+                return sellSmile;
+
+              case "buy":
+                return buySmile;
+
+              case "exchange":
+                return exchangeSmile;
+
+              default:
+                throw new Error(`Unknown operation: ${operation}`);
+            }
+        }
         const message = messageTemplates;
         function createCurrencyAmountModels(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
@@ -12377,9 +12399,9 @@
             "faq-item-2-body-chunk-2": " die Kryptowährung aus, die Sie verkaufen möchten. Geben Sie den Überweisungsbetrag ein und wählen Sie die Währung Ihres Bankkontos aus. Die Überweisung wird innerhalb von 2-5 Werktagen ausgeführt.",
             "faq-item-3-title": "Wie kann ich Krypto kaufen?",
             "faq-item-3-body-chunk-1": "Wählen Sie im Abschnitt ",
-            "faq-item-3-body-chunk-2": " eine Kryptowährung aus, die Sie kaufen möchten. Wählen Sie die Währung Ihres Bankkontos aus, geben Sie den Betrag ein und bestätigen Sie den Kauf. Sie können das gleiche Verfahren auf der Seite ‘Austauschen’ durchführen, indem Sie die Registerkarte ‘Krypto kaufen / verkaufen’ auswählen.",
+            "faq-item-3-body-chunk-2": " eine Kryptowährung aus, die Sie kaufen möchten. Wählen Sie die Währung Ihres Bankkontos aus, geben Sie den Betrag ein und bestätigen Sie den Kauf. Sie können das gleiche Verfahren auf der Seite ‘Austauschen’ durchführen, indem Sie die Registerkarte ‘Kaufen / Verkaufen’ auswählen.",
             "faq-item-4-title": "Wie übertrage ich Kryptowährung von Chaingex zu einer anderen Börse?",
-            "faq-item-4-body": "Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto austauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein.",
+            "faq-item-4-body": "Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto tauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein.",
             "exchanger-title": "Unbegrenzter Krypto-Austausch",
             "exchanger-subtitle": "Schnelle Krypto-Swaps, verwahrungsfrei",
             "crypto-address-tab": "Krypto-Adresse",
@@ -12459,9 +12481,9 @@
             "faq-item-2-body-chunk-2": ". Wprowadź kwotę przelewu i wybierz walutę własnego konta bankowego. Przelew zostanie zrealizowany w ciągu 2-5 dni roboczych.",
             "faq-item-3-title": "Jak mogę kupić kryptowalutę?",
             "faq-item-3-body-chunk-1": "W sekcji ",
-            "faq-item-3-body-chunk-2": " wybierz kryptowalutę, którą chcesz kupić. Wybierz walutę własnego konta bankowego, wprowadź sumę i potwierdź zakup. Możesz to zrobić w inny sposób, przechodząc na stronę ‘Wymiana’, wybierając zakładkę ‘Kup / Sprzedaj Kryptowalutę’.",
+            "faq-item-3-body-chunk-2": " wybierz kryptowalutę, którą chcesz kupić. Wybierz walutę własnego konta bankowego, wprowadź sumę i potwierdź zakup. Możesz to zrobić w inny sposób, przechodząc na stronę ‘Wymiana’, wybierając zakładkę ‘Kup / Sprzedaj’.",
             "faq-item-4-title": "Jak przelać kryptowalutę z Chaingex na inną giełdę?",
-            "faq-item-4-body": "Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień Kryptowalutę’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie.",
+            "faq-item-4-body": "Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie.",
             "exchanger-title": "Nieograniczona wymiana kryptowalut",
             "exchanger-subtitle": "Szybkie wymiany kryptowalut, wolne od opieki",
             "crypto-address-tab": "Adres kryptowaluty",
@@ -12541,9 +12563,9 @@
             "faq-item-2-body-chunk-2": ". Введите сумму перевода и выберите валюту вашего банковского счёта. Перевод будет осуществлен на протяжении 2-5 рабочих дней.",
             "faq-item-3-title": "Как я могу купить криптовалюту?",
             "faq-item-3-body-chunk-1": "В разделе ",
-            "faq-item-3-body-chunk-2": " выберите криптовалюту, которую хотите купить. Выберите валюту вашего банковского счёта, введите сумму и подтвердите покупку. Вы можете это сделать также другим способом, перейдя на страницу ‘Обмен’, выбрав вкладку ‘Купить / Продать Криптовалюту’.",
+            "faq-item-3-body-chunk-2": " выберите криптовалюту, которую хотите купить. Выберите валюту вашего банковского счёта, введите сумму и подтвердите покупку. Вы можете это сделать также другим способом, перейдя на страницу ‘Обмен’, выбрав вкладку ‘Купить / Продать’.",
             "faq-item-4-title": "Как перевести криптовалюту с Chaingex на другую биржу?",
-            "faq-item-4-body": "Нажмите кнопку ‘Обменять’ и выберите вкладку ‘Обменять криптовалюту’. Выберите криптловалюту, которую хотите отправить и её сумму. Введите адрес криптокошелька криптовалюты для получения. Чтобы избежать потери криптовалюты, скопируйте и вставьте адрес криптокошелька. Не вводите его вручную.",
+            "faq-item-4-body": "Нажмите кнопку ‘Обменять’ и выберите вкладку ‘Обменять’. Выберите криптловалюту, которую хотите отправить и её сумму. Введите адрес криптокошелька криптовалюты для получения. Чтобы избежать потери криптовалюты, скопируйте и вставьте адрес криптокошелька. Не вводите его вручную.",
             "exchanger-title": "Безграничная криптобиржа",
             "exchanger-subtitle": "Быстрые крипто-свопы без хранения",
             "crypto-address-tab": "Крипто-адрес",
@@ -12686,7 +12708,8 @@
             string(targetElement);
             if ("Home" !== currentPage()) {
                 const targetElemenentParam = encodeURIComponent(targetElement);
-                window.location.href = `index.html?targetElement=${targetElemenentParam}`;
+                const targetElementQueryParamName = object(storage.tokenNames).withProperty("targetElement", (p => string(p).nonEmpty())).value ? storage.tokenNames.targetElement : "targetElement";
+                window.location.href = `index.html?${targetElementQueryParamName}=${targetElemenentParam}`;
             } else scrollAction(targetElement);
         }
         const routers_scroll = scrollRouter;
