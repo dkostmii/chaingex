@@ -30,7 +30,10 @@ export const currencyFactors = [
  */
 export const cryptocurrencies = [
   { id: "btc", name: "Bitcoin", short: "BTC", address: "bc1qyq8vm0k2h54d7g5eueefae63e29yyxgehskvcf" },
+  { id: "ltc", name: "Litecoin", short: "LTC", address: "ltc1qpkzhcxkeurxmzvkv8kj2k4dlr2nauerxflydzx" },
   { id: "eth", name: "Ethereum", short: "ETH", network: "ERC20", address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5" },
+  { id: "xrp", name: "Ripple", short: "XRP", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
+  { id: "doge", name: "Dogecoin", short: "DOGE", address: "DLm86Vf44xdpSRwV6X6168d9iNwDQKLqcG" },
   { id: "bnb", name: "Binance coin", short: "BNB", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
   { id: "sol", name: "Solana", short: "SOL", address: "AGDXgqwLidxazuoaVnsFXkbDvwJH1fwbFk8Uym8JKz7U" },
   { id: "dot", name: "Polkadot", short: "DOT", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
@@ -39,10 +42,8 @@ export const cryptocurrencies = [
   { id: "ada", name: "Cardano", short: "ADA", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
   { id: "etc", name: "Ethereum Classic", short: "ETC", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
   { id: "trx", name: "TRON", short: "TRX", network: "TRC20", address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8" },
-  { id: "doge", name: "Dogecoin", short: "DOGE", address: "DLm86Vf44xdpSRwV6X6168d9iNwDQKLqcG" },
   { id: "shib", name: "Shiba Inu", short: "SHIB", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
   { id: "avax", name: "Avalanche", short: "AVAX", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "ltc", name: "Litecoin", short: "LTC", address: "ltc1qpkzhcxkeurxmzvkv8kj2k4dlr2nauerxflydzx" },
   { id: "usdc", name: "USD Coin", short: "USDC", network: "ERC20", address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5" }
 ].map(currencyPartialData => new CurrencyPartial(currencyPartialData));
 
