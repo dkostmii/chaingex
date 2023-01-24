@@ -23,6 +23,7 @@ const storageConfig = {
     operation: 'operation',
     /** A token name to use to store current {@link Language.value}.  */
     currentLanguage: 'currentLang',
+    targetElement: 's',
   },
 };
 

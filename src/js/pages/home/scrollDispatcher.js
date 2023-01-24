@@ -3,9 +3,11 @@ import { gotoBlock } from "../../files/scroll/gotoblock.js";
 
 import ElementNotFoundError from "../../errors/elementNotFound.js";
 
-import { isString } from "../../fn/identity/index.js";
+import { isString, isObject } from "../../fn/identity/index.js";
 
 import scrollDispatcherConfig from "../../config/scrollDispatcher.js";
+
+import storageConfig from "../../config/storage.js";
 
 /**
  * 
@@ -21,15 +23,26 @@ export function scrollAction(targetElement) {
   }
 
   gotoBlock(targetElement, scrollDispatcherConfig.noHeader, scrollDispatcherConfig.speed, scrollDispatcherConfig.offsetTop);
+  
+  /**
+   * Cleans up browser's URL without reloading page immediately.
+   */
+  window.history.pushState({}, '', '/');
 }
 
 /**
  * Dispatch target element from query parameters and do {@link scrollAction}.
  */
 function useScrollDispatcher() {
-  const dispatchResult = dispatch('targetElement');
+  const targetElementQueryParamName = (
+    isObject(storageConfig.tokenNames)
+      .withProperty('targetElement', p => isString(p).nonEmpty()).value ?
+        storageConfig.tokenNames.targetElement :
+        'targetElement');
 
-  const { targetElement: targetElementURIEncoded } = dispatchResult;
+  const dispatchResult = dispatch(targetElementQueryParamName);
+
+  const targetElementURIEncoded = dispatchResult[targetElementQueryParamName];
 
   if (isString(targetElementURIEncoded).nonEmpty().value) {
     const targetElement = decodeURIComponent(targetElementURIEncoded);

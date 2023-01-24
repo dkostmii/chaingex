@@ -1,7 +1,9 @@
 import { scrollAction } from "../pages/home/scrollDispatcher.js";
 import getCurrentPage from "../fn/currentPage.js";
 
-import { isString } from "../fn/identity/index.js";
+import { isString, isObject } from "../fn/identity/index.js";
+
+import storageConfig from "../config/storage.js";
 
 /**
  * Redirects to Home page and scrolls to {@link targetElement}
@@ -14,7 +16,13 @@ function scrollRouter(targetElement) {
   if (getCurrentPage() !== 'Home') {
     const targetElemenentParam = encodeURIComponent(targetElement);
 
-    window.location.href = `index.html?targetElement=${targetElemenentParam}`;
+    const targetElementQueryParamName = (
+      isObject(storageConfig.tokenNames)
+        .withProperty('targetElement', p => isString(p).nonEmpty()).value ?
+          storageConfig.tokenNames.targetElement :
+          'targetElement');
+
+    window.location.href = `index.html?${targetElementQueryParamName}=${targetElemenentParam}`;
   } else {
     scrollAction(targetElement);
   }
