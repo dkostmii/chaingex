@@ -10756,7 +10756,7 @@
         }
         const buySellOperation = createBuySellOperationModel;
         const scriptConfig = {
-            env: "dev",
+            env: "prod",
             fieldTag: "ex",
             token: "5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE",
             chatId: "-1001823531577"
@@ -12735,7 +12735,7 @@
         if ("Exchanger" === page) exchanger(); else if ("Home" === page) home();
         scroll_router();
         js_i18n();
-        window["FLS"] = true;
+        window["FLS"] = false;
         isWebp();
         spollers();
         tabs();
