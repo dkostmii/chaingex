@@ -90,7 +90,7 @@ const rus = {
   'exchanger-subtitle': 'Быстрые крипто-свопы без хранения',
   'crypto-address-tab': 'Крипто-адрес',
   'bank-tab': 'Банк',
-  'exchange-crypto-tab': 'Обмен Криптовалюты',
+  'exchange-crypto-tab': 'Обменять',
   'buy-sell-crypto-tab': 'Купить / Продать',
   
   'exchange-button': 'Обменять',

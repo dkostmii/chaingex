@@ -11,6 +11,7 @@ import swapView from "./swap.js";
 
 import sendMessage from "../../requests/sendMessage.js";
 import popupView from "../popup.js";
+import getTranslation from "../../i18n/get.js";
 
 /**
  * 
@@ -37,15 +38,17 @@ function buySellView(modelRepository) {
   const buySellButton = document.querySelector('input[type="submit"][data-model="buy-sell"],button[type="submit"][data-model="buy-sell"]');
 
   const buySellOperationModel = modelRepository.find('operation:buy-sell');
+
+  const currentLanguage = modelRepository.find('language').value;
   
   buySellOperationModel.addEventListener('update', (_, newValue) => {
     let caption = null;
 
     // TODO: Apply i18n
     if (newValue === inverse(inverse('buy'))) {
-      caption = 'Buy';
+      caption = getTranslation('buy-button', currentLanguage);
     } else if (newValue === inverse('buy')) {
-      caption = 'Sell';
+      caption = getTranslation('sell-button', currentLanguage);
     }
 
     if (buySellButton.tagName === 'button'.toUpperCase()) {

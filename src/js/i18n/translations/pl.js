@@ -90,7 +90,7 @@ const pl = {
   'exchanger-subtitle': 'Szybkie wymiany kryptowalut, wolne od opieki',
   'crypto-address-tab': 'Adres kryptowaluty',
   'bank-tab': 'Bank',
-  'exchange-crypto-tab': 'Wymień kryptowalutę',
+  'exchange-crypto-tab': 'Wymień',
   'buy-sell-crypto-tab': 'Kup / Sprzedaj',
   
   'exchange-button': 'Wymień',
@@ -123,7 +123,7 @@ const pl = {
   'popup-failure-title': 'O nie!',
   'popup-failure-text': 'Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę',
   'popup-button-home': 'Strona główna',
-  'popup-button-continue': 'Kontynuować',
+  'popup-button-continue': 'Kontynuuj',
   'popup-button-refresh': 'Odśwież',
 }
 
