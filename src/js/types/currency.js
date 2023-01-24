@@ -169,7 +169,8 @@ export class CurrencyPartial {
     if ('address' in currencyPartialData) {
       isString(currencyPartialData.address).nonEmpty().throw('currencyPartialData.address property');
 
-      if (isObject(currencyPartialData).withProperty('network', isString).value) {
+      if ('network' in currencyPartialData) {
+        isString(currencyPartialData.network).throw('currencyDataPartial.network property');
         this.network = currencyPartialData.network;
       } else {
         this.network = "";

@@ -1,9 +1,12 @@
 import { product, createParamsMatrix } from './params';
-import { numbers, nonNegative, negative, nans, nonStrings, empty, nonEmpty } from './base';
+import { nonNegative, negative, nans, nonStrings, empty, nonEmpty } from './base';
 
 export { product };
 
-export const anyStrSmall = [...empty.slice(0, 1), ...nonStrings.slice(0, 1), ...nonEmpty.slice(0, 1)];
+export const emptySmall = empty.slice(0, 1);
+export const nonStringsSmall = nonStrings.slice(0, 1);
+
+export const anyStrSmall = [...emptySmall, ...nonStrings.slice(0, 1), ...nonEmpty.slice(0, 1)];
 export const anyNumSmall = [...negative.slice(0, 1), ...nans.slice(0, 1), ...nonNegative.slice(0, 1)];
 export const nonEmptySmall = nonEmpty.slice(0, 2);
 export const nonNegativeSmall = nonNegative.slice(0, 2);
@@ -35,12 +38,16 @@ const currencyValidParamsSpace = {
   ...currencyPartialValidParamsSpace,
   price: numbersSmall,
   change: numbersSmall,
+  address: nonEmptySmall,
+  network: [...emptySmall, ...nonEmptySmall],
 }
 
 const currencyInvalidParamsSpace = {
   ...currencyPartialInvalidParamsSpace,
   price: anyNumSmall,
   change: anyNumSmall,
+  address: anyStrSmall,
+  network: nonStringsSmall,
 };
 
 export const {
