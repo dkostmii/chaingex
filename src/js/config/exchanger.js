@@ -6,7 +6,7 @@ export const scriptConfig = {
     /** In `dev` mode additional data is logged in console, 
      * such as request response.
      */
-    env: 'dev',
+    env: 'prod',
     /** The token which identifies some **Exchanger** form fields, such as `<input name="ex-card">` or `<input name="ex-address"`,
  * the name starts with this token. */
     fieldTag: 'ex',
