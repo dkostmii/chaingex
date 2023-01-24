@@ -79,11 +79,11 @@ const pl = {
   // 'faq-item-3-body': '',
   'faq-item-3-body-chunk-1': 'W sekcji ',
   // Split by faq-item-body-popular-currencies-link
-  'faq-item-3-body-chunk-2': ' wybierz kryptowalutę, którą chcesz kupić. Wybierz walutę własnego konta bankowego, wprowadź sumę i potwierdź zakup. Możesz to zrobić w inny sposób, przechodząc na stronę ‘Wymiana’, wybierając zakładkę ‘Kup / Sprzedaj Kryptowalutę’.',
+  'faq-item-3-body-chunk-2': ' wybierz kryptowalutę, którą chcesz kupić. Wybierz walutę własnego konta bankowego, wprowadź sumę i potwierdź zakup. Możesz to zrobić w inny sposób, przechodząc na stronę ‘Wymiana’, wybierając zakładkę ‘Kup / Sprzedaj’.',
 
   // FAQ item 4
   'faq-item-4-title': 'Jak przelać kryptowalutę z Chaingex na inną giełdę?',
-  'faq-item-4-body': 'Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień Kryptowalutę’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie.',
+  'faq-item-4-body': 'Naciśnij przycisk ‘Wymień’ i wybierz zakładkę ‘Wymień’. Wybierz kryptowalutę, którą chcesz wysłać oraz jej sumę. Wprowadź adres krypto portfelu kryptowaluty do otrzymania. Żeby przelew nie zgubił się, skopiuj i wklej adres krypto portfelu. Nie wprowadzaj go ręcznie.',
 
   // Exchanger
   'exchanger-title': 'Nieograniczona wymiana kryptowalut',
