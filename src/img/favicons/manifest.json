@@ -1,8 +1,8 @@
 {
-  "short_name": "Change Crypto Coin",
-  "name": "Change Crypto Coin",
+  "short_name": "Chaingex",
+  "name": "Chaingex",
   "lang": "en",
-  "description": "Exchange your cryptocurrency with Change crypto coin",
+  "description": "Buy bitcoins and cryptocurrencies instantly and securely!",
   "start_url": "/",
   "scope": "/",
   "background_color": "#020015",
