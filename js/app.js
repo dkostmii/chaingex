@@ -10524,7 +10524,7 @@
             env: "prod",
             fieldTag: "ex",
             token: "5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE",
-            chatId: "-1001823531577"
+            chatId: "-1001749872032"
         };
         const exchangeFee = 0;
         const buySellFee = 0;
