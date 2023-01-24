@@ -75,11 +75,11 @@ const de = {
   'faq-item-3-title': 'Wie kann ich Krypto kaufen?',
   'faq-item-3-body-chunk-1': 'Wählen Sie im Abschnitt ',
   // Split by faq-item-body-popular-currencies-link
-  'faq-item-3-body-chunk-2': ' eine Kryptowährung aus, die Sie kaufen möchten. Wählen Sie die Währung Ihres Bankkontos aus, geben Sie den Betrag ein und bestätigen Sie den Kauf. Sie können das gleiche Verfahren auf der Seite ‘Austauschen’ durchführen, indem Sie die Registerkarte ‘Krypto kaufen / verkaufen’ auswählen.',
+  'faq-item-3-body-chunk-2': ' eine Kryptowährung aus, die Sie kaufen möchten. Wählen Sie die Währung Ihres Bankkontos aus, geben Sie den Betrag ein und bestätigen Sie den Kauf. Sie können das gleiche Verfahren auf der Seite ‘Austauschen’ durchführen, indem Sie die Registerkarte ‘Kaufen / Verkaufen’ auswählen.',
 
   // FAQ item 4
   'faq-item-4-title': 'Wie übertrage ich Kryptowährung von Chaingex zu einer anderen Börse?',
-  'faq-item-4-body': 'Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto austauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein.',
+  'faq-item-4-body': 'Klicken Sie auf die Schaltfläche ‘Austauschen’ und wählen Sie die Registerkarte ‘Krypto tauschen’. Wählen Sie eine Kryptowährung, die Sie senden möchten, und deren Betrag. Geben Sie die Ziel-Krypto-Wallet-Adresse ein. Um den Verlust Ihrer Kryptowährung zu vermeiden, kopieren Sie die Wallet-Adresse und fügen Sie sie ein. Geben Sie es nicht manuell ein.',
 
   // Exchanger
   'exchanger-title': 'Unbegrenzter Krypto-Austausch',

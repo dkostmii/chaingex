@@ -4,7 +4,7 @@ const scrollDispatcherConfig = {
    * 
    * `speed: 2000` - very smooth
    */
-  speed: 400,
+  speed: 700,
   noHeader: false,
   offsetTop: 0,
 };
