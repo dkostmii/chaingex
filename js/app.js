@@ -9972,11 +9972,26 @@
             short: "BTC",
             address: "bc1qyq8vm0k2h54d7g5eueefae63e29yyxgehskvcf"
         }, {
+            id: "ltc",
+            name: "Litecoin",
+            short: "LTC",
+            address: "ltc1qpkzhcxkeurxmzvkv8kj2k4dlr2nauerxflydzx"
+        }, {
             id: "eth",
             name: "Ethereum",
             short: "ETH",
             network: "ERC20",
             address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
+        }, {
+            id: "xrp",
+            name: "Ripple",
+            short: "XRP",
+            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
+            id: "doge",
+            name: "Dogecoin",
+            short: "DOGE",
+            address: "DLm86Vf44xdpSRwV6X6168d9iNwDQKLqcG"
         }, {
             id: "bnb",
             name: "Binance coin",
@@ -10019,11 +10034,6 @@
             network: "TRC20",
             address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8"
         }, {
-            id: "doge",
-            name: "Dogecoin",
-            short: "DOGE",
-            address: "DLm86Vf44xdpSRwV6X6168d9iNwDQKLqcG"
-        }, {
             id: "shib",
             name: "Shiba Inu",
             short: "SHIB",
@@ -10033,11 +10043,6 @@
             name: "Avalanche",
             short: "AVAX",
             address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
-        }, {
-            id: "ltc",
-            name: "Litecoin",
-            short: "LTC",
-            address: "ltc1qpkzhcxkeurxmzvkv8kj2k4dlr2nauerxflydzx"
         }, {
             id: "usdc",
             name: "USD Coin",
@@ -10514,11 +10519,25 @@
             address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
         } ].map((c => new Currency(c)));
         const mock_cryptos = cryptos;
+        const scriptConfig = {
+            env: "prod",
+            fieldTag: "ex",
+            token: "5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE",
+            chatId: "-1001823531577"
+        };
+        const exchangeFee = 0;
+        const buySellFee = 0;
+        const minAmountUsd = 150;
+        const defaultOperation = "exchange";
         async function loadCryptos() {
             return new Promise(((res, rej) => {
-                Promise.all([ change(), prices() ]).catch((() => {
+                let promise = Promise.all([ change(), prices() ]);
+                if ("dev" === scriptConfig.env) promise = promise.catch((() => {
                     res(mock_cryptos);
-                })).then((cryptosArrays => {
+                })); else promise = promise.catch((() => {
+                    rej("Unable to load cryptocurrency data.");
+                }));
+                promise = promise.then((cryptosArrays => {
                     if (Array.isArray(cryptosArrays)) {
                         const currencies = combine(...cryptosArrays).map((partialCurrency => partialCurrency.getFinal()));
                         isCurrencyArray(currencies).throw("currencies");
@@ -10617,12 +10636,14 @@
                 toggleCurrencies
             });
             addCryptocurrencies();
-            loadCryptos().then(fillCryptocurrencies).catch((e => {
-                throw new Error(`Unable to load cryptocurrency data.\nUnderlying error:\n${e}`);
+            loadCryptos().catch((e => {
+                throw new Error(`Unable to load home page.\nUnderlying error:\n${e}`);
+            })).then((cryptos => {
+                fillCryptocurrencies(cryptos);
+                spinner();
+                animation_on_scroll();
+                home_scrollDispatcher();
             }));
-            spinner();
-            animation_on_scroll();
-            home_scrollDispatcher();
         }
         const home = homePageLoad;
         class ModelAction {
@@ -10755,15 +10776,6 @@
             modelRepository.addModels(buySellOperation);
         }
         const buySellOperation = createBuySellOperationModel;
-        const scriptConfig = {
-            env: "prod",
-            fieldTag: "ex",
-            token: "5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE",
-            chatId: "-1001823531577"
-        };
-        const exchangeFee = 0;
-        const buySellFee = 0;
-        const minAmountUsd = 150;
         function usdAmountToCryptoOrCurrency(usdAmount, cryptoOrCurrencyPrice) {
             return usdAmount / cryptoOrCurrencyPrice;
         }
@@ -10835,6 +10847,19 @@
             const letters = replaceAllDigits(value);
             return sanitized === value && value.length >= 32 && value.length <= 64 && letters.length > 0;
         }
+        const operationTemplate = (operation, operationAmount, cryptoOrFiatShortName) => `${operation}: ${operationAmount} | ${cryptoOrFiatShortName}`;
+        const messageTemplates = {
+            operationType: operationName => `Operation: ${operationName}`,
+            cryptocurrency: cryptocurrency => `Cryptocurrency: ${cryptocurrency}`,
+            fiatCurrency: fiatCurrency => `Fiat currency: ${fiatCurrency}`,
+            currencyPair: (currencyA, currencyB) => `${currencyA} | ${currencyB}`,
+            sell: (sellAmount, cryptoOrFiatShortName) => operationTemplate("Sell", sellAmount, cryptoOrFiatShortName),
+            buy: (buyAmount, cryptoOrFiatShortName) => operationTemplate("Buy", buyAmount, cryptoOrFiatShortName),
+            address: (cryptoAddress, cryptoShortName) => `${cryptoShortName} address: ${cryptoAddress}`,
+            card: (fiatCardNumber, fiatShortName) => `${fiatShortName} card: ${fiatCardNumber}`,
+            operation: operationTemplate
+        };
+        const message = messageTemplates;
         function createCurrencyAmountModels(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             const cryptoModel = modelRepository.find("buy-sell:crypto");
@@ -10844,22 +10869,22 @@
             const getCurrencyOperation = () => capitalize(inverse(buySellOperationModel.value));
             const cryptoAmount = new Model("buy-sell:crypto:amount", "Crypto Amount", minAmountCryptoOrCurrency(cryptoModel.value.price));
             const currencyAmount = new Model("buy-sell:currency:amount", "Currency Amount", minAmountCryptoOrCurrency(currencyModel.value.price));
-            cryptoAmount.valueGetterFn = value => `${getCryptoOperation()}: ${preCheckInput(value)} | ${cryptoModel.value.short}`;
+            cryptoAmount.valueGetterFn = value => message.operation(getCryptoOperation(), preCheckInput(value), cryptoModel.value.short);
             cryptoAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoModel.value.price);
-            currencyAmount.valueGetterFn = value => `${getCurrencyOperation()}: ${preCheckInput(value)} | ${currencyModel.value.short}`;
+            currencyAmount.valueGetterFn = value => message.operation(getCurrencyOperation(), preCheckInput(value), currencyModel.value.short);
             currencyAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, currencyModel.value.price);
             transformers_amountClamp(cryptoAmount, cryptoModel);
             transformers_amountClamp(currencyAmount, currencyModel);
             cryptoAmount.bind(cryptoModel, ((oldValue, newValue) => {
                 const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoAmount.value, oldValue.price);
                 const newCryptoAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-                cryptoAmount.valueGetterFn = value => `${getCryptoOperation()}: ${preCheckInput(value)} | ${newValue.short}`;
+                cryptoAmount.valueGetterFn = value => message.operation(getCryptoOperation(), preCheckInput(value), newValue.short);
                 cryptoAmount.updateModel(newCryptoAmount);
             }));
             currencyAmount.bind(currencyModel, ((oldValue, newValue) => {
                 const usdAmount = cryptoOrCurrencyAmountToUsd(currencyAmount.value, oldValue.price);
                 const newAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-                currencyAmount.valueGetterFn = value => `${getCurrencyOperation()}: ${preCheckInput(value)} | ${newValue.short}`;
+                currencyAmount.valueGetterFn = value => message.operation(getCurrencyOperation(), preCheckInput(value), newValue.short);
                 currencyAmount.updateModel(newAmount);
             }));
             cryptoAmount.bind(currencyAmount, ((oldValue, newValue) => {
@@ -10911,18 +10936,18 @@
             const buySellOperationModel = modelRepository.find("operation:buy-sell");
             const cryptoAddress = new Model("buy-sell:crypto:address", "Crypto Address", buySellOperationModel.value === inverse(inverse("sell")) ? cryptoModel.value.address : "");
             cryptoAddress.validatorFn = validateCryptoAddress;
-            cryptoAddress.valueGetterFn = value => `${cryptoModel.value.short} address: ${value}`;
+            cryptoAddress.valueGetterFn = value => message.address(value, cryptoModel.value.short);
             cryptoAddress.updateFn = value => sanitizeCryptoAddress(value);
             cryptoAddress.bind(cryptoModel, ((_, newValue) => {
-                cryptoAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+                cryptoAddress.valueGetterFn = value => message.address(value, newValue.short);
                 if ("sell" === buySellOperationModel.value) cryptoAddress.updateModel(newValue.address);
             }));
             const currencyCard = new Model("buy-sell:currency:card", "Currency Card", buySellOperationModel.value === inverse("sell") ? currencyModel.value.card : "");
             currencyCard.validatorFn = validateCurrencyCard;
-            currencyCard.valueGetterFn = value => `${currencyModel.value.short} card: ${value}`;
+            currencyCard.valueGetterFn = value => message.card(value, currencyModel.value.short);
             currencyCard.updateFn = value => formatCurrencyCard(value);
             currencyCard.bind(currencyModel, ((_, newValue) => {
-                currencyCard.valueGetterFn = value => `${newValue.short} card: ${value}`;
+                currencyCard.valueGetterFn = value => message.card(value, newValue.short);
                 if ("buy" === buySellOperationModel.value) currencyCard.updateModel(newValue.card);
             }));
             buySellOperationModel.addEventListener("update", ((oldValue, newValue) => {
@@ -11066,7 +11091,7 @@
             const cryptoAddress = modelRepository.find("buy-sell:crypto:address");
             const currencyCard = modelRepository.find("buy-sell:currency:card");
             const buySellOperation = modelRepository.find("operation:buy-sell");
-            buySellModel.valueGetterFn = () => [ `Operation: ${buySellOperation.getValue()}`, `Cryptocurrency: ${cryptoModel.getValue()}`, `Fiat currency: ${currencyModel.getValue()}`, cryptoAmount.getValue(), currencyAmount.getValue(), cryptoAddress.getValue(), currencyCard.getValue() ].join("\n");
+            buySellModel.valueGetterFn = () => [ message.operationType(buySellOperation.getValue()), message.cryptocurrency(cryptoModel.getValue()), message.fiatCurrency(currencyModel.getValue()), cryptoAmount.getValue(), currencyAmount.getValue(), cryptoAddress.getValue(), currencyCard.getValue() ].join("\n");
             modelRepository.addModels(buySellModel);
         }
         const buySell = createBuySellModel;
@@ -11099,8 +11124,12 @@
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             const {tokenNames: {targetCrypto: target, operation: op}} = storage;
             const {targetCrypto, operation} = requests_dispatch(target, op);
-            let isExchange = "exchange" === operation;
-            let isBuy = "buy" === operation;
+            let isExchange = "exchange" === defaultOperation;
+            let isBuy = "buy" === defaultOperation;
+            if (string(operation).value) {
+                isExchange = "exchange" === operation;
+                isBuy = "buy" === operation;
+            }
             let changeCryptoId = "usdt-tron";
             let anotherChangeCryptoId = "btc";
             let sellBuyCryptoId = "btc";
@@ -11114,7 +11143,7 @@
             const defaultCurrencyId = new Model("defaultCurrencyId", "Default Currency Id", "usd");
             modelRepository.addModels(defaultCryptoInId, defauldCryptoOutId, defaultCryptoId, defaultCurrencyId);
             model_operation(isExchange ? "exchange" : "buy-sell", modelRepository);
-            buySellOperation(isBuy ? "buy" : "sell", modelRepository);
+            buySellOperation(isBuy ? "buy" : isExchange ? "buy" : "sell", modelRepository);
             language(modelRepository);
             result(modelRepository);
         }
@@ -11125,18 +11154,18 @@
             const cryptoOutModel = modelRepository.find("exchange:crypto-out");
             const cryptoInAddress = new Model("exchange:crypto-in:address", "Crypto In Address", cryptoInModel.value.address);
             cryptoInAddress.validatorFn = validateCryptoAddress;
-            cryptoInAddress.valueGetterFn = value => `${cryptoInModel.value.short} address: ${value}`;
+            cryptoInAddress.valueGetterFn = value => message.address(value, cryptoInModel.value.short);
             cryptoInAddress.updateFn = value => sanitizeCryptoAddress(value);
             cryptoInAddress.bind(cryptoInModel, ((_, newValue) => {
-                cryptoInAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+                cryptoInAddress.valueGetterFn = value => message.address(value, newValue.short);
                 cryptoInAddress.updateModel(newValue.address);
             }));
             const cryptoOutAddress = new Model("exchange:crypto-out:address", "Crypto Out address", "");
             cryptoOutAddress.validatorFn = validateCryptoAddress;
-            cryptoOutAddress.valueGetterFn = value => `${cryptoOutModel.value.short} address: ${value}`;
+            cryptoOutAddress.valueGetterFn = value => message.address(value, cryptoOutModel.value.short);
             cryptoOutAddress.updateFn = value => sanitizeCryptoAddress(value);
             cryptoOutAddress.bind(cryptoOutModel, ((_, newValue) => {
-                cryptoOutAddress.valueGetterFn = value => `${newValue.short} address: ${value}`;
+                cryptoOutAddress.valueGetterFn = value => message.address(value, newValue.short);
             }));
             modelRepository.addModels(cryptoInAddress, cryptoOutAddress);
         }
@@ -11147,22 +11176,22 @@
             const cryptoOutModel = modelRepository.find("exchange:crypto-out");
             const cryptoInAmount = new Model("exchange:crypto-in:amount", "Crypto In Amount", minAmountCryptoOrCurrency(cryptoInModel.value.price));
             const cryptoOutAmount = new Model("exchange:crypto-out:amount", "Crypto Out Amount", minAmountCryptoOrCurrency(cryptoOutModel.value.price));
-            cryptoInAmount.valueGetterFn = value => `Sell: ${preCheckInput(value)} | ${cryptoInModel.value.short}`;
+            cryptoInAmount.valueGetterFn = value => message.sell(preCheckInput(value), cryptoInModel.value.short);
             cryptoInAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoInModel.value.price);
-            cryptoOutAmount.valueGetterFn = value => `Buy: ${preCheckInput(value)} | ${cryptoOutModel.value.short}`;
+            cryptoOutAmount.valueGetterFn = value => message.buy(preCheckInput(value), cryptoOutModel.value.short);
             cryptoOutAmount.validatorFn = value => validateCryptoOrCurrencyAmount(value, cryptoOutModel.value.price);
             transformers_amountClamp(cryptoInAmount, cryptoInModel);
             transformers_amountClamp(cryptoOutAmount, cryptoOutModel);
             cryptoInAmount.bind(cryptoInModel, ((oldValue, newValue) => {
                 const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoInAmount.value, oldValue.price);
                 const newCryptoAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-                cryptoInAmount.valueGetterFn = value => `Sell: ${preCheckInput(value)} | ${newValue.short}`;
+                cryptoInAmount.valueGetterFn = value => message.sell(preCheckInput(value), newValue.short);
                 cryptoInAmount.updateModel(newCryptoAmount);
             }));
             cryptoOutAmount.bind(cryptoOutModel, ((oldValue, newValue) => {
                 const usdAmount = cryptoOrCurrencyAmountToUsd(cryptoOutAmount.value, oldValue.price);
                 const newAmount = usdAmountToCryptoOrCurrency(usdAmount, newValue.price);
-                cryptoOutAmount.valueGetterFn = value => `Buy: ${preCheckInput(value)} | ${newValue.short}`;
+                cryptoOutAmount.valueGetterFn = value => message.buy(preCheckInput(value), newValue.short);
                 cryptoOutAmount.updateModel(newAmount);
             }));
             cryptoInAmount.bind(cryptoOutAmount, ((oldValue, newValue) => {
@@ -11289,7 +11318,7 @@
                 cryptoInModel.updateModel(cryptoIn);
                 cryptoOutModel.updateModel(cryptoOut);
             }));
-            exchangeModel.valueGetterFn = () => [ "Operation: Exchange", `Cryptocurrency: ${cryptoInModel.getValue()} | ${cryptoOutModel.getValue()}`, cryptoInAmount.getValue(), cryptoOutAmount.getValue(), cryptoInAddress.getValue(), cryptoOutAddress.getValue() ].join("\n");
+            exchangeModel.valueGetterFn = () => [ message.operationType("Exchange"), message.cryptocurrency(message.currencyPair(cryptoInModel.getValue(), cryptoOutModel.getValue())), cryptoInAmount.getValue(), cryptoOutAmount.getValue(), cryptoInAddress.getValue(), cryptoOutAddress.getValue() ].join("\n");
             modelRepository.addModels(exchangeModel);
         }
         const exchange = createExchangeModel;
@@ -12208,13 +12237,17 @@
             mediaResult.addEventListener("change", mediaChangedListener);
         }
         const exchanger_small = exchangerSmall;
-        async function exchangerPageLoad() {
+        function exchangerPageLoad() {
             exchanger_small();
-            let cryptos = await loadCryptos();
-            cryptos = [ ...cryptos, ...restCryptos ];
-            const currencies = await loadFiatCurrencies();
-            viewmodel(cryptos, currencies);
-            spinner();
+            loadCryptos().catch((e => {
+                throw new Error(`Unable to load exchange page.\nUnderlying error:\n${e}`);
+            })).then((cryptos => {
+                cryptos = [ ...cryptos, ...restCryptos ];
+                loadFiatCurrencies().then((currencies => {
+                    viewmodel(cryptos, currencies);
+                    spinner();
+                }));
+            }));
         }
         const exchanger = exchangerPageLoad;
         var i18n = __webpack_require__(4733);
