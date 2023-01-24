@@ -63,6 +63,10 @@
     padding: rem(10) rem(30);
     align-items: center;
     justify-content: center;
+
+    &.i18n__pl, &.i18n__rus, &.i18n__de {
+      padding: rem(10) rem(15);
+    }
   }
 
   &__screen {
