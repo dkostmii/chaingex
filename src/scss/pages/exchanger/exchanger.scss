@@ -10,6 +10,12 @@
     @media screen and (max-width: $pc) {
       &-text {
         text-align: center;
+        font-size: rem(20);
+        line-height: 1.25;
+
+        & > .block-text__title {
+          margin-bottom: rem(8);
+        }
       }
     }
   }
