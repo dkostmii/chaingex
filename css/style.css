@@ -1239,9 +1239,9 @@ input.i18n__rus, button.i18n__rus, textarea.i18n__rus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 @media screen and (max-width: 61.99875em) {
   .footer__bottom {
@@ -4462,6 +4462,11 @@ picture > .cryptocurrency__icon {
 @media screen and (max-width: 78.75em) {
   .exchanger__block-text {
     text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+  .exchanger__block-text > .block-text__title {
+    margin-bottom: 0.5rem;
   }
 }
 .exchanger__link {
