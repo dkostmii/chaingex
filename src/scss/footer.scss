@@ -128,7 +128,6 @@
       flex-direction: column;
       align-items: flex-start;
 		flex-wrap: wrap;
-		gap: rem(30);
       color: $greyColor;
       width: rem(266);
    }
@@ -145,6 +144,12 @@
          opacity: 0.8;
       }
    }
+   
+   @media screen and (max-width: $laptop) {
+      &__contacts {
+         align-items: flex-end;
+      }
+   }
 
    @media screen and (max-width: $mobile) {
       flex-direction: column;
@@ -153,52 +158,73 @@
 
       &__list {
          align-items: center;
-         margin-bottom: rem(24);
-         font-size: rem(16);
-         line-height: rem(24);
-
          gap: rem(24);
       }
 
       &__contacts {
-         justify-content: center;
-      }
-   }
-
-   @media screen and (min-width: $mobile) and (max-width: $tablet) {
-      &__list {
-         font-size: rem(14);
-         line-height: rem(21);
+         align-items: center;
+         gap: rem(20);
       }
    }
 
    @media screen and (min-width: $mobile) {
-      height: rem(126);
-
       &__list {
-         height: inherit;
+         height: rem(125);
          gap: rem(20);
+         width: rem(281);
+         align-content: space-between;
+
+         &.i18n__rus {
+            width: rem(301);
+            height: rem(130);
+         }
+
+         &.i18n__pl {
+            width: rem(267);
+            height: rem(125);
+         }
+
+         &.i18n__de {
+            width: rem(237);
+            height: rem(123);
+         }
       }
 
-      &__contacts {
-         gap: rem(20);
+      &__item {
+         width: fit-content;
       }
    }
 
    @media screen and (min-width: $laptop) {
-      height: rem(146);
-   }
+      &__list {
+         height: rem(146);
+         gap: rem(30);
+         width: rem(266);
 
-   &__item {
+         &.i18n__rus {
+            width: rem(286);
+            height: rem(144);
+         }
+
+         &.i18n__pl {
+            width: rem(258);
+            height: rem(144);
+         }
+
+         &.i18n__de {
+            width: rem(222);
+            height: rem(144);
+         }
+      }
    }
 
    &__link {
       font-size: rem(18);
-      line-height: math.div(16, 14);
+      font-weight: 400;
+      line-height: rem(27);
+      opacity: 0.8;
       transition: all 0.2s ease;
       color: $mainColor;
-      font-weight: 400;
-      opacity: 0.8;
 
       &:hover {
          background: linear-gradient(0deg, #676673, #676673), linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
@@ -234,27 +260,17 @@
    }
 
    &__item {
-      transition: all 0.2s ease;
-
-      &:hover {
+      &:hover, &:active, &:target {
          background: linear-gradient(0deg, #676673, #676673), linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
          -webkit-text-fill-color: transparent;
          -webkit-background-clip: text;
          background-clip: text;
          opacity: 0.7;
-         transition: all 0.2s ease;
-      }
-      &:active {
-         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-linear-gradient(0deg, #676673, #676673);
       }
 
-      @media (any-hover: target) {
-			&:target {
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-   linear-gradient(0deg, #676673, #676673);
-         }
-		}
+      &:active, &:target {
+         opacity: 0.55;
+      }
    }
 }
 
