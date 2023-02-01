@@ -126,9 +126,15 @@ const rus = {
   'popup-button-continue': 'Продолжить',
   'popup-button-refresh': 'Обновить',
 
-  // Back, Send buttons
+  // Back, Next, Send buttons
   'back-button': 'Назад',
-  'send-button': 'Отправить',
+  'next-button': 'Далее',
+  'send-button': 'Подтвердить',
+
+  // Operations
+  'operation-exchange': 'обмен',
+  'operation-buy': 'покупку',
+  'operation-sell': 'продажу',
 }
 
 export default rus;

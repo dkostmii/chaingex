@@ -7,6 +7,8 @@ import exchangeFeeView from "./fee.js";
 import exchangeRateView from "./rate.js";
 import cryptoShortView from "./short.js";
 
+import getTranslation from "../../i18n/get.js";
+
 import sendMessage from "../../requests/sendMessage.js";
 
 import { ModelRepository } from "../../model/base.js";
@@ -34,11 +36,13 @@ function exchangeView(modelRepository) {
 
   const exchangeModels = modelRepository.findByPartial('exchange:');
 
-  const exchangeButton = document.querySelector('*[type="submit"][data-model="exchange"]');
+  const exchangeButton = document.querySelector('#exchange-submit');
 
   const resultModel = modelRepository.find('result');
 
   const operationStepModel = modelRepository.find('operation-step');
+
+  const currentLanguage = modelRepository.find('language').value;
 
   operationStepModel.addEventListener('update', (oldValue, newValue) => {
     if (oldValue === newValue && newValue === 1) {
@@ -53,6 +57,11 @@ function exchangeView(modelRepository) {
         });
     }
   });
+
+  exchangeButton.innerHTML = (
+    getTranslation('send-button', currentLanguage) + " " +
+    getTranslation('operation-exchange', currentLanguage)
+  );
 }
 
 export default exchangeView;

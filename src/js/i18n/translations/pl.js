@@ -126,9 +126,15 @@ const pl = {
   'popup-button-continue': 'Kontynuuj',
   'popup-button-refresh': 'Odśwież',
 
-  // Back, Send buttons
+  // Back, Next, Send buttons
   'back-button': 'Wstecz',
-  'send-button': 'Wyślij',
+  'next-button': 'Dalej',
+  'send-button': 'Potwierdź',
+
+  // Operations
+  'operation-exchange': 'wymianę',
+  'operation-buy': 'kupno',
+  'operation-sell': 'spzredaż',
 }
 
 export default pl;

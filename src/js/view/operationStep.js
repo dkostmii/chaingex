@@ -3,6 +3,7 @@ import { ModelRepository } from "../model/base.js";
 import toggleButtons from "../dom-manipulations/exchanger/buttons.js";
 import toggleTabsDisabled from "../dom-manipulations/exchanger/tabs-disabled.js";
 import toggleExchangerBlockWrapper from "../dom-manipulations/exchanger/wrapper.js";
+import getTranslation from "../i18n/get.js";
 
 /**
  * 
@@ -14,6 +15,7 @@ function createOperationStepView(modelRepository) {
   }
 
   const operationStep = modelRepository.find('operation-step');
+  const operationBuySell = modelRepository.find('operation:buy-sell');
 
   const operationStepButtons = Array.from(
     document.querySelectorAll('*[data-model="operation-step"][data-modelaction]'));
@@ -42,28 +44,54 @@ function createOperationStepView(modelRepository) {
     });
   });
 
+  const blockTabButtons = document.querySelectorAll('#buy-sell-submit, #exchange-submit');
+  const currentLanguage = modelRepository.find('language').value;
+
   const mediaHandle = window.matchMedia('(min-width: 78.75em)');
   
   const toggleTabs = toggleTabsDisabled();
 
-  const mediaChangedListener = e => {
-    toggleButtons(e.matches);
-    toggleTabs(e.matches);
-    toggleExchangerBlockWrapper(e.matches);
+  const exchangeButton = document.querySelector("#exchange-submit");
+  const stepExchangeButton = document.querySelector("#exchange-submit-operation-step");
 
+  const setupSteps = e => {
     if (e.matches) {
       // Single step
       if (operationStep.value !== 1) {
         operationStep.updateModel(1);
       }
+
+      exchangeButton.innerHTML = (
+        getTranslation('send-button', currentLanguage) + " " +
+        getTranslation('operation-exchange', currentLanguage)
+      );
+      operationBuySell.updateModel(operationBuySell.value);
     } else {
       // Multiple steps
       operationStep.updateModel(0);
+
+      stepExchangeButton.innerHTML = (
+        getTranslation('send-button', currentLanguage) + " " +
+        getTranslation('operation-exchange', currentLanguage)
+      );
+
+      blockTabButtons.forEach(btn => {
+        btn.innerHTML = getTranslation('next-button', currentLanguage);
+      });
     }
+  }
+
+  const mediaChangedListener = e => {
+    toggleButtons(e.matches);
+    toggleTabs(e.matches);
+    toggleExchangerBlockWrapper(e.matches);
+    setupSteps(e);
   };
 
   if (mediaHandle.matches) {
     mediaChangedListener(mediaHandle);
+  } else {
+    setupSteps(mediaHandle);
   }
 
   mediaHandle.addEventListener('change', mediaChangedListener);

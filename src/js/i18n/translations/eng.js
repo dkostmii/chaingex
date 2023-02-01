@@ -125,9 +125,15 @@ const eng = {
   'popup-button-continue': 'Continue',
   'popup-button-refresh': 'Refresh',
 
-  // Back, Send buttons
+  // Back, Next, Send buttons
   'back-button': 'Back',
-  'send-button': 'Send',
+  'next-button': 'Next',
+  'send-button': 'Confirm',
+
+  // Operations
+  'operation-exchange': 'exchange',
+  'operation-buy': 'purchase',
+  'operation-sell': 'sale',
 };
 
 export default eng;

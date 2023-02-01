@@ -124,7 +124,13 @@ const de = {
 
   // Back, Send buttons
   'back-button': 'Zurück',
-  'send-button': 'Senden',
+  'next-button': 'Weiter',
+  'send-button': 'Bestätigen',
+
+  // Operations
+  'operation-exchange': 'Austausch',
+  'operation-buy': 'Kauf',
+  'operation-sell': 'Verkauf',
 };
 
 export default de;
