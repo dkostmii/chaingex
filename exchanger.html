@@ -41,11 +41,11 @@
 	<!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230201121329" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230201220142" rel="stylesheet">
     -->
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230201121329">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230201220142">
 </head>
 
 <body class="i18n-style" data-page="Exchanger">
@@ -124,12 +124,19 @@
 				<div class="exchanger__link">
 					<a class="i18n" data-scrollrouter=".header" data-i18n="nav-home">Home</a> | <a class="i18n" href="#" data-i18n="header-cta">Change</a>
 				</div>
-				<div class="exchanger__block-text block-text">
-					<h2 class="block-text__title title i18n" data-i18n="exchanger-title">
-						Limitless Crypto Exchange
-					</h2>
-					<div class="block-text__text text i18n" data-i18n="exchanger-subtitle">
-						Fast Crypto Swaps, Free of Custody
+				<div class="exchanger__headline">
+					<div class="exchanger__block-text block-text">
+						<h2 class="block-text__title title i18n" data-i18n="exchanger-title">
+							Limitless Crypto Exchange
+						</h2>
+						<div class="block-text__text text i18n" data-i18n="exchanger-subtitle">
+							Fast Crypto Swaps, Free of Custody
+						</div>
+					</div>
+					<div class="exchanger__countdown">
+						<span data-model="countdown:mm">00</span>
+						<span>:</span>
+						<span data-model="countdown:ss">00</span>
 					</div>
 				</div>
 			</div>
@@ -167,7 +174,7 @@
 								<button type="submit" class="block-tab__button block-tab__button__secondary i18n" data-model="operation-step" data-modelaction="back" data-i18n="back-button">
 									Back
 								</button>
-								<button type="submit" class="block-tab__button i18n" data-model="operation-step" data-modelaction="next" data-i18n="send-button">Send</button>
+								<button type="submit" class="block-tab__button i18n" id="exchange-submit-operation-step" data-model="operation-step" data-modelaction="next" data-i18n="send-button">Send</button>
 							</div>
 						</div>
 						<div class="block-tab__body">
@@ -196,7 +203,7 @@
 								<button type="submit" class="block-tab__button block-tab__button__secondary i18n" data-model="operation-step" data-modelaction="back" data-i18n="back-button">
 									Back
 								</button>
-								<button type="submit" class="block-tab__button i18n" data-model="operation-step" data-modelaction="next" data-i18n="send-button">Send</button>
+								<button type="submit" class="block-tab__button i18n" id="buy-sell-submit-operation-step" data-model="operation-step" data-modelaction="next" data-i18n="send-button">Send</button>
 							</div>
 						</div>
 					</form>
@@ -238,7 +245,7 @@
 							<p class="message hidden"></p>
 
 							<div class="block-tab__buttons">
-								<button type="submit" class="block-tab__button i18n" data-model="operation-step" data-modelaction="next" data-i18n="exchange-button">Exchange</button>
+								<button type="submit" class="block-tab__button i18n-style" id="exchange-submit" data-model="operation-step" data-modelaction="next">Exchange</button>
 							</div>
 						</div>
 						<div class="block-tab__body">
@@ -306,6 +313,19 @@
 				<button class="button button-secondary i18n button-refresh" data-i18n="popup-button-refresh"></button>
 			</div>
 		</div>
+		<div class="popup popup__timer hidden">
+			<div class="popup__content">
+				<img class="popup__icon" src="img/exchanger/failure.svg" alt="Failure">
+				<div class="popup__caption">
+					<h3 class="popup__title i18n" data-i18n="popup-timer-title"></h3>
+					<p class="popup__text i18n" data-i18n="popup-timer-text"></p>
+				</div>
+			</div>
+			<div class="popup__buttons">
+				<button class="button button-primary i18n button-continue" data-i18n="popup-button-continue"></button>
+				<button data-scrollrouter=".header" class="button button-secondary i18n" data-i18n="popup-button-home"></button>
+			</div>
+		</div>
 	</div>
 
 	<footer class="footer">
@@ -368,7 +388,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20230201121329"></script>
+	<script src="js/app.min.js?_v=20230201220142"></script>
 </body>
 
 </html>

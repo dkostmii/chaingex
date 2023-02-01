@@ -10073,13 +10073,13 @@
             network: "ERC20",
             address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
         } ].map((currencyData => new Currency(currencyData)));
-        class ElementNotFoundError extends Error {
+        class elementNotFound_ElementNotFoundError extends Error {
             constructor(elementName) {
                 super(`Unable to locate ${elementName} element.`);
                 this.name = "Element Not Found Error";
             }
         }
-        const elementNotFound = ElementNotFoundError;
+        const elementNotFound = elementNotFound_ElementNotFoundError;
         function isCurrencyPartial(partialCurrency) {
             return {
                 value: partialCurrency instanceof CurrencyPartial,
@@ -10530,6 +10530,7 @@
         const buySellFee = 0;
         const minAmountUsd = 150;
         const defaultOperation = "exchange";
+        const timerMinutes = 20;
         async function loadCryptos() {
             return new Promise(((res, rej) => {
                 let promise = Promise.all([ change(), prices() ]);
@@ -11155,6 +11156,94 @@
             modelRepository.addModels(operationStepModel);
         }
         const operationStepModel = createOperationStepModel;
+        function animationInterval(ms, signal, callback) {
+            const start = document.timeline ? document.timeline.currentTime : performance.now();
+            function frame(time) {
+                if (signal.aborted) return;
+                callback(time);
+                scheduleFrame(time);
+            }
+            function scheduleFrame(time) {
+                const elapsed = time - start;
+                const roundedElapsed = Math.round(elapsed / ms) * ms;
+                const targetNext = start + roundedElapsed + ms;
+                const delay = targetNext - performance.now();
+                setTimeout((() => requestAnimationFrame(frame)), delay);
+            }
+            scheduleFrame(start);
+        }
+        const animationInteval = animationInterval;
+        function mapConstrain(constrain) {
+            switch (constrain) {
+              case "minutes":
+                return 0;
+
+              case "hours":
+                return 1;
+
+              case "days":
+                return 2;
+
+              default:
+                throw new Error(`Invalid constrain value: ${constrain}. Expected "minutes", "hours" or "days".`);
+            }
+        }
+        function getTimestamp(secondsInterval, constrain = "minutes") {
+            number(secondsInterval).nonNegative().throw(secondsInterval);
+            const constrainLevel = mapConstrain(constrain);
+            const ss = secondsInterval % 60;
+            let mm = Math.floor(secondsInterval / 60);
+            if (constrainLevel > mapConstrain("minutes")) mm %= 60;
+            let hh = Math.floor(secondsInterval / 3600);
+            if (constrainLevel > mapConstrain("hours")) hh %= 24;
+            const dd = Math.floor(secondsInterval / 3600 / 24);
+            switch (constrain) {
+              case "minutes":
+                return `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
+
+              case "hours":
+                return `${hh.toString().padStart(2, "0")}:${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
+
+              case "days":
+                return `${dd}.${hh.toString().padStart(2, "0")}:${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
+
+              default:
+                throw new Error(`Invalid constrain value: ${constrain}. Expected "minutes", "hours" or "days".`);
+            }
+        }
+        function getSecondsInterval(seconds = 0, minutes = 0, hours = 0, days = 0) {
+            number(seconds).nonNegative().throw("seconds");
+            number(minutes).nonNegative().throw("minutes");
+            number(hours).nonNegative().throw("hours");
+            number(days).nonNegative().throw("days");
+            return seconds + 60 * minutes + 3600 * hours + 3600 * days * 24;
+        }
+        function initializeTimer(countdownModel) {
+            if (!(countdownModel instanceof Model)) throw new TypeError("Expected countdownModel to be instance of Model.");
+            const controller = new AbortController;
+            animationInteval(1e3, controller.signal, (_ => {
+                if (countdownModel.value > 0) countdownModel.doAction("decrement");
+            }));
+            countdownModel.addEventListener("update", ((_, newValue) => {
+                if (0 === newValue) controller.abort();
+            }));
+        }
+        function createCountdownModel(secondsInteval, modelRepository) {
+            number(secondsInteval).nonNegative().throw("secondsInteval");
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const countdownModel = new Model("countdown", "Countdown", secondsInteval);
+            countdownModel.addAction("decrement", (() => {
+                countdownModel.updateModel(countdownModel.value - 1);
+            }));
+            countdownModel.addAction("reload", (() => {
+                countdownModel.updateModel(secondsInteval);
+                initializeTimer(countdownModel);
+            }));
+            countdownModel.valueGetterFn = value => getTimestamp(value, "minutes");
+            initializeTimer(countdownModel);
+            modelRepository.addModels(countdownModel);
+        }
+        const countdown = createCountdownModel;
         function createDefaults(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             const {tokenNames: {targetCrypto: target, operation: op}} = storage;
@@ -11182,6 +11271,7 @@
             language(modelRepository);
             result(modelRepository);
             operationStepModel(modelRepository);
+            countdown(getSecondsInterval(0, timerMinutes), modelRepository);
         }
         const defaults = createDefaults;
         function createCryptoAddressModels(modelRepository) {
@@ -11925,12 +12015,15 @@
             const buySellModel = modelRepository.find("buy-sell");
             const buySellModels = modelRepository.findByPartial("buy-sell:");
             const buySellButton = document.querySelector("#buy-sell-submit");
+            const stepBuySellButton = document.querySelector("#buy-sell-submit-operation-step");
             const buySellOperationModel = modelRepository.find("operation:buy-sell");
             const currentLanguage = modelRepository.find("language").value;
+            const operationStep = modelRepository.find("operation-step");
             buySellOperationModel.addEventListener("update", ((_, newValue) => {
                 let caption = null;
-                if (newValue === inverse(inverse("buy"))) caption = get("buy-button", currentLanguage); else if (newValue === inverse("buy")) caption = get("sell-button", currentLanguage);
-                if (buySellButton.tagName === "button".toUpperCase()) buySellButton.innerHTML = caption; else if (buySellButton.tagName === "input".toUpperCase()) buySellButton.value = caption;
+                if (newValue === inverse(inverse("buy"))) caption = get("send-button", currentLanguage) + " " + get("operation-buy", currentLanguage); else if (newValue === inverse("buy")) caption = get("send-button", currentLanguage) + " " + get("operation-sell", currentLanguage);
+                if (1 === operationStep.value) if (buySellButton.tagName === "button".toUpperCase()) buySellButton.innerHTML = caption; else if (buySellButton.tagName === "input".toUpperCase()) buySellButton.value = caption;
+                if (stepBuySellButton.tagName === "button".toUpperCase()) stepBuySellButton.innerHTML = caption; else if (stepBuySellButton.tagName === "input".toUpperCase()) stepBuySellButton.value = caption;
             }));
             const resultModel = modelRepository.find("result");
             const operationStepModel = modelRepository.find("operation-step");
@@ -12193,9 +12286,10 @@
             view_exchange_short(modelRepository);
             const exchangeModel = modelRepository.find("exchange");
             const exchangeModels = modelRepository.findByPartial("exchange:");
-            document.querySelector('*[type="submit"][data-model="exchange"]');
+            const exchangeButton = document.querySelector("#exchange-submit");
             const resultModel = modelRepository.find("result");
             const operationStepModel = modelRepository.find("operation-step");
+            const currentLanguage = modelRepository.find("language").value;
             operationStepModel.addEventListener("update", ((oldValue, newValue) => {
                 if (oldValue === newValue && 1 === newValue) {
                     if (!exchangeModels.every((m => m.validate()))) return;
@@ -12205,6 +12299,7 @@
                     }));
                 }
             }));
+            exchangeButton.innerHTML = get("send-button", currentLanguage) + " " + get("operation-exchange", currentLanguage);
         }
         const view_exchange = exchangeView;
         function createOperationView(modelRepository) {
@@ -12288,6 +12383,7 @@
         function createOperationStepView(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             const operationStep = modelRepository.find("operation-step");
+            const operationBuySell = modelRepository.find("operation:buy-sell");
             const operationStepButtons = Array.from(document.querySelectorAll('*[data-model="operation-step"][data-modelaction]'));
             operationStepButtons.forEach((btn => {
                 btn.addEventListener("click", (e => {
@@ -12302,20 +12398,68 @@
                     if (parseInt(el.dataset.modelvalue) !== newValue) el.classList.remove("current"); else el.classList.add("current");
                 }));
             }));
+            const blockTabButtons = document.querySelectorAll("#buy-sell-submit, #exchange-submit");
+            const currentLanguage = modelRepository.find("language").value;
             const mediaHandle = window.matchMedia("(min-width: 78.75em)");
             const toggleTabs = tabs_disabled();
+            const exchangeButton = document.querySelector("#exchange-submit");
+            const stepExchangeButton = document.querySelector("#exchange-submit-operation-step");
+            const setupSteps = e => {
+                if (e.matches) {
+                    if (1 !== operationStep.value) operationStep.updateModel(1);
+                    exchangeButton.innerHTML = get("send-button", currentLanguage) + " " + get("operation-exchange", currentLanguage);
+                    operationBuySell.updateModel(operationBuySell.value);
+                } else {
+                    operationStep.updateModel(0);
+                    stepExchangeButton.innerHTML = get("send-button", currentLanguage) + " " + get("operation-exchange", currentLanguage);
+                    blockTabButtons.forEach((btn => {
+                        btn.innerHTML = get("next-button", currentLanguage);
+                    }));
+                }
+            };
             const mediaChangedListener = e => {
                 buttons(e.matches);
                 toggleTabs(e.matches);
                 wrapper(e.matches);
-                if (e.matches) {
-                    if (1 !== operationStep.value) operationStep.updateModel(1);
-                } else operationStep.updateModel(0);
+                setupSteps(e);
             };
-            if (mediaHandle.matches) mediaChangedListener(mediaHandle);
+            if (mediaHandle.matches) mediaChangedListener(mediaHandle); else setupSteps(mediaHandle);
             mediaHandle.addEventListener("change", mediaChangedListener);
         }
         const operationStep = createOperationStepView;
+        function createTimerPopupView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const countdownModel = modelRepository.find("countdown");
+            const popupScreenEl = document.querySelector(".popup__screen");
+            if (!popupScreenEl) throw new ElementNotFoundError(".popup__screen");
+            const popupTimerEl = document.querySelector(".popup__timer");
+            const continueButton = popupTimerEl.querySelector(".button-continue");
+            continueButton.addEventListener("click", (() => {
+                countdownModel.doAction("reload");
+                popupScreenEl.classList.add("hidden");
+                popupTimerEl.classList.add("hidden");
+            }));
+            countdownModel.addEventListener("update", ((_, newValue) => {
+                if (0 === newValue) {
+                    popupScreenEl.classList.remove("hidden");
+                    popupTimerEl.classList.remove("hidden");
+                }
+            }));
+        }
+        const timerPopup = createTimerPopupView;
+        function createCountdownView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const countdownModel = modelRepository.find("countdown");
+            const countdownMinutesEl = document.querySelector('*[data-model="countdown:mm"]');
+            const countdownSecondsEl = document.querySelector('*[data-model="countdown:ss"]');
+            countdownModel.addEventListener("update", (() => {
+                const [mm, ss] = countdownModel.getValue().split(":");
+                countdownMinutesEl.innerHTML = mm;
+                countdownSecondsEl.innerHTML = ss;
+            }));
+            timerPopup(modelRepository);
+        }
+        const view_countdown = createCountdownView;
         function useViewModels(cryptos, currencies) {
             const models = new ModelRepository;
             const cryptosModel = new Model("cryptos", "Cryptos", cryptos);
@@ -12328,6 +12472,7 @@
             view_buySell(models);
             operation(models);
             operationStep(models);
+            view_countdown(models);
             models.forEach((model => {
                 model.addEventListener("update", ((oldValue, newValue) => {
                     FLS(`[Update ${model.id}]: "${oldValue}" => "${newValue}"`);
@@ -12461,11 +12606,17 @@
             "popup-success-text": "The exchange has been successfully completed, please wait for a confirmation message",
             "popup-failure-title": "Oh, no!",
             "popup-failure-text": "Something went wrong with the exchange, please try again or reload the page",
+            "popup-timer-title": "Still here?",
+            "popup-timer-text": "Click ‘Continue’ to proceed.",
             "popup-button-home": "Go to home",
             "popup-button-continue": "Continue",
             "popup-button-refresh": "Refresh",
             "back-button": "Back",
-            "send-button": "Send"
+            "next-button": "Next",
+            "send-button": "Confirm",
+            "operation-exchange": "exchange",
+            "operation-buy": "purchase",
+            "operation-sell": "sale"
         };
         const translations_eng = eng;
         const de = {
@@ -12545,11 +12696,17 @@
             "popup-success-text": "Der Austausch wurde erfolgreich abgeschlossen, bitte warten Sie auf eine Bestätigungsnachricht",
             "popup-failure-title": "Ach nein!",
             "popup-failure-text": "Beim Austausch ist etwas schief gelaufen, bitte versuchen Sie es erneut oder laden Sie die Seite neu",
+            "popup-timer-title": "Immer noch hier?",
+            "popup-timer-text": "Klicken Sie auf ‘Weiter’, um fortzufahren.",
             "popup-button-home": "Zur Startseite",
             "popup-button-continue": "Weiter",
             "popup-button-refresh": "Neu laden",
             "back-button": "Zurück",
-            "send-button": "Senden"
+            "next-button": "Weiter",
+            "send-button": "Bestätigen",
+            "operation-exchange": "Austausch",
+            "operation-buy": "Kauf",
+            "operation-sell": "Verkauf"
         };
         const translations_de = de;
         const pl = {
@@ -12629,11 +12786,17 @@
             "popup-success-text": "Wymiana została pomyślnie zakończona, proszę czekać na wiadomość potwierdzającą",
             "popup-failure-title": "O nie!",
             "popup-failure-text": "Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę",
+            "popup-timer-title": "Ciągle tutaj?",
+            "popup-timer-text": "Kliknij ‘Kontynuuj’, aby kontynuować.",
             "popup-button-home": "Strona główna",
             "popup-button-continue": "Kontynuuj",
             "popup-button-refresh": "Odśwież",
             "back-button": "Wstecz",
-            "send-button": "Wyślij"
+            "next-button": "Dalej",
+            "send-button": "Potwierdź",
+            "operation-exchange": "wymianę",
+            "operation-buy": "kupno",
+            "operation-sell": "spzredaż"
         };
         const translations_pl = pl;
         const rus = {
@@ -12713,11 +12876,17 @@
             "popup-success-text": "Обмен успешно завершен, пожалуйста, дождитесь подтверждающего сообщения",
             "popup-failure-title": "О, нет!",
             "popup-failure-text": "Что-то пошло не так при обмене, попробуйте еще раз или перезагрузите страницу",
+            "popup-timer-title": "Все еще здесь?",
+            "popup-timer-text": "Нажмите ‘Продолжить’, чтобы продолжить.",
             "popup-button-home": "На главную",
             "popup-button-continue": "Продолжить",
             "popup-button-refresh": "Обновить",
             "back-button": "Назад",
-            "send-button": "Отправить"
+            "next-button": "Далее",
+            "send-button": "Подтвердить",
+            "operation-exchange": "обмен",
+            "operation-buy": "покупку",
+            "operation-sell": "продажу"
         };
         const translations_rus = rus;
         const translations = {

@@ -4461,7 +4461,6 @@ picture > .cryptocurrency__icon {
 }
 @media screen and (max-width: 78.75em) {
   .exchanger__block-text {
-    text-align: center;
     font-size: 1.25rem;
     line-height: 1.25;
   }
@@ -4582,6 +4581,75 @@ picture > .cryptocurrency__icon {
 @media screen and (min-width: 78.75em) {
   .exchanger-block__tab {
     width: 37.5rem;
+  }
+}
+
+.exchanger__headline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2.5rem;
+}
+.exchanger__headline > .exchanger__block-text > .text:last-child {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 71em) {
+  .exchanger__headline .text, .exchanger__headline .title {
+    text-align: left;
+  }
+}
+@media screen and (max-width: 26.75em) {
+  .exchanger__headline .title {
+    font-size: 1rem;
+  }
+  .exchanger__headline .text {
+    font-size: 0.875rem;
+  }
+}
+
+.exchanger__countdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.75rem 1.875rem;
+  gap: 0.625rem;
+  width: 9.9375rem;
+  background: #202E51;
+  border: 0.0625rem solid #7B46E8;
+}
+.exchanger__countdown > * {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+@media screen and (max-width: 61.99875em) {
+  .exchanger__countdown {
+    width: 8.75rem;
+  }
+  .exchanger__countdown > * {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 47.99875em) {
+  .exchanger__countdown {
+    padding: 0.75rem;
+    gap: 0.5rem;
+    width: 5rem;
+  }
+  .exchanger__countdown > * {
+    font-size: 1rem;
   }
 }
 
@@ -4903,6 +4971,15 @@ picture > .cryptocurrency__icon {
   display: none;
 }
 
+@media screen and (max-width: 47.99875em) {
+  .block-tab__credentials .block-tab__buttons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    gap: 1rem;
+  }
+}
 .block-select {
   cursor: pointer;
 }
