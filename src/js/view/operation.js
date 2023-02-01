@@ -24,12 +24,30 @@ function createOperationView(modelRepository) {
 
   operationModel.addEventListener('update', (_, newValue) => {
     if (newValue === 'exchange') {
-      exchangeTabs.forEach(t => { t.click(); });
+      exchangeTabs.forEach(t => { 
+        if (t.hasAttribute("disabled")) {
+          t.removeAttribute("disabled");
+          t.click();
+          t.setAttribute("disabled", "");
+        } else {
+          t.click();
+        }
+      });
 
     } else if (newValue === 'buy-sell') {
-      buySellTabs.forEach(t => { t.click(); });
+      buySellTabs.forEach(t => {
+        if (t.hasAttribute("disabled")) {
+          t.removeAttribute("disabled");
+          t.click();
+          t.setAttribute("disabled", "");
+        } else {
+          t.click();
+        }
+      });
     }
   });
+
+  
 }
 
 export default createOperationView;

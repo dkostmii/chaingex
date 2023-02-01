@@ -2,7 +2,7 @@ import { loadCryptos, loadFiatCurrencies } from "../../requests/index.js";
 import { restCryptos } from "../../config/currencies.js";
 import useViewModels from "./viewmodel.js";
 import hideSpinner from "../../dom-manipulations/spinner.js";
-import exchangerSmall from "../../dom-manipulations/exchanger-small.js";
+import exchangerSmall from "../../dom-manipulations/exchanger/exchanger-small.js";
 
 function exchangerPageLoad() {
   exchangerSmall();

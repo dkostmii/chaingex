@@ -125,6 +125,10 @@ const pl = {
   'popup-button-home': 'Strona główna',
   'popup-button-continue': 'Kontynuuj',
   'popup-button-refresh': 'Odśwież',
+
+  // Back, Send buttons
+  'back-button': 'Wstecz',
+  'send-button': 'Wyślij',
 }
 
 export default pl;

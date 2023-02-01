@@ -7,6 +7,7 @@ import exchangeView from '../../view/exchange/index.js';
 import createOperationView from '../../view/operation.js';
 
 import { FLS } from '../../files/functions.js';
+import createOperationStepView from '../../view/operationStep.js';
 
 /**
  * 
@@ -26,6 +27,7 @@ function useViewModels(cryptos, currencies) {
   exchangeView(models);
   buySellView(models);
   createOperationView(models);
+  createOperationStepView(models);
   
   models.forEach(model => {
     model.addEventListener('update', (oldValue, newValue) => {

@@ -124,6 +124,10 @@ const eng = {
   'popup-button-home': 'Go to home',
   'popup-button-continue': 'Continue',
   'popup-button-refresh': 'Refresh',
+
+  // Back, Send buttons
+  'back-button': 'Back',
+  'send-button': 'Send',
 };
 
 export default eng;

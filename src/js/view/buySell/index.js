@@ -35,7 +35,7 @@ function buySellView(modelRepository) {
 
   const buySellModels = modelRepository.findByPartial('buy-sell:');
 
-  const buySellButton = document.querySelector('input[type="submit"][data-model="buy-sell"],button[type="submit"][data-model="buy-sell"]');
+  const buySellButton = document.querySelector('#buy-sell-submit');
 
   const buySellOperationModel = modelRepository.find('operation:buy-sell');
 
@@ -44,7 +44,6 @@ function buySellView(modelRepository) {
   buySellOperationModel.addEventListener('update', (_, newValue) => {
     let caption = null;
 
-    // TODO: Apply i18n
     if (newValue === inverse(inverse('buy'))) {
       caption = getTranslation('buy-button', currentLanguage);
     } else if (newValue === inverse('buy')) {
@@ -60,19 +59,21 @@ function buySellView(modelRepository) {
 
   const resultModel = modelRepository.find('result');
 
-  buySellButton.addEventListener('click', e => {
-    e.preventDefault();
+  const operationStepModel = modelRepository.find('operation-step');
 
-    if (!buySellModels.every(m => m.validate())) {
-      return;
+  operationStepModel.addEventListener('update', (oldValue, newValue) => {
+    if (oldValue === newValue && newValue === 1) {
+      if (!buySellModels.every(m => m.validate())) {
+        return;
+      }
+      
+      sendMessage(buySellModel.getValue())
+        .then(result => {
+          resultModel.updateModel(result);
+          popupView(modelRepository);
+        });
     }
-
-    sendMessage(buySellModel.getValue())
-      .then(result => {
-        resultModel.updateModel(result);
-        popupView(modelRepository);
-      });
-  });
+  })
 }
 
 export default buySellView;
