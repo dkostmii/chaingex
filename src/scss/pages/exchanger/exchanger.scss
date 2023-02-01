@@ -9,7 +9,6 @@
   &__block {
     @media screen and (max-width: $pc) {
       &-text {
-        text-align: center;
         font-size: rem(20);
         line-height: 1.25;
 
@@ -88,5 +87,74 @@
     &__tab {
       width: rem(600);
     }
+  }
+}
+
+.exchanger__headline {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  & > .exchanger__block-text > .text:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: $laptop) {
+    & .text, & .title {
+      text-align: left;
+    }
+  }
+
+  margin-bottom: rem(40);
+
+  @media screen and (max-width: em(428)) {
+    & .title {
+      font-size: rem(16);
+    }
+
+    & .text {
+      font-size: rem(14);
+    }
+  }
+}
+
+.exchanger__countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: rem(12) rem(30);
+  gap: rem(10);
+  width: rem(159);
+  
+  & > * {
+    font-size: rem(32);
+    line-height: math.div(48, 32);
+    font-weight: 600;
+  }
+
+  background: #202E51;
+  border: rem(1) solid #7B46E8;
+
+
+  @media screen and (max-width: $tablet) {
+    width: rem(140);
+
+    & > * {
+      font-size: rem(24);
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    padding: rem(12);
+
+    & > * {
+      font-size: rem(16);
+    }
+
+    gap: rem(8);
+
+    width: rem(80);
   }
 }
