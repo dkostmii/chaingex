@@ -122,6 +122,8 @@ const rus = {
   'popup-success-text': 'Обмен успешно завершен, пожалуйста, дождитесь подтверждающего сообщения',
   'popup-failure-title': 'О, нет!',
   'popup-failure-text': 'Что-то пошло не так при обмене, попробуйте еще раз или перезагрузите страницу',
+  'popup-timer-title': 'Все еще здесь?',
+  'popup-timer-text': 'Нажмите ‘Продолжить’, чтобы продолжить.',
   'popup-button-home': 'На главную',
   'popup-button-continue': 'Продолжить',
   'popup-button-refresh': 'Обновить',

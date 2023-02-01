@@ -121,6 +121,8 @@ const eng = {
   'popup-success-text': 'The exchange has been successfully completed, please wait for a confirmation message',
   'popup-failure-title': 'Oh, no!',
   'popup-failure-text': 'Something went wrong with the exchange, please try again or reload the page',
+  'popup-timer-title': 'Still here?',
+  'popup-timer-text': 'Click ‘Continue’ to proceed.',
   'popup-button-home': 'Go to home',
   'popup-button-continue': 'Continue',
   'popup-button-refresh': 'Refresh',

@@ -1,4 +1,5 @@
 import { ModelRepository } from "../model/base.js";
+import createTimerPopupView from "./timerPopup.js";
 
 /**
  * 
@@ -10,18 +11,17 @@ function createCountdownView(modelRepository) {
   }
 
   const countdownModel = modelRepository.find('countdown');
-
+  
   const countdownMinutesEl = document.querySelector('*[data-model="countdown:mm"]');
   const countdownSecondsEl = document.querySelector('*[data-model="countdown:ss"]');
-
-  countdownModel.addEventListener('update', (_, newValue) => {
+  
+  countdownModel.addEventListener('update', () => {
     const [mm, ss] = countdownModel.getValue().split(":");
     countdownMinutesEl.innerHTML = mm;
     countdownSecondsEl.innerHTML = ss;
-
-    if (newValue === 0) {
-    }
   });
+
+  createTimerPopupView(modelRepository);
 }
 
 export default createCountdownView;

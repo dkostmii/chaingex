@@ -122,6 +122,8 @@ const pl = {
   'popup-success-text': 'Wymiana została pomyślnie zakończona, proszę czekać na wiadomość potwierdzającą',
   'popup-failure-title': 'O nie!',
   'popup-failure-text': 'Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę',
+  'popup-timer-title': 'Ciągle tutaj?',
+  'popup-timer-text': 'Kliknij ‘Kontynuuj’, aby kontynuować.',
   'popup-button-home': 'Strona główna',
   'popup-button-continue': 'Kontynuuj',
   'popup-button-refresh': 'Odśwież',
