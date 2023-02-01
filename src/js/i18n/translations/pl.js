@@ -122,13 +122,21 @@ const pl = {
   'popup-success-text': 'Wymiana została pomyślnie zakończona, proszę czekać na wiadomość potwierdzającą',
   'popup-failure-title': 'O nie!',
   'popup-failure-text': 'Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę',
+  'popup-timer-title': 'Ciągle tutaj?',
+  'popup-timer-text': 'Kliknij ‘Kontynuuj’, aby kontynuować.',
   'popup-button-home': 'Strona główna',
   'popup-button-continue': 'Kontynuuj',
   'popup-button-refresh': 'Odśwież',
 
-  // Back, Send buttons
+  // Back, Next, Send buttons
   'back-button': 'Wstecz',
-  'send-button': 'Wyślij',
+  'next-button': 'Dalej',
+  'send-button': 'Potwierdź',
+
+  // Operations
+  'operation-exchange': 'wymianę',
+  'operation-buy': 'kupno',
+  'operation-sell': 'spzredaż',
 }
 
 export default pl;

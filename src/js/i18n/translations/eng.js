@@ -121,13 +121,21 @@ const eng = {
   'popup-success-text': 'The exchange has been successfully completed, please wait for a confirmation message',
   'popup-failure-title': 'Oh, no!',
   'popup-failure-text': 'Something went wrong with the exchange, please try again or reload the page',
+  'popup-timer-title': 'Still here?',
+  'popup-timer-text': 'Click ‘Continue’ to proceed.',
   'popup-button-home': 'Go to home',
   'popup-button-continue': 'Continue',
   'popup-button-refresh': 'Refresh',
 
-  // Back, Send buttons
+  // Back, Next, Send buttons
   'back-button': 'Back',
-  'send-button': 'Send',
+  'next-button': 'Next',
+  'send-button': 'Confirm',
+
+  // Operations
+  'operation-exchange': 'exchange',
+  'operation-buy': 'purchase',
+  'operation-sell': 'sale',
 };
 
 export default eng;

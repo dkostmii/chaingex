@@ -8,7 +8,7 @@ export const scriptConfig = {
      */
     env: 'prod',
     /** The token which identifies some **Exchanger** form fields, such as `<input name="ex-card">` or `<input name="ex-address"`,
- * the name starts with this token. */
+    /* the name starts with this token. */
     fieldTag: 'ex',
     /** A Telegram account token. */
     token: '5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE',
@@ -31,3 +31,8 @@ export const minAmountUsd = 150;
  * @type {"exchange" | "buy" | "sell"}
  */
 export const defaultOperation = 'exchange';
+
+/**
+ * Timer initial value in minutes
+ */
+export const timerMinutes = 20;

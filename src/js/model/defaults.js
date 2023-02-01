@@ -10,8 +10,10 @@ import dispatch from "../requests/dispatch.js";
 import isString from "../fn/identity/string.js";
 import createResultModel from "./result.js";
 
-import { defaultOperation } from "../config/exchanger.js";
+import { defaultOperation, timerMinutes } from "../config/exchanger.js";
 import createOperationStepModel from "./operationStepModel.js";
+import createCountdownModel from "./countdown.js";
+import { getSecondsInterval } from "../fn/time.js";
 
 /**
  * 
@@ -64,6 +66,8 @@ function createDefaults(modelRepository) {
   createLanguageModel(modelRepository);
   createResultModel(modelRepository);
   createOperationStepModel(modelRepository);
+
+  createCountdownModel(getSecondsInterval(0, timerMinutes), modelRepository);
 }
 
 export default createDefaults;

@@ -13,14 +13,21 @@
                 <div class="exchanger__link">
                     <a class="i18n" data-scrollrouter=".header" data-i18n="nav-home">Home</a> | <a class="i18n" href="#" data-i18n="header-cta">Change</a>
                 </div>
-                <div class="exchanger__block-text block-text">
-                    <h2 class="block-text__title title i18n"
-                        data-i18n="exchanger-title">
-                        Limitless Crypto Exchange
-                    </h2>
-                    <div class="block-text__text text i18n"
-                        data-i18n="exchanger-subtitle">
-                        Fast Crypto Swaps, Free of Custody
+                <div class="exchanger__headline">
+                    <div class="exchanger__block-text block-text">
+                        <h2 class="block-text__title title i18n"
+                            data-i18n="exchanger-title">
+                            Limitless Crypto Exchange
+                        </h2>
+                        <div class="block-text__text text i18n"
+                            data-i18n="exchanger-subtitle">
+                            Fast Crypto Swaps, Free of Custody
+                        </div>
+                    </div>
+                    <div class="exchanger__countdown">
+                        <span data-model="countdown:mm">00</span>
+                        <span>:</span>
+                        <span data-model="countdown:ss">00</span>
                     </div>
                 </div>
             </div>
@@ -94,6 +101,7 @@
                                 </button>
                                 <button
                                     type="submit" class="block-tab__button i18n"
+                                    id="exchange-submit-operation-step"
                                     data-model="operation-step"
                                     data-modelaction="next"
                                     data-i18n="send-button">Send</button>
@@ -146,6 +154,7 @@
                                 </button>
                                 <button
                                     type="submit" class="block-tab__button i18n"
+                                    id="buy-sell-submit-operation-step"
                                     data-model="operation-step"
                                     data-modelaction="next"
                                     data-i18n="send-button">Send</button>
@@ -223,10 +232,10 @@
                     
                             <div class="block-tab__buttons">
                                 <button
-                                    type="submit" class="block-tab__button i18n"
+                                    type="submit" class="block-tab__button i18n-style"
+                                    id="exchange-submit"
                                     data-model="operation-step"
-                                    data-modelaction="next"
-                                    data-i18n="exchange-button">Exchange</button>
+                                    data-modelaction="next">Exchange</button>
                             </div>
                         </div>
                         <div class="block-tab__body">

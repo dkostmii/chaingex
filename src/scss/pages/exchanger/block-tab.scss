@@ -287,3 +287,10 @@
 .block-tab__buttons.hidden {
   display: none;
 }
+
+@media screen and (max-width: $mobile) {
+  .block-tab__credentials .block-tab__buttons {
+    flex-direction: column-reverse;
+    gap: rem(16);
+  }
+}

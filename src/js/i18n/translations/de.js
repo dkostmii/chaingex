@@ -118,13 +118,21 @@ const de = {
   'popup-success-text': 'Der Austausch wurde erfolgreich abgeschlossen, bitte warten Sie auf eine Bestätigungsnachricht',
   'popup-failure-title': 'Ach nein!',
   'popup-failure-text': 'Beim Austausch ist etwas schief gelaufen, bitte versuchen Sie es erneut oder laden Sie die Seite neu',
+  'popup-timer-title': 'Immer noch hier?',
+  'popup-timer-text': 'Klicken Sie auf ‘Weiter’, um fortzufahren.',
   'popup-button-home': 'Zur Startseite',
   'popup-button-continue': 'Weiter',
   'popup-button-refresh': 'Neu laden',
 
   // Back, Send buttons
   'back-button': 'Zurück',
-  'send-button': 'Senden',
+  'next-button': 'Weiter',
+  'send-button': 'Bestätigen',
+
+  // Operations
+  'operation-exchange': 'Austausch',
+  'operation-buy': 'Kauf',
+  'operation-sell': 'Verkauf',
 };
 
 export default de;

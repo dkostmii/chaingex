@@ -8,6 +8,7 @@ import createOperationView from '../../view/operation.js';
 
 import { FLS } from '../../files/functions.js';
 import createOperationStepView from '../../view/operationStep.js';
+import createCountdownView from '../../view/countdown.js';
 
 /**
  * 
@@ -28,6 +29,7 @@ function useViewModels(cryptos, currencies) {
   buySellView(models);
   createOperationView(models);
   createOperationStepView(models);
+  createCountdownView(models);
   
   models.forEach(model => {
     model.addEventListener('update', (oldValue, newValue) => {

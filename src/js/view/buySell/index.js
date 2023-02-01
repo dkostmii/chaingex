@@ -36,24 +36,38 @@ function buySellView(modelRepository) {
   const buySellModels = modelRepository.findByPartial('buy-sell:');
 
   const buySellButton = document.querySelector('#buy-sell-submit');
+  const stepBuySellButton = document.querySelector("#buy-sell-submit-operation-step");
 
   const buySellOperationModel = modelRepository.find('operation:buy-sell');
 
   const currentLanguage = modelRepository.find('language').value;
+
+  const operationStep = modelRepository.find('operation-step');
   
   buySellOperationModel.addEventListener('update', (_, newValue) => {
     let caption = null;
-
     if (newValue === inverse(inverse('buy'))) {
-      caption = getTranslation('buy-button', currentLanguage);
+      caption = (
+        getTranslation('send-button', currentLanguage) + " " +
+        getTranslation('operation-buy', currentLanguage));
     } else if (newValue === inverse('buy')) {
-      caption = getTranslation('sell-button', currentLanguage);
+      caption = (
+        getTranslation('send-button', currentLanguage) + " " +
+        getTranslation('operation-sell', currentLanguage));
     }
 
-    if (buySellButton.tagName === 'button'.toUpperCase()) {
-      buySellButton.innerHTML = caption;
-    } else if (buySellButton.tagName === 'input'.toUpperCase()) {
-      buySellButton.value = caption;
+    if (operationStep.value === 1) {
+      if (buySellButton.tagName === 'button'.toUpperCase()) {
+        buySellButton.innerHTML = caption;
+      } else if (buySellButton.tagName === 'input'.toUpperCase()) {
+        buySellButton.value = caption;
+      }
+    }
+
+    if (stepBuySellButton.tagName === 'button'.toUpperCase()) {
+      stepBuySellButton.innerHTML = caption;
+    } else if (stepBuySellButton.tagName === 'input'.toUpperCase()) {
+      stepBuySellButton.value = caption;
     }
   });
 
