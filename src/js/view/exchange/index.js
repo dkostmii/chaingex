@@ -38,18 +38,20 @@ function exchangeView(modelRepository) {
 
   const resultModel = modelRepository.find('result');
 
-  exchangeButton.addEventListener('click', e => {
-    e.preventDefault();
+  const operationStepModel = modelRepository.find('operation-step');
 
-    if (!exchangeModels.every(m => m.validate())) {
-      return;
+  operationStepModel.addEventListener('update', (oldValue, newValue) => {
+    if (oldValue === newValue && newValue === 1) {
+      if (!exchangeModels.every(m => m.validate())) {
+        return;
+      }
+  
+      sendMessage(exchangeModel.getValue())
+        .then(result => {
+          resultModel.updateModel(result);
+          popupView(modelRepository);
+        });
     }
-
-    sendMessage(exchangeModel.getValue())
-      .then(result => {
-        resultModel.updateModel(result);
-        popupView(modelRepository);
-      });
   });
 }
 

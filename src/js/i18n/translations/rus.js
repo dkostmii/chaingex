@@ -125,6 +125,10 @@ const rus = {
   'popup-button-home': 'На главную',
   'popup-button-continue': 'Продолжить',
   'popup-button-refresh': 'Обновить',
+
+  // Back, Send buttons
+  'back-button': 'Назад',
+  'send-button': 'Отправить',
 }
 
 export default rus;

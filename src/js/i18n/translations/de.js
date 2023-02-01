@@ -121,6 +121,10 @@ const de = {
   'popup-button-home': 'Zur Startseite',
   'popup-button-continue': 'Weiter',
   'popup-button-refresh': 'Neu laden',
+
+  // Back, Send buttons
+  'back-button': 'Zurück',
+  'send-button': 'Senden',
 };
 
 export default de;

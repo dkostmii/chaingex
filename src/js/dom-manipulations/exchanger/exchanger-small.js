@@ -13,6 +13,9 @@ function swapCopyInputFields() {
   const bodyElements = document.querySelectorAll('.block-tab__credentials > .block-tab__body');
 
   [...bodyElements].forEach(bodyEl => {
+    const btns = bodyEl.querySelector('.block-tab__buttons');
+    bodyEl.removeChild(btns);
+
     const fieldEl = bodyEl.querySelector('.block-tab__form');
     const fieldMsgEl = fieldEl.nextElementSibling;
 
@@ -29,6 +32,7 @@ function swapCopyInputFields() {
     bodyEl.removeChild(labelsEl);
 
     bodyEl.insertBefore(labelsEl, fieldEl);
+    bodyEl.appendChild(btns);
   });
 }
 
@@ -39,15 +43,16 @@ function exchangerSmall() {
   const mediaResult = window.matchMedia(smallMedia);
 
   const mediaChangedListener = () => {
-    swapExchangeBlockTabs();
     swapCopyInputFields();
   }
-
+  
   if (mediaResult.matches) {
     mediaChangedListener();
   }
-
+  
   mediaResult.addEventListener('change', mediaChangedListener);
+  
+  swapExchangeBlockTabs();
 }
 
 export default exchangerSmall;

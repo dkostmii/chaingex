@@ -194,6 +194,17 @@
     line-height: rem(30);
     font-size: rem(20);
     padding: rem(15) 0;
+
+    &__secondary {
+      background-color: transparent;
+      border: 1px solid #7B46E8;
+      font-weight: 500;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: rem(30);
   }
 
   @media screen and (max-width: $laptop) {
@@ -266,4 +277,13 @@
 .message.invalid {
   color: #F04438;
   opacity: 1;
+}
+
+
+.block-tab__title[disabled] {
+  cursor: default;
+}
+
+.block-tab__buttons.hidden {
+  display: none;
 }

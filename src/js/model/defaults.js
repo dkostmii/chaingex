@@ -11,6 +11,7 @@ import isString from "../fn/identity/string.js";
 import createResultModel from "./result.js";
 
 import { defaultOperation } from "../config/exchanger.js";
+import createOperationStepModel from "./operationStepModel.js";
 
 /**
  * 
@@ -62,6 +63,7 @@ function createDefaults(modelRepository) {
 
   createLanguageModel(modelRepository);
   createResultModel(modelRepository);
+  createOperationStepModel(modelRepository);
 }
 
 export default createDefaults;
