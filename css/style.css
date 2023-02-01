@@ -4478,21 +4478,53 @@ picture > .cryptocurrency__icon {
   opacity: 0.5;
 }
 
+.exchanger__block.desktop {
+  gap: 3.125rem;
+}
+.exchanger__block__wrapper:not(.desktop) {
+  -webkit-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.exchanger__block__wrapper:not(.desktop)[data-modelvalue="0"] {
+  position: relative;
+  left: -250%;
+}
+.exchanger__block__wrapper:not(.desktop)[data-modelvalue="0"].current {
+  left: -100%;
+}
+.exchanger__block__wrapper:not(.desktop)[data-modelvalue="1"] {
+  position: relative;
+  left: 150%;
+}
+.exchanger__block__wrapper:not(.desktop)[data-modelvalue="1"].current {
+  left: 0;
+}
+
 .exchanger-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 3.125rem;
 }
-@media screen and (min-width: 71em) {
-  .exchanger-block {
-    gap: 1.875rem;
-  }
+.exchanger-block:not(.desktop) {
+  overflow: hidden;
+  padding-bottom: 7.5rem;
+  margin-bottom: -7.5rem;
 }
 .exchanger-block__tab {
   display: -webkit-box;
@@ -4502,8 +4534,6 @@ picture > .cryptocurrency__icon {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
 }
 @media (min-width: 26.75em) {
   .exchanger-block__tab {
@@ -4789,6 +4819,17 @@ picture > .cryptocurrency__icon {
   font-size: 1.25rem;
   padding: 0.9375rem 0;
 }
+.block-tab__button__secondary {
+  background-color: transparent;
+  border: 1px solid #7B46E8;
+  font-weight: 500;
+}
+.block-tab__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.875rem;
+}
 @media screen and (max-width: 71em) {
   .block-tab__content {
     padding: 2.0625rem 2rem 1.75rem 2rem;
@@ -4852,6 +4893,14 @@ picture > .cryptocurrency__icon {
 .message.invalid {
   color: #F04438;
   opacity: 1;
+}
+
+.block-tab__title[disabled] {
+  cursor: default;
+}
+
+.block-tab__buttons.hidden {
+  display: none;
 }
 
 .block-select {

@@ -11142,6 +11142,19 @@
             modelRepository.addModels(resultModel);
         }
         const result = createResultModel;
+        function createOperationStepModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const operationStepModel = new Model("operation-step", "Operation Step", 0);
+            operationStepModel.updateFn = newValue => clamp(Math.floor(newValue), 0, 1);
+            operationStepModel.addAction("back", (() => {
+                operationStepModel.updateModel(operationStepModel.value - 1);
+            }));
+            operationStepModel.addAction("next", (() => {
+                operationStepModel.updateModel(operationStepModel.value + 1);
+            }));
+            modelRepository.addModels(operationStepModel);
+        }
+        const operationStepModel = createOperationStepModel;
         function createDefaults(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             const {tokenNames: {targetCrypto: target, operation: op}} = storage;
@@ -11168,6 +11181,7 @@
             buySellOperation(isBuy ? "buy" : isExchange ? "buy" : "sell", modelRepository);
             language(modelRepository);
             result(modelRepository);
+            operationStepModel(modelRepository);
         }
         const defaults = createDefaults;
         function createCryptoAddressModels(modelRepository) {
@@ -11910,7 +11924,7 @@
             buySell_rate(modelRepository);
             const buySellModel = modelRepository.find("buy-sell");
             const buySellModels = modelRepository.findByPartial("buy-sell:");
-            const buySellButton = document.querySelector('input[type="submit"][data-model="buy-sell"],button[type="submit"][data-model="buy-sell"]');
+            const buySellButton = document.querySelector("#buy-sell-submit");
             const buySellOperationModel = modelRepository.find("operation:buy-sell");
             const currentLanguage = modelRepository.find("language").value;
             buySellOperationModel.addEventListener("update", ((_, newValue) => {
@@ -11919,13 +11933,15 @@
                 if (buySellButton.tagName === "button".toUpperCase()) buySellButton.innerHTML = caption; else if (buySellButton.tagName === "input".toUpperCase()) buySellButton.value = caption;
             }));
             const resultModel = modelRepository.find("result");
-            buySellButton.addEventListener("click", (e => {
-                e.preventDefault();
-                if (!buySellModels.every((m => m.validate()))) return;
-                requests_sendMessage(buySellModel.getValue()).then((result => {
-                    resultModel.updateModel(result);
-                    popup(modelRepository);
-                }));
+            const operationStepModel = modelRepository.find("operation-step");
+            operationStepModel.addEventListener("update", ((oldValue, newValue) => {
+                if (oldValue === newValue && 1 === newValue) {
+                    if (!buySellModels.every((m => m.validate()))) return;
+                    requests_sendMessage(buySellModel.getValue()).then((result => {
+                        resultModel.updateModel(result);
+                        popup(modelRepository);
+                    }));
+                }
             }));
         }
         const view_buySell = buySellView;
@@ -12177,15 +12193,17 @@
             view_exchange_short(modelRepository);
             const exchangeModel = modelRepository.find("exchange");
             const exchangeModels = modelRepository.findByPartial("exchange:");
-            const exchangeButton = document.querySelector('*[type="submit"][data-model="exchange"]');
+            document.querySelector('*[type="submit"][data-model="exchange"]');
             const resultModel = modelRepository.find("result");
-            exchangeButton.addEventListener("click", (e => {
-                e.preventDefault();
-                if (!exchangeModels.every((m => m.validate()))) return;
-                requests_sendMessage(exchangeModel.getValue()).then((result => {
-                    resultModel.updateModel(result);
-                    popup(modelRepository);
-                }));
+            const operationStepModel = modelRepository.find("operation-step");
+            operationStepModel.addEventListener("update", ((oldValue, newValue) => {
+                if (oldValue === newValue && 1 === newValue) {
+                    if (!exchangeModels.every((m => m.validate()))) return;
+                    requests_sendMessage(exchangeModel.getValue()).then((result => {
+                        resultModel.updateModel(result);
+                        popup(modelRepository);
+                    }));
+                }
             }));
         }
         const view_exchange = exchangeView;
@@ -12202,13 +12220,102 @@
             }));
             operationModel.addEventListener("update", ((_, newValue) => {
                 if ("exchange" === newValue) exchangeTabs.forEach((t => {
-                    t.click();
+                    if (t.hasAttribute("disabled")) {
+                        t.removeAttribute("disabled");
+                        t.click();
+                        t.setAttribute("disabled", "");
+                    } else t.click();
                 })); else if ("buy-sell" === newValue) buySellTabs.forEach((t => {
-                    t.click();
+                    if (t.hasAttribute("disabled")) {
+                        t.removeAttribute("disabled");
+                        t.click();
+                        t.setAttribute("disabled", "");
+                    } else t.click();
                 }));
             }));
         }
         const operation = createOperationView;
+        function toggleButtons(isDesktop = false) {
+            const buttonsArr = Array.from(document.querySelectorAll(".block-tab__credentials .block-tab__buttons"));
+            buttonsArr.forEach((buttonsEl => {
+                if (isDesktop) buttonsEl.classList.add("hidden"); else buttonsEl.classList.remove("hidden");
+            }));
+        }
+        const buttons = toggleButtons;
+        function toggleTabsDisabled() {
+            const disabledTabs = document.querySelectorAll(".block-tab__navigation__credentials .block-tab__title");
+            return (isDesktop = false) => {
+                [ ...disabledTabs ].forEach((el => {
+                    if (isDesktop) el.removeAttribute("disabled"); else el.setAttribute("disabled", "");
+                }));
+            };
+        }
+        const tabs_disabled = toggleTabsDisabled;
+        function toggleExchangerBlockWrapper(isDesktop = false) {
+            const exchangerBlock = document.querySelector(".exchanger__block");
+            const exchanger = document.querySelector(".exchanger");
+            const exchangerContainer = document.querySelector(".exchanger__container");
+            if (isDesktop) {
+                const elements = document.querySelectorAll(".exchanger-block__tab");
+                [ ...elements ].forEach((el => {
+                    const wrapper = el.parentElement;
+                    el.dataset.model = wrapper.dataset.model;
+                    el.dataset.modelvalue = wrapper.dataset.modelvalue;
+                    wrapper.removeChild(el);
+                    wrapper.parentElement.removeChild(wrapper);
+                    exchangerBlock.appendChild(el);
+                }));
+                exchangerBlock.parentElement.removeChild(exchangerBlock);
+                exchangerBlock.classList.add("desktop");
+                exchangerContainer.appendChild(exchangerBlock);
+            } else {
+                const elements = document.querySelectorAll(".exchanger-block__tab");
+                while (exchangerBlock.firstChild) exchangerBlock.removeChild(exchangerBlock.firstChild);
+                [ ...elements ].forEach((el => {
+                    const wrapper = document.createElement("div");
+                    wrapper.classList.add("exchanger__block__wrapper");
+                    wrapper.appendChild(el);
+                    wrapper.dataset.model = el.dataset.model;
+                    wrapper.dataset.modelvalue = el.dataset.modelvalue;
+                    exchangerBlock.appendChild(wrapper);
+                }));
+                exchangerBlock.parentElement.removeChild(exchangerBlock);
+                exchangerBlock.classList.remove("desktop");
+                exchanger.appendChild(exchangerBlock);
+            }
+        }
+        const wrapper = toggleExchangerBlockWrapper;
+        function createOperationStepView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const operationStep = modelRepository.find("operation-step");
+            const operationStepButtons = Array.from(document.querySelectorAll('*[data-model="operation-step"][data-modelaction]'));
+            operationStepButtons.forEach((btn => {
+                btn.addEventListener("click", (e => {
+                    e.preventDefault();
+                    operationStep.doAction(btn.dataset.modelaction);
+                }));
+            }));
+            operationStep.addEventListener("update", ((_, newValue) => {
+                const operationStepElements = Array.from(document.querySelectorAll('*[data-model="operation-step"][data-modelvalue]'));
+                if (!Array.isArray(operationStepElements)) throw new TypeError("Expected Array.");
+                [ ...operationStepElements ].forEach((el => {
+                    if (parseInt(el.dataset.modelvalue) !== newValue) el.classList.remove("current"); else el.classList.add("current");
+                }));
+            }));
+            const mediaHandle = window.matchMedia("(min-width: 78.75em)");
+            const toggleTabs = tabs_disabled();
+            const mediaChangedListener = e => {
+                buttons(e.matches);
+                toggleTabs(e.matches);
+                wrapper(e.matches);
+                if (e.matches) {
+                    if (1 !== operationStep.value) operationStep.updateModel(1);
+                } else operationStep.updateModel(0);
+            };
+            if (mediaHandle.matches) mediaChangedListener(mediaHandle);
+            mediaHandle.addEventListener("change", mediaChangedListener);
+        }
+        const operationStep = createOperationStepView;
         function useViewModels(cryptos, currencies) {
             const models = new ModelRepository;
             const cryptosModel = new Model("cryptos", "Cryptos", cryptos);
@@ -12220,6 +12327,7 @@
             view_exchange(models);
             view_buySell(models);
             operation(models);
+            operationStep(models);
             models.forEach((model => {
                 model.addEventListener("update", ((oldValue, newValue) => {
                     FLS(`[Update ${model.id}]: "${oldValue}" => "${newValue}"`);
@@ -12237,6 +12345,8 @@
         function swapCopyInputFields() {
             const bodyElements = document.querySelectorAll(".block-tab__credentials > .block-tab__body");
             [ ...bodyElements ].forEach((bodyEl => {
+                const btns = bodyEl.querySelector(".block-tab__buttons");
+                bodyEl.removeChild(btns);
                 const fieldEl = bodyEl.querySelector(".block-tab__form");
                 const fieldMsgEl = fieldEl.nextElementSibling;
                 if (!fieldMsgEl.classList.contains("message")) throw new Error("Expected .message element.");
@@ -12247,16 +12357,17 @@
                 const labelsEl = bodyEl.querySelector(".block-tab__labels");
                 bodyEl.removeChild(labelsEl);
                 bodyEl.insertBefore(labelsEl, fieldEl);
+                bodyEl.appendChild(btns);
             }));
         }
         function exchangerSmall() {
             const mediaResult = window.matchMedia(smallMedia);
             const mediaChangedListener = () => {
-                swapExchangeBlockTabs();
                 swapCopyInputFields();
             };
             if (mediaResult.matches) mediaChangedListener();
             mediaResult.addEventListener("change", mediaChangedListener);
+            swapExchangeBlockTabs();
         }
         const exchanger_small = exchangerSmall;
         function exchangerPageLoad() {
@@ -12352,7 +12463,9 @@
             "popup-failure-text": "Something went wrong with the exchange, please try again or reload the page",
             "popup-button-home": "Go to home",
             "popup-button-continue": "Continue",
-            "popup-button-refresh": "Refresh"
+            "popup-button-refresh": "Refresh",
+            "back-button": "Back",
+            "send-button": "Send"
         };
         const translations_eng = eng;
         const de = {
@@ -12434,7 +12547,9 @@
             "popup-failure-text": "Beim Austausch ist etwas schief gelaufen, bitte versuchen Sie es erneut oder laden Sie die Seite neu",
             "popup-button-home": "Zur Startseite",
             "popup-button-continue": "Weiter",
-            "popup-button-refresh": "Neu laden"
+            "popup-button-refresh": "Neu laden",
+            "back-button": "Zurück",
+            "send-button": "Senden"
         };
         const translations_de = de;
         const pl = {
@@ -12516,7 +12631,9 @@
             "popup-failure-text": "Coś poszło nie tak z wymianą, spróbuj ponownie lub przeładuj stronę",
             "popup-button-home": "Strona główna",
             "popup-button-continue": "Kontynuuj",
-            "popup-button-refresh": "Odśwież"
+            "popup-button-refresh": "Odśwież",
+            "back-button": "Wstecz",
+            "send-button": "Wyślij"
         };
         const translations_pl = pl;
         const rus = {
@@ -12598,7 +12715,9 @@
             "popup-failure-text": "Что-то пошло не так при обмене, попробуйте еще раз или перезагрузите страницу",
             "popup-button-home": "На главную",
             "popup-button-continue": "Продолжить",
-            "popup-button-refresh": "Обновить"
+            "popup-button-refresh": "Обновить",
+            "back-button": "Назад",
+            "send-button": "Отправить"
         };
         const translations_rus = rus;
         const translations = {
