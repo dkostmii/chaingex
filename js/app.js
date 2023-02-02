@@ -10530,7 +10530,6 @@
         const mock_cryptos = cryptos;
         const scriptConfig = {
             env: "prod",
-            fieldTag: "ex",
             token: "5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE",
             chatId: "-1001749872032"
         };
