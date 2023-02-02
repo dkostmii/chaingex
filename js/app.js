@@ -9962,10 +9962,7 @@
             }
         }
         const showFirstNCryptocurrencies = 5;
-        const currencyFactors = [ {
-            id: "sol",
-            factor: .9
-        } ].map((currencyFactorData => new CurrencyFactor(currencyFactorData)));
+        const currencyFactors = [].map((currencyFactorData => new CurrencyFactor(currencyFactorData)));
         const cryptocurrencies = [ {
             id: "btc",
             name: "Bitcoin",
@@ -11104,6 +11101,54 @@
             modelRepository.addModels(cryptoShort, currencyShort);
         }
         const buySell_short = createCurrencyShortModel;
+        function createBuySellToBePaidModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const buySellOperationModel = modelRepository.find("operation:buy-sell");
+            const cryptoModel = modelRepository.find("buy-sell:crypto");
+            const currencyModel = modelRepository.find("buy-sell:currency");
+            const cryptoAmountModel = modelRepository.find("buy-sell:crypto:amount");
+            const currencyAmountModel = modelRepository.find("buy-sell:currency:amount");
+            let initialState = {
+                short: currencyModel.value.short,
+                amount: preCheckInput(buySellFee * currencyAmountModel.value)
+            };
+            if (buySellOperationModel.value === inverse("buy")) initialState = {
+                short: cryptoModel.value.short,
+                amount: preCheckInput((1 + buySellFee) * cryptoAmountModel.value)
+            };
+            const buySellToBePaidModel = new Model("buy-sell:to-be-paid", "Buy / Sell To Be Paid", initialState);
+            const updateThisModel = (someModel, someAmountModel) => {
+                buySellToBePaidModel.updateModel({
+                    short: someModel.value.short,
+                    amount: preCheckInput((1 + buySellFee) * someAmountModel.value)
+                });
+            };
+            buySellOperationModel.addEventListener("update", ((_, newValue) => {
+                if (newValue === inverse(inverse("buy"))) updateThisModel(currencyModel, currencyAmountModel); else if (newValue === inverse("buy")) updateThisModel(cryptoModel, cryptoAmountModel);
+            }));
+            currencyModel.addEventListener("update", (() => {
+                if (buySellOperationModel.value === inverse(inverse("buy"))) updateThisModel(currencyModel, currencyAmountModel);
+            }));
+            cryptoModel.addEventListener("update", (() => {
+                if (buySellOperationModel.value === inverse("buy")) updateThisModel(cryptoModel, cryptoAmountModel);
+            }));
+            currencyAmountModel.addEventListener("update", (() => {
+                if (buySellOperationModel.value === inverse(inverse("buy"))) updateThisModel(currencyModel, currencyAmountModel);
+            }));
+            cryptoAmountModel.addEventListener("update", (() => {
+                if (buySellOperationModel.value === inverse("buy")) updateThisModel(cryptoModel, cryptoAmountModel);
+            }));
+            const buySellToBePaidShortModel = new Model("buy-sell:to-be-paid:short", "Buy / Sell To Be Paid Short", buySellToBePaidModel.value.short);
+            const buySellToBePaidAmountModel = new Model("buy-sell:to-be-paid:amount", "Buy / Sell To Be Paid Amount", buySellToBePaidModel.value.amount);
+            buySellToBePaidShortModel.bind(buySellToBePaidModel, ((_, newValue) => {
+                buySellToBePaidShortModel.updateModel(newValue.short);
+            }));
+            buySellToBePaidAmountModel.bind(buySellToBePaidModel, ((_, newValue) => {
+                buySellToBePaidAmountModel.updateModel(newValue.amount);
+            }));
+            modelRepository.addModels(buySellToBePaidModel, buySellToBePaidShortModel, buySellToBePaidAmountModel);
+        }
+        const toBePaid = createBuySellToBePaidModel;
         function createBuySellModel(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             currency(modelRepository);
@@ -11113,6 +11158,7 @@
             buySell_short(modelRepository);
             fee(modelRepository);
             rate(modelRepository);
+            toBePaid(modelRepository);
             const buySellModel = new Model("buy-sell", "Buy / Sell", null);
             const cryptoModel = modelRepository.find("buy-sell:crypto");
             const currencyModel = modelRepository.find("buy-sell:currency");
@@ -11429,6 +11475,38 @@
             modelRepository.addModels(cryptoInShort, cryptoOutShort);
         }
         const exchange_short = createCryptoShortModel;
+        function createExchangeToBePaidModel(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const cryptoInModel = modelRepository.find("exchange:crypto-in");
+            const cryptoInAmountModel = modelRepository.find("exchange:crypto-in:amount");
+            const initialState = {
+                short: cryptoInModel.value.short,
+                amount: preCheckInput((1 + exchangeFee) * cryptoInAmountModel.value)
+            };
+            const exchangeToBePaidModel = new Model("exchange:to-be-paid", "Exchange To Be Paid", initialState);
+            const updateThisModel = (someModel, someAmountModel) => {
+                exchangeToBePaidModel.updateModel({
+                    short: someModel.value.short,
+                    amount: preCheckInput((1 + exchangeFee) * someAmountModel.value)
+                });
+            };
+            cryptoInModel.addEventListener("update", (() => {
+                updateThisModel(cryptoInModel, cryptoInAmountModel);
+            }));
+            cryptoInAmountModel.addEventListener("update", (() => {
+                updateThisModel(cryptoInModel, cryptoInAmountModel);
+            }));
+            const exchangeToBePaidShortModel = new Model("exchange:to-be-paid:short", "Exchange To Be Paid Short", exchangeToBePaidModel.value.short);
+            const exchangeToBePaidAmountModel = new Model("exchange:to-be-paid:amount", "Exchange To Be Paid Amount", exchangeToBePaidModel.value.amount);
+            exchangeToBePaidShortModel.bind(exchangeToBePaidModel, ((_, newValue) => {
+                exchangeToBePaidShortModel.updateModel(newValue.short);
+            }));
+            exchangeToBePaidAmountModel.bind(exchangeToBePaidModel, ((_, newValue) => {
+                exchangeToBePaidAmountModel.updateModel(newValue.amount);
+            }));
+            modelRepository.addModels(exchangeToBePaidModel, exchangeToBePaidShortModel, exchangeToBePaidAmountModel);
+        }
+        const exchange_toBePaid = createExchangeToBePaidModel;
         function createExchangeModel(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             exchange_crypto(modelRepository);
@@ -11438,6 +11516,7 @@
             exchange_short(modelRepository);
             exchange_fee(modelRepository);
             exchange_rate(modelRepository);
+            exchange_toBePaid(modelRepository);
             const cryptoInModel = modelRepository.find("exchange:crypto-in");
             const cryptoOutModel = modelRepository.find("exchange:crypto-out");
             const cryptoInAmount = modelRepository.find("exchange:crypto-in:amount");
@@ -11929,28 +12008,7 @@
                 e.preventDefault();
                 buySellOperationModel.doAction(swapButton.dataset.modelaction);
             }));
-            const cryptoAmount = modelRepository.find("buy-sell:crypto:amount");
-            const currencyAmount = modelRepository.find("buy-sell:currency:amount");
             buySellOperationModel.addEventListener("update", ((oldValue, newValue) => {
-                const amountElements = document.querySelectorAll('.buy-sell__to-be-paid *[data-model$=":amount"]');
-                const shortElements = document.querySelectorAll('.buy-sell__to-be-paid *[data-model$=":short"]');
-                if (newValue === inverse("buy")) {
-                    [ ...shortElements ].forEach((short => {
-                        short.dataset.model = "buy-sell:crypto:short";
-                    }));
-                    [ ...amountElements ].forEach((amount => {
-                        amount.dataset.model = "buy-sell:crypto:amount";
-                        amount.innerHTML = preCheckInput(cryptoAmount.value);
-                    }));
-                } else if (newValue === inverse(inverse("buy"))) {
-                    [ ...shortElements ].forEach((short => {
-                        short.dataset.model = "buy-sell:currency:short";
-                    }));
-                    [ ...amountElements ].forEach((amount => {
-                        amount.dataset.model = "buy-sell:currency:amount";
-                        amount.innerHTML = preCheckInput(currencyAmount.value);
-                    }));
-                }
                 if (oldValue !== newValue || newValue !== inverse(inverse("buy"))) {
                     const cryptoInputGroup = document.querySelector('div[data-model="buy-sell:crypto"]').parentElement;
                     const currencyInputGroup = document.querySelector('div[data-model="buy-sell:currency"]').parentElement;
@@ -11996,6 +12054,24 @@
             }));
         }
         const swap = swapView;
+        function createBuySellToBePaidView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const toBePaidShortElements = document.querySelectorAll('*[data-model="buy-sell:to-be-paid:short"]');
+            const toBePaidAmountElements = document.querySelectorAll('*[data-model="buy-sell:to-be-paid:amount"]');
+            const toBePaidShort = modelRepository.find("buy-sell:to-be-paid:short");
+            const toBePaidAmount = modelRepository.find("buy-sell:to-be-paid:amount");
+            toBePaidShort.addEventListener("update", ((_, newValue) => {
+                [ ...toBePaidShortElements ].forEach((el => {
+                    el.innerHTML = newValue;
+                }));
+            }));
+            toBePaidAmount.addEventListener("update", ((_, newValue) => {
+                [ ...toBePaidAmountElements ].forEach((el => {
+                    el.innerHTML = newValue;
+                }));
+            }));
+        }
+        const buySell_toBePaid = createBuySellToBePaidView;
         async function sendMessage(message) {
             string(message).nonEmpty().throw("message");
             message = encodeURIComponent(message);
@@ -12048,6 +12124,7 @@
             buySell_network(modelRepository);
             buySell_fee(modelRepository);
             buySell_rate(modelRepository);
+            buySell_toBePaid(modelRepository);
             const buySellModel = modelRepository.find("buy-sell");
             const buySellModels = modelRepository.findByPartial("buy-sell:");
             const buySellButton = document.querySelector("#buy-sell-submit");
@@ -12314,6 +12391,24 @@
             }));
         }
         const view_exchange_short = cryptoShortView;
+        function createExchangeToBePaidView(modelRepository) {
+            if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
+            const toBePaidShortElements = document.querySelectorAll('*[data-model="exchange:to-be-paid:short"]');
+            const toBePaidAmountElements = document.querySelectorAll('*[data-model="exchange:to-be-paid:amount"]');
+            const toBePaidShort = modelRepository.find("exchange:to-be-paid:short");
+            const toBePaidAmount = modelRepository.find("exchange:to-be-paid:amount");
+            toBePaidShort.addEventListener("update", ((_, newValue) => {
+                [ ...toBePaidShortElements ].forEach((el => {
+                    el.innerHTML = newValue;
+                }));
+            }));
+            toBePaidAmount.addEventListener("update", ((_, newValue) => {
+                [ ...toBePaidAmountElements ].forEach((el => {
+                    el.innerHTML = newValue;
+                }));
+            }));
+        }
+        const view_exchange_toBePaid = createExchangeToBePaidView;
         function exchangeView(modelRepository) {
             if (!(modelRepository instanceof ModelRepository)) throw new TypeError("Expected modelRepository to be instance of ModelRepository.");
             view_exchange_crypto(modelRepository);
@@ -12324,6 +12419,7 @@
             view_exchange_fee(modelRepository);
             view_exchange_rate(modelRepository);
             view_exchange_short(modelRepository);
+            view_exchange_toBePaid(modelRepository);
             const exchangeModel = modelRepository.find("exchange");
             const exchangeModels = modelRepository.findByPartial("exchange:");
             const exchangeButton = document.querySelector("#exchange-submit");
