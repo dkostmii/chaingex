@@ -23,11 +23,11 @@ function createCryptoAddressModels(modelRepository) {
     'Crypto In Address',
     cryptoInModel.value.address
   );
-
+  
   cryptoInAddress.validatorFn = validateCryptoAddress;
   cryptoInAddress.valueGetterFn = value => messageTemplates.address(value, cryptoInModel.value.short);
   cryptoInAddress.updateFn = value => sanitizeCryptoAddress(value);
-
+  
   cryptoInAddress.bind(cryptoInModel, (_, newValue) => {
     cryptoInAddress.valueGetterFn = value => messageTemplates.address(value, newValue.short);
     cryptoInAddress.updateModel(newValue.address);
@@ -38,8 +38,8 @@ function createCryptoAddressModels(modelRepository) {
     'Crypto Out address',
     ''
   );
-
-  cryptoOutAddress.validatorFn = validateCryptoAddress;
+  
+  cryptoOutAddress.validatorFn = value => validateCryptoAddress(value) && value !== cryptoInAddress.value;
   cryptoOutAddress.valueGetterFn = value => messageTemplates.address(value, cryptoOutModel.value.short);
 
   cryptoOutAddress.updateFn = value => sanitizeCryptoAddress(value);
