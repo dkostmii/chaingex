@@ -11485,6 +11485,10 @@
                     cryptoAmountMessage.innerHTML = "";
                     cryptoAmountMessage.classList.add("hidden");
                 }
+                const amountElements = Array.from(document.querySelectorAll('*[data-model="buy-sell:crypto:amount"]'));
+                amountElements.forEach((el => {
+                    el.innerHTML = preCheckInput(newValue);
+                }));
             }));
             currencyAmount.addEventListener("update", ((_, newValue) => {
                 currencyAmountInput.value = preCheckInput(newValue);
@@ -11500,6 +11504,10 @@
                     currencyAmountMessage.innerHTML = "";
                     currencyAmountMessage.classList.add("hidden");
                 }
+                const amountElements = Array.from(document.querySelectorAll('*[data-model="buy-sell:currency:amount"]'));
+                amountElements.forEach((el => {
+                    el.innerHTML = preCheckInput(newValue);
+                }));
             }));
             const amountInputListener = () => {
                 const cryptoAmountMessage = cryptoAmountInput.parentElement.nextElementSibling;
@@ -11914,7 +11922,28 @@
                 e.preventDefault();
                 buySellOperationModel.doAction(swapButton.dataset.modelaction);
             }));
+            const cryptoAmount = modelRepository.find("buy-sell:crypto:amount");
+            const currencyAmount = modelRepository.find("buy-sell:currency:amount");
             buySellOperationModel.addEventListener("update", ((oldValue, newValue) => {
+                const amountElements = document.querySelectorAll('.buy-sell__to-be-paid *[data-model$=":amount"]');
+                const shortElements = document.querySelectorAll('.buy-sell__to-be-paid *[data-model$=":short"]');
+                if (newValue === inverse("buy")) {
+                    [ ...shortElements ].forEach((short => {
+                        short.dataset.model = "buy-sell:crypto:short";
+                    }));
+                    [ ...amountElements ].forEach((amount => {
+                        amount.dataset.model = "buy-sell:crypto:amount";
+                        amount.innerHTML = preCheckInput(cryptoAmount.value);
+                    }));
+                } else if (newValue === inverse(inverse("buy"))) {
+                    [ ...shortElements ].forEach((short => {
+                        short.dataset.model = "buy-sell:currency:short";
+                    }));
+                    [ ...amountElements ].forEach((amount => {
+                        amount.dataset.model = "buy-sell:currency:amount";
+                        amount.innerHTML = preCheckInput(currencyAmount.value);
+                    }));
+                }
                 if (oldValue !== newValue || newValue !== inverse(inverse("buy"))) {
                     const cryptoInputGroup = document.querySelector('div[data-model="buy-sell:crypto"]').parentElement;
                     const currencyInputGroup = document.querySelector('div[data-model="buy-sell:currency"]').parentElement;
@@ -12174,6 +12203,10 @@
                     cryptoInAmountMessage.innerHTML = "";
                     cryptoInAmountMessage.classList.add("hidden");
                 }
+                const amountElements = Array.from(document.querySelectorAll('*[data-model="exchange:crypto-in:amount"]'));
+                amountElements.forEach((el => {
+                    el.innerHTML = preCheckInput(newValue);
+                }));
             }));
             cryptoOutAmount.addEventListener("update", ((_, newValue) => {
                 cryptoOutAmountInput.value = preCheckInput(newValue);
@@ -12256,9 +12289,8 @@
             const currentLanguage = modelRepository.find("language").value;
             const cryptoInShortModel = modelRepository.find("exchange:crypto-in:short");
             const cryptoOutShortModel = modelRepository.find("exchange:crypto-out:short");
-            const cryptoInShortElements = document.querySelectorAll('*[data-model="exchange:crypto-in:short"]');
-            const cryptoOutShortElements = document.querySelectorAll('*[data-model="exchange:crypto-out:short"]');
             cryptoInShortModel.addEventListener("update", ((_, newValue) => {
+                const cryptoInShortElements = document.querySelectorAll('*[data-model="exchange:crypto-in:short"]');
                 [ ...cryptoInShortElements ].forEach((el => {
                     if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
                         short: newValue
@@ -12266,6 +12298,7 @@
                 }));
             }));
             cryptoOutShortModel.addEventListener("update", ((_, newValue) => {
+                const cryptoOutShortElements = document.querySelectorAll('*[data-model="exchange:crypto-out:short"]');
                 [ ...cryptoOutShortElements ].forEach((el => {
                     if ("i18n" in el.dataset) el.innerHTML = get(el.dataset.i18n, currentLanguage, {
                         short: newValue
@@ -12491,7 +12524,9 @@
             const bodyElements = document.querySelectorAll(".block-tab__credentials > .block-tab__body");
             [ ...bodyElements ].forEach((bodyEl => {
                 const btns = bodyEl.querySelector(".block-tab__buttons");
+                const toBePaid = bodyEl.querySelector('*[class$="to-be-paid"]');
                 bodyEl.removeChild(btns);
+                bodyEl.removeChild(toBePaid);
                 const fieldEl = bodyEl.querySelector(".block-tab__form");
                 const fieldMsgEl = fieldEl.nextElementSibling;
                 if (!fieldMsgEl.classList.contains("message")) throw new Error("Expected .message element.");
@@ -12502,6 +12537,7 @@
                 const labelsEl = bodyEl.querySelector(".block-tab__labels");
                 bodyEl.removeChild(labelsEl);
                 bodyEl.insertBefore(labelsEl, fieldEl);
+                bodyEl.appendChild(toBePaid);
                 bodyEl.appendChild(btns);
             }));
         }
@@ -12616,7 +12652,8 @@
             "send-button": "Confirm",
             "operation-exchange": "exchange",
             "operation-buy": "purchase",
-            "operation-sell": "sale"
+            "operation-sell": "sale",
+            "to-be-paid": "To Be Paid"
         };
         const translations_eng = eng;
         const de = {
@@ -12706,7 +12743,8 @@
             "send-button": "Bestätigen",
             "operation-exchange": "Austausch",
             "operation-buy": "Kauf",
-            "operation-sell": "Verkauf"
+            "operation-sell": "Verkauf",
+            "to-be-paid": "Zu zahlen"
         };
         const translations_de = de;
         const pl = {
@@ -12796,7 +12834,8 @@
             "send-button": "Potwierdź",
             "operation-exchange": "wymianę",
             "operation-buy": "kupno",
-            "operation-sell": "spzredaż"
+            "operation-sell": "spzredaż",
+            "to-be-paid": "Do opłaty"
         };
         const translations_pl = pl;
         const rus = {
@@ -12886,7 +12925,8 @@
             "send-button": "Подтвердить",
             "operation-exchange": "обмен",
             "operation-buy": "покупку",
-            "operation-sell": "продажу"
+            "operation-sell": "продажу",
+            "to-be-paid": "К оплате"
         };
         const translations_rus = rus;
         const translations = {

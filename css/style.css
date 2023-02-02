@@ -4556,20 +4556,20 @@ picture > .cryptocurrency__icon {
     width: 23.4375rem;
   }
 }
-@media (min-width: 71em) {
+@media (min-width: 50em) {
   .exchanger-block__tab {
     width: 48.125rem;
   }
 }
-@media (min-width: 26.75em) and (max-width: 71em) {
-  @supports (width: clamp( 24.75rem , 10.6193502825rem  +  52.8248587571vw , 48.125rem )) {
+@media (min-width: 26.75em) and (max-width: 50em) {
+  @supports (width: clamp( 24.75rem , -2.1438172043rem  +  100.5376344086vw , 48.125rem )) {
     .exchanger-block__tab {
-      width: clamp( 24.75rem , 10.6193502825rem  +  52.8248587571vw , 48.125rem );
+      width: clamp( 24.75rem , -2.1438172043rem  +  100.5376344086vw , 48.125rem );
     }
   }
-  @supports not (width: clamp( 24.75rem , 10.6193502825rem  +  52.8248587571vw , 48.125rem )) {
+  @supports not (width: clamp( 24.75rem , -2.1438172043rem  +  100.5376344086vw , 48.125rem )) {
     .exchanger-block__tab {
-      width: calc(24.75rem + 23.375 * (100vw - 26.75rem) / 44.25);
+      width: calc(24.75rem + 23.375 * (100vw - 26.75rem) / 23.25);
     }
   }
 }
@@ -4980,6 +4980,39 @@ picture > .cryptocurrency__icon {
     gap: 1rem;
   }
 }
+@media screen and (min-width: 78.75em) {
+  *[class$=credentials] *[class$=to-be-paid] {
+    display: none;
+  }
+}
+@media screen and (max-width: 78.75em) {
+  *[class$=amount] *[class$=to-be-paid] {
+    display: none;
+  }
+}
+*[class$=to-be-paid] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+*[class$=to-be-paid] > * {
+  opacity: 1;
+  font-size: 1.125rem;
+}
+@media screen and (min-width: 47.99875em) {
+  *[class$=to-be-paid] > * {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (min-width: 71em) {
+  *[class$=to-be-paid] > * {
+    font-size: 1.375rem;
+  }
+}
+
 .block-select {
   cursor: pointer;
 }

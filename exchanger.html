@@ -41,11 +41,11 @@
 	<!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230201220142" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap&_v=20230202101918" rel="stylesheet">
     -->
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230201220142">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230202101918">
 </head>
 
 <body class="i18n-style" data-page="Exchanger">
@@ -149,7 +149,7 @@
 						<button type="button" class="block-tab__title i18n" data-model="operation" data-modelaction="select-buy-sell" data-i18n="bank-tab" disabled>Bank</button>
 					</nav>
 					<form data-tabs-body class="block-tab__content block-tab__credentials">
-						<div class="block-tab__body">
+						<div class="block-tab__body exchange__credentials">
 							<div class="block-tab__form block-tab__copy">
 								<p class="block-tab__label i18n" data-model="exchange:crypto-in:short" data-i18n="copy-address">
 								</p>
@@ -169,6 +169,15 @@
 							</div>
 
 							<p class="message hidden"></p>
+							<div class="block-tab__labels exchange__to-be-paid">
+								<p class="block-tab__label i18n" data-i18n="to-be-paid">
+								</p>
+								<p class="block-tab__label">
+									<span data-model="exchange:crypto-in:amount"></span>
+									<span> </span>
+									<span data-model="exchange:crypto-in:short"></span>
+								</p>
+							</div>
 
 							<div class="block-tab__buttons">
 								<button type="submit" class="block-tab__button block-tab__button__secondary i18n" data-model="operation-step" data-modelaction="back" data-i18n="back-button">
@@ -177,7 +186,7 @@
 								<button type="submit" class="block-tab__button i18n" id="exchange-submit-operation-step" data-model="operation-step" data-modelaction="next" data-i18n="send-button">Send</button>
 							</div>
 						</div>
-						<div class="block-tab__body">
+						<div class="block-tab__body buy-sell__credentials">
 							<div class="block-tab__form form-bank block-tab__copy">
 								<p class="block-tab__label i18n" data-model="buy-sell:currency:short" data-i18n="copy-card">
 								</p>
@@ -198,6 +207,15 @@
 							</div>
 
 							<p class="message hidden"></p>
+							<div class="block-tab__labels buy-sell__to-be-paid">
+								<p class="block-tab__label i18n" data-i18n="to-be-paid">
+								</p>
+								<p class="block-tab__label">
+									<span data-model="buy-sell:currency:amount"></span>
+									<span> </span>
+									<span data-model="buy-sell:currency:short"></span>
+								</p>
+							</div>
 
 							<div class="block-tab__buttons">
 								<button type="submit" class="block-tab__button block-tab__button__secondary i18n" data-model="operation-step" data-modelaction="back" data-i18n="back-button">
@@ -216,7 +234,7 @@
 						<button type="button" class="block-tab__title i18n" data-model="operation" data-modelaction="select-buy-sell" data-i18n="buy-sell-crypto-tab">Buy / Sell Crypto</button>
 					</nav>
 					<form data-tabs-body class="block-tab__content">
-						<div class="block-tab__body">
+						<div class="block-tab__body exchange__amount">
 							<div class="block-tab__form form-select">
 								<p class="block-tab__label i18n" data-i18n="you-send">You send</p>
 								<input type="number" class="block-tab__input" name="number-input" data-model="exchange:crypto-in:amount">
@@ -244,11 +262,21 @@
 							</div>
 							<p class="message hidden"></p>
 
+							<div class="block-tab__labels exchange__to-be-paid">
+								<p class="block-tab__label i18n" data-i18n="to-be-paid">
+								</p>
+								<p class="block-tab__label">
+									<span data-model="exchange:crypto-in:amount"></span>
+									<span> </span>
+									<span data-model="exchange:crypto-in:short"></span>
+								</p>
+							</div>
+
 							<div class="block-tab__buttons">
 								<button type="submit" class="block-tab__button i18n-style" id="exchange-submit" data-model="operation-step" data-modelaction="next">Exchange</button>
 							</div>
 						</div>
-						<div class="block-tab__body">
+						<div class="block-tab__body buy-sell__amount">
 							<div class="block-tab__form form-select">
 								<p class="block-tab__label i18n" data-i18n="you-pay">You pay</p>
 								<input type="number" class="block-tab__input" name="number-input" data-model="buy-sell:currency:amount">
@@ -276,6 +304,16 @@
 								</div>
 							</div>
 							<p class="message hidden"></p>
+
+							<div class="block-tab__labels buy-sell__to-be-paid">
+								<p class="block-tab__label i18n" data-i18n="to-be-paid">
+								</p>
+								<p class="block-tab__label">
+									<span data-model="buy-sell:currency:amount"></span>
+									<span> </span>
+									<span data-model="buy-sell:currency:short"></span>
+								</p>
+							</div>
 
 							<div class="block-tab__buttons">
 								<button type="submit" class="block-tab__button i18n-style" id="buy-sell-submit" data-model="operation-step" data-modelaction="next"></button>
@@ -388,7 +426,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20230201220142"></script>
+	<script src="js/app.min.js?_v=20230202101918"></script>
 </body>
 
 </html>
