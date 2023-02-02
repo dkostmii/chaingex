@@ -1,6 +1,7 @@
 import { Currency } from "../../types/currency.js";
 
 const cryptos = [
+  {"id":"xrp","network":"","name":"Ripple","short":"XRP","price":4.22,"change":-1.02,"address":"azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"},
   {"id":"btc","network":"","name":"Bitcoin","short":"BTC","price":21324.53,"change":451.22,"address":"azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"},
   {"id":"eth","network":"ERC20","name":"Ethereum","short":"ETH","price":1587.42,"change":54.52,"address":"azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"},
   {"id":"bnb","network":"","name":"Binance coin","short":"BNB","price":292.3,"change":1.2,"address":"azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"},
