@@ -8,6 +8,7 @@ import cryptoNetworkView from "./network.js";
 import buySellRateView from "./rate.js";
 import currencyShortView from "./short.js";
 import swapView from "./swap.js";
+import createBuySellToBePaidView from "./toBePaid.js";
 
 import sendMessage from "../../requests/sendMessage.js";
 import popupView from "../popup.js";
@@ -30,6 +31,7 @@ function buySellView(modelRepository) {
   cryptoNetworkView(modelRepository);
   buySellFeeView(modelRepository);
   buySellRateView(modelRepository);
+  createBuySellToBePaidView(modelRepository);
 
   const buySellModel = modelRepository.find('buy-sell');
 

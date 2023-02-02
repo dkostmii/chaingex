@@ -5,6 +5,19 @@ const exchangeSmile = '🔄';
 const operationTemplate = (operation, operationAmount, cryptoOrFiatShortName) =>
   `${getOperationSmile(operation)} <b>${operation}:</b> ${operationAmount} | ${cryptoOrFiatShortName}`;
 
+/**
+ * @typedef {import('../model/exchange/index.js').default} createExchangeModel
+ */
+
+/**
+ * @typedef {import('../model/buySell/index.js').default} createBuySellModel
+ */
+
+/**
+ * An object containing templates, used for creating message to send.
+ * 
+ * Used in {@link createExchangeModel} and {@link createBuySellModel}, where actual message is generated.
+ */
 const messageTemplates = {
   operationType: (operationName) => `${getOperationSmile(operationName)} <b>Operation:</b> ${operationName}`,
   cryptocurrency: (cryptocurrency) => `🪙 <b>Cryptocurrency:</b> ${cryptocurrency}`,
@@ -18,7 +31,7 @@ const messageTemplates = {
   card: (fiatCardNumber, fiatShortName) => `💳 <b>${fiatShortName} card:</b> ${fiatCardNumber}`,
 
   operation: operationTemplate,
-}
+};
 
 /**
  * 

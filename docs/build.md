@@ -10,20 +10,12 @@ To build project, follow these steps:
     npm install
     ```
 
-3. Run `build` NPM script:
-
-    ```bash
-    npm run build
-    ```
-
-4. After build the `dist/` folder is created.
-
-    To test the builden static website, run
+3. Run `serve-static` NPM script:
 
     ```bash
     npm run serve-static
     ```
 
-    This will start **browser-sync** server at `dist/` folder.
+    This will build the project, run tests and serve builden project from `dist/` folder.
 
-5. To deploy a project, place the contents of `dist/` folder on server.
+4. To deploy a project, place the contents of `dist/` folder on server.

@@ -21,18 +21,32 @@ The project code is split into separate JS files to simlify development:
 
 - [`app.js`](../src/js/app.js) - application entry point. Every module is imported here in order be run with application.
 
-- [`script.js`](../src/js/files/script.js) - a module for **Home** page logic. Includes a cryptocurrency fetch from API for **Home page**.
+- [`files/script.js`](../src/js/files/script.js) - all next modules, mentioned below, are imported in this file.
 
-- [`fetch-currencies.js`](../src/js/files/fetch-currencies.js) - includes a `loadCryptos()` function to fetch the currencies from the **Binance API V3 (Spot)**. Also includes cryptocurrency data and settings for `$.ajax()`
+- [`pages/home`](../src/js/pages/home/index.js) - **Home page** entry point.
 
-    Used at **Exchanger** page.
+- [`pages/exchanger`](../src/js/pages/exchanger/index.js) - **Exchanger page** entry point.
 
-    The `settings` object is shared with [`script.js`](../src/js/files/script.js) `$.ajax()` call, which also loads the cryptocurrencies, but at **Home** page.
+- [`requests/`](../src/js/requests/index.js) - functionality to load and prepare currency data from API
 
-    You might also want to read [Binance API V3 (Spot) Documentation](https://binance-docs.github.io/apidocs/spot/en).
+- [`dom-manipulations/`](../src/js/dom-manipulations/index.js) - All DOM-manipulations used in applications go here.
 
-- [`page-load.js`](../src/js/files/exchanger/page-load.js) - a module to bootstrap **Exchanger** page.
+- [`fn/`](../src/js/fn/index.js) - Widely used functions.
 
-    It fetches the cryptocurrencies, calling `loadCryptos()` and adds those to select fields in [`exchanger.html`](../src/exchanger.html).
+- [`types/`](../src/js/types/currency.js) - Custom types, such as `Currency`.
 
-    Downstream modules, imported here are implemented as Model/View pattern.
+- [`models/`](../src/js/model/base.js) - Model definitions for **Exchanger page**.
+
+- [`view/`](../src/js/view/index.js) - View definitions for **Exchanger page**.
+
+- [`routers/`](../src/js/routers/scroll.js) - Routers for application are performing redirections across pages.
+
+- [`i18n/`](../src/js/i18n/index.js) - i18n translations for application.
+
+- [`errors/elementNotFound`](../src/js/errors/elementNotFound.js) - widely used error types
+
+Detailed description for each unit are provided in JSDoc format.
+
+## JavaScript tests
+
+[`tests/`](../tests/index.js) for application have same folder structure, as JS.

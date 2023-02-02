@@ -10,6 +10,7 @@ import scrollDispatcherConfig from "../../config/scrollDispatcher.js";
 import storageConfig from "../../config/storage.js";
 
 /**
+ * Smoothly scroll to first element, matched by {@link targetElement} CSS selector.
  * 
  * @param {string} targetElement CSS selector for target element, to which navigate.
  */

@@ -6,6 +6,7 @@ import createBuySellFeeModel from "./fee.js";
 import createCryptoNetworkModel from "./network.js";
 import createBuySellRateModel from "./rate.js";
 import createCurrencyShortModel from "./short.js";
+import createBuySellToBePaidModel from "./toBePaid.js";
 
 import messageTemplates from "../../config/message.js";
 
@@ -25,6 +26,7 @@ function createBuySellModel(modelRepository) {
   createCurrencyShortModel(modelRepository);
   createBuySellFeeModel(modelRepository);
   createBuySellRateModel(modelRepository);
+  createBuySellToBePaidModel(modelRepository);
 
   const buySellModel = new Model('buy-sell', 'Buy / Sell', null);
 

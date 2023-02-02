@@ -13,6 +13,7 @@ import sendMessage from "../../requests/sendMessage.js";
 
 import { ModelRepository } from "../../model/base.js";
 import popupView from "../popup.js";
+import createExchangeToBePaidView from "./toBePaid.js";
 
 /**
  * 
@@ -31,6 +32,7 @@ function exchangeView(modelRepository) {
   exchangeFeeView(modelRepository);
   exchangeRateView(modelRepository);
   cryptoShortView(modelRepository);
+  createExchangeToBePaidView(modelRepository);
 
   const exchangeModel = modelRepository.find('exchange');
 

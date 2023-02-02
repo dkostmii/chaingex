@@ -13,7 +13,14 @@ export const scriptConfig = {
     chatId: '-1001749872032'
 }
 
+/**
+ * Defines fee for Exchange operations
+ */
 export const exchangeFee = 0;
+
+/**
+ * Defines fee for Buy / Sell operations
+ */
 export const buySellFee = 0;
 
 /**
@@ -25,11 +32,26 @@ export const buySellFee = 0;
 export const minAmountUsd = 150;
 
 /**
+ * Controls default operation, when user goes to **Exchanger page** by clicking **Change** button.
+ * 
  * @type {"exchange" | "buy" | "sell"}
  */
 export const defaultOperation = 'exchange';
 
 /**
- * Timer initial value in minutes
+ * @typedef {import('../model/countdown.js').default} createCountdownModel
+ */
+
+/**
+ * @typedef {import('../model/defaults.js').default} createDefaults
+ */
+
+/**
+ * Timer initial value in minutes.
+ * 
+ * Timer is used on **Exchanger page**.
+ * 
+ * See {@link createDefaults} (where this constant is used) and {@link createCountdownModel} (for timer algorithm).
+ * 
  */
 export const timerMinutes = 20;

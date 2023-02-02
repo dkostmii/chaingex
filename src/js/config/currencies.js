@@ -17,13 +17,26 @@ export const showFirstNCryptocurrencies = 5;
  */
 export const currencyFactors = [
 //{ id: 'btc', factor: 0.2 }
-  { id: 'sol', factor: 0.9 }
+//{ id: 'sol', factor: 0.9 }
   
 ].map(currencyFactorData => new CurrencyFactor(currencyFactorData));
 
+/**
+ * @typedef {import('../requests/index.js').loadCryptos} loadCryptos
+ */
+
+/**
+ * @typedef {import('../requests/index.js').loadFiatCurrencies} loadFiatCurrencies
+ */
+
+/**
+ * @typedef {import('../requests/mock/fiatCurrencies.js').default} fiatCurrencies
+ */
 
 /**
  * An array of {@link CurrencyPartial} containing all cryptocurrencies.
+ * 
+ * Prices for this cryptocurrencies are loaded from API, see {@link loadCryptos}.
  * 
  * @constant cryptocurrencies
  * @type {CurrencyPartial[]}
@@ -49,6 +62,9 @@ export const cryptocurrencies = [
 
 /**
  * An array of {@link CurrencyPartial} containing all fiat currencies.
+ * 
+ * Prices for this currencies are ~~loaded from API, see {@link loadFiatCurrencies}~~,
+ * mocked using {@link fiatCurrencies}.
  * 
  * @constant currencies
  * @type {CurrencyPartial[]}
