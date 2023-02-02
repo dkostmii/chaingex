@@ -9,6 +9,7 @@ import createCryptoShortModel from "./short.js";
 
 import getExchangeCryptos from '../../fn/getExchangeCryptos.js';
 import messageTemplates from "../../config/message.js";
+import createExchangeToBePaidModel from "./toBePaid.js";
 
 /**
  * 
@@ -26,6 +27,7 @@ function createExchangeModel(modelRepository) {
   createCryptoShortModel(modelRepository);
   createExchangeFeeModel(modelRepository);
   createExchangeRateModel(modelRepository);
+  createExchangeToBePaidModel(modelRepository);
 
   const cryptoInModel = modelRepository.find('exchange:crypto-in');
   const cryptoOutModel = modelRepository.find('exchange:crypto-out');
