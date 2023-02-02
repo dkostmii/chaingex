@@ -137,6 +137,8 @@ const pl = {
   'operation-exchange': 'wymianę',
   'operation-buy': 'kupno',
   'operation-sell': 'spzredaż',
+
+  'to-be-paid': 'Do opłaty',
 }
 
 export default pl;

@@ -1,6 +1,8 @@
 import { ModelRepository } from "../../model/base.js";
 import { inverse } from "../../model/buySellOperation.js";
 
+import { preCheckInput } from "../../fn/numbers/pre-check.js";
+
 /**
  * 
  * @param {ModelRepository} modelRepository 
@@ -21,8 +23,36 @@ function swapView(modelRepository) {
     e.preventDefault();
     buySellOperationModel.doAction(swapButton.dataset.modelaction);
   });
+  
+  const cryptoAmount = modelRepository.find('buy-sell:crypto:amount');
+  const currencyAmount = modelRepository.find('buy-sell:currency:amount');
 
   buySellOperationModel.addEventListener('update', (oldValue, newValue) => {
+    const amountElements = document.querySelectorAll('.buy-sell__to-be-paid *[data-model$=":amount"]');
+    const shortElements = document.querySelectorAll('.buy-sell__to-be-paid *[data-model$=":short"]');
+
+    if (newValue === inverse('buy')) {
+      [...shortElements].forEach(short => {
+        short.dataset.model = "buy-sell:crypto:short";
+      });
+
+      [...amountElements].forEach(amount => {
+        amount.dataset.model = "buy-sell:crypto:amount";
+  
+        amount.innerHTML = preCheckInput(cryptoAmount.value);
+      });
+    } else if (newValue === inverse(inverse('buy'))) {
+      [...shortElements].forEach(short => {
+        short.dataset.model = "buy-sell:currency:short";
+      });
+      
+      [...amountElements].forEach(amount => {
+        amount.dataset.model = "buy-sell:currency:amount";
+  
+        amount.innerHTML = preCheckInput(currencyAmount.value);
+      });
+    }
+
     if (oldValue !== newValue || newValue !== inverse(inverse('buy'))) {
       // Swap inputs
       const cryptoInputGroup = document.querySelector('div[data-model="buy-sell:crypto"]').parentElement;

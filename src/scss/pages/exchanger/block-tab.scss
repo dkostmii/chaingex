@@ -294,3 +294,33 @@
     gap: rem(16);
   }
 }
+
+@media screen and (min-width: $pc) {
+  *[class$="credentials"] *[class$="to-be-paid"] {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $pc) {
+  *[class$="amount"] *[class$="to-be-paid"] {
+    display: none;
+  }
+}
+
+*[class$="to-be-paid"] {
+  display: flex;
+  justify-content: space-between;
+  & > * {
+    opacity: 1;
+
+    font-size: rem(18);
+
+    @media screen and (min-width: $mobile) {
+      font-size: rem(20);
+    }
+
+    @media screen and (min-width: $laptop) {
+      font-size: rem(22);
+    }
+  }
+}

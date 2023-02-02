@@ -136,6 +136,8 @@ const eng = {
   'operation-exchange': 'exchange',
   'operation-buy': 'purchase',
   'operation-sell': 'sale',
+
+  'to-be-paid': 'To Be Paid',
 };
 
 export default eng;

@@ -14,7 +14,9 @@ function swapCopyInputFields() {
 
   [...bodyElements].forEach(bodyEl => {
     const btns = bodyEl.querySelector('.block-tab__buttons');
+    const toBePaid = bodyEl.querySelector('*[class$="to-be-paid"]');
     bodyEl.removeChild(btns);
+    bodyEl.removeChild(toBePaid);
 
     const fieldEl = bodyEl.querySelector('.block-tab__form');
     const fieldMsgEl = fieldEl.nextElementSibling;
@@ -32,6 +34,7 @@ function swapCopyInputFields() {
     bodyEl.removeChild(labelsEl);
 
     bodyEl.insertBefore(labelsEl, fieldEl);
+    bodyEl.appendChild(toBePaid);
     bodyEl.appendChild(btns);
   });
 }
