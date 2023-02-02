@@ -10399,6 +10399,14 @@
         } ].map((c => new Currency(c)));
         const mock_fiatCurrencies = fiatCurrencies;
         const cryptos = [ {
+            id: "xrp",
+            network: "",
+            name: "Ripple",
+            short: "XRP",
+            price: 4.22,
+            change: -1.02,
+            address: "azNn2L3OnwGi8e5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+        }, {
             id: "btc",
             network: "",
             name: "Bitcoin",
