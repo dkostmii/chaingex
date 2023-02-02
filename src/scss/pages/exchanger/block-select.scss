@@ -90,6 +90,10 @@
     &__empty {
       opacity: 0;
     }
+
+    @media screen and (max-width: $mobile) {
+      height: rem(195);
+    }
   }
 
   &__item:not(:last-child) {

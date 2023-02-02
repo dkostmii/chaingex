@@ -7,9 +7,6 @@ export const scriptConfig = {
      * such as request response.
      */
     env: 'prod',
-    /** The token which identifies some **Exchanger** form fields, such as `<input name="ex-card">` or `<input name="ex-address"`,
-    /* the name starts with this token. */
-    fieldTag: 'ex',
     /** A Telegram account token. */
     token: '5843086326:AAGzgWcvJrrbtOsxseR3TEqyttLmMvDtJCE',
     /** The ID of Telegram chat, where message is sent. */
