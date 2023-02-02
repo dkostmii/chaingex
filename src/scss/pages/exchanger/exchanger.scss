@@ -80,7 +80,7 @@
     // flex-shrink: 0;
     
     @include adaptiveValue("width", 428, 375, 0, 428, 375);
-    @include adaptiveValue("width", 770, 396, 0, $laptopValue, 428);
+    @include adaptiveValue("width", 770, 396, 0, 800, 428);
   }
 
   @media screen and (min-width: $pc) {

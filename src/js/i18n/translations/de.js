@@ -133,6 +133,8 @@ const de = {
   'operation-exchange': 'Austausch',
   'operation-buy': 'Kauf',
   'operation-sell': 'Verkauf',
+
+  'to-be-paid': 'Zu zahlen',
 };
 
 export default de;

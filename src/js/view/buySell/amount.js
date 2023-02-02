@@ -31,6 +31,8 @@ function currencyAmountView(modelRepository) {
 
   cryptoModel.addEventListener('update', (_, newValue) => {
     cryptoAmountInput.min = preCheckInput(minAmountCryptoOrCurrency(newValue.price));
+
+    
   });
 
   currencyModel.addEventListener('update', (_, newValue) => {
@@ -61,6 +63,11 @@ function currencyAmountView(modelRepository) {
       cryptoAmountMessage.innerHTML = "";
       cryptoAmountMessage.classList.add('hidden');
     }
+
+    const amountElements = Array.from(document.querySelectorAll('*[data-model="buy-sell:crypto:amount"]'));
+    amountElements.forEach(el => {
+      el.innerHTML = preCheckInput(newValue);
+    });
   });
 
   currencyAmount.addEventListener('update', (_, newValue) => {
@@ -79,6 +86,11 @@ function currencyAmountView(modelRepository) {
       currencyAmountMessage.innerHTML = "";
       currencyAmountMessage.classList.add('hidden');
     }
+
+    const amountElements = Array.from(document.querySelectorAll('*[data-model="buy-sell:currency:amount"]'));
+    amountElements.forEach(el => {
+      el.innerHTML = preCheckInput(newValue);
+    });
   });
 
   const amountInputListener = () => {

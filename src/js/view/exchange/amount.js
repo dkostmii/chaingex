@@ -55,7 +55,6 @@ function cryptoAmountView(modelRepository) {
   cryptoInAmount.addEventListener('update', (_, newValue) => {
     cryptoInAmountInput.value = preCheckInput(newValue);
 
-    // TODO: Apply i18n
     if ('clampApplied' in cryptoInAmount && cryptoInAmount.clampApplied) {
       const amount = `${preCheckInput(cryptoInAmount.clampRange[0])} ${cryptoInModel.value.short}`;
 
@@ -65,6 +64,11 @@ function cryptoAmountView(modelRepository) {
       cryptoInAmountMessage.innerHTML = "";
       cryptoInAmountMessage.classList.add('hidden');
     }
+
+    const amountElements = Array.from(document.querySelectorAll('*[data-model="exchange:crypto-in:amount"]'));
+    amountElements.forEach(el => {
+      el.innerHTML = preCheckInput(newValue);
+    });
   });
 
   cryptoOutAmount.addEventListener('update', (_, newValue) => {

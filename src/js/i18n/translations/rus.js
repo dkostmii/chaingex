@@ -137,6 +137,8 @@ const rus = {
   'operation-exchange': 'обмен',
   'operation-buy': 'покупку',
   'operation-sell': 'продажу',
+
+  'to-be-paid': 'К оплате',
 }
 
 export default rus;
