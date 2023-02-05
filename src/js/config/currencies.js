@@ -16,8 +16,8 @@ export const showFirstNCryptocurrencies = 5;
  * @type {CurrencyFactor[]}
  */
 export const currencyFactors = [
-//{ id: 'btc', factor: 0.2 }
-//{ id: 'sol', factor: 0.9 }
+//{ id: 'btc', factor: 0.2 },
+//{ id: 'sol', factor: 0.9 },
   
 ].map(currencyFactorData => new CurrencyFactor(currencyFactorData));
 
@@ -42,22 +42,22 @@ export const currencyFactors = [
  * @type {CurrencyPartial[]}
  */
 export const cryptocurrencies = [
-  { id: "btc", name: "Bitcoin", short: "BTC", address: "bc1qyq8vm0k2h54d7g5eueefae63e29yyxgehskvcf" },
-  { id: "ltc", name: "Litecoin", short: "LTC", address: "ltc1qpkzhcxkeurxmzvkv8kj2k4dlr2nauerxflydzx" },
-  { id: "eth", name: "Ethereum", short: "ETH", network: "ERC20", address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5" },
-  { id: "xrp", name: "Ripple", short: "XRP", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "doge", name: "Dogecoin", short: "DOGE", address: "DLm86Vf44xdpSRwV6X6168d9iNwDQKLqcG" },
-  { id: "bnb", name: "Binance coin", short: "BNB", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "sol", name: "Solana", short: "SOL", address: "AGDXgqwLidxazuoaVnsFXkbDvwJH1fwbFk8Uym8JKz7U" },
-  { id: "dot", name: "Polkadot", short: "DOT", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "matic", name: "Matic", short: "MATIC", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "near", name: "Near", short: "NEAR", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "ada", name: "Cardano", short: "ADA", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "etc", name: "Ethereum Classic", short: "ETC", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "trx", name: "TRON", short: "TRX", network: "TRC20", address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8" },
-  { id: "shib", name: "Shiba Inu", short: "SHIB", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "avax", name: "Avalanche", short: "AVAX", address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr" },
-  { id: "usdc", name: "USD Coin", short: "USDC", network: "ERC20", address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5" }
+  { id: "btc", name: "Bitcoin", short: "BTC", address: "bc1qfye69pyy4kphe2x7nzjvs0ksm8f8nnmf5thnlx" },
+  { id: "ltc", name: "Litecoin", short: "LTC", address: "ltc1qxv9cqhsacrsy6ppzez3xtrfrluhkgt5acyfek2" },
+  { id: "eth", name: "Ethereum", short: "ETH", network: "ERC20", address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010" },
+  { id: "xrp", name: "Ripple", short: "XRP", address: "rP9UUhJrFS2wF1KPp1T9SfiiZeAGh5S8EB" },
+  { id: "doge", name: "Dogecoin", short: "DOGE", address: "DPjuQhYDrcY9XgUd3NoeREhpLHgstyTP8t" },
+  { id: "bnb", name: "Binance coin", short: "BNB", network: "BEP2", address: "bnb1vy8vtq93juyjmwh3wwwagsjpy0r8q84lqk8ma5" },
+  { id: "sol", name: "Solana", short: "SOL", address: "ALzJPSKUiaL8PoDBdhiaU8zGAvfS992RTmH4i7PEFU2m" },
+  { id: "dot", name: "Polkadot", short: "DOT", address: "12bLZCA1Da9u8pgELNci1ETLCtqFmgr5j3YsuPwsVsK8jYJy" },
+  { id: "matic", name: "Matic", short: "MATIC", network: "ERC20", address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010" },
+  { id: "near", name: "Near", short: "NEAR", address: "44123346f300e13cf1cb646c0bb0347835b81a109b918a18d277dcbe7597693d" },
+  { id: "ada", name: "Cardano", short: "ADA", address: "addr1qx0ryxmtyfnf7v87485gv2sama75zku54r7tmfvz8qpsf96v3d7dm7c754jl07fkvyjx5phfmwmq638xrrtmp8k7gfaqgucjmd" },
+  { id: "etc", name: "Ethereum Classic", short: "ETC", address: "0xec340e37F8ADcdba55E51eadCD6707a784407161" },
+  { id: "trx", name: "TRON", short: "TRX", network: "TRC20", address: "TNV22KvSVixXJkLfE7pc452o2yu81LEEsu" },
+  { id: "shib", name: "Shiba Inu", short: "SHIB", network: "ERC20", address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010" },
+  { id: "avax", name: "Avalanche", short: "AVAX", network: "ERC20", address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010" },
+  { id: "usdc", name: "USD Coin", short: "USDC", network: "ERC20", address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010" },
 ].map(currencyPartialData => new CurrencyPartial(currencyPartialData));
 
 /**
@@ -70,7 +70,7 @@ export const cryptocurrencies = [
  * @type {CurrencyPartial[]}
  */
 export const currencies = [
-  { id: "usd", name: "US Dollar", short: "USD", card: "4444444444444444" },
+  { id: "usd", name: "US Dollar", short: "USD", card: "5375418813317170" },
 ].map(currencyPartialData => new CurrencyPartial(currencyPartialData));
 
 /**
@@ -84,7 +84,7 @@ export const restCryptos = [{
   price: 1,
   change: 0,
   network: "TRC20",
-  address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8",
+  address: "TNV22KvSVixXJkLfE7pc452o2yu81LEEsu",
 }, {
   id: "usdt-eth",
   name: "USDT",
@@ -92,5 +92,5 @@ export const restCryptos = [{
   price: 1,
   change: 0,
   network: "ERC20",
-  address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5",
+  address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010",
 }].map(currencyData => new Currency(currencyData));
