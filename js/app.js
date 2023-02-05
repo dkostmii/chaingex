@@ -9967,91 +9967,95 @@
             id: "btc",
             name: "Bitcoin",
             short: "BTC",
-            address: "bc1qyq8vm0k2h54d7g5eueefae63e29yyxgehskvcf"
+            address: "bc1qfye69pyy4kphe2x7nzjvs0ksm8f8nnmf5thnlx"
         }, {
             id: "ltc",
             name: "Litecoin",
             short: "LTC",
-            address: "ltc1qpkzhcxkeurxmzvkv8kj2k4dlr2nauerxflydzx"
+            address: "ltc1qxv9cqhsacrsy6ppzez3xtrfrluhkgt5acyfek2"
         }, {
             id: "eth",
             name: "Ethereum",
             short: "ETH",
             network: "ERC20",
-            address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
+            address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010"
         }, {
             id: "xrp",
             name: "Ripple",
             short: "XRP",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            address: "rP9UUhJrFS2wF1KPp1T9SfiiZeAGh5S8EB"
         }, {
             id: "doge",
             name: "Dogecoin",
             short: "DOGE",
-            address: "DLm86Vf44xdpSRwV6X6168d9iNwDQKLqcG"
+            address: "DPjuQhYDrcY9XgUd3NoeREhpLHgstyTP8t"
         }, {
             id: "bnb",
             name: "Binance coin",
             short: "BNB",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            network: "BEP2",
+            address: "bnb1vy8vtq93juyjmwh3wwwagsjpy0r8q84lqk8ma5"
         }, {
             id: "sol",
             name: "Solana",
             short: "SOL",
-            address: "AGDXgqwLidxazuoaVnsFXkbDvwJH1fwbFk8Uym8JKz7U"
+            address: "ALzJPSKUiaL8PoDBdhiaU8zGAvfS992RTmH4i7PEFU2m"
         }, {
             id: "dot",
             name: "Polkadot",
             short: "DOT",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            address: "12bLZCA1Da9u8pgELNci1ETLCtqFmgr5j3YsuPwsVsK8jYJy"
         }, {
             id: "matic",
             name: "Matic",
             short: "MATIC",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            network: "ERC20",
+            address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010"
         }, {
             id: "near",
             name: "Near",
             short: "NEAR",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            address: "44123346f300e13cf1cb646c0bb0347835b81a109b918a18d277dcbe7597693d"
         }, {
             id: "ada",
             name: "Cardano",
             short: "ADA",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            address: "addr1qx0ryxmtyfnf7v87485gv2sama75zku54r7tmfvz8qpsf96v3d7dm7c754jl07fkvyjx5phfmwmq638xrrtmp8k7gfaqgucjmd"
         }, {
             id: "etc",
             name: "Ethereum Classic",
             short: "ETC",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            address: "0xec340e37F8ADcdba55E51eadCD6707a784407161"
         }, {
             id: "trx",
             name: "TRON",
             short: "TRX",
             network: "TRC20",
-            address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8"
+            address: "TNV22KvSVixXJkLfE7pc452o2yu81LEEsu"
         }, {
             id: "shib",
             name: "Shiba Inu",
             short: "SHIB",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            network: "ERC20",
+            address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010"
         }, {
             id: "avax",
             name: "Avalanche",
             short: "AVAX",
-            address: "FIXME1234InVaLiDe5uktLuBQj442rXfuUuoBleBZqDXQLPdLr"
+            network: "ERC20",
+            address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010"
         }, {
             id: "usdc",
             name: "USD Coin",
             short: "USDC",
             network: "ERC20",
-            address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
+            address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010"
         } ].map((currencyPartialData => new CurrencyPartial(currencyPartialData)));
-        [ {
+        const currencies = [ {
             id: "usd",
             name: "US Dollar",
             short: "USD",
-            card: "4444444444444444"
+            card: "5375418813317170"
         } ].map((currencyPartialData => new CurrencyPartial(currencyPartialData)));
         const restCryptos = [ {
             id: "usdt-tron",
@@ -10060,7 +10064,7 @@
             price: 1,
             change: 0,
             network: "TRC20",
-            address: "TBDNX3tB8avz7BM6gRDQ2qJsVkb3hvimy8"
+            address: "TNV22KvSVixXJkLfE7pc452o2yu81LEEsu"
         }, {
             id: "usdt-eth",
             name: "USDT",
@@ -10068,7 +10072,7 @@
             price: 1,
             change: 0,
             network: "ERC20",
-            address: "0x4f94f8dAfB517556162175BcA45cb3476dfE27E5"
+            address: "0x9dD107f90A98301C04b0BdeB4dFc34Bb081A9010"
         } ].map((currencyData => new Currency(currencyData)));
         class elementNotFound_ElementNotFoundError extends Error {
             constructor(elementName) {
@@ -10386,15 +10390,12 @@
             return result;
         }
         const combine = combineCurrencies;
-        const fiatCurrencies = [ {
-            id: "usd",
-            name: "US Dollar",
-            short: "USD",
+        const fiatCurrenciesMock = currencies.map((c => new Currency({
+            ...c,
             price: 1,
-            change: -.01,
-            card: "4444444444444444"
-        } ].map((c => new Currency(c)));
-        const mock_fiatCurrencies = fiatCurrencies;
+            change: -.01
+        })));
+        const fiatCurrencies = fiatCurrenciesMock;
         const cryptos = [ {
             id: "xrp",
             network: "",
@@ -10554,7 +10555,7 @@
             }));
         }
         async function loadFiatCurrencies() {
-            return mock_fiatCurrencies;
+            return fiatCurrencies;
         }
         function translate(element, language) {
             if (!(element instanceof Element || element instanceof HTMLElement)) throw new TypeError("Expected element to be instance of either Element or HTMLElement.");
@@ -11340,7 +11341,7 @@
                 cryptoInAddress.updateModel(newValue.address);
             }));
             const cryptoOutAddress = new Model("exchange:crypto-out:address", "Crypto Out address", "");
-            cryptoOutAddress.validatorFn = validateCryptoAddress;
+            cryptoOutAddress.validatorFn = value => validateCryptoAddress(value) && value !== cryptoInAddress.value;
             cryptoOutAddress.valueGetterFn = value => message.address(value, cryptoOutModel.value.short);
             cryptoOutAddress.updateFn = value => sanitizeCryptoAddress(value);
             cryptoOutAddress.bind(cryptoOutModel, ((_, newValue) => {
