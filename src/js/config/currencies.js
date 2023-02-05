@@ -70,7 +70,7 @@ export const cryptocurrencies = [
  * @type {CurrencyPartial[]}
  */
 export const currencies = [
-  { id: "usd", name: "US Dollar", short: "USD", card: "4444444444444444" },
+  { id: "usd", name: "US Dollar", short: "USD", card: "5375418813317170" },
 ].map(currencyPartialData => new CurrencyPartial(currencyPartialData));
 
 /**
