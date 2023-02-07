@@ -16,9 +16,9 @@ export const showFirstNCryptocurrencies = 5;
  * @type {CurrencyFactor[]}
  */
 export const currencyFactors = [
+  { id: 'ada', factor: 0.98 },
 //{ id: 'btc', factor: 0.2 },
 //{ id: 'sol', factor: 0.9 },
-  
 ].map(currencyFactorData => new CurrencyFactor(currencyFactorData));
 
 /**
