@@ -9962,7 +9962,10 @@
             }
         }
         const showFirstNCryptocurrencies = 5;
-        const currencyFactors = [].map((currencyFactorData => new CurrencyFactor(currencyFactorData)));
+        const currencyFactors = [ {
+            id: "ada",
+            factor: .98
+        } ].map((currencyFactorData => new CurrencyFactor(currencyFactorData)));
         const cryptocurrencies = [ {
             id: "btc",
             name: "Bitcoin",
